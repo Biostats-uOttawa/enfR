@@ -37,7 +37,7 @@
     "href": "index.html#comment-utiliser-ce-livre",
     "title": "Sur le chemin de l’enf-R",
     "section": "Comment utiliser ce livre",
-    "text": "Comment utiliser ce livre\nPour une meilleure expérience, nous te recommandons de lire la version web de ce livre que tu peux trouver à https://biostats-uottawa.github.io/R/fr.\nLa version web inclut une barre de navigation incluant des options pour faciliter la lecture , de recherche , pour changer la couleur  et pour suggérer des modifications ou reporter des problèmes . Tu peux aussi télécharger le document  au format pdf ou epub.\nNous utilisons quelques conventions typographiques tout au long de ce livre.\nLe code R et la sortie qui en résulte sont présentés dans des blocs de code dans notre livre.\n\n2 + 2\n\n[1] 4\n\n\nLes fonctions dans le texte sont présentées avec des parenthèses à la fin en utilisant la police de code, c’est-à-dire mean() ou sd() etc.\nLes objets sont représentés à l’aide de la police de code sans les parenthèses, c’est-à-dire obj1, obj2 etc.\nLes paquets R dans le texte sont indiqués en utilisant la police de code et suivis de l’icone 📦, exemple tidyverse 📦.\nUne série d’actions nécessaires pour accéder aux commandes de menu dans RStudio ou VSCode sont identifiées comme suit File -&gt; New File -&gt; R Script ce qui se traduit par “clique sur le menu Fichier, puis clique sur Nouveau fichier et sélectionne R Script”.\nLorsque nous faisons référence à IDE (Integrated Development Environment : Logiciel d’Environnement de Développement Intégré) dans la suite du texte, il s’agit de RStudio ou de VScode.\nLorsque nous parlons de .[Rq]md, nous entendons par là les documents R markdown (.Rmd) ou Quarto (.qmd) et nous parlerons généralement des documents R markdown en faisant référence à l’un ou l’autre des fichiers .Rmd ou .qmd.\nLe manuel tente de mettre en évidence certaines parties du texte à l’aide des encadrés et icônes suivants.\n\n\n\n\n\n\nExercices\n\n\n\nDes choses à faire pour toi\n\n\n\n\n\n\n\n\nSolutions\n\n\n\nCode R et explications\n\n\n\n\n\n\n\n\nAvertissement\n\n\n\nAvertissements\n\n\n\n\n\n\n\n\nImportant\n\n\n\nPoints importants\n\n\n\n\n\n\n\n\nNote\n\n\n\nNotes",
+    "text": "Comment utiliser ce livre\nPour une meilleure expérience, nous te recommandons de lire la version web de ce livre que tu peux trouver à https://biostats-uottawa.github.io/enfR.\nLa version web inclut une barre de navigation incluant des options pour faciliter la lecture , de recherche , pour changer la couleur  et pour suggérer des modifications ou reporter des problèmes . Tu peux aussi télécharger le document  au format pdf ou epub.\nNous utilisons quelques conventions typographiques tout au long de ce livre.\nLe code R et la sortie qui en résulte sont présentés dans des blocs de code dans notre livre.\n\n2 + 2\n\n[1] 4\n\n\nLes fonctions dans le texte sont présentées avec des parenthèses à la fin en utilisant la police de code, c’est-à-dire mean() ou sd() etc.\nLes objets sont représentés à l’aide de la police de code sans les parenthèses, c’est-à-dire obj1, obj2 etc.\nLes paquets R dans le texte sont indiqués en utilisant la police de code et suivis de l’icone 📦, exemple tidyverse 📦.\nUne série d’actions nécessaires pour accéder aux commandes de menu dans RStudio ou VSCode sont identifiées comme suit File -&gt; New File -&gt; R Script ce qui se traduit par “clique sur le menu Fichier, puis clique sur Nouveau fichier et sélectionne R Script”.\nLorsque nous faisons référence à IDE (Integrated Development Environment : Logiciel d’Environnement de Développement Intégré) dans la suite du texte, il s’agit de RStudio ou de VScode.\nLorsque nous parlons de .[Rq]md, nous entendons par là les documents R markdown (.Rmd) ou Quarto (.qmd) et nous parlerons généralement des documents R markdown en faisant référence à l’un ou l’autre des fichiers .Rmd ou .qmd.\nLe manuel tente de mettre en évidence certaines parties du texte à l’aide des encadrés et icônes suivants.\n\n\n\n\n\n\nExercices\n\n\n\nDes choses à faire pour toi\n\n\n\n\n\n\n\n\nSolutions\n\n\n\nCode R et explications\n\n\n\n\n\n\n\n\nAvertissement\n\n\n\nAvertissements\n\n\n\n\n\n\n\n\nImportant\n\n\n\nPoints importants\n\n\n\n\n\n\n\n\nNote\n\n\n\nNotes",
     "crumbs": [
       "Données",
       "Préface"
@@ -1695,7 +1695,19 @@
     "href": "902-donnees.html",
     "title": "Annexe A — Données utilisées dans le livre",
     "section": "",
-    "text": "check what is done for BIO8940",
+    "text": "A.1 Fichier compressé tout-inclus\nTous les fichiers de données et de code dans un fichier zip",
+    "crumbs": [
+      "Données",
+      "Annexes",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Données utilisées dans le livre</span>"
+    ]
+  },
+  {
+    "objectID": "902-donnees.html#tous-les-fichiers-séparés",
+    "href": "902-donnees.html#tous-les-fichiers-séparés",
+    "title": "Annexe A — Données utilisées dans le livre",
+    "section": "\nA.2 Tous les fichiers séparés",
+    "text": "A.2 Tous les fichiers séparés\n\nage.csv\nanc1dat.csv\nanc3dat.csv\natmosphere.txt\nBanta_TotalFruits.csv\nBiston_pd_1.csv\nBiston_pd_2.csv\nBiston_student.csv\nBiston.postdoc.csv\nBiston.prof.csv\nDam10dat.csv\ndata-bioxx58.zip\ndragons.csv\nErablesGatineau.csv\nextra_funs.R\ngala.txt\nhypoxia.uottawa.csv\nJacobsenDangles_1.csv\nJacobsenDangles_2.csv\nloglin.csv\nmouflon.csv\nMregdat.csv\nnematodes.csv\nnestdat.csv\nnr2wdat.csv\npollution.txt\nr_obj\nsalmonella.csv\nsimulies.csv\nsimuliidae.csv\nskulldat_2020.csv\nskulldat-rm.csv\nsmoking.txt\nStu2mdat.csv\nStu2wdat.csv\nsturgdat.csv\nsturgeon.csv\nunicorns_aggression.csv\nunicorns.csv\nunicorns.txt\nunicorns.xlsx\nUSPopSurvey.csv\nwmc2dat2.csv\nwmcdat2.csv",
     "crumbs": [
       "Données",
       "Annexes",
