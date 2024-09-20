@@ -205,7 +205,8 @@ Si tu trouves ce livre utile ou si tu as des commentaires ou des suggestions, j'
 
 ## Citer le livre
 
-Julien Martin. ({{< meta year >}}). Sur le chemin de l'enf-R. Un livre multilingue d'introduction à R. Version: {{< meta version >}} ({{< meta date >}}).DOI: [{{< meta doi >}}](https://zenodo.org/doi/10.5281/zenodo.10929585)
+Julien Martin. ({{< meta year >}}). Sur le chemin de l'enf-R. Un livre multilingue d'introduction à R. Version: {{< meta version >}} ({{< meta date >}}).
+DOI: [{{< meta doi >}}](https://zenodo.org/doi/{{< meta doi >}})
 
 
 {{< pagebreak >}}

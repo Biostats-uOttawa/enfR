@@ -17,10 +17,10 @@ book:
   description: "En cours de traduction"
   author: Julien Martin
   
-  site-url: https://biostats-uottawa.github.io/enf-R/
-  repo-url: https://github.com/biostats-uottawa/enf-R/
+  site-url: https://biostats-uottawa.github.io/enfR/
+  repo-url: https://github.com/biostats-uottawa/enfR/
 
-  doi: 10.5281/zenodo.10929585 # to update
+  doi: 10.5281/zenodo.13801265
   
 #  margin-header: '![](images/book_hex_en.png){width="100px"}'
   page-footer:
