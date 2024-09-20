@@ -1,0 +1,31 @@
+# Références  {.unnumbered}
+
+## Paquets R {.unnumbered}
+
+
+Ce livre a utilisé les paquets R (excluant leurs dépendances) listé dans le tableau @tbl-r-lib.
+Comme recommandé par l'équipe de de développement de 'tidyverse', seul le paquets 'tidyverse' est cité et non pas chacun de ses composants.
+
+```{r}
+#| label: tbl-r-lib
+#| tbl-cap: Paquets utilisés dans le livre
+#| echo: FALSE
+#| message: false
+#| cache: false
+library(tidyverse)
+library(grateful)
+pkgs <- cite_packages(
+  output = "table",
+  out.dir = "biblio/",
+  omit = ""
+)
+knitr::kable(
+  pkgs,
+  col.names = c("Paquets", "Version", "Citation")
+)
+```
+
+## Bibliographie  {.unnumbered}
+
+::: {#refs}
+:::

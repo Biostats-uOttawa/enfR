@@ -1,0 +1,1395 @@
+# Données {#sec-data-r}
+
+Jusqu'à présent, vous avez créé des données relativement simples dans R et les avez stockées sous forme de vecteur (@sec-funcs).
+Cependant, la plupart d'entre vous (si ce n'est tous) disposeront d'ensembles de données beaucoup plus complexes provenant de vos diverses expériences et enquêtes, qui vont bien au-delà de ce qu'un vecteur peut gérer.
+Apprendre comment R traite les différents types de données et de structures de données, comment importer vos données dans R et comment manipuler et résumer vos données sont quelques-unes des compétences les plus importantes que vous devrez maîtriser.
+
+Dans ce chapitre, nous passerons en revue les principaux types de données dans R et nous nous concentrerons sur certaines des structures de données les plus courantes.
+Nous verrons également comment importer des données dans R à partir d'un fichier externe, comment manipuler (wrangle) et résumer des données et enfin comment exporter des données de R vers un fichier externe.
+
+## Types de données
+
+Il est important de comprendre les différents types de données et la manière dont R traite ces données.
+La tentation est grande d'ignorer ces détails techniques, mais attention, cela peut se retourner contre vous si vous ne faites pas attention.
+Nous avons déjà vu un exemple (@sec-r-objs) de cela lorsque nous avons essayé (et échoué) d'ajouter deux objets caractères ensemble en utilisant la fonction `+` à l'aide de l'opérateur
+
+R dispose de six types de données de base : numérique, entier, logique, complexe et caractère.
+Les plus attentifs d'entre vous remarqueront que nous n'avons listé ici que cinq types de données, le dernier étant le type de données brut, que nous n'aborderons pas car il n'est pas utile dans 99,99 % des cas.
+ Nous n'aborderons pas non plus les nombres complexes, mais nous vous laisserons [imaginer][complex_num] cette partie !
+
+- **Numérique** sont des nombres contenant une décimale.
+  En fait, il peut également s'agir de nombres entiers, mais nous n'y reviendrons pas.
+
+- **Les nombres entiers** sont des nombres entiers (sans virgule).
+
+- **Logique** prennent la valeur de `TRUE` ou `FALSE`.
+  Il existe également un autre type de logique appelé `NA` pour représenter les valeurs manquantes.
+
+- **Caractère** sont utilisées pour représenter les valeurs des chaînes de caractères.
+  Vous pouvez considérer les chaînes de caractères comme un mot (ou plusieurs mots).
+  Un type particulier de chaîne de caractères est un *facteur* qui est une chaîne de caractères mais avec des attributs supplémentaires (comme des niveaux ou un ordre).
+  Nous reviendrons sur les facteurs plus tard.
+
+R est (généralement) capable de distinguer automatiquement les différentes classes de données en fonction de leur nature et du contexte dans lequel elles sont utilisées, bien que vous deviez garder à l'esprit que R ne peut pas vraiment lire dans vos pensées et que vous devrez peut-être lui indiquer explicitement comment vous souhaitez traiter un type de données.
+Vous pouvez connaître le type (ou la classe) de n'importe quel objet en utilisant la fonction `class()` pour connaître le type (ou la classe) d'un objet.
+
+```{r}
+#| echo: true
+#| eval: true
+num <- 2.2
+class(num)
+
+char <- "hello"
+class(char)
+
+logi <- TRUE
+class(logi)
+```
+
+Vous pouvez également demander si un objet appartient à une classe spécifique à l'aide d'un test logique.
+Le test `is.[classOfData]()` renvoie soit un `TRUE` ou un `FALSE`.
+
+```{r}
+#| echo: true
+#| eval: true
+is.numeric(num)
+
+is.character(num)
+
+is.character(char)
+
+is.logical(logi)
+```
+
+Il peut parfois être utile de pouvoir changer la classe d'une variable à l'aide de la fonction `as.[className]()` bien qu'il faille être prudent car vous pourriez obtenir des résultats inattendus (voir ce qui se passe ci-dessous lorsque nous essayons de convertir une chaîne de caractères en une chaîne numérique).
+
+```{r}
+#| echo: true
+#| eval: true
+# coerce numeric to character
+class(num)
+num_char <- as.character(num)
+num_char
+class(num_char)
+
+# coerce character to numeric!
+class(char)
+char_num <- as.numeric(char)
+```
+
+Voici un tableau récapitulatif de certaines des fonctions de test logique et de coercion à votre disposition.
+
+| Type de test | Test logique | Coercition | 
+| :----------: | :----------: | :--------: |
+| Caractère    | `is.character`             | `as.character`           | 
+| Numérique    | `is.numeric`             | `as.numeric`           | 
+| Logique      | `is.logical`             | `as.logical`           | 
+| Facteur      | `is.factor`             | `as.factor`           | 
+| Complexe     | `is.complex`             | `as.complex`           | 
+
+## Structures de données
+
+Maintenant que vous avez pris connaissance de certaines des classes de données les plus importantes de R, examinons quelques-unes des principales structures dont nous disposons pour stocker ces données.
+
+### Scalaires et vecteurs {#sec-scal-vecs}
+
+Le type de structure de données le plus simple est sans doute le vecteur.
+Vous avez déjà été initié aux vecteurs dans @sec-funcs, bien que certains des vecteurs que vous avez créés ne contenaient qu'une seule valeur.
+Les vecteurs qui ont une seule valeur (longueur 1) sont appelés scalaires.
+Les vecteurs peuvent contenir des nombres, des caractères, des facteurs ou des logiques, mais la chose essentielle à retenir est que tous les éléments à l'intérieur d'un vecteur doivent être de la même classe.
+En d'autres termes, les vecteurs peuvent contenir des nombres, des caractères ou des logiques, mais pas des mélanges de ces types de données.
+Il existe une exception importante à cette règle : vous pouvez inclure des `NA` (rappelez-vous qu'il s'agit d'un type spécial de logique) pour indiquer les données manquantes dans les vecteurs contenant d'autres types de données.
+
+```{r}
+#| label: fig-data_struc
+#| fig-cap: Scalar and vector data structure
+#| echo: false
+#| out-width: 40%
+#| fig-align: center
+knitr::include_graphics(path = "images/data/scal_vec.png")
+```
+
+### Matrices et tableaux {#sec-mat-array}
+
+La matrice est une autre structure de données utile, utilisée dans de nombreuses disciplines telles que l'écologie des populations et les statistiques théoriques et appliquées.
+Une matrice est simplement un vecteur doté d'attributs supplémentaires appelés dimensions.
+Les tableaux ne sont que des matrices multidimensionnelles.
+Là encore, les matrices et les tableaux doivent contenir des éléments appartenant tous à la même classe de données.
+
+```{r}
+#| label: fig-data_struc2
+#| fig-cap: Matrix and array data structure
+#| echo: false
+#| out-width: 50%
+#| fig-align: center
+knitr::include_graphics(path = "images/data/mat_array.png")
+```
+
+Un moyen pratique de créer une matrice ou un tableau est d'utiliser la fonction `matrix()` et `array()` respectivement.
+Ci-dessous, nous allons créer une matrice à partir d'une séquence de 1 à 16 en quatre lignes (`nrow = 4`) et remplissons la matrice par rangée (`byrow = TRUE`) plutôt que de remplir la matrice par colonne, comme c'est le cas par défaut.
+Lors de l'utilisation de l'option `array()` nous définissons les dimensions à l'aide de la fonction `dim =` dans notre cas, 2 lignes, 4 colonnes dans 2 matrices différentes.
+
+```{r}
+#| echo: true
+#| eval: true
+my_mat <- matrix(1:16, nrow = 4, byrow = TRUE)
+my_mat
+
+my_array <- array(1:16, dim = c(2, 4, 2))
+my_array
+```
+
+Il est parfois utile de définir les noms des lignes et des colonnes de votre matrice, mais ce n'est pas obligatoire.
+Pour ce faire, utilisez la fonction `rownames()` et `colnames()` pour ce faire.
+
+```{r}
+#| echo: true
+#| eval: true
+rownames(my_mat) <- c("A", "B", "C", "D")
+colnames(my_mat) <- c("a", "b", "c", "d")
+my_mat
+```
+
+Une fois que vous avez créé vos matrices, vous pouvez faire des choses utiles avec elles et, comme vous pouvez vous y attendre, R dispose de nombreuses fonctions intégrées pour effectuer des opérations sur les matrices.
+Certaines des plus courantes sont présentées ci-dessous.
+Par exemple, pour transposer une matrice, nous utilisons la fonction de transposition `t()`
+
+```{r}
+#| echo: true
+#| eval: true
+my_mat_t <- t(my_mat)
+my_mat_t
+```
+
+Pour extraire les éléments diagonaux d'une matrice et les stocker sous forme de vecteur, nous pouvons utiliser la fonction `diag()` fonction
+
+```{r}
+#| echo: true
+#| eval: true
+my_mat_diag <- diag(my_mat)
+my_mat_diag
+```
+
+Les opérations habituelles d'addition, de multiplication, etc. de la matrice peuvent être effectuées.
+Notez l'utilisation de la fonction `%*%` pour effectuer une multiplication matricielle.
+
+```{r}
+#| echo: true
+#| eval: true
+mat.1 <- matrix(c(2, 0, 1, 1), nrow = 2) # notice that the matrix has been filled
+mat.1 # column-wise by default
+
+mat.2 <- matrix(c(1, 1, 0, 2), nrow = 2)
+mat.2
+
+mat.1 + mat.2 # matrix addition
+mat.1 * mat.2 # element by element products
+mat.1 %*% mat.2 # matrix multiplication
+```
+
+### Listes {#sec-lists}
+
+La prochaine structure de données que nous examinerons rapidement est une liste.
+Alors que les vecteurs et les matrices sont contraints de contenir des données du même type, les listes peuvent stocker des mélanges de types de données.
+En fait, nous pouvons même stocker d'autres structures de données telles que des vecteurs et des tableaux à l'intérieur d'une liste ou même avoir une liste d'une liste.
+Il s'agit donc d'une structure de données très flexible, idéale pour stocker des données irrégulières ou non rectangulaires (voir @sec-prog-r pour un exemple).
+
+Pour créer une liste, nous pouvons utiliser la fonction `list()` pour créer une liste.
+Notez que les trois éléments de la liste sont de classes différentes (caractère, logique et numérique) et de longueurs différentes.
+
+```{r}
+#| echo: true
+#| eval: true
+list_1 <- list(
+  c("black", "yellow", "orange"),
+  c(TRUE, TRUE, FALSE, TRUE, FALSE, FALSE),
+  matrix(1:6, nrow = 3)
+)
+list_1
+```
+
+Les éléments de la liste peuvent être nommés lors de la construction de la liste
+
+```{r}
+#| echo: true
+#| eval: true
+list_2 <- list(
+  colours = c("black", "yellow", "orange"),
+  evaluation = c(TRUE, TRUE, FALSE, TRUE, FALSE, FALSE),
+  time = matrix(1:6, nrow = 3)
+)
+list_2
+```
+
+ou après la création de la liste à l'aide de la fonction `names()` à l'aide de la fonction
+
+```{r}
+#| echo: true
+#| eval: true
+names(list_1) <- c("colours", "evaluation", "time")
+list_1
+```
+
+### Trames de données {#sec-df}
+
+La structure de données la plus couramment utilisée pour stocker des données est, de loin, le cadre de données.
+Un cadre de données est un objet bidimensionnel puissant composé de lignes et de colonnes qui ressemble superficiellement à une matrice.
+Toutefois, alors que les matrices ne peuvent contenir que des données du même type, les cadres de données peuvent contenir un mélange de différents types de données.
+En règle générale, dans un cadre de données, chaque ligne correspond à une observation individuelle et chaque colonne correspond à une variable mesurée ou enregistrée différente.
+Cette configuration est peut-être familière à ceux d'entre vous qui utilisent LibreOffice Calc ou Microsoft Excel pour gérer et stocker leurs données.
+Il peut être utile de penser que les cadres de données sont essentiellement constitués d'un ensemble de vecteurs (colonnes), chaque vecteur contenant son propre type de données, mais le type de données peut être différent d'un vecteur à l'autre.
+
+Par exemple, le cadre de données ci-dessous contient les résultats d'une expérience visant à déterminer l'effet des soins parentaux (avec ou sans) sur les licornes (*Unicornus magnificens*) sur la croissance des petits sous trois régimes de disponibilité alimentaire différents.
+Le cadre de données comporte 8 variables (colonnes) et chaque ligne représente une licorne individuelle.
+Les variables `care` et `food` sont des facteurs ( [catégoriques][cat-var] ).
+Les variables `p_care` a 2 niveaux (`care` et `no_care`) et la variable `food` a 3 niveaux (`low`, `medium` et `high`).
+Les variables `height`, `weight`, `mane_size` et `fluffyness` sont numériques et la variable `horn_rings` est un nombre entier représentant le nombre d'anneaux sur la corne.
+Bien que la variable `block` possède des valeurs numériques, celles-ci n'ont pas vraiment d'ordre et pourraient également être traitées comme un facteur (i.e.
+elles auraient également pu être appelées A et B).
+
+```{r}
+#| label: tbl-import-data
+#| echo: false
+#| message: false
+#| tbl-cap: Imported unicorn data
+library(kableExtra)
+unicorns <- read.csv("data/unicorns.csv")
+knitr::kable(rbind(head(unicorns), tail(unicorns)), row.names = FALSE, booktabs = TRUE)
+```
+
+Il y a deux choses importantes à garder à l'esprit à propos des cadres de données.
+Ces types d'objets sont connus sous le nom de données rectangulaires (ou données ordonnées), car chaque colonne doit comporter le même nombre d'observations.
+En outre, toute donnée manquante doit être enregistrée sous la forme d'un `NA` comme nous l'avons fait pour nos vecteurs.
+
+Nous pouvons construire un cadre de données à partir d'objets de données existants, tels que des vecteurs, à l'aide de la fonction `data.frame()` à l'aide de la fonction
+À titre d'exemple, créons trois vecteurs `p.height`, `p.weight` et `p.names` et inclure tous ces vecteurs dans un objet cadre de données appelé `dataf`.
+
+```{r}
+#| label: dataf
+#| echo: true
+p.height <- c(180, 155, 160, 167, 181)
+p.weight <- c(65, 50, 52, 58, 70)
+p.names <- c("Joanna", "Charlotte", "Helen", "Karen", "Amy")
+
+dataf <- data.frame(height = p.height, weight = p.weight, names = p.names)
+dataf
+```
+
+Vous remarquerez que chacune des colonnes est nommée avec le nom de la variable que nous avons fourni lorsque nous avons utilisé la fonction `data.frame()` lorsque nous avons utilisé la fonction
+Il semble également que la première colonne du cadre de données soit une série de nombres allant de un à cinq.
+En fait, il ne s'agit pas vraiment d'une colonne, mais du nom de chaque ligne.
+Nous pouvons le vérifier en demandant à R de renvoyer les dimensions de la base de données `dataf` à l'aide de la fonction `dim()` à l'aide de la fonction
+Nous constatons qu'il y a 5 lignes et 3 colonnes.
+
+```{r}
+#| label: dataf2
+#| echo: true
+dim(dataf) # 5 rows and 3 columns
+```
+
+Une autre fonction très utile que nous utilisons en permanence est `str()` qui renvoie un résumé compact de la structure de l'objet data frame (ou de tout autre objet).
+
+```{r}
+#| label: dataf3
+#| echo: true
+str(dataf)
+```
+
+La fonction `str()` nous donne les dimensions de la base de données et nous rappelle que la fonction `dataf` est un `data.frame` type d'objet.
+Il énumère également toutes les variables (colonnes) contenues dans le cadre de données, nous indique le type de données que les variables contiennent et imprime les cinq premières valeurs.
+Nous copions souvent ce résumé et le plaçons dans nos scripts R avec des commentaires au début de chaque ligne afin de pouvoir nous y référer facilement lors de l'écriture de notre code.
+Nous vous avons montré comment commenter les blocs dans RStudio @sec-proj-doc.
+
+Notez également que R a automatiquement décidé que notre `p.names` doit être un caractère (`chr`) lors de la création de la base de données.
+La question de savoir si c'est une bonne idée ou non dépendra de la manière dont vous souhaitez utiliser cette variable dans des analyses ultérieures.
+Si nous décidons que ce n'est pas une bonne idée, nous pouvons modifier le comportement par défaut de la classe `data.frame()` en incluant l'argument `stringsAsFactors = TRUE`.
+Nos chaînes de caractères sont maintenant automatiquement converties en facteurs.
+
+```{r}
+#| label: dataf4
+#| echo: true
+p.height <- c(180, 155, 160, 167, 181)
+p.weight <- c(65, 50, 52, 58, 70)
+p.names <- c("Joanna", "Charlotte", "Helen", "Karen", "Amy")
+
+dataf <- data.frame(
+  height = p.height, weight = p.weight, names = p.names,
+  stringsAsFactors = TRUE
+)
+str(dataf)
+```
+
+## Importation de données
+
+Bien que la création de cadres de données à partir de structures de données existantes soit extrêmement utile, l'approche de loin la plus courante consiste à créer un cadre de données en important des données à partir d'un fichier externe.
+Pour ce faire, vos données doivent être correctement formatées et enregistrées dans un format de fichier que R est capable de reconnaître.
+Heureusement pour nous, R est capable de reconnaître une grande variété de formats de fichiers, même si, en réalité, vous n'en utiliserez probablement que deux ou trois régulièrement.
+
+### Enregistrement de fichiers à importer
+
+La méthode la plus simple pour créer un fichier de données à importer dans R consiste à saisir vos données dans une feuille de calcul à l'aide de Microsoft Excel ou de LibreOffice Calc et à enregistrer la feuille de calcul sous la forme d'un fichier délimité par des virgules.
+ Nous préférons LibreOffice Calc car c'est un logiciel libre, indépendant de la plate-forme et gratuit, mais MS Excel convient également (mais voir [ici][excel_gotcha] pour quelques problèmes).
+Voici les données de l'expérience sur les pétunias dont nous avons parlé précédemment, affichées dans LibreOffice.
+Si vous souhaitez suivre l'expérience, vous pouvez télécharger le fichier de données (*'unicorn.xlsx'*) à partir de @sec-data-files.
+
+```{r}
+#| label: fig-LO-calc0
+#| fig-cap: Unicorn data in LibreOffice Calc
+#| echo: false
+#| out-width: 60%
+#| fig-align: center
+knitr::include_graphics(path = "images/data/libre_off.png")
+```
+
+Pour ceux d'entre vous qui ne connaissent pas le format de fichier délimité par des tabulations, cela signifie simplement que les données des différentes colonnes sont séparées par le caractère "," et sont généralement enregistrées dans un fichier portant l'extension ".csv".
+
+Pour enregistrer une feuille de calcul en tant que fichier délimité par des virgules dans LibreOffice Calc, sélectionnez `File` -> `Save as ...` dans le menu principal.
+Vous devrez spécifier l'emplacement où vous souhaitez enregistrer votre fichier dans l'option "Enregistrer dans le dossier" et le nom du fichier dans l'option "Nom".
+Dans le menu déroulant situé au-dessus du bouton "Enregistrer", remplacez l'option par défaut "Tous les formats" par "Texte CSV (.csv)".
+
+```{r}
+#| label: fig-LO-calc
+#| fig-cap: Choosing `csv` format when saving with LibreOffice Calc
+#| echo: false
+#| out-width: 60%
+#| fig-align: center
+knitr::include_graphics(path = "images/data/libre_off1.png")
+```
+
+Cliquez sur le bouton Enregistrer, puis sélectionnez l'option "Utiliser le format CSV texte".
+Cliquez sur OK pour enregistrer le fichier.
+
+Il y a quelques points à prendre en compte lors de l'enregistrement des fichiers à importer dans R, qui vous faciliteront la vie à long terme.
+Les titres de vos colonnes (si vous en avez) doivent être courts et informatifs.
+Évitez également les espaces dans vos titres de colonnes en les remplaçant par un trait de soulignement ou un point (c'est-à-dire
+remplacer `mane size` par `mane size` ou `mane.size`) et d'éviter d'utiliser des caractères spéciaux (par ex.
+`leaf area (mm^2)` ou des majuscules pour simplifier votre vie).
+N'oubliez pas que si vous avez des données manquantes dans votre cadre de données (cellules vides), vous devez utiliser un champ `NA` pour représenter ces valeurs manquantes ou utiliser une cellule vide.
+Cela permettra de conserver un cadre de données ordonné.
+
+### Fonctions d'importation {#sec-import-fnc}
+
+Une fois que vous avez enregistré votre fichier de données dans un format approprié, nous pouvons maintenant lire ce fichier dans R.
+La fonction la plus utilisée pour importer des données dans R est la fonction `read.table()` (nous examinerons d'autres solutions plus loin dans ce chapitre).
+La fonction `read.table()` est une fonction très flexible qui dispose d'un grand nombre d'arguments (voir `?read.table`), mais elle est assez simple à utiliser.
+Importons un fichier délimité par des virgules appelé `unicorns.csv` qui contient les données que nous avons vues précédemment dans ce chapitre (@sec-df) et l'assignons à un objet appelé `unicorns`.
+Le fichier est situé dans un `data` qui est lui-même situé dans notre répertoire racine (@sec-dir-struc).
+La première ligne des données contient les noms des variables (colonnes).
+Pour utiliser les `read.table()` pour importer ce fichier
+
+```{r}
+#| label: df1
+#| echo: true
+unicorns <- read.table(
+  file = "data/unicorns.csv", header = TRUE, sep = ",", dec = ".",
+  stringsAsFactors = TRUE
+)
+```
+
+Il y a quelques points à noter à propos de la commande ci-dessus.
+Tout d'abord, le chemin d'accès au fichier et le nom du fichier (y compris l'extension) doivent être placés entre guillemets simples ou doubles (c.-à-d.
+le `data/unicorns.txt` ), comme l'indique le bit `read.table()` s'attend à ce qu'il s'agisse d'une chaîne de caractères.
+Si votre répertoire de travail est déjà le répertoire qui contient le fichier, il n'est pas nécessaire d'inclure le chemin d'accès complet au fichier, mais seulement le nom du fichier.
+Dans l'exemple ci-dessus, le chemin d'accès au fichier est séparé par une simple barre oblique. `/`.
+Cela fonctionne quel que soit le système d'exploitation que vous utilisez et nous vous recommandons de vous en tenir à cela.
+Cependant, les utilisateurs de Windows peuvent être plus familiers avec la notation de la barre oblique inverse simple et si vous voulez continuer à l'utiliser, vous devrez l'inclure en tant que barre oblique inverse double.
+
+::: {.callout-warning}
+Notez cependant que la notation de la double barre oblique inverse sera **pas** fonctionnera pas sur les ordinateurs utilisant les systèmes d'exploitation Mac OSX ou Linux.
+Nous le déconseillons donc fortement car il n'est pas reproductible
+:::
+
+Les `header = TRUE` spécifie que la première ligne de vos données contient les noms des variables (c.-à-d.
+`food`, `block` etc.)
+Si ce n'est pas le cas, vous pouvez spécifier `header = FALSE` (en fait, c'est la valeur par défaut, vous pouvez donc omettre complètement cet argument).
+L'argument `sep = ","` indique à R quel est le délimiteur de fichier.
+
+D'autres arguments utiles sont `dec =` et `na.strings =`.
+Les `dec =` permet de modifier le caractère par défaut (`.`) utilisé par défaut pour le point décimal.
+Ceci est utile si vous êtes dans un pays où les décimales sont généralement représentées par une virgule (c.-à-d.
+`dec = ","`).
+Les `na.strings =` vous permet d'importer des données où les valeurs manquantes sont représentées par un symbole autre que `NA`.
+Cela peut être assez courant si vous importez des données à partir d'un autre logiciel statistique tel que Minitab, qui représente les valeurs manquantes sous la forme d'un symbole `*` (`na.strings = "*"`).
+
+Honnêtement, du point de vue de l `read.table()` une série de fonctions prédéfinies sont disponibles.
+Elles utilisent toutes `read.table()` mais définissent des options spécifiques au format.
+Nous pouvons simplement `read.csv()`pour lire un fichier csv, avec la séparation "," et "." pour les décimales.
+Dans les pays où "," est utilisé pour les décimales, les fichiers csv utilisent " ;" comme séparateur.
+Dans ce cas, l'utilisation de `read.csv2()` serait nécessaire.
+Lorsque l'on travaille avec des fichiers délimités par des tabulations, les fonctions `read.delim()` et `read.delim2()`
+peuvent être utilisées avec "." et "," comme décimales respectivement.
+
+Après avoir importé nos données dans R , pour voir le contenu du cadre de données, il suffit de taper le nom de l'objet comme nous l'avons fait précédemment.
+**MAIS** avant de faire cela, réfléchissez à la raison pour laquelle vous faites cela.
+Si votre cadre de données est autre chose que minuscule, tout ce que vous allez faire, c'est remplir votre Console de données.
+Ce n'est pas comme si vous pouviez facilement vérifier s'il y a des erreurs ou si vos données ont été importées correctement.
+Une bien meilleure solution consiste à utiliser notre vieil ami, la fonction `str()` pour obtenir un résumé compact et informatif de votre base de données.
+
+```{r}
+#| label: df3
+#| echo: true
+str(unicorns)
+```
+
+Ici, nous voyons que `unicorns` est un objet "data.frame" qui contient 96 lignes et 8 variables (colonnes).
+Chacune des variables est répertoriée avec sa classe de données et les 10 premières valeurs.
+Comme nous l'avons mentionné précédemment dans ce chapitre, il peut être très pratique de copier et de coller ces données dans votre script R sous la forme d'un bloc de commentaires afin de pouvoir s'y référer ultérieurement.
+
+Notez également que vos variables de type chaîne de caractères (`care` et `food`) ont été importées en tant que facteurs parce que nous avons utilisé l'argument `stringsAsFactors = TRUE`.
+Si ce n'est pas ce que vous voulez, vous pouvez l'éviter en utilisant l'argument `stringsAsFactors = FALSE` ou à partir de la version 4.0.0 de R, vous pouvez simplement ne pas utiliser cet argument en tant que `stringsAsFactors = FALSE` est la valeur par défaut.
+
+```{r}
+#| label: df4
+#| echo: true
+unicorns <- read.delim(file = "data/unicorns.txt")
+str(unicorns)
+```
+
+Si nous voulions simplement voir les noms de nos variables (colonnes) dans la base de données, nous pourrions utiliser l'argument `names()` qui renverra un vecteur de caractères contenant les noms des variables.
+
+```{r}
+#| label: df4.1
+#| echo: true
+names(unicorns)
+```
+
+Vous pouvez même importer des fichiers de feuilles de calcul de MS Excel ou d'autres logiciels de statistiques directement dans R, mais nous vous conseillons d'éviter cette méthode dans la mesure du possible, car elle ne fait qu'ajouter une couche d'incertitude entre vous et vos données.
+À notre avis, il est presque toujours préférable d'exporter vos feuilles de calcul sous forme de fichiers délimités par des tabulations ou des virgules, puis de les importer dans R à l'aide de l'un des logiciels suivants `read.table()` fonction dérivée.
+Si vous tenez absolument à importer directement des données à partir d'un autre logiciel, vous devrez installer le programme `foreign` qui contient des fonctions permettant d'importer des fichiers Minitab, SPSS, Stata et SAS. Pour les feuilles de calcul MS Excel et LO Calc, quelques logiciels peuvent être utilisés.
+
+### Frustrations courantes liées à l'importation
+
+Il est assez courant d'obtenir un tas de messages d'erreur vraiment frustrants lorsque l'on commence à importer des données dans R.
+Le plus courant est sans doute
+
+```r
+Error in file(file, "rt") : cannot open the connection
+In addition: Warning message:
+In file(file, "rt") :
+  cannot open file 'unicorns.txt': No such file or directory
+```
+
+Ce message d'erreur vous indique que R ne peut pas trouver le fichier que vous essayez d'importer.
+Il apparaît généralement pour l'une ou l'autre des raisons suivantes (ou pour toutes !).
+La première est que vous avez fait une erreur dans l'orthographe du nom de fichier ou du chemin d'accès au fichier.
+Une autre erreur fréquente est d'avoir oublié d'inclure l'extension du fichier dans le nom du fichier (par ex.
+`.txt`).
+Enfin, le fichier ne se trouve pas à l'endroit indiqué ou vous avez utilisé un chemin d'accès incorrect.
+L'utilisation de projets RStudio (@sec-rsprojs) et d'une structure de répertoire logique (@sec-dir-struc) permet d'éviter ce type d'erreurs.
+
+Une autre erreur très fréquente est d'oublier d'inclure l'élément `header = TRUE` lorsque la première ligne des données contient des noms de variables.
+Par exemple, si nous omettons cet argument lorsque nous importons notre fichier `unicorns.txt` tout semble correct au début (pas de message d'erreur au moins)
+
+```{r}
+#| label: df6
+#| echo: true
+unicorns_bad <- read.table(file = "data/unicorns.txt", sep = "\t")
+```
+
+mais lorsque nous jetons un coup d'œil à notre cadre de données en utilisant `str()`
+
+```{r}
+#| label: df7
+#| echo: true
+str(unicorns_bad)
+```
+
+Nous constatons un problème évident, toutes nos variables ont été importées en tant que facteurs et nos variables sont nommées `V1`, `V2`, `V3` ...
+`V8`.
+Le problème vient du fait que nous n'avons pas dit au `read.table()` que la première ligne contient les noms des variables et qu'elle les traite donc comme des données.
+Dès que nous avons une seule chaîne de caractères dans l'un de nos vecteurs de données, R traite les vecteurs comme des données de type caractère (rappelez-vous que tous les éléments d'un vecteur doivent contenir le même type de données (@sec-scal-vecs)).
+
+Ce n'est qu'un argument de plus à utiliser `read.csv()` ou `read.delim()` avec des valeurs par défaut appropriées pour les arguments.
+
+### Autres options d'importation {#sec-import-other}
+
+Il existe de nombreuses autres fonctions permettant d'importer des données à partir d'une variété de sources et de formats.
+La plupart de ces fonctions sont contenues dans des paquets que vous devez installer avant de les utiliser.
+Vous trouverez ci-dessous une liste des packages et des fonctions les plus utiles.
+
+Les paquets `fread()` du paquet `read.table` est idéale pour importer rapidement et efficacement de grands fichiers de données (beaucoup plus rapidement que la fonction `read.table()` ).
+L'un des aspects les plus intéressants du package `fread()` est qu'elle détecte automatiquement la plupart des arguments que vous devriez normalement spécifier (comme `sep =` etc.)
+L'une des choses que vous devez prendre en compte est que la fonction `fread()` renverra un `data.table` et non un `data.frame` comme ce serait le cas avec la fonction `read.table()` fonction.
+Ce n'est généralement pas un problème, car vous pouvez passer une valeur de `data.table` à n'importe quelle fonction qui n'accepte que des objets `data.frame` objets.
+Pour en savoir plus sur les différences entre `data.table` et `data.frame` voir [ici][tableau de données] .
+
+```{r}
+#| label: df8
+#| echo: true
+#| eval: false
+library(read.table)
+all_data <- fread(file = "data/unicorns.txt")
+```
+
+Diverses fonctions du `readr` sont également très efficaces pour lire des fichiers de données volumineux.
+Les fonctions `readr` fait partie du paquet ' [tidyverse][tidyverse] ' et fournit de nombreuses fonctions équivalentes à celles de la base R pour l'importation de données.
+Le programme `readr` sont utilisées de la même manière que les fonctions `read.table()` ou `read.csv()` et la plupart des arguments sont les mêmes (voir `?readr::read_table` pour plus de détails).
+Il existe cependant quelques différences.
+Par exemple, lors de l'utilisation de l'option `read_table()` la fonction `header = TRUE` est remplacé par `col_names = TRUE` et la fonction renvoie un `tibble` qui est l'équivalent dans le tidyverse d'un objet de classe `data.frame` (voir [ici][tibbles] pour les différences).
+
+```{r}
+#| label: df9
+#| echo: true
+#| eval: false
+library(readr)
+# import white space delimited files
+all_data <- read_table(file = "data/unicorns.txt", col_names = TRUE)
+
+# import comma delimited files
+all_data <- read_csv(file = "data/unicorns.txt")
+
+# import tab delimited files
+all_data <- read_delim(file = "data/unicorns.txt", delim = "\t")
+
+# or use
+all_data <- read_tsv(file = "data/unicorns.txt")
+```
+
+Si votre fichier de données est énorme, la fonction `ff` et `bigmemory` peuvent être utiles car ils contiennent tous deux des fonctions d'importation capables de stocker des données volumineuses de manière efficace en termes de mémoire.
+ Pour en savoir plus sur ces fonctions [ici][ff] et [ici][bigmem] .
+
+## Trames de données
+
+Maintenant que vous avez réussi à importer vos données d'un fichier externe dans R, notre prochaine tâche est de faire quelque chose d'utile avec nos données.
+Travailler avec des données est une compétence fondamentale que vous devrez développer et avec laquelle vous devrez vous sentir à l'aise, car vous en ferez probablement beaucoup au cours de n'importe quel projet.
+La bonne nouvelle, c'est que R est particulièrement efficace pour manipuler, résumer et visualiser les données.
+La manipulation des données (souvent connue sous le nom de "data wrangling" ou "munging") en R peut sembler un peu intimidante au début pour le nouvel utilisateur, mais si vous suivez quelques règles logiques simples, vous prendrez rapidement le coup de main, surtout avec un peu de pratique.
+
+Rappelons la structure de la `unicorns` que nous avons importée dans la section précédente.
+
+```{r}
+#| label: dw1
+#| echo: true
+unicorns <- read.table(file = "data/unicorns.txt", header = TRUE, sep = "\t")
+str(unicorns)
+```
+
+Pour accéder aux données de n'importe quelle variable (colonne) de notre cadre de données, nous pouvons utiliser la fonction `$` pour accéder aux données de n'importe quelle variable (colonne) de notre cadre de données.
+Par exemple, pour accéder à la `height` dans notre `unicorns` nous pouvons utiliser `unicorns$height`.
+Cela indique à R que le `height` est contenue dans le cadre de données `unicorns`.
+
+```{r}
+#| label: dw2
+#| echo: true
+unicorns$height
+```
+
+Cette opération renvoie un vecteur de la variable `height` données.
+Si nous le souhaitons, nous pouvons assigner ce vecteur à un autre objet et faire des choses avec, comme calculer une moyenne ou obtenir un résumé de la variable à l'aide de la fonction `summary()` fonction.
+
+```{r}
+#| label: dw3
+#| echo: true
+f_height <- unicorns$height
+mean(f_height)
+summary(f_height)
+```
+
+Ou si nous ne voulons pas créer un objet supplémentaire, nous pouvons utiliser des fonctions "à la volée" pour afficher uniquement la valeur dans la console.
+
+```{r}
+#| label: dw3.1
+#| echo: true
+mean(unicorns$height)
+summary(unicorns$height)
+```
+
+Tout comme nous l'avons fait avec les vecteurs (@sec-vectors), nous pouvons également accéder aux données dans des cadres de données en utilisant le crochet `[ ]` à l'aide de la notation entre crochets.
+Cependant, au lieu d'utiliser un seul index, nous devons maintenant utiliser deux index, l'un pour spécifier les lignes et l'autre pour les colonnes.
+Pour ce faire, nous pouvons utiliser la notation `my_data[rows, columns]` où `rows` et `columns` sont des indices et `my_data` est le nom du cadre de données.
+Une fois encore, comme pour nos vecteurs, nos index peuvent être positionnels ou résulter d'un test logique.
+
+### Index positionnels
+
+Pour utiliser les index positionnels, il suffit d'écrire la position des lignes et des colonnes que l'on veut extraire à l'intérieur de la balise `[ ]`.
+Par exemple, si, pour une raison quelconque, nous voulons extraire la première valeur (1^e^ ligne) de l'élément `height` variable (4^e^ colonne)
+
+```{r}
+#| label: dw4
+#| echo: true
+unicorns[1, 4]
+
+# this would give you the same
+unicorns$height[1]
+```
+
+Nous pouvons également extraire des valeurs de plusieurs lignes ou colonnes en spécifiant ces index sous forme de vecteurs à l'intérieur de la fonction `[ ]`.
+Pour extraire les 10 premières lignes et les 4 premières colonnes, il suffit de fournir un vecteur contenant une séquence de 1 à 10 pour l'index des lignes (`1:10`) et un vecteur de 1 à 4 pour l'index des colonnes (`1:4`).
+
+```{r}
+#| label: dw5
+#| echo: true
+unicorns[1:10, 1:4]
+```
+
+Si les lignes et les colonnes ne sont pas séquentielles, nous pouvons fournir des vecteurs de positions à l'aide de la fonction `c()` fonction.
+Pour extraire les 1^e^, 5^e^, 12^e^, 30^e^ lignes des 1^e^, 3^e^, 6^e^ et 8^e^ colonnes
+
+```{r}
+#| label: dw6
+#| echo: true
+unicorns[c(1, 5, 12, 30), c(1, 3, 6, 8)]
+```
+
+Tout ce que nous faisons dans les deux exemples ci-dessus est de créer des vecteurs de positions pour les lignes et les colonnes que nous voulons extraire.
+Pour ce faire, nous avons utilisé les compétences que nous avons développées dans @sec-funcs lorsque nous avons généré des vecteurs à l'aide de la fonction `c()` ou en utilisant la fonction `:` ou en utilisant la notation
+
+Mais qu'en est-il si nous voulons extraire toutes les lignes ou toutes les colonnes ? Il serait extrêmement fastidieux de devoir générer des vecteurs pour toutes les lignes ou pour toutes les colonnes.
+Heureusement, R dispose d'un raccourci.
+Si vous ne spécifiez pas d'index de ligne ou de colonne dans la fonction `[ ]` R interprète cela comme signifiant que vous voulez toutes les lignes ou toutes les colonnes.
+Par exemple, pour extraire les 4 premières lignes et toutes les colonnes du fichier `unicorns` cadre de données
+
+```{r}
+unicorns[1:4, ]
+```
+
+ou toutes les lignes et les 3 premières colonnes [^1] .
+
+[^1]: Pour des raisons de place et de simplicité, nous ne montrons que les cinq premières et cinq dernières lignes.
+
+```r
+unicorns[, 1:3]
+```
+
+```{r}
+#| label: dw8
+#| echo: false
+rbind(head(unicorns[, 1:3], n = 5), tail(unicorns[, 1:3], n = 5))
+```
+
+Nous pouvons même utiliser des index de position négatifs pour exclure certaines lignes et colonnes.
+Par exemple, extrayons toutes les lignes à l'exception des 85 premières lignes et toutes les colonnes à l'exception des 4^e^, 7^e^ et 8^e^ colonnes.
+Remarquez que nous devons utiliser `-()` lorsque nous générons nos vecteurs de position de ligne.
+Si nous avions simplement utilisé `-1:85` cela générerait en fait une séquence régulière de -1 à 85, ce qui n'est pas ce que nous voulons (nous pouvons bien sûr utiliser `-1:-85`).
+
+```{r}
+#| label: dw9
+#| echo: true
+unicorns[-(1:85), -c(4, 7, 8)]
+```
+
+Outre l'utilisation d'un index de position pour extraire des colonnes particulières (variables), nous pouvons également nommer les variables directement en utilisant le crochet `[ ]` (crochets).
+Par exemple, extrayons les 5 premières lignes et les variables `care`, `food` et `mane_size`.
+Au lieu d'utiliser `unicorns[1:5, c(1, 2, 6)]` nous pouvons utiliser
+
+```{r}
+#| label: dw10
+#| echo: true
+unicorns[1:5, c("p_care", "food", "mane_size")]
+```
+
+Nous utilisons souvent cette méthode de préférence à l'index positionnel pour sélectionner les colonnes, car elle nous donnera toujours ce que nous voulons même si nous avons changé l'ordre des colonnes dans notre cadre de données pour une raison quelconque.
+
+### Index logiques
+
+Tout comme nous l'avons fait avec les vecteurs, nous pouvons également extraire des données de notre cadre de données sur la base d'un test logique.
+Nous pouvons utiliser tous les opérateurs logiques que nous avons utilisés pour nos exemples de vecteurs. Si ceux-ci vous ont échappé, jetez un coup d'œil à @sec-logical-index pour vous rafraîchir la mémoire.
+Extrayons toutes les lignes où `height` est supérieur à 12 et extrayons toutes les colonnes par défaut (rappelez-vous, si vous n'incluez pas d'index de colonne après la virgule, cela signifie toutes les colonnes).
+
+```{r}
+#| label: dw11
+#| echo: true
+big_unicorns <- unicorns[unicorns$height > 12, ]
+big_unicorns
+```
+
+Remarquez dans le code ci-dessus que nous devons utiliser l'élément `unicorns$height` pour le test logique.
+Si nous nommions simplement le test `height` sans le nom du cadre de données, nous recevrions une erreur nous indiquant que R ne pouvait pas trouver la variable `height`.
+La raison en est que la variable `height` n'existe qu'à l'intérieur de la variable `unicorns` vous devez donc indiquer à R où elle se trouve exactement.
+
+```r
+big_unicorns <- unicorns[height > 12, ]
+Error in `[.data.frame`(unicorns, height > 12, ) : 
+  object 'height' not found
+```
+
+Comment cela fonctionne-t-il ? Le test logique est le suivant `unicorns$height > 12` et R n'extraira que les lignes qui satisfont à cette condition logique.
+Si nous regardons la sortie de la seule condition logique, vous pouvez voir qu'elle renvoie un vecteur contenant `TRUE` si `height` est supérieur à 12 et `FALSE` si `height` n'est pas supérieur à 12.
+
+```{r}
+#| label: dw13
+#| echo: true
+unicorns$height > 12
+```
+
+Notre indice de ligne est donc un vecteur contenant soit `TRUE` ou `FALSE` et seulement les lignes qui sont `TRUE` sont sélectionnées.
+
+D'autres opérateurs couramment utilisés sont présentés ci-dessous
+
+```{r}
+#| label: dw14
+#| echo: true
+#| eval: false
+unicorns[unicorns$height >= 6, ] # values greater or equal to 6
+
+unicorns[unicorns$height <= 6, ] # values less than or equal to 6
+
+unicorns[unicorns$height == 8, ] # values  equal to 8
+
+unicorns[unicorns$height != 8, ] # values  not equal to 8
+```
+
+Nous pouvons également extraire des lignes en fonction de la valeur d'une chaîne de caractères ou d'un niveau de facteur.
+Extrayons toutes les lignes où la valeur `food` est égal à `high` (là encore, nous extrairons toutes les colonnes).
+Remarquez que la double égalité `==` doit être utilisé pour un test logique et que la chaîne de caractères doit être placée entre guillemets simples ou doubles (c.-à-d.
+`"high"`).
+
+```{r}
+#| label: dw15
+#| echo: true
+#| eval: true
+food_high <- unicorns[unicorns$food == "high", ]
+rbind(head(food_high, n = 10), tail(food_high, n = 10))
+```
+
+Ou nous pouvons extraire toutes les lignes où `food` n'est pas égal à `medium` (en utilisant `!=`) et ne renvoie que les colonnes 1 à 4.
+
+```{r}
+#| label: dw16
+#| echo: true
+#| eval: true
+food_not_medium <- unicorns[unicorns$food != "medium", 1:4]
+rbind(head(food_not_medium, n = 10), tail(food_not_medium, n = 10))
+```
+
+Nous pouvons accroître la complexité de nos tests logiques en les combinant avec des [des expressions booléennes][booléenne] comme nous l'avons fait pour les objets vectoriels.
+Par exemple, pour extraire toutes les lignes où `height` est supérieur ou égal à `6` ET `food` est égal à `medium` ET `care` est égal à `no_care` nous combinons une série d'expressions logiques avec la fonction `&` symbole.
+
+```{r}
+#| label: dw17
+#| echo: true
+low_no_care_heigh6 <- unicorns[unicorns$height >= 6 & unicorns$food == "medium" &
+  unicorns$p_care == "no_care", ]
+low_no_care_heigh6
+```
+
+Pour extraire des lignes sur la base d'une expression booléenne "OR", nous pouvons utiliser le symbole `|` pour extraire des lignes sur la base d'une expression booléenne "OU".
+Extrayons toutes les lignes où `height` est supérieur à 12,3 OU inférieur à 2,2.
+
+```{r}
+#| label: dw17.1
+#| echo: true
+height2.2_12.3 <- unicorns[unicorns$height > 12.3 | unicorns$height < 2.2, ]
+height2.2_12.3
+```
+
+Une autre méthode pour sélectionner des parties d'un bloc de données sur la base d'une expression logique consiste à utiliser la fonction `subset()` au lieu de la fonction `[ ]`.
+L'avantage d'utiliser `subset()` est qu'il n'est plus nécessaire d'utiliser la fonction `$` pour spécifier les variables à l'intérieur du cadre de données, car le premier argument de la fonction est le nom du cadre de données à subdiviser.
+L'inconvénient est que `subset()` est moins souple que la notation `[ ]` est moins flexible que la notation
+
+```{r}
+#| label: dw18
+#| echo: true
+care_med_2 <- subset(unicorns, p_care == "care" & food == "medium" & block == 2)
+care_med_2
+```
+
+Et si vous ne voulez que certaines colonnes, vous pouvez utiliser l'option `select =` argument.
+
+```{r}
+#| label: dw19
+#| echo: true
+uni_p_care <- subset(unicorns, p_care == "care" & food == "medium" & block == 2,
+  select = c("p_care", "food", "mane_size")
+)
+uni_p_care
+```
+
+### Commande de cadres de données
+
+Rappelez-vous lorsque nous avons utilisé la fonction `order()` pour ordonner un vecteur en fonction de l'ordre d'un autre vecteur (dans @sec-vec-ord).
+Cette fonction est très utile si vous souhaitez réorganiser les lignes de votre base de données.
+Par exemple, si nous voulons que toutes les lignes de la base de données `unicorns` soient classées par ordre croissant de `height` et éditer toutes les colonnes par défaut.
+
+```{r}
+#| label: dw20
+#| echo: true
+#| eval: true
+height_ord <- unicorns[order(unicorns$height), ]
+head(height_ord, n = 10)
+```
+
+Nous pouvons également ordonner par ordre décroissant d'une variable (i.e.
+`mane_size`) en utilisant la fonction `decreasing = TRUE` en utilisant l'argument
+
+```{r}
+#| label: dw21
+#| echo: true
+#| eval: true
+mane_size_ord <- unicorns[order(unicorns$mane_size, decreasing = TRUE), ]
+head(mane_size_ord, n = 10)
+```
+
+Nous pouvons même ordonner des cadres de données sur la base de plusieurs variables.
+Par exemple, pour ordonner le cadre de données `unicorns` dans l'ordre croissant des deux variables `block` et `height`.
+
+```{r}
+#| label: dw22
+#| echo: true
+#| eval: true
+block_height_ord <- unicorns[order(unicorns$block, unicorns$height), ]
+head(block_height_ord, n = 10)
+```
+
+Et si nous voulions commander `unicorns` par ordre croissant de `block` mais par ordre décroissant de `height`? Nous pouvons utiliser une astuce simple en ajoutant un `-` avant le symbole `unicorns$height` lorsque nous utilisons la variable `order()` fonction.
+Cela transformera essentiellement toutes les `height` négatives, ce qui aura pour effet d'inverser l'ordre.
+Notez que cette astuce ne fonctionne qu'avec des variables numériques.
+
+```{r}
+#| label: dw23
+#| echo: true
+#| eval: true
+block_revheight_ord <- unicorns[order(unicorns$block, -unicorns$height), ]
+rbind(head(block_revheight_ord, n = 10), tail(block_revheight_ord, n = 10))
+```
+
+Si nous voulions faire la même chose avec une variable de facteur (ou de caractère) comme `food` nous devrions utiliser la fonction `xtfrm()` pour cette variable à l'intérieur de notre `order()` à l'intérieur de notre fonction.
+
+```{r}
+#| label: dw24
+#| echo: true
+#| eval: true
+block_revheight_ord <- unicorns[order(-xtfrm(unicorns$food), unicorns$height), ]
+rbind(head(block_revheight_ord, n = 10), tail(block_revheight_ord, n = 10))
+```
+
+Il est à noter que le `food` a été classée dans l'ordre alphabétique inverse et que la variable `height` a été ordonnée par valeurs croissantes à l'intérieur de chaque niveau de `food`.
+
+Si nous voulions ordonner la base de données par `food` mais cette fois-ci à partir de `low` -> `medium` -> `high` au lieu de l'ordre alphabétique par défaut (`high`, `low`, `medium`), nous devons d'abord modifier l'ordre de nos niveaux de l'élément `food` dans notre cadre de données à l'aide de la fonction `factor()` à l'aide de la fonction
+Une fois que nous avons fait cela, nous pouvons utiliser la fonction `order()` comme d'habitude.
+Remarque : si vous lisez la version pdf de ce livre, la sortie a été tronquée pour économiser de l'espace.
+
+```{r}
+#| label: dw24a
+#| echo: true
+#| eval: true
+unicorns$food <- factor(unicorns$food,
+  levels = c("low", "medium", "high")
+)
+food_ord <- unicorns[order(unicorns$food), ]
+rbind(head(food_ord, n = 10), tail(food_ord, n = 10))
+```
+
+### Ajout de colonnes et de lignes
+
+Il est parfois utile de pouvoir ajouter des lignes et des colonnes de données supplémentaires à nos cadres de données.
+Il existe plusieurs façons d'y parvenir (comme toujours en R !) en fonction des circonstances.
+Pour ajouter simplement des lignes supplémentaires à un cadre de données existant, nous pouvons utiliser la fonction `rbind()` et pour ajouter des colonnes, la fonction `cbind()` fonction.
+Créons quelques cadres de données de test pour voir cela en action en utilisant notre vieil ami la fonction `data.frame()` pour voir ce qu'il en est.
+
+```{r}
+#| label: dw25
+#| echo: true
+# rbind for rows
+df1 <- data.frame(
+  id = 1:4, height = c(120, 150, 132, 122),
+  weight = c(44, 56, 49, 45)
+)
+df1
+
+df2 <- data.frame(
+  id = 5:6, height = c(119, 110),
+  weight = c(39, 35)
+)
+df2
+
+df3 <- data.frame(
+  id = 1:4, height = c(120, 150, 132, 122),
+  weight = c(44, 56, 49, 45)
+)
+df3
+
+df4 <- data.frame(location = c("UK", "CZ", "CZ", "UK"))
+df4
+```
+
+Nous pouvons utiliser la fonction `rbind()` pour ajouter les lignes de données dans `df2` aux lignes de `df1` et assigner le nouveau cadre de données à `df_rcomb`.
+
+```{r}
+#| label: dw25.1
+#| echo: true
+df_rcomb <- rbind(df1, df2)
+df_rcomb
+```
+
+Et `cbind` pour ajouter la colonne dans `df4` à la colonne `df3` et l'assigner à df_ccomb\`.
+
+```{r}
+#| label: dw25.2
+#| echo: true
+df_ccomb <- cbind(df3, df4)
+df_ccomb
+```
+
+Une autre situation dans laquelle l'ajout d'une nouvelle colonne à une base de données est utile est celle où vous souhaitez effectuer une sorte de transformation sur une variable existante.
+Par exemple, supposons que nous voulions appliquer une transformation logarithmique à une variable existante.~~10~~ à la variable "hauteur" dans l'équation `df_rcomb` que nous avons créée ci-dessus.
+Nous pourrions simplement créer une variable distincte pour contenir ces valeurs, mais il est préférable de créer cette variable en tant que nouvelle colonne dans notre cadre de données existant afin de conserver toutes nos données ensemble.
+Appelons cette nouvelle variable `height_log10`.
+
+```{r}
+#| label: dw26
+#| echo: true
+# log10 transformation
+df_rcomb$height_log10 <- log10(df_rcomb$height)
+df_rcomb
+```
+
+Cette situation se présente également lorsque nous voulons convertir une variable existante dans un cadre de données d'une classe de données à une autre classe de données.
+Par exemple, la variable `id` dans la base de données `df_rcomb` est une donnée de type numérique (utilisez l'attribut `str()` ou `class()` pour le vérifier).
+Si nous voulions convertir le `id` en un facteur à utiliser plus tard dans notre analyse, nous pouvons créer une nouvelle variable appelée `Fid` dans notre cadre de données et utiliser la fonction `factor()` pour convertir la variable `id` variable.
+
+```{r}
+#| label: dw27
+#| echo: true
+# convert to a factor
+df_rcomb$Fid <- factor(df_rcomb$id)
+df_rcomb
+str(df_rcomb)
+```
+
+### Fusionner des cadres de données
+
+Au lieu d'ajouter simplement des lignes ou des colonnes à un cadre de données, nous pouvons également fusionner deux cadres de données.
+Supposons que nous ayons un cadre de données contenant des informations taxonomiques sur certains invertébrés communs des côtes rocheuses du Royaume-Uni (appelé `taxa`) et un autre cadre de données qui contient des informations sur l'endroit où ils se trouvent habituellement sur le littoral rocheux (appelé `zone`).
+Nous pouvons fusionner ces deux cadres de données pour produire un seul cadre de données contenant à la fois des informations taxonomiques et des informations sur l'emplacement.
+Commençons par créer ces deux cadres de données (en réalité, il vous suffira probablement d'importer vos différents ensembles de données).
+
+```{r}
+#| label: dw28
+#| echo: true
+taxa <- data.frame(
+  GENUS = c("Patella", "Littorina", "Halichondria", "Semibalanus"),
+  species = c("vulgata", "littoria", "panacea", "balanoides"),
+  family = c("patellidae", "Littorinidae", "Halichondriidae", "Archaeobalanidae")
+)
+taxa
+
+zone <- data.frame(
+  genus = c(
+    "Laminaria", "Halichondria", "Xanthoria", "Littorina",
+    "Semibalanus", "Fucus"
+  ),
+  species = c(
+    "digitata", "panacea", "parietina", "littoria",
+    "balanoides", "serratus"
+  ),
+  zone = c("v_low", "low", "v_high", "low_mid", "high", "low_mid")
+)
+zone
+```
+
+Puisque nos deux cadres de données contiennent au moins une variable en commun (`species` dans notre cas), nous pouvons simplement utiliser la fonction `merge()` pour créer un nouveau cadre de données appelé `taxa_zone`.
+
+```{r}
+#| label: dw29
+#| echo: true
+taxa_zone <- merge(x = taxa, y = zone)
+taxa_zone
+```
+
+Remarquez que le cadre de données fusionné ne contient que les lignes qui ont `species` dans **à la fois** trames de données.
+Il existe également deux colonnes appelées `GENUS` et `genus` car les colonnes `merge()` les traite comme deux variables différentes provenant des deux cadres de données.
+
+Si nous voulons inclure toutes les données des deux cadres de données, nous devrons utiliser la fonction `all = TRUE` argument.
+Les valeurs manquantes seront incluses en tant que `NA`.
+
+```{r}
+#| label: dw30
+#| echo: true
+taxa_zone <- merge(x = taxa, y = zone, all = TRUE)
+taxa_zone
+```
+
+Si les noms des variables sur lesquelles vous souhaitez baser la fusion sont différents dans chaque cadre de données (par exemple `GENUS` et `genus`), vous pouvez spécifier les noms dans le premier cadre de données (appelé `x`) et dans le second cadre de données (appelé `y`) à l'aide de l'option `by.x =` et `by.y =` arguments.
+
+```{r}
+#| label: dw31
+#| echo: true
+taxa_zone <- merge(x = taxa, y = zone, by.x = "GENUS", by.y = "genus", all = TRUE)
+taxa_zone
+```
+
+Ou l'utilisation de plusieurs noms de variables.
+
+```{r}
+#| label: dw31.1
+#| echo: true
+taxa_zone <- merge(
+  x = taxa, y = zone, by.x = c("species", "GENUS"),
+  by.y = c("species", "genus"), all = TRUE
+)
+taxa_zone
+```
+
+### Remodelage des cadres de données {#sec-reshape}
+
+Le remodelage des données dans différents formats est une tâche courante.
+Avec des données de type rectangulaire (les cadres de données ont le même nombre de lignes dans chaque colonne), vous rencontrerez deux formes principales de cadres de données : le format "long" (parfois appelé "empilé") et le format "large".
+Un exemple de cadre de données au format long est donné ci-dessous.
+Nous pouvons voir que chaque ligne représente une observation unique d'un sujet individuel et que chaque sujet peut avoir plusieurs lignes.
+Il en résulte une seule colonne de notre `measurement`.
+
+```{r}
+#| label: dw32
+#| echo: true
+long_data <- data.frame(
+  subject = rep(c("A", "B", "C", "D"), each = 3),
+  sex = rep(c("M", "F", "F", "M"), each = 3),
+  condition = rep(c("control", "cond1", "cond2"), times = 4),
+  measurement = c(
+    12.9, 14.2, 8.7, 5.2, 12.6, 10.1, 8.9,
+    12.1, 14.2, 10.5, 12.9, 11.9
+  )
+)
+long_data
+```
+
+Nous pouvons également formater les mêmes données au format large, comme indiqué ci-dessous.
+Dans ce format, nous avons plusieurs observations de chaque sujet dans une seule ligne avec des mesures dans différentes colonnes (`control`, `cond1` et `cond2`).
+Il s'agit d'un format courant lorsqu'il s'agit de mesures répétées à partir d'unités d'échantillonnage.
+
+```{r}
+#| label: dw34
+#| echo: true
+wide_data <- data.frame(
+  subject = c("A", "B", "C", "D"),
+  sex = c("M", "F", "F", "M"),
+  control = c(12.9, 5.2, 8.9, 10.5),
+  cond1 = c(14.2, 12.6, 12.1, 12.9),
+  cond2 = c(8.7, 10.1, 14.2, 11.9)
+)
+wide_data
+```
+
+Bien qu'il n'y ait pas de problème inhérent à l'un ou l'autre de ces formats, il est parfois nécessaire d'effectuer une conversion entre les deux, car certaines fonctions requièrent un format spécifique pour fonctionner.
+Le format le plus courant est le format long.
+
+Il existe de nombreuses façons de convertir ces deux formats, mais nous utiliserons le format `melt()` et `dcast()` des fonctions `reshape2` (vous devez d'abord installer ce paquet).
+Les fonctions `melt()` est utilisée pour convertir les formats larges en formats longs.
+Le premier argument de la fonction `melt()` est la base de données que nous voulons faire fondre (dans notre cas `wide_data`).
+La fonction `id.vars = c("subject", "sex")` est un vecteur des variables que vous souhaitez empiler, l'argument `measured.vars = c("control", "cond1", "cond2")` identifie les colonnes des mesures dans les différentes conditions, l'argument `variable.name = "condition"` spécifie ce que vous voulez appeler la colonne empilée de vos différentes conditions dans votre cadre de données de sortie et l'argument `value.name = "measurement"` est le nom de la colonne de vos mesures empilées dans votre cadre de données de sortie.
+
+```{r}
+#| label: dw36
+#| echo: true
+library(reshape2)
+wide_data # remind ourselves what the wide format looks like
+
+# convert wide to long
+my_long_df <- melt(
+  data = wide_data, id.vars = c("subject", "sex"),
+  measured.vars = c("control", "cond1", "cond2"),
+  variable.name = "condition", value.name = "measurement"
+)
+my_long_df
+```
+
+L'argument `dcast()` est utilisée pour convertir une trame de données au format long en une trame de données au format large.
+Le premier argument est à nouveau la base de données que nous voulons convertir (`long_data` pour cet exemple).
+Le deuxième argument est la syntaxe de la formule.
+L'argument `subject + sex` de la formule signifie que nous voulons garder ces colonnes séparées, et l'élément `~ condition` est la colonne qui contient les étiquettes que nous voulons diviser en nouvelles colonnes dans notre nouveau cadre de données.
+La colonne `value.var = "measurement"` est la colonne qui contient les données mesurées.
+
+```{r}
+#| label: dw37
+#| echo: true
+long_data # remind ourselves what the long format look like
+
+# convert long to wide
+my_wide_df <- dcast(
+  data = long_data, subject + sex ~ condition,
+  value.var = "measurement"
+)
+my_wide_df
+```
+
+## Introduction à l'outil `tidyverse`
+
+il semble que ce ne soit pas très ordonné ici et que nous devions l'améliorer.
+
+## Récapitulation des cadres de données
+
+Maintenant que nous sommes en mesure de manipuler et d'extraire des données de nos cadres de données, notre prochaine tâche est de commencer à explorer et à connaître nos données.
+Dans cette section, nous commencerons à produire des tableaux de statistiques récapitulatives utiles sur les variables de notre base de données et, dans les deux chapitres suivants, nous aborderons la visualisation de nos données à l'aide de graphiques R de base et l'utilisation de la fonction `ggplot2` et l'utilisation du paquet
+
+Un point de départ très utile consiste à produire des statistiques récapitulatives simples pour toutes les variables de notre cadre de données. `unicorns` à l'aide de la fonction `summary()` à l'aide de la fonction
+
+```{r}
+#| label: sum1
+#| echo: true
+summary(unicorns)
+```
+
+Pour les variables numériques (c'est-à-dire
+`height`, `weight` etc.), la moyenne, le minimum, le maximum, la médiane, le premier quartile (inférieur) et le troisième quartile (supérieur) sont présentés.
+Pour les variables factorielles (i.e.
+`care` et `food`), le nombre d'observations dans chacun des niveaux factoriels est indiqué.
+Si une variable contient des données manquantes, le nombre de `NA` valeurs est également indiqué.
+
+Si nous voulons résumer un sous-ensemble plus petit de variables dans notre base de données, nous pouvons utiliser nos compétences en matière d'indexation en combinaison avec la fonction `summary()` en combinaison avec la fonction
+Par exemple, pour résumer uniquement les `height`, `weight`, `mane_size` et `fluffyness` nous pouvons inclure les index de colonne appropriés lors de l'utilisation des variables `[ ]`.
+Remarquez que nous incluons toutes les lignes en ne spécifiant pas d'index de ligne.
+
+```{r}
+#| label: sum2
+#| echo: true
+summary(unicorns[, 4:7])
+
+# or equivalently
+# summary(unicorns[, c("height", "weight", "mane_size", "fluffyness")])
+```
+
+Et pour résumer une seule variable.
+
+```{r}
+#| label: sum3
+#| echo: true
+summary(unicorns$mane_size)
+
+# or equivalently
+# summary(unicorns[, 6])
+```
+
+Comme vous l'avez vu plus haut, le `summary()` indique le nombre d'observations dans chaque niveau de nos variables factorielles.
+Une autre fonction utile pour générer des tableaux de comptage est la fonction `table()` est une autre fonction utile pour générer des tableaux d'effectifs.
+La fonction `table()` peut être utilisée pour construire des tableaux de contingence de différentes combinaisons de niveaux de facteurs.
+Par exemple, pour compter le nombre d'observations pour chaque niveau de `food`
+
+```{r}
+#| label: sum4
+#| echo: true
+table(unicorns$food)
+```
+
+Nous pouvons aller plus loin en produisant un tableau des effectifs pour chaque combinaison de `food` et `care` niveaux de facteurs.
+
+```{r}
+#| label: sum5
+#| echo: true
+table(unicorns$food, unicorns$p_care)
+```
+
+Une version plus souple de la `table()` est la fonction `xtabs()` fonction.
+La fonction `xtabs()` utilise une notation de formule (`~`) pour construire des tableaux de contingence avec les variables de classification croisée séparées par un `+` à droite de la formule.
+`xtabs()` Le site Web de la Commission européenne propose également une fonction utile de `data =` utile pour ne pas avoir à inclure le nom de la base de données lors de la spécification de chaque variable.
+
+```{r}
+#| label: sum6
+#| echo: true
+xtabs(~ food + p_care, data = unicorns)
+```
+
+Nous pouvons même construire des tableaux de contingence plus compliqués en utilisant davantage de variables.
+Notez que dans l'exemple ci-dessous, la variable `xtabs()` a discrètement contraint notre `block` à un facteur.
+
+```{r}
+#| label: sum7
+#| echo: true
+xtabs(~ food + p_care + block, data = unicorns)
+```
+
+Et pour un tableau mieux formaté, nous pouvons imbriquer la fonction `xtabs()` à l'intérieur de la fonction `ftable()` pour "aplatir" le tableau.
+
+```{r}
+#| label: sum8
+#| echo: true
+ftable(xtabs(~ food + p_care + block, data = unicorns))
+```
+
+Nous pouvons également résumer nos données pour chaque niveau d'une variable factorielle.
+Supposons que nous voulions calculer la valeur moyenne de `height` pour chacun de nos `low`, `meadium` et `high` niveaux de `food`.
+Pour ce faire, nous utiliserons la fonction `mean()` et l'appliquer à la fonction `height` pour chaque niveau de `food` en utilisant la fonction `tapply()` fonction.
+
+```{r}
+#| label: sum9
+#| echo: true
+tapply(unicorns$height, unicorns$food, mean)
+```
+
+Les `tapply()` n'est pas limitée au calcul des valeurs moyennes, vous pouvez l'utiliser pour appliquer de nombreuses fonctions fournies avec R ou même des fonctions que vous avez écrites vous-même (voir @sec-prog-r pour plus de détails).
+Par exemple, nous pouvons appliquer la fonction `sd()` pour calculer l'écart-type pour chaque niveau de `food` ou même l'écart-type de `summary()` fonction.
+
+```{r}
+#| label: sum10
+#| echo: true
+tapply(unicorns$height, unicorns$food, sd)
+tapply(unicorns$height, unicorns$food, summary)
+```
+
+Remarque : si la variable que vous souhaitez résumer contient des valeurs manquantes (`NA`), vous devrez également inclure un argument spécifiant comment vous souhaitez que la fonction traite les valeurs manquantes (`NA` values).
+Nous en avons vu un exemple dans @sec-na-vals où la fonction `mean()` a renvoyé une valeur `NA` en cas de données manquantes.
+Pour inclure les `na.rm = TRUE` il suffit de l'ajouter en tant qu'argument supplémentaire lors de l'utilisation de `tapply()`.
+
+```{r}
+#| label: sum11
+#| echo: true
+tapply(unicorns$height, unicorns$food, mean, na.rm = TRUE)
+```
+
+Nous pouvons également utiliser `tapply()` pour appliquer des fonctions à plus d'un facteur.
+La seule chose à retenir est que les facteurs doivent être fournis à la fonction `tapply()` sous la forme d'une liste à l'aide de la fonction `list()` fonction.
+Pour calculer la moyenne `height` pour chaque combinaison de `food` et `care` nous pouvons utiliser la méthode `list(unicorns$food, unicorns$p_care)` notation.
+
+```{r}
+#| label: sum12
+#| echo: true
+tapply(unicorns$height, list(unicorns$food, unicorns$p_care), mean)
+```
+
+Et si vous en avez un peu assez d'avoir à écrire `unicorns$` pour chaque variable, vous pouvez imbriquer la notation `tapply()` à l'intérieur de la fonction `with()` à l'intérieur de la fonction.
+La fonction `with()` permet à R d'évaluer une expression R par rapport à un objet de données nommé (dans ce cas, la fonction `unicorns`).
+
+```{r}
+#| label: sum13
+#| echo: true
+with(unicorns, tapply(height, list(food, p_care), mean))
+```
+
+La fonction `with()` fonctionne également avec de nombreuses autres fonctions et peut vous faire économiser beaucoup de temps de frappe !
+
+Une autre fonction très utile pour résumer des données est la fonction `aggregate()` fonction.
+La fonction `aggregate()` fonctionne de manière très similaire à la fonction `tapply()` mais est un peu plus flexible.
+
+Par exemple, pour calculer la moyenne des variables `height`, `weight`, `mane_size` et `fluffyness` pour chaque niveau de `food`.
+
+```{r}
+#| label: sum14
+#| echo: true
+aggregate(unicorns[, 4:7], by = list(food = unicorns$food), FUN = mean)
+```
+
+Dans le code ci-dessus, nous avons indexé les colonnes que nous voulons résumer dans le champ `unicorns` à l'aide de `unicorns[, 4:7]`.
+Les `by =` spécifie une liste de facteurs (`list(food = unicorns$food)`) et les facteurs `FUN =` nomme la fonction à appliquer (`mean` dans cet exemple).
+
+Comme dans le cas de la fonction `tapply()` nous pouvons inclure plus d'un facteur pour appliquer une fonction.
+Ici, nous calculons les valeurs moyennes pour chaque combinaison de `food` et `care`
+
+```{r}
+#| label: sum15
+#| echo: true
+aggregate(unicorns[, 4:7], by = list(
+  food = unicorns$food,
+  p_care = unicorns$p_care
+), FUN = mean)
+```
+
+Nous pouvons également utiliser la fonction `aggregate()` d'une manière différente en utilisant la méthode de la formule (comme nous l'avons fait avec la fonction `xtabs()`).
+Dans la partie gauche de la formule (`~`), nous spécifions la variable à laquelle nous voulons appliquer la fonction moyenne et, dans la partie droite, nos facteurs séparés par un `+` symbole.
+La méthode de la formule permet également d'utiliser la fonction `data =` pour des raisons de commodité.
+
+```{r}
+#| label: sum16
+#| echo: true
+aggregate(height ~ food + p_care, FUN = mean, data = unicorns)
+```
+
+L'un des avantages de la méthode de la formule est qu'elle permet également d'utiliser la méthode `subset =` pour appliquer la fonction à des sous-ensembles des données originales.
+Par exemple, pour calculer la moyenne `height` pour chaque combinaison de `food` et `care` mais seulement pour les licornes qui ont moins de 7 `horn_rings`.
+
+```{r}
+#| label: sum17
+#| echo: true
+aggregate(height ~ food + p_care, FUN = mean, subset = horn_rings < 7, data = unicorns)
+```
+
+Ou seulement pour les licornes en `block` 1.
+
+```{r}
+#| label: sum18
+#| echo: true
+aggregate(height ~ food + p_care, FUN = mean, subset = block == "1", data = unicorns)
+```
+
+## Exporter des données
+
+Nous espérons que vous avez maintenant une idée de la puissance et de l'utilité de R pour manipuler et résumer des données (et nous n'avons fait qu'effleurer la surface).
+L'un des grands avantages de l'utilisation de R pour manipuler vos données est que vous disposez d'un enregistrement permanent de tout ce que vous avez fait avec vos données.
+Fini le temps des modifications non documentées dans Excel ou Calc ! En traitant vos données en "lecture seule" et en documentant toutes vos décisions dans R, vous aurez fait un grand pas en avant pour rendre votre analyse plus reproductible et plus transparente pour les autres.
+Il est toutefois important de savoir que les modifications apportées à votre base de données dans R ne changeront pas le fichier de données original que vous avez importé dans R (et c'est une bonne chose).
+Heureusement, il est facile d'exporter des cadres de données vers des fichiers externes dans une grande variété de formats.
+
+### Fonctions d'exportation
+
+La principale fonction d'exportation de trames de données est la fonction `write.table()` fonction.
+Comme pour la fonction `read.table()` la fonction `write.table()` est très flexible et dispose de nombreux arguments permettant de personnaliser son comportement.
+Prenons l'exemple de notre fonction d'origine `unicorns` et exportons ces modifications vers un fichier externe.
+
+De la même manière que pour `read.table()`, `write.table()` possède une série de fonctions avec des valeurs par défaut spécifiques au format, telles que `write.csv()` et `write.delim()` qui utilisent respectivement "," et les tabulations comme délimiteurs, et incluent les noms de colonnes par défaut.
+
+Ordonnons les lignes du cadre de données par ordre croissant de `height` à l'intérieur de chaque niveau `food`.
+Nous appliquerons également une transformation en racine carrée à la variable du nombre d'anneaux de corne (`horn_rings`) et une transformation logarithmique~~10~~ sur le `height` et les enregistrer en tant que colonnes supplémentaires dans notre cadre de données (nous espérons que cela vous sera familier !).
+
+```{r}
+#| label: export1
+#| echo: true
+unicorns_df2 <- unicorns[order(unicorns$food, unicorns$height), ]
+unicorns_df2$horn_rings_sqrt <- sqrt(unicorns_df2$horn_rings)
+unicorns_df2$log10_height <- log10(unicorns_df2$height)
+str(unicorns_df2)
+```
+
+Nous pouvons maintenant exporter notre nouvelle base de données `unicorns_df2` à l'aide de l'outil `write.table()` à l'aide de la fonction
+Le premier argument est le cadre de données que vous souhaitez exporter (`unicorns_df2` dans notre exemple).
+Nous donnons ensuite le nom du fichier (avec son extension) et le chemin d'accès au fichier entre guillemets simples ou doubles à l'aide de la commande `file =` en utilisant l'argument
+Dans cet exemple, nous exportons la base de données vers un fichier appelé `unicorns_transformed.csv` dans le fichier `data` dans le répertoire
+Les `row.names = FALSE` empêche R d'inclure les noms des lignes dans la première colonne du fichier.
+
+```{r}
+#| label: export2
+#| echo: true
+#| eval: false
+write.csv(unicorns_df2,
+  file = "data/unicorns_transformed.csv", 
+  row.names = FALSE
+)
+```
+
+Comme nous avons enregistré le fichier en tant que fichier texte délimité par des virgules, nous pouvons ouvrir ce fichier dans n'importe quel éditeur de texte.
+
+Nous pouvons bien sûr exporter nos fichiers dans une variété d'autres formats.
+
+### Autres fonctions d'exportation
+
+Comme pour l'importation de fichiers de données dans R, il existe également de nombreuses fonctions alternatives pour exporter des données vers des fichiers externes, en plus de la fonction `write.table()` fonction.
+Si vous avez suivi la rubrique "Autres fonctions d'importation" @sec-import-other de ce chapitre, vous aurez déjà installé les packages nécessaires.
+
+La fonction `fwrite()` de la base de données `read.table` est très efficace pour exporter des objets de données volumineux et est beaucoup plus rapide que la fonction `write.table()` est beaucoup plus rapide que la fonction
+Il est également assez simple à utiliser car il possède la plupart des arguments de la fonction `write.table()`.
+Pour exporter un fichier texte délimité par des tabulations, il suffit de spécifier le nom de la base de données, le nom et le chemin du fichier de sortie et le séparateur entre les colonnes.
+
+```{r}
+#| label: export5
+#| echo: true
+#| eval: false
+library(read.table)
+fwrite(unicorns_df2, file = "data/unicorns_04_12.txt", sep = "\t")
+```
+
+Pour exporter un fichier csv délimité, c'est encore plus facile car nous n'avons même pas besoin d'inclure l'option `sep =` .
+
+```{r}
+#| label: export6
+#| echo: true
+#| eval: false
+library(read.table)
+fwrite(unicorns_df2, file = "data/unicorns_04_12.csv")
+```
+
+L'argument `readr` est également fourni avec deux fonctions utiles pour écrire rapidement des données dans des fichiers externes : la fonction `write_tsv()` pour écrire des fichiers délimités par des tabulations et la fonction `write_csv()` pour enregistrer des fichiers de valeurs séparées par des virgules (csv).
+
+```{r}
+#| label: export7
+#| echo: true
+#| eval: false
+library(readr)
+write_tsv(unicorns_df2, path = "data/unicorns_04_12.txt")
+
+write_csv(unicorns_df2, path = "data/unicorns_04_12.csv")
+```
+
+```{r}
+#| label: links
+#| child: images/_links.md
+```
+
+

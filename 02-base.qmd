@@ -1,0 +1,1000 @@
+# Quelques notions de base sur R {#sec-basics-r}
+
+Dans ce chapitre, nous verrons comment :
+
+- créer des objets et leur attribuer des valeurs
+- explorer les différents types d'objets et la manière d'effectuer des opérations courantes sur les objets
+- obtenir de l'aide en R et mettre en évidence certaines ressources pour vous aider à apprendre R.
+- sauvegarder votre travail
+- utiliser et installer des paquets pour étendre les capacités de base de R.
+
+## Considérations importantes
+
+Nous fournissons une capture d'écran de RStudio mais tout est très similaire lorsque l'on utilise VSCode.
+
+Avant de poursuivre, voici quelques points à garder à l'esprit tout au long de ce chapitre :
+
+- R est sensible à la casse, c'est-à-dire
+  `A` n'est pas la même chose que `a` et `anova` n'est pas identique à `Anova`.
+
+- Tout ce qui suit un `#` est interprété comme un commentaire et ignoré par R.
+  Les commentaires doivent être utilisés librement dans votre code, à la fois pour votre propre information et pour aider vos collaborateurs.
+   L'écriture de commentaires est un peu un [art] [commentaire] et un art que vous maîtriserez de mieux en mieux au fur et à mesure que vous gagnerez en expérience.
+
+- Dans R, les commandes sont généralement séparées par une nouvelle ligne.
+  Vous pouvez également utiliser un point-virgule `;` pour séparer vos commandes, mais nous vous recommandons fortement de ne pas l'utiliser.
+
+- Si une invite de continuation `+` apparaît dans la console après l'exécution de votre code, cela signifie que vous n'avez pas terminé votre code correctement.
+  Cela se produit souvent lorsque vous oubliez de fermer une parenthèse et est particulièrement fréquent lorsque des parenthèses imbriquées sont utilisées (`(((some command))`).
+  Terminez simplement la commande sur la nouvelle ligne et corrigez la faute de frappe ou appuyez sur la touche "escape" de votre clavier (voir le point ci-dessous) et corrigez.
+
+- En général, R est assez tolérant vis-à-vis des espaces supplémentaires insérés dans votre code, en fait l'utilisation d'espaces est activement encouragée.
+  Cependant, les espaces ne doivent pas être insérés dans les opérateurs, c'est-à-dire
+  `<-` ne doit pas se lire `< -` (notez l'espace).
+   Voir le [guide de style] [style-google] pour savoir où placer les espaces afin de rendre votre code plus lisible.
+
+- Si votre console se bloque et ne répond plus après l'exécution d'une commande, vous pouvez souvent vous sortir d'affaire en appuyant sur la touche d'échappement (esc) de votre clavier ou en cliquant sur l'icône d'arrêt en haut à droite de votre console.
+  Cela mettra fin à la plupart des opérations en cours.
+
+## Première étape dans la console
+
+Dans @sec-chap1, nous avons appris l'existence de la fonction [console R](#sec-cons) et la création de scripts et de [Projets](#sec-rsprojs).
+Nous avons également vu comment écrire votre code R dans un script, puis comment insérer ce code dans la console pour qu'il s'exécute (si vous avez oublié comment faire, revenez à la section sur la console (-@sec-cons) pour vous rafraîchir la mémoire).
+Le fait d'écrire votre code dans un script signifie que vous aurez toujours un enregistrement permanent de tout ce que vous avez fait (à condition que vous sauvegardiez votre script) et vous permet également de faire de nombreux commentaires pour vous rappeler ce que vous avez fait à l'avenir.
+Ainsi, pendant que vous travaillez sur ce chapitre, nous vous suggérons de créer un nouveau script (ou RStudio [Projet](#sec-rsprojs)) pour écrire votre code au fur et à mesure.
+
+Comme nous l'avons vu dans @sec-chap1, nous pouvons utiliser R de la même manière qu'une calculatrice.
+Nous pouvons saisir une expression arithmétique dans notre script, puis l'afficher dans la console et recevoir un résultat.
+Par exemple, si nous tapons l'expression `1 + 1` et que l'on introduit cette ligne de code dans la console, on obtient la réponse suivante `2` (:smiley: !)
+
+```{r}
+#| echo: true
+#| eval: true
+1 + 1
+```
+
+Les `[1]` devant le résultat indique que le numéro d'observation au début de la ligne est la première observation.
+Cela n'est pas très utile dans cet exemple, mais peut l'être lors de l'impression de résultats sur plusieurs lignes (nous en verrons un exemple ci-dessous).
+Les autres opérateurs arithmétiques évidents sont `-`, `*`, `/` pour la soustraction, la multiplication et la division respectivement. L'opérateur de multiplication de la matrice est `%*%`.
+ R suit la convention mathématique habituelle de [ordre des opérations] [op-prec] .
+Par exemple, l'expression `2 + 3 * 4` est interprétée comme ayant la valeur `2 + (3 * 4) = 14` et non `(2 + 3) * 4 = 20`.
+Il existe un grand nombre de fonctions mathématiques dans R, dont les plus utiles sont les suivantes ; `log()`, `log10()`, `exp()`, `sqrt()`.
+
+```{r}
+#| echo: true
+#| eval: true
+log(1) # logarithm to base e
+log10(1) # logarithm to base 10
+exp(1) # natural antilog
+sqrt(4) # square root
+4^2 # 4 to the power of 2
+pi # not a function but useful
+```
+
+Il est important de comprendre que lorsque vous exécutez un code comme nous l'avons fait ci-dessus, le résultat du code (ou **valeur**) n'est affiché que dans la console.
+Bien que cela puisse parfois être utile, il est généralement beaucoup plus pratique de stocker la ou les valeurs dans un objetN.
+
+## Objets en R
+
+Au cœur de presque tout ce que vous ferez (ou ferez probablement) en R se trouve le concept selon lequel tout en R est un [objet] [chambres] .
+Ces objets peuvent être presque n'importe quoi, d'un simple nombre ou d'une chaîne de caractères (comme un mot) à des structures très complexes comme la sortie d'un graphique, un résumé de votre analyse statistique ou un ensemble de commandes R qui effectuent une tâche spécifique.
+Pour comprendre R, il est essentiel de savoir comment créer des objets et leur attribuer des valeurs.
+
+### Création d'objets {#sec-r-objs}
+
+Pour créer un objet, il suffit de lui donner un nom.
+Nous pouvons ensuite attribuer une valeur à cet objet à l'aide de la fonction *opérateur d'affectation* `<-` (parfois appelé *opérateur d'obtention*).
+L'opérateur d'affectation est un symbole composite composé d'un symbole "moins que". `<` et d'un trait d'union `-` .
+
+```{r}
+#| echo: true
+#| eval: true
+my_obj <- 32
+```
+
+Dans le code ci-dessus, nous avons créé un objet appelé `my_obj` et lui avons attribué la valeur du nombre `32` à l'aide de l'opérateur d'affectation (dans notre tête, nous lisons toujours cela comme '*mon_obj est 32*').
+Vous pouvez également utiliser `=` à la place de `<-` pour assigner des valeurs, mais c'est une mauvaise pratique car cela peut entraîner des confusions plus tard lors de la programmation en `R` (voir @sec-prog-r) et nous vous déconseillons d'utiliser cette notation.
+
+Pour afficher la valeur de l'objet, il suffit de taper le nom de l'objet
+
+```{r}
+#| echo: true
+#| eval: true
+my_obj
+```
+
+Maintenant que nous avons créé cet objet, R le connaît et en gardera la trace pendant la session R en cours.
+Tous les objets que vous créez sont stockés dans l'espace de travail actuel et vous pouvez visualiser tous les objets de votre espace de travail dans RStudio en cliquant sur l'onglet "Environnement" dans le volet supérieur droit.
+
+```{r}
+#| label: fig-rstudio_env
+#| fig-cap: RStudio Environment tab
+#| echo: false
+#| out-width: 75%
+#| fig-align: center
+knitr::include_graphics(path = "images/basic/rs_env.png")
+```
+
+Si vous cliquez sur la flèche vers le bas de l'icône "Liste" dans le même volet et que vous passez à l'affichage "Grille", RStudio vous présentera un résumé des objets, y compris le type (numérique - c'est un nombre), la longueur (une seule valeur dans cet objet), sa taille "physique" et sa valeur (48 dans ce cas). Dans VSCode, allez sur le panneau d'extension R et vous obtiendrez les mêmes informations.
+
+```{r}
+#| label: fig-rstudio_env2
+#| fig-cap: RStudio Environment tab in grid format
+#| echo: false
+#| out-width: 75%
+#| fig-align: center
+knitr::include_graphics(path = "images/basic/rs_env2.png")
+```
+
+Il existe de nombreux types de valeurs que vous pouvez attribuer à un objet.
+Par exemple
+
+```{r}
+#| echo: true
+#| eval: true
+my_obj2 <- "R is cool"
+```
+
+Nous avons créé un objet appelé `my_obj2` et lui avons attribué la valeur `R is cool` qui est une chaîne de caractères.
+Remarquez que nous avons mis la chaîne de caractères entre guillemets.
+Si vous oubliez d'utiliser les guillemets, vous recevrez un message d'erreur.
+
+Notre espace de travail contient maintenant les deux objets que nous avons créés jusqu'à présent avec `my_obj2` comme caractère de type.
+
+```{r}
+#| label: fig-rstudio_env3
+#| fig-cap: RStudio environment tab with my_obj2 as a character
+#| echo: false
+#| out-width: 75%
+#| fig-align: center
+knitr::include_graphics(path = "images/basic/rs_env3.png")
+```
+
+Pour modifier la valeur d'un objet existant, il suffit de lui réattribuer une nouvelle valeur.
+Par exemple, pour modifier la valeur de `my_obj2` de `"R is cool"` au nombre `1024`
+
+```{r}
+#| echo: true
+#| eval: true
+my_obj2 <- 1024
+```
+
+Remarquez que le type est devenu numérique et que la valeur est passée à 1024 dans l'environnement.
+
+```{r}
+#| label: fig-rstudio_env4
+#| fig-cap: RStudio environment tab with updated my_obj2 as numeric
+#| echo: false
+#| out-width: 75%
+#| fig-align: center
+knitr::include_graphics(path = "images/basic/rs_env4.png")
+```
+
+Une fois que nous avons créé quelques objets, nous pouvons faire des choses avec nos objets.
+Par exemple, le code suivant crée un nouvel objet `my_obj3` et lui assigne la valeur de `my_obj` ajouté à `my_obj2` soit 1072 (48 + 1024 = 1072).
+
+```{r}
+#| echo: true
+#| eval: true
+my_obj3 <- my_obj + my_obj2
+my_obj3
+```
+
+Remarquez que pour afficher la valeur de `my_obj3` nous devons également écrire le nom de l'objet.
+Le code ci-dessus fonctionne parce que les valeurs de `my_obj` et `my_obj2` sont numériques (c'est-à-dire
+un nombre).
+Si vous essayez de le faire avec des objets dont les valeurs sont des caractères (**classe de caractères**), vous recevrez une erreur
+
+```{r}
+#| echo: true
+#| eval: false
+char_obj <- "hello"
+char_obj2 <- "world!"
+char_obj3 <- char_obj + char_obj2
+# Error in char_obj+char_obj2:non-numeric argument to binary operator
+```
+
+Le message d'erreur vous indique essentiellement que l'un ou les deux objets `char_obj` et `char_obj2` n'est pas un nombre et ne peut donc pas être additionné.
+
+
+
+
+Lorsque vous commencez à apprendre R, la gestion des erreurs et des avertissements peut être frustrante car ils sont souvent difficiles à comprendre (qu'est-ce qu'un [*argument*][r_arg] ? qu'est-ce qu'un [*opérateur binaire*][bin_op] ?).
+Une façon de trouver plus d'informations sur une erreur particulière est de rechercher une version généralisée du message d'erreur.
+Pour l'erreur ci-dessus, essayez de rechercher [*'non-numeric argument to binary operator error + r'*][non_num_err] ou même [*'common r error messages'*][com_err].
+
+Un autre message d'erreur que vous obtiendrez assez souvent lorsque vous commencerez à utiliser R est `Error : object 'XXX' not found` (erreur : objet 'XXX' non trouvé).
+A titre d'exemple, regardez le code ci-dessous
+
+```r
+my_obj <- 48
+my_obj4 <- my_obj + no_obj
+# Error: object 'no_obj' not found
+```
+
+R renvoie un message d'erreur parce que nous n'avons pas encore créé (défini) l'objet `no_obj`.
+Un autre indice qu'il y a un problème avec ce code est que, si vous vérifiez votre environnement, vous verrez que l'objet `my_obj4` n'a pas été créé.
+
+### Nommer les objets
+
+Nommer vos objets est l'une des choses les plus difficiles que vous ferez dans R.
+Idéalement, les noms de vos objets devraient être courts et informatifs, ce qui n'est pas toujours facile.
+Si vous devez créer des objets avec plusieurs mots dans leur nom, utilisez un trait de soulignement ou un point entre les mots ou mettez les différents mots en majuscules.
+Nous préférons le format souligné et n'incluons jamais de majuscules dans les noms (appelé [*snake_case*][snake]).
+
+```r
+output_summary <- "my analysis" # recommended#
+output.summary <- "my analysis"
+outputSummary <- "my analysis"
+```
+
+Il y a également quelques limitations lorsqu'il s'agit de donner des noms aux objets.
+Un nom d'objet ne peut pas commencer par un chiffre ou un point suivi d'un chiffre (ex.
+`2my_variable` ou `.2my_variable`).
+ Vous devez également éviter d'utiliser des caractères non alphanumériques dans vos noms d'objets (i.e.
+&, ^, /, ! etc).
+De plus, assurez-vous de ne pas nommer vos objets avec des mots réservés (i.e.
+`TRUE`, `NA`) et ce n'est jamais une bonne idée de donner à votre objet le même nom qu'une fonction intégrée.
+Une fonction qui revient plus souvent qu'on ne peut s'en souvenir est
+
+```r
+data <- read.table("mydatafile", header = TRUE)
+```
+
+Oui, `data()` est une fonction de R qui permet de charger ou de lister les ensembles de données disponibles dans les paquets.
+
+
+## Utilisation de fonctions dans R {#sec-funcs}
+
+Jusqu'à présent, nous avons créé des objets simples en assignant directement une valeur unique à un objet.
+Il est très probable que vous souhaitiez bientôt créer des objets plus compliqués au fur et à mesure que votre expérience de R s'accroît et que la complexité de vos tâches augmente.
+Heureusement, R dispose d'une multitude de fonctions pour vous aider à le faire.
+Vous pouvez considérer une fonction comme un objet qui contient une série d'instructions pour effectuer une tâche spécifique.
+L'installation de base de R est livrée avec de nombreuses fonctions déjà définies ou vous pouvez augmenter la puissance de R en installant l'un des 10 000 [paquets](@sec-packages) actuellement disponibles.
+Une fois que vous aurez acquis un peu plus d'expérience dans l'utilisation de R, vous voudrez peut-être définir vos propres fonctions pour effectuer des tâches spécifiques à vos objectifs (plus d'informations à ce sujet dans @sec-prog-r).
+
+
+La première fonction que nous allons découvrir est la fonction `c()`.
+La fonction `c()` est l'abréviation de concaténer et nous l'utilisons pour joindre une série de valeurs et les stocker dans une structure de données appelée [**vector**][vector] (plus d'informations sur les vecteurs dans @sec-data-r).
+
+```{r}
+#| echo: true
+#| eval: true
+my_vec <- c(2, 3, 1, 6, 4, 3, 3, 7)
+```
+
+Dans le code ci-dessus, nous avons créé un objet appelé `my_vec` et lui avons assigné une valeur en utilisant la fonction `c()`.
+Il y a quelques points très importants à noter ici.
+Premièrement, lorsque vous utilisez une fonction dans R, le nom de la fonction est **toujours** suivi d'une paire de parenthèses rondes, même s'il n'y a rien entre les parenthèses.
+Deuxièmement, les arguments d'une fonction sont placés à l'intérieur des crochets ronds et sont séparés par des virgules.
+Vous pouvez considérer un argument comme un moyen de personnaliser l'utilisation ou le comportement d'une fonction.
+Dans l'exemple ci-dessus, les arguments sont les nombres que nous voulons concaténer.
+Enfin, l'une des choses les plus délicates lorsque vous commencez à utiliser R est de savoir quelle fonction utiliser pour une tâche particulière et comment l'utiliser.
+Heureusement, chaque fonction est toujours associée à un document d'aide qui explique comment utiliser la fonction (plus d'informations à ce sujet plus tard @sec-help) et une recherche rapide sur le web peut également vous aider.
+
+Pour examiner la valeur de notre nouvel objet, nous pouvons simplement taper le nom de l'objet comme nous l'avons fait précédemment
+
+```{r}
+#| echo: true
+#| eval: true
+my_vec
+```
+
+Maintenant que nous avons créé un vecteur, nous pouvons utiliser d'autres fonctions pour faire des choses utiles avec cet objet.
+Par exemple, nous pouvons calculer la moyenne, la variance, l'écart-type et le nombre d'éléments de notre vecteur en utilisant les fonctions `mean()`, `var()`, `sd()` et `length()`.
+
+```{r}
+#| echo: true
+#| eval: true
+mean(my_vec) # returns the mean of my_vec
+var(my_vec) # returns the variance of my_vec
+sd(my_vec) # returns the standard deviation of my_vec
+length(my_vec) # returns the number of elements in my_vec
+```
+
+Si nous voulons utiliser l'une de ces valeurs plus tard dans notre analyse, il nous suffit d'affecter la valeur obtenue à un autre objet.
+
+```{r}
+#| echo: true
+#| eval: true
+vec_mean <- mean(my_vec) # returns the mean of my_vec
+vec_mean
+```
+
+
+
+
+Il peut parfois être utile de créer un vecteur contenant une séquence régulière de valeurs par pas de un.
+Dans ce cas, nous pouvons utiliser un raccourci en utilisant la fonction `:` symbole.
+
+```{r}
+#| echo: true
+#| eval: true
+my_seq <- 1:10 # create regular sequence
+my_seq
+my_seq2 <- 10:1 # in decending order
+my_seq2
+```
+
+D'autres fonctions utiles pour générer des vecteurs de séquences sont les suivantes `seq()` et `rep()` sont des fonctions utiles pour générer des vecteurs de séquences.
+Par exemple, pour générer une séquence de 1 à 5 par pas de 0,5
+
+```{r}
+#| echo: true
+#| eval: true
+my_seq2 <- seq(from = 1, to = 5, by = 0.5)
+my_seq2
+```
+
+Ici, nous avons utilisé les arguments `from =` et `to =` pour définir les limites de la séquence et l'argument `by =` pour spécifier l'incrément de la séquence.
+Jouez avec d'autres valeurs pour ces arguments afin de voir leur effet.
+
+L'argument `rep()` vous permet de répliquer (répéter) des valeurs un certain nombre de fois.
+Pour répéter la valeur 2, 10 fois
+
+```{r}
+#| echo: true
+#| eval: true
+my_seq3 <- rep(2, times = 10) # repeats 2, 10 times
+my_seq3
+```
+
+Vous pouvez également répéter des valeurs non numériques
+
+```{r}
+#| echo: true
+#| eval: true
+my_seq4 <- rep("abc", times = 3) # repeats ‘abc' 3 times
+my_seq4
+```
+
+ou chaque élément d'une série
+
+```{r}
+#| echo: true
+#| eval: true
+my_seq5 <- rep(1:5, times = 3) # repeats the series 1 to
+# 5, 3 times
+my_seq5
+```
+
+ou des éléments d'une série
+
+```{r}
+#| echo: true
+#| eval: true
+my_seq6 <- rep(1:5, each = 3) # repeats each element of the
+# series 3 times
+my_seq6
+```
+
+On peut aussi répéter une série non séquentielle
+
+```{r}
+#| echo: true
+#| eval: true
+my_seq7 <- rep(c(3, 1, 10, 7), each = 3) # repeats each
+# element of the
+# series 3 times
+my_seq7
+```
+
+Notez dans le code ci-dessus comment nous avons utilisé la fonction `c()` à l'intérieur de la fonction `rep()` à l'intérieur de la fonction
+L'imbrication de fonctions nous permet de construire des commandes assez complexes à l'intérieur d'une seule ligne de code et est une pratique très courante dans l'utilisation de R.
+Cependant, il faut faire attention car trop de fonctions imbriquées peuvent rendre votre code difficile à comprendre pour les autres (ou pour vous-même dans le futur !).
+Nous pourrions réécrire le code ci-dessus pour séparer explicitement les deux étapes de la génération de notre vecteur.
+L'une ou l'autre approche donnera le même résultat, il vous suffit d'utiliser votre propre jugement pour déterminer laquelle est la plus lisible.
+
+```{r}
+#| echo: true
+#| eval: true
+in_vec <- c(3, 1, 10, 7)
+my_seq7 <- rep(in_vec, each = 3) # repeats each element of
+# the series 3 times
+my_seq7
+```
+
+## Travailler avec des vecteurs {#sec-vectors}
+
+Manipuler, résumer et trier des données à l'aide de R est une compétence importante à maîtriser, mais que de nombreuses personnes trouvent un peu déroutante au début.
+Nous allons voir ici quelques exemples simples utilisant des vecteurs pour illustrer certains concepts importants, mais nous développerons cela plus en détail dans @sec-data-r où nous verrons des structures de données plus compliquées (et plus utiles).
+
+### Extraction d'éléments
+
+Pour extraire (ou indexer ou souscrire) une ou plusieurs valeurs (plus généralement appelées éléments) d'un vecteur, nous utilisons les crochets suivants `[ ]` pour extraire une ou plusieurs valeurs (généralement appelées éléments) d'un vecteur.
+L'approche générale consiste à nommer l'objet à extraire, puis un ensemble de crochets avec un index de l'élément à extraire contenu dans les crochets.
+Cet indice peut être une position ou le résultat d'un test logique.
+
+#### Indice de position {-}
+
+Pour extraire des éléments en fonction de leur position, il suffit d'écrire la position à l'intérieur de la balise `[ ]`.
+Par exemple, pour extraire la 3e valeur de `my_vec`
+
+```{r}
+#| echo: true
+#| eval: true
+my_vec # remind ourselves what my_vec looks like
+my_vec[3] # extract the 3rd value
+
+# if you want to store this value in another object
+val_3 <- my_vec[3]
+val_3
+```
+
+Notez que l'index positionnel commence à 1 et non à 0 comme dans d'autres langages de programmation (i.e.
+Python).
+
+Nous pouvons également extraire plus d'une valeur en utilisant la fonction `c()` à l'intérieur des crochets.
+Ici, nous extrayons le 1^e^, le 5^e^, le 6^e^ et le 8^e^ élément de la variable `my_vec` objet
+
+```{r}
+#| echo: true
+#| eval: true
+my_vec[c(1, 5, 6, 8)]
+```
+
+Nous pouvons également extraire une plage de valeurs à l'aide de la fonction `:` pour extraire une plage de valeurs.
+Pour extraire les valeurs des 3^e^ à 8^e^ éléments
+
+```{r}
+#| echo: true
+#| eval: true
+my_vec[3:8]
+```
+
+#### Index logique {#sec-logical-index}
+
+Une autre façon très utile d'extraire des données d'un vecteur est d'utiliser une expression logique comme index.
+Par exemple, pour extraire tous les éléments dont la valeur est supérieure à 4 dans le vecteur `my_vec`
+
+```{r}
+#| echo: true
+#| eval: true
+my_vec[my_vec > 4]
+```
+
+Ici, l'expression logique est `my_vec > 4` et R n'extraira que les éléments qui satisfont à cette condition logique.
+Comment cela fonctionne-t-il réellement ? Si nous regardons la sortie de l'expression logique sans les crochets, vous pouvez voir que R renvoie un vecteur contenant soit `TRUE` ou `FALSE` qui indiquent si la condition logique est remplie pour chaque élément.
+Dans ce cas, seuls les éléments 4^e^ et 8^e^ renvoient un `TRUE` car leur valeur est supérieure à 4.
+
+```{r}
+#| echo: true
+#| eval: true
+my_vec > 4
+```
+
+Ainsi, ce que R fait en réalité sous le capot est équivalent à
+
+```{r}
+#| echo: true
+#| eval: true
+my_vec[c(FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, TRUE)]
+```
+
+et seuls les éléments qui sont `TRUE` seront extraits.
+
+En plus de l'élément `<` et `>` vous pouvez également utiliser des opérateurs composites pour augmenter la complexité de vos expressions.
+Par exemple, l'expression "supérieur ou égal à" est la suivante `>=`.
+Pour vérifier si une valeur est égale à une autre, nous devons utiliser un double symbole égal `==` et pour vérifier si une valeur est différente de, nous utilisons le symbole `!=` (le symbole `!` signifie "pas").
+
+```{r}
+#| echo: true
+#| eval: true
+my_vec[my_vec >= 4] # values greater or equal to 4
+my_vec[my_vec < 4] # values less than 4
+my_vec[my_vec <= 4] # values less than or equal to 4
+my_vec[my_vec == 4] # values equal to 4
+my_vec[my_vec != 4] # values not equal to 4
+```
+
+Nous pouvons également combiner plusieurs expressions logiques à l'aide d'expressions booléennes. [expressions booléennes] [booléen] .
+Dans R, l'élément `&` signifie ET et le symbole `|` signifie OU.
+Par exemple, pour extraire des valeurs dans `my_vec` qui sont inférieures à 6 ET supérieures à 2
+
+```{r}
+#| echo: true
+#| eval: true
+val26 <- my_vec[my_vec < 6 & my_vec > 2]
+val26
+```
+
+ou extraire des valeurs dans `my_vec` qui sont supérieures à 6 OU inférieures à 3
+
+```{r}
+#| echo: true
+#| eval: true
+val63 <- my_vec[my_vec > 6 | my_vec < 3]
+val63
+```
+
+### Remplacement d'éléments
+
+Nous pouvons modifier les valeurs de certains éléments d'un vecteur à l'aide de la fonction `[ ]` en combinaison avec l'opérateur d'affectation `<-`.
+Par exemple, pour remplacer la 4^e valeur de notre `my_vec` de `6` à `500`
+
+```{r}
+#| echo: true
+#| eval: true
+my_vec[4] <- 500
+my_vec
+```
+
+Nous pouvons également remplacer plus d'une valeur ou même remplacer des valeurs sur la base d'une expression logique
+
+```{r}
+#| echo: true
+#| eval: true
+# replace the 6th and 7th element with 100
+my_vec[c(6, 7)] <- 100
+my_vec
+
+# replace element that are less than or equal to 4 with 1000
+my_vec[my_vec <= 4] <- 1000
+my_vec
+```
+
+### Ordonner les éléments {#sec-vec-ord}
+
+Outre l'extraction d'éléments particuliers d'un vecteur, il est également possible d'ordonner les valeurs contenues dans un vecteur.
+Pour trier les valeurs de la plus petite à la plus grande, nous pouvons utiliser la fonction `sort()` fonction
+
+```{r}
+#| echo: true
+#| eval: true
+vec_sort <- sort(my_vec)
+vec_sort
+```
+
+Pour inverser le tri, du plus élevé au plus bas, nous pouvons soit inclure l'option `decreasing = TRUE` lors de l'utilisation de la méthode `sort()` soit inclure l'argument lors de l'utilisation de la fonction
+
+```{r}
+#| echo: true
+#| eval: true
+vec_sort2 <- sort(my_vec, decreasing = TRUE)
+vec_sort2
+```
+
+ou trier d'abord le vecteur à l'aide de la fonction `sort()` puis inverser le vecteur trié à l'aide de la fonction `rev()` à l'aide de la fonction
+Il s'agit là d'un autre exemple d'imbrication d'une fonction dans une autre fonction.
+
+```{r}
+#| echo: true
+#| eval: true
+vec_sort3 <- rev(sort(my_vec))
+vec_sort3
+```
+
+Bien qu'il soit amusant de trier un seul vecteur, il serait peut-être plus utile de trier un vecteur en fonction des valeurs d'un autre vecteur.
+Pour ce faire, nous devons utiliser la fonction `order()` en combinaison avec la fonction `[ ]`.
+Pour le démontrer, créons un vecteur appelé `height` contenant la taille de 5 personnes différentes et un autre vecteur appelé `p.names` contenant les noms de ces personnes (Joanna mesure 180 cm, Charlotte mesure 155 cm, etc.)
+
+```{r}
+#| echo: true
+#| eval: true
+height <- c(180, 155, 160, 167, 181)
+height
+
+p.names <- c("Joanna", "Charlotte", "Helen", "Karen", "Amy")
+p.names
+```
+
+Notre objectif est de classer les personnes dans `p.names` dans l'ordre croissant de leur `height`.
+La première chose que nous allons faire est d'utiliser la fonction `order()` avec la fonction `height` pour créer un vecteur appelé `height_ord`
+
+```{r}
+#| echo: true
+#| eval: true
+height_ord <- order(height)
+height_ord
+```
+
+OK, que se passe-t-il ici ? La première valeur, `2`(n'oubliez pas d'ignorer `[1]`) doit être lue comme "la plus petite valeur de `height` est le deuxième élément de l'équation `height` vecteur".
+Si nous le vérifions en regardant le `height` ci-dessus, vous pouvez voir que l'élément 2 a une valeur de 155, ce qui est la plus petite valeur.
+La deuxième valeur la plus petite du vecteur `height` est le 3^e^ élément de `height` ce qui, après vérification, donne 160 et ainsi de suite.
+La plus grande valeur de `height` est l'élément `5` qui vaut 181.
+Maintenant que nous disposons d'un vecteur des indices de position des hauteurs par ordre croissant (`height_ord`), nous pouvons extraire ces valeurs de notre `p.names` dans cet ordre
+
+```{r}
+#| echo: true
+#| eval: true
+names_ord <- p.names[height_ord]
+names_ord
+```
+
+Vous vous demandez probablement à quoi cela peut bien servir. Imaginons que vous disposiez d'un ensemble de données contenant deux colonnes de données et que vous souhaitiez trier chacune d'entre elles.
+Si vous utilisez simplement `sort()` pour trier chaque colonne séparément, les valeurs de chaque colonne seront dissociées les unes des autres.
+En utilisant 'order()' sur une colonne, un vecteur d'indices positionnels est créé à partir des valeurs de la colonne dans l'ordre croissant. Ce vecteur peut être utilisé sur la deuxième colonne, en tant qu'indice d'éléments qui renverront un vecteur de valeurs basé sur la première colonne.
+En toute honnêteté, lorsque vous avez plusieurs vecteurs liés, vous devez utiliser un objet de type data.frame (voir @sec-data-r) au lieu de plusieurs vecteurs indépendants.
+
+### Vectorisation
+
+L'un des avantages des fonctions R est que la plupart d'entre elles sont vectorisées.
+Cela signifie que la fonction opère sur tous les éléments d'un vecteur sans qu'il soit nécessaire d'appliquer la fonction à chaque élément séparément.
+Par exemple, pour multiplier chaque élément d'un vecteur par 5, il suffit d'utiliser la fonction
+
+```{r}
+#| echo: true
+#| eval: true
+# create a vector
+my_vec2 <- c(3, 5, 7, 1, 9, 20)
+
+# multiply each element by 5
+my_vec2 * 5
+```
+
+Ou nous pouvons additionner les éléments de deux vecteurs ou plus
+
+```{r}
+#| echo: true
+#| eval: true
+# create a second vector
+my_vec3 <- c(17, 15, 13, 19, 11, 0)
+
+# add both vectors
+my_vec2 + my_vec3
+
+# multiply both vectors
+my_vec2 * my_vec3
+```
+
+Cependant, vous devez faire attention lorsque vous utilisez la vectorisation avec des vecteurs de longueurs différentes, car R recyclera tranquillement les éléments du vecteur le plus court plutôt que de lancer une erreur (wobbly).
+
+```{r}
+#| echo: true
+#| eval: true
+# create a third vector
+my_vec4 <- c(1, 2)
+
+# add both vectors - quiet recycling!
+my_vec2 + my_vec4
+```
+
+### Données manquantes {#sec-na-vals}
+
+Dans R, les données manquantes sont généralement représentées par un `NA` qui signifie "Non disponible".
+Les données peuvent être manquantes pour toute une série de raisons : votre machine est peut-être tombée en panne, vous êtes peut-être tombé en panne, le temps était peut-être trop mauvais pour collecter des données un jour donné, etc.
+Les données manquantes peuvent être une véritable plaie, tant du point de vue de R que du point de vue statistique.
+Du point de vue de R, les données manquantes peuvent être problématiques car différentes fonctions traitent les données manquantes de différentes manières.
+Par exemple, supposons que nous ayons recueilli des relevés de température de l'air pendant 10 jours, mais que notre thermomètre se soit cassé le deuxième jour et le neuvième jour, de sorte que nous n'avons pas de données pour ces jours-là
+
+```{r}
+#| echo: true
+#| eval: true
+temp <- c(7.2, NA, 7.1, 6.9, 6.5, 5.8, 5.8, 5.5, NA, 5.5)
+temp
+```
+
+Nous voulons maintenant calculer la température moyenne sur ces jours à l'aide de la fonction `mean()` fonction
+
+```{r}
+#| echo: true
+#| eval: true
+mean_temp <- mean(temp)
+mean_temp
+```
+
+Si un vecteur a une valeur manquante, la seule valeur possible à renvoyer lors du calcul d'une moyenne est `NA`.
+R ne sait pas que vous souhaitez peut-être ignorer la valeur `NA` (R ne peut pas lire dans vos pensées - pour l'instant !).
+Si nous regardons le fichier d'aide (en utilisant `?mean` - voir la section suivante @sec-help pour plus de détails) associé à la fonction `mean()` nous pouvons voir qu'il y a un argument `na.rm = ` qui prend la valeur `FALSE` par défaut.
+
+> na.rm - une valeur logique indiquant si les valeurs NA doivent être supprimées avant le calcul.
+
+Si nous remplaçons cet argument par `na.rm = TRUE` lorsque nous utilisons l'option `mean()` cela nous permettra d'ignorer la fonction `NA` lors du calcul de la moyenne
+
+```{r}
+#| echo: true
+#| eval: true
+mean_temp <- mean(temp, na.rm = TRUE)
+mean_temp
+```
+
+Il est important de noter que la fonction `NA` n'ont pas été retirées de notre `temp` (ce serait une mauvaise pratique), mais que l'objet `mean()` les a simplement ignorées.
+Le but de ce qui précède est de souligner comment nous pouvons modifier le comportement par défaut d'une fonction à l'aide d'un argument approprié.
+Le problème est que toutes les fonctions n'ont pas d'argument `na.rm =` elles peuvent avoir affaire à `NA` différemment.
+Cependant, la bonne nouvelle est que chaque fichier d'aide associé à une fonction sera **toujours** vous indiquera toujours comment les données manquantes sont traitées par défaut.
+
+## Obtenir de l'aide {#sec-help}
+
+Ce livre est conçu comme une introduction relativement brève à R et, en tant que tel, vous utiliserez bientôt des fonctions et des packages qui dépassent le cadre de ce texte d'introduction.
+Heureusement, l'une des forces de R est son système d'aide complet et facilement accessible, ainsi que la richesse des ressources en ligne où vous pouvez obtenir de plus amples informations.
+
+### Aide R
+
+Pour accéder à l'aide intégrée de R et obtenir des informations sur n'importe quelle fonction, il suffit d'utiliser la commande `help()` fonction.
+Par exemple, pour ouvrir la page d'aide de notre amie la fonction `mean()` fonction.
+
+```r
+help("mean")
+```
+
+ou vous pouvez utiliser le raccourci équivalent
+
+```r
+?mean
+```
+
+la page d'aide est affichée dans l'onglet "Help" du panneau Files (généralement en bas à droite de RStudio)
+
+```{r}
+#| label: fig-rstudio_help
+#| fig-cap: Help page for the `mean()` function in RStudio Help pane
+#| echo: false
+#| out-width: 50%
+#| fig-align: center
+knitr::include_graphics(path = "images/basic/rs_help.png")
+```
+
+Il est vrai que les fichiers d'aide peuvent sembler tout sauf utiles lorsque vous commencez à utiliser R.
+Cela est probablement dû au fait qu'ils sont écrits de manière très concise et que le langage utilisé est souvent assez technique et plein de jargon.
+Cela dit, on s'y habitue et, avec le temps, on finit même par apprécier une certaine beauté dans leur brièveté (honnêtement !).
+L'un des aspects les plus intéressants des fichiers d'aide est qu'ils ont tous une structure très similaire, quelle que soit la fonction.
+Il est donc facile de naviguer dans le fichier pour trouver exactement ce dont vous avez besoin.
+
+La première ligne du document d'aide contient des informations telles que le nom de la fonction et le paquet où elle se trouve.
+D'autres rubriques fournissent des informations plus spécifiques, telles que
+
+| Rubriques | Description de la rubrique                                                                         | 
+| :-------- | :------------------------------------------------------------------------------------------------- |
+| **Description :**          | donne une brève description de la fonction et de ce qu'elle fait.                                  | 
+| **Utilisation :**          | donne le nom des arguments associés à la fonction et les éventuelles valeurs par défaut.           | 
+| **Arguments :**          | fournit plus de détails sur chaque argument et sur ce qu'il fait.                                  | 
+| **Détails :**          | donne des détails supplémentaires sur la fonction si nécessaire.                                   | 
+| **Valeur :**          | le cas échéant, indique le type et la structure de l'objet renvoyé par la fonction ou l'opérateur. | 
+| **Voir aussi**          | fournit des informations sur d'autres pages d'aide au contenu similaire ou connexe.                | 
+| **Exemples :**          | donne quelques exemples d'utilisation de la fonction.                                              | 
+
+<!--
+: Structure du fichier d'aide {#tbl-help}
+-->
+
+Le fichier d'aide **Exemples d'application** sont très utiles, il suffit de les copier et de les coller dans la console pour voir ce qui se passe.
+Vous pouvez également accéder aux exemples à tout moment en utilisant la commande `example()` (c'est-à-dire
+`example("mean")`)
+
+Les `help()` est utile si vous connaissez le nom de la fonction.
+Si vous n'êtes pas sûr du nom, mais que vous vous souvenez d'un mot clé, vous pouvez faire une recherche dans le système d'aide de R à l'aide de la fonction `help.search()` fonction.
+
+```r
+help.search("mean")
+```
+
+ou vous pouvez utiliser le raccourci équivalent
+
+```r
+??mean
+```
+
+Les résultats de la recherche seront affichés dans RStudio sous l'onglet "Aide" comme précédemment.
+Les résultats de la recherche sont affichés dans RStudio sous l'onglet "Aide" comme précédemment. `help.search()` recherche dans la documentation d'aide, les démonstrations de code et les vignettes de paquet et affiche les résultats sous forme de liens cliquables pour une exploration plus approfondie.
+
+```{r}
+#| label: fig-rstudio_help2
+#| fig-cap: Output of the `help.search()` function in RStudio
+#| echo: false
+#| out-width: 50%
+#| fig-align: center
+knitr::include_graphics(path = "images/basic/rs_help2.png")
+```
+
+Une autre fonction utile est `apropos()`.
+Cette fonction peut être utilisée pour dresser la liste de toutes les fonctions contenant une chaîne de caractères spécifiée.
+Par exemple, pour trouver toutes les fonctions avec `mean` dans leur nom
+
+```{r}
+#| echo: true
+#| eval: true
+apropos("mean")
+```
+
+Vous pouvez alors afficher le fichier d'aide de la fonction concernée.
+
+```r
+help("kmeans")
+```
+
+Une autre fonction est `RSiteSearch()` qui vous permet de rechercher des mots-clés et des phrases dans les pages d'aide des fonctions et les vignettes de tous les paquets CRAN.
+Cette fonction vous permet d'accéder au moteur de recherche du site web de R [https://www.r-project.org/search.html](https://www.r-project.org/search.html) directement à partir de la console et d'afficher les résultats dans votre navigateur web.
+
+```r
+RSiteSearch("regression")
+```
+
+### Autres sources d'aide {#sec-rhelp}
+
+Il n'y a jamais eu de meilleur moment pour commencer à apprendre R.
+Il existe une pléthore de ressources en ligne disponibles gratuitement, allant de cours complets à des tutoriels et des listes de diffusion spécifiques à un sujet.
+Il existe également de nombreuses options payantes si c'est votre truc, mais à moins que vous n'ayez de l'argent à brûler, il n'est vraiment pas nécessaire de dépenser votre argent durement gagné.
+Vous trouverez ci-dessous quelques ressources que nous avons trouvées utiles.
+
+#### Ressources générales sur les R
+
+- [Projet R] [r-docs ]: Documentation fournie par l'utilisateur
+- [Le journal R] [r-journal ]: Journal du projet R pour le calcul statistique
+- [Tourbillon] [swirl ]: Un paquet R qui vous enseigne R de l'intérieur R
+- [Les antisèches imprimables de RStudio] [rstudio-cheat]
+- [Rseek] [rseek] Une recherche Google personnalisée pour les sites liés à R
+
+#### Obtenir de l'aide
+
+- [Cherchez sur Google !] [google-cust ]: Essayez de googler les messages d'erreur que vous obtenez.
+  Ce n'est pas de la triche et tout le monde le fait ! Vous serez surpris du nombre de personnes qui ont probablement rencontré le même problème et l'ont résolu.
+
+- [Dépassement de pile] [stackr ]: Il y a plusieurs milliers de questions relatives à R sur Stack Overflow.
+   [Ici] [stack-pop] sont les plus populaires, classées par vote.
+   Veillez à rechercher des questions similaires avant de poser la vôtre et à inclure un [exemple reproductible] [stack-repro] afin d'obtenir les conseils les plus utiles.
+  Un exemple reproductible est un exemple minimal qui permet aux personnes qui essaient de vous aider de voir l'erreur elles-mêmes.
+
+#### Ressources R markdown
+
+- [Référence de base pour le markdown et le markdown R] [bio-con]
+- [Une bonne référence en markdown] [md-ref]
+- [Un bon tutoriel de 10 minutes sur le markdown] [md-tut]
+- [Feuille de contrôle de RStudio sur le format R markdown] [rmd-cheat]
+- [Feuille de référence pour la démarque R] [rmd-ref]
+- [La documentation R markdown] [rs-rm-docs] incluant un [guide de démarrage] [rm-lesson] , a [galerie de démonstrations] [rm-gallery] et plusieurs [articles] [rs-articles] pour une utilisation plus avancée.
+- [Le site web de knitr] [knitr] contient de nombreux documents de référence utiles sur le fonctionnement de knitr.
+
+#### Ressources Git et GitHub
+
+- [Happy Git] [git_happy ]: Excellente ressource pour l'utilisation de Git et GitHub
+- [Contrôle de version avec RStudio] [rs-Git ]: Document RStudio pour l'utilisation du contrôle de version
+- [Utiliser Git depuis RStudio] [git-rs ]: Un bon guide en 10 minutes
+- [La classe R] [rclass ]: Guide approfondi de l'utilisation de Git et GitHub avec RStudio
+
+#### Programmation R
+
+- [Programmation R pour la science des données] [r-rprog ]: Guide approfondi de la programmation R
+- [R pour la science des données] [r4ds ]: Livre fantastique, orienté tidyverse
+
+## Sauvegarder des données dans R
+
+Votre approche de l'enregistrement du travail dans R et RStudio dépend de ce que vous voulez enregistrer.
+La plupart du temps, la seule chose que vous devrez sauvegarder est le code R de vos scripts.
+N'oubliez pas que votre script est un enregistrement reproductible de tout ce que vous avez fait. Il vous suffit donc d'ouvrir votre script dans une nouvelle session RStudio et de l'insérer dans la console R pour revenir à l'endroit où vous vous étiez arrêté.
+
+À moins que vous n'ayez suivi notre suggestion de modifier les paramètres par défaut des projets RStudio (voir @sec-rsprojs), il vous sera demandé si vous souhaitez sauvegarder l'image de votre espace de travail à chaque fois que vous quitterez RStudio.
+Nous pensons que dans 99,9 % des cas, vous ne souhaitez pas le faire.
+En commençant par une session RStudio propre chaque fois que nous revenons à notre analyse, nous pouvons être sûrs d'éviter tout conflit potentiel avec les choses que nous avons faites dans les sessions précédentes.
+
+Cependant, il est parfois utile de sauvegarder les objets que vous avez créés dans R.
+Par exemple, imaginons que vous créiez un objet dont la génération nécessite des heures (voire des jours) de temps de calcul.
+Il serait extrêmement gênant de devoir attendre tout ce temps à chaque fois que vous revenez sur votre analyse (bien que nous suggérions que l'exportation de cet objet vers un fichier externe soit une meilleure solution).
+Dans ce cas, nous pouvons enregistrer cet objet en tant que fichier externe. `.RData` que nous pourrons charger dans RStudio la prochaine fois que nous voudrons l'utiliser.
+Pour enregistrer un objet dans un fichier `.RData` vous pouvez utiliser la fonction `save()` (remarquez que nous n'avons pas besoin d'utiliser l'opérateur d'affectation ici)
+
+```r
+save(nameOfObject, file = "name_of_file.RData")
+```
+
+ou si vous souhaitez sauvegarder tous les objets de votre espace de travail dans un seul fichier `.RData` utilisez la fonction `save.image()` fonction
+
+```r
+save.image(file = "name_of_file.RData")
+```
+
+Pour charger votre `.RData` dans RStudio, utilisez la fonction `load()` fonction
+
+```r
+load(file = "name_of_file.RData")
+```
+
+## Paquets R {#sec-packages}
+
+L'installation de base de R est livrée en standard avec de nombreux paquets utiles.
+Ces paquets contiennent de nombreuses fonctions que vous utiliserez quotidiennement.
+Cependant, lorsque vous commencerez à utiliser R pour des projets plus variés (et que votre propre utilisation de R évoluera), vous constaterez qu'il y a un moment où vous aurez besoin d'étendre les capacités de R.
+Heureusement, des milliers d'utilisateurs de R ont développé du code utile et l'ont partagé sous forme de paquets installables.
+Vous pouvez considérer un package comme une collection de fonctions, de données et de fichiers d'aide rassemblés dans une structure standard bien définie que vous pouvez télécharger et installer dans R.
+ Ces paquets peuvent être téléchargés à partir de diverses sources, mais les plus populaires sont les suivantes [CRAN] [cran-packages] , [Bioconductor] [bioconductor] et [GitHub] [github] .
+Actuellement, le CRAN héberge plus de 15 000 paquets et est le dépôt officiel des paquets R fournis par les utilisateurs.
+Bioconductor fournit des logiciels libres orientés vers la bioinformatique et héberge plus de 1800 paquets R.
+GitHub est un site web qui héberge des dépôts git pour toutes sortes de logiciels et de projets (pas seulement R).
+Souvent, les versions de développement de pointe des paquets R sont hébergées sur GitHub, donc si vous avez besoin de toutes les nouvelles fonctionnalités, cela peut être une option.
+Cependant, l'inconvénient potentiel de l'utilisation de la version de développement d'un paquet R est qu'elle peut ne pas être aussi stable que la version hébergée sur CRAN (elle est en cours de développement !) et que la mise à jour des paquets ne sera pas automatique.
+
+### Utilisation des paquets
+
+Une fois que vous avez installé un paquet sur votre ordinateur, vous ne pouvez pas l'utiliser immédiatement.
+Pour utiliser un paquet, vous devez d'abord le charger à l'aide de la commande `library()` à l'aide de la fonction
+Par exemple, pour charger le paquet `remotes` :package: que vous avez installé précédemment
+
+```r
+library(remotes)
+```
+
+Les `library()` chargera également tous les paquets supplémentaires nécessaires et pourra imprimer des informations supplémentaires sur les paquets.
+Il est important de savoir que chaque fois que vous démarrez une nouvelle session R (ou que vous restaurez une session précédemment sauvegardée), vous devez charger les paquets que vous utiliserez.
+Nous avons tendance à mettre tous nos `library()` nécessaires à notre analyse en tête de nos scripts R afin de les rendre facilement accessibles et de pouvoir les compléter au fur et à mesure du développement de notre code.
+Si vous essayez d'utiliser une fonction sans avoir préalablement chargé le paquet R correspondant, vous recevrez un message d'erreur indiquant que R n'a pas pu trouver la fonction.
+Par exemple, si vous essayez d'utiliser la fonction `install_github()` sans charger le paquet `remotes` :package: en premier lieu, vous obtiendrez l'erreur suivante
+
+```r
+install_github("tidyverse/dplyr")
+
+# Error in install_github("tidyverse/dplyr") :
+#  could not find function "install_github"
+```
+
+Il peut parfois être utile d'utiliser une fonction sans utiliser au préalable le paquet :package:. `library()` fonction.
+Si, par exemple, vous n'utilisez qu'une ou deux fonctions dans votre script et que vous ne souhaitez pas charger toutes les autres fonctions d'un paquet, vous pouvez accéder directement à la fonction en spécifiant le nom du paquet, suivi de deux points, puis du nom de la fonction.
+
+```r
+remotes::install_github("tidyverse/dplyr")
+```
+
+C'est ainsi que nous avons pu utiliser la fonction `install()` et `install_github()` fonctions [ci-dessus] [Paquets Bioconductor] sans charger les paquets au préalable`BiocManager` :package: et `remotes` :package: .
+La plupart du temps, nous recommandons d'utiliser l'option `library()` fonction.
+
+### Installation des paquets R
+
+#### Paquets CRAN {#sec-cran-packages}
+
+Pour installer un paquet à partir du CRAN, vous pouvez utiliser la commande `install.packages()` fonction.
+Par exemple, si vous voulez installer le paquet `remotes` entrez le code suivant dans la fenêtre Console de RStudio (note : vous aurez besoin d'une connexion internet fonctionnelle pour effectuer cette opération)
+
+```r
+install.packages("remotes", dependencies = TRUE)
+```
+
+Il vous sera peut-être demandé de choisir un miroir CRAN, sélectionnez simplement '0-cloud' ou un miroir proche de votre localisation.
+Les `dependencies = TRUE` permet de s'assurer que les paquets supplémentaires nécessaires seront également installés.
+
+Il est conseillé de mettre régulièrement à jour les paquets déjà installés afin de bénéficier des nouvelles fonctionnalités et des corrections de bogues.
+Pour mettre à jour les paquets CRAN, vous pouvez utiliser la commande `update.packages()` (vous aurez besoin d'une connexion internet pour cela)
+
+```r
+update.packages(ask = FALSE)
+```
+
+La fonction `ask = FALSE` évite d'avoir à confirmer chaque téléchargement de paquet, ce qui peut être fastidieux si de nombreux paquets sont installés.
+
+#### Paquets Bioconductor
+
+Pour installer des paquets de Bioconductor, le processus est un peu différent. [un peu différent] [bioc-install] .
+Vous devez d'abord installer le programme `BiocManager` :package: package.
+Vous ne devez le faire qu'une seule fois, sauf si vous réinstallez ou mettez à jour R
+
+```r
+install.packages("BiocManager", dependencies = TRUE)
+```
+
+Une fois que le `BiocManager` a été installé, vous pouvez soit installer tous les paquets "de base" de Bioconductor avec la commande
+
+```r
+BiocManager::install()
+```
+
+ou installer des paquets spécifiques tels que le `GenomicRanges` :package: et `edgeR` :package:
+
+```r
+BiocManager::install(c("GenomicRanges", "edgeR"))
+```
+
+Pour mettre à jour les paquets de Bioconductor, il suffit d'utiliser la commande `BiocManager::install()` à nouveau
+
+```r
+BiocManager::install(ask = FALSE)
+```
+
+Là encore, vous pouvez utiliser la fonction `ask = FALSE` pour éviter d'avoir à confirmer chaque téléchargement de paquet.
+
+#### Paquets GitHub
+
+Il existe plusieurs options pour installer les paquets hébergés sur GitHub.
+La méthode la plus efficace est sans doute d'utiliser l'outil `install_github()` de la fonction `remotes` :package: package (vous avez installé ce package précédemment (@sec-cran-packages)).
+Avant d'utiliser la fonction, vous devez connaître le nom d'utilisateur GitHub du propriétaire du dépôt ainsi que le nom du dépôt.
+Par exemple, la version de développement de `dplyr` :package: de Hadley Wickham est hébergée sur le compte GitHub de tidyverse et porte le nom de dépôt "dplyr" (recherchez simplement "github dplyr").
+Pour installer cette version depuis GitHub, utilisez
+
+```r
+remotes::install_github("tidyverse/dplyr")
+```
+
+Le moyen le plus sûr (à notre connaissance) de mettre à jour un paquet installé depuis GitHub est de le réinstaller en utilisant la commande ci-dessus.
+
+```{r}
+#| label: links
+#| child: images/_links.md
+```
+
+

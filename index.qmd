@@ -1,0 +1,307 @@
+# Préface {.unnumbered}
+
+```{r}
+#| label: links
+#| child: images/_links.md
+```
+
+::: callout-warning
+Première version en cours de traduction. 
+Pas encore revue par un humain
+
+Certaine section non encore développée
+:::
+
+## L'objectif de ce livre {.unnumbered}
+
+L'objectif de ce livre est double :
+
+1. Vous présenter R, un environnement interactif puissant et flexible pour le calcul et la recherche statistiques.
+2. Vous présenter (ou vous familiariser à nouveau) avec l'analyse statistique effectuée
+    dans R.
+
+R n'est pas difficile à apprendre en soi, mais comme pour toute nouvelle langue (parlée ou informatique), la courbe d'apprentissage initiale peut être raide
+et quelque peu intimidante. L'objectif n'est pas de tout couvrir (ni avec R, ni avec les statistiques), mais simplement de vous aider à franchir le cap
+(potentiellement plus rapidement) et à vous fournir les
+compétences de base (et la confiance !) nécessaires pour commencer votre propre voyage avec R et avec des analyses spécifiques.
+
+## Livre multilingue
+
+Le livre est fourni comme un livre multilingue qui brise la barrière de la langue et permet potentiellement de faciliter l'apprentissage de R et de son environnement principalement anglophone.
+Nous sommes toujours à la recherche de bénévoles pour nous aider à développer le livre et à ajouter d'autres langues à la liste qui ne cesse de s'allonger . N'hésite pas à [Nous contacter](#qui) si tu veux nous aider
+
+Sur la page web, tu peux changer de langue via le {{< fa flag >}} dans la barre de navigation. Après avoir changer de langue, tu peux télécharger le document en pdf ou epub pour cet langue {{< fa download >}}.
+
+Liste des langues :
+
+- anglais (publié mais à peaufiner)
+- français (en développement, en attendant que l'anglais soit peaufiné)
+- espagnol (un jour peut-être...)
+- ... des volontaires pour plus ??
+
+## Comment utiliser ce livre {.unnumbered}
+
+Pour une meilleure expérience, nous te recommandons de lire la version web de ce livre que tu peux trouver à <https://biostats-uottawa.github.io/R/fr>.
+
+La version web inclut une barre de navigation incluant des options pour faciliter la lecture {{< fa align-left >}}, de recherche {{< fa  search >}}, pour changer la couleur {{< fa toggle-off >}} et pour suggérer des modifications ou reporter des problèmes {{< fa brands github >}}.
+Tu peux aussi télécharger le document {{< fa download >}} au format pdf ou epub.
+
+Nous utilisons quelques conventions typographiques tout au long de ce livre.
+
+Le code R et la sortie qui en résulte sont présentés dans des blocs de code dans notre livre.
+
+```{r}
+#| echo: true
+#| eval: true
+2 + 2
+```
+
+Les fonctions dans le texte sont présentées avec des parenthèses à la fin en utilisant la police de code, c'est-à-dire
+`mean()` ou `sd()` etc.
+
+Les objets sont représentés à l'aide de la police de code sans les parenthèses, c'est-à-dire 
+`obj1`, `obj2` etc.
+
+Les paquets R dans le texte sont indiqués en utilisant la police de code et suivis de l'icone :package:, exemple `tidyverse` :package:.
+
+Une série d'actions nécessaires pour accéder aux commandes de menu dans RStudio ou VSCode sont identifiées comme suit `File` -> `New File` -> `R Script` ce qui se traduit par "clique sur le menu Fichier, puis clique sur Nouveau fichier et sélectionne R Script".
+
+Lorsque nous faisons référence à **IDE** (**I**ntegrated **D**evelopment **E**nvironment : Logiciel d'**E**nvironnement de **D**éveloppement **I**ntégré) dans la suite du
+texte, il s'agit de RStudio ou de VScode.
+
+Lorsque nous parlons de **.[Rq]md**, nous entendons par là les documents R markdown (.Rmd) ou Quarto (.qmd) et nous parlerons généralement des documents R markdown en faisant référence à l'un ou l'autre des fichiers `.Rmd` ou `.qmd`.
+
+Le manuel tente de mettre en évidence certaines parties du texte à l'aide des encadrés et icônes suivants.
+
+::: {.callout-caution}
+
+# Exercices
+
+Des choses à faire pour toi
+:::
+
+::: {.callout-note}
+
+# Solutions
+
+Code R et explications
+:::
+
+::: {.callout-warning}
+Avertissements
+:::
+
+::: {.callout-important}
+Points importants
+:::
+
+::: {.callout-note}
+Notes
+:::
+
+## Qui sommes-nous ? {#sec-qui}
+
+:::::: {#sec-julien layout="[29, -1, 70]"}
+![](images/author/julien_circ.jpg){fig-align="center" width="100%"}
+
+<div>
+
+**Julien Martin** est professeur à l'Université d'Ottawa en Écologie évolutive. Il a découvert le merveilleux monde R avec la version 1.8.1 et l'enseigne depuis R v2.4.0.
+
+
+::: {.content-visible when-format="pdf"}
+-   {{< fa bookmark >}}: uOttawa
+    <https://www.uottawa.ca/faculty-science/professors/julien-martin/>,
+    page du labo <https://juliengamartin.github.io>
+-   {{< fa brands twitter >}}: <https://twitter.com/jgamartin>
+-   {{< fa brands github >}}: <https://github.com/juliengamartin>
+:::
+
+::: {.content-visible when-format="html"}
+-   {{< fa bookmark >}}: [uOttawa
+    page](https://www.uottawa.ca/faculty-science/professors/julien-martin/),
+    [lab page](https://juliengamartin.github.io)
+-   {{< fa brands twitter >}}:
+    [jgamartin](https://twitter.com/jgamartin)
+-   {{< fa brands github >}}:
+    [juliengamartin](https://github.com/juliengamartin)
+:::
+
+</div>
+
+::::::
+
+
+:::::: {#sec-augustin layout="[29, -1, 70]"}
+![](images/author/default_circ.jpg){fig-align="center" width="100%"}
+
+<div>
+
+**Augustin Birot** est étudiant au doctorat à l'Université d'Ottawa en Écologie évolutive. 
+
+::: {.content-visible when-format="pdf"}
+-   {{< fa bookmark >}}: page du labo <https://juliengamartin.github.io/people/people/>
+<!-- -   {{< fa brands github >}}: <https://github.com/juliengamartin> -->
+:::
+
+::: {.content-visible when-format="html"}
+-   {{< fa bookmark >}}: [page du labo](https://juliengamartin.github.io/people/people/)
+<!---   {{< fa brands twitter >}}:
+    [jgamartin](https://twitter.com/jgamartin)
+-   {{< fa brands github >}}:
+    [juliengamartin](https://github.com/juliengamartin)
+-->
+:::
+
+</div>
+
+::::::
+
+
+## Remerciements {.unnumbered}
+
+La première partie du livre sur l'utilisation de R a commencé comme un fork sur github à partir de l'excellent livre
+[An introduction to R](https://intro2r.com/) de Douglas, Roos, Mancini,
+Couto et Lusseau [@douglas2023]. Il a été forké le 23 avril 2023 à partir de
+[Alexd106 github repository](https://github.com/alexd106/Rbook) puis
+modifié et mis à jour en fonction de mes propres besoins et de ma perspective d'enseignement de
+R. Le contenu n'a pas été revu ni approuvé par les développeurs précédents.
+
+Plusieurs parties du livre sont basées sur des manuels de laboratoire pour les cours de biostatistique à l'Université d'Ottawa écrits par
+Martin, Findlay, Morin et Rundle.
+
+Sites ayant fourni de nombreuses informations pour le livre :
+
+- [dplyr introduction](https://dplyr.tidyverse.org/articles/dplyr.html)
+- [Introduction to gam](https://m-clark.github.io/generalized-additive-models/)
+- [Intoduction to gams by Noam Ross](https://noamross.github.io/gams-in-r-course/)
+
+
+
+## Crédits d'image
+
+Les photos, images et captures d'écran sont de Julien Martin sauf lorsque
+indiqué dans la légende.
+
+[L'image de couverture](https://creator.nightcafe.studio/creation/P0VHCquzSe5LedOzfxwY?ru=1LIicoDlCUOaydR20fvyG3kYCUp1)
+a été générée par [Nightcafe Ai Art generator](https://creator.nightcafe.studio). Le Favicon et l'autocollant hexagonal
+ont été créés à partir de l'image de couverture.
+
+::: callout-note
+plusieurs captures d'écran sont actuellement réalisées par Alex Douglas et sont en train d'être refaites pour
+pour se conformer à la déclaration précédente
+:::
+
+
+## Licence {.unnumbered}
+
+Je partage cette version modifiée du [livre original](https://intro2r.com/) sous la licence [Licence Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+![Licence Creative Commons](images/license_cc.png)
+
+Si tu enseignes R, n'hésite pas à utiliser tout ou partie du contenu de ce livre pour aider tes propres élèves.
+La seule chose que je te demande, c'est de citer la source originale et les auteurs.
+Si tu trouves ce livre utile ou si tu as des commentaires ou des suggestions, j'aimerais beaucoup que tu me les fasses parvenir ([contact info](#qui)).
+
+## Citer le livre
+
+Julien Martin. ({{< meta year >}}). Sur le chemin de l'enf-R. Un livre multilingue d'introduction à R. Version: {{< meta version >}} ({{< meta date >}}).DOI: [{{< meta doi >}}](https://zenodo.org/doi/10.5281/zenodo.10929585)
+
+
+{{< pagebreak >}}
+
+## Lecture associée au cours {#chapters-to-read}
+
+```{r}
+#| label: tbl-reading
+#| eval.expr: true
+#| tbl-cap: Course associated reading for biostatistical course at uOttawa
+#| echo: false
+#| message: false
+library(tibble)
+library(gt)
+library(emoji)
+library(dplyr)
+tribble(
+  ~Part, ~Chapter, ~BioXx58, ~Bio8940,
+  "Utiliser R", "1.-4.", paste(rep(emoji("white_check_mark"), 2), collapse = ""), emoji("smiley"),
+#  "Utiliser R", "  2. R basics", paste(rep(emoji("white_check_mark"), 2), collapse = ""), emoji("smiley"),
+#  "Utiliser R", "  3. Data", paste(rep(emoji("white_check_mark"), 2), collapse = ""), emoji("smiley"),
+#  "Utiliser R", "  4. Figures", paste(rep(emoji("white_check_mark"), 2), collapse = ""), emoji("smiley"),
+  "Utiliser R", "5. Programmation", "", paste(rep(emoji("white_check_mark"), 2), collapse = ""),
+  "Utiliser R", "6. Rapports reproductibles", emoji("check_mark"), paste(rep(emoji("white_check_mark"), 2), collapse = ""),
+  "Utiliser R", "7. Contrôle de version", "", paste(rep(emoji("white_check_mark"), 2), collapse = ""),
+  "Principes de statistiques", "tous les chapitres", paste(rep(emoji("white_check_mark"), 2), collapse = ""), emoji("smiley"),
+  "Modèles linéaires", "tous les chapitres", paste(rep(emoji("white_check_mark"), 2), collapse = ""), emoji("smiley"),
+  "Modèles linéaires généralisés", "tous les chapitres", paste(rep(emoji("check_mark"), 1), collapse = ""), paste(rep(emoji("white_check_mark"), 2), collapse = ""),
+  "Modèles mixtes", "tous les chapitres", "", paste(rep(emoji("white_check_mark"), 2), collapse = ""),
+  "Modèles additifs généralisés", "tous les chapitres", "", paste(rep(emoji("check_mark"), 1), collapse = ""),
+  "Analyses multivariées", "tous les chapitres", "", paste(rep(emoji("check_mark"), 1), collapse = ""),
+  "Approche Bayésienne", "tous les chapitres", "", paste(rep(emoji("white_check_mark"), 2), collapse = "")
+) |>
+  group_by(Part) |>
+  gt() |>
+  cols_align(
+    align = "center",
+    columns = starts_with("Bio")
+  ) |>
+  tab_footnote(
+    footnote = paste("Suggéré", emoji::emoji("check_mark"), "; Obligatoire", paste(rep(emoji::emoji("white_check_mark"), 2), collapse = ""), "; connaissances attendues (pourraient avoir besoin d'une remise à niveau)", emoji::emoji("smiley"))
+  ) |>
+  cols_label(
+    BioXx58 = md('[BioXx58 ![](images/hex/bio4x58_logo_hex.png){width="60px"}](https://biostats-uottawa.github.io/bioXx58/en/)'),
+    Bio8940 = md('[Bio8940 ![](images/hex/bio8940_logo_hex.png){width="60px"}](https://biostats-uottawa.github.io/bio8940)')
+  ) |>
+  tab_options(
+    row_group.font.weight ="bold"
+  )
+
+```
+
+{{< pagebreak >}}
+
+## Collant Hex
+
+```{r}
+#| label: create-hexsticker
+#| echo: false
+#| eval: false
+
+# used only once or when cover image is modified
+lang <- "fr"
+title <- "Sur le chemin de l'enf-R"
+
+library(showtext)
+## Loading Google fonts (http://www.google.com/fonts)
+font_add_google("Jim Nightshade", "jim")
+## Automatically use showtext to render text for future devices
+showtext_auto()
+
+hexSticker::sticker("images/cover/cover_hex.jpg",
+  package = title,
+  angle = 0,
+  p_size = 25,
+  s_x = 1,
+  s_y = 1,
+  p_x = 1,
+  p_y = 0.8,
+  p_color = "white",
+  s_width = 0.85,
+  s_height = 0.85,
+  p_family = "jim",
+  h_color = "black",
+  url = paste0("biostats-uottawa.github.io/R/", lang),
+  u_color = "grey80",
+  u_size = 5,
+  filename = paste0("images/cover/book_hex_", lang, ".png")
+)
+
+```
+
+![](images/cover/book_hex_en.png){fig-align="center" width="50%"}
+
+
+
+::: {.content-visible when-format="pdf"}
+\clearpage\pagenumbering{arabic}\setcounter{page}{1}
+:::

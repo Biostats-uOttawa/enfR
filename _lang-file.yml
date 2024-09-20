@@ -1,0 +1,110 @@
+version: 0.6.0
+year: 2024
+
+lang: fr-fr
+language:
+  tools-download: "Télécharger"
+
+cit-title: |
+  Faites ce que vous pensez être intéressant,  
+  faites quelque chose que vous pensez être utile et amusant,  
+  parce que sinon, vous ne le ferez pas bien de toute façon.
+cit-author: Brian W. Kernighan
+
+book:
+  title: "Sur le chemin de l'enf-R"
+  subtitle: "Une introduction au monde merveilleux de R"
+  description: "En cours de traduction"
+  author: Julien Martin
+  
+  site-url: https://biostats-uottawa.github.io/enf-R/
+  repo-url: https://github.com/biostats-uottawa/enf-R/
+
+  doi: 10.5281/zenodo.10929585 # to update
+  
+#  margin-header: '![](images/book_hex_en.png){width="100px"}'
+  page-footer:
+    left: |
+      <a href="https://biostats-uottawa.github.io/people.html">Julien Martin</a>
+    right: |
+      Ce livre a été crée avec <a href="https://quarto.org/">Quarto</a>.
+
+  navbar:
+    background: light
+    collapse-below: lg
+    title: '![](images/cover/book_hex_en.png){width="50px"} Chemin enf-R'
+    left:
+      - icon: flag
+        menu:
+        - href: https://biostats-uottawa.github.io/Rway
+          text: English
+#        - href: ../es
+#          text: Español
+      - text: Données
+        href: 902-donnees.qmd
+      - text: Biostats uOttawa
+        href: https://biostats-uottawa.github.io/
+      - text: Biostats with R (BioXx58)
+        href: https://biostats-uottawa.github.io/bioXx58/
+      - text: Biostats avancées et science ouverte (Bio8940)
+        href: https://biostats-uottawa.github.io/bio8940/
+
+  cover-image: images/cover/cover_fr.png
+  
+  chapters:
+    - index.qmd
+    - part: Utiliser R
+      chapters:
+        - 01-debut.qmd
+        - 02-base.qmd
+        - 03-donnees.qmd
+        - 04-graphique.qmd
+        - 05-programmation.qmd
+        - 06-quarto.qmd
+        - 07-github.qmd
+    - part: Principes de statistique
+      chapters:
+#        - 21-distributions, p CI.qmd
+        - 25-puissance.qmd
+    - part: Modèles linéaires
+      chapters:
+        #- 11-stats.qmd
+        - 31-reg_lin.qmd
+        - 32-t_test.qmd
+        - 33-anova.qmd
+        - 34-anova_mult.qmd
+        - 35-reg_mult.qmd
+        - 36-ancova_glm.qmd
+
+    - part:  Modèles linéaires généralisés
+      chapters:
+#       - 41-glm.qmd
+        - 42-model_freq.qmd
+#        - 31-principles.qmd
+#        - 31-poisson.qmd
+#        - 31-binomial.qmd
+    - part: Modèles mixtes
+#      chapters:
+#        - 51-lmm.qmd
+#        - 52-intro_glmm.qmd
+#        - 53-randreg.qmd
+#        - 54-multivar.qmd
+#        - 31-principles.qmd
+#        - 31-lme.qmd
+#        - 32-glme.qmd
+#        - 33-multi_lme.qmd
+    - part: Modèles additifs généralisés
+#        - 41-gam.qmd
+    - part: Analyses multivariées
+#      chapters:
+#        - 71-pca_try.qmd
+#        - 51-acp.qmd
+#        - 52-overview others.qmd
+    - part: Approche Bayesienne
+#      chapters:
+#        - 81-beyond_p.qmd
+#        - 82-intro_bayesian.qmd
+    - 901-bibliographie.qmd
+  appendices:
+    - 902-donnees.qmd
+#    - 903-latex.qmd
