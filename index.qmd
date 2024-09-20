@@ -41,7 +41,7 @@ Liste des langues :
 
 ## Comment utiliser ce livre {.unnumbered}
 
-Pour une meilleure expérience, nous te recommandons de lire la version web de ce livre que tu peux trouver à <https://biostats-uottawa.github.io/R/fr>.
+Pour une meilleure expérience, nous te recommandons de lire la version web de ce livre que tu peux trouver à <https://biostats-uottawa.github.io/enfR>.
 
 La version web inclut une barre de navigation incluant des options pour faciliter la lecture {{< fa align-left >}}, de recherche {{< fa  search >}}, pour changer la couleur {{< fa toggle-off >}} et pour suggérer des modifications ou reporter des problèmes {{< fa brands github >}}.
 Tu peux aussi télécharger le document {{< fa download >}} au format pdf ou epub.
@@ -277,6 +277,7 @@ font_add_google("Jim Nightshade", "jim")
 ## Automatically use showtext to render text for future devices
 showtext_auto()
 
+book <- "enfR"
 hexSticker::sticker("images/cover/cover_hex.jpg",
   package = title,
   angle = 0,
@@ -290,7 +291,7 @@ hexSticker::sticker("images/cover/cover_hex.jpg",
   s_height = 0.85,
   p_family = "jim",
   h_color = "black",
-  url = paste0("biostats-uottawa.github.io/R/", lang),
+  url = paste0("biostats-uottawa.github.io/", book, "/"),
   u_color = "grey80",
   u_size = 5,
   filename = paste0("images/cover/book_hex_", lang, ".png")
