@@ -32,7 +32,7 @@ book:
   navbar:
     background: light
     collapse-below: lg
-    title: '![](images/cover/book_hex_en.png){width="50px"} Chemin enf-R'
+    title: '![](images/cover/book_hex_fr.png){width="50px"} Chemin enf-R'
     left:
       - icon: flag
         menu:

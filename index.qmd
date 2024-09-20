@@ -269,7 +269,7 @@ tribble(
 
 # used only once or when cover image is modified
 lang <- "fr"
-title <- "Sur le chemin de l'enf-R"
+title <- "Chemin enf-R"
 
 library(showtext)
 ## Loading Google fonts (http://www.google.com/fonts)
@@ -299,7 +299,7 @@ hexSticker::sticker("images/cover/cover_hex.jpg",
 
 ```
 
-![](images/cover/book_hex_en.png){fig-align="center" width="50%"}
+![](images/cover/book_hex_fr.png){fig-align="center" width="50%"}
 
 
 
