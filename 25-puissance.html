@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr-fr" xml:lang="fr-fr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.9">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Julien Martin">
+<meta name="description" content="En cours de traduction">
+<title>8&nbsp; Analyse de puissance avec R et G*Power – Sur le chemin de l'enf-R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./31-reg_lin.html" rel="next">
+<link href="./07-github.html" rel="prev">
+<link href="./images/cover/book_fav.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-37bb72f48501692975d9c066fdeb097b.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-758c5ce73771950a3d9b163c2677d9fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SLXFYRXJR4"></script><script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SLXFYRXJR4', { 'anonymize_ip': true});
+</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+</head>
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title"><img src="images/cover/book_hex_en.png" class="img-fluid" width="50"> Chemin enf-R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Recherche"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-flag" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-flag" role="img">
+</i> 
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-bi-flag">
+<li>
+    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway/25-power.html">
+ <span class="dropdown-text">English</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item">
+    <a class="nav-link active" href="./902-donnees.html" aria-current="page"> 
+<span class="menu-text">Données</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://biostats-uottawa.github.io/"> 
+<span class="menu-text">Biostats uOttawa</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://biostats-uottawa.github.io/bioXx58/"> 
+<span class="menu-text">Biostats with R (BioXx58)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://biostats-uottawa.github.io/bio8940/"> 
+<span class="menu-text">Biostats avancées et science ouverte (Bio8940)</span></a>
+  </li>  
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/biostats-uottawa/enf-R/" title="Code source" class="quarto-navigation-tool px-1" aria-label="Code source"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Télécharger" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Télécharger"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+<li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./Sur-le-chemin-de-l-enf-R.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Télécharger PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./Sur-le-chemin-de-l-enf-R.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Télécharger ePub
+            </a>
+          </li>
+      </ul>
+</div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Basculer en mode lecteur">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./25-puissance.html">Principes de statistique</a></li><li class="breadcrumb-item"><a href="./25-puissance.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyse de puissance avec R et G\*Power</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Préface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Utiliser R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-debut.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pour commencer</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Quelques notions de base sur R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-donnees.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Données</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-graphique.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Figures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-programmation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Programmation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rapports reproductibles avec Quarto</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Contrôle de version avec Git et GitHub</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Principes de statistique</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-puissance.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyse de puissance avec R et G\*Power</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Modèles linéaires</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./31-reg_lin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Corrélation et régression linéaire simple</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./32-t_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Comparaison de deux échantillons</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./33-anova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ANOVA à un critère de classification</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./34-anova_mult.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ANOVA à critères multiples : plans factoriels et hiérarchiques</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./35-reg_mult.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Régression multiple</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./36-ancova_glm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ANCOVA et modèle linéaire général</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Modèles linéaires généralisés</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42-model_freq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Analyse de données de fréquence: Tableaux de contingence, modèles log-linéaires et régression de Poisson</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Modèles mixtes</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Modèles additifs généralisés</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Analyses multivariées</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Approche Bayesienne</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./901-bibliographie.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Références</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Annexes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Basculer la section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./902-donnees.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Données utilisées dans le livre</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+<li>
+<a href="#la-th%C3%A9orie" id="toc-la-théorie" class="nav-link active" data-scroll-target="#la-th%C3%A9orie"><span class="header-section-number">8.1</span> La théorie</a>
+  <ul class="collapse">
+<li><a href="#quest-ce-que-la-puissance" id="toc-quest-ce-que-la-puissance" class="nav-link" data-scroll-target="#quest-ce-que-la-puissance"><span class="header-section-number">8.1.1</span> Qu’est-ce que la puissance?</a></li>
+  <li><a href="#pourquoi-faire-une-analyse-de-puissance" id="toc-pourquoi-faire-une-analyse-de-puissance" class="nav-link" data-scroll-target="#pourquoi-faire-une-analyse-de-puissance"><span class="header-section-number">8.1.2</span> Pourquoi faire une analyse de puissance?</a></li>
+  <li><a href="#facteurs-qui-affectent-la-puissance" id="toc-facteurs-qui-affectent-la-puissance" class="nav-link" data-scroll-target="#facteurs-qui-affectent-la-puissance"><span class="header-section-number">8.1.3</span> Facteurs qui affectent la puissance</a></li>
+  </ul>
+</li>
+  <li><a href="#quest-ce-que-gpower" id="toc-quest-ce-que-gpower" class="nav-link" data-scroll-target="#quest-ce-que-gpower"><span class="header-section-number">8.2</span> Qu’est ce que G*Power?</a></li>
+  <li>
+<a href="#comment-utiliser-gpower" id="toc-comment-utiliser-gpower" class="nav-link" data-scroll-target="#comment-utiliser-gpower"><span class="header-section-number">8.3</span> Comment utiliser G*Power</a>
+  <ul class="collapse">
+<li><a href="#principe-g%C3%A9n%C3%A9ral" id="toc-principe-général" class="nav-link" data-scroll-target="#principe-g%C3%A9n%C3%A9ral"><span class="header-section-number">8.3.1</span> Principe général</a></li>
+  <li><a href="#types-danalyses-de-puissance-disponibles" id="toc-types-danalyses-de-puissance-disponibles" class="nav-link" data-scroll-target="#types-danalyses-de-puissance-disponibles"><span class="header-section-number">8.3.2</span> Types d’analyses de puissance disponibles</a></li>
+  <li><a href="#comment-calculer-la-taille-de-leffet-gpower-permet-de-faire-une-analyse-de-puissance-pour-de-nombreux-tests-statistiques" id="toc-comment-calculer-la-taille-de-leffet-gpower-permet-de-faire-une-analyse-de-puissance-pour-de-nombreux-tests-statistiques" class="nav-link" data-scroll-target="#comment-calculer-la-taille-de-leffet-gpower-permet-de-faire-une-analyse-de-puissance-pour-de-nombreux-tests-statistiques"><span class="header-section-number">8.3.3</span> Comment calculer la taille de l’effet G*Power permet de faire une analyse de puissance pour de nombreux tests statistiques</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#puissance-pour-un-test-de-t-comparant-deux-moyennes" id="toc-puissance-pour-un-test-de-t-comparant-deux-moyennes" class="nav-link" data-scroll-target="#puissance-pour-un-test-de-t-comparant-deux-moyennes"><span class="header-section-number">8.4</span> Puissance pour un test de t comparant deux moyennes</a>
+  <ul class="collapse">
+<li><a href="#analyse-post-hoc" id="toc-analyse-post-hoc" class="nav-link" data-scroll-target="#analyse-post-hoc"><span class="header-section-number">8.4.1</span> Analyse post-hoc</a></li>
+  <li><a href="#analyse-%C3%A0-priori" id="toc-analyse-à-priori" class="nav-link" data-scroll-target="#analyse-%C3%A0-priori"><span class="header-section-number">8.4.2</span> Analyse à priori</a></li>
+  <li><a href="#analyse-de-sensitivit%C3%A9---calculer-la-taille-deffet-d%C3%A9tectable" id="toc-analyse-de-sensitivité---calculer-la-taille-deffet-détectable" class="nav-link" data-scroll-target="#analyse-de-sensitivit%C3%A9---calculer-la-taille-deffet-d%C3%A9tectable"><span class="header-section-number">8.4.3</span> Analyse de sensitivité - Calculer la taille d’effet détectable</a></li>
+  </ul>
+</li>
+  <li><a href="#points-%C3%A0-retenir" id="toc-points-à-retenir" class="nav-link" data-scroll-target="#points-%C3%A0-retenir"><span class="header-section-number">8.5</span> Points à retenir</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/biostats-uottawa/enf-R/edit/main/25-puissance.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/biostats-uottawa/enf-R/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./25-puissance.html">Principes de statistique</a></li><li class="breadcrumb-item"><a href="./25-puissance.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyse de puissance avec R et G\*Power</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyse de puissance avec R et G*Power</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><!-- # (PART) Analyse de puissance {-} --><p>Après avoir complété cet exercice de laboratoire, vous devriez :</p>
+<ul>
+<li>Pouvoir calculer la puissance d’un test de t avec R et G*Power</li>
+<li>Pouvoir calculer l’effectif requis pour obtenir la puissance désirée avec un test de t</li>
+<li>Pouvoir calculer la taille de l’effet détectable par un test de t étant donné l’effectif, la puissance et <span class="math inline">\(\alpha\)</span>
+</li>
+<li>Comprendre comment la puissance change lorsque l’effectif augmente, la taille de l’effet change, ou lorsque <span class="math inline">\(\alpha\)</span> diminue</li>
+<li>Comprendre comment la puissance est affectée lorsque l’on passe d’un test bilatéral à un test unilatéral</li>
+</ul>
+<section id="la-théorie" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="la-théorie">
+<span class="header-section-number">8.1</span> La théorie</h2>
+<section id="quest-ce-que-la-puissance" class="level3" data-number="8.1.1"><h3 data-number="8.1.1" class="anchored" data-anchor-id="quest-ce-que-la-puissance">
+<span class="header-section-number">8.1.1</span> Qu’est-ce que la puissance?</h3>
+<p><em>La puissance est la probabilité de rejeter l’hypothèse nulle quand elle est fausse.</em></p>
+</section><section id="pourquoi-faire-une-analyse-de-puissance" class="level3" data-number="8.1.2"><h3 data-number="8.1.2" class="anchored" data-anchor-id="pourquoi-faire-une-analyse-de-puissance">
+<span class="header-section-number">8.1.2</span> Pourquoi faire une analyse de puissance?</h3>
+<section id="évaluer-lévidence" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="évaluer-lévidence">Évaluer l’évidence</h4>
+<p>L’analyse de puissance effectuée après avoir accepté une hypothèse nulle permet de calculer la probabilité que l’hypothèse nulle soit rejetée si elle était fausse et que la taille de l’effet était d’une valeur donnée. Ce type d’analyse a posteriori est très commun.</p>
+</section><section id="planifier-de-meilleures-expériences" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="planifier-de-meilleures-expériences">Planifier de meilleures expériences</h4>
+<p>L’analyse de puissance effectuée avant de réaliser une expérience (le plus souvent après une expérience préliminaire cependant), permet de déterminer le nombre d’observations nécessaires pour détecter un effet d’une taille donnée à un niveau fixe de probabilité (la puissance). Ce type d’analyse a priori devrait être réalisé plus souvent.</p>
+</section><section id="estimer-la-limite-de-détection-statistique" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="estimer-la-limite-de-détection-statistique">Estimer la “limite de détection” statistique</h4>
+<p>L’effort d’échantillonnage est souvent déterminé à l’avance (par exemple lorsque vous héritez de données récoltées par quelqu’un d’autre), ou très sévèrement limité (lorsque les contraintes logistiques prévalent). Que ce soit a priori ou a posteriori l’analyse de puissance vous permet d’estimer, pour un effort d’échantillonnage donné et un niveau de puissance fixe, quelle est la taille minimale de l’effet qui peut être détecté (comme étant statistiquement significatif).</p>
+</section></section><section id="facteurs-qui-affectent-la-puissance" class="level3" data-number="8.1.3"><h3 data-number="8.1.3" class="anchored" data-anchor-id="facteurs-qui-affectent-la-puissance">
+<span class="header-section-number">8.1.3</span> Facteurs qui affectent la puissance</h3>
+<p>Il y a 3 facteurs qui affectent la puissance d’un test statistique.</p>
+<section id="le-critère-de-décision" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="le-critère-de-décision">Le critère de décision</h4>
+<p>La puissance dépend de <span class="math inline">\(\alpha\)</span>, le seuil de probabilité auquel on rejette l’hypothèse nulle. Si ce seuil est très strict (<em>i.e.</em> si <span class="math inline">\(\alpha\)</span> est fixé à une valeur très basse, comme 0.1% ou p = 0.001), alors la puissance sera plus faible que si le seuil était moins strict.</p>
+</section><section id="la-taille-de-léchantillon" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="la-taille-de-léchantillon">La taille de l’échantillon</h4>
+<p>Plus l’échantillon est grand, plus la puissance est élevée. La capacité d’un test à détecter de petites différences comme étant statistiquement significatives augmente avec une augmentation du nombre d’observations.</p>
+</section><section id="la-taille-de-leffet" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="la-taille-de-leffet">La taille de l’effet</h4>
+<p>Plus la taille de l’effet est grande, plus un test a de puissance. Pour un échantillon de taille fixe, la capacité d’un test à détecter un effet comme étant statistiquement significatif est plus élevée si l’effet est grand que s’il est petit. La taille de l’effet est en fait une mesure du degré de fausseté de l’hypothèse nulle.</p>
+</section></section></section><section id="quest-ce-que-gpower" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="quest-ce-que-gpower">
+<span class="header-section-number">8.2</span> Qu’est ce que G*Power?</h2>
+<p>G*Power est un programme gratuit, développé par des psychologues de l’Université de Dusseldorf en Allemagne. Le programme existe en version Mac et Windows. Il peut cependant être utilisé sous linux via Wine. G*Power vous permettra d’effectuer une analyse de puissance pour la majorité des tests que nous verrons au cours de la session sans avoir à effectuer des calculs complexes ou farfouiller dans des tableaux ou des figures décrivant des distributions ou des courbes de puissance. Il est possible de faire tous les analyses de G*power avec R, mais cela est nettement plus complexes, car il faut tous coder à la main. Dans les cas les plus simple le code R est aussi fourni. G*power est vraiment un outil très utile que vous devrez maîtriser.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Téléchargez le programme <strong><a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower.html">ici</a></strong> et installez-le sur votre ordi et votre station de travail au laboratoire (si ce n’est déjà fait).</p>
+</div>
+</div>
+</section><section id="comment-utiliser-gpower" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="comment-utiliser-gpower">
+<span class="header-section-number">8.3</span> Comment utiliser G*Power</h2>
+<section id="principe-général" class="level3" data-number="8.3.1"><h3 data-number="8.3.1" class="anchored" data-anchor-id="principe-général">
+<span class="header-section-number">8.3.1</span> Principe général</h3>
+<p>L’utilisation de G*Power implique généralement en trois étapes:</p>
+<ol type="1">
+<li>Choisir le test approprié</li>
+<li>Choisir l’un des 5 types d’analyses de puissance disponibles</li>
+<li>Inscrire les valeurs des paramètres requis et cliquer sur Calculate</li>
+</ol></section><section id="types-danalyses-de-puissance-disponibles" class="level3" data-number="8.3.2"><h3 data-number="8.3.2" class="anchored" data-anchor-id="types-danalyses-de-puissance-disponibles">
+<span class="header-section-number">8.3.2</span> Types d’analyses de puissance disponibles</h3>
+<section id="a-priori" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="a-priori">A priori</h4>
+<p>Calcule l’effectif requis pour une valeur de <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> et de taille d’effet donnée. Ce type d’analyse est utile à l’étape de planification des expériences.</p>
+</section><section id="compromis" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="compromis">Compromis</h4>
+<p>Calcule <span class="math inline">\(\alpha\)</span> et <span class="math inline">\(\beta\)</span> pour un rapport <span class="math inline">\(\beta / \alpha\)</span> donné, un effectif fixe, et une taille d’effet donnée. Ce type d’analyse est plus rarement utilisé (je ne l’ai jamais fait), mais peut être utile lorsque le rapport <span class="math inline">\(\beta / \alpha\)</span> est d’intérêt, par exemple lorsque le coût d’une erreur de type I et de type II peut être quantifié.</p>
+</section><section id="critère" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="critère">Critère</h4>
+<p>Calcule <span class="math inline">\(\alpha\)</span> pour <span class="math inline">\(\beta\)</span>, effectif et taille d’effet donné. En pratique, je vois peu d’utilité pour ce type de calcul. Contactez-moi si vous en voyez une!</p>
+</section><section id="post-hoc" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="post-hoc">Post-hoc</h4>
+<p>Calcule la puissance (1 - <span class="math inline">\(\beta\)</span>) pour <span class="math inline">\(\alpha\)</span>, une taille d’effet et un effectif donné. Très utilisée pour interpréter les résultats d’une analyse statistique non-significative, mais seulement si l’on utilise une taille d’effet biologiquement significative (et non la taille d’effet observée). Peu pertinente lorsque le test est significatif.</p>
+</section><section id="sensitivité" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="sensitivité">Sensitivité</h4>
+<p>Calcule la taille d’effet détectable pour une valeur d’<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> et un effectif donné. Très utile également au stade de planification des expériences.</p>
+</section></section><section id="comment-calculer-la-taille-de-leffet-gpower-permet-de-faire-une-analyse-de-puissance-pour-de-nombreux-tests-statistiques" class="level3" data-number="8.3.3"><h3 data-number="8.3.3" class="anchored" data-anchor-id="comment-calculer-la-taille-de-leffet-gpower-permet-de-faire-une-analyse-de-puissance-pour-de-nombreux-tests-statistiques">
+<span class="header-section-number">8.3.3</span> Comment calculer la taille de l’effet G*Power permet de faire une analyse de puissance pour de nombreux tests statistiques</h3>
+<p>L’indice de la taille de l’effet qui est utilisé par G*Power pour les calculs dépend du test. Notez que d’autres logiciels peuvent utiliser des indices différents et il est important de vérifier que l’indice que l’on utilise est celui qui convient. G*Power vous facilite la tâche et permet de calculer la taille de l’effet en inscrivant seulement les valeurs pertinentes dans la fenêtre de calcul. Le tableau suivant donne les indices utilisés par G*Power pour les différents tests.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 38%">
+<col style="width: 50%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">Test</th>
+<th style="text-align: center;">Taille d’effet</th>
+<th style="text-align: left;">Formule</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">test de t sur des moyennes</td>
+<td style="text-align: center;">d</td>
+<td style="text-align: left;"><span class="math inline">\(d = \frac{|\mu_1 - \mu_2|}{\sqrt{({s_1}^2 + {s_2}^2)/2}}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">test de t pour des corrélations</td>
+<td style="text-align: center;">r</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">autres tests de t</td>
+<td style="text-align: center;">d</td>
+<td style="text-align: left;"><span class="math inline">\(d = \frac{\mu}{\sigma}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">test F (ANOVA)</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: left;"><span class="math inline">\(f = \frac{\frac{\sqrt{\sum_{i=1}^k (\mu_i - \mu)^2}}{k}}{\sigma}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">autres test F</td>
+<td style="text-align: center;"><span class="math inline">\(f^2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(f^2 = \frac{{R_p}^2}{1-{R_p}^2}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">
+<span class="math inline">\({R_p}\)</span> est le coefficient de corrélation partiel</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">test Chi-carré</td>
+<td style="text-align: center;">w</td>
+<td style="text-align: left;"><span class="math inline">\(w = \sqrt{ \sum_{i=1}^m \frac{(p_{0i} - p_{1i})^2 }{ p_{0i}} }\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;">
+<span class="math inline">\(p_{0i}\)</span> <span class="math inline">\(p_{1i}\)</span> sont les proportions de la catégorie i prédites par l’hypothèse nulle et alternative respectivement</td>
+</tr>
+</tbody>
+</table></section></section><section id="puissance-pour-un-test-de-t-comparant-deux-moyennes" class="level2" data-number="8.4"><h2 data-number="8.4" class="anchored" data-anchor-id="puissance-pour-un-test-de-t-comparant-deux-moyennes">
+<span class="header-section-number">8.4</span> Puissance pour un test de t comparant deux moyennes</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’ensemble des analyses de puissance décrites après peuvent être réalisé avec 2 fonctions dans R.</p>
+<ul>
+<li>
+<code><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test()</a></code>: lorsque les tailles d’échantillons sont identiques</li>
+<li>
+<code><a href="https://rdrr.io/pkg/pwr/man/pwr.t2n.test.html">pwr.t2n.test()</a></code>: lorsque les échantillons ont des tailles différentes</li>
+</ul>
+</div>
+</div>
+<p>L’objectif de cette séance de laboratoire est de vous familiariser avec G*Power et de vous aider à comprendre comment les quatre paramètres des analyses de puissance (<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, effectif et taille de l’effet) sont reliés entre eux. On examinera seulement un des nombreux tests, le test de t permettant de comparer deux moyennes indépendantes. C’est le test le plus communément utilisé par les biologistes, vous l’avez tous déjà utilisé, et il conviendra très bien pour les besoins de la cause. Ce que vous apprendrez aujourd’hui s’appliquera à toutes les autres analyses de puissance que vous effectuerez à l’avenir.</p>
+<p>Jaynie Stephenson a étudié la productivité des ruisseaux de la région d’Ottawa. Elle a, entre autres, quantifié la biomasse des poissons dans 18 ruisseaux sur le Bouclier Canadien d’une part, et dans 18 autres ruisseaux de la vallée de la rivière des Outaouais et de la rivière Rideau d’autre part. Elle a observé une biomasse plus faible dans les ruisseaux de la vallée (2.64 <span class="math inline">\(g/m^2\)</span>, écart-type=3.28) que dans ceux du Bouclier (3.31 <span class="math inline">\(g/m^2\)</span>, écart-type=2.79). En faisant un test de t pour éprouver l’hypothèse nulle que la biomasse des poissons est la même dans les deux régions, elle obtient:</p>
+<pre><code>Pooled-Variance Two-Sample t-Test
+t = -0.5746, df = 34, p-value = 0.5693</code></pre>
+<p>Elle accepte l’hypothèse nulle (puisque p est plus élevé que 0.05) conclue donc que la biomasse moyenne des poissons est la même dans ces deux régions.</p>
+<section id="analyse-post-hoc" class="level3" data-number="8.4.1"><h3 data-number="8.4.1" class="anchored" data-anchor-id="analyse-post-hoc">
+<span class="header-section-number">8.4.1</span> Analyse post-hoc</h3>
+<p>Compte tenu des valeurs des moyennes observées et de leur écart- type, on peut utiliser G*Power pour calculer la puissance du test de t bilatéral pour deux moyennes indépendantes et pour la taille d’effet (i.e.&nbsp;la différence entre la biomasse entre les deux régions, pondérée par les écarts-type) à <span class="math inline">\(\alpha\)</span> = 0.05.</p>
+<p>Démarrer G*Power.</p>
+<ol type="1">
+<li>À <strong>Test family</strong>, choisir: t tests</li>
+<li>À <strong>Statistical test</strong>, choisir: Means: Difference between two inde- pendent means (two groups)</li>
+<li>À <strong>Type of power analysis</strong>, choisir: Post hoc: Compute achieved power - given <span class="math inline">\(\alpha\)</span>, sample size, and effect size</li>
+<li>Dans <strong>Input Parameters</strong>,</li>
+</ol>
+<ul>
+<li>à la boîte <strong>Tail(s)</strong>, choisir: Two,</li>
+<li>vérifier que <span class="math inline">\(\alpha\)</span> <strong>err prob</strong> est égal à 0.05</li>
+<li>inscrire 18 pour <strong>Sample size group</strong> 1 et 2</li>
+<li>pour calculer la taille d’effet (Effect size d), cliquer sur le bouton <strong>Determine =&gt;</strong>
+</li>
+</ul>
+<ol start="5" type="1">
+<li>Dans la fenêtre qui s’ouvre à droite, sélectionner <strong>n1 = n2</strong>
+</li>
+</ol>
+<ul>
+<li>entrer les moyennes (<strong>Mean group</strong> 1 et 2)</li>
+<li>entrer les écarts types (<strong>SDs group</strong> 1 et 2)</li>
+<li>cliquer sur le bouton <strong>Calculate and transfer to main window</strong>
+</li>
+</ul>
+<ol start="6" type="1">
+<li>Cliquer sur le bouton Calculate dans la fenêtre principale et vous devriez obtenir ceci:</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/gpower_1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Analyse post-hoc avec la taille d’effet estimée</figcaption></figure>
+</div>
+</div>
+</div>
+<p>La même analyse peut être faites en utlisant R. Pour l’analyse avec R, il faut définir d’abord calculer la taille d’effet <code>d</code> pour un test de t comparant deux moyennes, puis utiliser la fonction <code>pwr.t.test</code> de l’extension <code>pwr</code>. Le plus simple comme nous allons estimer la taille d’effet <code>d</code> plusieurs fois et de créer une petite fonction qui estime <code>d</code> basé sur les paramètres nécessaires.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># charger l'extension pwr</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
+<span><span class="co"># définir une fonction pour d</span></span>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">u1</span>, <span class="va">u2</span>, <span class="va">sd1</span>, <span class="va">sd2</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">u1</span> <span class="op">-</span> <span class="va">u2</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">sd1</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">sd2</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># analyse de puissance</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">18</span>, d <span class="op">=</span> <span class="fu">d</span><span class="op">(</span>u1 <span class="op">=</span> <span class="fl">2.64</span>, sd1 <span class="op">=</span> <span class="fl">3.28</span>, u2 <span class="op">=</span> <span class="fl">3.31</span>, sd2 <span class="op">=</span> <span class="fl">2.79</span><span class="op">)</span>, sig.level <span class="op">=</span> <span class="fl">0.05</span>, type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 18
+              d = 0.220042
+      sig.level = 0.05
+          power = 0.09833902
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># graphique comme g*Power</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">4</span>, <span class="fl">4</span>, length <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span>, col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">qc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">16</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="va">qc</span>, col <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="op">-</span><span class="va">qc</span>, col <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="op">(</span><span class="fl">3.31</span> <span class="op">-</span> <span class="fl">2.64</span><span class="op">)</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span>, col <span class="op">=</span> <span class="st">"blue"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># power corresponds to the shaded area</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="op">(</span><span class="fl">3.31</span> <span class="op">-</span> <span class="fl">2.64</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">&lt;=</span> <span class="op">-</span><span class="va">qc</span><span class="op">]</span>, <span class="op">-</span><span class="va">qc</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="va">x</span> <span class="op">&lt;=</span> <span class="op">-</span><span class="va">qc</span><span class="op">]</span>, <span class="fl">0</span><span class="op">)</span>, col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/rgb.html">rgb</a></span><span class="op">(</span>red <span class="op">=</span> <span class="fl">0</span>, green <span class="op">=</span> <span class="fl">0.2</span>, blue <span class="op">=</span> <span class="fl">1</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="25-puissance_files/figure-html/r-power-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Graphique de l’analyse de puissance dans R</figcaption></figure>
+</div>
+</div>
+</div>
+<p>Étudions un peu la figure @ref(fig:gpower-1).</p>
+<ul>
+<li>La courbe de gauche, en rouge, correspond à la distribution de la statistique t si <span class="math inline">\(H_0\)</span> est vraie (i.e si les deux moyennes étaient égales) compte tenu de l’effectif (18 dans chaque région) et des écarts- types observés.</li>
+<li>Les lignes verticales vertes correspondent aux valeurs critiques de t pour une valeur <span class="math inline">\(\alpha = 0.05\)</span> et un effectif total de 36 (2x18).</li>
+<li>Les régions ombrées en rose correspondent aux zones de rejet de <span class="math inline">\(H_0\)</span>. Si Jaynie avait obtenu une valeur de t en dehors de l’intervalle délimité par les valeurs critiques allant de -2.03224 à 2.03224, alors elle aurait rejeté <span class="math inline">\(H_0\)</span>, l’hypothèse nulle d’égalité des deux moyennes. En fait, elle a obtenu une valeur de t égale à -0.5746 et conclu que la biomasse est la même dans les deux régions.</li>
+<li>La courbe de droite, en bleu, correspond à la distribution de la sta- tistique t si <span class="math inline">\(H_1\)</span> est vraie (ici <span class="math inline">\(H_1\)</span> correspond à une différence de biomasse entre les deux régions de <span class="math inline">\(3.33-2.64=0.69g/m^2\)</span>, compte tenu des écarts-types observés). Cette distribution correspond à ce qu’on devrait s’attendre à observer si <span class="math inline">\(H_1\)</span> était vraie et que l’on répétait un grand nombre de fois les mesures dans des échantillons aléatoires de 18 ruisseaux des deux régions en calculant la statistique t à chaque fois. En moyenne, on observerait une valeur de t d’environ 0.6.</li>
+<li>Notez que la distribution de droite chevauche considérablement celle de gauche, et une bonne partie de la surface sous la courbe de droite se retrouve à l’intérieur de l’intervalle d’acceptation de <span class="math inline">\(H_0\)</span>, délimité par les deux lignes vertes et allant de -2.03224 à 2.03224. Cette proportion, correspondant à la partie ombrée en bleu sous la courbe de droite et dénoté par <span class="math inline">\(\beta\)</span> correspond au risque d’erreur de type II qui est d’accepter <span class="math inline">\(H_0\)</span> quand <span class="math inline">\(H_1\)</span> est vraie.</li>
+<li>La puissance est simplement <span class="math inline">\(1-\beta\)</span>, et est ici de 0.098339. Donc, si la biomasse différait de 0.69<span class="math inline">\(g/m^2\)</span> entre les deux régions, Jaynie n’avait que 9.8% des chances d’être capable de détecter une différence statistiquement significative à <span class="math inline">\(\alpha=5%\)</span> en échantillonnant 18 ruisseaux de chaque région.</li>
+</ul>
+<p><strong>Récapitulons:</strong> La différence de biomasse entre les deux régions n’est pas statistiquement significative d’après le test de t. C’est donc que cette différence est relativement petite compte tenu de la précision des mesures. Il n’est donc pas très surprenant que la puissance, i.e.&nbsp;la probabilité de détecter une différence significative, soit faible. Toute cette analyse ne nous informe pas beaucoup.</p>
+<p><strong>Une analyse de puissance post hoc avec la taille de l’effet observé n’est pas très utile.</strong> On la fera plutôt pour une taille d’effet autre que celle observée quand H 0 est acceptée. Quelle taille d’effet utiliser? C’est la biologie du système étudié qui peut nous guider. Par exemple, en ce qui concerne la biomasse des poissons, on pourrait s’attendre à ce qu’une différence de biomasse du simple au double (disons de 2.64 à 5.28 <span class="math inline">\(g/m^2\)</span>) ait des conséquences écologiques. On voudrait s’assurer que Jaynie avait de bonnes chances de détecter une différence aussi grande que celle-là avant d’accepter ses conclusions que la biomasse est la même entre les deux régions. Quelles étaient les chances de Jaynie de détecter une différence de 2.64 <span class="math inline">\(g/m^2\)</span> entre les deux régions? G*Power peut nous le dire.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Changer la moyenne du groupe 2 à 5.28, recalculer la taille d’effet, et cliquer sur Calculate pour obtenir (@ref(fig:gpower-2)).</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/gpower_2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Analyse post-hoc avec une taille d’effet différente</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">18</span>, d <span class="op">=</span> <span class="fu">d</span><span class="op">(</span>u1 <span class="op">=</span> <span class="fl">2.64</span>, sd1 <span class="op">=</span> <span class="fl">3.28</span>, u2 <span class="op">=</span> <span class="fl">5.28</span>, sd2 <span class="op">=</span> <span class="fl">2.79</span><span class="op">)</span>, sig.level <span class="op">=</span> <span class="fl">0.05</span>, type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 18
+              d = 0.8670313
+      sig.level = 0.05
+          power = 0.7146763
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
+</div>
+<p>La puissance est de 0.71, donc Jaynie avait une chance raisonnable de détecter une différence du simple au double avec 18 ruisseaux dans chaque région.</p>
+<p>Notez que cette analyse de puissance post hoc pour une taille d’effet jugée biologiquement significative est bien plus informative que l’analyse précédente pour la taille d’effet observée (qui est celle effectuée par défaut par bien des néophytes et de trop nombreux logiciels qui essaient de penser pour nous). En effet, Jaynie n’a pu détecter de différences significatives entre les deux régions. Cela pourrait être pour deux raisons: soit qu’il n’y a pas de différences entre les régions, ou soit parce que la précision des mesures est si faible et l’effort d’échantillonnage était si limité qu’il était très peu probable de détecter même d’énormes différences. La deuxième analyse de puissance permet d’éliminer cette seconde possibilité puisque Jaynie avait 71% des chances de détecter une différence du simple au double.</p>
+</section><section id="analyse-à-priori" class="level3" data-number="8.4.2"><h3 data-number="8.4.2" class="anchored" data-anchor-id="analyse-à-priori">
+<span class="header-section-number">8.4.2</span> Analyse à priori</h3>
+<p>Supposons qu’on puisse défendre la position qu’une différence de biomasse observée par Jaynie entre les deux régions, <span class="math inline">\(3.31- 2.64=0.67g/m^2\)</span>, soit écologiquement signifiante. On devrait donc planifier la prochaine saison d’échantillonnage de manière à avoir de bonnes chances de détecter une différence de cette taille. Combien de ruisseaux Jaynie devrait-elle échantillonner pour avoir 80% des chances de la détecter (compte tenu de la variabilité observée)?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Changer le type d’analyse de puissance dans G*Power à <strong>A priori</strong>: <strong>Compute sample size - given <span class="math inline">\(\alpha\)</span>, power, and effect size.</strong> Assurez-vous que les valeurs pour les moyennes et les écarts-type soient celles qu’a obtenu Jaynie, recalculez la taille de l’effet, et inscrivez 0.8 pour la puissance.</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/gpower_3.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Analyse à priori</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">0.8</span>, d <span class="op">=</span> <span class="fu">d</span><span class="op">(</span>u1 <span class="op">=</span> <span class="fl">2.64</span>, sd1 <span class="op">=</span> <span class="fl">3.28</span>, u2 <span class="op">=</span> <span class="fl">3.31</span>, sd2 <span class="op">=</span> <span class="fl">2.79</span><span class="op">)</span>, sig.level <span class="op">=</span> <span class="fl">0.05</span>, type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 325.1723
+              d = 0.220042
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
+</div>
+<p><strong>Ouch!</strong> Il faudrait échantillonner 326 ruisseaux dans chaque région! Cela coûterait une fortune et exigerait de nombreuses équipes de travail. Sans cela, on ne pourrait échantillonner que quelques dizaines de ruisseaux, et il serait peu probable que l’on puisse détecter une si faible différence de biomasse entre les deux régions. Ce serait vraisemblablement en vain et pourrait être considéré comme une perte de temps: pourquoi tant d’efforts et de dépenses si les chances de succès sont si faibles.</p>
+<p>Si on refait le même calcul pour une puissance de 95%, on obtient 538 ruisseaux par région. Augmenter la puissance ça demande plus d’effort.</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">0.95</span>, d <span class="op">=</span> <span class="fu">d</span><span class="op">(</span>u1 <span class="op">=</span> <span class="fl">2.64</span>, sd1 <span class="op">=</span> <span class="fl">3.28</span>, u2 <span class="op">=</span> <span class="fl">3.31</span>, sd2 <span class="op">=</span> <span class="fl">2.79</span><span class="op">)</span>, sig.level <span class="op">=</span> <span class="fl">0.05</span>, type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 537.7286
+              d = 0.220042
+      sig.level = 0.05
+          power = 0.95
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
+</div>
+</section><section id="analyse-de-sensitivité---calculer-la-taille-deffet-détectable" class="level3" data-number="8.4.3"><h3 data-number="8.4.3" class="anchored" data-anchor-id="analyse-de-sensitivité---calculer-la-taille-deffet-détectable">
+<span class="header-section-number">8.4.3</span> Analyse de sensitivité - Calculer la taille d’effet détectable</h3>
+<p>Compte tenu de la variabilité observée, d’un effort d’échantillonnage de 18 ruisseaux par région, et en conservant <span class="math inline">\(\alpha=0.05\)</span>, quelle est la taille d’effet que Jaynie pouvait détecter avec 80% de chances <span class="math inline">\(\beta=0.2\)</span>)?</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Changez le type d’analyse dans G*Power à <strong>Sensitivity</strong>: <strong>Compute required effect size - given <span class="math inline">\(\alpha\)</span>, power, and sample size</strong> et assurez-vous que la taille des échantillons est de 18 dans chaque région.</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/gpower_4.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Analyse de sensitivité</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">0.8</span>, n <span class="op">=</span> <span class="fl">18</span>, sig.level <span class="op">=</span> <span class="fl">0.05</span>, type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 18
+              d = 0.9612854
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
+</div>
+<p>La taille d’effet détectable pour cette taille d’échantillon, <span class="math inline">\(\alpha=0.05\)</span> et <span class="math inline">\(\beta=0.2\)</span> (ou une puissance de 80%) est de 0.961296.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Avertissement
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>cette valeur est l’indice <code>d</code> de la taille de l’effet et est pondérée par la variabilité des mesures.</p>
+</div>
+</div>
+<p>Dans ce cas ci, <code>d</code> est approximativement égal à <span class="math display">\[ d = \frac{| \bar{X_1} \bar{X_2} |} {\sqrt{\frac{{s_1}^2 +{s_2}^2}{2}}}\]</span> Pour convertir cette valeur de d sans unités en une valeur de différence de biomasse détectable (i.e <span class="math inline">\(| \bar{X_1} \bar{X_2} |\)</span>), il suffit de multiplier <code>d</code> par le dénominateur de l’équation. <span class="math display">\[
+| \bar{X_1} \bar{X_2} | = d * \sqrt{\frac{{s_1}^2 +{s_2}^2}{2}}
+\]</span> Dans R, on peut estimer cela avec:</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">0.8</span>, n <span class="op">=</span> <span class="fl">18</span>, sig.level <span class="op">=</span> <span class="fl">0.05</span>, type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span><span class="op">$</span><span class="va">d</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="fl">3.28</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">2.79</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.926992</code></pre>
+</div>
+</div>
+<p>Donc, avec 18 ruisseaux dans chaque région, pour <span class="math inline">\(\alpha=0.05\)</span> et <span class="math inline">\(\beta=0.2\)</span> (une puissance de 80%), Jaynie pouvait détecter une différence de biomasse de 2.93<span class="math inline">\(g/m^2\)</span> entre les régions, un peu plus que du simple au double.</p>
+</section></section><section id="points-à-retenir" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="points-à-retenir">
+<span class="header-section-number">8.5</span> Points à retenir</h2>
+<ul>
+<li>L’analyse de puissance post hoc n’est pertinente que lorsque l’on a accepté l’hypothèse nulle. Il est en effet impossible de faire une erreur de type II quand on rejette <span class="math inline">\(H_0\)</span>.</li>
+<li>Avec de très grands échantillons, on a une puissance quasi infinie et on peut détecter statistiquement de très petites différences qui ne sont pas nécessairement biologiquement significatives.</li>
+<li>En utilisant un critère de signification plus strict (<span class="math inline">\(\alpha\)</span>&lt;0.05) on diminue notre puissance.</li>
+<li>En voulant maximiser la puissance, on augmente l’effort requis, à moins d’utiliser une valeur critique plus libérale (<span class="math inline">\(\alpha&gt;0.05\)</span>)</li>
+<li>Le choix de <span class="math inline">\(\beta\)</span> est quelque peu arbitraire. On considère que <span class="math inline">\(\beta=0.2\)</span> (puissance de 80%) est relativement élevé.</li>
+</ul>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copié");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copié");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/biostats-uottawa\.github\.io\/enf-R\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./07-github.html" class="pagination-link" aria-label="Contrôle de version avec Git et GitHub">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Contrôle de version avec Git et GitHub</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./31-reg_lin.html" class="pagination-link" aria-label="Corrélation et régression linéaire simple">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Corrélation et régression linéaire simple</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="https://biostats-uottawa.github.io/people.html">Julien Martin</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/biostats-uottawa/enf-R/edit/main/25-puissance.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/biostats-uottawa/enf-R/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Ce livre a été crée avec <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>
