@@ -1,0 +1,51 @@
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\def\maketitle{
+\pagenumbering{roman}
+{\sf\thispagestyle{empty}%
+   \null\vskip-.4cm%
+
+   \begin{center}
+      \fontsize{24}{28}\sf
+      \textbf{$title$}\\[2cm]
+      %\usekomafont{title}{\huge $title$}\\[2cm]
+       \null\vskip1cm%
+   \centerline{\includegraphics[width=12cm]{_extensions/juliengamartin/bio-uo-thesis/uOttawa-crop-large.png}}
+   \vspace*{2cm}
+      \fontsize{18}{20}\sf $author$\\[0.2cm]
+       %\usekomafont{author}{$author$}\\[0.2cm]
+%      \fontsize{13}{15}\sf $degrees$
+      \vspace*{2 cm}
+      \fontsize{13}{15}\sf
+      Thesis submitted to the University of Ottawa\\
+      as a partial requirement for the degree of\\
+      $degree$\\
+
+      \vfill 
+      
+      $department$\\
+      $faculty$\\
+      University of Ottawa \par
+
+        \vspace*{0.5 cm}
+
+        \copyright $author$, Ottawa, Canada, $submitted$
+   \end{center}
+   \newpage\mbox{}\thispagestyle{empty}\newpage
+  }
+}
+
+% Title and date
+
+$if(title)$
+\title{$title$}
+$endif$
+$if(subtitle)$
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{$subtitle$}
+$endif$
+\date{$date$}
