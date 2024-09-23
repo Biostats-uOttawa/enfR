@@ -397,11 +397,11 @@ digraph {
     style = filled
     shape=oval
   ]
-  root [fillcolor="red"]
-  data [fillcolor="lightblue"]
-  functions [fillcolor="lightgreen"]
-  outputs [fillcolor="orange"]
-  scripts [fillcolor="white"]
+  root [label =  "racine", fillcolor="red"]
+  data [label =  "donées", fillcolor="lightblue"]
+  functions [label =  "fonctions", fillcolor="lightgreen"]
+  outputs [label =  "sortie", fillcolor="orange"]
+  scripts [label =  "scripts", fillcolor="white"]
 
   wd [label= "votre répertoire de travail", shape = rect]
   LOT1 [label= "métadonnées\n brutes\n traitée", shape = rect]
