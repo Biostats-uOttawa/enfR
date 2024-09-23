@@ -146,7 +146,7 @@ Lorsque vous ouvrez RStudio pour la première fois, vous devriez voir la présen
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Fenêtre principale R studio
-knitr::include_graphics(path = "r-book-common-main/images/start/rstudio-fr.png")
+knitr::include_graphics(path = "images/start/rstudio-fr.png")
 ```
 
 La grande fenêtre (ou volet) de gauche est la **Console**.
@@ -170,7 +170,7 @@ Ne vous préoccupez pas du `[1]` au début de la ligne pour l'instant.
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Vue de la console R studio
-knitr::include_graphics(path = "r-book-common-main/images/start/rconsole_eval-fr.png")
+knitr::include_graphics(path = "images/start/rconsole_eval-fr.png")
 ```
 
 Cependant, dès que vous commencez à écrire plus de code R, cela devient plutôt encombrant.
@@ -185,7 +185,7 @@ Pour créer un nouveau script R, cliquez sur le menu "Fichier", puis sélectionn
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Créer un nouveau fichier script sur R studio
-knitr::include_graphics(path = "r-book-common-main/images/start/new_script-fr.png")
+knitr::include_graphics(path = "images/start/new_script-fr.png")
 ```
 
 Vous remarquerez qu'une nouvelle fenêtre (appelée volet Source) apparaît en haut à gauche de RStudio et que la console se trouve désormais en bas à gauche.
@@ -197,7 +197,7 @@ La nouvelle fenêtre est un éditeur de script et c'est là que vous écrirez vo
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Fenêtre principale avec un nouveau script sur R studio
-knitr::include_graphics(path = "r-book-common-main/images/start/rstudio_new-fr.png")
+knitr::include_graphics(path = "images/start/rstudio_new-fr.png")
 ```
 
 Pour transférer votre code de votre éditeur de script à la console, placez simplement votre curseur sur la ligne de code, puis cliquez sur le bouton "Exécuter" en haut à droite de la fenêtre de l'éditeur de script.
@@ -208,7 +208,7 @@ Pour transférer votre code de votre éditeur de script à la console, placez si
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Bouton "Exécuter" sur R studio
-knitr::include_graphics(path = "r-book-common-main/images/start/rstudio_run-fr.png")
+knitr::include_graphics(path = "images/start/rstudio_run-fr.png")
 ```
 
 Vous devriez voir le résultat dans la fenêtre de la console.
@@ -263,7 +263,7 @@ Vous pouvez accéder à chaque composant en cliquant sur l'onglet approprié dan
 #| fig-align: center
 #| label: fig-vscode
 #| fig-cap: Aperçu de la fenêtre VSCode
-knitr::include_graphics(path = "r-book-common-main/images/start/vs_orient.png")
+knitr::include_graphics(path = "images/start/vs_orient.png")
 ```
 
 #### Panneau gauche
@@ -298,7 +298,7 @@ Comprend :
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Onglet d'édition et panneaux de prévisualisation VSCode
-knitr::include_graphics(path = "r-book-common-main/images/start/vs_editor_tabs.png")
+knitr::include_graphics(path = "images/start/vs_editor_tabs.png")
 ```
 
 #### Fenêtre du terminal
@@ -314,7 +314,7 @@ Contient :
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Fenêtre du terminal VSCode
-knitr::include_graphics(path = "r-book-common-main/images/start/vs_term_panel.png")
+knitr::include_graphics(path = "images/start/vs_term_panel.png")
 ```
 
 ## Répertoires de travail {#sec-work-d}
@@ -522,7 +522,7 @@ Dans ce chapitre, nous allons créer un projet dans un nouveau répertoire.
 #| out-width: 60%
 #| fig-align: center
 #| fig-cap: Créer un Projet R Studio étape 1
-knitr::include_graphics(path = "r-book-common-main/images/start/new_proj-fr.png")
+knitr::include_graphics(path = "images/start/new_proj-fr.png")
 ```
 
 Vous pouvez également créer un nouveau projet en cliquant sur le bouton "Projet" en haut à droite de RStudio et en sélectionnant "Nouveau projet..."
@@ -533,7 +533,7 @@ Vous pouvez également créer un nouveau projet en cliquant sur le bouton "Proje
 #| out-width: 30%
 #| fig-align: center
 #| fig-cap: Créer un Projet R Studio étape 2
-knitr::include_graphics(path = "r-book-common-main/images/start/new_proj1-fr.png")
+knitr::include_graphics(path = "images/start/new_proj1-fr.png")
 ```
 
 Dans la fenêtre suivante, sélectionnez "Nouveau projet".
@@ -544,7 +544,7 @@ Dans la fenêtre suivante, sélectionnez "Nouveau projet".
 #| out-width: 60%
 #| fig-align: center
 #| fig-cap: Créer un Projet R Studio étape 3
-knitr::include_graphics(path = "r-book-common-main/images/start/new_proj2-fr.png")
+knitr::include_graphics(path = "images/start/new_proj2-fr.png")
 ```
 
 Saisissez le nom du répertoire que vous souhaitez créer dans le champ "Nom du répertoire :" (nous l'appellerons `premier_projet` pour ce chapitre).
@@ -558,7 +558,7 @@ Enfin, cliquez sur le bouton "Créer un projet" pour créer le nouveau projet.
 #| out-width: 60%
 #| fig-align: center
 #| fig-cap: Créer un Projet R Studio étape 4
-knitr::include_graphics(path = "r-book-common-main/images/start/new_proj3-fr.png")
+knitr::include_graphics(path = "images/start/new_proj3-fr.png")
 ```
 
 Une fois votre nouveau projet créé, vous disposerez d'un nouveau dossier sur votre ordinateur contenant un fichier de projet RStudio appelé `premier_projet.Rproj`.
@@ -571,7 +571,7 @@ Vous pouvez le vérifier dans l'onglet "Fichiers" de RStudio (ou dans Finder si 
 #| out-width: 80%
 #| fig-align: center
 #| fig-cap: Créer un Projet R Studio étape finale
-knitr::include_graphics(path = "r-book-common-main/images/start/new_proj4-fr.png")
+knitr::include_graphics(path = "images/start/new_proj4-fr.png")
 ```
 
 La dernière chose que nous vous suggérons de faire est de sélectionner `Outils` -\> `Options du Project...` dans le menu.
@@ -586,7 +586,7 @@ L'inconvénient est que vous devrez réexécuter votre code R à chaque fois que
 #| out-width: 60%
 #| fig-align: center
 #| fig-cap: Créer un Projet R Studio changement d'options
-knitr::include_graphics(path = "r-book-common-main/images/start/new_proj5-fr.png")
+knitr::include_graphics(path = "images/start/new_proj5-fr.png")
 ```
 
 Maintenant que vous avez mis en place un projet RStudio, vous pouvez commencer à créer des scripts R (ou des documents R markdown /Quarto, voir @sec-rmarkdown-r) ou tout ce dont vous avez besoin pour compléter votre projet.
@@ -611,7 +611,7 @@ L'idéal est d'éviter les éléments suivants !
 #| out-width: 30%
 #| fig-align: center
 #| fig-cap: File renaming song (source:<https://xkcd.com/1459/>)
-knitr::include_graphics(path = "r-book-common-main/images/start/xkcd_files.png")
+knitr::include_graphics(path = "images/start/xkcd_files.png")
 ```
 
 Bien qu'il n'y ait pas vraiment d'approche standard reconnue pour nommer les fichiers (en fait \[il y en a une\]\[file_wiki\] mais tout le monde ne l'utilise pas), il y a quelques points à garder à l'esprit.
@@ -709,7 +709,7 @@ Pour vous aider à formater le code :
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Code mal formaté
-knitr::include_graphics(path = "r-book-common-main/images/start/before_rcode-fr.png")
+knitr::include_graphics(path = "images/start/before_rcode-fr.png")
 ```
 
 Mettez maintenant le code en surbrillance et utilisez le paquet `styler` :package: pour reformater
@@ -720,7 +720,7 @@ Mettez maintenant le code en surbrillance et utilisez le paquet `styler` :packag
 #| out-width: 60%
 #| fig-align: center
 #| fig-cap: Structurer le code avec styler
-knitr::include_graphics(path = "r-book-common-main/images/start/styler-fr.png")
+knitr::include_graphics(path = "images/start/styler-fr.png")
 ```
 
 Pour produire un code joliment formaté
@@ -731,7 +731,7 @@ Pour produire un code joliment formaté
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Code bien structuré
-knitr::include_graphics(path = "r-book-common-main/images/start/after_rcode-fr.png")
+knitr::include_graphics(path = "images/start/after_rcode-fr.png")
 ```
 
 ## Sauvegarde des projets
