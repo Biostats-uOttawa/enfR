@@ -1,48 +1,48 @@
+---
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
 # Pour commencer {#sec-chap1}
 
 Bien que R ne soit pas nouveau, sa popularité s'est rapidement accrue au cours des dix dernières années environ (voir [ici][r4stats] ).
 Il a été créé et développé à l'origine par Ross Ihaka et Robert Gentleman dans les années 1990 et la première version stable a été publiée en 2000.
- Aujourd'hui, R est maintenu par la [R Development Core Team][cran-core] .
+Aujourd'hui, R est maintenu par la [R Development Core Team][cran-core] .
 Pourquoi R est-il devenu si populaire et pourquoi devriez-vous apprendre à l'utiliser ?
 Voici quelques raisons :
 
-- Le logiciel est open source et disponible gratuitement.
-- Disponible pour les systèmes d'exploitation Windows, Mac et Linux.
-- Un ensemble complet et cohérent d'outils d'analyse statistique.
-- Un outil graphique étendu et très flexible, capable de produire des figures de qualité professionnelle.
-- Un ensemble de "paquets" :package: disponibles gratuitement pour étendre les capacités de R.
-- Un vaste réseau d'assistance avec de nombreux documents en ligne et disponibles gratuitement.
+-   Le logiciel est open source et disponible gratuitement.
+-   Disponible pour les systèmes d'exploitation Windows, Mac et Linux.
+-   Un ensemble complet et cohérent d'outils d'analyse statistique.
+-   Un outil graphique étendu et très flexible, capable de produire des figures de qualité professionnelle.
+-   Un ensemble de "paquets" :package: disponibles gratuitement pour étendre les capacités de R.
+-   Un vaste réseau d'assistance avec de nombreux documents en ligne et disponibles gratuitement.
 
 Toutes les raisons ci-dessus sont d'excellentes raisons d'utiliser R.
 Cependant, à notre avis, la plus grande raison d'utiliser R est qu'il facilite des pratiques de recherche robustes et reproductibles.
 Contrairement aux logiciels plus traditionnels de type "pointer et cliquer", l'écriture de code garantit un enregistrement permanent et précis de toutes les méthodes que vous avez utilisées (et des décisions que vous avez prises) pour l'analyse de vos données.
 Vous pouvez ensuite partager ce code (et vos données) avec d'autres chercheurs, collègues ou évaluateurs qui pourront reproduire votre analyse à l'identique.
- C'est l'un des principes de la [science ouverte][open-sci] .
+C'est l'un des principes de la [science ouverte][open-sci] .
 Nous aborderons d'autres sujets pour faciliter la science ouverte tout au long de ce livre, notamment la création de rapports reproductibles (@sec-rmarkdown-r) et le contrôle des versions (@sec-github-r).
 
 Dans ce chapitre, nous aborderons les points suivants :
 
-- Comment télécharger et installer R et un IDE sur votre ordinateur
-- Vous donner une brève orientation sur les 2 IDE les plus courants utilisés avec R
-- Quelques bonnes habitudes à prendre lorsque vous travaillez sur des projets
-- Et enfin quelques conseils sur la documentation de votre flux de travail et l'écriture d'un code R lisible.
+-   Comment télécharger et installer R et un IDE sur votre ordinateur
+-   Vous donner une brève orientation sur les 2 IDE les plus courants utilisés avec R
+-   Quelques bonnes habitudes à prendre lorsque vous travaillez sur des projets
+-   Et enfin quelques conseils sur la documentation de votre flux de travail et l'écriture d'un code R lisible.
 
 ## Quelques conseils sur R {.unnumbered}
 
-- Utilisez R souvent et régulièrement.
-  Cela permettra de créer et maintenir une dynamique importante.
-- Apprendre R n'est pas un test de mémoire.
-  L'un des avantages d'un langage de script est que vous aurez toujours votre code (bien annoté) auquel vous pourrez vous référer lorsque vous oublierez comment faire quelque chose.
-- Il n'est pas nécessaire de tout savoir sur R pour être productif.
-- Si vous êtes bloqué, faites des recherches en ligne, ce n'est pas de la triche et écrire une bonne requête de recherche est une compétence en soi.
-- Si vous vous retrouvez à fixer un code pendant des heures en essayant de comprendre pourquoi il ne fonctionne pas, éloignez-vous quelques minutes.
-- En R, il existe de nombreuses façons d'aborder un problème particulier.
-  Si votre code fait ce que vous voulez qu'il fasse dans un temps raisonnable et de manière robuste, ne vous inquiétez pas.
-- R n'est qu'un outil pour vous aider à répondre à vos questions intéressantes.
-  Ne perdez pas de vue ce qui est important : vos questions de recherche et vos données.
-  Aucune compétence en matière d'utilisation de R ne sera utile si votre collecte de données est fondamentalement défectueuse ou si votre question est vague.
-- Soyez conscient qu'il y aura des moments où les choses deviendront un peu difficiles ou frustrantes.
-  Essayez d'accepter ces périodes comme faisant partie du processus naturel d'apprentissage d'une nouvelle compétence (nous sommes tous passés par là) et rappelez-vous que le temps et l'énergie que vous investissez maintenant seront largement remboursés dans un avenir pas trop lointain.
+-   Utilisez R souvent et régulièrement. Cela permettra de créer et maintenir une dynamique importante.
+-   Apprendre R n'est pas un test de mémoire. L'un des avantages d'un langage de script est que vous aurez toujours votre code (bien annoté) auquel vous pourrez vous référer lorsque vous oublierez comment faire quelque chose.
+-   Il n'est pas nécessaire de tout savoir sur R pour être productif.
+-   Si vous êtes bloqué, faites des recherches en ligne, ce n'est pas de la triche et écrire une bonne requête de recherche est une compétence en soi.
+-   Si vous vous retrouvez à fixer un code pendant des heures en essayant de comprendre pourquoi il ne fonctionne pas, éloignez-vous quelques minutes.
+-   En R, il existe de nombreuses façons d'aborder un problème particulier. Si votre code fait ce que vous voulez qu'il fasse dans un temps raisonnable et de manière robuste, ne vous inquiétez pas.
+-   R n'est qu'un outil pour vous aider à répondre à vos questions intéressantes. Ne perdez pas de vue ce qui est important : vos questions de recherche et vos données. Aucune compétence en matière d'utilisation de R ne sera utile si votre collecte de données est fondamentalement défectueuse ou si votre question est vague.
+-   Soyez conscient qu'il y aura des moments où les choses deviendront un peu difficiles ou frustrantes. Essayez d'accepter ces périodes comme faisant partie du processus naturel d'apprentissage d'une nouvelle compétence (nous sommes tous passés par là) et rappelez-vous que le temps et l'énergie que vous investissez maintenant seront largement remboursés dans un avenir pas trop lointain.
 
 Bonne chance et n'oubliez pas de vous amuser.
 
@@ -51,9 +51,9 @@ Bonne chance et n'oubliez pas de vous amuser.
 ### Installation de R {#sec-install-r}
 
 Pour démarrer, la première chose à faire est d'installer R.
- R est disponible gratuitement pour les systèmes d'exploitation Windows, Mac et Linux à partir du [site web du Comprehensive R Archive Network (CRAN)][CRAN] .
+R est disponible gratuitement pour les systèmes d'exploitation Windows, Mac et Linux à partir du [site web du Comprehensive R Archive Network (CRAN)][CRAN] .
 Pour les utilisateurs de Windows et de Mac, nous vous suggérons de télécharger et d'installer les versions binaires précompilées.
- Il existe des instructions assez complètes pour installer R pour chaque système d'exploitation ( [Windows][cran-windows] , [Mac][cran-mac] ou [linux][cran-linux] ).
+Il existe des instructions assez complètes pour installer R pour chaque système d'exploitation ([Windows][cran-windows], [Mac][cran-mac] ou [linux][cran-linux]).
 
 Quel que soit le système d'exploitation que vous utilisez, une fois que vous avez installé R, vous devez vérifier qu'il fonctionne correctement.
 La manière la plus simple de le faire est de lancer R en double-cliquant sur l'icône R (Windows ou Mac) ou en tapant `R` dans la console (Linux).
@@ -74,40 +74,41 @@ Si ce n'est pas le cas, nous vous suggérons de noter toutes les erreurs produit
 
 ### Installation d'un IDE
 
-Il est fortement recommandé d'utiliser un logiciel d'**Environnement de **D**éveloppement **I**ntégré (IDE) pour travailler avec R.
- Un IDE simple et extrêmement populaire est [RStudio][rstudio] .
- Une alternative à RStudio est Visual Studio Code, ou [VSCode][vscode] .
+Il est fortement recommandé d'utiliser un logiciel d'**E**nvironnement de **D**éveloppement **I**ntégré (IDE) pour travailler avec R.
+Un IDE simple et extrêmement populaire est [RStudio] .
+Une alternative à RStudio est Visual Studio Code, ou [VSCode](#vscode) .
 Un IDE peut être considéré comme un complément à R qui fournit une interface plus conviviale, intégrant la console R, un éditeur de scripts et d'autres fonctionnalités utiles (comme R markdown et l'intégration de Git Hub).
 
-::: {.callout-caution}
+::: callout-caution
 Vous devez installer R avant d'installer un IDE (voir @sec-install-r pour plus de détails).
 :::
 
-:::{.callout-note}
-Lorsque l'on se réfère à **L'IDE** dans la suite du texte, il s'agit de RStudio ou de VScode.
+::: callout-note
+Lorsque l'on se réfère à un **IDE** dans la suite du texte, il s'agit de RStudio ou de VScode.
 :::
 
 #### RStudio
 
-RStudio est disponible gratuitement pour les systèmes d'exploitation Windows, Mac et Linux et peut être téléchargé à partir du [site RStudio][rstudio-download] .
+RStudio est disponible gratuitement pour les systèmes d'exploitation Windows, Mac et Linux et peut être téléchargé à partir du [site RStudio][rstudio-download].
 Vous devez sélectionner la version 'RStudio Desktop'.
 
-#### VSCode
+#### VSCode {#vscode}
 
-VSCode est disponible gratuitement pour les systèmes d'exploitation Windows, Mac et Linux et peut être téléchargé à partir du [site VS Code][vscode] .
+VSCode est disponible gratuitement pour les systèmes d'exploitation Windows, Mac et Linux et peut être téléchargé à partir du [site VS Code](#vscode) .
 
 En outre, vous devez installer l'extension [R pour VSCode](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r).
 Pour faire de VSCode une véritable centrale pour travailler avec R, nous vous recommandons fortement d'installer également :
 
-- [radian](https://github.com/randy3k/radian) : Une console R moderne qui corrige de nombreuses limitations du terminal R officiel et prend en charge de nombreuses fonctionnalités telles que la coloration syntaxique et l'autocomplétion.
-- [VSCode-R-Debugger](https://marketplace.visualstudio.com/items?itemName=RDebugger.r-debugger) : Une extension de VS Code pour supporter les capacités de débogage de R.
-- [httpgd](https://cran.r-project.org/web/packages/httpgd/index.html) : Un paquet R :package: pour fournir un dispositif graphique qui sert de manière asynchrone des graphiques SVG via HTTP et WebSockets.
+-   [radian](https://github.com/randy3k/radian) : Une console R moderne qui corrige de nombreuses limitations du terminal R officiel et prend en charge de nombreuses fonctionnalités telles que la coloration syntaxique et l'autocomplétion.
+-   [VSCode-R-Debugger](https://marketplace.visualstudio.com/items?itemName=RDebugger.r-debugger) : Une extension de VS Code pour supporter les capacités de débogage de R.
+-   [httpgd](https://cran.r-project.org/web/packages/httpgd/index.html) : Un paquet R :package: pour fournir un dispositif graphique qui sert de manière asynchrone des graphiques SVG via HTTP et WebSockets.
 
 #### Alternatives à RStudio et VSCode
 
 Plutôt que d'utiliser un IDE "tout-en-un", de nombreuses personnes choisissent d'utiliser R et un éditeur de script séparé pour écrire et exécuter du code R.
 Si vous ne savez pas ce qu'est un éditeur de script, vous pouvez voir ça comme un logiciel de traitement de texte, mais spécialement conçu pour écrire du code.
-Par chance, de nombreux éditeurs de scripts sont disponibles gratuitement. N'hésitez donc pas à les télécharger et à les tester jusqu'à ce que vous en trouviez un qui vous convienne.
+Par chance, de nombreux éditeurs de scripts sont disponibles gratuitement.
+N'hésitez donc pas à les télécharger et à les tester jusqu'à ce que vous en trouviez un qui vous convienne.
 Certains éditeurs de scripts ne sont disponibles que pour certains systèmes d'exploitation et tous ne sont pas spécifiques à R.
 Vous trouverez ci-dessous des suggestions d'éditeurs de scripts.
 C'est à vous de choisir celui qui vous convient le mieux : l'une des grandes qualités de R est que *VOUS* choisissez comment vous voulez utiliser R.
@@ -116,26 +117,26 @@ C'est à vous de choisir celui qui vous convient le mieux : l'une des grandes qu
 
 Un moyen léger mais efficace de travailler avec R est d'utiliser des éditeurs de texte avancés tels que :
 
-- [Atom][atom] (tous les systèmes d'exploitation)
-- [BBedit][BBedit] (Mac OS)
-- [gedit][gedit] (Linux ; livré avec la plupart des distributions Linux)
-- [MacVim][macvim] (Mac OS)
-- [Nano][nano] (Linux)
-- [Notepad++][notepad] (en anglais) (Windows)
-- [Sublime Text][sublime] (tous les systèmes d'exploitation)
-- [vim][vim] et son extension [NVim-R][nvim-r] (Linux)
+-   [Atom][atom] (tous les systèmes d'exploitation)
+-   [BBedit][BBedit] (Mac OS)
+-   [gedit][gedit] (Linux ; livré avec la plupart des distributions Linux)
+-   [MacVim][macvim] (Mac OS)
+-   [Nano][nano] (Linux)
+-   [Notepad++][notepad] (en anglais) (Windows)
+-   [Sublime Text][sublime] (tous les systèmes d'exploitation)
+-   [vim][vim] et son extension [NVim-R][nvim-r] (Linux)
 
 ##### Environnements de développement intégrés
 
 Ces environnements sont plus puissants que de simples éditeurs de texte et sont similaires à RStudio :
 
-- [Emacs][emacs] et son extension [Statistiques de Emacs Speaks][ess] (tous les systèmes d'exploitation)
-- [RKWard][rkward] (Linux)
-- [Tinn-R][tinn-r] (Windows)
+-   [Emacs][emacs] et son extension [Statistiques de Emacs Speaks][ess] (tous les systèmes d'exploitation)
+-   [RKWard][rkward] (Linux)
+-   [Tinn-R][tinn-r] (Windows)
 
 ## Orientation dans l'IDE {#sec-orient}
 
-### RStudio{#sec-rstudio-orient}
+### RStudio {#sec-rstudio-orient}
 
 Lorsque vous ouvrez RStudio pour la première fois, vous devriez voir la présentation suivante (elle peut être légèrement différente sur un ordinateur Windows).
 
@@ -145,7 +146,7 @@ Lorsque vous ouvrez RStudio pour la première fois, vous devriez voir la présen
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Fenêtre principale R studio
-knitr::include_graphics(path = "images/start/rstudio.png")
+knitr::include_graphics(path = "images/start/rstudio-fr.png")
 ```
 
 La grande fenêtre (ou volet) de gauche est la **Console**.
@@ -153,7 +154,7 @@ La fenêtre en haut à droite est le volet **Environnement / Historique / Connex
 Nous aborderons chacun de ces volets dans les paragraphes qui suivent.
 Vous pouvez personnaliser l'emplacement de chaque volet en cliquant sur le menu "Outils", puis en sélectionnant Options globales --> Disposition des volets.
 Vous pouvez redimensionner les volets en cliquant sur le milieu des bords de la fenêtre et en le faisant glisser dans la direction souhaitée.
- Il existe une multitude d'autres façons de [personnaliser][rstudio-cutomise] RStudio.
+Il existe une multitude d'autres façons de [personnaliser][rstudio-cutomise] RStudio.
 
 #### Console {#sec-cons}
 
@@ -169,7 +170,7 @@ Ne vous préoccupez pas du `[1]` au début de la ligne pour l'instant.
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Vue de la console R studio
-knitr::include_graphics(path = "images/start/rconsole_eval.png")
+knitr::include_graphics(path = "images/start/rconsole_eval-fr.png")
 ```
 
 Cependant, dès que vous commencez à écrire plus de code R, cela devient plutôt encombrant.
@@ -184,7 +185,7 @@ Pour créer un nouveau script R, cliquez sur le menu "Fichier", puis sélectionn
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Créer un nouveau fichier script sur R studio
-knitr::include_graphics(path = "images/start/new_script.png")
+knitr::include_graphics(path = "images/start/new_script-fr.png")
 ```
 
 Vous remarquerez qu'une nouvelle fenêtre (appelée volet Source) apparaît en haut à gauche de RStudio et que la console se trouve désormais en bas à gauche.
@@ -196,7 +197,7 @@ La nouvelle fenêtre est un éditeur de script et c'est là que vous écrirez vo
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Fenêtre principale avec un nouveau script sur R studio
-knitr::include_graphics(path = "images/start/rstudio_new.png")
+knitr::include_graphics(path = "images/start/rstudio_new-fr.png")
 ```
 
 Pour transférer votre code de votre éditeur de script à la console, placez simplement votre curseur sur la ligne de code, puis cliquez sur le bouton "Exécuter" en haut à droite de la fenêtre de l'éditeur de script.
@@ -207,7 +208,7 @@ Pour transférer votre code de votre éditeur de script à la console, placez si
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Bouton "Exécuter" sur R studio
-knitr::include_graphics(path = "images/start/rstudio_run.png")
+knitr::include_graphics(path = "images/start/rstudio_run-fr.png")
 ```
 
 Vous devriez voir le résultat dans la fenêtre de la console.
@@ -222,39 +223,39 @@ Enfin, il convient de noter que, bien que les scripts R soient enregistrés avec
 La fenêtre Environnement / Historique / Connexions contient de nombreuses informations utiles.
 Vous pouvez accéder à chaque composant en cliquant sur l'onglet approprié dans le volet.
 
-- L'onglet "Environnement" affiche tous les objets que vous avez créés dans l'environnement actuel (global).
-  Ces objets peuvent être des données que vous avez importées ou des fonctions que vous avez écrites.
-  Les objets peuvent être affichés sous forme de liste ou de grille en sélectionnant l'option dans le menu déroulant situé en haut à droite de la fenêtre.
-  Si vous utilisez le format Grille, vous pouvez supprimer des objets de l'environnement en cochant la case vide située à côté du nom de l'objet, puis en cliquant sur l'icône de balai.
-  Il existe également un bouton "Importer un ensemble de données" qui permet d'importer des données sauvegardées dans différents formats de fichiers.
-  Cependant, nous vous conseillons de ne pas utiliser cette approche pour importer vos données car elle n'est pas reproductible et donc pas robuste (voir @sec-data-r pour plus de détails).
+-   L'onglet "Environnement" affiche tous les objets que vous avez créés dans l'environnement actuel (global).
+    Ces objets peuvent être des données que vous avez importées ou des fonctions que vous avez écrites.
+    Les objets peuvent être affichés sous forme de liste ou de grille en sélectionnant l'option dans le menu déroulant situé en haut à droite de la fenêtre.
+    Si vous utilisez le format Grille, vous pouvez supprimer des objets de l'environnement en cochant la case vide située à côté du nom de l'objet, puis en cliquant sur l'icône de balai.
+    Il existe également un bouton "Importer un ensemble de données" qui permet d'importer des données sauvegardées dans différents formats de fichiers.
+    Cependant, nous vous conseillons de ne pas utiliser cette approche pour importer vos données car elle n'est pas reproductible et donc pas robuste (voir @sec-data-r pour plus de détails).
 
-- L'onglet "Historique" contient une liste de toutes les commandes que vous avez saisies dans la console R.
-  Vous pouvez rechercher dans votre historique la ligne de code que vous avez oubliée, renvoyer le code sélectionné dans la Console ou dans la fenêtre Source.
-  En général, nous n'utilisons jamais cette fonction car nous nous référons toujours à notre script R.
+-   L'onglet "Historique" contient une liste de toutes les commandes que vous avez saisies dans la console R.
+    Vous pouvez rechercher dans votre historique la ligne de code que vous avez oubliée, renvoyer le code sélectionné dans la Console ou dans la fenêtre Source.
+    En général, nous n'utilisons jamais cette fonction car nous nous référons toujours à notre script R.
 
-- L'onglet "Connexions" vous permet de vous connecter à diverses sources de données telles que des bases de données externes.
+-   L'onglet "Connexions" vous permet de vous connecter à diverses sources de données telles que des bases de données externes.
 
 #### Fichiers/Graphiques/Paquets/Aide/Visualiseur
 
-- L'onglet "Fichiers" répertorie tous les fichiers et répertoires externes dans le répertoire de travail actuel de votre ordinateur.
-  Il fonctionne comme l'explorateur de fichiers (Windows) ou le Finder (Mac).
-  Vous pouvez ouvrir, copier, renommer, déplacer et supprimer les fichiers répertoriés dans la fenêtre.
+-   L'onglet "Fichiers" répertorie tous les fichiers et répertoires externes dans le répertoire de travail actuel de votre ordinateur.
+    Il fonctionne comme l'explorateur de fichiers (Windows) ou le Finder (Mac).
+    Vous pouvez ouvrir, copier, renommer, déplacer et supprimer les fichiers répertoriés dans la fenêtre.
 
-- L'onglet "Graphiques" est l'endroit où tous les graphiques que vous créez dans R sont affichés (sauf indication contraire de votre part).
-  Vous pouvez "zoomer" sur les graphiques pour les agrandir à l'aide du bouton loupe et faire défiler les graphiques créés précédemment à l'aide des boutons flèches.
-  Il est également possible d'exporter les graphiques vers un fichier externe à l'aide du menu déroulant "Exportation".
-  Les graphiques peuvent être exportés dans différents formats de fichiers tels que jpeg, png, pdf, tiff ou copiés dans le presse-papiers (bien qu'il soit probablement préférable d'utiliser les fonctions R appropriées pour ce faire - voir @sec-graphics-r pour plus de détails).
+-   L'onglet "Graphiques" est l'endroit où tous les graphiques que vous créez dans R sont affichés (sauf indication contraire de votre part).
+    Vous pouvez "zoomer" sur les graphiques pour les agrandir à l'aide du bouton loupe et faire défiler les graphiques créés précédemment à l'aide des boutons flèches.
+    Il est également possible d'exporter les graphiques vers un fichier externe à l'aide du menu déroulant "Exportation".
+    Les graphiques peuvent être exportés dans différents formats de fichiers tels que jpeg, png, pdf, tiff ou copiés dans le presse-papiers (bien qu'il soit probablement préférable d'utiliser les fonctions R appropriées pour ce faire - voir @sec-graphics-r pour plus de détails).
 
-- L'onglet "Paquets" répertorie tous les paquets que vous avez installés sur votre ordinateur.
-  Vous pouvez également installer de nouveaux paquets et mettre à jour les paquets existants en cliquant respectivement sur les boutons "Installer" et "Mettre à jour".
+-   L'onglet "Paquets" répertorie tous les paquets que vous avez installés sur votre ordinateur.
+    Vous pouvez également installer de nouveaux paquets et mettre à jour les paquets existants en cliquant respectivement sur les boutons "Installer" et "Mettre à jour".
 
-- L'onglet "Aide" affiche la documentation d'aide R pour chaque fonction.
-  Nous verrons comment consulter les fichiers d'aide et comment rechercher de l'aide dans le @sec-basics-r).
+-   L'onglet "Aide" affiche la documentation d'aide R pour chaque fonction.
+    Nous verrons comment consulter les fichiers d'aide et comment rechercher de l'aide dans le @sec-basics-r).
 
-- L'onglet "Visualiseur" affiche le contenu web local tel que les graphiques web générés par certains packages.
+-   L'onglet "Visualiseur" affiche le contenu web local tel que les graphiques web générés par certains packages.
 
-### VSCode{#sec-vscode-orient}
+### VSCode {#sec-vscode-orient}
 
 ```{r}
 #| echo: false
@@ -269,12 +270,11 @@ knitr::include_graphics(path = "images/start/vs_orient.png")
 
 Contient :
 
-- Gestionnaire de fichiers et aperçu des fichiers
-- Support R incluant l'environnement R / la recherche R / l'aide R / l'installation de paquets
-- Interaction avec Github
+-   Gestionnaire de fichiers et aperçu des fichiers
+-   Support R incluant l'environnement R / la recherche R / l'aide R / l'installation de paquets
+-   Interaction avec Github
 
-::: {#fig-vs-left-panel layout-ncol=3}
-
+::: {#fig-vs-left-panel layout-ncol="3"}
 ![volet des fichiers](images/start/vs_file_panel.png){#fig-vsfile}
 
 ![volet git](images/start/vs_git_panel.png){#fig-vsgit}
@@ -288,9 +288,9 @@ Panneau de gauche VS Code
 
 Comprend :
 
-- Un onglet de graphiques (avec historique et navigation)
-- Un éditeur de scripts
-- Un panneaux de prévisualisation
+-   Un onglet de graphiques (avec historique et navigation)
+-   Un éditeur de scripts
+-   Un panneaux de prévisualisation
 
 ```{r}
 #| label: fig-vscode-tabs
@@ -305,9 +305,8 @@ knitr::include_graphics(path = "images/start/vs_editor_tabs.png")
 
 Contient :
 
-- Le terminal permettant d'avoir une session R ou tout autre type de terminal nécessaire (bash/tmux/).
-  Il peut être divisé et exécuter plusieurs sessions en même temps.
-- Un panneau de problèmes mettant en évidence les problèmes de grammaire et de codage
+-   Le terminal permettant d'avoir une session R ou tout autre type de terminal nécessaire (bash/tmux/). Il peut être divisé et exécuter plusieurs sessions en même temps.
+-   Un panneau de problèmes mettant en évidence les problèmes de grammaire et de codage
 
 ```{r}
 #| label: fig-vscode-term
@@ -329,8 +328,7 @@ getwd()
 ```
 
 Dans l'exemple ci-dessus, le répertoire de travail est un dossier appelé "R_way" qui est un sous-dossier de "biostats" dans le dossier "courses" qui lui-même se trouve dans un dossier "Documents" situé dans le dossier "julien" qui lui-même se trouve dans le dossier "home".
-Sur un ordinateur fonctionnant sous Windows, notre répertoire de travail comprendrait également une lettre de lecteur (c.-à-d.
-`C:\home\julien\Documents\courses\biostats\R_way`).
+Sur un ordinateur fonctionnant sous Windows, notre répertoire de travail comprendrait également une lettre de lecteur (c.-à-d. `C:\home\julien\Documents\courses\biostats\R_way`).
 
 Si vous n'utilisez pas d'IDE, vous devez définir votre répertoire de travail à l'aide de la commande `setwd()` au début de chaque script R (ce que nous avons fait pendant de nombreuses années).
 
@@ -351,7 +349,7 @@ Il lui suffira alors d'ouvrir le fichier du projet et tous les scripts R qui con
 Par exemple, disons que vous avez créé un sous-répertoire appelé `data` dans votre répertoire de projet racine, qui contient un fichier délimité au format csv appelé `mydata.csv` (nous aborderons les structures de répertoire plus loin dans @sec-dir-struc).
 Pour importer ce fichier dans un projet RStudio à l'aide de la commande `read.csv()` (ne vous en préoccupez pas pour l'instant, nous aborderons cette question plus en détail dans @sec-data-r), tout ce que vous devez inclure dans votre script R est
 
-```r
+``` r
 dat <- read.csv("data/mydata.csv")
 ```
 
@@ -360,7 +358,7 @@ Parce que le chemin du fichier `data/mydata.csv` est relatif au répertoire du p
 Si vous n'utilisez pas un projet RStudio ou un espace de travail VScode, vous devrez soit définir le répertoire de travail en fournissant le chemin complet de votre répertoire, soit spécifier le chemin complet du fichier de données.
 Aucune de ces deux options n'est reproductible sur d'autres ordinateurs.
 
-```r
+``` r
 setwd("/home/julien/Documents/courses/biostats/R_way")
 
 dat <- read.csv("data/mydata.csv")
@@ -368,7 +366,7 @@ dat <- read.csv("data/mydata.csv")
 
 ou
 
-```r
+``` r
 dat <- read.csv("/home/julien/Documents/courses/biostats/R_way/data/mydata.csv")
 ```
 
@@ -376,17 +374,15 @@ Pour ceux d'entre vous qui souhaitent pousser plus loin la notion de chemins d'a
 La fonction `here()` vous permet de créer des chemins d'accès pour n'importe quel fichier par rapport au répertoire racine du projet, qui ne dépendent pas du système d'exploitation (fonctionne sur une machine Mac, Windows ou Linux).
 Par exemple, pour importer notre `mydata.csv` à partir du répertoire `data` il suffit d'utiliser :
 
-```r
+``` r
 library(here) # il se peut que vous deviez d'abord installer le paquet 'here'
 dat <- read.csv(here("data", "mydata.csv"))
-
 ```
 
 ## Structure du répertoire {#sec-dir-struc}
 
 Outre l'utilisation de RStudio Projects, il est également conseillé de structurer votre répertoire de travail de manière cohérente et logique afin de vous aider, vous et vos collaborateurs.
 Nous utilisons fréquemment la structure de répertoire suivante dans nos projets basés sur R.
-
 
 ```{dot}
 //| label: fig-dir-struc
@@ -401,11 +397,11 @@ digraph {
     style = filled
     shape=oval
   ]
-  root [fillcolor="red"]
-  data [fillcolor="lightblue"]
-  functions [fillcolor="lightgreen"]
-  outputs [fillcolor="orange"]
-  scripts [fillcolor="white"]
+  root [label =  "racine", fillcolor="red"]
+  data [label =  "donées", fillcolor="lightblue"]
+  functions [label =  "fonctions", fillcolor="lightgreen"]
+  outputs [label =  "sortie", fillcolor="orange"]
+  scripts [label =  "scripts", fillcolor="white"]
 
   wd [label= "votre répertoire de travail", shape = rect]
   LOT1 [label= "métadonnées\n brutes\n traitée", shape = rect]
@@ -465,23 +461,24 @@ digraph {
 
 Dans notre répertoire de travail, nous avons les répertoires suivants :
 
-- **Racine** - Il s'agit du répertoire de votre projet contenant votre fichier `.Rproj`.
-   Nous avons tendance à garder tous les scripts R ou [Rq]md nécessaires à l'analyse/au rapport dans ce dossier racine ou dans le dossier scripts s'il y en a trop.
+-   **Racine** - Il s'agit du répertoire de votre projet contenant votre fichier `.Rproj`.
+    Nous avons tendance à garder tous les scripts R ou [Rq]md nécessaires à l'analyse/au rapport dans ce dossier racine ou dans le dossier scripts s'il y en a trop.
 
-- **données** - Nous stockons toutes nos données dans ce répertoire.
-  Le sous-répertoire appelé `données` contient des fichiers de données brutes et uniquement des fichiers de données brutes.
-  Ces fichiers doivent être traités comme s'ils étaient **en lecture seule** et ne doivent en aucun cas être modifiés.
-  Si vous devez traiter/nettoyer/modifier vos données, faites-le dans R (et non dans MS Excel), car vous pourrez documenter (et justifier) toutes les modifications apportées.
-  Toutes les données traitées doivent être sauvegardées dans un fichier séparé et stockées dans le fichier `données_traitées` .
-  Les informations sur les méthodes de collecte des données, les détails du téléchargement des données et toute autre métadonnée utile doivent être sauvegardés dans un document texte (voir les fichiers README ci-dessous) dans le sous-répertoire `meta_données`.
+-   **données** - Nous stockons toutes nos données dans ce répertoire.
+    Le sous-répertoire appelé `données` contient des fichiers de données brutes et uniquement des fichiers de données brutes.
+    Ces fichiers doivent être traités comme s'ils étaient **en lecture seule** et ne doivent en aucun cas être modifiés.
+    Si vous devez traiter/nettoyer/modifier vos données, faites-le dans R (et non dans MS Excel), car vous pourrez documenter (et justifier) toutes les modifications apportées.
+    Toutes les données traitées doivent être sauvegardées dans un fichier séparé et stockées dans le fichier `données_traitées` .
+    Les informations sur les méthodes de collecte des données, les détails du téléchargement des données et toute autre métadonnée utile doivent être sauvegardés dans un document texte (voir les fichiers README ci-dessous) dans le sous-répertoire `meta_données`.
 
-- **fonctions** - Il s'agit d'un répertoire facultatif dans lequel nous enregistrons toutes les fonctions R personnalisées que nous avons écrites pour l'analyse en cours.
-  Celles-ci peuvent ensuite être importées dans R à l'aide de la fonction `source()`.
+-   **fonctions** - Il s'agit d'un répertoire facultatif dans lequel nous enregistrons toutes les fonctions R personnalisées que nous avons écrites pour l'analyse en cours.
+    Celles-ci peuvent ensuite être importées dans R à l'aide de la fonction `source()`.
 
-- **scripts** - Un répertoire optionnel où nous enregistrons nos documents R markdown et/ou les principaux scripts R que nous avons écrits pour le projet en cours. Ces documents ne sont pas enregistrés dans le dossier racine.
+-   **scripts** - Un répertoire optionnel où nous enregistrons nos documents R markdown et/ou les principaux scripts R que nous avons écrits pour le projet en cours.
+    Ces documents ne sont pas enregistrés dans le dossier racine.
 
-- **sortie** - Les résultats de nos scripts R, tels que les graphiques, les fichiers HTML et les résumés de données, sont enregistrés dans ce répertoire.
-  Cela nous aide, ainsi que nos collaborateurs, à distinguer les fichiers qui sont des sorties de ceux qui sont des fichiers sources.
+-   **sortie** - Les résultats de nos scripts R, tels que les graphiques, les fichiers HTML et les résumés de données, sont enregistrés dans ce répertoire.
+    Cela nous aide, ainsi que nos collaborateurs, à distinguer les fichiers qui sont des sorties de ceux qui sont des fichiers sources.
 
 Bien entendu, la structure décrite ci-dessus est celle qui nous convient le mieux la plupart du temps et doit être considérée comme un point de départ pour vos propres besoins.
 Nous avons tendance à avoir une structure de répertoires assez cohérente dans tous nos projets, car cela nous permet de nous orienter rapidement lorsque nous revenons à un projet après un certain temps.
@@ -491,7 +488,7 @@ Vous pouvez créer votre structure de répertoire à l'aide de l'explorateur Win
 
 Une autre approche est d'utiliser la fonction `dir.create()` dans la console R.
 
-```r
+``` r
 # créer un répertoire appelé 'données'
 dir.create("données")
 ```
@@ -515,7 +512,7 @@ Cela signifie que vous pouvez très facilement passer d'un `projet` à l'autre s
 
 ### RStudio
 
-Pour créer un projet, ouvrez RStudio et sélectionnez `Fichier` -> `Nouveau projet...` dans le menu.
+Pour créer un projet, ouvrez RStudio et sélectionnez `Fichier` --> `Nouveau projet...` dans le menu.
 Vous pouvez créer un projet entièrement nouveau, un projet à partir d'un répertoire existant ou un projet à version contrôlée (voir le @sec-github-r pour plus de détails à ce sujet).
 Dans ce chapitre, nous allons créer un projet dans un nouveau répertoire.
 
@@ -525,7 +522,7 @@ Dans ce chapitre, nous allons créer un projet dans un nouveau répertoire.
 #| out-width: 60%
 #| fig-align: center
 #| fig-cap: Créer un Projet R Studio étape 1
-knitr::include_graphics(path = "images/start/new_proj.png")
+knitr::include_graphics(path = "images/start/new_proj-fr.png")
 ```
 
 Vous pouvez également créer un nouveau projet en cliquant sur le bouton "Projet" en haut à droite de RStudio et en sélectionnant "Nouveau projet..."
@@ -536,7 +533,7 @@ Vous pouvez également créer un nouveau projet en cliquant sur le bouton "Proje
 #| out-width: 30%
 #| fig-align: center
 #| fig-cap: Créer un Projet R Studio étape 2
-knitr::include_graphics(path = "images/start/new_proj1.png")
+knitr::include_graphics(path = "images/start/new_proj1-fr.png")
 ```
 
 Dans la fenêtre suivante, sélectionnez "Nouveau projet".
@@ -547,7 +544,7 @@ Dans la fenêtre suivante, sélectionnez "Nouveau projet".
 #| out-width: 60%
 #| fig-align: center
 #| fig-cap: Créer un Projet R Studio étape 3
-knitr::include_graphics(path = "images/start/new_proj2.png")
+knitr::include_graphics(path = "images/start/new_proj2-fr.png")
 ```
 
 Saisissez le nom du répertoire que vous souhaitez créer dans le champ "Nom du répertoire :" (nous l'appellerons `premier_projet` pour ce chapitre).
@@ -561,7 +558,7 @@ Enfin, cliquez sur le bouton "Créer un projet" pour créer le nouveau projet.
 #| out-width: 60%
 #| fig-align: center
 #| fig-cap: Créer un Projet R Studio étape 4
-knitr::include_graphics(path = "images/start/new_proj3.png")
+knitr::include_graphics(path = "images/start/new_proj3-fr.png")
 ```
 
 Une fois votre nouveau projet créé, vous disposerez d'un nouveau dossier sur votre ordinateur contenant un fichier de projet RStudio appelé `premier_projet.Rproj`.
@@ -574,10 +571,10 @@ Vous pouvez le vérifier dans l'onglet "Fichiers" de RStudio (ou dans Finder si 
 #| out-width: 80%
 #| fig-align: center
 #| fig-cap: Créer un Projet R Studio étape finale
-knitr::include_graphics(path = "images/start/new_proj4.png")
+knitr::include_graphics(path = "images/start/new_proj4-fr.png")
 ```
 
-La dernière chose que nous vous suggérons de faire est de sélectionner `Outils` -> `Options du Project...` dans le menu.
+La dernière chose que nous vous suggérons de faire est de sélectionner `Outils` --> `Options du Project...` dans le menu.
 Cliquez sur l'onglet "Général" sur le côté gauche et modifiez les valeurs pour "Restaurer .RData dans l'espace de travail au démarrage" et "Sauvegarder l'espace de travail dans .RData à la sortie" de "Par défaut" à "Non".
 Cela garantit que chaque fois que vous ouvrez votre projet, vous démarrez avec une session R propre.
 Vous n'êtes pas obligé de faire cela (beaucoup de gens ne le font pas), mais nous préférons commencer avec un espace de travail complètement propre chaque fois que nous ouvrons nos projets pour éviter tout conflit potentiel avec des choses que nous avons faites dans des sessions précédentes (ce qui conduit parfois à des résultats surprenants et à des maux de tête pour résoudre le problème).
@@ -589,7 +586,7 @@ L'inconvénient est que vous devrez réexécuter votre code R à chaque fois que
 #| out-width: 60%
 #| fig-align: center
 #| fig-cap: Créer un Projet R Studio changement d'options
-knitr::include_graphics(path = "images/start/new_proj5.png")
+knitr::include_graphics(path = "images/start/new_proj5-fr.png")
 ```
 
 Maintenant que vous avez mis en place un projet RStudio, vous pouvez commencer à créer des scripts R (ou des documents R markdown /Quarto, voir @sec-rmarkdown-r) ou tout ce dont vous avez besoin pour compléter votre projet.
@@ -619,32 +616,30 @@ knitr::include_graphics(path = "images/start/xkcd_files.png")
 
 Bien qu'il n'y ait pas vraiment d'approche standard reconnue pour nommer les fichiers (en fait [il y en a une][file_wiki] mais tout le monde ne l'utilise pas), il y a quelques points à garder à l'esprit.
 
+-   Évitez d'utiliser des espaces dans les noms de fichiers en les remplaçant par des traits de soulignement ou des tirets.
+    Pourquoi cela est-il important ?
+    L'une des raisons est que certains logiciels de ligne de commande (en particulier de nombreux outils bioinformatiques) ne reconnaissent pas un nom de fichier comportant un espace et que vous devez vous livrer à toutes sortes de manigances en utilisant des caractères d'échappement pour vous assurer que les espaces sont traités correctement.
+    Même si vous ne pensez pas utiliser un jour un logiciel de ligne de commande, il se peut que vous le fassiez indirectement.
+    Prenez R markdown par exemple, si vous voulez rendre un document R markdown au format pdf en utilisant le paquet `rmarkdown` :package: vous utiliserez en fait une ligne de commande {{< latex >}} sous le capot.
+    Une autre bonne raison de ne pas utiliser d'espaces dans les noms de fichiers est que cela rend la recherche de noms de fichiers (ou de parties de noms de fichiers) à l'aide d'[expressions régulières][regex] dans R (ou tout autre langage) beaucoup plus difficile.
 
-- Évitez d'utiliser des espaces dans les noms de fichiers en les remplaçant par des traits de soulignement ou des tirets.
-Pourquoi cela est-il important ? L'une des raisons est que certains logiciels de ligne de commande (en particulier de nombreux outils bioinformatiques) ne reconnaissent pas un nom de fichier comportant un espace et que vous devez vous livrer à toutes sortes de manigances en utilisant des caractères d'échappement pour vous assurer que les espaces sont traités correctement.
-Même si vous ne pensez pas utiliser un jour un logiciel de ligne de commande, il se peut que vous le fassiez indirectement.
-Prenez R markdown par exemple, si vous voulez rendre un document R markdown au format pdf en utilisant le paquet `rmarkdown` :package: vous utiliserez en fait une ligne de commande {{< latex >}} sous le capot.
-Une autre bonne raison de ne pas utiliser d'espaces dans les noms de fichiers est que cela rend la recherche de noms de fichiers (ou de parties de noms de fichiers) à l'aide d'[expressions régulières][regex] dans R (ou tout autre langage) beaucoup plus difficile.
+-   Évitez d'utiliser des caractères spéciaux (par exemple \@£\$%\^&\*(:/)) dans vos noms de fichiers.
 
-- Évitez d'utiliser des caractères spéciaux (par exemple
-@£$%^&*(:/)) dans vos noms de fichiers.
+-   Si vous créez des versions de vos fichiers à l'aide de nombres séquentiels (par ex. fichier1, fichier2, fichier3 ...).
+    Si vous prévoyez d'avoir plus de 9 fichiers, vous devez utiliser 01, 02, 03, ..., 10 afin de garantir que les fichiers soient listés dans le bon ordre.
+    Si vous prévoyez d'avoir plus de 99 fichiers, utilisez 001, 002, 003, ....
 
-- Si vous créez des versions de vos fichiers à l'aide de nombres séquentiels (par ex.
-fichier1, fichier2, fichier3 ...).
-Si vous prévoyez d'avoir plus de 9 fichiers, vous devez utiliser 01, 02, 03, ..., 10
-afin de garantir que les fichiers soient listés dans le bon ordre.
-Si vous prévoyez d'avoir plus de 99 fichiers, utilisez 001, 002, 003, ....
+-   Pour les dates, utilisez le format ISO 8601 AAAA-MM-JJ (ou AAAAMMJJ) afin de vous assurer que vos fichiers sont listés dans un ordre chronologique correct.
 
-- Pour les dates, utilisez le format ISO 8601 AAAA-MM-JJ (ou AAAAMMJJ) afin de vous assurer que vos fichiers sont listés dans un ordre chronologique correct.
-
-- N'utilisez jamais le mot *final* dans un nom de fichier - il est extrêmement rare qu'il le soit !
+-   N'utilisez jamais le mot *final* dans un nom de fichier - il est extrêmement rare qu'il le soit !
 
 Quelle que soit la convention de dénomination des fichiers que vous décidez d'utiliser, essayez de l'adopter rapidement, de vous y tenir et d'être cohérent.
 
 ## Documentation du script {#sec-proj-doc}
 
 Un petit mot sur l'écriture du code R et la création de scripts R.
-À moins que vous ne fassiez quelque chose de vraiment rapide et sale, nous vous suggérons de toujours écrire votre code R sous la forme d'un script R. Les scripts R sont ce qui permet à R d'être plus efficace.
+À moins que vous ne fassiez quelque chose de vraiment rapide et sale, nous vous suggérons de toujours écrire votre code R sous la forme d'un script R.
+Les scripts R sont ce qui permet à R d'être plus efficace.
 Les scripts R sont ce qui rend R si utile.
 Non seulement vous disposez d'un enregistrement complet de votre analyse, de la manipulation des données à la visualisation et à l'analyse statistique, mais vous pouvez également partager ce code (et ces données) avec vos amis, vos collègues et, surtout, lorsque vous soumettez et publiez votre recherche dans une revue.
 Dans cette optique, veillez à inclure dans votre script R toutes les informations nécessaires pour rendre votre travail reproductible (noms des auteurs, dates, plan d'échantillonnage, etc.).
@@ -654,7 +649,7 @@ Une très bonne alternative est d'utiliser la fonction `session_info()` du paque
 
 Voici un exemple d'inclusion de méta-informations au début d'un script R
 
-```r
+``` r
 # Titre: Analyse de séries temporelles de consommation de lasagnes
 
 # Objectif : Ce script effectue une analyse de série temporelle sur
@@ -675,7 +670,7 @@ Voici un exemple d'inclusion de méta-informations au début d'un script R
 library(tidyverse)
 library(ggplot2)
 
-print("mettez votre merveilleux code R ici")
+print("écrivez votre merveilleux code R ici")
 
 # bonne pratique pour inclure des informations sur la session
 
@@ -683,18 +678,18 @@ xfun::session_info()
 ```
 
 Il ne s'agit que d'un exemple et il n'y a pas de règles strictes, alors n'hésitez pas à développer un système qui vous convienne.
-Un raccourci très utile dans RStudio est d'inclure automatiquement un horodatage dans votre script R. Pour ce faire, écrivez `ts` à l'endroit où vous souhaitez insérer votre horodatage dans votre script R, puis appuyez sur les touches 'shift + tab'.
+Un raccourci très utile dans RStudio est d'inclure automatiquement un horodatage dans votre script R.
+Pour ce faire, écrivez `ts` à l'endroit où vous souhaitez insérer votre horodatage dans votre script R, puis appuyez sur les touches 'shift + tab'.
 RStudio convertira `ts` en date et heure actuelles et commentera automatiquement cette ligne avec un `#`.
 Un autre raccourci très utile de RStudio consiste à commenter plusieurs lignes de votre script avec le symbole `#`.
 Pour ce faire, sélectionnez les lignes de texte que vous souhaitez commenter et appuyez sur 'ctrl + shift + c' (ou 'cmd + shift + c' sur un mac).
 Pour décommenter les lignes, utilisez à nouveau 'ctrl + shift + c'.
 
-
 En plus d'inclure des métadonnées dans vos scripts R, il est également courant de créer un fichier texte séparé pour enregistrer les informations importantes.
 Par convention, ces fichiers texte sont nommés `README`.
 Nous incluons souvent un fichier `README` dans le répertoire où nous conservons nos données brutes.
 Dans ce fichier, nous indiquons la date à laquelle les données ont été collectées (ou téléchargées), la manière dont elles ont été collectées, des informations sur l'équipement spécialisé, les méthodes de conservation, le type et la version des machines utilisées (c'est-à-dire l'équipement de séquençage), etc.
-Vous pouvez créer un fichier README pour votre projet dans RStudio en cliquant sur le menu `Fichier` -> `Nouveau fichier` -> `Fichier texte`.
+Vous pouvez créer un fichier README pour votre projet dans RStudio en cliquant sur le menu `Fichier` --> `Nouveau fichier` --> `Fichier texte`.
 
 ## Guide de style R
 
@@ -705,12 +700,8 @@ Ce guide de style vous aidera à décider où utiliser les espaces, comment inde
 
 Pour vous aider à formater le code :
 
-- VSCode il y a un formateur intégré dans l'extension R pour VSCode.
-  Il vous suffit d'utiliser le raccourci clavier pour reformater le code de manière agréable et automatique.
-- Pour RStudio, vous pouvez installer le paquet `styler` :package: qui inclut une extension RStudio vous permettant de reformater automatiquement le code sélectionné (ou des fichiers et projets entiers) d'un simple clic de souris.
-  Vous pouvez trouver plus d'informations sur le paquet `styler` :package:, y compris comment l'installer [ici][styler] .
-  Une fois installé, vous pouvez sélectionner le code que vous souhaitez remodeler, cliquer sur le bouton "Extension" en haut de RStudio et sélectionner l'option "Style Selection".
-  Voici un exemple de code R mal formaté
+-   VSCode il y a un formateur intégré dans l'extension R pour VSCode. Il vous suffit d'utiliser le raccourci clavier pour reformater le code de manière agréable et automatique.
+-   Pour RStudio, vous pouvez installer le paquet `styler` :package: qui inclut une extension RStudio vous permettant de reformater automatiquement le code sélectionné (ou des fichiers et projets entiers) d'un simple clic de souris. Vous pouvez trouver plus d'informations sur le paquet `styler` :package:, y compris comment l'installer [ici][styler] . Une fois installé, vous pouvez sélectionner le code que vous souhaitez remodeler, cliquer sur le bouton "Extension" en haut de RStudio et sélectionner l'option "Style Selection". Voici un exemple de code R mal formaté
 
 ```{r}
 #| label: fig-fig-poor_code
@@ -718,7 +709,7 @@ Pour vous aider à formater le code :
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Code mal formaté
-knitr::include_graphics(path = "images/start/before_rcode.png")
+knitr::include_graphics(path = "images/start/before_rcode-fr.png")
 ```
 
 Mettez maintenant le code en surbrillance et utilisez le paquet `styler` :package: pour reformater
@@ -729,7 +720,7 @@ Mettez maintenant le code en surbrillance et utilisez le paquet `styler` :packag
 #| out-width: 60%
 #| fig-align: center
 #| fig-cap: Structurer le code avec styler
-knitr::include_graphics(path = "images/start/styler.png")
+knitr::include_graphics(path = "images/start/styler-fr.png")
 ```
 
 Pour produire un code joliment formaté
@@ -740,7 +731,7 @@ Pour produire un code joliment formaté
 #| out-width: 75%
 #| fig-align: center
 #| fig-cap: Code bien structuré
-knitr::include_graphics(path = "images/start/after_rcode.png")
+knitr::include_graphics(path = "images/start/after_rcode-fr.png")
 ```
 
 ## Sauvegarde des projets
@@ -784,12 +775,11 @@ Si vous souhaitez citer un package particulier que vous avez utilisé pour votre
 citation(package = "here")
 ```
 
-Selon nous, l'outil le plus utile pour la citation est le paquet `grateful` :package: qui vous permet de générer les informations de citation dans un fichier, ainsi que de créer une phrase ou un tableau citant tous les paquets utilisés. Cela devrait devenir la norme dans tout manuscrit honnêtement.
+Selon nous, l'outil le plus utile pour la citation est le paquet `grateful` :package: qui vous permet de générer les informations de citation dans un fichier, ainsi que de créer une phrase ou un tableau citant tous les paquets utilisés.
+Cela devrait devenir la norme dans tout manuscrit honnêtement.
 Voir @tbl-r-lib pour un exemple de résultat produit avec grateful.
 
 ```{r}
 #| label: links
 #| child: images/_links.md
 ```
-
-
