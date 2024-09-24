@@ -176,7 +176,7 @@ chisq.test(Popn0.9, correct = F) ### X2 without Yates
 chisq.test(Popn0.9) ### X2 with Yates
 ```
 
-::: {.callout-caution}
+::: callout-caution
 # Exercice
 Éprouvez l’hypothèse nulle que la proportion de mâles et femelles à la naissance est égale. Que concluez-vous? Croyez-vous que ces données sont appropriées pour tester cette hypothèse?
 :::
@@ -230,7 +230,7 @@ Les probabilités associées à chaque terme sont ici calculées en comparant l�
 
 Le fichier Sturgdat contient les données qui vous permettront d'éprouver l’hypothèse que le nombre d’esturgeons capturé est indépendants du site, de l’année, et du sexe. Avant de commencer l’analyse, les données devront être réorganisées pour pouvoir ajuster un modèle log-linéaire:
 
-::: {.callout-caution}
+::: callout-caution
 # Exercice
 Ouvrez sturgdat.csv, puis utilisez la fonction table() pour obtenir les fréquence d’individus capturés par sex, location, et year . Sauvegardez ce tableau comme strugdat.table . Faites une figure mosaïque de ces données.
 :::
@@ -252,7 +252,7 @@ sturgdat.freq
 mosaic(sturgdat.table, shade = TRUE)
 ```
 
-::: {.callout-caution}
+::: callout-caution
 # Exercice
 À partir de ces données en format de fréquence, ajustez le modèle loglinéaire complet et le tableau d’anova avec les statistique de Chi carré pour les termes du modèles. Est-ce que l’interaction triple (`location:year:sex`) est significative? Est-ce que le rapport des sexes varien entre les sites ou d’une année à l’autre?.
 :::

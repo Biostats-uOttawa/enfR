@@ -398,7 +398,7 @@ digraph {
     shape=oval
   ]
   root [label =  "racine", fillcolor="red"]
-  data [label =  "donées", fillcolor="lightblue"]
+  data [label =  "données", fillcolor="lightblue"]
   functions [label =  "fonctions", fillcolor="lightgreen"]
   outputs [label =  "sortie", fillcolor="orange"]
   scripts [label =  "scripts", fillcolor="white"]

@@ -73,29 +73,29 @@ Lorsque nous parlons de **.[Rq]md**, nous entendons par là les documents R mark
 
 Le manuel tente de mettre en évidence certaines parties du texte à l'aide des encadrés et icônes suivants.
 
-::: {.callout-caution}
+::: callout-caution
 
 # Exercices
 
 Des choses à faire pour toi
 :::
 
-::: {.callout-note}
+::: callout-note
 
 # Solutions
 
 Code R et explications
 :::
 
-::: {.callout-warning}
+::: callout-warning
 Avertissements
 :::
 
-::: {.callout-important}
+::: callout-important
 Points importants
 :::
 
-::: {.callout-note}
+::: callout-note
 Notes
 :::
 

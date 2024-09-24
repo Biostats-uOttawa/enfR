@@ -45,6 +45,7 @@ Supposons que vous êtes intéressés par l'effet de deux facteurs : site (locat
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-anom1
 Stu2wdat <- read.csv("data/Stu2wdat.csv")
 
 ggplot(Stu2wdat, aes(x = sex, y = rdwght)) +
@@ -73,8 +74,8 @@ deux critères de classification:
 
 ```{r}
 # Fit anova model and plot residual diagnostics
-# but first, save current par and set graphic page to hold 4 graphs
-opar <- par(mfrow = c(2, 2))
+# but first, save current graphic parameters
+opar <- par()
 anova.model1 <- lm(rdwght ~ sex + location + sex:location,
   contrasts = list(sex = contr.sum, location = contr.sum),
   data = Stu2wdat
@@ -82,7 +83,7 @@ anova.model1 <- lm(rdwght ~ sex + location + sex:location,
 anova(anova.model1)
 ```
 
-::: {.callout-warning}
+::: callout-warning
 Attention, R imprime les sommes des carrés séquentielles (Type I) les carrés moyens et probabilités associés. Vous ne pouvez pas vous y fier si votre plan d’expérience n’est pas parfaitement balancé. Dans cet exemple, le nombre de poissons capturés change selon le site et le sexe et le plan d’expérience n’est donc pas balancé.
 :::
 
@@ -96,6 +97,7 @@ Anova(anova.model1, type = 3)
 Suite à l’ANOVA, on accepte deux hypothèses nulles: (1) que l’effet du sexe ne varie pas entre les sites (pas d’interaction significative) et (2) qu’il n’y a pas de différence de taille des esturgeons (peu importe le sexe) entre les deux sites. D’un autre coté, on rejette l’hypothèse nulle qu’il n’y a pas de différence de taille entre les esturgeons mâles et les femelles, tel que suggéré par les graphiques.
 
 ```{r}
+#| label: fig-anom2
 #| fig-cap: Conditions d'application ANOVA model1
 par(mfrow = c(2, 2))
 plot(anova.model1)
@@ -118,7 +120,7 @@ leveneTest(rdwght ~ sex * location, data = Stu2wdat)
 
 Si les résidus étaient homoscédastiques, on accepterait l’hypothèse nulle que le absres moyen ne varie pas entre les niveaux de sexe et location (i.e., sexloc). Le tableau d’ANOVA ci-dessus montre que l’hypothèse est rejetée. Il y a donc évidence d’hétéroscédasticité. En bref, nous avons donc plusieurs conditions d’application qui ne sont pas respectées. La question qui reste est: ces violations sont-elles suffisantes pour invalider nos conclusions ?
 
-::: {.callout-caution}
+::: callout-caution
 # Exercice
 Répétez la même analyse avec les données du fichier `stu2mdat.csv` . Que concluez-vous? Supposons que vous vouliez comparer la taille des mâles et des femelles. Comment cette comparaison diffère entre les deux ensembles de données ?
 :::
@@ -155,6 +157,7 @@ Dans ce cas, le terme de l’interaction (sex:location) est maintenant significa
 * Vous trouverez utile ici de créer des graphiques pour les deux fichiers de données pour comparer les interactions entre sex et location. Le graphique d’interaction montre les relations entre les moyennes de chaque combinaison de facteurs (appelées aussi les moyennes des ce$lules).Générez un graphique illustrant les intéractions en utilisant la fonction allEffects du package effects :
 
 ```{r}
+#| label: fig-anom3
 #| fig-cap: Effet du sexe et du lieu sur le poids des esturgeons
 library(effects)
 allEffects(anova.model1)
@@ -162,6 +165,7 @@ plot(allEffects(anova.model1), "sex:location")
 ```
 
 ```{r}
+#| label: fig-anom4
 #| fig-cap: Effet du sexe et du lieu sur le poids des esturgeons
 allEffects(anova.model2)
 plot(allEffects(anova.model2), "sex:location")
@@ -216,7 +220,7 @@ pf(35.6, 1, 1, lower.tail = FALSE)
 
 Notez que maintenant la valeur de p pour sex n’est plus significative. C’est parce que le carré moyen de l’erreur dans l’ANOVA initiale est plus petit que celui associé à l’interaction, mais surtout parce que le nombre de degrés de liberté pour le dénominateur du test de F est passé de 178 à 1 seulement. En général, c’est beaucoup plus difficile d’obtenir des résultats significatifs quand les degrés de liberté pour le dénominateur sont petits.
 
-::: {.callout-note}
+::: callout-note
 Les modèles mixtes qui sont une généralisation de l'ANOVA à effets mixtes sont maintenant extrêmement bien développé et sont à favoriser lors d'analyse incluant des effets dit aléatoires.
 :::
 
@@ -224,7 +228,7 @@ Les modèles mixtes qui sont une généralisation de l'ANOVA à effets mixtes so
 
 Dans certains plans d'expérience il n'y a pas de réplicats pour chaque combinaison de facteurs, par exemple parce qu'il serait trop coûteux de faire plus d'une observation. L'ANOVA à deux critères de classification est quand même possible dans ces circonstances, mais il y a une limitation importante.
 
-::: {.callout-warning}
+::: callout-warning
 Comme il n'y a pas de réplicats, on ne peut estimer la variance du terme d'erreur. En effet on ne peut qu'estimer la somme des carrés associés à chacun des facteurs principaux, et la quantité de variabilité qui reste (Remainder Mean Square) représente la somme de la variabilité attribuable à l'interaction et au terme d'erreur. Cela a une implication importante. Dans le cas d'un modèle avec uniquement des effets fixes ou pour l'effet aléatoire d'un modèle d'ANOVA mixtes on ne peut tester les effets principaux que si on est sur qu'il n'y a pas d'interaction.
 :::
 
@@ -242,6 +246,7 @@ Anova(anova.model4, type = 3)
 Si on suppose que c’est un modèle d’ANOVA mixte (date aléatoire, Depth fixe), que concluez vous? (Indice: faites un graphique d’interaction température en fonction de la profondeur et la date, pour voir ce qui se passe).
 
 ```{r}
+#| label: fig-anom5
 #| fig-cap: Effet du mois et de la profondeur sur la température
 interaction.plot(nr2wdat$depth, nr2wdat$date, nr2wdat$temp)
 ```
@@ -252,6 +257,7 @@ Jetez un coup d’oeil sur les graphiques des résidus:
 
 
 ```{r}
+#| label: fig-anom6
 #| error: true
 #| fig-cap: Conditions d'applications du modèle anova.model4
 par(mfrow = c(2, 2))
@@ -288,6 +294,7 @@ Que concluez-vous de cette analyse ? Que devrait être la prochaine étape ? (In
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-anom7
 #| fig-cap: Conditions d'applications du modèle anova.nested
 anova(anova.nested)
 par(mfrow = c(2, 2))
@@ -309,6 +316,7 @@ Donc on conclue qu’il y a une variation significative de résistance à la des
 Le graphique de `survival` en fonction du `génotype` suggère que la résistance à la dessiccation varie entre chaque génotype. On peut combiner cela avec un test de Tukey.
 
 ```{r}
+#| label: fig-anom8
 #| fig-cap: 'Effet du genotype sur la résistance à la dessication avec un test de Tukey '
 par(mfrow = c(1, 1))
 # Compute and plot means and Tukey CI
@@ -330,6 +338,7 @@ Cependant, avant d’accepter cette conclusion, il faut éprouver les conditions
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-anom9
 #| fig-cap: Conditions d'applications du modèle anova.simple
 par(mfrow = c(2, 2))
 plot(anova.simple)
@@ -428,6 +437,7 @@ Examinons les graphiques diagnostiques:
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-anom10
 par(mfrow = c(2, 2))
 plot(anova.model5)
 ```
@@ -455,6 +465,7 @@ ajouter une explication ici
 On conclue donc qu’il n’y a pas de différence entre les espèces et que l’effet de la concentration ne dépends pas de l’espèce (il n’y a pas d’interaction). Par conséquent, les seules comparaisons justifiables sont entre les concentrations:
 
 ```{r}
+#| label: fig-anom12
 #| fig-cap: Comparaison de Tukey des moyennes de consommation d'oxygèn en fonction del
 #|   la concentration
 # fit simplified model
@@ -518,6 +529,7 @@ Ces comparaisons sont un peu plus difficiles à interpréter, mais l’analyse e
 Je trouve ces tableaux de résultats peu satisfaisants parce qu’ils indiquent seulement les valeur de ps sans indices de la taille de l’effet. On peut obtenir à la fois le résultat des tests de comparaison multiple et un indice de la taille de l’effet à l’aide du code suivant:
 
 ```{r}
+#| label: fig-anom11
 # fit one-way anova comparing all combinations of species.conc combinations
 anova.modelx <- aov(o2cons ~ species.conc, data = wmc2dat2)
 tuk2 <- glht(anova.modelx, linfct = mcp(species.conc = "Tukey"))

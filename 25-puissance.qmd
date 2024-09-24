@@ -8,6 +8,15 @@ editor:
 
 # Analyse de puissance avec R et G\*Power
 
+```{r}
+#| label: setup
+#| echo: false
+#| message: false
+
+source("utils/book-fnc.R")
+```
+
+
 Objectifs de ce chapitre :
 
 -   Pouvoir calculer la **puissance** d’un test de t avec R et G\*Power
@@ -187,7 +196,7 @@ Démarrer G\*Power.
 6.  Cliquer sur le bouton **Calculate** dans la fenêtre principale et vous devriez obtenir ceci:
 
 ```{r}
-#| label: gpower-1
+#| label: fig-gpower-1
 #| echo: false
 #| fig-cap: Analyse post-hoc avec la taille d'effet estimée
 #| out-width: 100%
@@ -199,7 +208,7 @@ D'abord, il faut calculer la taille d'effet `d` pour un test de t comparant deux
 Le plus simple comme nous allons estimer la taille d'effet `d` plusieurs fois et de créer une petite fonction qui estime `d` basé sur les paramètres nécessaires.
 
 ```{r}
-#| label: r-power
+#| label: fig-r-power
 #| fig-cap: Graphique de l'analyse de puissance dans R
 # charger le paquet pwr
 library(pwr)
@@ -209,31 +218,59 @@ d <- function(u1, u2, sd1, sd2) {
 }
 
 # analyse de puissance
-pwr.t.test(n = 18, d = d(u1 = 2.64, sd1 = 3.28,
-                         u2 = 3.31, sd2 = 2.79),
-           sig.level = 0.05, type = "two.sample")
+
+d_cohen <- d(u1 = 2.64, sd1 = 3.28, u2 = 3.31, sd2 = 2.79)
+
+pwr.t.test(
+  n = 18, d = d_cohen, sig.level = 0.05,
+  type = "two.sample"
+)
 
 # graphique comme g*Power
 x <- seq(-4, 4, length = 200)
-plot(x, dnorm(x), type = "l", col = "red", lwd = 2)
-qc <- qt(0.025, 16)
+y0 <- dt(x, 34)
+y1 <- dt(x, 34, ncp = d_cohen * sqrt(36) / 2)
+plot(x, y0, type = "l", col = "red", lwd = 2)
+qc <- qt(0.025, 34)
 abline(v = qc, col = "green")
 abline(v = -qc, col = "green")
-lines(x, dnorm(x, mean = (3.31 - 2.64)),
-      type = "l", col = "blue", lwd = 2)
+lines(x, y1, type = "l", col = "blue", lwd = 2)
 
-# la puissance correspond à la partie bleutée
-y <- dnorm(x, mean = (3.31 - 2.64))
-polygon(c(x[x <= -qc], -qc), c(y[x <= -qc], 0),
-        col = rgb(red = 0, green = 0.2, blue = 1, alpha = 0.5))
-polygon(c(x[x >= -qc], -qc), c(dnorm(x[x >= -qc]), 0),
-        col = rgb(1, 0, 0, 0.3))
-polygon(c(x[x <= qc], qc), c(dnorm(x[x <= qc]), 0),
-        col = rgb(1, 0, 0, 0.3))
+# l'erreur de type 2 correspond à la zone bleue
+polygon(
+  c(x[x <= -qc], -qc), c(y1[x <= -qc], 0),
+  col = rgb(red = 0, green = 0.2, blue = 1, alpha = 0.5)
+)
 ```
 
-Étudions un peu la figure \@ref(fig:gpower-1).
-<!--# JULIEN - J'ai essayé de régler ça mais je vois que même dans la version anglaise on a le même problème -->
+```{r}
+#| label: fig-ggplot
+#| eval: false
+
+qc <- qt(0.025, 34)
+ncp <- d_cohen * sqrt(36) / 2
+dat <- data.frame(
+  x = seq(-4, 4, length = 200),
+  y0 = dt(x, (n - 1) * 2),
+  y1 = dt(x, (n - 1) * 2, ncp = ncp)
+) %>%
+  mutate(
+    area = ifelse(x <= qc, y1, 0)
+  )
+
+ggplot(dat, aes(x = x)) +
+  geom_line(aes(y = y0), color = "red") +
+  geom_line(aes(y = y1), color = "blue") +
+  geom_vline(xintercept = qcl, color = "green") +
+  geom_area(
+    aes(x = x, y = area),
+    fill = rgb(red = 0, green = 0.2, blue = 1, alpha = 0.5)
+  ) +
+  theme_classic() +
+  ylab("dt(x)")
+```
+
+Étudions un peu la figure @fig-gpower-1.
 
 -   La courbe de gauche, en rouge, correspond à la **distribution de la statistique t si** $\boldsymbol{H_0}$ **est vraie** (i.e si les deux moyennes étaient égales) compte tenu de l’effectif (18 dans chaque région) et des écarts- types observés.
 -   Les lignes verticales vertes correspondent aux **valeurs critiques de t pour** $\boldsymbol{\alpha = 0.05}$ et un effectif total de 36 (2x18).
@@ -257,11 +294,12 @@ G\*Power peut nous le dire.
 ::: callout-caution
 # Exercice
 
-Changer la moyenne du groupe 2 à 5.28, recalculer la taille d’effet, et cliquer sur **Calculate** pour obtenir (\@ref(fig:gpower-2)) <!--# JULIEN - même problème de cross-référence ici -->.
+Changer la moyenne du groupe 2 à 5.28, recalculer la taille d’effet, et cliquer sur **Calculate** pour obtenir @fig-gpower-2.
+
 :::
 
 ```{r}
-#| label: gpower-2
+#| label: fig-gpower-2
 #| echo: false
 #| fig-cap: Analyse post-hoc avec une taille d'effet différente
 #| out-width: 100%
@@ -269,9 +307,20 @@ knitr::include_graphics("images/gpower_2.png")
 ```
 
 ```{r}
-pwr.t.test(n = 18, d = d(u1 = 2.64, sd1 = 3.28,
-                         u2 = 5.28, sd2 = 2.79),
-           sig.level = 0.05, type = "two.sample")
+pwr.t.test(
+  n = 18, d = d(u1 = 2.64, sd1 = 3.28, u2 = 5.28, sd2 = 2.79),
+  sig.level = 0.05, type = "two.sample"
+)
+```
+
+```{r}
+#| label: fig-pwr1
+#| echo: false
+plot_pwr(
+  n = 18,
+  d = d(u1 = 2.64, sd1 = 3.28, u2 = 5.28, sd2 = 2.79),
+  sig_level = 0.05, type = "two.sample"
+)
 ```
 
 La puissance est de 0.71, donc Jaynie avait une chance raisonnable (71%) de détecter une différence du simple au double avec 18 ruisseaux dans chaque région.
@@ -290,12 +339,12 @@ Combien de ruisseaux Jaynie devrait-elle échantillonner pour avoir 80% des chan
 ::: callout-caution
 # Exercice
 
-Changer le type d’analyse de puissance dans G\*Power à **A priori: Compute sample size - given** $\alpha$**, power, and effect size**.
-Assurez-vous que les valeurs pour les moyennes et les écarts-type soient celles obtenu par Jaynie, recalculez la taille d’effet, et inscrivez 0.8 pour la puissance.
+Changer le type d’analyse de puissance dans G\*Power à **A priori**: **Compute sample size - given** $\alpha$**, power, and effect size**.
+Assurez-vous que les valeurs pour les moyennes et les écarts-type soient celles qu’a obtenu Jaynie, recalculez la taille de l’effet, et inscrivez 0.8 pour la puissance @fig-gpower-3.
 :::
 
 ```{r}
-#| label: gpower-3
+#| label: fig-gpower-3
 #| echo: false
 #| fig-cap: Analyse à priori
 #| out-width: 100%
@@ -303,9 +352,10 @@ knitr::include_graphics("images/gpower_3.png")
 ```
 
 ```{r}
-pwr.t.test(power = 0.8, d = d(u1 = 2.64, sd1 = 3.28,
-                              u2 = 3.31, sd2 = 2.79),
-           sig.level = 0.05, type = "two.sample")
+pwr.t.test(
+  power = 0.8, d = d(u1 = 2.64, sd1 = 3.28, u2 = 3.31, sd2 = 2.79),
+  sig.level = 0.05, type = "two.sample"
+)
 ```
 
 **Ouch!** Il faudrait échantillonner 326 ruisseaux dans chaque région!
@@ -317,9 +367,10 @@ Si on refait le même calcul pour une puissance de 95%, on obtient 538 ruisseaux
 Augmenter la puissance ça demande plus d’effort.
 
 ```{r}
-pwr.t.test(power = 0.95, d = d(u1 = 2.64, sd1 = 3.28,
-                               u2 = 3.31, sd2 = 2.79),
-           sig.level = 0.05, type = "two.sample")
+pwr.t.test(
+  power = 0.95, d = d(u1 = 2.64, sd1 = 3.28, u2 = 3.31, sd2 = 2.79),
+  sig.level = 0.05, type = "two.sample"
+)
 ```
 
 ### Analyse de sensitivité - Calculer la taille d’effet détectable
@@ -333,7 +384,7 @@ Changez le type d’analyse dans G\*Power à **Sensitivity**: **Compute required
 :::
 
 ```{r}
-#| label: gpower-4
+#| label: fig-gpower-4
 #| echo: false
 #| fig-cap: Analyse de sensitivité
 #| out-width: 100%
@@ -357,8 +408,9 @@ $$
 $$ Dans R, on peut estimer cela avec:
 
 ```{r}
-pwr.t.test(power = 0.8, n = 18,
-           sig.level = 0.05, type = "two.sample")$d * sqrt((3.28^2 + 2.79^2) / 2)
+pwr.t.test(
+  power = 0.8, n = 18, sig.level = 0.05,
+  type = "two.sample")$d * sqrt((3.28^2 + 2.79^2) / 2)
 ```
 
 Donc, avec 18 ruisseaux dans chaque région, pour $\alpha=0.05$ et $\beta=0.2$ (une puissance de 80%), Jaynie pouvait détecter une différence de biomasse de 2.93$g/m^2$ entre les régions, un peu plus que du simple au double.

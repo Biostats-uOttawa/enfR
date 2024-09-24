@@ -43,7 +43,7 @@ library(performance)
 sturgeon <- read.csv("data/sturgeon.csv")
 ```
 
-::: {.callout-note}
+::: callout-note
 Notez que la ligne de code pour lire les données considère que le fichier de données se trouve dans un dossier `data` au sein de votre répertoire de travail. Si ce n'est pas le cas veuillez ajuster la ligne de commande.
 :::
 
@@ -67,7 +67,7 @@ str(sturgeon)
 ```
 
 ```{r}
-#| label: stur-2
+#| label: fig-stur-2
 #| warning: false
 #| message: false
 #| fig-cap: Graphique du poids en fonction de la longueur des esturgeons
@@ -95,7 +95,7 @@ Malgré tout, il semble y avoir une forte corrélation entre les deux variables.
 - Refaites le diagramme de dispersion avec des axes logarithmiques.
 
 ```{r}
-#| label: stur-log
+#| label: fig-stur-log
 #| warning: false
 #| message: false
 #| fig-cap: Graphique poids-longueur avec une échelle log
@@ -103,7 +103,7 @@ Malgré tout, il semble y avoir une forte corrélation entre les deux variables.
 mygraph + scale_x_log10() + scale_y_log10()
 ```
 
-Comparez les diagrammes de dispersion avant et après transformation (Figures \@ref(fig:stur-2) et \@ref(fig:stur-log)). Comme l’analyse de corrélation présuppose une relation linéaire entre les variables, on devrait donc privilégier l’analyse sur les données log-transformées.
+Comparez les diagrammes de dispersion avant et après transformation (Figures @fig-stur-2 et @fig-stur-log). Comme l’analyse de corrélation présuppose une relation linéaire entre les variables, on devrait donc privilégier l’analyse sur les données log-transformées.
 
 ## Transformations et le coefficient de corrélation
 Une autre condition préalable à l'analyse de corrélation est que les deux variables concernées suivent une distribution normale bidimensionnelle.
@@ -117,7 +117,7 @@ Le code pour produire des graphiques multiples sur une page, comme
 on voit ci-dessous, est:
 
 ```{r}
-#| label: stur-4hist
+#| label: fig-stur-4hist
 par(mfrow = c(2, 2)) # divise le graphique en 4 sections
 qqnorm(sturgeon$fklngth, ylab = "fklngth")
 qqline(sturgeon$fklngth)
@@ -137,7 +137,7 @@ parfaitement normale, mais les déviations semblent mineures.
 - Générez une matrice de graphiques de dispersion améliorés en utilisant la commande `scatterplotMatrix` de la librairie `car`.
 
 ```{r}
-#| label: stur-scatmat
+#| label: fig-stur-scatmat
 scatterplotMatrix(
   ~ fklngth + log10(fklngth) + rdwght + log10(rdwght),
   data = sturgeon,
@@ -273,7 +273,7 @@ Faites un diagramme de dispersion de `fklngth` (la variable dépendante) en fonc
 Que concluez-vous de ce diagramme de dispersion ?
 
 ```{r}
-#| label: sturlm-1
+#| label: fig-sturlm-1
 #| warning: false
 #| message: false
 sturgeon.male <- subset(sturgeon, subset = sex == "MALE")
@@ -353,7 +353,7 @@ La commande plot() permet de visualiser des graphiques
 diagnostiques pour des modèles linéaires.
 
 ```{r}
-#| label: sturlmv-1
+#| label: fig-sturlmv-1
 #| eval: false
 par(mfrow = c(2, 2), las = 1)
 plot(RegModel.1)
@@ -363,7 +363,7 @@ La commande par() est utilisée pour dire à R de tracer 2 rangées et 2 colonne
 
 Vous obtiendrez:
 ```{r}
-#| label: sturlmv-1eval
+#| label: fig-sturlmv-1eval
 #| echo: false
 par(mfrow = c(2, 2), las = 1)
 plot(RegModel.1)
@@ -374,7 +374,7 @@ plot(RegModel.1)
 3. En bas à gauche, intitulé Scale-Location, permet d’évaluer l’homoscedasticité. On y retrouve sur l’ordonnée (l’axe des y) la racine carrée de la valeur absolue des résidus standardisés (résidus divisés par l’écart-type des résidus) en fonction des valeurs prédites. Le graphique aide à déterminer si la variation des résidus est constante ou non. Si les résidus sont homoscédastiques, la valeur moyenne sur l’axe des y ne va pas changer en fonction de la valeur prédite. Ici, il y a une certaine tendance, mais pas une tendance monotone puisqu’ il y a d’abord une baisse puis une hausse..; bref, rien qui soit une forte évidence contre la supposition d’homoscédasticité.
 4. En bas à droite, montre les résidus en fonction du "leverage" et permet de détecter certaines valeurs extrêmes qui ont une grande influence sur la régression. Le leverage d’un point mesure sa distance des autres points, mais seulement en ce qui concerne les variables indépendantes. Dans le cas d’une régression simple, cela revient à la distance entre le point sur l’axe des x et la moyenne de tous les points sur cet axe. Vous devriez porter une attention particulière aux observations qui ont un leverage plus grand que $2(k+1)/n$, où k est le nombre de variables indépendantes (ici, 1) et n est le nombre d’observations. Dans cet exemple, il y a 75 observations et une variable indépendante et donc les points ayant un leverage plus grand que $4 / 75 =  0.053$ devrait être considérés avec attention. Le graphique indique également comment la régression changerait si on enlevait un point. Ce changement est mesuré par la distance de Cook, illustrée par les bandes en rouge sur le graphique. Un point ayant une distance de Cook supérieure à 1 a une grande influence.
 
-::: {.callout-warning}
+::: callout-warning
 Notez que R identifie automatiquement les cas les plus extrèmes sur chacun de ces 4 graphiques. Le fait qu’un point soit identifié ne signifie pas nécessairement que c’est une valeur réellement extrème, ou que vous devez vous en préoccuper. Dans tous les ensembles de données il y aura toujours un résidu plus grand que les autres...
 :::
 
@@ -382,6 +382,7 @@ Il est possible d'obtenir des graphiques d'évalutions des conditions d'applicat
 Il faut utiliser la fonction `model_check()` dans le `r emoji::emoji("package")` `performance`.
 
 ```{r}
+#| label: fig-check
 check_model(RegModel.1)
 ```
 Finalement, quel est le verdict concernant la régression linéaire entre fklngth et age ? Elle viole la condition de linéarité, possiblement celle de normalité, remplit la condition d’homoscédasticité, et ne semble pas influencée outre mesure par des valeurs bizarres ou extrêmes.
@@ -404,7 +405,7 @@ library(lmtest)
 ```
 :::
 
-::: {.callout-caution}
+::: callout-caution
 # Exercice
 Exécutez les commandes suivantes
 :::
@@ -443,7 +444,7 @@ La relation entre `fklngth` et `age` n’étant pas linéaire, on devrait donc e
 - Voyons ce qu’une transformation log donne:
 
 ```{r}
-#| label: sturtr-1
+#| label: fig-sturtr-1
 #| warning: false
 #| message: false
 par(mfrow = c(1, 1), las = 1)
@@ -467,7 +468,7 @@ summary(RegModel.2)
 Examinons maintenant les graphiques diagnostiques:
 
 ```{r}
-#| label: sturtr-3
+#| label: fig-sturtr-3
 par(mfrow = c(2, 2), las = 1)
 plot(RegModel.2)
 ```
@@ -508,10 +509,11 @@ L’ordonnée à l’origine (Intercept), la pente, et le R carré sont presque 
 Les graphiques diagnostiques des résidus et les tests formels des conditions d’application sur ce sous-ensemble de données donnent:
 
 ```{r}
-#| label: sturtr-6
+#| label: fig-sturtr-6
 par(mfrow = c(2, 2))
 plot(RegModel.3)
-sturgeon.male.subset <- subset(sturgeon, subset = !(rownames(sturgeon.male) %in% c("8", "24", "112")))
+sturgeon.male.subset <- subset(
+  sturgeon, subset = !(rownames(sturgeon.male) %in% c("8", "24", "112")))
 bptest(RegModel.3)
 dwtest(RegModel.3)
 resettest(RegModel.3)
@@ -553,7 +555,7 @@ $$ d = \frac{b}{s_b\sqrt{n-k-1}} = \frac{0.1}{0.02168\sqrt{74-1-1}}=0.54$$
 Armés de cette taille d’effet (une pente présumée de 0.1 et une variabilité autour de la régression similaire à la régression de fklngth vs age), aller à __Tests: Means: One group: difference from constant__, et entrez la valeur calculée de d, alpha, et l’effectif de l’échantillon pour calculer la puissance.
 
 ```{r}
-#| label: lm-pow-fig-1
+#| label: fig-lm-pow-fig-1
 #| echo: false
 #| fig-cap: Analyse de puissance pour N = 20 et pente = 0.1
 #| out-width: 100%
@@ -576,7 +578,7 @@ La puissance de détecter une pente comme étant statistiquement significative (
 Pour estimer la taille d’échantillon (effectif) requis pour avoir une puissance de 99% de détecter un effet de l’âge si la pente est 0.1 (sur une échelle log-log), avec alpha=0.05, on utilise la même valeur de d (0.54):
 
 ```{r}
-#| label: lm-pow-fig-2
+#| label: fig-lm-pow-fig-2
 #| echo: false
 #| fig-cap: Analyse à priori pour déterminer la taille d'échantillon pour une puissance
 #|   de 0.99
@@ -629,7 +631,7 @@ appelée t1\* et la pente de la régression t2\*), R imprime :
 3. `std. error` l’erreur-type de l’estimé bootstrap
 
 ```{r}
-#| label: lm-boot-2
+#| label: fig-lm-boot-2
 par(mfrow = c(2, 2))
 plot(results, index = 1) # intercept
 plot(results, index = 2) # log10(age)

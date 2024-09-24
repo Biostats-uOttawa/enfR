@@ -394,7 +394,7 @@ Dans l'exemple ci-dessus, le chemin d'accès au fichier est séparé par une sim
 Cela fonctionne quel que soit le système d'exploitation que vous utilisez et nous vous recommandons de vous en tenir à cela.
 Cependant, les utilisateurs de Windows peuvent être plus familiers avec la notation de la barre oblique inverse simple et si vous voulez continuer à l'utiliser, vous devrez l'inclure en tant que barre oblique inverse double.
 
-::: {.callout-warning}
+::: callout-warning
 Notez cependant que la notation de la double barre oblique inverse sera **pas** fonctionnera pas sur les ordinateurs utilisant les systèmes d'exploitation Mac OSX ou Linux.
 Nous le déconseillons donc fortement car il n'est pas reproductible
 :::
