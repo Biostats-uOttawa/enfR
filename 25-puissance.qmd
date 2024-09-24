@@ -8,12 +8,12 @@ editor:
 
 # Analyse de puissance avec R et G\*Power
 
-Après avoir complété cet exercice de laboratoire, vous devriez :
+Objectifs de ce chapitre :
 
--   Pouvoir calculer la puissance d’un test de t avec R et G\*Power
--   Pouvoir calculer l’effectif requis pour obtenir la puissance désirée avec un test de t
--   Pouvoir calculer la taille de l’effet détectable par un test de t étant donné l’effectif, la puissance et $\alpha$
--   Comprendre comment la puissance change lorsque l’effectif augmente, la taille de l’effet change, ou lorsque $\alpha$ diminue
+-   Pouvoir calculer la **puissance** d’un test de t avec R et G\*Power
+-   Pouvoir calculer l’**effectif requis** pour obtenir la puissance désirée avec un test de t
+-   Pouvoir calculer la **taille d’effet détectable** par un test de t étant donné *l’effectif*, la *puissance* et $\alpha$
+-   Comprendre comment la puissance change lorsque l’effectif augmente, la taille d’effet change, ou lorsque $\alpha$ diminue
 -   Comprendre comment la puissance est affectée lorsque l’on passe d’un test bilatéral à un test unilatéral
 
 ## La théorie
@@ -26,8 +26,8 @@ Après avoir complété cet exercice de laboratoire, vous devriez :
 
 #### Évaluer l’évidence {.unnumbered}
 
-L’analyse de puissance effectuée après avoir accepté une hypothèse nulle permet de calculer la probabilité que l’hypothèse nulle soit rejetée si elle était fausse et que la taille de l’effet était d’une valeur donnée.
-Ce type d’analyse a posteriori est très commun.
+L’analyse de puissance effectuée après avoir accepté une hypothèse nulle permet de calculer la probabilité que l’hypothèse nulle soit rejetée si elle était fausse et que la taille d’effet était d’une valeur donnée.
+Ce type d’analyse *a posteriori* est très commun.
 
 #### Planifier de meilleures expériences {.unnumbered}
 
@@ -53,21 +53,23 @@ Si ce seuil est très strict (*i.e.* si $\alpha$ est fixé à une valeur très b
 Plus l’échantillon est grand, plus la puissance est élevée.
 La capacité d’un test à détecter de petites différences comme étant statistiquement significatives augmente avec une augmentation du nombre d’observations.
 
-#### La taille de l’effet {.unnumbered}
+#### La taille d’effet {.unnumbered}
 
-Plus la taille de l’effet est grande, plus un test a de puissance.
+Plus la taille d’effet est grande, plus un test a de puissance.
 Pour un échantillon de taille fixe, la capacité d’un test à détecter un effet comme étant statistiquement significatif est plus élevée si l’effet est grand que s’il est petit.
-La taille de l’effet est en fait une mesure du degré de fausseté de l’hypothèse nulle.
+La taille d’effet est en fait une mesure du degré de fausseté de l’hypothèse nulle.
 
 ## Qu’est ce que G\*Power?
 
 G\*Power est un programme gratuit, développé par des psychologues de l’Université de Dusseldorf en Allemagne.
 Le programme existe en version Mac et Windows.
-Il peut cependant être utilisé sous linux via Wine.
+Il peut cependant être utilisé sous linux via Wine ou une machine virtuelle.
+
 G\*Power vous permettra d’effectuer une analyse de puissance pour la majorité des tests que nous verrons au cours de la session sans avoir à effectuer des calculs complexes ou farfouiller dans des tableaux ou des figures décrivant des distributions ou des courbes de puissance.
-Il est possible de faire tous les analyses de G\*power avec R, mais cela est nettement plus complexes, car il faut tous coder à la main.
-Dans les cas les plus simple le code R est aussi fourni.
 G\*power est vraiment un outil très utile que vous devrez maîtriser.
+
+Il est possible de faire toutes les analyses de G\*power avec R, mais cela est un peu plus complexes et nécessite un peu plus de code et donc une meilleure compréhension du processus.
+Dans les cas les plus simple le code R est aussi fourni.
 
 ::: callout-caution
 # Exercice
@@ -79,50 +81,52 @@ Téléchargez le programme [**ici**](https://www.psychologie.hhu.de/arbeitsgrupp
 
 ### Principe général
 
-L’utilisation de G\*Power implique généralement en trois étapes:
+L’utilisation de G\*Power implique généralement 3 étapes:
 
 1.  Choisir le test approprié
 2.  Choisir l’un des 5 types d’analyses de puissance disponibles
-3.  Inscrire les valeurs des paramètres requis et cliquer sur Calculate
+3.  Inscrire les valeurs des paramètres requis et cliquer sur **Calculate**
 
 ### Types d’analyses de puissance disponibles
 
 #### A priori {.unnumbered}
 
-Calcule l’effectif requis pour une valeur de $\alpha$, $\beta$ et de taille d’effet donnée.
+**Calcule l’effectif requis** pour une valeur de $\alpha$, $\beta$ et de taille d’effet donnée.
 Ce type d’analyse est utile à l’étape de planification des expériences.
 
 #### Compromis {.unnumbered}
 
-Calcule $\alpha$ et $\beta$ pour un rapport $\beta / \alpha$ donné, un effectif fixe, et une taille d’effet donnée.
+**Calcule** $\boldsymbol{\alpha}$ **et** $\boldsymbol{\beta}$ pour un rapport $\beta / \alpha$ donné, un effectif fixe, et une taille d’effet donnée.
 Ce type d’analyse est plus rarement utilisé (je ne l’ai jamais fait), mais peut être utile lorsque le rapport $\beta / \alpha$ est d’intérêt, par exemple lorsque le coût d’une erreur de type I et de type II peut être quantifié.
 
 #### Critère {.unnumbered}
 
-Calcule $\alpha$ pour $\beta$, effectif et taille d’effet donné.
+**Calcule** $\boldsymbol{\alpha}$ pour $\beta$, effectif et taille d’effet donné.
 En pratique, je vois peu d’utilité pour ce type de calcul.
 Contactez-moi si vous en voyez une!
 
 #### Post-hoc {.unnumbered}
 
-Calcule la puissance (1 - $\beta$) pour $\alpha$, une taille d’effet et un effectif donné.
+**Calcule la** **puissance (1 -** $\boldsymbol{\beta}$**)** pour $\alpha$, une taille d’effet et un effectif donné.
 Très utilisée pour interpréter les résultats d’une analyse statistique non-significative, mais seulement si l’on utilise une taille d’effet biologiquement significative (et non la taille d’effet observée).
 Peu pertinente lorsque le test est significatif.
 
 #### Sensitivité {.unnumbered}
 
-Calcule la taille d’effet détectable pour une valeur d’$\alpha$, $\beta$ et un effectif donné.
+**Calcule la** **taille d’effet détectable** pour une valeur d’$\alpha$, $\beta$ et un effectif donné.
 Très utile également au stade de planification des expériences.
 
-### Comment calculer la taille de l’effet G\*Power permet de faire une analyse de puissance pour de nombreux tests statistiques
+### Comment calculer la taille d’effet ?
 
-L’indice de la taille de l’effet qui est utilisé par G\*Power pour les calculs dépend du test.
+***G\*Power permet de faire une analyse de puissance pour de nombreux tests statistiques.***
+
+L’indice de la taille d’effet qui est utilisé par G\*Power pour les calculs dépend du test.
 Notez que d’autres logiciels peuvent utiliser des indices différents et il est important de vérifier que l’indice que l’on utilise est celui qui convient.
-G\*Power vous facilite la tâche et permet de calculer la taille de l’effet en inscrivant seulement les valeurs pertinentes dans la fenêtre de calcul.
+G\*Power vous facilite la tâche et permet de calculer la taille d’effet en inscrivant seulement les valeurs pertinentes dans la fenêtre de calcul.
 Le tableau suivant donne les indices utilisés par G\*Power pour les différents tests.
 
 | Test                            | Taille d'effet | Formule                                                                                                               |
-|:--------------|:----------------------:|:-------------------------------|
+|:-----------------|:----------------------:|:-----------------------------|
 | test de t sur des moyennes      |       d        | $d = \frac{|\mu_1 - \mu_2|}{\sqrt{({s_1}^2 + {s_2}^2)/2}}$                                                            |
 | test de t pour des corrélations |       r        |                                                                                                                       |
 | autres tests de t               |       d        | $d = \frac{\mu}{\sigma}$                                                                                              |
@@ -141,8 +145,8 @@ L'ensemble des analyses de puissance décrites après peuvent être réalisé av
 -   `pwr.t2n.test()`: lorsque les échantillons ont des tailles différentes
 :::
 
-L’objectif de cette séance de laboratoire est de vous familiariser avec G\*Power et de vous aider à comprendre comment les quatre paramètres des analyses de puissance ($\alpha$, $\beta$, effectif et taille de l’effet) sont reliés entre eux.
-On examinera seulement un des nombreux tests, le test de t permettant de comparer deux moyennes indépendantes.
+L’objectif de cette séance de laboratoire est de vous familiariser avec G\*Power et de vous aider à comprendre comment les quatre paramètres des analyses de puissance ($\alpha$, $\beta$, effectif et taille d’effet) sont reliés entre eux.
+On examinera seulement l'un des nombreux tests : le *test de t* permettant de comparer deux moyennes indépendantes.
 C’est le test le plus communément utilisé par les biologistes, vous l’avez tous déjà utilisé, et il conviendra très bien pour les besoins de la cause.
 Ce que vous apprendrez aujourd’hui s’appliquera à toutes les autres analyses de puissance que vous effectuerez à l’avenir.
 
@@ -158,29 +162,29 @@ t = -0.5746, df = 34, p-value = 0.5693
 
 Elle accepte l’hypothèse nulle (puisque p est plus élevé que 0.05) conclue donc que la biomasse moyenne des poissons est la même dans ces deux régions.
 
-### Analyse post-hoc
+### Analyse post-hoc - Calculer la puissance du test
 
 Compte tenu des valeurs des moyennes observées et de leur écart- type, on peut utiliser G\*Power pour calculer la puissance du test de t bilatéral pour deux moyennes indépendantes et pour la taille d’effet (i.e. la différence entre la biomasse entre les deux régions, pondérée par les écarts-type) à $\alpha$ = 0.05.
 
 Démarrer G\*Power.
 
 1.  À **Test family**, choisir: t tests
-2.  À **Statistical test**, choisir: Means: Difference between two inde- pendent means (two groups)
+2.  À **Statistical test**, choisir: Means: Difference between two independent means (two groups)
 3.  À **Type of power analysis**, choisir: Post hoc: Compute achieved power - given $\alpha$, sample size, and effect size
 4.  Dans **Input Parameters**,
 
 -   à la boîte **Tail(s)**, choisir: Two,
--   vérifier que $\alpha$ **err prob** est égal à 0.05
+-   vérifier que $\boldsymbol{\alpha}$ **err prob** est égal à 0.05
 -   inscrire 18 pour **Sample size group** 1 et 2
 -   pour calculer la taille d’effet (Effect size d), cliquer sur le bouton **Determine =\>**
 
-5.  Dans la fenêtre qui s’ouvre à droite, sélectionner **n1 = n2**
+5.  Dans la fenêtre qui s’ouvre à droite, sélectionner $\boldsymbol{n1 = n2}$
 
 -   entrer les moyennes (**Mean group** 1 et 2)
--   entrer les écarts types (**SDs group** 1 et 2)
+-   entrer les écarts types (**SD** $\boldsymbol{\sigma}$ **group** 1 et 2)
 -   cliquer sur le bouton **Calculate and transfer to main window**
 
-6.  Cliquer sur le bouton Calculate dans la fenêtre principale et vous devriez obtenir ceci:
+6.  Cliquer sur le bouton **Calculate** dans la fenêtre principale et vous devriez obtenir ceci:
 
 ```{r}
 #| label: gpower-1
@@ -191,13 +195,13 @@ knitr::include_graphics("images/gpower_1.png")
 ```
 
 La même analyse peut être faites en utlisant R.
-Pour l'analyse avec R, il faut définir d'abord calculer la taille d'effet `d` pour un test de t comparant deux moyennes, puis utiliser la fonction `pwr.t.test` de l'extension `pwr`.
+D'abord, il faut calculer la taille d'effet `d` pour un test de t comparant deux moyennes, puis utiliser la fonction `pwr.t.test` du paquet `pwr` 📦.
 Le plus simple comme nous allons estimer la taille d'effet `d` plusieurs fois et de créer une petite fonction qui estime `d` basé sur les paramètres nécessaires.
 
 ```{r}
 #| label: r-power
 #| fig-cap: Graphique de l'analyse de puissance dans R
-# charger l'extension pwr
+# charger le paquet pwr
 library(pwr)
 # définir une fonction pour d
 d <- function(u1, u2, sd1, sd2) {
@@ -205,7 +209,9 @@ d <- function(u1, u2, sd1, sd2) {
 }
 
 # analyse de puissance
-pwr.t.test(n = 18, d = d(u1 = 2.64, sd1 = 3.28, u2 = 3.31, sd2 = 2.79), sig.level = 0.05, type = "two.sample")
+pwr.t.test(n = 18, d = d(u1 = 2.64, sd1 = 3.28,
+                         u2 = 3.31, sd2 = 2.79),
+           sig.level = 0.05, type = "two.sample")
 
 # graphique comme g*Power
 x <- seq(-4, 4, length = 200)
@@ -213,30 +219,36 @@ plot(x, dnorm(x), type = "l", col = "red", lwd = 2)
 qc <- qt(0.025, 16)
 abline(v = qc, col = "green")
 abline(v = -qc, col = "green")
-lines(x, dnorm(x, mean = (3.31 - 2.64)), type = "l", col = "blue", lwd = 2)
+lines(x, dnorm(x, mean = (3.31 - 2.64)),
+      type = "l", col = "blue", lwd = 2)
 
-# power corresponds to the shaded area
+# la puissance correspond à la partie bleutée
 y <- dnorm(x, mean = (3.31 - 2.64))
-polygon(c(x[x <= -qc], -qc), c(y[x <= -qc], 0), col = rgb(red = 0, green = 0.2, blue = 1, alpha = 0.5))
+polygon(c(x[x <= -qc], -qc), c(y[x <= -qc], 0),
+        col = rgb(red = 0, green = 0.2, blue = 1, alpha = 0.5))
+polygon(c(x[x >= -qc], -qc), c(dnorm(x[x >= -qc]), 0),
+        col = rgb(1, 0, 0, 0.3))
+polygon(c(x[x <= qc], qc), c(dnorm(x[x <= qc]), 0),
+        col = rgb(1, 0, 0, 0.3))
 ```
 
 Étudions un peu la figure \@ref(fig:gpower-1).
+<!--# JULIEN - J'ai essayé de régler ça mais je vois que même dans la version anglaise on a le même problème -->
 
--   La courbe de gauche, en rouge, correspond à la distribution de la statistique t si $H_0$ est vraie (i.e si les deux moyennes étaient égales) compte tenu de l’effectif (18 dans chaque région) et des écarts- types observés.
--   Les lignes verticales vertes correspondent aux valeurs critiques de t pour une valeur $\alpha = 0.05$ et un effectif total de 36 (2x18).
--   Les régions ombrées en rose correspondent aux zones de rejet de $H_0$. Si Jaynie avait obtenu une valeur de t en dehors de l’intervalle délimité par les valeurs critiques allant de -2.03224 à 2.03224, alors elle aurait rejeté $H_0$, l’hypothèse nulle d’égalité des deux moyennes. En fait, elle a obtenu une valeur de t égale à -0.5746 et conclu que la biomasse est la même dans les deux régions.
--   La courbe de droite, en bleu, correspond à la distribution de la sta- tistique t si $H_1$ est vraie (ici $H_1$ correspond à une différence de biomasse entre les deux régions de $3.33-2.64=0.69g/m^2$, compte tenu des écarts-types observés). Cette distribution correspond à ce qu’on devrait s’attendre à observer si $H_1$ était vraie et que l’on répétait un grand nombre de fois les mesures dans des échantillons aléatoires de 18 ruisseaux des deux régions en calculant la statistique t à chaque fois. En moyenne, on observerait une valeur de t d’environ 0.6.
+-   La courbe de gauche, en rouge, correspond à la **distribution de la statistique t si** $\boldsymbol{H_0}$ **est vraie** (i.e si les deux moyennes étaient égales) compte tenu de l’effectif (18 dans chaque région) et des écarts- types observés.
+-   Les lignes verticales vertes correspondent aux **valeurs critiques de t pour** $\boldsymbol{\alpha = 0.05}$ et un effectif total de 36 (2x18).
+-   Les régions ombrées en rose correspondent aux **zones de rejet de** $\boldsymbol{H_0}$ (${\alpha/2}$) <!--# JULIEN - j'ai rajouté le alpha/2 parceque je trouve que ça aide à comprendre mais enlève le si tu pense que ce n'est pas pertinent ou sujet à quiproquo -->. Si Jaynie avait obtenu une valeur de t en dehors de l’intervalle délimité par les valeurs critiques allant de -2.03224 à 2.03224, alors elle aurait rejeté $H_0$, l’hypothèse nulle d’égalité des deux moyennes. En fait, elle a obtenu une valeur de t égale à -0.5746 et conclu que la biomasse est la même dans les deux régions.
+-   La courbe de droite, en bleu, correspond à la **distribution de la statistique t si** $\boldsymbol{H_1}$ **est vraie** (ici $H_1$ correspond à une différence de biomasse entre les deux régions de $3.33-2.64=0.69g/m^2$, compte tenu des écarts-types observés). Cette distribution correspond à ce qu’on devrait s’attendre à observer si $H_1$ était vraie et que l’on répétait un grand nombre de fois les mesures dans des échantillons aléatoires de 18 ruisseaux des deux régions en calculant la statistique t à chaque fois. En moyenne, on observerait une valeur de t d’environ 0.6.
 -   Notez que la distribution de droite chevauche considérablement celle de gauche, et une bonne partie de la surface sous la courbe de droite se retrouve à l’intérieur de l’intervalle d’acceptation de $H_0$, délimité par les deux lignes vertes et allant de -2.03224 à 2.03224. Cette proportion, correspondant à la partie ombrée en bleu sous la courbe de droite et dénoté par $\beta$ correspond au risque d’erreur de type II qui est d’accepter $H_0$ quand $H_1$ est vraie.
--   La puissance est simplement $1-\beta$, et est ici de 0.098339. Donc, si la biomasse différait de 0.69$g/m^2$ entre les deux régions, Jaynie n’avait que 9.8% des chances d’être capable de détecter une différence statistiquement significative à $\alpha=5%$ en échantillonnant 18 ruisseaux de chaque région.
+-   La **puissance est simplement** $\boldsymbol{1-\beta}$, et est ici de 0.098339 (*Résultats du test d'estimation de puissance*) <!--# JULIEN - pareil, dis moi si ce n'était pas utile de le mentioner -->. Donc, si la biomasse différait de 0.69$g/m^2$ entre les deux régions, Jaynie n’avait que 9.8% des chances d’être capable de détecter une différence statistiquement significative à $\alpha=5%$ en échantillonnant 18 ruisseaux de chaque région.
 
 **Récapitulons:** La différence de biomasse entre les deux régions n’est pas statistiquement significative d’après le test de t.
 C’est donc que cette différence est relativement petite compte tenu de la précision des mesures.
-Il n’est donc pas très surprenant que la puissance, i.e. la probabilité de détecter une différence significative, soit faible.
+Il n’est donc pas très surprenant que la puissance, i.e. *la probabilité de détecter une différence significative*, soit faible.
 Toute cette analyse ne nous informe pas beaucoup.
 
-**Une analyse de puissance post hoc avec la taille de l’effet observé n’est pas très utile.** On la fera plutôt pour une taille d’effet autre que celle observée quand H 0 est acceptée.
-Quelle taille d’effet utiliser?
-C’est la biologie du système étudié qui peut nous guider.
+**Une analyse de puissance post hoc avec la taille d’effet observé n’est pas très utile.** On la fera plutôt pour une taille d’effet autre que celle observée quand $H_0$ est acceptée.
+*Quelle taille d’effet utiliser?* C’est la biologie du système étudié qui peut nous guider.
 Par exemple, en ce qui concerne la biomasse des poissons, on pourrait s’attendre à ce qu’une différence de biomasse du simple au double (disons de 2.64 à 5.28 $g/m^2$) ait des conséquences écologiques.
 On voudrait s’assurer que Jaynie avait de bonnes chances de détecter une différence aussi grande que celle-là avant d’accepter ses conclusions que la biomasse est la même entre les deux régions.
 Quelles étaient les chances de Jaynie de détecter une différence de 2.64 $g/m^2$ entre les deux régions?
@@ -245,7 +257,7 @@ G\*Power peut nous le dire.
 ::: callout-caution
 # Exercice
 
-Changer la moyenne du groupe 2 à 5.28, recalculer la taille d’effet, et cliquer sur Calculate pour obtenir (\@ref(fig:gpower-2)).
+Changer la moyenne du groupe 2 à 5.28, recalculer la taille d’effet, et cliquer sur **Calculate** pour obtenir (\@ref(fig:gpower-2)) <!--# JULIEN - même problème de cross-référence ici -->.
 :::
 
 ```{r}
@@ -257,27 +269,29 @@ knitr::include_graphics("images/gpower_2.png")
 ```
 
 ```{r}
-pwr.t.test(n = 18, d = d(u1 = 2.64, sd1 = 3.28, u2 = 5.28, sd2 = 2.79), sig.level = 0.05, type = "two.sample")
+pwr.t.test(n = 18, d = d(u1 = 2.64, sd1 = 3.28,
+                         u2 = 5.28, sd2 = 2.79),
+           sig.level = 0.05, type = "two.sample")
 ```
 
-La puissance est de 0.71, donc Jaynie avait une chance raisonnable de détecter une différence du simple au double avec 18 ruisseaux dans chaque région.
+La puissance est de 0.71, donc Jaynie avait une chance raisonnable (71%) de détecter une différence du simple au double avec 18 ruisseaux dans chaque région.
 
 Notez que cette analyse de puissance post hoc pour une taille d’effet jugée biologiquement significative est bien plus informative que l’analyse précédente pour la taille d’effet observée (qui est celle effectuée par défaut par bien des néophytes et de trop nombreux logiciels qui essaient de penser pour nous).
 En effet, Jaynie n’a pu détecter de différences significatives entre les deux régions.
-Cela pourrait être pour deux raisons: soit qu’il n’y a pas de différences entre les régions, ou soit parce que la précision des mesures est si faible et l’effort d’échantillonnage était si limité qu’il était très peu probable de détecter même d’énormes différences.
+Cela pourrait être pour deux raisons: soit qu’il n’y a pas de différences entre les régions, ou alors parce que la précision des mesures est si faible et l’effort d’échantillonnage si limité qu’il était très peu probable de détecter même d’énormes différences.
 La deuxième analyse de puissance permet d’éliminer cette seconde possibilité puisque Jaynie avait 71% des chances de détecter une différence du simple au double.
 
-### Analyse à priori
+### Analyse à priori - Calculer la taille de l’effectif à échantillonner
 
-Supposons qu’on puisse défendre la position qu’une différence de biomasse observée par Jaynie entre les deux régions, $3.31- 2.64=0.67g/m^2$, soit écologiquement signifiante.
+Supposons qu’on puisse défendre la position qu’une différence de biomasse observée par Jaynie entre les deux régions, $3.31- 2.64=0.67g/m^2$, soit écologiquement significative.
 On devrait donc planifier la prochaine saison d’échantillonnage de manière à avoir de bonnes chances de détecter une différence de cette taille.
 Combien de ruisseaux Jaynie devrait-elle échantillonner pour avoir 80% des chances de la détecter (compte tenu de la variabilité observée)?
 
 ::: callout-caution
 # Exercice
 
-Changer le type d’analyse de puissance dans G\*Power à **A priori**: **Compute sample size - given** $\alpha$, power, and effect size.
-Assurez-vous que les valeurs pour les moyennes et les écarts-type soient celles qu’a obtenu Jaynie, recalculez la taille de l’effet, et inscrivez 0.8 pour la puissance.
+Changer le type d’analyse de puissance dans G\*Power à **A priori: Compute sample size - given** $\alpha$**, power, and effect size**.
+Assurez-vous que les valeurs pour les moyennes et les écarts-type soient celles obtenu par Jaynie, recalculez la taille d’effet, et inscrivez 0.8 pour la puissance.
 :::
 
 ```{r}
@@ -289,7 +303,9 @@ knitr::include_graphics("images/gpower_3.png")
 ```
 
 ```{r}
-pwr.t.test(power = 0.8, d = d(u1 = 2.64, sd1 = 3.28, u2 = 3.31, sd2 = 2.79), sig.level = 0.05, type = "two.sample")
+pwr.t.test(power = 0.8, d = d(u1 = 2.64, sd1 = 3.28,
+                              u2 = 3.31, sd2 = 2.79),
+           sig.level = 0.05, type = "two.sample")
 ```
 
 **Ouch!** Il faudrait échantillonner 326 ruisseaux dans chaque région!
@@ -301,17 +317,19 @@ Si on refait le même calcul pour une puissance de 95%, on obtient 538 ruisseaux
 Augmenter la puissance ça demande plus d’effort.
 
 ```{r}
-pwr.t.test(power = 0.95, d = d(u1 = 2.64, sd1 = 3.28, u2 = 3.31, sd2 = 2.79), sig.level = 0.05, type = "two.sample")
+pwr.t.test(power = 0.95, d = d(u1 = 2.64, sd1 = 3.28,
+                               u2 = 3.31, sd2 = 2.79),
+           sig.level = 0.05, type = "two.sample")
 ```
 
 ### Analyse de sensitivité - Calculer la taille d’effet détectable
 
-Compte tenu de la variabilité observée, d’un effort d’échantillonnage de 18 ruisseaux par région, et en conservant $\alpha=0.05$, quelle est la taille d’effet que Jaynie pouvait détecter avec 80% de chances $\beta=0.2$)?
+Compte tenu de la variabilité observée, d’un effort d’échantillonnage de 18 ruisseaux par région, et en conservant $\alpha=0.05$, quelle est la taille d’effet que Jaynie pouvait détecter avec 80% de chances ($\beta=0.2$) ?
 
 ::: callout-caution
 # Exercice
 
-Changez le type d’analyse dans G\*Power à **Sensitivity**: **Compute required effect size - given** $\alpha$, power, and sample size et assurez-vous que la taille des échantillons est de 18 dans chaque région.
+Changez le type d’analyse dans G\*Power à **Sensitivity**: **Compute required effect size - given** $\alpha$**, power, and sample size** et assurez-vous que la taille des échantillons est de 18 dans chaque région.
 :::
 
 ```{r}
@@ -323,13 +341,14 @@ knitr::include_graphics("images/gpower_4.png")
 ```
 
 ```{r}
-pwr.t.test(power = 0.8, n = 18, sig.level = 0.05, type = "two.sample")
+pwr.t.test(power = 0.8, n = 18,
+           sig.level = 0.05, type = "two.sample")
 ```
 
 La taille d’effet détectable pour cette taille d’échantillon, $\alpha=0.05$ et $\beta=0.2$ (ou une puissance de 80%) est de 0.961296.
 
 ::: callout-warning
-cette valeur est l’indice `d` de la taille de l’effet et est pondérée par la variabilité des mesures.
+cette valeur est l’indice `d` de la taille d’effet et est pondérée par la variabilité des mesures.
 :::
 
 Dans ce cas ci, `d` est approximativement égal à $$ d = \frac{| \bar{X_1} \bar{X_2} |} {\sqrt{\frac{{s_1}^2 +{s_2}^2}{2}}}$$ Pour convertir cette valeur de d sans unités en une valeur de différence de biomasse détectable (i.e $| \bar{X_1} \bar{X_2} |$), il suffit de multiplier `d` par le dénominateur de l’équation.
@@ -338,7 +357,8 @@ $$
 $$ Dans R, on peut estimer cela avec:
 
 ```{r}
-pwr.t.test(power = 0.8, n = 18, sig.level = 0.05, type = "two.sample")$d * sqrt((3.28^2 + 2.79^2) / 2)
+pwr.t.test(power = 0.8, n = 18,
+           sig.level = 0.05, type = "two.sample")$d * sqrt((3.28^2 + 2.79^2) / 2)
 ```
 
 Donc, avec 18 ruisseaux dans chaque région, pour $\alpha=0.05$ et $\beta=0.2$ (une puissance de 80%), Jaynie pouvait détecter une différence de biomasse de 2.93$g/m^2$ entre les régions, un peu plus que du simple au double.
@@ -347,6 +367,6 @@ Donc, avec 18 ruisseaux dans chaque région, pour $\alpha=0.05$ et $\beta=0.2$ (
 
 -   L’analyse de puissance post hoc n’est pertinente que lorsque l’on a accepté l’hypothèse nulle. Il est en effet impossible de faire une erreur de type II quand on rejette $H_0$.
 -   Avec de très grands échantillons, on a une puissance quasi infinie et on peut détecter statistiquement de très petites différences qui ne sont pas nécessairement biologiquement significatives.
--   En utilisant un critère de signification plus strict ($\alpha$\<0.05) on diminue notre puissance.
+-   En utilisant un critère de signification plus strict ($\alpha < 0.05$) on diminue notre puissance.
 -   En voulant maximiser la puissance, on augmente l’effort requis, à moins d’utiliser une valeur critique plus libérale ($\alpha>0.05$)
 -   Le choix de $\beta$ est quelque peu arbitraire. On considère que $\beta=0.2$ (puissance de 80%) est relativement élevé.
