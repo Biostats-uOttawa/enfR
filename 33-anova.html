@@ -530,18 +530,26 @@ window.Quarto = {
 <span><span class="co"># display graph, by year</span></span>
 <span><span class="va">mygraph</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">year</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="33-anova_files/figure-html/ano-2-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Distribution de la longueur des esturgeons par année</figcaption></figure>
+<div id="fig-ano-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ano-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="33-anova_files/figure-html/fig-ano-2-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ano-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.1: Distribution de la longueur des esturgeons par année
+</figcaption></figure>
 </div>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">fklngth</span> <span class="op">~</span> <span class="va">year</span>, data <span class="op">=</span> <span class="va">Dam10dat</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="33-anova_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Boxplot de la longueur pas annéee</figcaption></figure>
+<div id="fig-box1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-box1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="33-anova_files/figure-html/fig-box1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-box1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.2: Boxplot de la longueur pas annéee
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -564,9 +572,13 @@ window.Quarto = {
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">anova.model1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="33-anova_files/figure-html/ano-3-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Conditions d’applications de l’ANOVA</figcaption></figure>
+<div id="fig-ano-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ano-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="33-anova_files/figure-html/fig-ano-3-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ano-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.3: Conditions d’applications de l’ANOVA
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -779,9 +791,13 @@ m1966-m1965  2.1949612  -2.240630  6.6305526 0.5710111</code></pre>
 <div class="cell">
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">fklngth</span> <span class="op">~</span> <span class="va">myyear</span>, data <span class="op">=</span> <span class="va">Dam10dat</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="33-anova_files/figure-html/ano-13-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Différence anuelles dans la longueur des esturgeons</figcaption></figure>
+<div id="fig-ano-13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ano-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="33-anova_files/figure-html/fig-ano-13-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ano-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.4: Différence anuelles dans la longueur des esturgeons
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -807,24 +823,28 @@ Multiple Comparisons of Means: Tukey Contrasts
 
 Fit: aov(formula = aov(fklngth ~ myyear, data = Dam10dat))
 
-Quantile = 2.5938
+Quantile = 2.589
 95% family-wise confidence level
  
 
 Linear Hypotheses:
                    Estimate lwr      upr     
-m1958 - m1954 == 0   0.1872  -3.2715   3.6460
-m1965 - m1954 == 0  -5.5077  -9.9976  -1.0177
-m1966 - m1954 == 0  -3.3127  -6.3434  -0.2820
-m1965 - m1958 == 0  -5.6949 -10.4117  -0.9780
-m1966 - m1958 == 0  -3.4999  -6.8576  -0.1422
-m1966 - m1965 == 0   2.1950  -2.2176   6.6075</code></pre>
+m1958 - m1954 == 0   0.1872  -3.2652   3.6396
+m1965 - m1954 == 0  -5.5077  -9.9894  -1.0259
+m1966 - m1954 == 0  -3.3127  -6.3378  -0.2875
+m1965 - m1958 == 0  -5.6949 -10.4030  -0.9867
+m1966 - m1958 == 0  -3.4999  -6.8514  -0.1484
+m1966 - m1965 == 0   2.1950  -2.2095   6.5994</code></pre>
 </div>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">meandiff</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="33-anova_files/figure-html/ano-14-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Différence anuelles dans la longueur des esturgeons</figcaption></figure>
+<div id="fig-ano-14" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ano-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="33-anova_files/figure-html/fig-ano-14-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ano-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.5: Différence anuelles dans la longueur des esturgeons
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -841,9 +861,13 @@ m1966 - m1965 == 0   2.1950  -2.2176   6.6075</code></pre>
 <span><span class="va">old.par</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mai <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1.25</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cimeans</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="33-anova_files/figure-html/ano-15-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Différence anuelles dans la longueur des esturgeons</figcaption></figure>
+<div id="fig-ano-15" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ano-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="33-anova_files/figure-html/fig-ano-15-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ano-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.6: Différence anuelles dans la longueur des esturgeons
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -865,9 +889,13 @@ m1966 - m1965 == 0   2.1950  -2.2176   6.6075</code></pre>
 <span><span class="va">anova.model2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">fklngth</span><span class="op">)</span> <span class="op">~</span> <span class="va">year</span>, data <span class="op">=</span> <span class="va">Dam10dat</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">anova.model2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="33-anova_files/figure-html/ano-16-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Conditions d’application de l’ANOVA</figcaption></figure>
+<div id="fig-ano-16" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ano-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="33-anova_files/figure-html/fig-ano-16-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ano-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.7: Conditions d’application de l’ANOVA
+</figcaption></figure>
 </div>
 </div>
 </div>
