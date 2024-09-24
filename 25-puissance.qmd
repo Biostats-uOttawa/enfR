@@ -8,6 +8,14 @@ editor:
 
 # Analyse de puissance avec R et G\*Power
 
+```{r}
+#| label: setup
+#| echo: false
+#| message: false
+
+source("utils/book-fnc.R")
+```
+
 Après avoir complété cet exercice de laboratoire, vous devriez :
 
 -   Pouvoir calculer la puissance d’un test de t avec R et G\*Power
@@ -205,25 +213,27 @@ d <- function(u1, u2, sd1, sd2) {
 }
 
 # analyse de puissance
+d_cohen <- d(u1 = 2.64, sd1 = 3.28, u2 = 3.31, sd2 = 2.79)
+
 pwr.t.test(
-  n = 18, d = d(u1 = 2.64, sd1 = 3.28, u2 = 3.31, sd2 = 2.79), sig.level = 0.05,
+  n = 18, d = d_cohen, sig.level = 0.05,
   type = "two.sample"
 )
 
 # graphique comme g*Power
 x <- seq(-4, 4, length = 200)
-x1 <- x + (3.31 - 2.64)
-y <- dt(x, 34)
-plot(x, y, type = "l", col = "red", lwd = 2)
+y0 <- dt(x, 34)
+y1 <- dt(x, 34, ncp = d_cohen * sqrt(36) / 2)
+plot(x, y0, type = "l", col = "red", lwd = 2)
 qc <- qt(0.025, 34)
 abline(v = qc, col = "green")
 abline(v = -qc, col = "green")
-lines(x1, y, type = "l", col = "blue", lwd = 2)
+lines(x, y1, type = "l", col = "blue", lwd = 2)
 
-# power corresponds to the shaded area
+# l'erreur de type correspond à la zone bleue
 
 polygon(
-  c(x1[x1 <= -qc], -qc), c(y[x1 <= -qc], 0),
+  c(x[x <= -qc], -qc), c(y1[x <= -qc], 0),
   col = rgb(red = 0, green = 0.2, blue = 1, alpha = 0.5)
 )
 ```
@@ -232,29 +242,30 @@ polygon(
 #| label: fig-ggplot
 #| eval: false
 
-qc <- qt(0.025, 16)
+qc <- qt(0.025, 34)
+ncp <- d_cohen * sqrt(36) / 2
 dat <- data.frame(
   x = seq(-4, 4, length = 200),
-  x1 = x + (3.31 - 2.64),
-  y = dt(x, 34)
+  y0 = dt(x, (n - 1) * 2),
+  y1 = dt(x, (n - 1) * 2, ncp = ncp)
 ) %>%
   mutate(
-    area = ifelse(x1 < -qc, y, 0)
+    area = ifelse(x <= qc, y1, 0)
   )
 
-ggplot(dat, aes(y = y)) +
-  geom_line(aes(x = x), color = "red") +
-  geom_line(aes(x = x1), color = "blue") +
-  geom_vline(xintercept = c(-qc, qc), color = "green") +
+ggplot(dat, aes(x = x)) +
+  geom_line(aes(y = y0), color = "red") +
+  geom_line(aes(y = y1), color = "blue") +
+  geom_vline(xintercept = qcl, color = "green") +
   geom_area(
-    aes(x = x1, y = area),
+    aes(x = x, y = area),
     fill = rgb(red = 0, green = 0.2, blue = 1, alpha = 0.5)
   ) +
   theme_classic() +
   ylab("dt(x)")
 ```
 
-Étudions un peu la figure @fig-r-power.
+Étudions un peu la figure @fig-gpower-1.
 
 -   La courbe de gauche, en rouge, correspond à la distribution de la statistique t si $H_0$ est vraie (i.e si les deux moyennes étaient égales) compte tenu de l’effectif (18 dans chaque région) et des écarts- types observés.
 -   Les lignes verticales vertes correspondent aux valeurs critiques de t pour une valeur $\alpha = 0.05$ et un effectif total de 36 (2x18).
@@ -294,6 +305,16 @@ knitr::include_graphics("images/gpower_2.png")
 pwr.t.test(
   n = 18, d = d(u1 = 2.64, sd1 = 3.28, u2 = 5.28, sd2 = 2.79),
   sig.level = 0.05, type = "two.sample"
+)
+```
+
+```{r}
+#| label: fig-pwr1
+#| echo: false
+plot_pwr(
+  n = 18,
+  d = d(u1 = 2.64, sd1 = 3.28, u2 = 5.28, sd2 = 2.79),
+  sig_level = 0.05, type = "two.sample"
 )
 ```
 

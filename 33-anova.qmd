@@ -43,7 +43,7 @@ str(Dam10dat)
 - Ensuite, visualisez les données comme dans le labo pour les tests de t. Créez un histogramme avec ligne de densité et un Box plot par année. Que vous révèlent ces données?
 
 ```{r}
-#| label: ano-2
+#| label: fig-ano-2
 #| warning: false
 #| message: false
 #| fig-cap: Distribution de la longueur des esturgeons par année
@@ -70,6 +70,7 @@ mygraph + facet_wrap(~year, ncol = 2)
 ```
 
 ```{r}
+#| label: fig-box1
 #| fig-cap: Boxplot de la longueur pas annéee
 boxplot(fklngth ~ year, data = Dam10dat)
 ```
@@ -89,7 +90,7 @@ Ces conditions doivent être remplies avant qu’on puisse se fier aux résultat
 - Faites une ANOVA à un critère de classification sur fklngth par année et produisez les graphiques diagnostiques
 
 ```{r}
-#| label: ano-3
+#| label: fig-ano-3
 #| fig-cap: Conditions d'applications de l'ANOVA
 # Fit anova model and plot residual diagnostics
 anova.model1 <- lm(fklngth ~ year, data = Dam10dat)
@@ -198,7 +199,7 @@ Dam10dat$myyear <- as.factor(paste0("m", Dam10dat$year))
 TukeyHSD(aov(fklngth ~ myyear, data = Dam10dat))
 ```
 ```{r}
-#| label: ano-13
+#| label: fig-ano-13
 #| fig-cap: Différence anuelles dans la longueur des esturgeons
 plot(TukeyHSD(aov(fklngth ~ myyear, data = Dam10dat)))
 ```
@@ -207,7 +208,7 @@ Les intervalles de confiance, corrigés pour les comparaisons multiples par la m
 Le package multcomp peut produire de meilleurs graphiques, mais requiert un peu plus de code:
 
 ```{r}
-#| label: ano-14
+#| label: fig-ano-14
 #| fig-cap: Différence anuelles dans la longueur des esturgeons
 # Alternative way to compute Tukey multiple comparisons
 # set up a one-way ANOVA
@@ -226,7 +227,7 @@ plot(meandiff)
 C’est un peu mieux, mais ce qui le serait encore plus c’est un graphique des moyennes, avec leurs intervalles de confiance ajustés pour les comparaisons multiples:
 
 ```{r}
-#| label: ano-15
+#| label: fig-ano-15
 #| fig-cap: Différence anuelles dans la longueur des esturgeons
 # Compute and plot means and Tukey CI
 means <- glht(
@@ -254,7 +255,7 @@ Dans l’exemple précédent sur les différences annuelles de la variable fklgn
 - Refaites l'ANOVA de la section précédente après avoir transformé en faisant le logarithme à la base de 10. Avec les données transformées, est-ce que les problèmes qui avaient été identifiés disparaissent ?
 
 ```{r}
-#| label: ano-16
+#| label: fig-ano-16
 #| fig-cap: Conditions d'application de l'ANOVA
 # Fit anova model on log10 of fklngth and plot residual diagnostics
 par(mfrow = c(2, 2))

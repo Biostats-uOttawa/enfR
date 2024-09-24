@@ -45,6 +45,7 @@ Supposons que vous êtes intéressés par l'effet de deux facteurs : site (locat
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-anom1
 Stu2wdat <- read.csv("data/Stu2wdat.csv")
 
 ggplot(Stu2wdat, aes(x = sex, y = rdwght)) +
@@ -73,8 +74,8 @@ deux critères de classification:
 
 ```{r}
 # Fit anova model and plot residual diagnostics
-# but first, save current par and set graphic page to hold 4 graphs
-opar <- par(mfrow = c(2, 2))
+# but first, save current graphic parameters
+opar <- par()
 anova.model1 <- lm(rdwght ~ sex + location + sex:location,
   contrasts = list(sex = contr.sum, location = contr.sum),
   data = Stu2wdat
@@ -96,6 +97,7 @@ Anova(anova.model1, type = 3)
 Suite à l’ANOVA, on accepte deux hypothèses nulles: (1) que l’effet du sexe ne varie pas entre les sites (pas d’interaction significative) et (2) qu’il n’y a pas de différence de taille des esturgeons (peu importe le sexe) entre les deux sites. D’un autre coté, on rejette l’hypothèse nulle qu’il n’y a pas de différence de taille entre les esturgeons mâles et les femelles, tel que suggéré par les graphiques.
 
 ```{r}
+#| label: fig-anom2
 #| fig-cap: Conditions d'application ANOVA model1
 par(mfrow = c(2, 2))
 plot(anova.model1)
@@ -155,6 +157,7 @@ Dans ce cas, le terme de l’interaction (sex:location) est maintenant significa
 * Vous trouverez utile ici de créer des graphiques pour les deux fichiers de données pour comparer les interactions entre sex et location. Le graphique d’interaction montre les relations entre les moyennes de chaque combinaison de facteurs (appelées aussi les moyennes des ce$lules).Générez un graphique illustrant les intéractions en utilisant la fonction allEffects du package effects :
 
 ```{r}
+#| label: fig-anom3
 #| fig-cap: Effet du sexe et du lieu sur le poids des esturgeons
 library(effects)
 allEffects(anova.model1)
@@ -162,6 +165,7 @@ plot(allEffects(anova.model1), "sex:location")
 ```
 
 ```{r}
+#| label: fig-anom4
 #| fig-cap: Effet du sexe et du lieu sur le poids des esturgeons
 allEffects(anova.model2)
 plot(allEffects(anova.model2), "sex:location")
@@ -242,6 +246,7 @@ Anova(anova.model4, type = 3)
 Si on suppose que c’est un modèle d’ANOVA mixte (date aléatoire, Depth fixe), que concluez vous? (Indice: faites un graphique d’interaction température en fonction de la profondeur et la date, pour voir ce qui se passe).
 
 ```{r}
+#| label: fig-anom5
 #| fig-cap: Effet du mois et de la profondeur sur la température
 interaction.plot(nr2wdat$depth, nr2wdat$date, nr2wdat$temp)
 ```
@@ -252,6 +257,7 @@ Jetez un coup d’oeil sur les graphiques des résidus:
 
 
 ```{r}
+#| label: fig-anom6
 #| error: true
 #| fig-cap: Conditions d'applications du modèle anova.model4
 par(mfrow = c(2, 2))
@@ -288,6 +294,7 @@ Que concluez-vous de cette analyse ? Que devrait être la prochaine étape ? (In
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-anom7
 #| fig-cap: Conditions d'applications du modèle anova.nested
 anova(anova.nested)
 par(mfrow = c(2, 2))
@@ -309,6 +316,7 @@ Donc on conclue qu’il y a une variation significative de résistance à la des
 Le graphique de `survival` en fonction du `génotype` suggère que la résistance à la dessiccation varie entre chaque génotype. On peut combiner cela avec un test de Tukey.
 
 ```{r}
+#| label: fig-anom8
 #| fig-cap: 'Effet du genotype sur la résistance à la dessication avec un test de Tukey '
 par(mfrow = c(1, 1))
 # Compute and plot means and Tukey CI
@@ -330,6 +338,7 @@ Cependant, avant d’accepter cette conclusion, il faut éprouver les conditions
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-anom9
 #| fig-cap: Conditions d'applications du modèle anova.simple
 par(mfrow = c(2, 2))
 plot(anova.simple)
@@ -428,6 +437,7 @@ Examinons les graphiques diagnostiques:
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-anom10
 par(mfrow = c(2, 2))
 plot(anova.model5)
 ```
@@ -455,6 +465,7 @@ ajouter une explication ici
 On conclue donc qu’il n’y a pas de différence entre les espèces et que l’effet de la concentration ne dépends pas de l’espèce (il n’y a pas d’interaction). Par conséquent, les seules comparaisons justifiables sont entre les concentrations:
 
 ```{r}
+#| label: fig-anom12
 #| fig-cap: Comparaison de Tukey des moyennes de consommation d'oxygèn en fonction del
 #|   la concentration
 # fit simplified model
@@ -518,6 +529,7 @@ Ces comparaisons sont un peu plus difficiles à interpréter, mais l’analyse e
 Je trouve ces tableaux de résultats peu satisfaisants parce qu’ils indiquent seulement les valeur de ps sans indices de la taille de l’effet. On peut obtenir à la fois le résultat des tests de comparaison multiple et un indice de la taille de l’effet à l’aide du code suivant:
 
 ```{r}
+#| label: fig-anom11
 # fit one-way anova comparing all combinations of species.conc combinations
 anova.modelx <- aov(o2cons ~ species.conc, data = wmc2dat2)
 tuk2 <- glht(anova.modelx, linfct = mcp(species.conc = "Tukey"))
