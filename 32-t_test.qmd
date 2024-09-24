@@ -44,7 +44,7 @@ Une excellente façon de comparer visuellement une distribution à la distributi
 - En utilisant les données du fichier `sturgeon.csv`, générez les histogrammes et les approximations des distributions normales ajustées aux données de `fklngth` à `The Pas` et `Cumberland House`.
 
 ```{r}
-#| label: t-1
+#| label: fig-t-1
 #| warning: false
 #| message: false
 #| fig-cap: Distribution de la longueur des esturgeons
@@ -81,7 +81,7 @@ Examinez ce graphique et essayez de déterminer si ces deux échantillons sont n
 - Tracez un boxplot de `fklngth` groupé par `location`. Que concluez-vous quant à la différence entre les deux sites?
 
 ```{r}
-#| label: t-2
+#| label: fig-t-2
 #| warning: false
 #| message: false
 #| fig-cap: Boxplot de la longueur des esturgeons
@@ -144,7 +144,7 @@ Notez que si l’on se fie au test de *Wilcoxon*, il faut accepter l’hypothès
 Avant d’accepter les résultats du test de t et de rejeter l’hypothèse nulle qu’il n’y a pas de différences de taille entre les deux sites, il est important de déterminer si les données remplissent les conditions de normalité des résidus et d’égalité des variances. L’examen préliminaire suggérait que les données sont à peu près normales mais qu’il y avait peut-être des problèmes avec les variances (puisque l’étendue des données pour The Pas était beaucoup plus grande que celle pour Cumberland). On peut examiner ces conditions d’application plus en détail en examinant les résidus d’un modèle linéaire et en utilisant les graphiques diagnostiques:
 
 ```{r}
-#| label: t-6
+#| label: fig-t-6
 #| fig-cap: Condition d'application du modèle linéaire
 m1 <- lm(fklngth ~ location, data = sturgeon)
 par(mfrow = c(2, 2))
@@ -215,7 +215,7 @@ results
 On obtient les estimés originaux pour les deux coefficients du modèle: la moyenne pour le premier (alphabétiquement) site soit Cumberland, et la différence entre les deux moyennes à Cumberland et The Pas. C’est ce second paramètre, la différence entre les moyennes, qui nous intéresse.
 
 ```{r}
-#| label: tb-3
+#| label: fig-tb-3
 #| fig-cap: Normalité des estimés de la différence des moyennes par bootstrap
 plot(results, index = 2)
 ```
@@ -253,7 +253,7 @@ summary(m1Perm)
 
 ## Comparer les moyennes de deux échantillons appariés
 
-::: {.callout-warning}
+::: callout-warning
 Pour la section suivante veuillez télécharger le nouveau fichier `skulldat_2020.csv` qui a été récemment ajouté sur Brightspace.
 :::
 
@@ -309,7 +309,7 @@ La première analyse a comme supposition que les deux échantillons de filles de
 Notez que, dans le premier cas, on accepte l’hypothèse nulle, mais que le test apparié rejette l’hypothèse nulle. Donc, le test qui est approprié (le test apparié) indique un effet très significatif de l’âge, mais le test inapproprié suggère que l’âge n’importe pas. C’est parce qu’il y a une très forte corrélation entre la largeur du visage à 5 et 6 ans:
 
 ```{r}
-#| label: tpaired-3
+#| label: fig-tpaired-3
 #| warning: false
 #| fig-cap: Relation entre la taille de la tête à 5 et 6 ans
 graphskull <- ggplot(data = skull_h, aes(x = width5, y = width6)) +

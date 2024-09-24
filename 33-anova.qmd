@@ -97,7 +97,7 @@ par(mfrow = c(2, 2))
 plot(anova.model1)
 ```
 
-::: {.callout-warning}
+::: callout-warning
 Faire attention dans le cadre d'une ANOVA à ce que la variable indépendante soit bien un facteur **factor**. Si la variable indépendante est reconnu comme du texte **character** alors vous n'obtiendrez que 3 graphiques et un message d'erreur du type:
 
 `hat values (leverages) are all = 0.1

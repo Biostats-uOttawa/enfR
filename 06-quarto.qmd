@@ -9,7 +9,7 @@ library(tidyverse)
 suppressPackageStartupMessages(library(knitr))
 ```
 
-::: {.callout-warning}
+::: callout-warning
 les captures d'écran sont encore avec R markdown sera bientôt mis à jour
 :::
 

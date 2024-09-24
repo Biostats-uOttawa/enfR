@@ -43,7 +43,7 @@ library(performance)
 sturgeon <- read.csv("data/sturgeon.csv")
 ```
 
-::: {.callout-note}
+::: callout-note
 Notez que la ligne de code pour lire les données considère que le fichier de données se trouve dans un dossier `data` au sein de votre répertoire de travail. Si ce n'est pas le cas veuillez ajuster la ligne de commande.
 :::
 
@@ -405,7 +405,7 @@ library(lmtest)
 ```
 :::
 
-::: {.callout-caution}
+::: callout-caution
 # Exercice
 Exécutez les commandes suivantes
 :::

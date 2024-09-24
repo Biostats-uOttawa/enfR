@@ -45,7 +45,7 @@ Comme chaque régression linéaire est décrite par deux paramètres, la pente e
 
 ### Cas 1 - La taille en fonction de l’âge (exemple avec pente commune)
 
-::: {.callout-caution}
+::: callout-caution
 # Exercice
 En utilisant les données du fichier `anc1dat.csv`, éprouvez l'hypothèse que le taux de croissance des esturgeons mâles et femelles de The Pas est le même (données de 1978-1980). Comme mesure du taux de croissance, nous allons utiliser la pente de la régression du log 10 de la longueur à la fourche, lfkl, sur le log 10 de l’âge, l'age.
 :::
@@ -116,7 +116,7 @@ La conclusion ne change pas après avoir enlevé la valeur extrême. Comme on n�
 
 ### Cas 2 - Taille en fonction de l’âge (exemple avec des pentes différentes)
 
-::: {.callout-caution}
+::: callout-caution
 # Exercice
 Le fichier `anc3dat.csv` contient des données sur des esturgeons mâles de deux sites (locate) : Lake of the Woods dans le Nord-Ouest de l'Ontario et Chruchill River dans le Nord du Manitoba. En utilisant la même procédure, éprouvez l'hypothèse que la pente de la régression de lfkl sur lage est la même aux deux sites (alors Locate est la variable en catégories et non pas sex). Que concluez-vous?
 :::
@@ -212,7 +212,7 @@ summary(model.ancova)
 
 Dans ce modèle, sex n’est pas significatif et on conclue donc que l’ordonnée à l’origine ne diffère pas entre les sexes. Notez que la pvaleur est plus petite (0.1771 vs 0.4795), ce qui reflète la puissance accrue de l’approche traditionnelle. Toutefois, les conclusions sont les mêmes: les ordonnées à l’origine ne diffèrent pas.
 
-::: {.callout-caution}
+::: callout-caution
 # Exercice
 En examinant les graphiques diagnostiques, vous noterez qu’il y a trois observations dont la valeur absolue du résidu est grande (cas 19, 49, et 50). Ces observations pourraient avoir un effet disproportionné sur les résultats de l'analyse. Éliminez-les et refaites l'analyse. Les conclusions changent-elles ?
 :::
@@ -225,7 +225,7 @@ summary(model.ancova.nooutliers)
 
 **Ouch!** Les résultats changent. Il faudrait donc rejeter l’hypothèse nulle et conclure que les ordonnées à l’origine diffèrent! Une conclusion qualitativement différente de celle obtenue en considérant toutes les données. Pourquoi? Il y a deux raisons possibles : (1) les valeurs extrêmes influencent beaucoup les régressions ou (2) l’exclusion des valeurs extrêmes permet d’augmenter la puissance de détection d’une différence. La première explication est moins plausible parce que les valeurs extrêmes n’avaient pas une grande influence (leverage faible). Alors, la deuxième explication est plus plausible et vous pouvez le vérifier en faisant des régressions pour chaque sexe sans et avec les valeurs extrêmes. Si vous le faites, vous noterez que les ordonnées à l’origine pour chaque sexe ne changent presque pas alors que leurs erreurs-types changent beaucoup.
 
-::: {.callout-caution}
+::: callout-caution
 # Exercice
 Ajustez une régression simple entre lfkl et lage pour l'ensemble complet de données et aussi pour le sous-ensemble sans les 3 valeurs déviantes. Comparez ces modèles avec les modèles d'ANCOVA ajustés précédemment. Que concluez-vous ? Quel modèle, d'après vous, a le meilleur ajustement aux données ? Pourquoi ?
 :::
@@ -256,7 +256,7 @@ Note: Il est fréquent que l’élimination de valeurs extrêmes en fasse appara
 
 Comme vous venez de le voir, le processus d’ajustement de modèles est itératif. La plupart du temps il y a plus d’un modèle qui peut être ajusté aux données et c’est à vous de choisir celui qui est le meilleur compromis entre la qualité d’ajustement (qu’on essaie de maximiser) et la complexité (qu’on essaie de minimiser). La stratégie de base en ajustant des modèles linéaires (ANOVA, régression, ANCOVA) est de privilégier le modèle le plus simple si la qualité d’ajustement n’est pas significativement plus mauvaise. R peut calculer une statistique F vous permettant de comparer l’ajustement de deux modèles. Dans ce cas, l’hypothèse nulle est que la qualité d’ajustement ne diffère pas entre les deux modèles.
 
-::: {.callout-caution}
+::: callout-caution
 # Exercice
 En utilisant les données de `anc1dat` comparez l’ajustement du modèle ANCOVA et de la régression commune:
 :::
@@ -267,7 +267,7 @@ anova(model.ancova,model.linear)
 
 La fonction anova() utilise la différence entre la somme des carrés des deux modèles et la divise par la différence entre le nombre de degrés de liberté pour obtenir un carré moyen. Ce carré moyen est utilisé au numérateur et est divisé par la variance résiduelle du modèle le plus complexe pour obtenir la statistique F. Dans ce cas-ci, le test de F n’est pas significatif, et on conclut que les deux modèles ont une qualité d’ajustement équivalente, et qu’on devrait donc privilégier le modèle le plus simple, la régression linéaire simple.
 
-::: {.callout-caution}
+::: callout-caution
 # Exercice
 Refaites le même processus avec le données de `anc3dat`, ajustez le modèle complet avec interaction (LFKL~LAGE+LOCATE+LAGE:LOCATE) et sans interaction (LFKL~LAGE+LOCATE), Comparez l’ajustement des deux modèles, que concluez vous?
 :::

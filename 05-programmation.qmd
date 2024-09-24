@@ -131,7 +131,7 @@ En fait, ici, nous avons "oublié" de modifier `stovies` en `tartiflette` dans l
 C'est là que l'écriture d'une fonction s'avère utile.
 Si nous écrivions cela sous forme de fonction, il n'y aurait qu'une seule source d'erreur potentielle (dans la fonction elle-même) au lieu de nombreuses lignes de code copiées-collées (que nous réduisons également en utilisant une fonction).
 
-::: {.callout-tip}
+::: callout-tip
 En règle générale, si nous devons faire la même chose (par copier/coller et modifier) 3 fois ou plus,
 nous créons une fonction pour cela.
 :::
