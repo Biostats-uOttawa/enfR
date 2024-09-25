@@ -420,14 +420,14 @@ window.Quarto = {
   <ul class="collapse">
 <li><a href="#principe-g%C3%A9n%C3%A9ral" id="toc-principe-général" class="nav-link" data-scroll-target="#principe-g%C3%A9n%C3%A9ral"><span class="header-section-number">8.3.1</span> Principe général</a></li>
   <li><a href="#types-danalyses-de-puissance-disponibles" id="toc-types-danalyses-de-puissance-disponibles" class="nav-link" data-scroll-target="#types-danalyses-de-puissance-disponibles"><span class="header-section-number">8.3.2</span> Types d’analyses de puissance disponibles</a></li>
-  <li><a href="#comment-calculer-la-taille-de-leffet-gpower-permet-de-faire-une-analyse-de-puissance-pour-de-nombreux-tests-statistiques" id="toc-comment-calculer-la-taille-de-leffet-gpower-permet-de-faire-une-analyse-de-puissance-pour-de-nombreux-tests-statistiques" class="nav-link" data-scroll-target="#comment-calculer-la-taille-de-leffet-gpower-permet-de-faire-une-analyse-de-puissance-pour-de-nombreux-tests-statistiques"><span class="header-section-number">8.3.3</span> Comment calculer la taille de l’effet G*Power permet de faire une analyse de puissance pour de nombreux tests statistiques</a></li>
+  <li><a href="#comment-calculer-la-taille-deffet" id="toc-comment-calculer-la-taille-deffet" class="nav-link" data-scroll-target="#comment-calculer-la-taille-deffet"><span class="header-section-number">8.3.3</span> Comment calculer la taille d’effet ?</a></li>
   </ul>
 </li>
   <li>
 <a href="#puissance-pour-un-test-de-t-comparant-deux-moyennes" id="toc-puissance-pour-un-test-de-t-comparant-deux-moyennes" class="nav-link" data-scroll-target="#puissance-pour-un-test-de-t-comparant-deux-moyennes"><span class="header-section-number">8.4</span> Puissance pour un test de t comparant deux moyennes</a>
   <ul class="collapse">
-<li><a href="#analyse-post-hoc" id="toc-analyse-post-hoc" class="nav-link" data-scroll-target="#analyse-post-hoc"><span class="header-section-number">8.4.1</span> Analyse post-hoc</a></li>
-  <li><a href="#analyse-%C3%A0-priori" id="toc-analyse-à-priori" class="nav-link" data-scroll-target="#analyse-%C3%A0-priori"><span class="header-section-number">8.4.2</span> Analyse à priori</a></li>
+<li><a href="#analyse-post-hoc---calculer-la-puissance-du-test" id="toc-analyse-post-hoc---calculer-la-puissance-du-test" class="nav-link" data-scroll-target="#analyse-post-hoc---calculer-la-puissance-du-test"><span class="header-section-number">8.4.1</span> Analyse post-hoc - Calculer la puissance du test</a></li>
+  <li><a href="#analyse-%C3%A0-priori---calculer-la-taille-de-leffectif-%C3%A0-%C3%A9chantillonner" id="toc-analyse-à-priori---calculer-la-taille-de-leffectif-à-échantillonner" class="nav-link" data-scroll-target="#analyse-%C3%A0-priori---calculer-la-taille-de-leffectif-%C3%A0-%C3%A9chantillonner"><span class="header-section-number">8.4.2</span> Analyse à priori - Calculer la taille de l’effectif à échantillonner</a></li>
   <li><a href="#analyse-de-sensitivit%C3%A9---calculer-la-taille-deffet-d%C3%A9tectable" id="toc-analyse-de-sensitivité---calculer-la-taille-deffet-détectable" class="nav-link" data-scroll-target="#analyse-de-sensitivit%C3%A9---calculer-la-taille-deffet-d%C3%A9tectable"><span class="header-section-number">8.4.3</span> Analyse de sensitivité - Calculer la taille d’effet détectable</a></li>
   </ul>
 </li>
@@ -452,13 +452,13 @@ window.Quarto = {
   
 
 
-</header><!-- # (PART) Analyse de puissance {-} --><p>Après avoir complété cet exercice de laboratoire, vous devriez :</p>
+</header><!-- # (PART) Analyse de puissance {-} --><p>Objectifs de ce chapitre :</p>
 <ul>
-<li>Pouvoir calculer la puissance d’un test de t avec R et G*Power</li>
-<li>Pouvoir calculer l’effectif requis pour obtenir la puissance désirée avec un test de t</li>
-<li>Pouvoir calculer la taille de l’effet détectable par un test de t étant donné l’effectif, la puissance et <span class="math inline">\(\alpha\)</span>
+<li>Pouvoir calculer la <strong>puissance</strong> d’un test de t avec R et G*Power</li>
+<li>Pouvoir calculer l’<strong>effectif requis</strong> pour obtenir la puissance désirée avec un test de t</li>
+<li>Pouvoir calculer la <strong>taille d’effet détectable</strong> par un test de t étant donné <em>l’effectif</em>, la <em>puissance</em> et <span class="math inline">\(\alpha\)</span>
 </li>
-<li>Comprendre comment la puissance change lorsque l’effectif augmente, la taille de l’effet change, ou lorsque <span class="math inline">\(\alpha\)</span> diminue</li>
+<li>Comprendre comment la puissance change lorsque l’effectif augmente, la taille d’effet change, ou lorsque <span class="math inline">\(\alpha\)</span> diminue</li>
 <li>Comprendre comment la puissance est affectée lorsque l’on passe d’un test bilatéral à un test unilatéral</li>
 </ul>
 <section id="la-théorie" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="la-théorie">
@@ -469,7 +469,7 @@ window.Quarto = {
 </section><section id="pourquoi-faire-une-analyse-de-puissance" class="level3" data-number="8.1.2"><h3 data-number="8.1.2" class="anchored" data-anchor-id="pourquoi-faire-une-analyse-de-puissance">
 <span class="header-section-number">8.1.2</span> Pourquoi faire une analyse de puissance?</h3>
 <section id="évaluer-lévidence" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="évaluer-lévidence">Évaluer l’évidence</h4>
-<p>L’analyse de puissance effectuée après avoir accepté une hypothèse nulle permet de calculer la probabilité que l’hypothèse nulle soit rejetée si elle était fausse et que la taille de l’effet était d’une valeur donnée. Ce type d’analyse a posteriori est très commun.</p>
+<p>L’analyse de puissance effectuée après avoir accepté une hypothèse nulle permet de calculer la probabilité que l’hypothèse nulle soit rejetée si elle était fausse et que la taille d’effet était d’une valeur donnée. Ce type d’analyse <em>a posteriori</em> est très commun.</p>
 </section><section id="planifier-de-meilleures-expériences" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="planifier-de-meilleures-expériences">Planifier de meilleures expériences</h4>
 <p>L’analyse de puissance effectuée avant de réaliser une expérience (le plus souvent après une expérience préliminaire cependant), permet de déterminer le nombre d’observations nécessaires pour détecter un effet d’une taille donnée à un niveau fixe de probabilité (la puissance). Ce type d’analyse a priori devrait être réalisé plus souvent.</p>
 </section><section id="estimer-la-limite-de-détection-statistique" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="estimer-la-limite-de-détection-statistique">Estimer la “limite de détection” statistique</h4>
@@ -481,11 +481,13 @@ window.Quarto = {
 <p>La puissance dépend de <span class="math inline">\(\alpha\)</span>, le seuil de probabilité auquel on rejette l’hypothèse nulle. Si ce seuil est très strict (<em>i.e.</em> si <span class="math inline">\(\alpha\)</span> est fixé à une valeur très basse, comme 0.1% ou p = 0.001), alors la puissance sera plus faible que si le seuil était moins strict.</p>
 </section><section id="la-taille-de-léchantillon" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="la-taille-de-léchantillon">La taille de l’échantillon</h4>
 <p>Plus l’échantillon est grand, plus la puissance est élevée. La capacité d’un test à détecter de petites différences comme étant statistiquement significatives augmente avec une augmentation du nombre d’observations.</p>
-</section><section id="la-taille-de-leffet" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="la-taille-de-leffet">La taille de l’effet</h4>
-<p>Plus la taille de l’effet est grande, plus un test a de puissance. Pour un échantillon de taille fixe, la capacité d’un test à détecter un effet comme étant statistiquement significatif est plus élevée si l’effet est grand que s’il est petit. La taille de l’effet est en fait une mesure du degré de fausseté de l’hypothèse nulle.</p>
+</section><section id="la-taille-deffet" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="la-taille-deffet">La taille d’effet</h4>
+<p>Plus la taille d’effet est grande, plus un test a de puissance. Pour un échantillon de taille fixe, la capacité d’un test à détecter un effet comme étant statistiquement significatif est plus élevée si l’effet est grand que s’il est petit. La taille d’effet est en fait une mesure du degré de fausseté de l’hypothèse nulle.</p>
 </section></section></section><section id="quest-ce-que-gpower" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="quest-ce-que-gpower">
 <span class="header-section-number">8.2</span> Qu’est ce que G*Power?</h2>
-<p>G*Power est un programme gratuit, développé par des psychologues de l’Université de Dusseldorf en Allemagne. Le programme existe en version Mac et Windows. Il peut cependant être utilisé sous linux via Wine. G*Power vous permettra d’effectuer une analyse de puissance pour la majorité des tests que nous verrons au cours de la session sans avoir à effectuer des calculs complexes ou farfouiller dans des tableaux ou des figures décrivant des distributions ou des courbes de puissance. Il est possible de faire tous les analyses de G*power avec R, mais cela est nettement plus complexes, car il faut tous coder à la main. Dans les cas les plus simple le code R est aussi fourni. G*power est vraiment un outil très utile que vous devrez maîtriser.</p>
+<p>G*Power est un programme gratuit, développé par des psychologues de l’Université de Dusseldorf en Allemagne. Le programme existe en version Mac et Windows. Il peut cependant être utilisé sous linux via Wine ou une machine virtuelle.</p>
+<p>G*Power vous permettra d’effectuer une analyse de puissance pour la majorité des tests que nous verrons au cours de la session sans avoir à effectuer des calculs complexes ou farfouiller dans des tableaux ou des figures décrivant des distributions ou des courbes de puissance. G*power est vraiment un outil très utile que vous devrez maîtriser.</p>
+<p>Il est possible de faire toutes les analyses de G*power avec R, mais cela est un peu plus complexes et nécessite un peu plus de code et donc une meilleure compréhension du processus. Dans les cas les plus simple le code R est aussi fourni.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -503,31 +505,33 @@ Exercice
 <span class="header-section-number">8.3</span> Comment utiliser G*Power</h2>
 <section id="principe-général" class="level3" data-number="8.3.1"><h3 data-number="8.3.1" class="anchored" data-anchor-id="principe-général">
 <span class="header-section-number">8.3.1</span> Principe général</h3>
-<p>L’utilisation de G*Power implique généralement en trois étapes:</p>
+<p>L’utilisation de G*Power implique généralement 3 étapes:</p>
 <ol type="1">
 <li>Choisir le test approprié</li>
 <li>Choisir l’un des 5 types d’analyses de puissance disponibles</li>
-<li>Inscrire les valeurs des paramètres requis et cliquer sur Calculate</li>
+<li>Inscrire les valeurs des paramètres requis et cliquer sur <strong>Calculate</strong>
+</li>
 </ol></section><section id="types-danalyses-de-puissance-disponibles" class="level3" data-number="8.3.2"><h3 data-number="8.3.2" class="anchored" data-anchor-id="types-danalyses-de-puissance-disponibles">
 <span class="header-section-number">8.3.2</span> Types d’analyses de puissance disponibles</h3>
 <section id="a-priori" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="a-priori">A priori</h4>
-<p>Calcule l’effectif requis pour une valeur de <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> et de taille d’effet donnée. Ce type d’analyse est utile à l’étape de planification des expériences.</p>
+<p><strong>Calcule l’effectif requis</strong> pour une valeur de <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> et de taille d’effet donnée. Ce type d’analyse est utile à l’étape de planification des expériences.</p>
 </section><section id="compromis" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="compromis">Compromis</h4>
-<p>Calcule <span class="math inline">\(\alpha\)</span> et <span class="math inline">\(\beta\)</span> pour un rapport <span class="math inline">\(\beta / \alpha\)</span> donné, un effectif fixe, et une taille d’effet donnée. Ce type d’analyse est plus rarement utilisé (je ne l’ai jamais fait), mais peut être utile lorsque le rapport <span class="math inline">\(\beta / \alpha\)</span> est d’intérêt, par exemple lorsque le coût d’une erreur de type I et de type II peut être quantifié.</p>
+<p><strong>Calcule</strong> <span class="math inline">\(\boldsymbol{\alpha}\)</span> <strong>et</strong> <span class="math inline">\(\boldsymbol{\beta}\)</span> pour un rapport <span class="math inline">\(\beta / \alpha\)</span> donné, un effectif fixe, et une taille d’effet donnée. Ce type d’analyse est plus rarement utilisé (je ne l’ai jamais fait), mais peut être utile lorsque le rapport <span class="math inline">\(\beta / \alpha\)</span> est d’intérêt, par exemple lorsque le coût d’une erreur de type I et de type II peut être quantifié.</p>
 </section><section id="critère" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="critère">Critère</h4>
-<p>Calcule <span class="math inline">\(\alpha\)</span> pour <span class="math inline">\(\beta\)</span>, effectif et taille d’effet donné. En pratique, je vois peu d’utilité pour ce type de calcul. Contactez-moi si vous en voyez une!</p>
+<p><strong>Calcule</strong> <span class="math inline">\(\boldsymbol{\alpha}\)</span> pour <span class="math inline">\(\beta\)</span>, effectif et taille d’effet donné. En pratique, je vois peu d’utilité pour ce type de calcul. Contactez-moi si vous en voyez une!</p>
 </section><section id="post-hoc" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="post-hoc">Post-hoc</h4>
-<p>Calcule la puissance (1 - <span class="math inline">\(\beta\)</span>) pour <span class="math inline">\(\alpha\)</span>, une taille d’effet et un effectif donné. Très utilisée pour interpréter les résultats d’une analyse statistique non-significative, mais seulement si l’on utilise une taille d’effet biologiquement significative (et non la taille d’effet observée). Peu pertinente lorsque le test est significatif.</p>
+<p><strong>Calcule la</strong> <strong>puissance (1 -</strong> <span class="math inline">\(\boldsymbol{\beta}\)</span><strong>)</strong> pour <span class="math inline">\(\alpha\)</span>, une taille d’effet et un effectif donné. Très utilisée pour interpréter les résultats d’une analyse statistique non-significative, mais seulement si l’on utilise une taille d’effet biologiquement significative (et non la taille d’effet observée). Peu pertinente lorsque le test est significatif.</p>
 </section><section id="sensitivité" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="sensitivité">Sensitivité</h4>
-<p>Calcule la taille d’effet détectable pour une valeur d’<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> et un effectif donné. Très utile également au stade de planification des expériences.</p>
-</section></section><section id="comment-calculer-la-taille-de-leffet-gpower-permet-de-faire-une-analyse-de-puissance-pour-de-nombreux-tests-statistiques" class="level3" data-number="8.3.3"><h3 data-number="8.3.3" class="anchored" data-anchor-id="comment-calculer-la-taille-de-leffet-gpower-permet-de-faire-une-analyse-de-puissance-pour-de-nombreux-tests-statistiques">
-<span class="header-section-number">8.3.3</span> Comment calculer la taille de l’effet G*Power permet de faire une analyse de puissance pour de nombreux tests statistiques</h3>
-<p>L’indice de la taille de l’effet qui est utilisé par G*Power pour les calculs dépend du test. Notez que d’autres logiciels peuvent utiliser des indices différents et il est important de vérifier que l’indice que l’on utilise est celui qui convient. G*Power vous facilite la tâche et permet de calculer la taille de l’effet en inscrivant seulement les valeurs pertinentes dans la fenêtre de calcul. Le tableau suivant donne les indices utilisés par G*Power pour les différents tests.</p>
+<p><strong>Calcule la</strong> <strong>taille d’effet détectable</strong> pour une valeur d’<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> et un effectif donné. Très utile également au stade de planification des expériences.</p>
+</section></section><section id="comment-calculer-la-taille-deffet" class="level3" data-number="8.3.3"><h3 data-number="8.3.3" class="anchored" data-anchor-id="comment-calculer-la-taille-deffet">
+<span class="header-section-number">8.3.3</span> Comment calculer la taille d’effet ?</h3>
+<p><strong><em>G*Power permet de faire une analyse de puissance pour de nombreux tests statistiques.</em></strong></p>
+<p>L’indice de la taille d’effet qui est utilisé par G*Power pour les calculs dépend du test. Notez que d’autres logiciels peuvent utiliser des indices différents et il est important de vérifier que l’indice que l’on utilise est celui qui convient. G*Power vous facilite la tâche et permet de calculer la taille d’effet en inscrivant seulement les valeurs pertinentes dans la fenêtre de calcul. Le tableau suivant donne les indices utilisés par G*Power pour les différents tests.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 21%">
+<col style="width: 25%">
 <col style="width: 33%">
-<col style="width: 45%">
+<col style="width: 41%">
 </colgroup>
 <thead><tr class="header">
 <th style="text-align: left;">Test</th>
@@ -599,40 +603,40 @@ Important
 </ul>
 </div>
 </div>
-<p>L’objectif de cette séance de laboratoire est de vous familiariser avec G*Power et de vous aider à comprendre comment les quatre paramètres des analyses de puissance (<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, effectif et taille de l’effet) sont reliés entre eux. On examinera seulement un des nombreux tests, le test de t permettant de comparer deux moyennes indépendantes. C’est le test le plus communément utilisé par les biologistes, vous l’avez tous déjà utilisé, et il conviendra très bien pour les besoins de la cause. Ce que vous apprendrez aujourd’hui s’appliquera à toutes les autres analyses de puissance que vous effectuerez à l’avenir.</p>
+<p>L’objectif de cette séance de laboratoire est de vous familiariser avec G*Power et de vous aider à comprendre comment les quatre paramètres des analyses de puissance (<span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, effectif et taille d’effet) sont reliés entre eux. On examinera seulement l’un des nombreux tests : le <em>test de t</em> permettant de comparer deux moyennes indépendantes. C’est le test le plus communément utilisé par les biologistes, vous l’avez tous déjà utilisé, et il conviendra très bien pour les besoins de la cause. Ce que vous apprendrez aujourd’hui s’appliquera à toutes les autres analyses de puissance que vous effectuerez à l’avenir.</p>
 <p>Jaynie Stephenson a étudié la productivité des ruisseaux de la région d’Ottawa. Elle a, entre autres, quantifié la biomasse des poissons dans 18 ruisseaux sur le Bouclier Canadien d’une part, et dans 18 autres ruisseaux de la vallée de la rivière des Outaouais et de la rivière Rideau d’autre part. Elle a observé une biomasse plus faible dans les ruisseaux de la vallée (2.64 <span class="math inline">\(g/m^2\)</span>, écart-type=3.28) que dans ceux du Bouclier (3.31 <span class="math inline">\(g/m^2\)</span>, écart-type=2.79). En faisant un test de t pour éprouver l’hypothèse nulle que la biomasse des poissons est la même dans les deux régions, elle obtient:</p>
 <pre><code>Pooled-Variance Two-Sample t-Test
 t = -0.5746, df = 34, p-value = 0.5693</code></pre>
 <p>Elle accepte l’hypothèse nulle (puisque p est plus élevé que 0.05) conclue donc que la biomasse moyenne des poissons est la même dans ces deux régions.</p>
-<section id="analyse-post-hoc" class="level3" data-number="8.4.1"><h3 data-number="8.4.1" class="anchored" data-anchor-id="analyse-post-hoc">
-<span class="header-section-number">8.4.1</span> Analyse post-hoc</h3>
+<section id="analyse-post-hoc---calculer-la-puissance-du-test" class="level3" data-number="8.4.1"><h3 data-number="8.4.1" class="anchored" data-anchor-id="analyse-post-hoc---calculer-la-puissance-du-test">
+<span class="header-section-number">8.4.1</span> Analyse post-hoc - Calculer la puissance du test</h3>
 <p>Compte tenu des valeurs des moyennes observées et de leur écart- type, on peut utiliser G*Power pour calculer la puissance du test de t bilatéral pour deux moyennes indépendantes et pour la taille d’effet (i.e.&nbsp;la différence entre la biomasse entre les deux régions, pondérée par les écarts-type) à <span class="math inline">\(\alpha\)</span> = 0.05.</p>
 <p>Démarrer G*Power.</p>
 <ol type="1">
 <li>À <strong>Test family</strong>, choisir: t tests</li>
-<li>À <strong>Statistical test</strong>, choisir: Means: Difference between two inde- pendent means (two groups)</li>
+<li>À <strong>Statistical test</strong>, choisir: Means: Difference between two independent means (two groups)</li>
 <li>À <strong>Type of power analysis</strong>, choisir: Post hoc: Compute achieved power - given <span class="math inline">\(\alpha\)</span>, sample size, and effect size</li>
 <li>Dans <strong>Input Parameters</strong>,</li>
 </ol>
 <ul>
 <li>à la boîte <strong>Tail(s)</strong>, choisir: Two,</li>
-<li>vérifier que <span class="math inline">\(\alpha\)</span> <strong>err prob</strong> est égal à 0.05</li>
+<li>vérifier que <span class="math inline">\(\boldsymbol{\alpha}\)</span> <strong>err prob</strong> est égal à 0.05</li>
 <li>inscrire 18 pour <strong>Sample size group</strong> 1 et 2</li>
 <li>pour calculer la taille d’effet (Effect size d), cliquer sur le bouton <strong>Determine =&gt;</strong>
 </li>
 </ul>
 <ol start="5" type="1">
-<li>Dans la fenêtre qui s’ouvre à droite, sélectionner <strong>n1 = n2</strong>
+<li>Dans la fenêtre qui s’ouvre à droite, sélectionner <span class="math inline">\(\boldsymbol{n1 = n2}\)</span>
 </li>
 </ol>
 <ul>
 <li>entrer les moyennes (<strong>Mean group</strong> 1 et 2)</li>
-<li>entrer les écarts types (<strong>SDs group</strong> 1 et 2)</li>
+<li>entrer les écarts types (<strong>SD</strong> <span class="math inline">\(\boldsymbol{\sigma}\)</span> <strong>group</strong> 1 et 2)</li>
 <li>cliquer sur le bouton <strong>Calculate and transfer to main window</strong>
 </li>
 </ul>
 <ol start="6" type="1">
-<li>Cliquer sur le bouton Calculate dans la fenêtre principale et vous devriez obtenir ceci:</li>
+<li>Cliquer sur le bouton <strong>Calculate</strong> dans la fenêtre principale et vous devriez obtenir ceci:</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -646,9 +650,9 @@ Figure&nbsp;8.1: Analyse post-hoc avec la taille d’effet estimée
 </div>
 </div>
 </div>
-<p>La même analyse peut être faites en utlisant R. Pour l’analyse avec R, il faut définir d’abord calculer la taille d’effet <code>d</code> pour un test de t comparant deux moyennes, puis utiliser la fonction <code>pwr.t.test</code> de l’extension <code>pwr</code>. Le plus simple comme nous allons estimer la taille d’effet <code>d</code> plusieurs fois et de créer une petite fonction qui estime <code>d</code> basé sur les paramètres nécessaires.</p>
+<p>La même analyse peut être faites en utlisant R. D’abord, il faut calculer la taille d’effet <code>d</code> pour un test de t comparant deux moyennes, puis utiliser la fonction <code>pwr.t.test</code> du paquet <code>pwr</code> 📦. Le plus simple comme nous allons estimer la taille d’effet <code>d</code> plusieurs fois et de créer une petite fonction qui estime <code>d</code> basé sur les paramètres nécessaires.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># charger l'extension pwr</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># charger le paquet pwr</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
 <span><span class="co"># définir une fonction pour d</span></span>
 <span><span class="va">d</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">u1</span>, <span class="va">u2</span>, <span class="va">sd1</span>, <span class="va">sd2</span><span class="op">)</span> <span class="op">{</span></span>
@@ -656,6 +660,7 @@ Figure&nbsp;8.1: Analyse post-hoc avec la taille d’effet estimée
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="co"># analyse de puissance</span></span>
+<span></span>
 <span><span class="va">d_cohen</span> <span class="op">&lt;-</span> <span class="fu">d</span><span class="op">(</span>u1 <span class="op">=</span> <span class="fl">2.64</span>, sd1 <span class="op">=</span> <span class="fl">3.28</span>, u2 <span class="op">=</span> <span class="fl">3.31</span>, sd2 <span class="op">=</span> <span class="fl">2.79</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span></span>
@@ -684,8 +689,7 @@ NOTE: n is number in *each* group</code></pre>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="op">-</span><span class="va">qc</span>, col <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y1</span>, type <span class="op">=</span> <span class="st">"l"</span>, col <span class="op">=</span> <span class="st">"blue"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># l'erreur de type correspond à la zone bleue</span></span>
-<span></span>
+<span><span class="co"># l'erreur de type 2 correspond à la zone bleue</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">&lt;=</span> <span class="op">-</span><span class="va">qc</span><span class="op">]</span>, <span class="op">-</span><span class="va">qc</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">y1</span><span class="op">[</span><span class="va">x</span> <span class="op">&lt;=</span> <span class="op">-</span><span class="va">qc</span><span class="op">]</span>, <span class="fl">0</span><span class="op">)</span>,</span>
 <span>  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/rgb.html">rgb</a></span><span class="op">(</span>red <span class="op">=</span> <span class="fl">0</span>, green <span class="op">=</span> <span class="fl">0.2</span>, blue <span class="op">=</span> <span class="fl">1</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
@@ -726,15 +730,15 @@ Figure&nbsp;8.2: Graphique de l’analyse de puissance dans R
 </div>
 <p>Étudions un peu la figure <a href="#fig-gpower-1" class="quarto-xref">Figure&nbsp;<span>8.1</span></a>.</p>
 <ul>
-<li>La courbe de gauche, en rouge, correspond à la distribution de la statistique t si <span class="math inline">\(H_0\)</span> est vraie (i.e si les deux moyennes étaient égales) compte tenu de l’effectif (18 dans chaque région) et des écarts- types observés.</li>
-<li>Les lignes verticales vertes correspondent aux valeurs critiques de t pour une valeur <span class="math inline">\(\alpha = 0.05\)</span> et un effectif total de 36 (2x18).</li>
-<li>Les régions ombrées en rose correspondent aux zones de rejet de <span class="math inline">\(H_0\)</span>. Si Jaynie avait obtenu une valeur de t en dehors de l’intervalle délimité par les valeurs critiques allant de -2.03224 à 2.03224, alors elle aurait rejeté <span class="math inline">\(H_0\)</span>, l’hypothèse nulle d’égalité des deux moyennes. En fait, elle a obtenu une valeur de t égale à -0.5746 et conclu que la biomasse est la même dans les deux régions.</li>
-<li>La courbe de droite, en bleu, correspond à la distribution de la sta- tistique t si <span class="math inline">\(H_1\)</span> est vraie (ici <span class="math inline">\(H_1\)</span> correspond à une différence de biomasse entre les deux régions de <span class="math inline">\(3.33-2.64=0.69g/m^2\)</span>, compte tenu des écarts-types observés). Cette distribution correspond à ce qu’on devrait s’attendre à observer si <span class="math inline">\(H_1\)</span> était vraie et que l’on répétait un grand nombre de fois les mesures dans des échantillons aléatoires de 18 ruisseaux des deux régions en calculant la statistique t à chaque fois. En moyenne, on observerait une valeur de t d’environ 0.6.</li>
+<li>La courbe de gauche, en rouge, correspond à la <strong>distribution de la statistique t si</strong> <span class="math inline">\(\boldsymbol{H_0}\)</span> <strong>est vraie</strong> (i.e si les deux moyennes étaient égales) compte tenu de l’effectif (18 dans chaque région) et des écarts- types observés.</li>
+<li>Les lignes verticales vertes correspondent aux <strong>valeurs critiques de t pour</strong> <span class="math inline">\(\boldsymbol{\alpha = 0.05}\)</span> et un effectif total de 36 (2x18).</li>
+<li>Les régions ombrées en rose correspondent aux <strong>zones de rejet de</strong> <span class="math inline">\(\boldsymbol{H_0}\)</span> (<span class="math inline">\({\alpha/2}\)</span>) <!--# JULIEN - j'ai rajouté le alpha/2 parceque je trouve que ça aide à comprendre mais enlève le si tu pense que ce n'est pas pertinent ou sujet à quiproquo -->. Si Jaynie avait obtenu une valeur de t en dehors de l’intervalle délimité par les valeurs critiques allant de -2.03224 à 2.03224, alors elle aurait rejeté <span class="math inline">\(H_0\)</span>, l’hypothèse nulle d’égalité des deux moyennes. En fait, elle a obtenu une valeur de t égale à -0.5746 et conclu que la biomasse est la même dans les deux régions.</li>
+<li>La courbe de droite, en bleu, correspond à la <strong>distribution de la statistique t si</strong> <span class="math inline">\(\boldsymbol{H_1}\)</span> <strong>est vraie</strong> (ici <span class="math inline">\(H_1\)</span> correspond à une différence de biomasse entre les deux régions de <span class="math inline">\(3.33-2.64=0.69g/m^2\)</span>, compte tenu des écarts-types observés). Cette distribution correspond à ce qu’on devrait s’attendre à observer si <span class="math inline">\(H_1\)</span> était vraie et que l’on répétait un grand nombre de fois les mesures dans des échantillons aléatoires de 18 ruisseaux des deux régions en calculant la statistique t à chaque fois. En moyenne, on observerait une valeur de t d’environ 0.6.</li>
 <li>Notez que la distribution de droite chevauche considérablement celle de gauche, et une bonne partie de la surface sous la courbe de droite se retrouve à l’intérieur de l’intervalle d’acceptation de <span class="math inline">\(H_0\)</span>, délimité par les deux lignes vertes et allant de -2.03224 à 2.03224. Cette proportion, correspondant à la partie ombrée en bleu sous la courbe de droite et dénoté par <span class="math inline">\(\beta\)</span> correspond au risque d’erreur de type II qui est d’accepter <span class="math inline">\(H_0\)</span> quand <span class="math inline">\(H_1\)</span> est vraie.</li>
-<li>La puissance est simplement <span class="math inline">\(1-\beta\)</span>, et est ici de 0.098339. Donc, si la biomasse différait de 0.69<span class="math inline">\(g/m^2\)</span> entre les deux régions, Jaynie n’avait que 9.8% des chances d’être capable de détecter une différence statistiquement significative à <span class="math inline">\(\alpha=5%\)</span> en échantillonnant 18 ruisseaux de chaque région.</li>
+<li>La <strong>puissance est simplement</strong> <span class="math inline">\(\boldsymbol{1-\beta}\)</span>, et est ici de 0.098339 (<em>Résultats du test d’estimation de puissance</em>) <!--# JULIEN - pareil, dis moi si ce n'était pas utile de le mentioner -->. Donc, si la biomasse différait de 0.69<span class="math inline">\(g/m^2\)</span> entre les deux régions, Jaynie n’avait que 9.8% des chances d’être capable de détecter une différence statistiquement significative à <span class="math inline">\(\alpha=5%\)</span> en échantillonnant 18 ruisseaux de chaque région.</li>
 </ul>
-<p><strong>Récapitulons:</strong> La différence de biomasse entre les deux régions n’est pas statistiquement significative d’après le test de t. C’est donc que cette différence est relativement petite compte tenu de la précision des mesures. Il n’est donc pas très surprenant que la puissance, i.e.&nbsp;la probabilité de détecter une différence significative, soit faible. Toute cette analyse ne nous informe pas beaucoup.</p>
-<p><strong>Une analyse de puissance post hoc avec la taille de l’effet observé n’est pas très utile.</strong> On la fera plutôt pour une taille d’effet autre que celle observée quand H 0 est acceptée. Quelle taille d’effet utiliser? C’est la biologie du système étudié qui peut nous guider. Par exemple, en ce qui concerne la biomasse des poissons, on pourrait s’attendre à ce qu’une différence de biomasse du simple au double (disons de 2.64 à 5.28 <span class="math inline">\(g/m^2\)</span>) ait des conséquences écologiques. On voudrait s’assurer que Jaynie avait de bonnes chances de détecter une différence aussi grande que celle-là avant d’accepter ses conclusions que la biomasse est la même entre les deux régions. Quelles étaient les chances de Jaynie de détecter une différence de 2.64 <span class="math inline">\(g/m^2\)</span> entre les deux régions? G*Power peut nous le dire.</p>
+<p><strong>Récapitulons:</strong> La différence de biomasse entre les deux régions n’est pas statistiquement significative d’après le test de t. C’est donc que cette différence est relativement petite compte tenu de la précision des mesures. Il n’est donc pas très surprenant que la puissance, i.e.&nbsp;<em>la probabilité de détecter une différence significative</em>, soit faible. Toute cette analyse ne nous informe pas beaucoup.</p>
+<p><strong>Une analyse de puissance post hoc avec la taille d’effet observé n’est pas très utile.</strong> On la fera plutôt pour une taille d’effet autre que celle observée quand <span class="math inline">\(H_0\)</span> est acceptée. <em>Quelle taille d’effet utiliser?</em> C’est la biologie du système étudié qui peut nous guider. Par exemple, en ce qui concerne la biomasse des poissons, on pourrait s’attendre à ce qu’une différence de biomasse du simple au double (disons de 2.64 à 5.28 <span class="math inline">\(g/m^2\)</span>) ait des conséquences écologiques. On voudrait s’assurer que Jaynie avait de bonnes chances de détecter une différence aussi grande que celle-là avant d’accepter ses conclusions que la biomasse est la même entre les deux régions. Quelles étaient les chances de Jaynie de détecter une différence de 2.64 <span class="math inline">\(g/m^2\)</span> entre les deux régions? G*Power peut nous le dire.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -745,7 +749,7 @@ Exercice
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Changer la moyenne du groupe 2 à 5.28, recalculer la taille d’effet, et cliquer sur Calculate pour obtenir <a href="#fig-gpower-2" class="quarto-xref">Figure&nbsp;<span>8.3</span></a>.</p>
+<p>Changer la moyenne du groupe 2 à 5.28, recalculer la taille d’effet, et cliquer sur <strong>Calculate</strong> pour obtenir <a href="#fig-gpower-2" class="quarto-xref">Figure&nbsp;<span>8.3</span></a>.</p>
 </div>
 </div>
 <div class="cell">
@@ -790,11 +794,11 @@ Figure&nbsp;8.4
 </div>
 </div>
 </div>
-<p>La puissance est de 0.71, donc Jaynie avait une chance raisonnable de détecter une différence du simple au double avec 18 ruisseaux dans chaque région.</p>
-<p>Notez que cette analyse de puissance post hoc pour une taille d’effet jugée biologiquement significative est bien plus informative que l’analyse précédente pour la taille d’effet observée (qui est celle effectuée par défaut par bien des néophytes et de trop nombreux logiciels qui essaient de penser pour nous). En effet, Jaynie n’a pu détecter de différences significatives entre les deux régions. Cela pourrait être pour deux raisons: soit qu’il n’y a pas de différences entre les régions, ou soit parce que la précision des mesures est si faible et l’effort d’échantillonnage était si limité qu’il était très peu probable de détecter même d’énormes différences. La deuxième analyse de puissance permet d’éliminer cette seconde possibilité puisque Jaynie avait 71% des chances de détecter une différence du simple au double.</p>
-</section><section id="analyse-à-priori" class="level3" data-number="8.4.2"><h3 data-number="8.4.2" class="anchored" data-anchor-id="analyse-à-priori">
-<span class="header-section-number">8.4.2</span> Analyse à priori</h3>
-<p>Supposons qu’on puisse défendre la position qu’une différence de biomasse observée par Jaynie entre les deux régions, <span class="math inline">\(3.31- 2.64=0.67g/m^2\)</span>, soit écologiquement signifiante. On devrait donc planifier la prochaine saison d’échantillonnage de manière à avoir de bonnes chances de détecter une différence de cette taille. Combien de ruisseaux Jaynie devrait-elle échantillonner pour avoir 80% des chances de la détecter (compte tenu de la variabilité observée)?</p>
+<p>La puissance est de 0.71, donc Jaynie avait une chance raisonnable (71%) de détecter une différence du simple au double avec 18 ruisseaux dans chaque région.</p>
+<p>Notez que cette analyse de puissance post hoc pour une taille d’effet jugée biologiquement significative est bien plus informative que l’analyse précédente pour la taille d’effet observée (qui est celle effectuée par défaut par bien des néophytes et de trop nombreux logiciels qui essaient de penser pour nous). En effet, Jaynie n’a pu détecter de différences significatives entre les deux régions. Cela pourrait être pour deux raisons: soit qu’il n’y a pas de différences entre les régions, ou alors parce que la précision des mesures est si faible et l’effort d’échantillonnage si limité qu’il était très peu probable de détecter même d’énormes différences. La deuxième analyse de puissance permet d’éliminer cette seconde possibilité puisque Jaynie avait 71% des chances de détecter une différence du simple au double.</p>
+</section><section id="analyse-à-priori---calculer-la-taille-de-leffectif-à-échantillonner" class="level3" data-number="8.4.2"><h3 data-number="8.4.2" class="anchored" data-anchor-id="analyse-à-priori---calculer-la-taille-de-leffectif-à-échantillonner">
+<span class="header-section-number">8.4.2</span> Analyse à priori - Calculer la taille de l’effectif à échantillonner</h3>
+<p>Supposons qu’on puisse défendre la position qu’une différence de biomasse observée par Jaynie entre les deux régions, <span class="math inline">\(3.31- 2.64=0.67g/m^2\)</span>, soit écologiquement significative. On devrait donc planifier la prochaine saison d’échantillonnage de manière à avoir de bonnes chances de détecter une différence de cette taille. Combien de ruisseaux Jaynie devrait-elle échantillonner pour avoir 80% des chances de la détecter (compte tenu de la variabilité observée)?</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -805,7 +809,7 @@ Exercice
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Changer le type d’analyse de puissance dans G*Power à <strong>A priori</strong>: <strong>Compute sample size - given</strong> <span class="math inline">\(\alpha\)</span>, power, and effect size. Assurez-vous que les valeurs pour les moyennes et les écarts-type soient celles qu’a obtenu Jaynie, recalculez la taille de l’effet, et inscrivez 0.8 pour la puissance <a href="#fig-gpower-3" class="quarto-xref">Figure&nbsp;<span>8.5</span></a>.</p>
+<p>Changer le type d’analyse de puissance dans G*Power à <strong>A priori</strong>: <strong>Compute sample size - given</strong> <span class="math inline">\(\alpha\)</span><strong>, power, and effect size</strong>. Assurez-vous que les valeurs pour les moyennes et les écarts-type soient celles qu’a obtenu Jaynie, recalculez la taille de l’effet, et inscrivez 0.8 pour la puissance <a href="#fig-gpower-3" class="quarto-xref">Figure&nbsp;<span>8.5</span></a>.</p>
 </div>
 </div>
 <div class="cell">
@@ -860,7 +864,7 @@ NOTE: n is number in *each* group</code></pre>
 </div>
 </section><section id="analyse-de-sensitivité---calculer-la-taille-deffet-détectable" class="level3" data-number="8.4.3"><h3 data-number="8.4.3" class="anchored" data-anchor-id="analyse-de-sensitivité---calculer-la-taille-deffet-détectable">
 <span class="header-section-number">8.4.3</span> Analyse de sensitivité - Calculer la taille d’effet détectable</h3>
-<p>Compte tenu de la variabilité observée, d’un effort d’échantillonnage de 18 ruisseaux par région, et en conservant <span class="math inline">\(\alpha=0.05\)</span>, quelle est la taille d’effet que Jaynie pouvait détecter avec 80% de chances <span class="math inline">\(\beta=0.2\)</span>)?</p>
+<p>Compte tenu de la variabilité observée, d’un effort d’échantillonnage de 18 ruisseaux par région, et en conservant <span class="math inline">\(\alpha=0.05\)</span>, quelle est la taille d’effet que Jaynie pouvait détecter avec 80% de chances (<span class="math inline">\(\beta=0.2\)</span>) ?</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -871,7 +875,7 @@ Exercice
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Changez le type d’analyse dans G*Power à <strong>Sensitivity</strong>: <strong>Compute required effect size - given</strong> <span class="math inline">\(\alpha\)</span>, power, and sample size et assurez-vous que la taille des échantillons est de 18 dans chaque région.</p>
+<p>Changez le type d’analyse dans G*Power à <strong>Sensitivity</strong>: <strong>Compute required effect size - given</strong> <span class="math inline">\(\alpha\)</span><strong>, power, and sample size</strong> et assurez-vous que la taille des échantillons est de 18 dans chaque région.</p>
 </div>
 </div>
 <div class="cell">
@@ -887,7 +891,8 @@ Figure&nbsp;8.6: Analyse de sensitivité
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">0.8</span>, n <span class="op">=</span> <span class="fl">18</span>, sig.level <span class="op">=</span> <span class="fl">0.05</span>, type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">0.8</span>, n <span class="op">=</span> <span class="fl">18</span>,</span>
+<span>           sig.level <span class="op">=</span> <span class="fl">0.05</span>, type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Two-sample t test power calculation 
@@ -912,7 +917,7 @@ Avertissement
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>cette valeur est l’indice <code>d</code> de la taille de l’effet et est pondérée par la variabilité des mesures.</p>
+<p>cette valeur est l’indice <code>d</code> de la taille d’effet et est pondérée par la variabilité des mesures.</p>
 </div>
 </div>
 <p>Dans ce cas ci, <code>d</code> est approximativement égal à <span class="math display">\[ d = \frac{| \bar{X_1} \bar{X_2} |} {\sqrt{\frac{{s_1}^2 +{s_2}^2}{2}}}\]</span> Pour convertir cette valeur de d sans unités en une valeur de différence de biomasse détectable (i.e <span class="math inline">\(| \bar{X_1} \bar{X_2} |\)</span>), il suffit de multiplier <code>d</code> par le dénominateur de l’équation. <span class="math display">\[
@@ -932,7 +937,7 @@ Avertissement
 <ul>
 <li>L’analyse de puissance post hoc n’est pertinente que lorsque l’on a accepté l’hypothèse nulle. Il est en effet impossible de faire une erreur de type II quand on rejette <span class="math inline">\(H_0\)</span>.</li>
 <li>Avec de très grands échantillons, on a une puissance quasi infinie et on peut détecter statistiquement de très petites différences qui ne sont pas nécessairement biologiquement significatives.</li>
-<li>En utilisant un critère de signification plus strict (<span class="math inline">\(\alpha\)</span>&lt;0.05) on diminue notre puissance.</li>
+<li>En utilisant un critère de signification plus strict (<span class="math inline">\(\alpha &lt; 0.05\)</span>) on diminue notre puissance.</li>
 <li>En voulant maximiser la puissance, on augmente l’effort requis, à moins d’utiliser une valeur critique plus libérale (<span class="math inline">\(\alpha&gt;0.05\)</span>)</li>
 <li>Le choix de <span class="math inline">\(\beta\)</span> est quelque peu arbitraire. On considère que <span class="math inline">\(\beta=0.2\)</span> (puissance de 80%) est relativement élevé.</li>
 </ul>
