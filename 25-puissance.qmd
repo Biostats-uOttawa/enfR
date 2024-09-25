@@ -12,8 +12,9 @@ editor:
 #| label: setup
 #| echo: false
 #| message: false
+#| cache: false
 
-source("utils/book-fnc.R")
+source("data/code/book-fnc.R") 
 ```
 
 
@@ -319,7 +320,7 @@ pwr.t.test(
 plot_pwr(
   n = 18,
   d = d(u1 = 2.64, sd1 = 3.28, u2 = 5.28, sd2 = 2.79),
-  sig_level = 0.05, type = "two.sample"
+  sig_level = 0.05, alternative = "two.sided"
 )
 ```
 
