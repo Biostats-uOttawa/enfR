@@ -94,7 +94,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-37bb72f48501692975d9c066fdeb097b.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-758c5ce73771950a3d9b163c2677d9fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1ff0208b9405ab0ff3a2d5e39eb7a7a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -534,14 +534,14 @@ Figure&nbsp;6.2: A-reproducible (and more fficient) workflow
 <ul>
 <li><p>Il relie explicitement vos données à votre code R et à vos résultats, créant ainsi un flux de travail entièrement reproductible. <strong>TOUT</strong> du code R utilisé pour explorer, résumer et analyser vos données peut être inclus dans un seul document facile à lire. Vous pouvez décider de ce que vous voulez inclure dans votre document final (comme vous l’apprendrez ci-dessous), mais tout votre code R peut être inclus dans le document Quarto.</p></li>
 <li><p>Vous pouvez créer une grande variété de formats de sortie (pdf, pages web html, MS Word et bien d’autres) à partir d’un seul document Quarto, ce qui améliore à la fois la collaboration et la communication.</p></li>
-<li><p>Améliore la transparence de votre recherche. Vos données et votre fichier Quarto peuvent être joints à votre publication ou au chapitre de votre thèse en tant que matériel supplémentaire ou être hébergés sur un dépôt GitHub (voir <a href="07-github.html" class="quarto-xref"><span>Chapitre 7</span></a>).</p></li>
+<li><p>Améliore la transparence de votre recherche. Vos données et votre fichier Quarto peuvent être joints à votre publication ou au chapitre de votre thèse en tant que matériel supplémentaire ou être hébergés sur un dépôt GitHub (voir <a href="#sec-github-r" class="quarto-xref"><span class="quarto-unresolved-ref">sec-github-r</span></a>).</p></li>
 <li><p>Augmente l’efficacité de votre flux de travail. Si vous avez besoin de modifier ou d’étendre votre analyse actuelle, il vous suffit de mettre à jour votre document Quarto et ces changements seront automatiquement inclus dans votre document final.</p></li>
 </ul></section><section id="commencer-avec-quarto" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="commencer-avec-quarto">
 <span class="header-section-number">6.3</span> Commencer avec Quarto</h2>
 <p>Quarto s’intègre très bien avec <a href="https://quarto.org/docs/tools/rstudio.html">R Studio</a> et <a href="https://quarto.org/docs/tools/vscode.html">VS Code</a> et fournissent à la fois un éditeur de source et un éditeur visuel offrant une expérience proche de votre logiciel d’écriture classique WYSIWYG (ce que vous voyez est ce que vous écrivez) (par exemple Microsoft Word ou LibreOffice writer).</p>
 <section id="installation-de-la-solution" class="level3" data-number="6.3.1"><h3 data-number="6.3.1" class="anchored" data-anchor-id="installation-de-la-solution">
 <span class="header-section-number">6.3.1</span> Installation de la solution</h3>
-<p>Pour utiliser Quarto, vous devez d’abord installer le logiciel <code>Quarto</code> et le logiciel <code>quarto</code> <span class="emoji" data-emoji="package">📦</span> (avec ses dépendances). Vous trouverez des instructions sur la façon de procéder dans <a href="01-debut.html#sec-install-r" class="quarto-xref"><span>Section 1.1.1</span></a> et sur le site web de <a href="https://quarto.org/docs/get-started/">Quarto</a>. Si vous souhaitez créer des documents PDF (ou des documents MS Word) à partir de votre fichier Quarto, vous devrez également installer une version de {{&lt; latex &gt;}} sur votre ordinateur. Si vous n’avez pas installé {{&lt; latex &gt;} }, nous vous recommandons d’installer <a href="https://yihui.name/tinytex/">TinyTeX</a> . Là encore, des instructions sur la manière de procéder sont disponibles à l’adresse suivante : <a href="01-debut.html#sec-install-r" class="quarto-xref"><span>Section 1.1.1</span></a>.</p>
+<p>Pour utiliser Quarto, vous devez d’abord installer le logiciel <code>Quarto</code> et le logiciel <code>quarto</code> <span class="emoji" data-emoji="package">📦</span> (avec ses dépendances). Vous trouverez des instructions sur la façon de procéder dans <a href="#sec-install-r" class="quarto-xref"><span class="quarto-unresolved-ref">sec-install-r</span></a> et sur le site web de <a href="https://quarto.org/docs/get-started/">Quarto</a>. Si vous souhaitez créer des documents PDF (ou des documents MS Word) à partir de votre fichier Quarto, vous devrez également installer une version de {{&lt; latex &gt;}} sur votre ordinateur. Si vous n’avez pas installé {{&lt; latex &gt;} }, nous vous recommandons d’installer <a href="https://yihui.name/tinytex/">TinyTeX</a> . Là encore, des instructions sur la manière de procéder sont disponibles à l’adresse suivante : <a href="#sec-install-r" class="quarto-xref"><span class="quarto-unresolved-ref">sec-install-r</span></a>.</p>
 </section><section id="sec-new-rm" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="sec-new-rm">
 <span class="header-section-number">6.3.2</span> Créez un document Quarto, <code>.qmd</code>
 </h3>
@@ -571,7 +571,7 @@ Figure&nbsp;6.4: A new Quarto document
 </div>
 </div>
 </div>
-<p>Une fois que vous avez créé votre document Quarto, c’est une bonne pratique de sauvegarder ce fichier dans un endroit pratique (<a href="01-debut.html#sec-dir-struc" class="quarto-xref"><span>Section 1.4</span></a> et <a href="01-debut.html#fig-dir-struc" class="quarto-xref">Figure&nbsp;<span>1.11</span></a>). Vous pouvez le faire en sélectionnant <code>File</code> -&gt; <code>Save</code> dans le menu de RStudio (ou utilisez le raccourci clavier ctrl + s sous Windows ou cmd + s sur Mac) et entrez un nom de fichier approprié (appelez-le par exemple <code>my_first_quarto</code>). Notez que l’extension de votre nouveau fichier Quarto est <code>.qmd</code>.</p>
+<p>Une fois que vous avez créé votre document Quarto, c’est une bonne pratique de sauvegarder ce fichier dans un endroit pratique (<a href="#sec-dir-struc" class="quarto-xref"><span class="quarto-unresolved-ref">sec-dir-struc</span></a> et <a href="#fig-dir-struc" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-dir-struc</span></a>). Vous pouvez le faire en sélectionnant <code>File</code> -&gt; <code>Save</code> dans le menu de RStudio (ou utilisez le raccourci clavier ctrl + s sous Windows ou cmd + s sur Mac) et entrez un nom de fichier approprié (appelez-le par exemple <code>my_first_quarto</code>). Notez que l’extension de votre nouveau fichier Quarto est <code>.qmd</code>.</p>
 <p>Maintenant, pour convertir votre fichier <code>.qmd</code> en document HTML, cliquez sur le petit triangle noir à côté de l’icône <code>Knit</code> en haut de la fenêtre source et sélectionnez <code>knit to HTML</code></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -630,7 +630,7 @@ Figure&nbsp;6.7: Structure of a qmd file
 </div>
 <section id="en-tête-yaml" class="level3" data-number="6.4.1"><h3 data-number="6.4.1" class="anchored" data-anchor-id="en-tête-yaml">
 <span class="header-section-number">6.4.1</span> En-tête YAML</h3>
-<p>YAML signifie ’<strong>Y</strong>AML <strong>A</strong>in’t <strong>M</strong>arkup <strong>L</strong> anguage” (c’est une blague “in”) [plaisanterie][blague] !) et ce composant optionnel contient les métadonnées et les options pour l’ensemble du document comme le nom de l’auteur, la date, le format de sortie, etc. L’en-tête YAML est entouré avant et après d’une balise <code>---</code> sur sa propre ligne. Dans RStudio, un en-tête YAML minimal est automatiquement créé pour vous lorsque vous créez un nouveau document Quarto comme nous l’avons fait ci-dessus (<a href="#sec-new-rm" class="quarto-xref"><span>Section 6.3.2</span></a>), mais vous pouvez le modifier à tout moment. Un en-tête YAML simple peut ressembler à ceci :</p>
+<p>YAML signifie ’<strong>Y</strong>AML <strong>A</strong>in’t <strong>M</strong>arkup <strong>L</strong> anguage” (c’est une blague “in”) [plaisanterie][blague] !) et ce composant optionnel contient les métadonnées et les options pour l’ensemble du document comme le nom de l’auteur, la date, le format de sortie, etc. L’en-tête YAML est entouré avant et après d’une balise <code>---</code> sur sa propre ligne. Dans RStudio, un en-tête YAML minimal est automatiquement créé pour vous lorsque vous créez un nouveau document Quarto comme nous l’avons fait ci-dessus (<a href="#sec-new-rm" class="quarto-xref"><span class="quarto-unresolved-ref">sec-new-rm</span></a>), mais vous pouvez le modifier à tout moment. Un en-tête YAML simple peut ressembler à ceci :</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> My first Quarto document</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Jane Doe</span></span>
@@ -752,7 +752,7 @@ effet des têtards de grenouille-taureau (<em>Lithobates catesbeianus</em>).</p>
 <h6 id="en-tête-6" class="unlisted unnumbered anchored">En-tête 6</h6>
 </blockquote>
 </section><section id="commentaires" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="commentaires">Commentaires</h4>
-<p>Comme vous pouvez le voir ci-dessus, la signification de la <code>#</code> est différente lorsqu’il s’agit de formater du texte dans un document Quarto par rapport à un script R standard (qui est utilisé pour inclure un commentaire - vous vous souvenez ?!). Vous pouvez cependant utiliser un <code>#</code> pour commenter du code à l’intérieur d’un morceau de code (<a href="#sec-code-chunks" class="quarto-xref"><span>Section 6.4.3</span></a>) comme d’habitude (plus d’informations à ce sujet dans un instant). Si vous souhaitez inclure un commentaire dans votre document Quarto en dehors d’un morceau de code qui ne sera pas inclus dans le document rendu final, placez votre commentaire entre les symboles <code>&lt;!--</code> et <code>--&gt;</code>.</p>
+<p>Comme vous pouvez le voir ci-dessus, la signification de la <code>#</code> est différente lorsqu’il s’agit de formater du texte dans un document Quarto par rapport à un script R standard (qui est utilisé pour inclure un commentaire - vous vous souvenez ?!). Vous pouvez cependant utiliser un <code>#</code> pour commenter du code à l’intérieur d’un morceau de code (<a href="#sec-code-chunks" class="quarto-xref"><span class="quarto-unresolved-ref">sec-code-chunks</span></a>) comme d’habitude (plus d’informations à ce sujet dans un instant). Si vous souhaitez inclure un commentaire dans votre document Quarto en dehors d’un morceau de code qui ne sera pas inclus dans le document rendu final, placez votre commentaire entre les symboles <code>&lt;!--</code> et <code>--&gt;</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">this is an example of how to format a comment using Quarto.</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">--&gt;</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1016,7 +1016,7 @@ Figure&nbsp;6.10: A simple plot
 </div>
 </div>
 </div>
-<p>Le fichier <code>fig-cap:</code> permet de fournir une légende de figure reconnue par Quarto et utilisée dans la numérotation des figures et les références croisées (<a href="#sec-crossrefs" class="quarto-xref"><span>Section 6.4.8</span></a>).</p>
+<p>Le fichier <code>fig-cap:</code> permet de fournir une légende de figure reconnue par Quarto et utilisée dans la numérotation des figures et les références croisées (<a href="#sec-crossrefs" class="quarto-xref"><span class="quarto-unresolved-ref">sec-crossrefs</span></a>).</p>
 <p>Si vous souhaitez modifier les dimensions de l’intrigue dans le document final, vous pouvez utiliser l’option <code>fig-width:</code> et <code>fig-height:</code> (en pouces !). Vous pouvez également modifier l’alignement de la figure à l’aide de la fonction <code>fig-align:</code> option chunk.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -1821,7 +1821,7 @@ Table&nbsp;6.3: A nice gt table
 </figure>
 </div>
 </div>
-<p>Dans la plupart des paquets R développés pour produire des tableaux, il existe des options permettant d’inclure des légendes de tableaux. Cependant, si vous souhaitez ajouter une légende de tableau, nous vous recommandons d’utiliser l’option code chunk dans Quarto <code>tbl-cap:</code> car cela permet des références croisées (<a href="#sec-crossrefs" class="quarto-xref"><span>Section 6.4.8</span></a>) et une meilleure intégration dans le document.</p>
+<p>Dans la plupart des paquets R développés pour produire des tableaux, il existe des options permettant d’inclure des légendes de tableaux. Cependant, si vous souhaitez ajouter une légende de tableau, nous vous recommandons d’utiliser l’option code chunk dans Quarto <code>tbl-cap:</code> car cela permet des références croisées (<a href="#sec-crossrefs" class="quarto-xref"><span class="quarto-unresolved-ref">sec-crossrefs</span></a>) et une meilleure intégration dans le document.</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: tbl-gt-table</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| tbl-cap: A nice gt table</span></span>
@@ -1873,7 +1873,7 @@ Table&nbsp;6.3: A nice gt table
 Figure&nbsp;6.14: Le rock de l’éclipse
 </figcaption></figure>
 </div>
-<p>Voir <a href="#fig-cute-dog" class="quarto-xref">Figure&nbsp;<span>6.14</span></a> pour une illustration.</p>
+<p>Voir <a href="#fig-cute-dog" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-cute-dog</span></a> pour une illustration.</p>
 <p>Pour les figures et les tableaux produits avec des morceaux de code R, il suffit de fournir l’identifiant dans le champ <code>label</code> et la légende également en tant qu’option de bloc.</p>
 <p>Voici le code pour une figure et un tableau.</p>
 <div class="cell">
@@ -1966,7 +1966,7 @@ Table&nbsp;6.4: A nice table
 <p>En utilisant les références croisées, on peut écrire :</p>
 <p>Tel que vu sur <code>@fig-cr-plot</code> et <code>@tbl-cr-table</code> …</p>
 <p>Pour obtenir :</p>
-<p>Comme vu sur <a href="#fig-cr-plot" class="quarto-xref">Figure&nbsp;<span>6.15</span></a> et <a href="#tbl-cr-table" class="quarto-xref">Table&nbsp;<span>6.4</span></a> …</p>
+<p>Comme vu sur <a href="#fig-cr-plot" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-cr-plot</span></a> et <a href="#tbl-cr-table" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-cr-table</span></a> …</p>
 </section></section><section id="citations-et-bibliographie" class="level3" data-number="6.4.9"><h3 data-number="6.4.9" class="anchored" data-anchor-id="citations-et-bibliographie">
 <span class="header-section-number">6.4.9</span> Citations et bibliographie</h3>
 <p>Pour générer des citations et une bibliographie, Quarto a besoin de :</p>
@@ -1996,24 +1996,24 @@ Table&nbsp;6.4: A nice table
 <tbody>
 <tr class="odd">
 <td>Les licornes sont les meilleures [voir <code>@martin1219</code>, pp.&nbsp;33-35 ; aussi <code>@martin2200</code>, chap.&nbsp;1]</td>
-<td>Les licornes sont les meilleures <span class="citation" data-cites="martin1219 martin2200">(voir <a href="06-quarto.html#ref-martin1219" role="doc-biblioref">Martin 1219</a>, pp.&nbsp;33-35, aussi <a href="06-quarto.html#ref-martin2200" role="doc-biblioref">Martin 2200 chap. 1</a>)</span>
+<td>Les licornes sont les meilleures <span class="citation" data-cites="martin1219 martin2200">(voir <a href="#ref-martin1219" role="doc-biblioref">Martin 1219</a>, pp.&nbsp;33-35, aussi <a href="#ref-martin2200" role="doc-biblioref">Martin 2200 chap. 1</a>)</span>
 </td>
 </tr>
 <tr class="even">
 <td>Les licornes sont les meilleures [<code>@martin2200</code> ; <code>@martin1219</code>]</td>
-<td>Les licornes sont les meilleures <span class="citation" data-cites="martin2200 martin1219">(<a href="06-quarto.html#ref-martin1219" role="doc-biblioref">Martin 1219</a>, <a href="06-quarto.html#ref-martin2200" role="doc-biblioref">2200</a>)</span>
+<td>Les licornes sont les meilleures <span class="citation" data-cites="martin2200 martin1219">(<a href="#ref-martin1219" role="doc-biblioref">Martin 1219</a>, <a href="#ref-martin2200" role="doc-biblioref">2200</a>)</span>
 </td>
 </tr>
 <tr class="odd">
 <td>Martin dit que les licornes sont les meilleures [<code>-@martin2200</code>]</td>
-<td>Martin dit que les licornes sont les meilleures <span class="citation" data-cites="martin2200">(<a href="06-quarto.html#ref-martin2200" role="doc-biblioref">2200</a>)</span>
+<td>Martin dit que les licornes sont les meilleures <span class="citation" data-cites="martin2200">(<a href="#ref-martin2200" role="doc-biblioref">2200</a>)</span>
 </td>
 </tr>
 <tr class="even">
 <td>
 <code>@martin1219</code> dit que les licornes sont les meilleures.</td>
 <td>
-<span class="citation" data-cites="martin1219">Martin (<a href="06-quarto.html#ref-martin1219" role="doc-biblioref">1219</a>)</span> dit que les licornes sont les meilleures.</td>
+<span class="citation" data-cites="martin1219">Martin (<a href="#ref-martin1219" role="doc-biblioref">1219</a>)</span> dit que les licornes sont les meilleures.</td>
 </tr>
 <tr class="odd">
 <td>
@@ -2319,185 +2319,11 @@ Solution
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-boot1997" class="csl-entry" role="listitem">
-A. C. Davison, and D. V. Hinkley. 1997. <a href="https://doi:10.1017/CBO9780511802843">Bootstrap methods and their
-applications</a>. Cambridge University Press, Cambridge.
-</div>
-<div id="ref-vioplot" class="csl-entry" role="listitem">
-Adler, D., S. T. Kelly, T. Elliott, and J. Adamson. 2024. <a href="https://github.com/TomKellyGenetics/vioplot"><span class="nocase">vioplot</span>: Violin plot</a>.
-</div>
-<div id="ref-rmarkdown2024" class="csl-entry" role="listitem">
-Allaire, J., Y. Xie, C. Dervieux, J. McPherson, J. Luraschi, K. Ushey,
-A. Atkins, H. Wickham, J. Cheng, W. Chang, and R. Iannone. 2024. <a href="https://github.com/rstudio/rmarkdown"><span class="nocase">rmarkdown</span>: Dynamic documents for r</a>.
-</div>
-<div id="ref-boot2024" class="csl-entry" role="listitem">
-Angelo Canty, and B. D. Ripley. 2024. <span class="nocase">boot</span>:
-Bootstrap r (s-plus) functions.
-</div>
-<div id="ref-MuMIn" class="csl-entry" role="listitem">
-Bartoń, K. 2024. <a href="https://CRAN.R-project.org/package=MuMIn"><span>MuMIn</span>:
-Multi-model inference</a>.
-</div>
-<div id="ref-lme4" class="csl-entry" role="listitem">
-Bates, D., M. Mächler, B. Bolker, and S. Walker. 2015. <a href="https://doi.org/10.18637/jss.v067.i01">Fitting linear
-mixed-effects models using <span class="nocase">lme4</span></a>. Journal
-of Statistical Software 67:1–48.
-</div>
-<div id="ref-pwr" class="csl-entry" role="listitem">
-Champely, S. 2020. <a href="https://CRAN.R-project.org/package=pwr"><span class="nocase">pwr</span>: Basic functions for power analysis</a>.
-</div>
-<div id="ref-douglas2023" class="csl-entry" role="listitem">
-Douglas, A. 2023. <a href="https://intro2r.com/">An introduction to
-r</a>.
-</div>
-<div id="ref-effects2003" class="csl-entry" role="listitem">
-Fox, J. 2003. <a href="https://doi.org/10.18637/jss.v008.i15">Effect
-displays in <span>R</span> for generalised linear models</a>. Journal of
-Statistical Software 8:1–27.
-</div>
-<div id="ref-effects2009" class="csl-entry" role="listitem">
-Fox, J., and J. Hong. 2009. <a href="https://doi.org/10.18637/jss.v032.i01">Effect displays in
-<span>R</span> for multinomial and proportional-odds logit models:
-Extensions to the <span class="nocase">effects</span> package</a>.
-Journal of Statistical Software 32:1–24.
-</div>
-<div id="ref-effects2018" class="csl-entry" role="listitem">
-Fox, J., and S. Weisberg. 2018. <a href="https://doi.org/10.18637/jss.v087.i09">Visualizing fit and lack of
-fit in complex regression models with predictor effect plots and partial
-residuals</a>. Journal of Statistical Software 87:1–27.
-</div>
-<div id="ref-car" class="csl-entry" role="listitem">
-Fox, J., and S. Weisberg. 2019a. <a href="https://socialsciences.mcmaster.ca/jfox/Books/Companion/">An
-<span>R</span> companion to applied regression</a>. Third. Sage,
-Thousand Oaks <span>CA</span>.
-</div>
-<div id="ref-effects2019" class="csl-entry" role="listitem">
-Fox, J., and S. Weisberg. 2019b. <a href="https://socialsciences.mcmaster.ca/jfox/Books/Companion/index.html">An
-r companion to applied regression</a>. 3rd edition. Sage, Thousand Oaks
-CA.
-</div>
-<div id="ref-vcdExtra" class="csl-entry" role="listitem">
-Friendly, M. 2023. <a href="https://CRAN.R-project.org/package=vcdExtra"><span class="nocase">vcdExtra</span>: <span>“<span class="nocase">vcd</span>”</span> extensions and additions</a>.
-</div>
-<div id="ref-palmerpenguins" class="csl-entry" role="listitem">
-Horst, A. M., A. P. Hill, and K. B. Gorman. 2020. <a href="https://doi.org/10.5281/zenodo.3960218"><span class="nocase">palmerpenguins</span>: Palmer archipelago (antarctica)
-penguin data</a>.
-</div>
-<div id="ref-multcomp" class="csl-entry" role="listitem">
-Hothorn, T., F. Bretz, and P. Westfall. 2008. Simultaneous inference in
-general parametric models. Biometrical Journal 50:346–363.
-</div>
-<div id="ref-emoji" class="csl-entry" role="listitem">
-Hvitfeldt, E. 2022. <a href="https://CRAN.R-project.org/package=emoji"><span class="nocase">emoji</span>: Data and function to work with emojis</a>.
-</div>
-<div id="ref-gt" class="csl-entry" role="listitem">
-Iannone, R., J. Cheng, B. Schloerke, E. Hughes, A. Lauer, J. Seo, K.
-Brevoort, and O. Roy. 2024. <a href="https://CRAN.R-project.org/package=gt"><span class="nocase">gt</span>: Easily create presentation-ready display
-tables</a>.
-</div>
-<div id="ref-ggpubr" class="csl-entry" role="listitem">
-Kassambara, A. 2023. <a href="https://CRAN.R-project.org/package=ggpubr"><span class="nocase">ggpubr</span>: <span>“<span class="nocase">ggplot2</span>”</span> based publication ready plots</a>.
-</div>
-<div id="ref-performance" class="csl-entry" role="listitem">
-Lüdecke, D., M. S. Ben-Shachar, I. Patil, P. Waggoner, and D. Makowski.
-2021. <a href="https://doi.org/10.21105/joss.03139"><span class="nocase">performance</span>: An <span>R</span> package for
-assessment, comparison and testing of statistical models</a>. Journal of
-Open Source Software 6:3139.
-</div>
 <div id="ref-martin1219" class="csl-entry" role="listitem">
-Martin, J. 1219. Another lasagna recipe from medieval times. Journal of
-Lasagna 4:1686.
+Martin, J. 1219. Another lasagna recipe from Medieval times. Journal of Lasagna 4:1686.
 </div>
 <div id="ref-martin2200" class="csl-entry" role="listitem">
-Martin, J. 2200. A silly example. Chapman; Hall/CRC, Boca Raton,
-Florida.
-</div>
-<div id="ref-vcd2006" class="csl-entry" role="listitem">
-Meyer, D., A. Zeileis, and K. Hornik. 2006. <a href="https://doi.org/10.18637/jss.v017.i03">The strucplot framework:
-Visualizing multi-way contingency tables with vcd</a>. Journal of
-Statistical Software 17:1–48.
-</div>
-<div id="ref-vcd2023" class="csl-entry" role="listitem">
-Meyer, D., A. Zeileis, K. Hornik, and M. Friendly. 2023. <a href="https://CRAN.R-project.org/package=vcd"><span class="nocase">vcd</span>: Visualizing categorical data</a>.
-</div>
-<div id="ref-patchwork" class="csl-entry" role="listitem">
-Pedersen, T. L. 2024. <a href="https://CRAN.R-project.org/package=patchwork"><span class="nocase">patchwork</span>: The composer of plots</a>.
-</div>
-<div id="ref-simpleboot" class="csl-entry" role="listitem">
-Peng, R. D. 2024. <a href="https://CRAN.R-project.org/package=simpleboot"><span class="nocase">simpleboot</span>: Simple bootstrap routines</a>.
-</div>
-<div id="ref-ggcleveland" class="csl-entry" role="listitem">
-Prunello, M., and G. Mari. 2021. <a href="https://CRAN.R-project.org/package=ggcleveland"><span class="nocase">ggcleveland</span>: Implementation of plots from
-cleveland’s visualizing data book</a>.
-</div>
-<div id="ref-base" class="csl-entry" role="listitem">
-R Core Team. 2024. <a href="https://www.R-project.org/"><span>R</span>:
-A language and environment for statistical computing</a>. R Foundation
-for Statistical Computing, Vienna, Austria.
-</div>
-<div id="ref-grateful" class="csl-entry" role="listitem">
-Rodriguez-Sanchez, F., and C. P. Jackson. 2023. <a href="https://pakillo.github.io/grateful/"><span class="nocase">grateful</span>: Facilitate citation of r packages</a>.
-</div>
-<div id="ref-GGally" class="csl-entry" role="listitem">
-Schloerke, B., D. Cook, J. Larmarange, F. Briatte, M. Marbach, E. Thoen,
-A. Elberg, and J. Crowley. 2024. <a href="https://CRAN.R-project.org/package=GGally"><span>GGally</span>:
-Extension to <span>“<span class="nocase">ggplot2</span>”</span></a>.
-</div>
-<div id="ref-lmPerm" class="csl-entry" role="listitem">
-Wheeler, B., and M. Torchiano. 2016. <a href="https://CRAN.R-project.org/package=lmPerm"><span class="nocase">lmPerm</span>: Permutation tests for linear models</a>.
-</div>
-<div id="ref-reshape2" class="csl-entry" role="listitem">
-Wickham, H. 2007. <a href="http://www.jstatsoft.org/v21/i12/">Reshaping
-data with the <span class="nocase">reshape</span> package</a>. Journal
-of Statistical Software 21:1–20.
-</div>
-<div id="ref-tidyverse" class="csl-entry" role="listitem">
-Wickham, H., M. Averick, J. Bryan, W. Chang, L. D. McGowan, R. François,
-G. Grolemund, A. Hayes, L. Henry, J. Hester, M. Kuhn, T. L. Pedersen, E.
-Miller, S. M. Bache, K. Müller, J. Ooms, D. Robinson, D. P. Seidel, V.
-Spinu, K. Takahashi, D. Vaughan, C. Wilke, K. Woo, and H. Yutani. 2019.
-<a href="https://doi.org/10.21105/joss.01686">Welcome to the <span class="nocase">tidyverse</span></a>. Journal of Open Source Software
-4:1686.
-</div>
-<div id="ref-wilkinson2005" class="csl-entry" role="listitem">
-Wilkinson, L. 2005. The <span>Grammar</span> of <span>Graphics</span>.
-<span>Springer Science &amp; Business Media</span>.
-</div>
-<div id="ref-knitr2014" class="csl-entry" role="listitem">
-Xie, Y. 2014. <span class="nocase">knitr</span>: A comprehensive tool
-for reproducible research in <span>R</span>. <em>in</em> V. Stodden, F.
-Leisch, and R. D. Peng, editors. Implementing reproducible computational
-research. Chapman; Hall/CRC.
-</div>
-<div id="ref-knitr2015" class="csl-entry" role="listitem">
-Xie, Y. 2015. <a href="https://yihui.org/knitr/">Dynamic documents with
-<span>R</span> and knitr</a>. 2nd edition. Chapman; Hall/CRC, Boca
-Raton, Florida.
-</div>
-<div id="ref-knitr2024" class="csl-entry" role="listitem">
-Xie, Y. 2024. <a href="https://yihui.org/knitr/"><span class="nocase">knitr</span>: A general-purpose package for dynamic
-report generation in r</a>.
-</div>
-<div id="ref-rmarkdown2018" class="csl-entry" role="listitem">
-Xie, Y., J. J. Allaire, and G. Grolemund. 2018. <a href="https://bookdown.org/yihui/rmarkdown">R markdown: The definitive
-guide</a>. Chapman; Hall/CRC, Boca Raton, Florida.
-</div>
-<div id="ref-rmarkdown2020" class="csl-entry" role="listitem">
-Xie, Y., C. Dervieux, and E. Riederer. 2020. <a href="https://bookdown.org/yihui/rmarkdown-cookbook">R markdown
-cookbook</a>. Chapman; Hall/CRC, Boca Raton, Florida.
-</div>
-<div id="ref-lmtest" class="csl-entry" role="listitem">
-Zeileis, A., and T. Hothorn. 2002. <a href="https://CRAN.R-project.org/doc/Rnews/">Diagnostic checking in
-regression relationships</a>. R News 2:7–10.
-</div>
-<div id="ref-vcd2007" class="csl-entry" role="listitem">
-Zeileis, A., D. Meyer, and K. Hornik. 2007. <a href="https://doi.org/10.1198/106186007X237856">Residual-based shadings
-for visualizing (conditional) independence</a>. Journal of Computational
-and Graphical Statistics 16:507–525.
-</div>
-<div id="ref-kableExtra" class="csl-entry" role="listitem">
-Zhu, H. 2024. <a href="https://CRAN.R-project.org/package=kableExtra"><span class="nocase">kableExtra</span>: Construct complex table with
-<span>“<span class="nocase">kable</span>”</span> and pipe syntax</a>.
+Martin, J. 2200. A silly example. Chapman; Hall/CRC, Boca Raton, Florida.
 </div>
 </div>
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
