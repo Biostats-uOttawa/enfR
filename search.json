@@ -1707,7 +1707,7 @@
     "href": "902-donnees.html#tous-les-fichiers-séparés",
     "title": "Annexe A — Données utilisées dans le livre",
     "section": "\nA.2 Tous les fichiers séparés",
-    "text": "A.2 Tous les fichiers séparés\n\nage.csv\nanc1dat.csv\nanc3dat.csv\natmosphere.txt\nBanta_TotalFruits.csv\nBiston_pd_1.csv\nBiston_pd_2.csv\nBiston_student.csv\nBiston.postdoc.csv\nBiston.prof.csv\ncode\nDam10dat.csv\ndragons.csv\nErablesGatineau.csv\nextra_funs.R\ngala.txt\nhypoxia.uottawa.csv\nJacobsenDangles_1.csv\nJacobsenDangles_2.csv\nloglin.csv\nmouflon.csv\nMregdat.csv\nnematodes.csv\nnestdat.csv\nnr2wdat.csv\npollution.txt\nr_obj\nRway-enfR_data_code.zip\nsalmonella.csv\nsimulies.csv\nsimuliidae.csv\nskulldat_2020.csv\nskulldat-rm.csv\nsmoking.txt\nStu2mdat.csv\nStu2wdat.csv\nsturgdat.csv\nsturgeon.csv\nunicorns_aggression.csv\nunicorns.csv\nunicorns.txt\nunicorns.xlsx\nUSPopSurvey.csv\nwmc2dat2.csv\nwmcdat2.csv",
+    "text": "A.2 Tous les fichiers séparés\n\nage.csv\nanc1dat.csv\nanc3dat.csv\natmosphere.txt\nBanta_TotalFruits.csv\nBiston_pd_1.csv\nBiston_pd_2.csv\nBiston_student.csv\nBiston.postdoc.csv\nBiston.prof.csv\nDam10dat.csv\ndragons.csv\nErablesGatineau.csv\ngala.txt\nhypoxia.uottawa.csv\nJacobsenDangles_1.csv\nJacobsenDangles_2.csv\nloglin.csv\nmouflon.csv\nMregdat.csv\nnematodes.csv\nnestdat.csv\nnr2wdat.csv\npollution.txt\nRway_enfR_data_code.zip\nsalmonella.csv\nsimulies.csv\nsimuliidae.csv\nskulldat_2020.csv\nskulldat-rm.csv\nsmoking.txt\nStu2mdat.csv\nStu2wdat.csv\nsturgdat.csv\nsturgeon.csv\nunicorns_aggression.csv\nunicorns.csv\nunicorns.txt\nunicorns.xlsx\nUSPopSurvey.csv\nwmc2dat2.csv\nwmcdat2.csv",
     "crumbs": [
       "Données",
       "Annexes",
@@ -1719,7 +1719,7 @@
     "href": "902-donnees.html#code-r-et-fonctions-utilisées-dans-les-diapositives",
     "title": "Annexe A — Données utilisées dans le livre",
     "section": "\nA.3 Code R et fonctions utilisées dans les diapositives",
-    "text": "A.3 Code R et fonctions utilisées dans les diapositives\n\nbook-fnc.R",
+    "text": "A.3 Code R et fonctions utilisées dans les diapositives\n\nbook-fnc.R\nextra_funs.R\nglmm_simdev.rda",
     "crumbs": [
       "Données",
       "Annexes",
