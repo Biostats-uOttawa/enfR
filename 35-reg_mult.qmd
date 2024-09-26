@@ -7,6 +7,11 @@ Après avoir complété cet exercice de laboratoire, vous devriez pouvoir :
 * Utiliser R pour évaluer la multicolinéarité entre les variables indépendantes et en évaluer ses effets
 * Utiliser R pour effectuer une régression curvilinéaire (polynomiale).
 
+::: callout-warning
+Je ne supporte pas absolument pas l'approche stepwise (ni par AIC ni par P). Je déteste l'approche par la fonction `dredge()` qui selon moi va à l'encontre de la philosophie des AIC et de la parsimonie. L'approche stepwise ne devrait plus être utilisé. Ce chapitre est en grand besoin d'une réécriture.
+Je soutiens de développer un modèle complet basé sur des hypothèses biologiques et de reporter ce modèle avec tous les effets significatifs ou non.
+:::
+
 ## Paquets et données requises pour le labo {#set-reg-mul}
 Ce laboratoire nécessite:
 
@@ -59,6 +64,7 @@ Le fichier `Mregdat.csv` contient des données de richesse spécifique de quatre
 Nous allons nous concentrer sur les amphibiens et les reptiles (herptile) pour cet exemple, il est donc avisé d’examiner la distribution de cette variable et les corrélations avec les variables indépendantes potentielles:
 
 ```{r}
+#| label: fig-regm-1
 #| fig-cap: Matrice de rélation et densité pour la richesse spécifique des amphibiens et reptiles
 mydata <- read.csv("data/Mregdat.csv")
 scatterplotMatrix(
@@ -72,6 +78,7 @@ scatterplotMatrix(
 - En utilisant les données de ce fichier, faites la régression simple de `logherp` en fonction de `logarea` . Que concluez-vous à partir de cette analyse?
 
 ```{r}
+#| label: fig-regm-2
 #| fig-cap: Conditions d'applications de la régression de *logherp* sur *logarea*
 model.loga <- lm(logherp ~ logarea, data = mydata)
 summary(model.loga)
@@ -155,6 +162,11 @@ Cette comparaison révèle que le modèle à 3 variables ne fait pas de prédict
 Notez que le “meilleur” modèle n’est pas nécessairement le modèle parfait, seulement le meilleur n’utilisant que ces trois variables indépendantes. Il est évident qu’il y a d’autres facteurs qui contrôlent la richesse spécifique dans les marais puisque, même le “meilleur” modèle n’explique que la moitié de la variabilité.
 
 ## Régression multiple pas-à-pas (stepwise)
+
+::: callout-warning
+Section encore présente à titre d'information mais à ne jamais utiliser à cause de l'ensemble des problèmes d'inférences et de bias dans l'erreur de type 1 qu'elle génère.
+:::
+
 Quand le nombre de variables prédictives est restreint, comme dans l’exemple précédent, il est aisé de comparer manuellement les modèles pour sélectionner le plus adéquat. Cependant, lorsque le nombre de variables indépendantes augmente, cette approche n’est rapidement plus utilisable et il est alors utile d’utiliser une méthode automatisée.
 
 La sélection pas à pas avec R utilise le Critère Informatif de Akaike (Akaike Information Criterion, $AIC = 2* ln(RSS) + 2K$ où K le nombre de variables indépendantes, n est le nombre d’observations, et *RSS* est la somme des carrés des résidus) comme mesure de la qualité d’ajustement des modèles. Cette mesure favorise la précision des prédictions et pénalise la complexité. **Lorsque l’on compare des modèles par AIC, le modèle avec le plus petit AIC est le modèle à préférer.**
@@ -230,6 +242,7 @@ La régression requiert la linéarité de la relation entre les variables dépen
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-regm-3
 #| fig-cap: Relation entre swamp et les résidus de la régression entre logherp et logarea
 # problème avec les données de manquantes dans logherp
 mysub <- subset(mydata, !is.na(logherp))
@@ -269,6 +282,7 @@ Il devient évident que si on corrige la richesse spécifique pour la taille des
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-regm-4
 #| fig-cap: 'Relation '
 par(mfrow = c(2, 2))
 plot(model.resloga2)
@@ -321,6 +335,7 @@ Examinons donc les graphiques diagnostiques du modèle final:
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-regm-5
 #| fig-cap: Conditions d'application du modèle `model.poly2`
 par(mfrow = c(2, 2))
 plot(model.poly2)
@@ -356,6 +371,7 @@ Et finalement, pas de déviation significative de la linéarité. Donc tout semb
 Les coefficients de la régression multiple peuvent mesurer la taille d’effet, quoiqu’il puisse être nécessaire de les standardiser pour qu’ils ne soient pas influencés par les unités de mesure. Mais un graphique est souvent plus informatif. Dans ce contexte, les graphiques des résidus partiels (appelés components+residual plots dans R) sont particulièrement utiles. Ces graphique illustrent comment la variable dépendante, corrigée pour l’effet des autres variables dans le modèle, varie avec chacune des variables indépendantes du modèle. Voyons voir:
 
 ```{r}
+#| label: fig-regm-6
 #| fig-cap: Graphiques de résidus partiels du modèle `model.poly2`
 # Evaluate visually linearity and effect size
 # component + residual plot
@@ -369,6 +385,7 @@ Pour illustrer ce qui serait visible sur ces graphiques si il y avait une dévia
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-regm-7
 #| fig-cap: Graphiques de résidus partiels du modèle `model.nopoly`
 model.nopoly <- lm(
   logherp ~ logarea + thtden + swamp,
@@ -534,6 +551,7 @@ for (i in 1:ncoefs) {
 ```
 
 ```{r}
+#| label: fig-regm-8
 #| echo: false
 #| fig-cap: Distribution des estimé par bootstrap pour `logarea`
 i <- 2
@@ -583,6 +601,7 @@ results <- boot(
 
 Pour obtenir les résultats, le code suivant va produire le graphique standard pour chaque coefficient, et les estimés BCa pour l’intervalle de confiance
 ```{r}
+#| label: fig-regm-9
 #| eval: false
 plot(results, index = 1) # intercept
 plot(results, index = 2) # logarea
@@ -601,6 +620,7 @@ boot.ci(results, type = "bca", index = 5)
 Pour logarea, cela donne:
 
 ```{r}
+#| label: fig-regm-10
 #| echo: false
 boot.ci(results, type = "bca", index = 2) # logarea
 plot(results, index = 2) # logarea
