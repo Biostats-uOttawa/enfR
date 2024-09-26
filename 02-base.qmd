@@ -228,19 +228,19 @@ Si vous devez créer des objets avec plusieurs mots dans leur nom, utilisez un t
 Nous préférons le format souligné `_` et n'incluons jamais de majuscules dans les noms (appelé [*snake_case*][snake]).
 
 ``` r
-résumé_sortie <- "mon analyse" # recommandé #
-résumé.sortie <- "mon analyse"
-résuméSortie <- "mon analyse"
+resume_sortie <- "mon analyse" # recommandé #
+resume.sortie <- "mon analyse"
+resumeSortie <- "mon analyse"
 ```
 
 Il y a également quelques limitations lorsqu'il s'agit de donner des noms aux objets.
 Un nom d'objet ne peut pas commencer par un chiffre ou un point suivi d'un chiffre (ex. `2ma_variable` ou `.2ma_variable`).
-Vous devez également éviter d'utiliser des caractères non alphanumériques dans vos noms d'objets (i.e. &, \^, /, ! etc).
+Vous devez également éviter d'utiliser des caractères non alphanumériques ou des accents dans vos noms d'objets (i.e. &, \^, /, !, é, è, etc).
 De plus, assurez-vous de ne pas nommer vos objets avec des mots réservés (i.e. `TRUE`, `NA`) et ce n'est jamais une bonne idée de donner à votre objet le même nom qu'une fonction intégrée.
 Une fonction qui revient plus souvent qu'on ne peut s'en souvenir est :
 
 ``` r
-data <- read.table("monfichierdedonées", header = TRUE)
+data <- read.table("monfichierdedonees", header = TRUE)
 ```
 
 Oui, `data()` est une fonction de R qui permet de charger ou de lister les ensembles de données disponibles dans les paquets.
@@ -533,8 +533,8 @@ Pour trier les valeurs de la plus petite à la plus grande, nous pouvons utilise
 ```{r}
 #| echo: true
 #| eval: true
-vec_trié <- sort(mon_vec)
-vec_trié
+vec_trie <- sort(mon_vec)
+vec_trie
 ```
 
 Pour inverser le tri, du plus élevé au plus bas, nous pouvons soit inclure l'option `decreasing = TRUE` lors de l'utilisation de la fonction `sort()` :
@@ -542,8 +542,8 @@ Pour inverser le tri, du plus élevé au plus bas, nous pouvons soit inclure l'o
 ```{r}
 #| echo: true
 #| eval: true
-vec_trié2 <- sort(mon_vec, decreasing = TRUE)
-vec_trié2
+vec_trie2 <- sort(mon_vec, decreasing = TRUE)
+vec_trie2
 ```
 
 soit trier d'abord le vecteur à l'aide de la fonction `sort()` puis l'inverser à l'aide de la fonction `rev()`.
@@ -552,8 +552,8 @@ Il s'agit là d'un autre exemple d'imbrication d'une fonction dans une autre fon
 ```{r}
 #| echo: true
 #| eval: true
-vec_trié3 <- rev(sort(mon_vec))
-vec_trié3
+vec_trie3 <- rev(sort(mon_vec))
+vec_trie3
 ```
 
 Bien qu'il soit amusant de trier un seul vecteur, il serait peut-être plus utile de trier un vecteur en fonction des valeurs d'un autre vecteur.
@@ -566,8 +566,8 @@ Pour le démontrer, créons un vecteur appelé `taille` contenant la taille de 5
 taille <- c(180, 155, 160, 167, 181)
 taille
 
-p.noms <- c("Joanna", "Charlotte", "Helen", "Karen", "Amy")
-p.noms
+p_noms <- c("Joanna", "Charlotte", "Helen", "Karen", "Amy")
+p_noms
 ```
 
 Notre objectif est de classer les personnes dans `p.noms` dans l'ordre croissant de leur `taille`.
