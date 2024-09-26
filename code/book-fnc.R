@@ -25,12 +25,12 @@ plot_pwr <- function(
   if (d > 0){
     dat <- mutate(dat,
       beta = ifelse(x <= qcl[2], y1, 0),
-      pow = ifelse(x > qcl[2], y1, 0)
+      alpha = ifelse(x<qcl[1] | x > qcl[2], y0, 0)
     )
   } else {
     dat <- mutate(dat,
       beta = ifelse(x >= qcl[1], y1, 0),
-      pow = ifelse(x < qcl[1], y1, 0)
+      alpha = ifelse(x < qcl[1] | x > qcl[2], y0, 0)
     )
   }
   ggplot(dat, aes(x = x)) +
@@ -42,7 +42,7 @@ plot_pwr <- function(
       fill = rgb(red = 0, green = 0.2, blue = 1, alpha = 0.5)
     ) +
     geom_area(
-      aes(x = x, y = pow),
+      aes(x = x, y = alpha),
       fill = rgb(red = 1, green = 0, blue = 0.2, alpha = 0.5)
     ) +
     theme_classic() +
