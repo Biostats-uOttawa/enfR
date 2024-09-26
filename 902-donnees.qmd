@@ -5,7 +5,7 @@
 
 ```{r}
 #| include: false
-
+#| cache: false
 ui_list <- function(vec) {
   for (x in vec) {
     cat("-", x, "\n")
@@ -15,26 +15,28 @@ ui_list <- function(vec) {
 datf <- data.frame(
   Files = list.files("data/"),
   link = list.files("data/", full.names = TRUE)
-)
+) |>
+  subset()
 code <- data.frame(
-  Files = list.files("data/code/"),
-  link = list.files("data/code/", full.names = TRUE)
+  Files = list.files("code/"),
+  link = list.files("code/", full.names = TRUE)
 )
-if (file.exists("/data/Rway-enfR_data_code.zip")) {
-  file.remove("/data/Rway-enfR_data_code.zip")
+if (file.exists("data/Rway_enfR_data_code.zip")) {
+  file.remove("data/Rway_enfR_data_code.zip")
 }
-zip("data/Rway-enfR_data_code.zip", c(datf$link, code$link))
+zip("data/Rway_enfR_data_code.zip", c(datf$link, code$link))
 ```
 
 ## Fichier compressé tout-inclus
 
-Tous les fichiers de données et de code dans un [**fichier zip**](./data/Rway-enfR_data_code.zip)
+Tous les fichiers de données et de code dans un [**fichier zip**](./data/Rway_enfR_data_code.zip)
 
 ## Tous les fichiers séparés
 
 ```{r}
 #| echo: false
 #| output: asis
+#| cache: false
 apply(datf, 1, function(x) paste0("[", x[1], "](", x[2], ")")) |>
   ui_list()
 ```
@@ -44,6 +46,7 @@ apply(datf, 1, function(x) paste0("[", x[1], "](", x[2], ")")) |>
 ```{r}
 #| echo: false
 #| output: asis
+#| cache: false
 apply(code, 1, function(x) paste0("[", x[1], "](", x[2], ")")) |>
   ui_list()
 ```
