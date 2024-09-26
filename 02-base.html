@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-37bb72f48501692975d9c066fdeb097b.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1ff0208b9405ab0ff3a2d5e39eb7a7a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-758c5ce73771950a3d9b163c2677d9fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -434,76 +434,80 @@ gtag('config', 'G-SLXFYRXJR4', { 'anonymize_ip': true});
   
 
 
-</header><p>Dans ce chapitre, nous verrons comment :</p>
+</header><p>Objectif de ce chapitre :</p>
 <ul>
-<li>créer des objets et leur attribuer des valeurs</li>
-<li>explorer les différents types d’objets et la manière d’effectuer des opérations courantes sur les objets</li>
-<li>obtenir de l’aide en R et mettre en évidence certaines ressources pour vous aider à apprendre R.</li>
-<li>sauvegarder votre travail</li>
-<li>utiliser et installer des paquets pour étendre les capacités de base de R.</li>
+<li>Créer des objets et leur attribuer des valeurs.</li>
+<li>Explorer les différents types d’objets et effectuer des opérations courantes sur ces objets.</li>
+<li>Obtenir de l’aide en R et présenter certaines ressources pour vous aider à apprendre R.</li>
+<li>Sauvegarder votre travail.</li>
+<li>Utiliser et installer des paquets 📦 pour étendre les capacités de base de R.</li>
 </ul>
 <section id="considérations-importantes" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="considérations-importantes">
 <span class="header-section-number">2.1</span> Considérations importantes</h2>
-<p>Nous fournissons une capture d’écran de RStudio mais tout est très similaire lorsque l’on utilise VSCode.</p>
-<p>Avant de poursuivre, voici quelques points à garder à l’esprit tout au long de ce chapitre :</p>
+<p>Les captures d’écrans présentées proviennent de RStudio mais tout est très similaire sur VSCode.</p>
+<p>Avant de poursuivre, quelques points à garder à l’esprit tout au long de ce chapitre :</p>
 <ul>
-<li><p>R est sensible à la casse, c’est-à-dire <code>A</code> n’est pas la même chose que <code>a</code> et <code>anova</code> n’est pas identique à <code>Anova</code>.</p></li>
-<li><p>Tout ce qui suit un <code>#</code> est interprété comme un commentaire et ignoré par R. Les commentaires doivent être utilisés librement dans votre code, à la fois pour votre propre information et pour aider vos collaborateurs. L’écriture de commentaires est un peu un [art] [commentaire] et un art que vous maîtriserez de mieux en mieux au fur et à mesure que vous gagnerez en expérience.</p></li>
-<li><p>Dans R, les commandes sont généralement séparées par une nouvelle ligne. Vous pouvez également utiliser un point-virgule <code>;</code> pour séparer vos commandes, mais nous vous recommandons fortement de ne pas l’utiliser.</p></li>
-<li><p>Si une invite de continuation <code>+</code> apparaît dans la console après l’exécution de votre code, cela signifie que vous n’avez pas terminé votre code correctement. Cela se produit souvent lorsque vous oubliez de fermer une parenthèse et est particulièrement fréquent lorsque des parenthèses imbriquées sont utilisées (<code>(((some command))</code>). Terminez simplement la commande sur la nouvelle ligne et corrigez la faute de frappe ou appuyez sur la touche “escape” de votre clavier (voir le point ci-dessous) et corrigez.</p></li>
-<li><p>En général, R est assez tolérant vis-à-vis des espaces supplémentaires insérés dans votre code, en fait l’utilisation d’espaces est activement encouragée. Cependant, les espaces ne doivent pas être insérés dans les opérateurs, c’est-à-dire <code>&lt;-</code> ne doit pas se lire <code>&lt; -</code> (notez l’espace). Voir le [guide de style] <a href="https://google.github.io/styleguide/Rguide.html">style-google</a> pour savoir où placer les espaces afin de rendre votre code plus lisible.</p></li>
-<li><p>Si votre console se bloque et ne répond plus après l’exécution d’une commande, vous pouvez souvent vous sortir d’affaire en appuyant sur la touche d’échappement (esc) de votre clavier ou en cliquant sur l’icône d’arrêt en haut à droite de votre console. Cela mettra fin à la plupart des opérations en cours.</p></li>
+<li><p>R est sensible à la casse, c’est-à-dire que <code>A</code> n’est pas la même chose que <code>a</code> et <code>anova</code>, ce n’est pas <code>Anova</code>.</p></li>
+<li><p>Tout ce qui suit un <code>#</code> est interprété comme un commentaire et ignoré par R. Ces <em>commentaires</em> doivent être utilisés librement dans votre code, à la fois pour votre propre information et pour aider vos collaborateurs. L’écriture de commentaires est un peu un <a href="https://en.wikipedia.org/wiki/Comment_(computer_programming)">art</a> que vous maîtriserez de mieux en mieux avec l’expérience.</p></li>
+<li><p>Dans R, les commandes sont généralement séparées par une nouvelle ligne. Vous pouvez également utiliser un point-virgule <code>;</code> pour séparer vos commandes, mais nous vous le déconseillons fortement (rend le code très difficilement lisible).</p></li>
+<li><p>Si une invite de continuation <code>+</code> apparaît dans la console après l’exécution de votre code, cela signifie que vous n’avez pas terminé votre code correctement. Cela se produit souvent lorsque vous oubliez de fermer une parenthèse, ce qui est particulièrement fréquent lors que l’on utilise des parenthèses imbriquées (<code>(((commande quelconque))</code>). Terminez simplement la commande sur la nouvelle ligne ou appuyez sur la touche “escape” de votre clavier (voir le point ci-dessous) et corrigez la faute de frappe.</p></li>
+<li><p>En général, R est assez tolérant vis-à-vis des espaces supplémentaires insérés dans votre code, en fait l’utilisation d’espaces est activement encouragée. Cependant, les espaces ne doivent pas être insérés dans les opérateurs, c’est-à-dire <code>&lt;-</code> ne peut pas s’écrire <code>&lt; -</code> (notez l’espace). Voir le <a href="https://google.github.io/styleguide/Rguide.html">guide de style</a> pour savoir où placer les espaces afin de rendre votre code plus lisible.</p></li>
+<li><p>Si votre console se bloque et ne répond plus après l’exécution d’une commande, vous pouvez souvent vous sortir d’affaire en appuyant sur la touche “escape” (esc) de votre clavier ou en cliquant sur l’icône d’arrêt/stop en haut à droite de votre console. Cela mettra fin à la plupart des opérations en cours.</p></li>
 </ul></section><section id="première-étape-dans-la-console" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="première-étape-dans-la-console">
 <span class="header-section-number">2.2</span> Première étape dans la console</h2>
-<p>Dans <a href="01-debut.html" class="quarto-xref"><span>Chapitre 1</span></a>, nous avons appris l’existence de la fonction <a href="01-debut.html#sec-cons">console R</a> et la création de scripts et de <a href="01-debut.html#sec-rsprojs">Projets</a>. Nous avons également vu comment écrire votre code R dans un script, puis comment insérer ce code dans la console pour qu’il s’exécute (si vous avez oublié comment faire, revenez à la section sur la console (-<a href="01-debut.html#sec-cons" class="quarto-xref"><span>Section 1.2.1.1</span></a>) pour vous rafraîchir la mémoire). Le fait d’écrire votre code dans un script signifie que vous aurez toujours un enregistrement permanent de tout ce que vous avez fait (à condition que vous sauvegardiez votre script) et vous permet également de faire de nombreux commentaires pour vous rappeler ce que vous avez fait à l’avenir. Ainsi, pendant que vous travaillez sur ce chapitre, nous vous suggérons de créer un nouveau script (ou RStudio <a href="01-debut.html#sec-rsprojs">Projet</a>) pour écrire votre code au fur et à mesure.</p>
-<p>Comme nous l’avons vu dans <a href="01-debut.html" class="quarto-xref"><span>Chapitre 1</span></a>, nous pouvons utiliser R de la même manière qu’une calculatrice. Nous pouvons saisir une expression arithmétique dans notre script, puis l’afficher dans la console et recevoir un résultat. Par exemple, si nous tapons l’expression <code>1 + 1</code> et que l’on introduit cette ligne de code dans la console, on obtient la réponse suivante <code>2</code> (<span class="emoji" data-emoji="smiley">😃</span> !)</p>
+<p>Dans le <a href="01-debut.html" class="quarto-xref"><span>Chapitre 1</span></a>, nous avons appris ce qu’était la <a href="01-debut.html#sec-cons">console R</a> la création de scripts et de <a href="01-debut.html#sec-rsprojs">Projets</a>. Nous avons également vu comment écrire votre code R dans un script, puis comment insérer ce code dans la console pour qu’il s’exécute (si vous avez oublié comment faire, revenez à la section sur la console (-<a href="01-debut.html#sec-cons" class="quarto-xref"><span>Section 1.2.1.1</span></a>) pour vous rafraîchir la mémoire). Le fait d’écrire votre code dans un script signifie que vous aurez un enregistrement permanent de tout ce que vous avez fait (à condition de sauvegarder votre script) et vous permet également de faire de nombreux commentaires pour vous rappeler ce que vous aviez fait (ou voulu faire) quand vous retournerez si votre code à l’avenir. Ainsi, pendant que vous travaillez sur ce chapitre, nous vous suggérons de créer un nouveau script (ou un <a href="01-debut.html#sec-rsprojs">Projet</a> Rstudio) pour écrire votre code au fur et à mesure.</p>
+<p>Comme nous l’avons vu au <a href="01-debut.html" class="quarto-xref"><span>Chapitre 1</span></a>, nous pouvons utiliser R de la même manière qu’une calculatrice. Nous pouvons saisir une expression arithmétique dans notre script, puis l’envoyer dans la console et recevoir un résultat. Par exemple, si nous tapons l’expression <code>1 + 1</code> et que l’on exécute cette ligne de code dans la console, on obtient la réponse <code>2</code> (<span class="emoji" data-emoji="smiley">😃</span> !)</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">1</span> <span class="op">+</span> <span class="fl">1</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
-<p>Les <code>[1]</code> devant le résultat indique que le numéro d’observation au début de la ligne est la première observation. Cela n’est pas très utile dans cet exemple, mais peut l’être lors de l’impression de résultats sur plusieurs lignes (nous en verrons un exemple ci-dessous). Les autres opérateurs arithmétiques évidents sont <code>-</code>, <code>*</code>, <code>/</code> pour la soustraction, la multiplication et la division respectivement. L’opérateur de multiplication de la matrice est <code>%*%</code>. R suit la convention mathématique habituelle de [ordre des opérations] <a href="https://en.wikipedia.org/wiki/Order_of_operations">op-prec</a> . Par exemple, l’expression <code>2 + 3 * 4</code> est interprétée comme ayant la valeur <code>2 + (3 * 4) = 14</code> et non <code>(2 + 3) * 4 = 20</code>. Il existe un grand nombre de fonctions mathématiques dans R, dont les plus utiles sont les suivantes ; <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code>, <code><a href="https://rdrr.io/r/base/Log.html">log10()</a></code>, <code><a href="https://rdrr.io/r/base/Log.html">exp()</a></code>, <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code>.</p>
+<p>Le <code>[1]</code> devant le résultat indique que l’observation au début de la ligne est la première. Cela n’est pas très utile dans cet exemple, mais peut l’être lors de l’impression de résultats sur plusieurs lignes (nous en verrons un exemple ci-dessous). Les autres opérateurs arithmétiques évidents sont <code>-</code>, <code>*</code>, <code>/</code> pour la soustraction, la multiplication et la division respectivement. Pour la multiplication de la matrice, l’opérateur est <code>%*%</code>.</p>
+<p>R suit la convention mathématique habituelle de l’<a href="https://en.wikipedia.org/wiki/Order_of_operations">ordre des opérations</a>. Par exemple, l’expression <code>2 + 3 * 4</code> est interprétée comme ayant la valeur <code>2 + (3 * 4) = 14</code> et non <code>(2 + 3) * 4 = 20</code>. Il existe un grand nombre de fonctions mathématiques dans R, dont les plus utiles sont les suivantes : <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code>, <code><a href="https://rdrr.io/r/base/Log.html">log10()</a></code>, <code><a href="https://rdrr.io/r/base/Log.html">exp()</a></code>, <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="co"># logarithm to base e</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="co"># logarithme en base e</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="co"># logarithm to base 10</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="co"># logarithme en base 10</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="co"># natural antilog</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="co"># antilog naturel, fonction exponentielle</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.718282</code></pre>
 </div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="co"># square root</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="co"># racine carrée</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">4</span><span class="op">^</span><span class="fl">2</span> <span class="co"># 4 to the power of 2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">4</span><span class="op">^</span><span class="fl">2</span> <span class="co"># 4 puissance 2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16</code></pre>
 </div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pi</span> <span class="co"># not a function but useful</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pi</span> <span class="co"># pas une fonction mais utile</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.141593</code></pre>
 </div>
 </div>
-<p>Il est important de comprendre que lorsque vous exécutez un code comme nous l’avons fait ci-dessus, le résultat du code (ou <strong>valeur</strong>) n’est affiché que dans la console. Bien que cela puisse parfois être utile, il est généralement beaucoup plus pratique de stocker la ou les valeurs dans un objetN.</p>
+<p>Il est important de comprendre que lorsque vous exécutez un code comme nous l’avons fait ci-dessus, le résultat du code (ou <strong>valeur</strong>) n’est affiché que dans la console. Bien que cela puisse parfois être utile, il est généralement beaucoup plus pratique de stocker la ou les valeurs dans un <strong>objet</strong>.</p>
 </section><section id="objets-en-r" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="objets-en-r">
 <span class="header-section-number">2.3</span> Objets en R</h2>
-<p>Au cœur de presque tout ce que vous ferez (ou ferez probablement) en R se trouve le concept selon lequel tout en R est un [objet] [chambres] . Ces objets peuvent être presque n’importe quoi, d’un simple nombre ou d’une chaîne de caractères (comme un mot) à des structures très complexes comme la sortie d’un graphique, un résumé de votre analyse statistique ou un ensemble de commandes R qui effectuent une tâche spécifique. Pour comprendre R, il est essentiel de savoir comment créer des objets et leur attribuer des valeurs.</p>
+<p>Au cœur de presque tout ce que vous ferez (ou ferez probablement) en R se trouve le concept selon lequel tout en R est un <a href="https://journal.r-project.org/archive/2009-1/RJournal_2009-1_Chambers.pdf">objet</a>. Ces objets peuvent être pratiquement n’importe quoi, d’un simple nombre ou d’une chaîne de caractères (comme un mot) à des structures très complexes comme la sortie d’un graphique, un résumé de votre analyse statistique ou un ensemble de commandes R effectuant une tâche spécifique. Pour comprendre R, il est essentiel de savoir comment créer des objets et leur attribuer des valeurs.</p>
 <section id="sec-r-objs" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="sec-r-objs">
 <span class="header-section-number">2.3.1</span> Création d’objets</h3>
-<p>Pour créer un objet, il suffit de lui donner un nom. Nous pouvons ensuite attribuer une valeur à cet objet à l’aide de la fonction <em>opérateur d’affectation</em> <code>&lt;-</code> (parfois appelé <em>opérateur d’obtention</em>). L’opérateur d’affectation est un symbole composite composé d’un symbole “moins que”. <code>&lt;</code> et d’un trait d’union <code>-</code> .</p>
+<p>Pour créer un objet, il suffit de lui donner un nom. Nous pouvons ensuite attribuer une valeur à cet objet à l’aide d’un <em>opérateur d’affectation</em> <code>&lt;-</code> (parfois appelé <em>opérateur d’obtention</em>). L’opérateur d’affectation est un symbole composite composé d’un symbole “moins que” <code>&lt;</code> et d’un trait d’union <code>-</code></p>
+<blockquote class="blockquote">
+<p>raccourci clavier : “option” + “-” sur Mac ; “alt” + “-” sur Windows.</p>
+</blockquote>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_obj</span> <span class="op">&lt;-</span> <span class="fl">32</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_obj</span> <span class="op">&lt;-</span> <span class="fl">32</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Dans le code ci-dessus, nous avons créé un objet appelé <code>my_obj</code> et lui avons attribué la valeur du nombre <code>32</code> à l’aide de l’opérateur d’affectation (dans notre tête, nous lisons toujours cela comme ‘<em>mon_obj est 32</em>’). Vous pouvez également utiliser <code>=</code> à la place de <code>&lt;-</code> pour assigner des valeurs, mais c’est une mauvaise pratique car cela peut entraîner des confusions plus tard lors de la programmation en <code>R</code> (voir <a href="05-programmation.html" class="quarto-xref"><span>Chapitre 5</span></a>) et nous vous déconseillons d’utiliser cette notation.</p>
-<p>Pour afficher la valeur de l’objet, il suffit de taper le nom de l’objet</p>
+<p>Dans le code ci-dessus, nous avons créé un objet appelé <code>mon_obj</code> et lui avons attribué la valeur numérique <code>32</code> à l’aide de l’opérateur d’affectation (dans notre tête, nous lisons toujours cela comme ‘<em>mon_obj est 32</em>’). Vous pouvez également utiliser <code>=</code> à la place de <code>&lt;-</code> pour assigner des valeurs, mais c’est une mauvaise pratique car cela peut entraîner des confusions plus tard quand vous programmerez en <code>R</code> (voir <a href="05-programmation.html" class="quarto-xref"><span>Chapitre 5</span></a>) donc nous vous déconseillons d’utiliser cette notation.</p>
+<p>Pour afficher la valeur de l’objet, il suffit de taper son nom.</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_obj</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_obj</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 32</code></pre>
 </div>
@@ -513,207 +517,202 @@ gtag('config', 'G-SLXFYRXJR4', { 'anonymize_ip': true});
 <div class="cell-output-display">
 <div id="fig-rstudio_env" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rstudio_env-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/basic/rs_env.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+<img src="images/basic/rs_env-fr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio_env-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: RStudio Environment tab
+Figure&nbsp;2.1: Onglet Environnement RStudio
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Si vous cliquez sur la flèche vers le bas de l’icône “Liste” dans le même volet et que vous passez à l’affichage “Grille”, RStudio vous présentera un résumé des objets, y compris le type (numérique - c’est un nombre), la longueur (une seule valeur dans cet objet), sa taille “physique” et sa valeur (48 dans ce cas). Dans VSCode, allez sur le panneau d’extension R et vous obtiendrez les mêmes informations.</p>
+<p>Si vous cliquez sur la flèche vers le bas de l’icône “List” (Liste) dans le même volet et que vous passez à l’affichage “Grid” (Grille), RStudio vous présentera un résumé des objets, y compris le type (“numeric” (numérique) - c’est un nombre), la longueur (une seule valeur dans cet objet), sa taille “physique” et sa valeur (32 dans ce cas). Dans VSCode, allez sur le panneau d’extension R et vous obtiendrez les mêmes informations.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-rstudio_env2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rstudio_env2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/basic/rs_env2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+<img src="images/basic/rs_env2-fr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio_env2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.2: RStudio Environment tab in grid format
+Figure&nbsp;2.2: Onglet Environnement RStudio au format grille
 </figcaption></figure>
 </div>
 </div>
 </div>
 <p>Il existe de nombreux types de valeurs que vous pouvez attribuer à un objet. Par exemple</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_obj2</span> <span class="op">&lt;-</span> <span class="st">"R is cool"</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_obj2</span> <span class="op">&lt;-</span> <span class="st">"R c'est trop bien"</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Nous avons créé un objet appelé <code>my_obj2</code> et lui avons attribué la valeur <code>R is cool</code> qui est une chaîne de caractères. Remarquez que nous avons mis la chaîne de caractères entre guillemets. Si vous oubliez d’utiliser les guillemets, vous recevrez un message d’erreur.</p>
-<p>Notre espace de travail contient maintenant les deux objets que nous avons créés jusqu’à présent avec <code>my_obj2</code> comme caractère de type.</p>
+<p>Nous avons créé un objet appelé <code>mon_obj2</code> et lui avons attribué la valeur <code>R c'est trop bien</code> qui est une chaîne de caractères. Remarquez que nous avons mis la chaîne de caractères entre guillemets. Si vous oubliez d’utiliser les guillemets, vous recevrez un message d’erreur.</p>
+<p>Notre espace de travail contient maintenant les deux objets que nous avons créés jusqu’à présent avec <code>mon_obj2</code> de type “character” (caractère).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-rstudio_env3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rstudio_env3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/basic/rs_env3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+<img src="images/basic/rs_env3-fr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio_env3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.3: RStudio environment tab with my_obj2 as a character
+Figure&nbsp;2.3: Onglet Environnement RStudio avec mon_obj2 de type caractère
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Pour modifier la valeur d’un objet existant, il suffit de lui réattribuer une nouvelle valeur. Par exemple, pour modifier la valeur de <code>my_obj2</code> de <code>"R is cool"</code> au nombre <code>1024</code></p>
+<p>Pour modifier la valeur d’un objet existant, il suffit de lui réattribuer une nouvelle valeur. Par exemple, pour modifier la valeur de <code>mon_obj2</code> de <code>"R c'est trop bien"</code> au nombre <code>1024</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_obj2</span> <span class="op">&lt;-</span> <span class="fl">1024</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_obj2</span> <span class="op">&lt;-</span> <span class="fl">1024</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Remarquez que le type est devenu numérique et que la valeur est passée à 1024 dans l’environnement.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-rstudio_env4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rstudio_env4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/basic/rs_env4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+<img src="images/basic/rs_env4-fr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio_env4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.4: RStudio environment tab with updated my_obj2 as numeric
+Figure&nbsp;2.4: Onglet Environnement RStudio avec mon_obj2 mis-à-jours en numérique
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Une fois que nous avons créé quelques objets, nous pouvons faire des choses avec nos objets. Par exemple, le code suivant crée un nouvel objet <code>my_obj3</code> et lui assigne la valeur de <code>my_obj</code> ajouté à <code>my_obj2</code> soit 1072 (48 + 1024 = 1072).</p>
+<p>Une fois que nous avons créé plusieurs objets, nous pouvons faire des choses avec. Par exemple, le code suivant crée un nouvel objet <code>mon_obj3</code> et lui assigne la valeur de <code>mon_obj</code> ajouté à <code>mon_obj2</code> soit 1056 (32 + 1024 = 1056).</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_obj3</span> <span class="op">&lt;-</span> <span class="va">my_obj</span> <span class="op">+</span> <span class="va">my_obj2</span></span>
-<span><span class="va">my_obj3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_obj3</span> <span class="op">&lt;-</span> <span class="va">mon_obj</span> <span class="op">+</span> <span class="va">mon_obj2</span></span>
+<span><span class="va">mon_obj3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1056</code></pre>
 </div>
 </div>
-<p>Remarquez que pour afficher la valeur de <code>my_obj3</code> nous devons également écrire le nom de l’objet. Le code ci-dessus fonctionne parce que les valeurs de <code>my_obj</code> et <code>my_obj2</code> sont numériques (c’est-à-dire un nombre). Si vous essayez de le faire avec des objets dont les valeurs sont des caractères (<strong>classe de caractères</strong>), vous recevrez une erreur</p>
+<p>Remarquez que pour afficher la valeur de <code>mon_obj3</code> nous devons également écrire le nom de l’objet. Le code ci-dessus fonctionne parce que les valeurs de <code>mon_obj</code> et <code>mon_obj2</code> sont numériques (donc des nombres). Si vous essayez de faire ça avec des objets dont les valeurs sont des caractères (<strong>classe character</strong>), vous recevrez une erreur</p>
 <div class="cell">
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">char_obj</span> <span class="op">&lt;-</span> <span class="st">"hello"</span></span>
 <span><span class="va">char_obj2</span> <span class="op">&lt;-</span> <span class="st">"world!"</span></span>
 <span><span class="va">char_obj3</span> <span class="op">&lt;-</span> <span class="va">char_obj</span> <span class="op">+</span> <span class="va">char_obj2</span></span>
 <span><span class="co"># Error in char_obj+char_obj2:non-numeric argument to binary operator</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Le message d’erreur vous indique essentiellement que l’un ou les deux objets <code>char_obj</code> et <code>char_obj2</code> n’est pas un nombre et ne peut donc pas être additionné.</p>
+<p>Le message d’erreur vous indique que l’un ou les deux objets <code>char_obj</code> et <code>char_obj2</code> n’est pas un nombre et ne peut donc pas être additionné.</p>
 <p>Lorsque vous commencez à apprendre R, la gestion des erreurs et des avertissements peut être frustrante car ils sont souvent difficiles à comprendre (qu’est-ce qu’un <a href="https://www.quora.com/What-is-an-%E2%80%9Cargument%E2%80%9D-in-an-R-function"><em>argument</em></a> ? qu’est-ce qu’un <a href="https://www.statmethods.net/management/operators.html"><em>opérateur binaire</em></a> ?). Une façon de trouver plus d’informations sur une erreur particulière est de rechercher une version généralisée du message d’erreur. Pour l’erreur ci-dessus, essayez de rechercher <a href="https://www.google.com/search?client=firefox-b-d&amp;q=non-numeric+argument+to+binary+operator+error+%2B+r"><em>‘non-numeric argument to binary operator error + r’</em></a> ou même <a href="https://www.google.com/search?client=firefox-b-d&amp;q=common+r+error+messages"><em>‘common r error messages’</em></a>.</p>
 <p>Un autre message d’erreur que vous obtiendrez assez souvent lorsque vous commencerez à utiliser R est <code>Error : object 'XXX' not found</code> (erreur : objet ‘XXX’ non trouvé). A titre d’exemple, regardez le code ci-dessous</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_obj</span> <span class="op">&lt;-</span> <span class="fl">48</span></span>
-<span><span class="va">my_obj4</span> <span class="op">&lt;-</span> <span class="va">my_obj</span> <span class="op">+</span> <span class="va">no_obj</span></span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_obj</span> <span class="op">&lt;-</span> <span class="fl">48</span></span>
+<span><span class="va">mon_obj4</span> <span class="op">&lt;-</span> <span class="va">mon_obj</span> <span class="op">+</span> <span class="va">no_obj</span></span>
 <span><span class="co"># Error: object 'no_obj' not found</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>R renvoie un message d’erreur parce que nous n’avons pas encore créé (défini) l’objet <code>no_obj</code>. Un autre indice qu’il y a un problème avec ce code est que, si vous vérifiez votre environnement, vous verrez que l’objet <code>my_obj4</code> n’a pas été créé.</p>
+<p>R renvoie un message d’erreur parce que nous n’avons pas encore créé (défini) l’objet <code>no_obj</code>. Un autre indice qu’il y a un problème avec ce code est que, si vous vérifiez votre environnement, vous verrez que l’objet <code>mon_obj4</code> n’a pas été créé.</p>
 </section><section id="nommer-les-objets" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="nommer-les-objets">
 <span class="header-section-number">2.3.2</span> Nommer les objets</h3>
-<p>Nommer vos objets est l’une des choses les plus difficiles que vous ferez dans R. Idéalement, les noms de vos objets devraient être courts et informatifs, ce qui n’est pas toujours facile. Si vous devez créer des objets avec plusieurs mots dans leur nom, utilisez un trait de soulignement ou un point entre les mots ou mettez les différents mots en majuscules. Nous préférons le format souligné et n’incluons jamais de majuscules dans les noms (appelé <a href="https://en.wikipedia.org/wiki/Snake_case"><em>snake_case</em></a>).</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">output_summary</span> <span class="op">&lt;-</span> <span class="st">"my analysis"</span> <span class="co"># recommended#</span></span>
-<span><span class="va">output.summary</span> <span class="op">&lt;-</span> <span class="st">"my analysis"</span></span>
-<span><span class="va">outputSummary</span> <span class="op">&lt;-</span> <span class="st">"my analysis"</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Il y a également quelques limitations lorsqu’il s’agit de donner des noms aux objets. Un nom d’objet ne peut pas commencer par un chiffre ou un point suivi d’un chiffre (ex. <code>2my_variable</code> ou <code>.2my_variable</code>). Vous devez également éviter d’utiliser des caractères non alphanumériques dans vos noms d’objets (i.e. &amp;, ^, /, ! etc). De plus, assurez-vous de ne pas nommer vos objets avec des mots réservés (i.e. <code>TRUE</code>, <code>NA</code>) et ce n’est jamais une bonne idée de donner à votre objet le même nom qu’une fonction intégrée. Une fonction qui revient plus souvent qu’on ne peut s’en souvenir est</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"mydatafile"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Nommer vos objets est l’une des choses les plus difficiles que vous ferez dans R. Idéalement, les noms de vos objets devraient être courts et informatifs, ce qui n’est pas toujours facile. Si vous devez créer des objets avec plusieurs mots dans leur nom, utilisez un trait de soulignement <code>_</code> ou un point <code>.</code> entre les mots ou mettez les différents mots en majuscules. Nous préférons le format souligné <code>_</code> et n’incluons jamais de majuscules dans les noms (appelé <a href="https://en.wikipedia.org/wiki/Snake_case"><em>snake_case</em></a>).</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">résumé_sortie</span> <span class="op">&lt;-</span> <span class="st">"mon analyse"</span> <span class="co"># recommandé #</span></span>
+<span><span class="va">résumé.sortie</span> <span class="op">&lt;-</span> <span class="st">"mon analyse"</span></span>
+<span><span class="va">résuméSortie</span> <span class="op">&lt;-</span> <span class="st">"mon analyse"</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Il y a également quelques limitations lorsqu’il s’agit de donner des noms aux objets. Un nom d’objet ne peut pas commencer par un chiffre ou un point suivi d’un chiffre (ex. <code>2ma_variable</code> ou <code>.2ma_variable</code>). Vous devez également éviter d’utiliser des caractères non alphanumériques dans vos noms d’objets (i.e.&nbsp;&amp;, ^, /, ! etc). De plus, assurez-vous de ne pas nommer vos objets avec des mots réservés (i.e.&nbsp;<code>TRUE</code>, <code>NA</code>) et ce n’est jamais une bonne idée de donner à votre objet le même nom qu’une fonction intégrée. Une fonction qui revient plus souvent qu’on ne peut s’en souvenir est :</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"monfichierdedonées"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Oui, <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> est une fonction de R qui permet de charger ou de lister les ensembles de données disponibles dans les paquets.</p>
 </section></section><section id="sec-funcs" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="sec-funcs">
 <span class="header-section-number">2.4</span> Utilisation de fonctions dans R</h2>
-<p>Jusqu’à présent, nous avons créé des objets simples en assignant directement une valeur unique à un objet. Il est très probable que vous souhaitiez bientôt créer des objets plus compliqués au fur et à mesure que votre expérience de R s’accroît et que la complexité de vos tâches augmente. Heureusement, R dispose d’une multitude de fonctions pour vous aider à le faire. Vous pouvez considérer une fonction comme un objet qui contient une série d’instructions pour effectuer une tâche spécifique. L’installation de base de R est livrée avec de nombreuses fonctions déjà définies ou vous pouvez augmenter la puissance de R en installant l’un des 10 000 <a href="@sec-packages">paquets</a> actuellement disponibles. Une fois que vous aurez acquis un peu plus d’expérience dans l’utilisation de R, vous voudrez peut-être définir vos propres fonctions pour effectuer des tâches spécifiques à vos objectifs (plus d’informations à ce sujet dans <a href="05-programmation.html" class="quarto-xref"><span>Chapitre 5</span></a>).</p>
-<p>La première fonction que nous allons découvrir est la fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>. La fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> est l’abréviation de concaténer et nous l’utilisons pour joindre une série de valeurs et les stocker dans une structure de données appelée <a href="https://www.datamentor.io/r-programming/vector/"><strong>vector</strong></a> (plus d’informations sur les vecteurs dans <a href="03-donnees.html" class="quarto-xref"><span>Chapitre 3</span></a>).</p>
+<p>Jusqu’à présent, nous avons créé des objets simples en assignant directement une valeur unique à un objet. Il est très probable que vous souhaitiez bientôt créer des objets plus compliqués au fur et à mesure que vous aurez de l’expérience sur R et que la complexité de vos tâches augmente. Heureusement, R dispose d’une multitude de fonctions pour vous aider à le faire. Vous pouvez considérer une fonction comme <em>un objet qui contient une série d’instructions pour effectuer une tâche spécifique</em>. L’installation de base de R est livrée avec de nombreuses fonctions déjà définies ou vous pouvez augmenter la puissance de R en installant l’un des 10 000 <a href="@sec-packages">paquets</a> actuellement disponibles. Une fois que vous aurez acquis un peu plus d’expérience dans l’utilisation de R, vous voudrez peut-être définir vos propres fonctions pour effectuer des tâches spécifiques à vos objectifs (plus d’informations à ce sujet dans <a href="05-programmation.html" class="quarto-xref"><span>Chapitre 5</span></a>).</p>
+<p>La première fonction que nous allons découvrir est la fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>. La fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> est l’abréviation de concaténer et nous l’utilisons pour joindre une série de valeurs et les stocker dans une structure de données appelée <a href="https://www.datamentor.io/r-programming/vector/"><strong>vecteur</strong></a> (plus d’informations sur les vecteurs dans <a href="03-donnees.html" class="quarto-xref"><span>Chapitre 3</span></a>).</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">7</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">6</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">7</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Dans le code ci-dessus, nous avons créé un objet appelé <code>my_vec</code> et lui avons assigné une valeur en utilisant la fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>. Il y a quelques points très importants à noter ici. Premièrement, lorsque vous utilisez une fonction dans R, le nom de la fonction est <strong>toujours</strong> suivi d’une paire de parenthèses rondes, même s’il n’y a rien entre les parenthèses. Deuxièmement, les arguments d’une fonction sont placés à l’intérieur des crochets ronds et sont séparés par des virgules. Vous pouvez considérer un argument comme un moyen de personnaliser l’utilisation ou le comportement d’une fonction. Dans l’exemple ci-dessus, les arguments sont les nombres que nous voulons concaténer. Enfin, l’une des choses les plus délicates lorsque vous commencez à utiliser R est de savoir quelle fonction utiliser pour une tâche particulière et comment l’utiliser. Heureusement, chaque fonction est toujours associée à un document d’aide qui explique comment utiliser la fonction (plus d’informations à ce sujet plus tard <a href="#sec-help" class="quarto-xref"><span>Section 2.6</span></a>) et une recherche rapide sur le web peut également vous aider.</p>
+<p>Dans le code ci-dessus, nous avons créé un objet appelé <code>mon_vec</code> et lui avons assigné une valeur en utilisant la fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code>. Il y a quelques points très importants à noter ici. Premièrement, lorsque vous utilisez une fonction dans R, le nom de la fonction est <strong>toujours</strong> suivi d’une paire de parenthèses rondes <code>()</code>, même s’il n’y a rien entre les parenthèses. Deuxièmement, les arguments d’une fonction sont placés à l’intérieur des parenthèses rondes <code>()</code> et sont séparés par des virgules <code>,</code>. Vous pouvez considérer un argument comme un moyen de personnaliser l’utilisation ou le comportement d’une fonction. Dans l’exemple ci-dessus, les arguments sont les nombres que nous voulons concaténer. Enfin, l’une des choses les plus délicates lorsque vous commencez à utiliser R est de savoir quelle fonction utiliser pour une tâche particulière et comment l’utiliser. Heureusement, chaque fonction est toujours associée à un document d’aide qui explique comment utiliser la fonction (plus d’informations à ce sujet plus tard <a href="#sec-help" class="quarto-xref"><span>Section 2.6</span></a>) et une recherche rapide sur le web peut également vous aider.</p>
 <p>Pour examiner la valeur de notre nouvel objet, nous pouvons simplement taper le nom de l’objet comme nous l’avons fait précédemment</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 3 1 6 4 3 3 7</code></pre>
 </div>
 </div>
 <p>Maintenant que nous avons créé un vecteur, nous pouvons utiliser d’autres fonctions pour faire des choses utiles avec cet objet. Par exemple, nous pouvons calculer la moyenne, la variance, l’écart-type et le nombre d’éléments de notre vecteur en utilisant les fonctions <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, <code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code>, <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> et <code><a href="https://rdrr.io/r/base/length.html">length()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">my_vec</span><span class="op">)</span> <span class="co"># returns the mean of my_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mon_vec</span><span class="op">)</span> <span class="co"># renvoie la moyenne de mon_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.625</code></pre>
 </div>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">my_vec</span><span class="op">)</span> <span class="co"># returns the variance of my_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">mon_vec</span><span class="op">)</span> <span class="co"># renvoie la variance de mon_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.982143</code></pre>
 </div>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">my_vec</span><span class="op">)</span> <span class="co"># returns the standard deviation of my_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">mon_vec</span><span class="op">)</span> <span class="co"># renvoie l'écart-type de mon_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.995531</code></pre>
 </div>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">my_vec</span><span class="op">)</span> <span class="co"># returns the number of elements in my_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">mon_vec</span><span class="op">)</span> <span class="co"># renvoie le nombre d'éléments dnas mon_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8</code></pre>
 </div>
 </div>
 <p>Si nous voulons utiliser l’une de ces valeurs plus tard dans notre analyse, il nous suffit d’affecter la valeur obtenue à un autre objet.</p>
 <div class="cell">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">my_vec</span><span class="op">)</span> <span class="co"># returns the mean of my_vec</span></span>
-<span><span class="va">vec_mean</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">moyenne_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mon_vec</span><span class="op">)</span> <span class="co"># renvoie la moyenne de mon_vec</span></span>
+<span><span class="va">moyenne_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.625</code></pre>
 </div>
 </div>
-<p>Il peut parfois être utile de créer un vecteur contenant une séquence régulière de valeurs par pas de un. Dans ce cas, nous pouvons utiliser un raccourci en utilisant la fonction <code>:</code> symbole.</p>
+<p>Il peut parfois être utile de créer un vecteur contenant une séquence régulière de valeurs par pas de un. Dans ce cas, nous pouvons utiliser un raccourci en utilisant le symbole <code>:</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_seq</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span> <span class="co"># create regular sequence</span></span>
-<span><span class="va">my_seq</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ma_seq</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span> <span class="co"># créer une séquence régulière</span></span>
+<span><span class="va">ma_seq</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_seq2</span> <span class="op">&lt;-</span> <span class="fl">10</span><span class="op">:</span><span class="fl">1</span> <span class="co"># in decending order</span></span>
-<span><span class="va">my_seq2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ma_seq2</span> <span class="op">&lt;-</span> <span class="fl">10</span><span class="op">:</span><span class="fl">1</span> <span class="co"># en ordre décroissant</span></span>
+<span><span class="va">ma_seq2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 10  9  8  7  6  5  4  3  2  1</code></pre>
 </div>
 </div>
-<p>D’autres fonctions utiles pour générer des vecteurs de séquences sont les suivantes <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> et <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> sont des fonctions utiles pour générer des vecteurs de séquences. Par exemple, pour générer une séquence de 1 à 5 par pas de 0,5</p>
+<p>D’autres fonctions utiles pour générer des vecteurs de séquences sont <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> et <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code>. Par exemple, pour générer une séquence de 1 à 5 par pas de 0,5 :</p>
 <div class="cell">
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_seq2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">1</span>, to <span class="op">=</span> <span class="fl">5</span>, by <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span><span class="va">my_seq2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ma_seq2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">1</span>, to <span class="op">=</span> <span class="fl">5</span>, by <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="va">ma_seq2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0</code></pre>
 </div>
 </div>
-<p>Ici, nous avons utilisé les arguments <code>from =</code> et <code>to =</code> pour définir les limites de la séquence et l’argument <code>by =</code> pour spécifier l’incrément de la séquence. Jouez avec d’autres valeurs pour ces arguments afin de voir leur effet.</p>
-<p>L’argument <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> vous permet de répliquer (répéter) des valeurs un certain nombre de fois. Pour répéter la valeur 2, 10 fois</p>
+<p>Ici, nous avons utilisé les arguments <code>from =</code> et <code>to =</code> pour définir les limites de la séquence et l’argument <code>by =</code> pour spécifier l’incrément (les pas) de la séquence. Jouez avec d’autres valeurs pour ces arguments afin de voir leur effet.</p>
+<p>L’argument <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> vous permet de répliquer (répéter) des valeurs un certain nombre de fois. Pour répéter la valeur ‘2’, 10 fois :</p>
 <div class="cell">
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_seq3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">2</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="co"># repeats 2, 10 times</span></span>
-<span><span class="va">my_seq3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ma_seq3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">2</span>, times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="co"># répète '2', 10 fois</span></span>
+<span><span class="va">ma_seq3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 2 2 2 2 2 2 2 2 2 2</code></pre>
 </div>
 </div>
-<p>Vous pouvez également répéter des valeurs non numériques</p>
+<p>Vous pouvez également répéter des valeurs non numériques :</p>
 <div class="cell">
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_seq4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"abc"</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># repeats ‘abc' 3 times</span></span>
-<span><span class="va">my_seq4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ma_seq4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"abc"</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># répète ‘abc' 3 fois</span></span>
+<span><span class="va">ma_seq4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "abc" "abc" "abc"</code></pre>
 </div>
 </div>
-<p>ou chaque élément d’une série</p>
+<p>ou chaque élément d’une série :</p>
 <div class="cell">
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_seq5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># repeats the series 1 to</span></span>
-<span><span class="co"># 5, 3 times</span></span>
-<span><span class="va">my_seq5</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ma_seq5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, times <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># répète la série de '1' à '5', 3 fois</span></span>
+<span><span class="va">ma_seq5</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</code></pre>
 </div>
 </div>
-<p>ou des éléments d’une série</p>
+<p>ou des éléments d’une série :</p>
 <div class="cell">
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_seq6</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, each <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># repeats each element of the</span></span>
-<span><span class="co"># series 3 times</span></span>
-<span><span class="va">my_seq6</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ma_seq6</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, each <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># répète chaque élément de la série 3 fois</span></span>
+<span><span class="va">ma_seq6</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1 1 1 2 2 2 3 3 3 4 4 4 5 5 5</code></pre>
 </div>
 </div>
-<p>On peut aussi répéter une série non séquentielle</p>
+<p>On peut aussi répéter une série non séquentielle :</p>
 <div class="cell">
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_seq7</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">10</span>, <span class="fl">7</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># repeats each</span></span>
-<span><span class="co"># element of the</span></span>
-<span><span class="co"># series 3 times</span></span>
-<span><span class="va">my_seq7</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ma_seq7</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">10</span>, <span class="fl">7</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># répète chaque élément de la série 3 fois</span></span>
+<span><span class="va">ma_seq7</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  3  3  3  1  1  1 10 10 10  7  7  7</code></pre>
 </div>
 </div>
-<p>Notez dans le code ci-dessus comment nous avons utilisé la fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> à l’intérieur de la fonction <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> à l’intérieur de la fonction L’imbrication de fonctions nous permet de construire des commandes assez complexes à l’intérieur d’une seule ligne de code et est une pratique très courante dans l’utilisation de R. Cependant, il faut faire attention car trop de fonctions imbriquées peuvent rendre votre code difficile à comprendre pour les autres (ou pour vous-même dans le futur !). Nous pourrions réécrire le code ci-dessus pour séparer explicitement les deux étapes de la génération de notre vecteur. L’une ou l’autre approche donnera le même résultat, il vous suffit d’utiliser votre propre jugement pour déterminer laquelle est la plus lisible.</p>
+<p>Notez dans le code ci-dessus comment nous avons utilisé la fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> à l’intérieur de la fonction <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code>. L’imbrication de fonctions nous permet de construire des commandes assez complexes à l’intérieur d’une seule ligne de code et est une pratique très courante dans l’utilisation de R. Cependant, il faut faire attention car trop de fonctions imbriquées peuvent rendre votre code difficile à comprendre pour les autres (et pour vous-même dans le futur !). Nous pourrions réécrire le code ci-dessus pour séparer explicitement les deux étapes de la génération de notre vecteur. L’une ou l’autre approche donnera le même résultat, il vous suffit d’utiliser votre propre jugement pour déterminer laquelle est la plus lisible.</p>
 <div class="cell">
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">in_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">10</span>, <span class="fl">7</span><span class="op">)</span></span>
-<span><span class="va">my_seq7</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">in_vec</span>, each <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># repeats each element of</span></span>
-<span><span class="co"># the series 3 times</span></span>
-<span><span class="va">my_seq7</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_int</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">10</span>, <span class="fl">7</span><span class="op">)</span></span>
+<span><span class="va">ma_seq7</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">vec_int</span>, each <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># répète chaque élément de la série, 3 fois</span></span>
+<span><span class="va">ma_seq7</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  3  3  3  1  1  1 10 10 10  7  7  7</code></pre>
 </div>
@@ -723,98 +722,98 @@ Figure&nbsp;2.4: RStudio environment tab with updated my_obj2 as numeric
 <p>Manipuler, résumer et trier des données à l’aide de R est une compétence importante à maîtriser, mais que de nombreuses personnes trouvent un peu déroutante au début. Nous allons voir ici quelques exemples simples utilisant des vecteurs pour illustrer certains concepts importants, mais nous développerons cela plus en détail dans <a href="03-donnees.html" class="quarto-xref"><span>Chapitre 3</span></a> où nous verrons des structures de données plus compliquées (et plus utiles).</p>
 <section id="extraction-déléments" class="level3" data-number="2.5.1"><h3 data-number="2.5.1" class="anchored" data-anchor-id="extraction-déléments">
 <span class="header-section-number">2.5.1</span> Extraction d’éléments</h3>
-<p>Pour extraire (ou indexer ou souscrire) une ou plusieurs valeurs (plus généralement appelées éléments) d’un vecteur, nous utilisons les crochets suivants <code>[ ]</code> pour extraire une ou plusieurs valeurs (généralement appelées éléments) d’un vecteur. L’approche générale consiste à nommer l’objet à extraire, puis un ensemble de crochets avec un index de l’élément à extraire contenu dans les crochets. Cet indice peut être une position ou le résultat d’un test logique.</p>
+<p>Pour extraire (ou indexer ou souscrire) une ou plusieurs valeurs (plus généralement appelées éléments) d’un vecteur, nous utilisons les crochets <code>[ ]</code>. L’approche générale consiste à nommer l’objet à extraire, puis écrire l’indice de l’élément à extraire dans les crochets. Cet indice peut être une position ou le résultat d’un test logique.</p>
 <section id="indice-de-position" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="indice-de-position">Indice de position</h4>
-<p>Pour extraire des éléments en fonction de leur position, il suffit d’écrire la position à l’intérieur de la balise <code>[ ]</code>. Par exemple, pour extraire la 3e valeur de <code>my_vec</code></p>
+<p>Pour extraire des éléments en fonction de leur position, il suffit d’écrire la position à l’intérieur des crochets <code>[ ]</code>. Par exemple, pour extraire la 3e valeur de <code>mon_vec</code> :</p>
 <div class="cell">
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span> <span class="co"># remind ourselves what my_vec looks like</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span> <span class="co"># rappelons-nous à quoi mon_vec ressemble</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 3 1 6 4 3 3 7</code></pre>
 </div>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="co"># extract the 3rd value</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="co"># extrait la 3e valeur</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># if you want to store this value in another object</span></span>
-<span><span class="va">val_3</span> <span class="op">&lt;-</span> <span class="va">my_vec</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># si vous voulez stocker cette valeur dans un autre objet</span></span>
+<span><span class="va">val_3</span> <span class="op">&lt;-</span> <span class="va">mon_vec</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">val_3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
-<p>Notez que l’index positionnel commence à 1 et non à 0 comme dans d’autres langages de programmation (i.e. Python).</p>
-<p>Nous pouvons également extraire plus d’une valeur en utilisant la fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> à l’intérieur des crochets. Ici, nous extrayons le 1<sup>e</sup>, le 5<sup>e</sup>, le 6<sup>e</sup> et le 8<sup>e</sup> élément de la variable <code>my_vec</code> objet</p>
+<p>Notez que l’indice de position commence à 1 et non à 0 comme dans d’autres langages de programmation (i.e.&nbsp;Python).</p>
+<p>Nous pouvons également extraire plusieurs valeurs en utilisant la fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> à l’intérieur des crochets. Ici, nous extrayons le 1<sup>er</sup>, le 5<sup>e</sup>, le 6<sup>e</sup> et le 8<sup>e</sup> élément de l’objet <code>mon_vec</code> :</p>
 <div class="cell">
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">8</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">8</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 4 3 7</code></pre>
 </div>
 </div>
-<p>Nous pouvons également extraire une plage de valeurs à l’aide de la fonction <code>:</code> pour extraire une plage de valeurs. Pour extraire les valeurs des 3<sup>e</sup> à 8<sup>e</sup> éléments</p>
+<p>Nous pouvons également extraire une plage de valeurs à l’aide de la fonction <code>:</code>. Pour extraire du 3<sup>e</sup> au 8<sup>e</sup> élément :</p>
 <div class="cell">
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span><span class="op">[</span><span class="fl">3</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span><span class="op">[</span><span class="fl">3</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 6 4 3 3 7</code></pre>
 </div>
 </div>
 </section><section id="sec-logical-index" class="level4" data-number="2.5.1.1"><h4 data-number="2.5.1.1" class="anchored" data-anchor-id="sec-logical-index">
-<span class="header-section-number">2.5.1.1</span> Index logique</h4>
-<p>Une autre façon très utile d’extraire des données d’un vecteur est d’utiliser une expression logique comme index. Par exemple, pour extraire tous les éléments dont la valeur est supérieure à 4 dans le vecteur <code>my_vec</code></p>
+<span class="header-section-number">2.5.1.1</span> Indice logique</h4>
+<p>Une autre façon très utile d’extraire des données d’un vecteur est d’utiliser une expression logique comme indice. Par exemple, pour extraire tous les éléments dont la <strong>valeur</strong> est supérieure à 4 dans le vecteur <code>mon_vec</code> :</p>
 <div class="cell">
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span><span class="op">[</span><span class="va">my_vec</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">]</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span><span class="op">[</span><span class="va">mon_vec</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">]</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6 7</code></pre>
 </div>
 </div>
-<p>Ici, l’expression logique est <code>my_vec &gt; 4</code> et R n’extraira que les éléments qui satisfont à cette condition logique. Comment cela fonctionne-t-il réellement ? Si nous regardons la sortie de l’expression logique sans les crochets, vous pouvez voir que R renvoie un vecteur contenant soit <code>TRUE</code> ou <code>FALSE</code> qui indiquent si la condition logique est remplie pour chaque élément. Dans ce cas, seuls les éléments 4<sup>e</sup> et 8<sup>e</sup> renvoient un <code>TRUE</code> car leur valeur est supérieure à 4.</p>
+<p>Ici, l’expression logique est <code>mon_vec &gt; 4</code> et R n’extraira que les éléments qui satisfont à cette condition logique. Comment cela fonctionne-t-il réellement ? Si nous regardons la sortie de l’expression logique sans les crochets, vous pouvez voir que R renvoie un vecteur contenant soit <code>TRUE</code> soit <code>FALSE</code> qui indique si la condition logique est remplie pour chaque élément. Dans ce cas, seuls les éléments en 4<sup>e</sup> et 8<sup>e</sup> position renvoient un <code>TRUE</code> car leur valeur est supérieure à 4.</p>
 <div class="cell">
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span> <span class="op">&gt;</span> <span class="fl">4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span> <span class="op">&gt;</span> <span class="fl">4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE</code></pre>
 </div>
 </div>
-<p>Ainsi, ce que R fait en réalité sous le capot est équivalent à</p>
+<p>Ainsi, ce que R fait en réalité sous le capot est équivalent à :</p>
 <div class="cell">
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6 7</code></pre>
 </div>
 </div>
 <p>et seuls les éléments qui sont <code>TRUE</code> seront extraits.</p>
-<p>En plus de l’élément <code>&lt;</code> et <code>&gt;</code> vous pouvez également utiliser des opérateurs composites pour augmenter la complexité de vos expressions. Par exemple, l’expression “supérieur ou égal à” est la suivante <code>&gt;=</code>. Pour vérifier si une valeur est égale à une autre, nous devons utiliser un double symbole égal <code>==</code> et pour vérifier si une valeur est différente de, nous utilisons le symbole <code>!=</code> (le symbole <code>!</code> signifie “pas”).</p>
+<p>En plus de <code>&lt;</code> et <code>&gt;</code> vous pouvez également utiliser des opérateurs composites pour augmenter la complexité de vos expressions. Par exemple, l’expression “supérieur ou égal à” est : <code>&gt;=</code>. Pour vérifier si une valeur est égale à une autre, nous devons utiliser un double symbole égal <code>==</code> et pour vérifier si une valeur est différente de, nous utilisons le symbole <code>!=</code> (le symbole <code>!</code> signifie “pas”).</p>
 <div class="cell">
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span><span class="op">[</span><span class="va">my_vec</span> <span class="op">&gt;=</span> <span class="fl">4</span><span class="op">]</span> <span class="co"># values greater or equal to 4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span><span class="op">[</span><span class="va">mon_vec</span> <span class="op">&gt;=</span> <span class="fl">4</span><span class="op">]</span> <span class="co"># valeurs supérieures ou égales à 4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6 4 7</code></pre>
 </div>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span><span class="op">[</span><span class="va">my_vec</span> <span class="op">&lt;</span> <span class="fl">4</span><span class="op">]</span> <span class="co"># values less than 4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span><span class="op">[</span><span class="va">mon_vec</span> <span class="op">&lt;</span> <span class="fl">4</span><span class="op">]</span> <span class="co"># valeurs inférieures à 4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 3 1 3 3</code></pre>
 </div>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span><span class="op">[</span><span class="va">my_vec</span> <span class="op">&lt;=</span> <span class="fl">4</span><span class="op">]</span> <span class="co"># values less than or equal to 4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span><span class="op">[</span><span class="va">mon_vec</span> <span class="op">&lt;=</span> <span class="fl">4</span><span class="op">]</span> <span class="co"># valeurs inférieures ou égales à 4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 3 1 4 3 3</code></pre>
 </div>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span><span class="op">[</span><span class="va">my_vec</span> <span class="op">==</span> <span class="fl">4</span><span class="op">]</span> <span class="co"># values equal to 4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span><span class="op">[</span><span class="va">mon_vec</span> <span class="op">==</span> <span class="fl">4</span><span class="op">]</span> <span class="co"># valeurs égales à 4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span><span class="op">[</span><span class="va">my_vec</span> <span class="op">!=</span> <span class="fl">4</span><span class="op">]</span> <span class="co"># values not equal to 4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span><span class="op">[</span><span class="va">mon_vec</span> <span class="op">!=</span> <span class="fl">4</span><span class="op">]</span> <span class="co"># valeurs pas égales à 4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 3 1 6 3 3 7</code></pre>
 </div>
 </div>
-<p>Nous pouvons également combiner plusieurs expressions logiques à l’aide d’expressions booléennes. [expressions booléennes] [booléen] . Dans R, l’élément <code>&amp;</code> signifie ET et le symbole <code>|</code> signifie OU. Par exemple, pour extraire des valeurs dans <code>my_vec</code> qui sont inférieures à 6 ET supérieures à 2</p>
+<p>Nous pouvons également combiner plusieurs expressions logiques à l’aide d’<a href="https://en.wikipedia.org/wiki/Boolean_expression">expressions booléennes</a>. Dans R, l’élément <code>&amp;</code> signifie ET et le symbole <code>|</code> signifie OU. Par exemple, pour extraire des valeurs dans <code>mon_vec</code> qui sont inférieures à 6 ET supérieures à 2 :</p>
 <div class="cell">
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">val26</span> <span class="op">&lt;-</span> <span class="va">my_vec</span><span class="op">[</span><span class="va">my_vec</span> <span class="op">&lt;</span> <span class="fl">6</span> <span class="op">&amp;</span> <span class="va">my_vec</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">]</span></span>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">val26</span> <span class="op">&lt;-</span> <span class="va">mon_vec</span><span class="op">[</span><span class="va">mon_vec</span> <span class="op">&lt;</span> <span class="fl">6</span> <span class="op">&amp;</span> <span class="va">mon_vec</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">]</span></span>
 <span><span class="va">val26</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3 4 3 3</code></pre>
 </div>
 </div>
-<p>ou extraire des valeurs dans <code>my_vec</code> qui sont supérieures à 6 OU inférieures à 3</p>
+<p>ou extraire des valeurs dans <code>mon_vec</code> qui sont supérieures à 6 OU inférieures à 3 :</p>
 <div class="cell">
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">val63</span> <span class="op">&lt;-</span> <span class="va">my_vec</span><span class="op">[</span><span class="va">my_vec</span> <span class="op">&gt;</span> <span class="fl">6</span> <span class="op">|</span> <span class="va">my_vec</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">]</span></span>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">val63</span> <span class="op">&lt;-</span> <span class="va">mon_vec</span><span class="op">[</span><span class="va">mon_vec</span> <span class="op">&gt;</span> <span class="fl">6</span> <span class="op">|</span> <span class="va">mon_vec</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">]</span></span>
 <span><span class="va">val63</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 1 7</code></pre>
@@ -822,128 +821,128 @@ Figure&nbsp;2.4: RStudio environment tab with updated my_obj2 as numeric
 </div>
 </section></section><section id="remplacement-déléments" class="level3" data-number="2.5.2"><h3 data-number="2.5.2" class="anchored" data-anchor-id="remplacement-déléments">
 <span class="header-section-number">2.5.2</span> Remplacement d’éléments</h3>
-<p>Nous pouvons modifier les valeurs de certains éléments d’un vecteur à l’aide de la fonction <code>[ ]</code> en combinaison avec l’opérateur d’affectation <code>&lt;-</code>. Par exemple, pour remplacer la 4^e valeur de notre <code>my_vec</code> de <code>6</code> à <code>500</code></p>
+<p>Nous pouvons modifier les valeurs de certains éléments d’un vecteur à l’aide des crochets <code>[ ]</code> en combinaison avec l’opérateur d’affectation <code>&lt;-</code>. Par exemple, pour remplacer la 4<sup>e</sup> valeur de <code>mon_vec</code> de <code>6</code> à <code>500</code> :</p>
 <div class="cell">
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vec</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">500</span></span>
-<span><span class="va">my_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_vec</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">500</span></span>
+<span><span class="va">mon_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]   2   3   1 500   4   3   3   7</code></pre>
 </div>
 </div>
-<p>Nous pouvons également remplacer plus d’une valeur ou même remplacer des valeurs sur la base d’une expression logique</p>
+<p>Nous pouvons également remplacer plusieurs valeurs ou même remplacer des valeurs sur la base d’une expression logique :</p>
 <div class="cell">
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># replace the 6th and 7th element with 100</span></span>
-<span><span class="va">my_vec</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">7</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
-<span><span class="va">my_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># remplacer les 6e et 7e éléments par 100</span></span>
+<span><span class="va">mon_vec</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">7</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
+<span><span class="va">mon_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]   2   3   1 500   4 100 100   7</code></pre>
 </div>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># replace element that are less than or equal to 4 with 1000</span></span>
-<span><span class="va">my_vec</span><span class="op">[</span><span class="va">my_vec</span> <span class="op">&lt;=</span> <span class="fl">4</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
-<span><span class="va">my_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># remplacer les éléments inférieurs ou égaux à 4 par 1000</span></span>
+<span><span class="va">mon_vec</span><span class="op">[</span><span class="va">mon_vec</span> <span class="op">&lt;=</span> <span class="fl">4</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span><span class="va">mon_vec</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1000 1000 1000  500 1000  100  100    7</code></pre>
 </div>
 </div>
 </section><section id="sec-vec-ord" class="level3" data-number="2.5.3"><h3 data-number="2.5.3" class="anchored" data-anchor-id="sec-vec-ord">
 <span class="header-section-number">2.5.3</span> Ordonner les éléments</h3>
-<p>Outre l’extraction d’éléments particuliers d’un vecteur, il est également possible d’ordonner les valeurs contenues dans un vecteur. Pour trier les valeurs de la plus petite à la plus grande, nous pouvons utiliser la fonction <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> fonction</p>
+<p>Outre l’extraction d’éléments particuliers d’un vecteur, il est également possible d’ordonner les valeurs contenues dans un vecteur. Pour trier les valeurs de la plus petite à la plus grande, nous pouvons utiliser la fonction <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> :</p>
 <div class="cell">
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_sort</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">my_vec</span><span class="op">)</span></span>
-<span><span class="va">vec_sort</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_trié</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">mon_vec</span><span class="op">)</span></span>
+<span><span class="va">vec_trié</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]    7  100  100  500 1000 1000 1000 1000</code></pre>
 </div>
 </div>
-<p>Pour inverser le tri, du plus élevé au plus bas, nous pouvons soit inclure l’option <code>decreasing = TRUE</code> lors de l’utilisation de la méthode <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> soit inclure l’argument lors de l’utilisation de la fonction</p>
+<p>Pour inverser le tri, du plus élevé au plus bas, nous pouvons soit inclure l’option <code>decreasing = TRUE</code> lors de l’utilisation de la fonction <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> :</p>
 <div class="cell">
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_sort2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">my_vec</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">vec_sort2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_trié2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">mon_vec</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">vec_trié2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1000 1000 1000 1000  500  100  100    7</code></pre>
 </div>
 </div>
-<p>ou trier d’abord le vecteur à l’aide de la fonction <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> puis inverser le vecteur trié à l’aide de la fonction <code><a href="https://rdrr.io/r/base/rev.html">rev()</a></code> à l’aide de la fonction Il s’agit là d’un autre exemple d’imbrication d’une fonction dans une autre fonction.</p>
+<p>soit trier d’abord le vecteur à l’aide de la fonction <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> puis l’inverser à l’aide de la fonction <code><a href="https://rdrr.io/r/base/rev.html">rev()</a></code>. Il s’agit là d’un autre exemple d’imbrication d’une fonction dans une autre fonction :</p>
 <div class="cell">
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_sort3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">my_vec</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">vec_sort3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_trié3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">mon_vec</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">vec_trié3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1000 1000 1000 1000  500  100  100    7</code></pre>
 </div>
 </div>
-<p>Bien qu’il soit amusant de trier un seul vecteur, il serait peut-être plus utile de trier un vecteur en fonction des valeurs d’un autre vecteur. Pour ce faire, nous devons utiliser la fonction <code><a href="https://rdrr.io/r/base/order.html">order()</a></code> en combinaison avec la fonction <code>[ ]</code>. Pour le démontrer, créons un vecteur appelé <code>height</code> contenant la taille de 5 personnes différentes et un autre vecteur appelé <code>p.names</code> contenant les noms de ces personnes (Joanna mesure 180 cm, Charlotte mesure 155 cm, etc.)</p>
+<p>Bien qu’il soit amusant de trier un seul vecteur, il serait peut-être plus utile de trier un vecteur en fonction des valeurs d’un autre vecteur. Pour ce faire, nous devons utiliser la fonction <code><a href="https://rdrr.io/r/base/order.html">order()</a></code> en combinaison avec <code>[ ]</code>. Pour le démontrer, créons un vecteur appelé <code>taille</code> contenant la taille de 5 personnes différentes et un autre vecteur appelé <code>p.noms</code> contenant les noms de ces personnes (Joanna mesure 180 cm, Charlotte mesure 155 cm, etc.)</p>
 <div class="cell">
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">height</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">180</span>, <span class="fl">155</span>, <span class="fl">160</span>, <span class="fl">167</span>, <span class="fl">181</span><span class="op">)</span></span>
-<span><span class="va">height</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">taille</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">180</span>, <span class="fl">155</span>, <span class="fl">160</span>, <span class="fl">167</span>, <span class="fl">181</span><span class="op">)</span></span>
+<span><span class="va">taille</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 180 155 160 167 181</code></pre>
 </div>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p.names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Joanna"</span>, <span class="st">"Charlotte"</span>, <span class="st">"Helen"</span>, <span class="st">"Karen"</span>, <span class="st">"Amy"</span><span class="op">)</span></span>
-<span><span class="va">p.names</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p.noms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Joanna"</span>, <span class="st">"Charlotte"</span>, <span class="st">"Helen"</span>, <span class="st">"Karen"</span>, <span class="st">"Amy"</span><span class="op">)</span></span>
+<span><span class="va">p.noms</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Joanna"    "Charlotte" "Helen"     "Karen"     "Amy"      </code></pre>
 </div>
 </div>
-<p>Notre objectif est de classer les personnes dans <code>p.names</code> dans l’ordre croissant de leur <code>height</code>. La première chose que nous allons faire est d’utiliser la fonction <code><a href="https://rdrr.io/r/base/order.html">order()</a></code> avec la fonction <code>height</code> pour créer un vecteur appelé <code>height_ord</code></p>
+<p>Notre objectif est de classer les personnes dans <code>p.noms</code> dans l’ordre croissant de leur <code>taille</code>. La première chose que nous allons faire est d’utiliser la fonction <code><a href="https://rdrr.io/r/base/order.html">order()</a></code> avec le vecteur <code>taille</code> pour créer un vecteur appelé <code>taille_ord</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">height_ord</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">height</span><span class="op">)</span></span>
-<span><span class="va">height_ord</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">taille_ord</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">taille</span><span class="op">)</span></span>
+<span><span class="va">taille_ord</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 3 4 1 5</code></pre>
 </div>
 </div>
-<p>OK, que se passe-t-il ici ? La première valeur, <code>2</code>(n’oubliez pas d’ignorer <code>[1]</code>) doit être lue comme “la plus petite valeur de <code>height</code> est le deuxième élément de l’équation <code>height</code> vecteur”. Si nous le vérifions en regardant le <code>height</code> ci-dessus, vous pouvez voir que l’élément 2 a une valeur de 155, ce qui est la plus petite valeur. La deuxième valeur la plus petite du vecteur <code>height</code> est le 3<sup>e</sup> élément de <code>height</code> ce qui, après vérification, donne 160 et ainsi de suite. La plus grande valeur de <code>height</code> est l’élément <code>5</code> qui vaut 181. Maintenant que nous disposons d’un vecteur des indices de position des hauteurs par ordre croissant (<code>height_ord</code>), nous pouvons extraire ces valeurs de notre <code>p.names</code> dans cet ordre</p>
+<p>OK, que se passe-t-il ici ? La première valeur, <code>2</code>(n’oubliez pas d’ignorer <code>[1]</code>) doit être lue comme “la plus petite valeur de <code>taille</code> est le deuxième élément du vecteur <code>taille</code>”. Si nous le vérifions en regardant le vecteur <code>taille</code> ci-dessus, nous pouvons voir que le 2<sup>e</sup> élément a une valeur de 155, ce qui est la plus petite valeur. La deuxième valeur la plus petite du vecteur <code>taille</code> est la 3<sup>e</sup> ce qui, après vérification, donne 160 et ainsi de suite. La plus grande valeur de <code>taille</code> est la <code>5</code><sup>e</sup> qui vaut 181. Maintenant que nous avons le vecteur des indices de position des tailles par ordre croissant (<code>taille_ord</code>), nous pouvons extraire ces valeurs de notre vecteur <code>p.noms</code> dans cet ordre</p>
 <div class="cell">
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">names_ord</span> <span class="op">&lt;-</span> <span class="va">p.names</span><span class="op">[</span><span class="va">height_ord</span><span class="op">]</span></span>
-<span><span class="va">names_ord</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">noms_ord</span> <span class="op">&lt;-</span> <span class="va">p.noms</span><span class="op">[</span><span class="va">taille_ord</span><span class="op">]</span></span>
+<span><span class="va">noms_ord</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Charlotte" "Helen"     "Karen"     "Joanna"    "Amy"      </code></pre>
 </div>
 </div>
-<p>Vous vous demandez probablement à quoi cela peut bien servir. Imaginons que vous disposiez d’un ensemble de données contenant deux colonnes de données et que vous souhaitiez trier chacune d’entre elles. Si vous utilisez simplement <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> pour trier chaque colonne séparément, les valeurs de chaque colonne seront dissociées les unes des autres. En utilisant ‘order()’ sur une colonne, un vecteur d’indices positionnels est créé à partir des valeurs de la colonne dans l’ordre croissant. Ce vecteur peut être utilisé sur la deuxième colonne, en tant qu’indice d’éléments qui renverront un vecteur de valeurs basé sur la première colonne. En toute honnêteté, lorsque vous avez plusieurs vecteurs liés, vous devez utiliser un objet de type data.frame (voir <a href="03-donnees.html" class="quarto-xref"><span>Chapitre 3</span></a>) au lieu de plusieurs vecteurs indépendants.</p>
+<p>Vous vous demandez probablement à quoi cela peut bien servir. Imaginons que vous disposiez d’un jeu de données contenant deux colonnes et que vous souhaitiez trier chacune d’entre elles. Si vous utilisez simplement <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> pour trier chaque colonne séparément, les valeurs de chaque colonne seront dissociées les unes des autres. En utilisant <code><a href="https://rdrr.io/r/base/order.html">order()</a></code> sur une colonne, un vecteur d’indices de position est créé à partir des valeurs de la colonne dans l’ordre croissant. Ce vecteur peut être utilisé sur la deuxième colonne, en tant qu’indice d’éléments qui renverront un vecteur de valeurs basé sur la première colonne. En toute honnêteté, lorsque vous avez plusieurs vecteurs liés, vous devez utiliser un objet de type <code>data.frame</code> (voir <a href="03-donnees.html" class="quarto-xref"><span>Chapitre 3</span></a>) au lieu de plusieurs vecteurs indépendants.</p>
 </section><section id="vectorisation" class="level3" data-number="2.5.4"><h3 data-number="2.5.4" class="anchored" data-anchor-id="vectorisation">
 <span class="header-section-number">2.5.4</span> Vectorisation</h3>
-<p>L’un des avantages des fonctions R est que la plupart d’entre elles sont vectorisées. Cela signifie que la fonction opère sur tous les éléments d’un vecteur sans qu’il soit nécessaire d’appliquer la fonction à chaque élément séparément. Par exemple, pour multiplier chaque élément d’un vecteur par 5, il suffit d’utiliser la fonction</p>
+<p>L’un des avantages des fonctions R est que la plupart d’entre elles sont vectorisées. Cela signifie que la fonction opère sur tous les éléments d’un vecteur sans qu’il soit nécessaire d’appliquer la fonction à chaque élément séparément. Par exemple, pour multiplier chaque élément d’un vecteur par 5, il suffit d’utiliser la fonction :</p>
 <div class="cell">
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># create a vector</span></span>
-<span><span class="va">my_vec2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">1</span>, <span class="fl">9</span>, <span class="fl">20</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># créer un vecteur</span></span>
+<span><span class="va">mon_vec2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">1</span>, <span class="fl">9</span>, <span class="fl">20</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># multiply each element by 5</span></span>
-<span><span class="va">my_vec2</span> <span class="op">*</span> <span class="fl">5</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co"># multiplier chaque élément par 5</span></span>
+<span><span class="va">mon_vec2</span> <span class="op">*</span> <span class="fl">5</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  15  25  35   5  45 100</code></pre>
 </div>
 </div>
-<p>Ou nous pouvons additionner les éléments de deux vecteurs ou plus</p>
+<p>Ou nous pouvons additionner les éléments de deux vecteurs ou plus :</p>
 <div class="cell">
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># create a second vector</span></span>
-<span><span class="va">my_vec3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">17</span>, <span class="fl">15</span>, <span class="fl">13</span>, <span class="fl">19</span>, <span class="fl">11</span>, <span class="fl">0</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># créer un deuxième vecteur</span></span>
+<span><span class="va">mon_vec3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">17</span>, <span class="fl">15</span>, <span class="fl">13</span>, <span class="fl">19</span>, <span class="fl">11</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># add both vectors</span></span>
-<span><span class="va">my_vec2</span> <span class="op">+</span> <span class="va">my_vec3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co"># additionner les 2 vecteurs</span></span>
+<span><span class="va">mon_vec2</span> <span class="op">+</span> <span class="va">mon_vec3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20 20 20 20 20 20</code></pre>
 </div>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># multiply both vectors</span></span>
-<span><span class="va">my_vec2</span> <span class="op">*</span> <span class="va">my_vec3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># multiplier les 2 vecteurs</span></span>
+<span><span class="va">mon_vec2</span> <span class="op">*</span> <span class="va">mon_vec3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 51 75 91 19 99  0</code></pre>
 </div>
 </div>
-<p>Cependant, vous devez faire attention lorsque vous utilisez la vectorisation avec des vecteurs de longueurs différentes, car R recyclera tranquillement les éléments du vecteur le plus court plutôt que de lancer une erreur (wobbly).</p>
+<p>Cependant, vous devez faire attention lorsque vous utilisez la vectorisation avec des vecteurs de longueurs différentes, car R recyclera tranquillement les éléments du vecteur le plus court plutôt que de signaler une erreur.</p>
 <div class="cell">
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># create a third vector</span></span>
-<span><span class="va">my_vec4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># créer un troisième vecteur</span></span>
+<span><span class="va">mon_vec4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># add both vectors - quiet recycling!</span></span>
-<span><span class="va">my_vec2</span> <span class="op">+</span> <span class="va">my_vec4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co"># additionner les 2 vecteurs - recyclage tranquille!</span></span>
+<span><span class="va">mon_vec2</span> <span class="op">+</span> <span class="va">mon_vec4</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  4  7  8  3 10 22</code></pre>
 </div>
 </div>
 </section><section id="sec-na-vals" class="level3" data-number="2.5.5"><h3 data-number="2.5.5" class="anchored" data-anchor-id="sec-na-vals">
 <span class="header-section-number">2.5.5</span> Données manquantes</h3>
-<p>Dans R, les données manquantes sont généralement représentées par un <code>NA</code> qui signifie “Non disponible”. Les données peuvent être manquantes pour toute une série de raisons : votre machine est peut-être tombée en panne, vous êtes peut-être tombé en panne, le temps était peut-être trop mauvais pour collecter des données un jour donné, etc. Les données manquantes peuvent être une véritable plaie, tant du point de vue de R que du point de vue statistique. Du point de vue de R, les données manquantes peuvent être problématiques car différentes fonctions traitent les données manquantes de différentes manières. Par exemple, supposons que nous ayons recueilli des relevés de température de l’air pendant 10 jours, mais que notre thermomètre se soit cassé le deuxième jour et le neuvième jour, de sorte que nous n’avons pas de données pour ces jours-là</p>
+<p>Dans R, les données manquantes sont généralement représentées par un <code>NA</code> qui signifie “Not Available” (Non disponible). Les données peuvent être manquantes pour toute une série de raisons : votre machine est peut-être tombée en panne, vous êtes peut-être tombé en panne, le temps était peut-être trop mauvais pour collecter des données un jour donné, etc. Les données manquantes peuvent être une véritable plaie, tant du point de vue de R que du point de vue statistique. Du point de vue de R, les données manquantes peuvent être problématiques car différentes fonctions traitent les données manquantes de différentes manières. Par exemple, supposons que nous ayons recueilli des relevés de température de l’air pendant 10 jours, mais que notre thermomètre se soit cassé le deuxième et le neuvième jour, de sorte que nous n’avons pas de données pour ces jours-là :</p>
 <div class="cell">
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">7.2</span>, <span class="cn">NA</span>, <span class="fl">7.1</span>, <span class="fl">6.9</span>, <span class="fl">6.5</span>, <span class="fl">5.8</span>, <span class="fl">5.8</span>, <span class="fl">5.5</span>, <span class="cn">NA</span>, <span class="fl">5.5</span><span class="op">)</span></span>
 <span><span class="va">temp</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -951,55 +950,55 @@ Figure&nbsp;2.4: RStudio environment tab with updated my_obj2 as numeric
 <pre><code> [1] 7.2  NA 7.1 6.9 6.5 5.8 5.8 5.5  NA 5.5</code></pre>
 </div>
 </div>
-<p>Nous voulons maintenant calculer la température moyenne sur ces jours à l’aide de la fonction <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> fonction</p>
+<p>Nous voulons maintenant calculer la température moyenne sur ces jours à l’aide de la fonction <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> :</p>
 <div class="cell">
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mean_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">temp</span><span class="op">)</span></span>
-<span><span class="va">mean_temp</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">temp_moyenne</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">temp</span><span class="op">)</span></span>
+<span><span class="va">temp_moyenne</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
 </div>
 <p>Si un vecteur a une valeur manquante, la seule valeur possible à renvoyer lors du calcul d’une moyenne est <code>NA</code>. R ne sait pas que vous souhaitez peut-être ignorer la valeur <code>NA</code> (R ne peut pas lire dans vos pensées - pour l’instant !). Si nous regardons le fichier d’aide (en utilisant <code><a href="https://rdrr.io/r/base/mean.html">?mean</a></code> - voir la section suivante <a href="#sec-help" class="quarto-xref"><span>Section 2.6</span></a> pour plus de détails) associé à la fonction <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> nous pouvons voir qu’il y a un argument <code>na.rm =</code> qui prend la valeur <code>FALSE</code> par défaut.</p>
 <blockquote class="blockquote">
-<p>na.rm - une valeur logique indiquant si les valeurs NA doivent être supprimées avant le calcul.</p>
+<p>na.rm - une valeur logique indiquant si les valeurs NA doivent être supprimées avant le calcul (“na remove”).</p>
 </blockquote>
-<p>Si nous remplaçons cet argument par <code>na.rm = TRUE</code> lorsque nous utilisons l’option <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> cela nous permettra d’ignorer la fonction <code>NA</code> lors du calcul de la moyenne</p>
+<p>Si nous remplaçons cet argument par <code>na.rm = TRUE</code> lorsque nous utilisons la fonction <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> cela nous permettra d’ignorer les <code>NA</code> lors du calcul de la moyenne :</p>
 <div class="cell">
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mean_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">temp</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">mean_temp</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">temp_moyenne</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">temp</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">temp_moyenne</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.2875</code></pre>
 </div>
 </div>
-<p>Il est important de noter que la fonction <code>NA</code> n’ont pas été retirées de notre <code>temp</code> (ce serait une mauvaise pratique), mais que l’objet <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> les a simplement ignorées. Le but de ce qui précède est de souligner comment nous pouvons modifier le comportement par défaut d’une fonction à l’aide d’un argument approprié. Le problème est que toutes les fonctions n’ont pas d’argument <code>na.rm =</code> elles peuvent avoir affaire à <code>NA</code> différemment. Cependant, la bonne nouvelle est que chaque fichier d’aide associé à une fonction sera <strong>toujours</strong> vous indiquera toujours comment les données manquantes sont traitées par défaut.</p>
+<p>Il est important de noter que les <code>NA</code> n’ont pas été retirés du vecteur <code>temp</code> (ce serait une mauvaise pratique), mais que l’objet <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> les a simplement ignorées. Le but de ce qui précède est de souligner comment nous pouvons modifier le comportement par défaut d’une fonction à l’aide d’un argument approprié. Le problème est que toutes les fonctions n’ont pas d’argument <code>na.rm =</code> elles peuvent gérer les <code>NA</code> différemment. Cependant, la bonne nouvelle est que chaque fichier d’aide associé à une fonction vous indiquera <strong>toujours</strong> comment les données manquantes sont traitées par défaut.</p>
 </section></section><section id="sec-help" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="sec-help">
 <span class="header-section-number">2.6</span> Obtenir de l’aide</h2>
-<p>Ce livre est conçu comme une introduction relativement brève à R et, en tant que tel, vous utiliserez bientôt des fonctions et des packages qui dépassent le cadre de ce texte d’introduction. Heureusement, l’une des forces de R est son système d’aide complet et facilement accessible, ainsi que la richesse des ressources en ligne où vous pouvez obtenir de plus amples informations.</p>
+<p>Ce livre est conçu comme une introduction relativement brève à R et, en tant que tel, vous utiliserez bientôt des fonctions et des paquets qui dépassent le cadre de ce texte d’introduction. Heureusement, l’une des forces de R est son système d’aide complet et facilement accessible, ainsi que la richesse des ressources en ligne où vous pouvez obtenir de plus amples informations.</p>
 <section id="aide-r" class="level3" data-number="2.6.1"><h3 data-number="2.6.1" class="anchored" data-anchor-id="aide-r">
 <span class="header-section-number">2.6.1</span> Aide R</h3>
-<p>Pour accéder à l’aide intégrée de R et obtenir des informations sur n’importe quelle fonction, il suffit d’utiliser la commande <code><a href="https://rdrr.io/r/utils/help.html">help()</a></code> fonction. Par exemple, pour ouvrir la page d’aide de notre amie la fonction <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> fonction.</p>
+<p>Pour accéder à l’aide intégrée de R et obtenir des informations sur n’importe quelle fonction, il suffit d’utiliser la fonction <code><a href="https://rdrr.io/r/utils/help.html">help()</a></code>. Par exemple, pour ouvrir la page d’aide de notre amie, la fonction <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> :</p>
 <div class="sourceCode" id="cb121"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="st">"mean"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>ou vous pouvez utiliser le raccourci équivalent</p>
+<p>ou vous pouvez utiliser le raccourci <code>?</code> devant la fonction :</p>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="va">mean</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>la page d’aide est affichée dans l’onglet “Help” du panneau Files (généralement en bas à droite de RStudio)</p>
+<p>la page d’aide est affichée dans l’onglet “Aide”(généralement en bas à droite sur RStudio)</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-rstudio_help" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rstudio_help-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/basic/rs_help.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+<img src="images/basic/rs_help-fr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio_help-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.5: Help page for the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function in RStudio Help pane
+Figure&nbsp;2.5: Page d’aide pour la fonction <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> dans le panneau Aide sur Rstudio
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Il est vrai que les fichiers d’aide peuvent sembler tout sauf utiles lorsque vous commencez à utiliser R. Cela est probablement dû au fait qu’ils sont écrits de manière très concise et que le langage utilisé est souvent assez technique et plein de jargon. Cela dit, on s’y habitue et, avec le temps, on finit même par apprécier une certaine beauté dans leur brièveté (honnêtement !). L’un des aspects les plus intéressants des fichiers d’aide est qu’ils ont tous une structure très similaire, quelle que soit la fonction. Il est donc facile de naviguer dans le fichier pour trouver exactement ce dont vous avez besoin.</p>
-<p>La première ligne du document d’aide contient des informations telles que le nom de la fonction et le paquet où elle se trouve. D’autres rubriques fournissent des informations plus spécifiques, telles que</p>
+<p>Il est vrai que les fichiers d’aide peuvent sembler tout sauf utiles lorsque vous commencez à utiliser R. Cela est probablement dû au fait qu’ils sont écrits de manière très concise et que le langage utilisé est souvent assez technique et plein de jargon. Cela dit, on s’y habitue et, avec le temps, on finit même par apprécier une certaine beauté dans cette brièveté (honnêtement !). L’un des aspects les plus intéressants des fichiers d’aide est qu’ils ont tous une structure très similaire, quelle que soit la fonction. Il est donc facile de naviguer dans le fichier pour trouver exactement ce dont vous avez besoin.</p>
+<p>La première ligne du document d’aide contient des informations telles que le nom de la fonction et le paquet d’où elle provient (entre les accolades <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>, ici <code>{base}</code> signifie que la fonction <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> fait partie des fonctions de base de R). D’autres rubriques fournissent des informations plus spécifiques, telles que</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 8%">
-<col style="width: 91%">
+<col style="width: 16%">
+<col style="width: 83%">
 </colgroup>
 <thead><tr class="header">
 <th style="text-align: left;">Rubriques</th>
@@ -1011,7 +1010,7 @@ Figure&nbsp;2.5: Help page for the <code><a href="https://rdrr.io/r/base/mean.ht
 <td style="text-align: left;">donne une brève description de la fonction et de ce qu’elle fait.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Utilisation :</strong></td>
+<td style="text-align: left;"><strong>Usage :</strong></td>
 <td style="text-align: left;">donne le nom des arguments associés à la fonction et les éventuelles valeurs par défaut.</td>
 </tr>
 <tr class="odd">
@@ -1019,44 +1018,44 @@ Figure&nbsp;2.5: Help page for the <code><a href="https://rdrr.io/r/base/mean.ht
 <td style="text-align: left;">fournit plus de détails sur chaque argument et sur ce qu’il fait.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Détails :</strong></td>
+<td style="text-align: left;"><strong>Details :</strong></td>
 <td style="text-align: left;">donne des détails supplémentaires sur la fonction si nécessaire.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Valeur :</strong></td>
+<td style="text-align: left;"><strong>Value :</strong></td>
 <td style="text-align: left;">le cas échéant, indique le type et la structure de l’objet renvoyé par la fonction ou l’opérateur.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Voir aussi</strong></td>
+<td style="text-align: left;"><strong>See also :</strong></td>
 <td style="text-align: left;">fournit des informations sur d’autres pages d’aide au contenu similaire ou connexe.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Exemples :</strong></td>
+<td style="text-align: left;"><strong>Examples :</strong></td>
 <td style="text-align: left;">donne quelques exemples d’utilisation de la fonction.</td>
 </tr>
 </tbody>
 </table>
 <!--
 : Structure du fichier d'aide {#tbl-help}
---><p>Le fichier d’aide <strong>Exemples d’application</strong> sont très utiles, il suffit de les copier et de les coller dans la console pour voir ce qui se passe. Vous pouvez également accéder aux exemples à tout moment en utilisant la commande <code><a href="https://rdrr.io/r/utils/example.html">example()</a></code> (c’est-à-dire <code>example("mean")</code>)</p>
-<p>Les <code><a href="https://rdrr.io/r/utils/help.html">help()</a></code> est utile si vous connaissez le nom de la fonction. Si vous n’êtes pas sûr du nom, mais que vous vous souvenez d’un mot clé, vous pouvez faire une recherche dans le système d’aide de R à l’aide de la fonction <code><a href="https://rdrr.io/r/utils/help.search.html">help.search()</a></code> fonction.</p>
+--><p>Les <strong>Examples</strong> (Exemples d’application) sont très utiles, il suffit de les copier et de les coller dans la console pour voir ce qui se passe. Vous pouvez également accéder aux exemples à tout moment en utilisant la fonction <code><a href="https://rdrr.io/r/utils/example.html">example()</a></code> (c’est-à-dire <code>example("mean")</code>)</p>
+<p>La fonction <code><a href="https://rdrr.io/r/utils/help.html">help()</a></code> est utile si vous connaissez le nom de la fonction. Si vous n’êtes pas sûr du nom, mais que vous vous souvenez d’un mot clé, vous pouvez faire une recherche dans le système d’aide de R à l’aide de la fonction <code><a href="https://rdrr.io/r/utils/help.search.html">help.search()</a></code>.</p>
 <div class="sourceCode" id="cb123"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.search.html">help.search</a></span><span class="op">(</span><span class="st">"mean"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>ou vous pouvez utiliser le raccourci équivalent</p>
+<p>ou vous pouvez utiliser le raccourci équivalent <code>??</code> :</p>
 <div class="sourceCode" id="cb124"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="op">?</span><span class="va">mean</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Les résultats de la recherche seront affichés dans RStudio sous l’onglet “Aide” comme précédemment. Les résultats de la recherche sont affichés dans RStudio sous l’onglet “Aide” comme précédemment. <code><a href="https://rdrr.io/r/utils/help.search.html">help.search()</a></code> recherche dans la documentation d’aide, les démonstrations de code et les vignettes de paquet et affiche les résultats sous forme de liens cliquables pour une exploration plus approfondie.</p>
+<p>Les résultats de la recherche seront affichés dans RStudio sous l’onglet “Aide” comme précédemment. <code><a href="https://rdrr.io/r/utils/help.search.html">help.search()</a></code> recherche dans la documentation d’aide, les démonstrations de code et les vignettes de paquet et affiche les résultats sous forme de liens cliquables pour une exploration plus approfondie.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-rstudio_help2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rstudio_help2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/basic/rs_help2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+<img src="images/basic/rs_help2-fr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio_help2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.6: Output of the <code><a href="https://rdrr.io/r/utils/help.search.html">help.search()</a></code> function in RStudio
+Figure&nbsp;2.6: Sortie de la fonction <code><a href="https://rdrr.io/r/utils/help.search.html">help.search()</a></code> dans Rstudio
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Une autre fonction utile est <code><a href="https://rdrr.io/r/utils/apropos.html">apropos()</a></code>. Cette fonction peut être utilisée pour dresser la liste de toutes les fonctions contenant une chaîne de caractères spécifiée. Par exemple, pour trouver toutes les fonctions avec <code>mean</code> dans leur nom</p>
+<p>Une autre fonction utile est <code><a href="https://rdrr.io/r/utils/apropos.html">apropos()</a></code>. Cette fonction peut être utilisée pour dresser la liste de toutes les fonctions contenant une chaîne de caractères spécifiée. Par exemple, pour trouver toutes les fonctions avec <code>mean</code> dans leur nom :</p>
 <div class="cell">
 <div class="sourceCode" id="cb125"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/apropos.html">apropos</a></span><span class="op">(</span><span class="st">"mean"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1068,102 +1067,108 @@ Figure&nbsp;2.6: Output of the <code><a href="https://rdrr.io/r/utils/help.searc
 </div>
 <p>Vous pouvez alors afficher le fichier d’aide de la fonction concernée.</p>
 <div class="sourceCode" id="cb127"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="st">"kmeans"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Une autre fonction est <code><a href="https://rdrr.io/r/utils/RSiteSearch.html">RSiteSearch()</a></code> qui vous permet de rechercher des mots-clés et des phrases dans les pages d’aide des fonctions et les vignettes de tous les paquets CRAN. Cette fonction vous permet d’accéder au moteur de recherche du site web de R <a href="https://www.r-project.org/search.html">https://www.r-project.org/search.html</a> directement à partir de la console et d’afficher les résultats dans votre navigateur web.</p>
+<p>Une autre fonction est <code><a href="https://rdrr.io/r/utils/RSiteSearch.html">RSiteSearch()</a></code> qui vous permet de rechercher des mots-clés et des phrases dans les pages d’aide des fonctions et les vignettes de tous les paquets CRAN. Cette fonction vous permet d’accéder au moteur de recherche du site web de R <a href="https://www.r-project.org/search.html" class="uri">https://www.r-project.org/search.html</a> directement à partir de la console et d’afficher les résultats dans votre navigateur web.</p>
 <div class="sourceCode" id="cb128"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/RSiteSearch.html">RSiteSearch</a></span><span class="op">(</span><span class="st">"regression"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="sec-rhelp" class="level3" data-number="2.6.2"><h3 data-number="2.6.2" class="anchored" data-anchor-id="sec-rhelp">
 <span class="header-section-number">2.6.2</span> Autres sources d’aide</h3>
-<p>Il n’y a jamais eu de meilleur moment pour commencer à apprendre R. Il existe une pléthore de ressources en ligne disponibles gratuitement, allant de cours complets à des tutoriels et des listes de diffusion spécifiques à un sujet. Il existe également de nombreuses options payantes si c’est votre truc, mais à moins que vous n’ayez de l’argent à brûler, il n’est vraiment pas nécessaire de dépenser votre argent durement gagné. Vous trouverez ci-dessous quelques ressources que nous avons trouvées utiles.</p>
+<p>Il n’y a jamais eu de meilleur moment pour commencer à apprendre R. Il existe pléthore de ressources en ligne disponibles gratuitement, allant de cours complets à des tutoriels et des listes de diffusion spécifiques à un sujet. Il existe également de nombreuses options payantes si c’est votre truc, mais à moins que vous n’ayez de l’argent à brûler, il n’est vraiment pas nécessaire de dépenser votre argent durement gagné. Vous trouverez ci-dessous quelques ressources que nous avons trouvées utiles.</p>
 <section id="ressources-générales-sur-les-r" class="level4" data-number="2.6.2.1"><h4 data-number="2.6.2.1" class="anchored" data-anchor-id="ressources-générales-sur-les-r">
 <span class="header-section-number">2.6.2.1</span> Ressources générales sur les R</h4>
 <ul>
-<li>[Projet R] <a href="https://cran.r-project.org/other-docs.html">r-docs</a>: Documentation fournie par l’utilisateur</li>
-<li>[Le journal R] <a href="https://journal.r-project.org/">r-journal</a>: Journal du projet R pour le calcul statistique</li>
-<li>[Tourbillon] <a href="http://swirlstats.com/">swirl</a>: Un paquet R qui vous enseigne R de l’intérieur R</li>
-<li>[Les antisèches imprimables de RStudio] <a href="https://www.rstudio.com/resources/cheatsheets/">rstudio-cheat</a>
-</li>
 <li>
-<a href="http://rseek.org/">Rseek</a> <a href="http://rseek.org/">rseek</a> Une recherche Google personnalisée pour les sites liés à R</li>
+<a href="https://cran.r-project.org/other-docs.html">Projet R</a>: Documentation fournie par l’utilisateur</li>
+<li>
+<a href="https://journal.r-project.org/">Le journal R</a>: Journal du projet R pour le calcul statistique</li>
+<li>
+<a href="http://swirlstats.com/">Tourbillon</a>: Un paquet R qui vous enseigne R de l’intérieur</li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/">Les antisèches imprimables de RStudio</a></li>
+<li>
+<a href="http://rseek.org/">Rseek</a> Une recherche Google personnalisée pour les sites liés à R</li>
 </ul></section><section id="obtenir-de-laide" class="level4" data-number="2.6.2.2"><h4 data-number="2.6.2.2" class="anchored" data-anchor-id="obtenir-de-laide">
 <span class="header-section-number">2.6.2.2</span> Obtenir de l’aide</h4>
 <ul>
-<li><p>[Cherchez sur Google !] <a href="http://lmgtfy.com/?q=R+Error+in+library+there+is+no+package+called">google-cust</a>: Essayez de googler les messages d’erreur que vous obtenez. Ce n’est pas de la triche et tout le monde le fait ! Vous serez surpris du nombre de personnes qui ont probablement rencontré le même problème et l’ont résolu.</p></li>
-<li><p>[Dépassement de pile] <a href="http://stackoverflow.com/questions/tagged/r">stackr</a>: Il y a plusieurs milliers de questions relatives à R sur Stack Overflow. [Ici] <a href="https://stackoverflow.com/questions/tagged/r?sort=votes">stack-pop</a> sont les plus populaires, classées par vote. Veillez à rechercher des questions similaires avant de poser la vôtre et à inclure un [exemple reproductible] <a href="http://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example/5963610#5963610">stack-repro</a> afin d’obtenir les conseils les plus utiles. Un exemple reproductible est un exemple minimal qui permet aux personnes qui essaient de vous aider de voir l’erreur elles-mêmes.</p></li>
+<li>Cherchez sur internet: utiliser votre moteur de recherche préféré pour chercher les messages d’erreur que vous obtenez. Ce n’est pas de la triche et tout le monde le fait ! Vous serez surpris du nombre de personnes qui ont probablement rencontré le même problème et l’ont résolu.</li>
+<li>
+<a href="http://stackoverflow.com/questions/tagged/r">Stack Overflow</a>: Il y a plusieurs milliers de questions relatives à R sur Stack Overflow. <a href="https://stackoverflow.com/questions/tagged/r?sort=votes">Ici</a> sont les plus populaires, classées par vote. Veillez à rechercher des questions similaires avant de poser la vôtre et à inclure un <a href="http://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example/5963610#5963610">exemple reproductible</a> afin d’obtenir les conseils les plus utiles. Un exemple reproductible est un exemple minimal qui permet aux personnes qui essaient de vous aider de voir l’erreur elles-mêmes.</li>
 </ul></section><section id="ressources-r-markdown" class="level4" data-number="2.6.2.3"><h4 data-number="2.6.2.3" class="anchored" data-anchor-id="ressources-r-markdown">
 <span class="header-section-number">2.6.2.3</span> Ressources R markdown</h4>
 <ul>
-<li>[Référence de base pour le markdown et le markdown R] <a href="http://bioconnector.github.io/markdown">bio-con</a>
-</li>
-<li>[Une bonne référence en markdown] <a href="https://commonmark.org/help/">md-ref</a>
-</li>
-<li>[Un bon tutoriel de 10 minutes sur le markdown] <a href="https://commonmark.org/help/tutorial/">md-tut</a>
-</li>
-<li>[Feuille de contrôle de RStudio sur le format R markdown] <a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">rmd-cheat</a>
-</li>
-<li>[Feuille de référence pour la démarque R] <a href="https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">rmd-ref</a>
-</li>
-<li>[La documentation R markdown] <a href="https://rmarkdown.rstudio.com/docs/">rs-rm-docs</a> incluant un [guide de démarrage] <a href="https://rmarkdown.rstudio.com/lesson-1.html">rm-lesson</a> , a [galerie de démonstrations] <a href="https://rmarkdown.rstudio.com/gallery.html">rm-gallery</a> et plusieurs [articles] <a href="https://rmarkdown.rstudio.com/articles.html">rs-articles</a> pour une utilisation plus avancée.</li>
-<li>[Le site web de knitr] <a href="http://yihui.name/knitr/">knitr</a> contient de nombreux documents de référence utiles sur le fonctionnement de knitr.</li>
+<li><a href="http://bioconnector.github.io/markdown">Référence de base pour markdown et markdown R</a></li>
+<li><a href="https://commonmark.org/help/">Une bonne référence en markdown</a></li>
+<li><a href="https://commonmark.org/help/tutorial/">Un bon tutoriel de 10 minutes sur le markdown</a></li>
+<li><a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">Feuille de contrôle de RStudio sur le format R markdown</a></li>
+<li><a href="https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">Feuille de référence pour R markdown</a></li>
+<li>
+<a href="https://rmarkdown.rstudio.com/docs/">La documentation R markdown</a> incluant un <a href="https://rmarkdown.rstudio.com/lesson-1.html">guide de démarrage</a> , a <a href="https://rmarkdown.rstudio.com/gallery.html">galerie de démonstrations</a> et plusieurs <a href="https://rmarkdown.rstudio.com/articles.html">articles</a> pour une utilisation plus avancée.</li>
+<li>
+<a href="http://yihui.name/knitr/">Le site web de knitr</a> contient de nombreux documents de référence utiles sur le fonctionnement de knitr.</li>
 </ul></section><section id="ressources-git-et-github" class="level4" data-number="2.6.2.4"><h4 data-number="2.6.2.4" class="anchored" data-anchor-id="ressources-git-et-github">
 <span class="header-section-number">2.6.2.4</span> Ressources Git et GitHub</h4>
 <ul>
-<li>[Happy Git] <a href="https://happygitwithr.com/">git_happy</a>: Excellente ressource pour l’utilisation de Git et GitHub</li>
-<li>[Contrôle de version avec RStudio] <a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">rs-Git</a>: Document RStudio pour l’utilisation du contrôle de version</li>
-<li>[Utiliser Git depuis RStudio] <a href="https://nceas.github.io/oss-lessons/version-control/4-getting-started-with-git-in-RStudio.html">git-rs</a>: Un bon guide en 10 minutes</li>
-<li>[La classe R] <a href="https://r-bio.github.io/intro-git-rstudio/">rclass</a>: Guide approfondi de l’utilisation de Git et GitHub avec RStudio</li>
+<li>
+<a href="https://happygitwithr.com/">Happy Git</a>: Excellente ressource pour l’utilisation de Git et GitHub</li>
+<li>
+<a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">Contrôle de version avec RStudio</a>: Document RStudio pour l’utilisation du contrôle de version</li>
+<li>
+<a href="https://nceas.github.io/oss-lessons/version-control/4-getting-started-with-git-in-RStudio.html">Utiliser Git depuis RStudio</a>: Un bon guide en 10 minutes</li>
+<li>
+<a href="https://r-bio.github.io/intro-git-rstudio/">La classe R</a>: Guide approfondi de l’utilisation de Git et GitHub avec RStudio</li>
 </ul></section><section id="programmation-r" class="level4" data-number="2.6.2.5"><h4 data-number="2.6.2.5" class="anchored" data-anchor-id="programmation-r">
 <span class="header-section-number">2.6.2.5</span> Programmation R</h4>
 <ul>
-<li>[Programmation R pour la science des données] <a href="https://bookdown.org/rdpeng/rprogdatascience/">r-rprog</a>: Guide approfondi de la programmation R</li>
-<li>[R pour la science des données] <a href="https://r4ds.had.co.nz/">r4ds</a>: Livre fantastique, orienté tidyverse</li>
+<li>
+<a href="https://bookdown.org/rdpeng/rprogdatascience/">Programmation R pour la science des données</a>: Guide approfondi de la programmation R</li>
+<li>
+<a href="https://r4ds.had.co.nz/">R pour la science des données</a>: Livre fantastique, orienté tidyverse</li>
 </ul></section></section></section><section id="sauvegarder-des-données-dans-r" class="level2" data-number="2.7"><h2 data-number="2.7" class="anchored" data-anchor-id="sauvegarder-des-données-dans-r">
 <span class="header-section-number">2.7</span> Sauvegarder des données dans R</h2>
-<p>Votre approche de l’enregistrement du travail dans R et RStudio dépend de ce que vous voulez enregistrer. La plupart du temps, la seule chose que vous devrez sauvegarder est le code R de vos scripts. N’oubliez pas que votre script est un enregistrement reproductible de tout ce que vous avez fait. Il vous suffit donc d’ouvrir votre script dans une nouvelle session RStudio et de l’insérer dans la console R pour revenir à l’endroit où vous vous étiez arrêté.</p>
-<p>À moins que vous n’ayez suivi notre suggestion de modifier les paramètres par défaut des projets RStudio (voir <a href="01-debut.html#sec-rsprojs" class="quarto-xref"><span>Section 1.5</span></a>), il vous sera demandé si vous souhaitez sauvegarder l’image de votre espace de travail à chaque fois que vous quitterez RStudio. Nous pensons que dans 99,9 % des cas, vous ne souhaitez pas le faire. En commençant par une session RStudio propre chaque fois que nous revenons à notre analyse, nous pouvons être sûrs d’éviter tout conflit potentiel avec les choses que nous avons faites dans les sessions précédentes.</p>
-<p>Cependant, il est parfois utile de sauvegarder les objets que vous avez créés dans R. Par exemple, imaginons que vous créiez un objet dont la génération nécessite des heures (voire des jours) de temps de calcul. Il serait extrêmement gênant de devoir attendre tout ce temps à chaque fois que vous revenez sur votre analyse (bien que nous suggérions que l’exportation de cet objet vers un fichier externe soit une meilleure solution). Dans ce cas, nous pouvons enregistrer cet objet en tant que fichier externe. <code>.RData</code> que nous pourrons charger dans RStudio la prochaine fois que nous voudrons l’utiliser. Pour enregistrer un objet dans un fichier <code>.RData</code> vous pouvez utiliser la fonction <code><a href="https://rdrr.io/r/base/save.html">save()</a></code> (remarquez que nous n’avons pas besoin d’utiliser l’opérateur d’affectation ici)</p>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">nameOfObject</span>, file <span class="op">=</span> <span class="st">"name_of_file.RData"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>ou si vous souhaitez sauvegarder tous les objets de votre espace de travail dans un seul fichier <code>.RData</code> utilisez la fonction <code><a href="https://rdrr.io/r/base/save.html">save.image()</a></code> fonction</p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save.image</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"name_of_file.RData"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Pour charger votre <code>.RData</code> dans RStudio, utilisez la fonction <code><a href="https://rdrr.io/r/base/load.html">load()</a></code> fonction</p>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"name_of_file.RData"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Votre approche de l’enregistrement du travail dans R et RStudio dépend de ce que vous voulez enregistrer. La plupart du temps, la seule chose que vous devrez sauvegarder est le code R de vos scripts. N’oubliez pas que votre script est un enregistrement reproductible de tout ce que vous avez fait. Il vous suffit donc d’ouvrir votre script dans une nouvelle session RStudio et de l’exécuter dans la console R pour revenir à l’endroit où vous vous étiez arrêté.</p>
+<p>À moins que vous n’ayez suivi notre suggestion de modifier les paramètres par défaut des projets RStudio (voir <a href="01-debut.html#sec-rsprojs" class="quarto-xref"><span>Section 1.5</span></a>), il vous sera demandé si vous souhaitez sauvegarder l’image de votre espace de travail à chaque fois que vous quitterez RStudio. Nous pensons que dans 99,9 % des cas, vous ne souhaitez pas le faire. En commençant avec une session RStudio propre chaque fois que nous revenons à notre analyse, nous pouvons être sûrs d’éviter tout conflit potentiel avec les choses que nous avons faites dans les sessions précédentes.</p>
+<p>Cependant, il est parfois utile de sauvegarder les objets que vous avez créés dans R. Par exemple, imaginons que vous créiez un objet dont la génération nécessite des heures (voire des jours) de temps de calcul. Il serait extrêmement gênant de devoir attendre tout ce temps à chaque fois que vous revenez sur votre analyse. Cependant, dans ce cas, nous pouvons enregistrer cet objet en tant que fichier externe, <code>.RData</code> que nous pourrons charger dans RStudio la prochaine fois que nous voudrons l’utiliser. Pour enregistrer un objet dans un fichier <code>.RData</code> vous pouvez utiliser la fonction <code><a href="https://rdrr.io/r/base/save.html">save()</a></code> (remarquez que nous n’avons pas besoin d’utiliser l’opérateur d’affectation ici) :</p>
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">nomDelObjet</span>, file <span class="op">=</span> <span class="st">"nom_du_fichier.RData"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>ou si vous souhaitez sauvegarder tous les objets de votre espace de travail dans un seul fichier <code>.RData</code> utilisez la fonction <code><a href="https://rdrr.io/r/base/save.html">save.image()</a></code> :</p>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save.image</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"nom_du_fichier.RData"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pour charger votre <code>.RData</code> dans RStudio, utilisez la fonction <code><a href="https://rdrr.io/r/base/load.html">load()</a></code> :</p>
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"nom_du_fichier.RData"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="sec-packages" class="level2" data-number="2.8"><h2 data-number="2.8" class="anchored" data-anchor-id="sec-packages">
 <span class="header-section-number">2.8</span> Paquets R</h2>
-<p>L’installation de base de R est livrée en standard avec de nombreux paquets utiles. Ces paquets contiennent de nombreuses fonctions que vous utiliserez quotidiennement. Cependant, lorsque vous commencerez à utiliser R pour des projets plus variés (et que votre propre utilisation de R évoluera), vous constaterez qu’il y a un moment où vous aurez besoin d’étendre les capacités de R. Heureusement, des milliers d’utilisateurs de R ont développé du code utile et l’ont partagé sous forme de paquets installables. Vous pouvez considérer un package comme une collection de fonctions, de données et de fichiers d’aide rassemblés dans une structure standard bien définie que vous pouvez télécharger et installer dans R. Ces paquets peuvent être téléchargés à partir de diverses sources, mais les plus populaires sont les suivantes <a href="https://cloud.r-project.org">CRAN</a> <a href="https://cran.r-project.org/web/packages/index.html">cran-packages</a> , <a href="https://www.bioconductor.org/">Bioconductor</a> <a href="https://www.bioconductor.org/">bioconductor</a> et <a href="https://github.com/">GitHub</a> <a href="https://github.com/">github</a> . Actuellement, le CRAN héberge plus de 15 000 paquets et est le dépôt officiel des paquets R fournis par les utilisateurs. Bioconductor fournit des logiciels libres orientés vers la bioinformatique et héberge plus de 1800 paquets R. GitHub est un site web qui héberge des dépôts git pour toutes sortes de logiciels et de projets (pas seulement R). Souvent, les versions de développement de pointe des paquets R sont hébergées sur GitHub, donc si vous avez besoin de toutes les nouvelles fonctionnalités, cela peut être une option. Cependant, l’inconvénient potentiel de l’utilisation de la version de développement d’un paquet R est qu’elle peut ne pas être aussi stable que la version hébergée sur CRAN (elle est en cours de développement !) et que la mise à jour des paquets ne sera pas automatique.</p>
+<p>L’installation de base de R est livrée avec de nombreux paquets utiles. Ces paquets contiennent de nombreuses fonctions que vous utiliserez quotidiennement. Cependant, lorsque vous commencerez à utiliser R pour des projets plus variés (et que votre propre utilisation de R évoluera), vous constaterez qu’il y a un moment où vous aurez besoin d’étendre les capacités de R. Heureusement, des milliers d’utilisateurs de R ont développé du code utile et l’ont partagé sous forme de paquets installables. Vous pouvez considérer un paquet comme une collection de fonctions, de données et de fichiers d’aide rassemblés dans une structure standard bien définie que vous pouvez télécharger et installer dans R. Ces paquets peuvent être téléchargés à partir de diverses sources, mais les plus populaires sont les suivantes <a href="https://cran.r-project.org/web/packages/index.html">CRAN</a>, <a href="https://www.bioconductor.org/">Bioconductor</a> et <a href="https://github.com/">GitHub</a> . Actuellement, le CRAN héberge plus de 15 000 paquets et est le dépôt officiel des paquets R fournis par les utilisateurs. Bioconductor fournit des logiciels libres orientés vers la bioinformatique et héberge plus de 1800 paquets R. GitHub est un site web qui héberge des dépôts git pour toutes sortes de logiciels et de projets (pas seulement R). Souvent, les versions de développement de pointe des paquets R sont hébergées sur GitHub, donc si vous avez besoin de toutes les nouvelles fonctionnalités, cela peut être une option. Cependant, l’inconvénient potentiel de l’utilisation de la version de développement d’un paquet R est qu’elle peut ne pas être aussi stable que la version hébergée sur CRAN (elle est en cours de développement !) et que la mise à jour des paquets ne sera pas automatique.</p>
 <section id="utilisation-des-paquets" class="level3" data-number="2.8.1"><h3 data-number="2.8.1" class="anchored" data-anchor-id="utilisation-des-paquets">
 <span class="header-section-number">2.8.1</span> Utilisation des paquets</h3>
-<p>Une fois que vous avez installé un paquet sur votre ordinateur, vous ne pouvez pas l’utiliser immédiatement. Pour utiliser un paquet, vous devez d’abord le charger à l’aide de la commande <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> à l’aide de la fonction Par exemple, pour charger le paquet <code>remotes</code> <span class="emoji" data-emoji="package">📦</span> que vous avez installé précédemment</p>
+<p>Une fois que vous avez installé un paquet sur votre ordinateur, vous ne pouvez pas l’utiliser immédiatement. Pour utiliser un paquet, vous devez d’abord le charger à l’aide de la fonction <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. Par exemple, pour charger le paquet <code>remotes</code> <span class="emoji" data-emoji="package">📦</span> que vous avez installé précédemment :</p>
 <div class="sourceCode" id="cb132"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Les <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> chargera également tous les paquets supplémentaires nécessaires et pourra imprimer des informations supplémentaires sur les paquets. Il est important de savoir que chaque fois que vous démarrez une nouvelle session R (ou que vous restaurez une session précédemment sauvegardée), vous devez charger les paquets que vous utiliserez. Nous avons tendance à mettre tous nos <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> nécessaires à notre analyse en tête de nos scripts R afin de les rendre facilement accessibles et de pouvoir les compléter au fur et à mesure du développement de notre code. Si vous essayez d’utiliser une fonction sans avoir préalablement chargé le paquet R correspondant, vous recevrez un message d’erreur indiquant que R n’a pas pu trouver la fonction. Par exemple, si vous essayez d’utiliser la fonction <code><a href="https://remotes.r-lib.org/reference/install_github.html">install_github()</a></code> sans charger le paquet <code>remotes</code> <span class="emoji" data-emoji="package">📦</span> en premier lieu, vous obtiendrez l’erreur suivante</p>
+<p>La fonction <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> chargera également tous les paquets supplémentaires nécessaires et pourra afficher des informations supplémentaires sur les paquets dans la console. Il est important de savoir que chaque fois que vous démarrez une nouvelle session R (ou que vous restaurez une session précédemment sauvegardée), vous devez charger les paquets que vous utiliserez. Nous avons tendance à mettre tous nos <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> nécessaires à notre analyse en tête de nos scripts R afin de les rendre facilement accessibles et de pouvoir les compléter au fur et à mesure du développement de notre code. Si vous essayez d’utiliser une fonction sans avoir préalablement chargé le paquet R correspondant, vous recevrez un message d’erreur indiquant que R n’a pas pu trouver la fonction. Par exemple, si vous essayez d’utiliser la fonction <code><a href="https://remotes.r-lib.org/reference/install_github.html">install_github()</a></code> sans charger le paquet <code>remotes</code> <span class="emoji" data-emoji="package">📦</span> en premier lieu, vous obtiendrez l’erreur suivante :</p>
 <div class="sourceCode" id="cb133"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"tidyverse/dplyr"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Error in install_github("tidyverse/dplyr") :</span></span>
 <span><span class="co">#  could not find function "install_github"</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Il peut parfois être utile d’utiliser une fonction sans utiliser au préalable le paquet <span class="emoji" data-emoji="package">📦</span>. <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> fonction. Si, par exemple, vous n’utilisez qu’une ou deux fonctions dans votre script et que vous ne souhaitez pas charger toutes les autres fonctions d’un paquet, vous pouvez accéder directement à la fonction en spécifiant le nom du paquet, suivi de deux points, puis du nom de la fonction.</p>
+<p>Il peut parfois être utile d’utiliser une fonction sans utiliser au préalable la fonction<code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. Si, par exemple, vous n’utilisez qu’une ou deux fonctions dans votre script et que vous ne souhaitez pas charger toutes les autres fonctions d’un paquet, vous pouvez accéder directement à la fonction en spécifiant le nom du paquet, suivi de deux points (2 fois) <code>::</code>, puis du nom de la fonction :</p>
 <div class="sourceCode" id="cb134"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"tidyverse/dplyr"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>C’est ainsi que nous avons pu utiliser la fonction <code>install()</code> et <code><a href="https://remotes.r-lib.org/reference/install_github.html">install_github()</a></code> fonctions [ci-dessus] <a href="#paquets-bioconductor">Paquets Bioconductor</a> sans charger les paquets au préalable<code>BiocManager</code> <span class="emoji" data-emoji="package">📦</span> et <code>remotes</code> <span class="emoji" data-emoji="package">📦</span> . La plupart du temps, nous recommandons d’utiliser l’option <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> fonction.</p>
+<p>C’est ainsi que nous avons pu utiliser la fonction <code>install()</code> et <code><a href="https://remotes.r-lib.org/reference/install_github.html">install_github()</a></code> <a href="#paquets-bioconductor">ci-dessous</a> sans charger les paquets au préalable<code>BiocManager</code> <span class="emoji" data-emoji="package">📦</span> et <code>remotes</code> <span class="emoji" data-emoji="package">📦</span> . La plupart du temps, nous recommandons d’utiliser la fonction <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>.</p>
 </section><section id="installation-des-paquets-r" class="level3" data-number="2.8.2"><h3 data-number="2.8.2" class="anchored" data-anchor-id="installation-des-paquets-r">
 <span class="header-section-number">2.8.2</span> Installation des paquets R</h3>
 <section id="sec-cran-packages" class="level4" data-number="2.8.2.1"><h4 data-number="2.8.2.1" class="anchored" data-anchor-id="sec-cran-packages">
 <span class="header-section-number">2.8.2.1</span> Paquets CRAN</h4>
-<p>Pour installer un paquet à partir du CRAN, vous pouvez utiliser la commande <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> fonction. Par exemple, si vous voulez installer le paquet <code>remotes</code> entrez le code suivant dans la fenêtre Console de RStudio (note : vous aurez besoin d’une connexion internet fonctionnelle pour effectuer cette opération)</p>
+<p>Pour installer un paquet à partir du CRAN, vous pouvez utiliser la fonction <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>. Par exemple, si vous voulez installer le paquet <code>remotes</code> <span class="emoji" data-emoji="package">📦</span> entrez le code suivant dans la Console (note : vous aurez besoin d’une connexion internet fonctionnelle pour effectuer cette opération) :</p>
 <div class="sourceCode" id="cb135"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Il vous sera peut-être demandé de choisir un miroir CRAN, sélectionnez simplement ‘0-cloud’ ou un miroir proche de votre localisation. Les <code>dependencies = TRUE</code> permet de s’assurer que les paquets supplémentaires nécessaires seront également installés.</p>
-<p>Il est conseillé de mettre régulièrement à jour les paquets déjà installés afin de bénéficier des nouvelles fonctionnalités et des corrections de bogues. Pour mettre à jour les paquets CRAN, vous pouvez utiliser la commande <code><a href="https://rdrr.io/r/utils/update.packages.html">update.packages()</a></code> (vous aurez besoin d’une connexion internet pour cela)</p>
+<p>Il vous sera peut-être demandé de choisir un miroir CRAN, sélectionnez simplement ‘0-cloud’ ou un miroir proche de votre localisation. L’argument <code>dependencies = TRUE</code> permet de s’assurer que les paquets supplémentaires nécessaires seront également installés.</p>
+<p>Il est conseillé de mettre régulièrement à jour les paquets déjà installés afin de bénéficier des nouvelles fonctionnalités et des corrections de bogues. Pour mettre à jour les paquets CRAN, vous pouvez utiliser la commande <code><a href="https://rdrr.io/r/utils/update.packages.html">update.packages()</a></code> (vous aurez besoin d’une connexion internet pour cela) :</p>
 <div class="sourceCode" id="cb136"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/update.packages.html">update.packages</a></span><span class="op">(</span>ask <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>La fonction <code>ask = FALSE</code> évite d’avoir à confirmer chaque téléchargement de paquet, ce qui peut être fastidieux si de nombreux paquets sont installés.</p>
+<p>L’argument <code>ask = FALSE</code> évite d’avoir à confirmer chaque téléchargement de paquet, ce qui peut être fastidieux si de nombreux paquets sont installés.</p>
 </section><section id="paquets-bioconductor" class="level4" data-number="2.8.2.2"><h4 data-number="2.8.2.2" class="anchored" data-anchor-id="paquets-bioconductor">
 <span class="header-section-number">2.8.2.2</span> Paquets Bioconductor</h4>
-<p>Pour installer des paquets de Bioconductor, le processus est un peu différent. [un peu différent] <a href="https://cran.r-project.org/web/packages/BiocManager/vignettes/BiocManager.html">bioc-install</a> . Vous devez d’abord installer le programme <code>BiocManager</code> <span class="emoji" data-emoji="package">📦</span> package. Vous ne devez le faire qu’une seule fois, sauf si vous réinstallez ou mettez à jour R</p>
+<p>Pour installer des paquets de Bioconductor, le processus est <a href="https://cran.r-project.org/web/packages/BiocManager/vignettes/BiocManager.html">un peu différent</a>. Vous devez d’abord installer le paquet <code>BiocManager</code> <span class="emoji" data-emoji="package">📦</span>. Vous ne devez le faire qu’une seule fois, sauf si vous réinstallez ou mettez à jour R.</p>
 <div class="sourceCode" id="cb137"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Une fois que le <code>BiocManager</code> a été installé, vous pouvez soit installer tous les paquets “de base” de Bioconductor avec la commande</p>
+<p>Une fois que <code>BiocManager</code> a été installé, vous pouvez soit installer tous les paquets “de base” de Bioconductor avec la commande :</p>
 <div class="sourceCode" id="cb138"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>ou installer des paquets spécifiques tels que le <code>GenomicRanges</code> <span class="emoji" data-emoji="package">📦</span> et <code>edgeR</code> <span class="emoji" data-emoji="package">📦</span></p>
+<p>ou installer des paquets spécifiques tels que le <code>GenomicRanges</code> <span class="emoji" data-emoji="package">📦</span> et <code>edgeR</code> <span class="emoji" data-emoji="package">📦</span> :</p>
 <div class="sourceCode" id="cb139"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"GenomicRanges"</span>, <span class="st">"edgeR"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Pour mettre à jour les paquets de Bioconductor, il suffit d’utiliser la commande <code>BiocManager::install()</code> à nouveau</p>
+<p>Pour mettre à jour les paquets de Bioconductor, il suffit d’utiliser la commande <code>BiocManager::install()</code> à nouveau :</p>
 <div class="sourceCode" id="cb140"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span>ask <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Là encore, vous pouvez utiliser la fonction <code>ask = FALSE</code> pour éviter d’avoir à confirmer chaque téléchargement de paquet.</p>
+<p>Là encore, vous pouvez utiliser l’argument <code>ask = FALSE</code> pour éviter d’avoir à confirmer chaque téléchargement de paquet.</p>
 </section><section id="paquets-github" class="level4" data-number="2.8.2.3"><h4 data-number="2.8.2.3" class="anchored" data-anchor-id="paquets-github">
 <span class="header-section-number">2.8.2.3</span> Paquets GitHub</h4>
-<p>Il existe plusieurs options pour installer les paquets hébergés sur GitHub. La méthode la plus efficace est sans doute d’utiliser l’outil <code><a href="https://remotes.r-lib.org/reference/install_github.html">install_github()</a></code> de la fonction <code>remotes</code> <span class="emoji" data-emoji="package">📦</span> package (vous avez installé ce package précédemment (<a href="#sec-cran-packages" class="quarto-xref"><span>Section 2.8.2.1</span></a>)). Avant d’utiliser la fonction, vous devez connaître le nom d’utilisateur GitHub du propriétaire du dépôt ainsi que le nom du dépôt. Par exemple, la version de développement de <code>dplyr</code> <span class="emoji" data-emoji="package">📦</span> de Hadley Wickham est hébergée sur le compte GitHub de tidyverse et porte le nom de dépôt “dplyr” (recherchez simplement “github dplyr”). Pour installer cette version depuis GitHub, utilisez</p>
+<p>Il existe plusieurs options pour installer les paquets hébergés sur GitHub. La méthode la plus efficace est sans doute d’utiliser la fonction <code><a href="https://remotes.r-lib.org/reference/install_github.html">install_github()</a></code> du paquet <code>remotes</code> <span class="emoji" data-emoji="package">📦</span> (vous avez installé ce paquet précédemment, <a href="#sec-cran-packages" class="quarto-xref"><span>Section 2.8.2.1</span></a>). Avant d’utiliser la fonction, vous devez connaître le nom d’utilisateur GitHub du propriétaire du répertoire ainsi que le nom du répertoire. Par exemple, la version de développement de <code>dplyr</code> <span class="emoji" data-emoji="package">📦</span> de Hadley Wickham est hébergée sur le compte GitHub de tidyverse et porte le nom de répertoire “dplyr” (recherchez simplement “github dplyr”). Pour installer cette version depuis GitHub, utilisez :</p>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"tidyverse/dplyr"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Le moyen le plus sûr (à notre connaissance) de mettre à jour un paquet installé depuis GitHub est de le réinstaller en utilisant la commande ci-dessus.</p>
 <!--course website Links-->
