@@ -17,7 +17,6 @@ editor:
 source("data/code/book-fnc.R") 
 ```
 
-
 Objectifs de ce chapitre :
 
 -   Pouvoir calculer la **puissance** d’un test de t avec R et G\*Power
@@ -135,16 +134,16 @@ Notez que d’autres logiciels peuvent utiliser des indices différents et il es
 G\*Power vous facilite la tâche et permet de calculer la taille d’effet en inscrivant seulement les valeurs pertinentes dans la fenêtre de calcul.
 Le tableau suivant donne les indices utilisés par G\*Power pour les différents tests.
 
-| Test                            | Taille d'effet | Formule                                                                                                               |
-|:-----------------|:----------------------:|:-----------------------------|
-| test de t sur des moyennes      |       d        | $d = \frac{|\mu_1 - \mu_2|}{\sqrt{({s_1}^2 + {s_2}^2)/2}}$                                                            |
-| test de t pour des corrélations |       r        |                                                                                                                       |
-| autres tests de t               |       d        | $d = \frac{\mu}{\sigma}$                                                                                              |
-| test F (ANOVA)                  |       f        | $f = \frac{\frac{\sqrt{\sum_{i=1}^k (\mu_i - \mu)^2}}{k}}{\sigma}$                                                    |
-| autres test F                   |     $f^2$      | $f^2 = \frac{{R_p}^2}{1-{R_p}^2}$                                                                                     |
-|                                 |                | ${R_p}$ est le coefficient de corrélation partiel                                                                     |
-| test Chi-carré                  |       w        | $w = \sqrt{ \sum_{i=1}^m \frac{(p_{0i} - p_{1i})^2 }{ p_{0i}} }$                                                      |
-|                                 |                | $p_{0i}$ $p_{1i}$ sont les proportions de la catégorie i prédites par l'hypothèse nulle et alternative respectivement |
+| Test | Taille d'effet | Formule |
+|:---|:--:|:---|
+| test de t sur des moyennes | d | $d = \frac{|\mu_1 - \mu_2|}{\sqrt{({s_1}^2 + {s_2}^2)/2}}$ |
+| test de t pour des corrélations | r |  |
+| autres tests de t | d | $d = \frac{\mu}{\sigma}$ |
+| test F (ANOVA) | f | $f = \frac{\frac{\sqrt{\sum_{i=1}^k (\mu_i - \mu)^2}}{k}}{\sigma}$ |
+| autres test F | $f^2$ | $f^2 = \frac{{R_p}^2}{1-{R_p}^2}$ |
+|  |  | ${R_p}$ est le coefficient de corrélation partiel |
+| test Chi-carré | w | $w = \sqrt{ \sum_{i=1}^m \frac{(p_{0i} - p_{1i})^2 }{ p_{0i}} }$ |
+|  |  | $p_{0i}$ $p_{1i}$ sont les proportions de la catégorie i prédites par l'hypothèse nulle et alternative respectivement |
 
 ## Puissance pour un test de t comparant deux moyennes
 
@@ -296,7 +295,6 @@ G\*Power peut nous le dire.
 # Exercice
 
 Changer la moyenne du groupe 2 à 5.28, recalculer la taille d’effet, et cliquer sur **Calculate** pour obtenir @fig-gpower-2.
-
 :::
 
 ```{r}
