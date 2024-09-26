@@ -984,7 +984,7 @@ NAs</code></pre>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Pour utiliser une liste afin d’itérer sur ces colonnes, nous devons d’abord créer une liste vide (vous vous souvenez de <a href="#sec-lists" class="quarto-xref"><span class="quarto-unresolved-ref">sec-lists</span></a> ?) que nous appelons <code>temp</code> (abréviation de temporary) qui sera utilisée pour stocker les résultats de la fonction <code>for</code> boucle.</p>
+<p>Pour utiliser une liste afin d’itérer sur ces colonnes, nous devons d’abord créer une liste vide (vous vous souvenez de <a href="03-donnees.html#sec-lists" class="quarto-xref"><span>Section 3.2.3</span></a> ?) que nous appelons <code>temp</code> (abréviation de temporary) qui sera utilisée pour stocker les résultats de la fonction <code>for</code> boucle.</p>
 <div class="cell">
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">dishes</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
