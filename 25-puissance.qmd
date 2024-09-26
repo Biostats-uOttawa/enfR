@@ -204,7 +204,7 @@ knitr::include_graphics("images/gpower_1.png")
 ```
 
 La même analyse peut être faites en utlisant R.
-D'abord, il faut calculer la taille d'effet `d` pour un test de t comparant deux moyennes, puis utiliser la fonction `pwr.t.test` du paquet `pwr` 📦.
+D'abord, il faut calculer la taille d'effet `d` pour un test de t comparant deux moyennes, puis utiliser la fonction `pwr.t.test` du paquet `pwr` :package:.
 Le plus simple comme nous allons estimer la taille d'effet `d` plusieurs fois et de créer une petite fonction qui estime `d` basé sur les paramètres nécessaires.
 
 ```{r}
@@ -241,7 +241,17 @@ polygon(
   c(x[x <= -qc], -qc), c(y1[x <= -qc], 0),
   col = rgb(red = 0, green = 0.2, blue = 1, alpha = 0.5)
 )
+polygon(
+  c(-qc, x[x >= -qc]), c(0, y0[x >= -qc]),
+  col = rgb(red = 1, green = 0, blue = 0.2, alpha = 0.5)
+)
+polygon(
+  c(x[x <= qc], qc), c(y0[x <= qc], 0),
+  col = rgb(red = 1, green = 0, blue = 0.2, alpha = 0.5)
+)
 ```
+
+Voici le code pour faire la figure avec ggplot.
 
 ```{r}
 #| label: fig-ggplot
@@ -255,7 +265,8 @@ dat <- data.frame(
   y1 = dt(x, (n - 1) * 2, ncp = ncp)
 ) %>%
   mutate(
-    area = ifelse(x <= qc, y1, 0)
+    beta = ifelse(x <= -qc, y1, 0),
+    alpha = ifelse(x <= qc | x >= -qc, y0, 0)
   )
 
 ggplot(dat, aes(x = x)) +
@@ -263,8 +274,12 @@ ggplot(dat, aes(x = x)) +
   geom_line(aes(y = y1), color = "blue") +
   geom_vline(xintercept = qcl, color = "green") +
   geom_area(
-    aes(x = x, y = area),
+    aes(x = x, y = beta),
     fill = rgb(red = 0, green = 0.2, blue = 1, alpha = 0.5)
+  ) +
+  geom_area(
+    aes(x = x, y = alpha),
+    fill = rgb(red = 1, green = 0, blue = 0.2, alpha = 0.5)
   ) +
   theme_classic() +
   ylab("dt(x)")

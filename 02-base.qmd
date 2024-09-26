@@ -12,7 +12,7 @@ Objectif de ce chapitre :
 -   Explorer les différents types d'objets et effectuer des opérations courantes sur ces objets.
 -   Obtenir de l'aide en R et présenter certaines ressources pour vous aider à apprendre R.
 -   Sauvegarder votre travail.
--   Utiliser et installer des paquets 📦 pour étendre les capacités de base de R.
+-   Utiliser et installer des paquets :package: pour étendre les capacités de base de R.
 
 ## Considérations importantes
 
