@@ -598,11 +598,11 @@ Figure&nbsp;2.4: Onglet Environnement RStudio avec mon_obj2 mis-à-jours en num�
 </section><section id="nommer-les-objets" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="nommer-les-objets">
 <span class="header-section-number">2.3.2</span> Nommer les objets</h3>
 <p>Nommer vos objets est l’une des choses les plus difficiles que vous ferez dans R. Idéalement, les noms de vos objets devraient être courts et informatifs, ce qui n’est pas toujours facile. Si vous devez créer des objets avec plusieurs mots dans leur nom, utilisez un trait de soulignement <code>_</code> ou un point <code>.</code> entre les mots ou mettez les différents mots en majuscules. Nous préférons le format souligné <code>_</code> et n’incluons jamais de majuscules dans les noms (appelé <a href="https://en.wikipedia.org/wiki/Snake_case"><em>snake_case</em></a>).</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">résumé_sortie</span> <span class="op">&lt;-</span> <span class="st">"mon analyse"</span> <span class="co"># recommandé #</span></span>
-<span><span class="va">résumé.sortie</span> <span class="op">&lt;-</span> <span class="st">"mon analyse"</span></span>
-<span><span class="va">résuméSortie</span> <span class="op">&lt;-</span> <span class="st">"mon analyse"</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Il y a également quelques limitations lorsqu’il s’agit de donner des noms aux objets. Un nom d’objet ne peut pas commencer par un chiffre ou un point suivi d’un chiffre (ex. <code>2ma_variable</code> ou <code>.2ma_variable</code>). Vous devez également éviter d’utiliser des caractères non alphanumériques dans vos noms d’objets (i.e.&nbsp;&amp;, ^, /, ! etc). De plus, assurez-vous de ne pas nommer vos objets avec des mots réservés (i.e.&nbsp;<code>TRUE</code>, <code>NA</code>) et ce n’est jamais une bonne idée de donner à votre objet le même nom qu’une fonction intégrée. Une fonction qui revient plus souvent qu’on ne peut s’en souvenir est :</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"monfichierdedonées"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">resume_sortie</span> <span class="op">&lt;-</span> <span class="st">"mon analyse"</span> <span class="co"># recommandé #</span></span>
+<span><span class="va">resume.sortie</span> <span class="op">&lt;-</span> <span class="st">"mon analyse"</span></span>
+<span><span class="va">resumeSortie</span> <span class="op">&lt;-</span> <span class="st">"mon analyse"</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Il y a également quelques limitations lorsqu’il s’agit de donner des noms aux objets. Un nom d’objet ne peut pas commencer par un chiffre ou un point suivi d’un chiffre (ex. <code>2ma_variable</code> ou <code>.2ma_variable</code>). Vous devez également éviter d’utiliser des caractères non alphanumériques ou des accents dans vos noms d’objets (i.e.&nbsp;&amp;, ^, /, !, é, è, etc). De plus, assurez-vous de ne pas nommer vos objets avec des mots réservés (i.e.&nbsp;<code>TRUE</code>, <code>NA</code>) et ce n’est jamais une bonne idée de donner à votre objet le même nom qu’une fonction intégrée. Une fonction qui revient plus souvent qu’on ne peut s’en souvenir est :</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"monfichierdedonees"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Oui, <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> est une fonction de R qui permet de charger ou de lister les ensembles de données disponibles dans les paquets.</p>
 </section></section><section id="sec-funcs" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="sec-funcs">
 <span class="header-section-number">2.4</span> Utilisation de fonctions dans R</h2>
@@ -848,24 +848,24 @@ Figure&nbsp;2.4: Onglet Environnement RStudio avec mon_obj2 mis-à-jours en num�
 <span class="header-section-number">2.5.3</span> Ordonner les éléments</h3>
 <p>Outre l’extraction d’éléments particuliers d’un vecteur, il est également possible d’ordonner les valeurs contenues dans un vecteur. Pour trier les valeurs de la plus petite à la plus grande, nous pouvons utiliser la fonction <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> :</p>
 <div class="cell">
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_trié</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">mon_vec</span><span class="op">)</span></span>
-<span><span class="va">vec_trié</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_trie</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">mon_vec</span><span class="op">)</span></span>
+<span><span class="va">vec_trie</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]    7  100  100  500 1000 1000 1000 1000</code></pre>
 </div>
 </div>
 <p>Pour inverser le tri, du plus élevé au plus bas, nous pouvons soit inclure l’option <code>decreasing = TRUE</code> lors de l’utilisation de la fonction <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> :</p>
 <div class="cell">
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_trié2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">mon_vec</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">vec_trié2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_trie2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">mon_vec</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">vec_trie2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1000 1000 1000 1000  500  100  100    7</code></pre>
 </div>
 </div>
 <p>soit trier d’abord le vecteur à l’aide de la fonction <code><a href="https://rdrr.io/r/base/sort.html">sort()</a></code> puis l’inverser à l’aide de la fonction <code><a href="https://rdrr.io/r/base/rev.html">rev()</a></code>. Il s’agit là d’un autre exemple d’imbrication d’une fonction dans une autre fonction :</p>
 <div class="cell">
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_trié3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">mon_vec</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">vec_trié3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec_trie3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">mon_vec</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">vec_trie3</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1000 1000 1000 1000  500  100  100    7</code></pre>
 </div>
@@ -877,8 +877,8 @@ Figure&nbsp;2.4: Onglet Environnement RStudio avec mon_obj2 mis-à-jours en num�
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 180 155 160 167 181</code></pre>
 </div>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p.noms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Joanna"</span>, <span class="st">"Charlotte"</span>, <span class="st">"Helen"</span>, <span class="st">"Karen"</span>, <span class="st">"Amy"</span><span class="op">)</span></span>
-<span><span class="va">p.noms</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p_noms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Joanna"</span>, <span class="st">"Charlotte"</span>, <span class="st">"Helen"</span>, <span class="st">"Karen"</span>, <span class="st">"Amy"</span><span class="op">)</span></span>
+<span><span class="va">p_noms</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Joanna"    "Charlotte" "Helen"     "Karen"     "Amy"      </code></pre>
 </div>
