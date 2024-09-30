@@ -2,7 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-
 #_extension/
 .vscode/
 *_cache/
@@ -10,12 +9,10 @@
 *_freeze/
 *.docx
 book_plan.html
-
 !en/*_files/
 !fr/*_files/
-
 /.quarto/
 /_book/
-
 /.luarc.json
 node_modules/
+.DS_Store
