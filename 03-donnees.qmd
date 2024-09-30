@@ -2,32 +2,31 @@
 
 Jusqu'à présent, vous avez créé des données relativement simples dans R et les avez stockées sous forme de vecteur (@sec-funcs).
 Cependant, la plupart d'entre vous (si ce n'est tous) disposeront d'ensembles de données beaucoup plus complexes provenant de vos diverses expériences et enquêtes, qui vont bien au-delà de ce qu'un vecteur peut gérer.
-Apprendre comment R traite les différents types de données et de structures de données, comment importer vos données dans R et comment manipuler et résumer vos données sont quelques-unes des compétences les plus importantes que vous devrez maîtriser.
+Apprendre comment R traite les différents types de données et structures de données, comment importer vos données dans R et comment manipuler et résumer vos données sont quelques-unes des compétences les plus importantes que vous devrez maîtriser.
 
 Dans ce chapitre, nous passerons en revue les principaux types de données dans R et nous nous concentrerons sur certaines des structures de données les plus courantes.
-Nous verrons également comment importer des données dans R à partir d'un fichier externe, comment manipuler (wrangle) et résumer des données et enfin comment exporter des données de R vers un fichier externe.
+Nous verrons également comment importer des données dans R à partir d'un fichier externe, comment manipuler et résumer des données et enfin comment exporter des données de R vers un fichier externe.
 
 ## Types de données
 
 Il est important de comprendre les différents types de données et la manière dont R traite ces données.
-La tentation est grande d'ignorer ces détails techniques, mais attention, cela peut se retourner contre vous si vous ne faites pas attention.
-Nous avons déjà vu un exemple (@sec-r-objs) de cela lorsque nous avons essayé (et échoué) d'ajouter deux objets caractères ensemble en utilisant la fonction `+` à l'aide de l'opérateur
+La tentation est grande d'ignorer ces détails techniques, mais attention, cela peut se retourner contre vous très vite si vous ne faites pas attention.
+Nous avons déjà vu un exemple (@sec-r-objs) de cela lorsque nous avons essayé (et échoué) d'ajouter deux objets de type `caractères` ensemble en utilisant l'opérateur `+`.
 
-R dispose de six types de données de base : numérique, entier, logique, complexe et caractère.
-Les plus attentifs d'entre vous remarqueront que nous n'avons listé ici que cinq types de données, le dernier étant le type de données brut, que nous n'aborderons pas car il n'est pas utile dans 99,99 % des cas.
+R dispose de six types de données de base : numérique (`numeric`), entier (`integer`), logique (`logical`), complexe (`complex`) et caractère (`character`).
+Les plus attentifs d'entre vous remarqueront que nous n'avons listé ici que cinq types de données, le dernier étant le type de données brut (`raw`), que nous n'aborderons pas car il n'est pas utile dans 99,99 % des cas.
  Nous n'aborderons pas non plus les nombres complexes, mais nous vous laisserons [imaginer][complex_num] cette partie !
 
 - **Numérique** sont des nombres contenant une décimale.
   En fait, il peut également s'agir de nombres entiers, mais nous n'y reviendrons pas.
 
-- **Les nombres entiers** sont des nombres entiers (sans virgule).
+- **Entiers (`integer`)** sont des nombres entiers (sans virgule).
 
 - **Logique** prennent la valeur de `TRUE` ou `FALSE`.
   Il existe également un autre type de logique appelé `NA` pour représenter les valeurs manquantes.
 
-- **Caractère** sont utilisées pour représenter les valeurs des chaînes de caractères.
-  Vous pouvez considérer les chaînes de caractères comme un mot (ou plusieurs mots).
-  Un type particulier de chaîne de caractères est un *facteur* qui est une chaîne de caractères mais avec des attributs supplémentaires (comme des niveaux ou un ordre).
+- **Caractère** sont des chaînes de caractères comme un (ou plusieurs) mot(s).
+  Un type particulier de chaîne de caractères est le *facteur* qui a des attributs supplémentaires (comme des niveaux ou un ordre).
   Nous reviendrons sur les facteurs plus tard.
 
 R est (généralement) capable de distinguer automatiquement les différentes classes de données en fonction de leur nature et du contexte dans lequel elles sont utilisées, bien que vous deviez garder à l'esprit que R ne peut pas vraiment lire dans vos pensées et que vous devrez peut-être lui indiquer explicitement comment vous souhaitez traiter un type de données.
@@ -66,13 +65,13 @@ Il peut parfois être utile de pouvoir changer la classe d'une variable à l'aid
 ```{r}
 #| echo: true
 #| eval: true
-# coerce numeric to character
+# convertir un objet numérique en caractère
 class(num)
 num_char <- as.character(num)
 num_char
 class(num_char)
 
-# coerce character to numeric!
+# convertir un objet caractère en numérique !
 class(char)
 char_num <- as.numeric(char)
 ```
@@ -89,36 +88,35 @@ Voici un tableau récapitulatif de certaines des fonctions de test logique et de
 
 ## Structures de données
 
-Maintenant que vous avez pris connaissance de certaines des classes de données les plus importantes de R, examinons quelques-unes des principales structures dont nous disposons pour stocker ces données.
+Maintenant que vous connaissez certaines des classes de données les plus importantes de R, examinons quelques-unes des principales structures dont nous disposons pour stocker ces données.
 
 ### Scalaires et vecteurs {#sec-scal-vecs}
 
 Le type de structure de données le plus simple est sans doute le vecteur.
-Vous avez déjà été initié aux vecteurs dans @sec-funcs, bien que certains des vecteurs que vous avez créés ne contenaient qu'une seule valeur.
-Les vecteurs qui ont une seule valeur (longueur 1) sont appelés scalaires.
+Vous avez déjà été initié aux vecteurs dans la @sec-funcs, certains des vecteurs que vous avez créés ne contenaient qu'une seule valeur (longueur 1) on. appelle ça un scalaires.
 Les vecteurs peuvent contenir des nombres, des caractères, des facteurs ou des logiques, mais la chose essentielle à retenir est que tous les éléments à l'intérieur d'un vecteur doivent être de la même classe.
 En d'autres termes, les vecteurs peuvent contenir des nombres, des caractères ou des logiques, mais pas des mélanges de ces types de données.
 Il existe une exception importante à cette règle : vous pouvez inclure des `NA` (rappelez-vous qu'il s'agit d'un type spécial de logique) pour indiquer les données manquantes dans les vecteurs contenant d'autres types de données.
 
 ```{r}
 #| label: fig-data_struc
-#| fig-cap: Scalar and vector data structure
+#| fig-cap: Structure de données scalaires et vecteurs
 #| echo: false
 #| out-width: 40%
 #| fig-align: center
 knitr::include_graphics(path = "images/data/scal_vec.png")
 ```
 
-### Matrices et tableaux {#sec-mat-array}
+### Matrices et tableaux (`array`) {#sec-mat-array}
 
 La matrice est une autre structure de données utile, utilisée dans de nombreuses disciplines telles que l'écologie des populations et les statistiques théoriques et appliquées.
 Une matrice est simplement un vecteur doté d'attributs supplémentaires appelés dimensions.
-Les tableaux ne sont que des matrices multidimensionnelles.
+Les tableaux (`array`) ne sont que des matrices multidimensionnelles.
 Là encore, les matrices et les tableaux doivent contenir des éléments appartenant tous à la même classe de données.
 
 ```{r}
 #| label: fig-data_struc2
-#| fig-cap: Matrix and array data structure
+#| fig-cap: Structure de données matrices et tableaux (`array`)
 #| echo: false
 #| out-width: 50%
 #| fig-align: center
@@ -126,75 +124,75 @@ knitr::include_graphics(path = "images/data/mat_array.png")
 ```
 
 Un moyen pratique de créer une matrice ou un tableau est d'utiliser la fonction `matrix()` et `array()` respectivement.
-Ci-dessous, nous allons créer une matrice à partir d'une séquence de 1 à 16 en quatre lignes (`nrow = 4`) et remplissons la matrice par rangée (`byrow = TRUE`) plutôt que de remplir la matrice par colonne, comme c'est le cas par défaut.
-Lors de l'utilisation de l'option `array()` nous définissons les dimensions à l'aide de la fonction `dim =` dans notre cas, 2 lignes, 4 colonnes dans 2 matrices différentes.
+Ci-dessous, nous allons créer une matrice à partir d'une séquence de 1 à 16 en quatre lignes (`nrow = 4`) et la remplir par rangée (`byrow = TRUE`) plutôt que par colonne, comme c'est le cas par défaut.
+Lors de l'utilisation de l'option `array()` il faut définir les dimensions à l'aide de la fonction `dim =` dans notre cas, 2 *lignes*, 4 *colonnes* dans 2 *matrices* différentes :
 
 ```{r}
 #| echo: true
 #| eval: true
-my_mat <- matrix(1:16, nrow = 4, byrow = TRUE)
-my_mat
+ma_mat <- matrix(1:16, nrow = 4, byrow = TRUE)
+ma_mat
 
-my_array <- array(1:16, dim = c(2, 4, 2))
-my_array
+mon_tabl <- array(1:16, dim = c(2, 4, 2))
+mon_tabl
 ```
 
 Il est parfois utile de définir les noms des lignes et des colonnes de votre matrice, mais ce n'est pas obligatoire.
-Pour ce faire, utilisez la fonction `rownames()` et `colnames()` pour ce faire.
+Pour ce faire, utilisez la fonction `rownames()` et `colnames()` :
 
 ```{r}
 #| echo: true
 #| eval: true
-rownames(my_mat) <- c("A", "B", "C", "D")
-colnames(my_mat) <- c("a", "b", "c", "d")
-my_mat
+rownames(ma_mat) <- c("A", "B", "C", "D")
+colnames(ma_mat) <- c("a", "b", "c", "d")
+ma_mat
 ```
 
 Une fois que vous avez créé vos matrices, vous pouvez faire des choses utiles avec elles et, comme vous pouvez vous y attendre, R dispose de nombreuses fonctions intégrées pour effectuer des opérations sur les matrices.
 Certaines des plus courantes sont présentées ci-dessous.
-Par exemple, pour transposer une matrice, nous utilisons la fonction de transposition `t()`
+Par exemple, pour transposer une matrice, nous utilisons la fonction de transposition `t()` :
 
 ```{r}
 #| echo: true
 #| eval: true
-my_mat_t <- t(my_mat)
-my_mat_t
+ma_mat_t <- t(ma_mat)
+ma_mat_t
 ```
 
-Pour extraire les éléments diagonaux d'une matrice et les stocker sous forme de vecteur, nous pouvons utiliser la fonction `diag()` fonction
+Pour extraire les éléments diagonaux d'une matrice et les stocker sous forme de vecteur, nous pouvons utiliser la fonction `diag()` :
 
 ```{r}
 #| echo: true
 #| eval: true
-my_mat_diag <- diag(my_mat)
-my_mat_diag
+ma_mat_diag <- diag(ma_mat)
+ma_mat_diag
 ```
 
-Les opérations habituelles d'addition, de multiplication, etc. de la matrice peuvent être effectuées.
+Les opérations habituelles d'addition, de multiplication, etc. de matrices peuvent être effectuées.
 Notez l'utilisation de la fonction `%*%` pour effectuer une multiplication matricielle.
 
 ```{r}
 #| echo: true
 #| eval: true
-mat.1 <- matrix(c(2, 0, 1, 1), nrow = 2) # notice that the matrix has been filled
-mat.1 # column-wise by default
+mat.1 <- matrix(c(2, 0, 1, 1), nrow = 2)
+mat.1 # Notez que la matrice à été remplie par colonne par défaut
 
 mat.2 <- matrix(c(1, 1, 0, 2), nrow = 2)
 mat.2
 
-mat.1 + mat.2 # matrix addition
-mat.1 * mat.2 # element by element products
-mat.1 %*% mat.2 # matrix multiplication
+mat.1 + mat.2 # Addition de matrices
+mat.1 * mat.2 # Produit élément par élément
+mat.1 %*% mat.2 # Multiplication de matrice
 ```
 
 ### Listes {#sec-lists}
 
-La prochaine structure de données que nous examinerons rapidement est une liste.
+La prochaine structure de données que nous examinerons rapidement est la liste.
 Alors que les vecteurs et les matrices sont contraints de contenir des données du même type, les listes peuvent stocker des mélanges de types de données.
-En fait, nous pouvons même stocker d'autres structures de données telles que des vecteurs et des tableaux à l'intérieur d'une liste ou même avoir une liste d'une liste.
+En fait, nous pouvons même stocker d'autres structures de données telles que des vecteurs et des tableaux à l'intérieur d'une liste ou même avoir une liste de liste.
 Il s'agit donc d'une structure de données très flexible, idéale pour stocker des données irrégulières ou non rectangulaires (voir @sec-prog-r pour un exemple).
 
-Pour créer une liste, nous pouvons utiliser la fonction `list()` pour créer une liste.
+Pour créer une liste, nous pouvons utiliser la fonction `list()`.
 Notez que les trois éléments de la liste sont de classes différentes (caractère, logique et numérique) et de longueurs différentes.
 
 ```{r}
@@ -208,41 +206,41 @@ list_1 <- list(
 list_1
 ```
 
-Les éléments de la liste peuvent être nommés lors de la construction de la liste
+Les éléments de la liste peuvent être nommés lors de la construction de la liste :
 
 ```{r}
 #| echo: true
 #| eval: true
 list_2 <- list(
-  colours = c("black", "yellow", "orange"),
+  couleurs = c("black", "yellow", "orange"),
   evaluation = c(TRUE, TRUE, FALSE, TRUE, FALSE, FALSE),
-  time = matrix(1:6, nrow = 3)
+  temps = matrix(1:6, nrow = 3)
 )
 list_2
 ```
 
-ou après la création de la liste à l'aide de la fonction `names()` à l'aide de la fonction
+ou après la création de la liste à l'aide de la fonction `names()` :
 
 ```{r}
 #| echo: true
 #| eval: true
-names(list_1) <- c("colours", "evaluation", "time")
+names(list_1) <- c("couleurs", "evaluation", "temps")
 list_1
 ```
 
-### Trames de données {#sec-df}
+### Jeu de données {#sec-df}
 
-La structure de données la plus couramment utilisée pour stocker des données est, de loin, le cadre de données.
-Un cadre de données est un objet bidimensionnel puissant composé de lignes et de colonnes qui ressemble superficiellement à une matrice.
-Toutefois, alors que les matrices ne peuvent contenir que des données du même type, les cadres de données peuvent contenir un mélange de différents types de données.
-En règle générale, dans un cadre de données, chaque ligne correspond à une observation individuelle et chaque colonne correspond à une variable mesurée ou enregistrée différente.
+De loin la structure de données la plus couramment utilisée : le jeu de données (`data frame`).
+Un jeu de données est un objet bidimensionnel puissant composé de **lignes** et de **colonnes** qui ressemble superficiellement à une matrice.
+Toutefois, alors que les matrices ne peuvent contenir que des données du même type, les jeux de données peuvent contenir un mélange de différents types de données.
+En règle générale, dans un jeu de données, chaque ligne correspond à une observation individuelle et chaque colonne correspond à une variable mesurée ou enregistrée différente.
 Cette configuration est peut-être familière à ceux d'entre vous qui utilisent LibreOffice Calc ou Microsoft Excel pour gérer et stocker leurs données.
-Il peut être utile de penser que les cadres de données sont essentiellement constitués d'un ensemble de vecteurs (colonnes), chaque vecteur contenant son propre type de données, mais le type de données peut être différent d'un vecteur à l'autre.
+Il peut être utile de penser que les jeux de données sont essentiellement constitués d'un ensemble de vecteurs (colonnes), chaque vecteur contenant son propre type de données, mais le type de données peut être différent d'un vecteur à l'autre.
 
-Par exemple, le cadre de données ci-dessous contient les résultats d'une expérience visant à déterminer l'effet des soins parentaux (avec ou sans) sur les licornes (*Unicornus magnificens*) sur la croissance des petits sous trois régimes de disponibilité alimentaire différents.
-Le cadre de données comporte 8 variables (colonnes) et chaque ligne représente une licorne individuelle.
-Les variables `care` et `food` sont des facteurs ( [catégoriques][cat-var] ).
-Les variables `p_care` a 2 niveaux (`care` et `no_care`) et la variable `food` a 3 niveaux (`low`, `medium` et `high`).
+Par exemple, le jeu de données ci-dessous contient les résultats d'une expérience visant à déterminer l'effet des soins parentaux (avec ou sans) chez les licornes (*Unicornus magnificens*) sur la croissance des petits sous trois régimes de disponibilité alimentaire différents.
+Le jeu de données contient 8 variables (colonnes) et chaque ligne représente une licorne individuelle.
+Les variables `p_care` et `food` sont des facteurs (variables [catégoriques][cat-var]).
+La variable `p_care` a 2 niveaux (`care` et `no_care`) et la variable `food` a 3 niveaux (`low`, `medium` et `high`).
 Les variables `height`, `weight`, `mane_size` et `fluffyness` sont numériques et la variable `horn_rings` est un nombre entier représentant le nombre d'anneaux sur la corne.
 Bien que la variable `block` possède des valeurs numériques, celles-ci n'ont pas vraiment d'ordre et pourraient également être traitées comme un facteur (i.e.
 elles auraient également pu être appelées A et B).
@@ -251,40 +249,42 @@ elles auraient également pu être appelées A et B).
 #| label: tbl-import-data
 #| echo: false
 #| message: false
-#| tbl-cap: Imported unicorn data
+#| tbl-cap: Données importées sur les licornes
 library(kableExtra)
-unicorns <- read.csv("data/unicorns.csv")
-knitr::kable(rbind(head(unicorns), tail(unicorns)), row.names = FALSE, booktabs = TRUE)
+licornes <- read.csv("data/unicorns.csv")
+knitr::kable(rbind(head(licornes), tail(licornes)), row.names = FALSE, booktabs = TRUE)
 ```
 
-Il y a deux choses importantes à garder à l'esprit à propos des cadres de données.
+Il y a deux choses importantes à garder à l'esprit à propos des jeux de données.
 Ces types d'objets sont connus sous le nom de données rectangulaires (ou données ordonnées), car chaque colonne doit comporter le même nombre d'observations.
-En outre, toute donnée manquante doit être enregistrée sous la forme d'un `NA` comme nous l'avons fait pour nos vecteurs.
+Aussi, toute donnée manquante doit être enregistrée sous la forme d'un `NA` comme nous l'avons fait pour nos vecteurs.
 
-Nous pouvons construire un cadre de données à partir d'objets de données existants, tels que des vecteurs, à l'aide de la fonction `data.frame()` à l'aide de la fonction
-À titre d'exemple, créons trois vecteurs `p.height`, `p.weight` et `p.names` et inclure tous ces vecteurs dans un objet cadre de données appelé `dataf`.
+Nous pouvons construire un jeu de données à partir d'objets de données existants, tels que des vecteurs, à l'aide de la fonction `data.frame()`.
+À titre d'exemple, créons trois vecteurs `p_taille`, `p_poids` et `p_noms` et incluons tous ces vecteurs dans un jeu de données appelé `dataf`.
 
 ```{r}
 #| label: dataf
 #| echo: true
-p.height <- c(180, 155, 160, 167, 181)
-p.weight <- c(65, 50, 52, 58, 70)
-p.names <- c("Joanna", "Charlotte", "Helen", "Karen", "Amy")
+p_taille <- c(180, 155, 160, 167, 181)
+p_poids <- c(65, 50, 52, 58, 70)
+p_noms <- c("Joanna", "Charlotte", "Helen", "Karen", "Amy")
 
-dataf <- data.frame(height = p.height, weight = p.weight, names = p.names)
+dataf <- data.frame(taille = p_taille, 
+                    poids = p_poids, 
+                    noms = p_noms)
 dataf
 ```
 
-Vous remarquerez que chacune des colonnes est nommée avec le nom de la variable que nous avons fourni lorsque nous avons utilisé la fonction `data.frame()` lorsque nous avons utilisé la fonction
-Il semble également que la première colonne du cadre de données soit une série de nombres allant de un à cinq.
+Vous remarquerez que chacune des colonnes est nommée avec le nom de la variable que nous avons fourni lorsque nous avons utilisé la fonction `data.frame()` lorsque nous avons utilisé la fonction.
+Il semble également que la première colonne du cadre de données soit une série de nombres allant de 1 à 5.
 En fait, il ne s'agit pas vraiment d'une colonne, mais du nom de chaque ligne.
-Nous pouvons le vérifier en demandant à R de renvoyer les dimensions de la base de données `dataf` à l'aide de la fonction `dim()` à l'aide de la fonction
+Nous pouvons le vérifier en demandant à R de renvoyer les dimensions du jeu de données `dataf` à l'aide de la fonction `dim()`.
 Nous constatons qu'il y a 5 lignes et 3 colonnes.
 
 ```{r}
 #| label: dataf2
 #| echo: true
-dim(dataf) # 5 rows and 3 columns
+dim(dataf) # 5 lignes et 3 colonnes
 ```
 
 Une autre fonction très utile que nous utilisons en permanence est `str()` qui renvoie un résumé compact de la structure de l'objet data frame (ou de tout autre objet).
@@ -295,61 +295,62 @@ Une autre fonction très utile que nous utilisons en permanence est `str()` qui 
 str(dataf)
 ```
 
-La fonction `str()` nous donne les dimensions de la base de données et nous rappelle que la fonction `dataf` est un `data.frame` type d'objet.
-Il énumère également toutes les variables (colonnes) contenues dans le cadre de données, nous indique le type de données que les variables contiennent et imprime les cinq premières valeurs.
-Nous copions souvent ce résumé et le plaçons dans nos scripts R avec des commentaires au début de chaque ligne afin de pouvoir nous y référer facilement lors de l'écriture de notre code.
-Nous vous avons montré comment commenter les blocs dans RStudio @sec-proj-doc.
+La fonction `str()` nous donne les dimensions du jeu de données et nous rappelle que `dataf` est un `data.frame`.
+Il énumère également toutes les variables (colonnes) contenues dans le jeu de données, nous indique le type de données qu'elles contiennent et leurs 5 premières valeurs.
+Nous copions souvent ce résumé pour le mettre dans le scripts R avec des commentaires au début de chaque ligne afin de pouvoir nous y référer facilement lors de l'écriture du code.
+*Nous vous avons montré comment commenter les blocs dans RStudio dans la @sec-proj-doc.*
 
-Notez également que R a automatiquement décidé que notre `p.names` doit être un caractère (`chr`) lors de la création de la base de données.
+Notez également que R a automatiquement décidé que notre `p_noms` doit être un caractère (`chr`) lors de la création du jeu de données.
 La question de savoir si c'est une bonne idée ou non dépendra de la manière dont vous souhaitez utiliser cette variable dans des analyses ultérieures.
-Si nous décidons que ce n'est pas une bonne idée, nous pouvons modifier le comportement par défaut de la classe `data.frame()` en incluant l'argument `stringsAsFactors = TRUE`.
-Nos chaînes de caractères sont maintenant automatiquement converties en facteurs.
+Si nous décidons que ce n'est pas une bonne idée, nous pouvons modifier le comportement par défaut du `data.frame()` en incluant l'argument `stringsAsFactors = TRUE`.
+Nos chaînes de caractères seront maintenant automatiquement converties en facteurs.
 
 ```{r}
 #| label: dataf4
 #| echo: true
-p.height <- c(180, 155, 160, 167, 181)
-p.weight <- c(65, 50, 52, 58, 70)
-p.names <- c("Joanna", "Charlotte", "Helen", "Karen", "Amy")
+p_taille <- c(180, 155, 160, 167, 181)
+p_poids <- c(65, 50, 52, 58, 70)
+p_noms <- c("Joanna", "Charlotte", "Helen", "Karen", "Amy")
 
 dataf <- data.frame(
-  height = p.height, weight = p.weight, names = p.names,
+  taille = p_taille, poids = p_poids, noms = p_noms,
   stringsAsFactors = TRUE
 )
 str(dataf)
 ```
 
-## Importation de données
+## Importer des données
 
-Bien que la création de cadres de données à partir de structures de données existantes soit extrêmement utile, l'approche de loin la plus courante consiste à créer un cadre de données en important des données à partir d'un fichier externe.
+Bien que la création de jeux de données à partir de structures de données existantes soit extrêmement utile, l'approche de loin la plus courante consiste à créer un jeu de données en important des données à partir d'un fichier externe.
 Pour ce faire, vos données doivent être correctement formatées et enregistrées dans un format de fichier que R est capable de reconnaître.
 Heureusement pour nous, R est capable de reconnaître une grande variété de formats de fichiers, même si, en réalité, vous n'en utiliserez probablement que deux ou trois régulièrement.
 
 ### Enregistrement de fichiers à importer
 
-La méthode la plus simple pour créer un fichier de données à importer dans R consiste à saisir vos données dans une feuille de calcul à l'aide de Microsoft Excel ou de LibreOffice Calc et à enregistrer la feuille de calcul sous la forme d'un fichier délimité par des virgules.
- Nous préférons LibreOffice Calc car c'est un logiciel libre, indépendant de la plate-forme et gratuit, mais MS Excel convient également (mais voir [ici][excel_gotcha] pour quelques problèmes).
-Voici les données de l'expérience sur les pétunias dont nous avons parlé précédemment, affichées dans LibreOffice.
-Si vous souhaitez suivre l'expérience, vous pouvez télécharger le fichier de données (*'unicorn.xlsx'*) à partir de @sec-data-files.
+La méthode la plus simple pour créer un fichier de données à importer dans R consiste à saisir vos données dans une feuille de calcul à l'aide de Microsoft Excel ou LibreOffice Calc et à l'enregistrer sous la forme d'un fichier délimité par des virgules.
+ Nous préférons LibreOffice Calc car c'est un logiciel libre, indépendant de plate-forme et gratuit, mais MS Excel convient également (mais voir [ici][excel_gotcha] pour quelques problèmes).
+Voici les données de l'expérience sur les licornes dont nous avons parlé précédemment, affichées dans LibreOffice.
+Si vous souhaitez suivre en même temps que le livre, vous pouvez télécharger le fichier de données (*'unicorn.xlsx'*) à partir de l'@sec-data-files.
 
 ```{r}
 #| label: fig-LO-calc0
-#| fig-cap: Unicorn data in LibreOffice Calc
+#| fig-cap: Données Licornes (Unicorn) dans LibreOffice Calc
 #| echo: false
 #| out-width: 60%
 #| fig-align: center
 knitr::include_graphics(path = "images/data/libre_off.png")
 ```
 
-Pour ceux d'entre vous qui ne connaissent pas le format de fichier délimité par des tabulations, cela signifie simplement que les données des différentes colonnes sont séparées par le caractère "," et sont généralement enregistrées dans un fichier portant l'extension ".csv".
+Pour ceux d'entre vous qui ne connaissent pas le format de fichier délimité par des **tabulations** <!-- JULIEN - C'est pas plutôt délimité par des virgules ?-->, cela signifie simplement que les données des différentes colonnes sont séparées par le caractère "," et sont généralement enregistrées dans un fichier portant l'extension ".csv" (*Comma-Separated Values*).
 
-Pour enregistrer une feuille de calcul en tant que fichier délimité par des virgules dans LibreOffice Calc, sélectionnez `File` -> `Save as ...` dans le menu principal.
+
+Pour enregistrer une feuille de calcul en tant que fichier délimité par des virgules (CSV) dans LibreOffice Calc, sélectionnez `Fichier` -> `Enregistrer sous...` dans le menu principal.
 Vous devrez spécifier l'emplacement où vous souhaitez enregistrer votre fichier dans l'option "Enregistrer dans le dossier" et le nom du fichier dans l'option "Nom".
 Dans le menu déroulant situé au-dessus du bouton "Enregistrer", remplacez l'option par défaut "Tous les formats" par "Texte CSV (.csv)".
 
 ```{r}
 #| label: fig-LO-calc
-#| fig-cap: Choosing `csv` format when saving with LibreOffice Calc
+#| fig-cap: Choisir le format `csv` lors de l'enregistrement avec LibreOffice Calc
 #| echo: false
 #| out-width: 60%
 #| fig-align: center
@@ -361,10 +362,10 @@ Cliquez sur OK pour enregistrer le fichier.
 
 Il y a quelques points à prendre en compte lors de l'enregistrement des fichiers à importer dans R, qui vous faciliteront la vie à long terme.
 Les titres de vos colonnes (si vous en avez) doivent être courts et informatifs.
-Évitez également les espaces dans vos titres de colonnes en les remplaçant par un trait de soulignement ou un point (c'est-à-dire
-remplacer `mane size` par `mane size` ou `mane.size`) et d'éviter d'utiliser des caractères spéciaux (par ex.
-`leaf area (mm^2)` ou des majuscules pour simplifier votre vie).
-N'oubliez pas que si vous avez des données manquantes dans votre cadre de données (cellules vides), vous devez utiliser un champ `NA` pour représenter ces valeurs manquantes ou utiliser une cellule vide.
+Évitez également les espaces dans vos titres de colonnes en les remplaçant par un trait de soulignement `_` ou un point `.` (c'est-à-dire
+remplacer `taille de la criniere` par `taille_de_la_criniere` ou `taille.de.la.criniere`) et d'éviter d'utiliser des caractères spéciaux (par ex.
+`aire (mm^2)`), des accents (par ex. écrire `criniere` au lieu de `crinière`) ou des majuscules pour vous simplifier la vie.
+N'oubliez pas que si vous avez des données manquantes dans votre cadre de données (cellules vides), vous devez utiliser un champ `NA` pour les représenter.
 Cela permettra de conserver un cadre de données ordonné.
 
 ### Fonctions d'importation {#sec-import-fnc}
@@ -372,30 +373,30 @@ Cela permettra de conserver un cadre de données ordonné.
 Une fois que vous avez enregistré votre fichier de données dans un format approprié, nous pouvons maintenant lire ce fichier dans R.
 La fonction la plus utilisée pour importer des données dans R est la fonction `read.table()` (nous examinerons d'autres solutions plus loin dans ce chapitre).
 La fonction `read.table()` est une fonction très flexible qui dispose d'un grand nombre d'arguments (voir `?read.table`), mais elle est assez simple à utiliser.
-Importons un fichier délimité par des virgules appelé `unicorns.csv` qui contient les données que nous avons vues précédemment dans ce chapitre (@sec-df) et l'assignons à un objet appelé `unicorns`.
-Le fichier est situé dans un `data` qui est lui-même situé dans notre répertoire racine (@sec-dir-struc).
+Importons le fichier délimité par des virgules appelé `unicorns.csv` qui contient les données que nous avons vues précédemment dans ce chapitre (@sec-df) que l'on va assigner à un objet appelé `licornes`.
+Le fichier est situé dans un dossier `data` ("`données`") qui est lui-même situé dans notre répertoire racine (@sec-dir-struc).
 La première ligne des données contient les noms des variables (colonnes).
 Pour utiliser les `read.table()` pour importer ce fichier
 
 ```{r}
 #| label: df1
 #| echo: true
-unicorns <- read.table(
+licornes <- read.table(
   file = "data/unicorns.csv", header = TRUE, sep = ",", dec = ".",
   stringsAsFactors = TRUE
 )
 ```
 
 Il y a quelques points à noter à propos de la commande ci-dessus.
-Tout d'abord, le chemin d'accès au fichier et le nom du fichier (y compris l'extension) doivent être placés entre guillemets simples ou doubles (c.-à-d.
-le `data/unicorns.txt` ), comme l'indique le bit `read.table()` s'attend à ce qu'il s'agisse d'une chaîne de caractères.
+Tout d'abord, le chemin d'accès au fichier et le nom du fichier (y compris l'extension) doivent être placés entre guillemets simples ou doubles (c-à-d.
+le `data/unicorns.csv`), car la fonction `read.table()` attend une chaîne de caractères.
 Si votre répertoire de travail est déjà le répertoire qui contient le fichier, il n'est pas nécessaire d'inclure le chemin d'accès complet au fichier, mais seulement le nom du fichier.
 Dans l'exemple ci-dessus, le chemin d'accès au fichier est séparé par une simple barre oblique. `/`.
 Cela fonctionne quel que soit le système d'exploitation que vous utilisez et nous vous recommandons de vous en tenir à cela.
 Cependant, les utilisateurs de Windows peuvent être plus familiers avec la notation de la barre oblique inverse simple et si vous voulez continuer à l'utiliser, vous devrez l'inclure en tant que barre oblique inverse double.
 
 ::: callout-warning
-Notez cependant que la notation de la double barre oblique inverse sera **pas** fonctionnera pas sur les ordinateurs utilisant les systèmes d'exploitation Mac OSX ou Linux.
+Notez cependant que la notation de la double barre oblique inverse fonctionnera **pas** sur les ordinateurs utilisant les systèmes d'exploitation Mac OSX ou Linux.
 Nous le déconseillons donc fortement car il n'est pas reproductible
 :::
 
@@ -408,54 +409,55 @@ D'autres arguments utiles sont `dec =` et `na.strings =`.
 Les `dec =` permet de modifier le caractère par défaut (`.`) utilisé par défaut pour le point décimal.
 Ceci est utile si vous êtes dans un pays où les décimales sont généralement représentées par une virgule (c.-à-d.
 `dec = ","`).
-Les `na.strings =` vous permet d'importer des données où les valeurs manquantes sont représentées par un symbole autre que `NA`.
-Cela peut être assez courant si vous importez des données à partir d'un autre logiciel statistique tel que Minitab, qui représente les valeurs manquantes sous la forme d'un symbole `*` (`na.strings = "*"`).
+L'argument `na.strings =` vous permet d'importer des données où les valeurs manquantes sont représentées par un symbole autre que `NA`.
+Cela peut être assez courant si vous importez des données à partir d'un autre logiciel statistique tel que Minitab, qui représente les valeurs manquantes avec le symbole `*` (`na.strings = "*"`).
 
-Honnêtement, du point de vue de l `read.table()` une série de fonctions prédéfinies sont disponibles.
-Elles utilisent toutes `read.table()` mais définissent des options spécifiques au format.
-Nous pouvons simplement `read.csv()`pour lire un fichier csv, avec la séparation "," et "." pour les décimales.
-Dans les pays où "," est utilisé pour les décimales, les fichiers csv utilisent " ;" comme séparateur.
+Une série de fonctions prédéfinies sont disponibles dans `read.table()` pour définire des options spécifiques au format.
+Mais nous pouvons aussi simplement utiliser `read.csv()`pour lire un fichier csv, avec la séparation "," et "." pour les décimales.
+Dans les pays où "," est utilisé pour les décimales, les fichiers csv utilisent ";" comme séparateur.
 Dans ce cas, l'utilisation de `read.csv2()` serait nécessaire.
 Lorsque l'on travaille avec des fichiers délimités par des tabulations, les fonctions `read.delim()` et `read.delim2()`
 peuvent être utilisées avec "." et "," comme décimales respectivement.
 
-Après avoir importé nos données dans R , pour voir le contenu du cadre de données, il suffit de taper le nom de l'objet comme nous l'avons fait précédemment.
+Après avoir importé nos données dans R, pour voir le contenu du jeu de données, il suffit de taper le nom de l'objet comme nous l'avons fait précédemment.
 **MAIS** avant de faire cela, réfléchissez à la raison pour laquelle vous faites cela.
-Si votre cadre de données est autre chose que minuscule, tout ce que vous allez faire, c'est remplir votre Console de données.
+Si votre jeu de données est autre chose que minuscule, tout ce que vous allez faire, c'est remplir votre Console de données.
 Ce n'est pas comme si vous pouviez facilement vérifier s'il y a des erreurs ou si vos données ont été importées correctement.
 Une bien meilleure solution consiste à utiliser notre vieil ami, la fonction `str()` pour obtenir un résumé compact et informatif de votre base de données.
 
 ```{r}
 #| label: df3
 #| echo: true
-str(unicorns)
+str(licornes)
 ```
 
-Ici, nous voyons que `unicorns` est un objet "data.frame" qui contient 96 lignes et 8 variables (colonnes).
+Ici, nous voyons que `licornes` est un objet "data.frame" qui contient 96 lignes et 8 variables (colonnes).
 Chacune des variables est répertoriée avec sa classe de données et les 10 premières valeurs.
-Comme nous l'avons mentionné précédemment dans ce chapitre, il peut être très pratique de copier et de coller ces données dans votre script R sous la forme d'un bloc de commentaires afin de pouvoir s'y référer ultérieurement.
+Comme nous l'avons mentionné précédemment dans ce chapitre, il peut être très pratique de copier/coller ces données dans votre script R sous la forme d'un bloc de commentaires afin de pouvoir s'y référer ultérieurement.
 
 Notez également que vos variables de type chaîne de caractères (`care` et `food`) ont été importées en tant que facteurs parce que nous avons utilisé l'argument `stringsAsFactors = TRUE`.
-Si ce n'est pas ce que vous voulez, vous pouvez l'éviter en utilisant l'argument `stringsAsFactors = FALSE` ou à partir de la version 4.0.0 de R, vous pouvez simplement ne pas utiliser cet argument en tant que `stringsAsFactors = FALSE` est la valeur par défaut.
+Si ce n'est pas ce que vous voulez, vous pouvez utiliser l'argument `stringsAsFactors = FALSE` ou à partir de la version 4.0.0 de R, vous pouvez simplement ne pas utiliser cet argument car `stringsAsFactors = FALSE` est la valeur par défaut.
+
+Nous pouvons donc aussi extraire le jeu de données depuis un fichier texte (.txt) grâce à la fonction `read.delim` : <!-- JULIEN - Extra -->
 
 ```{r}
 #| label: df4
 #| echo: true
-unicorns <- read.delim(file = "data/unicorns.txt")
-str(unicorns)
+licornes <- read.delim(file = "data/unicorns.txt")
+str(licornes)
 ```
 
-Si nous voulions simplement voir les noms de nos variables (colonnes) dans la base de données, nous pourrions utiliser l'argument `names()` qui renverra un vecteur de caractères contenant les noms des variables.
+Si nous voulons simplement voir les noms de nos variables (colonnes) dans le jeu de données, nous pouvons utiliser l'argument `names()` qui renverra un vecteur de caractères contenant les noms des variables.
 
 ```{r}
 #| label: df4.1
 #| echo: true
-names(unicorns)
+names(licornes)
 ```
 
-Vous pouvez même importer des fichiers de feuilles de calcul de MS Excel ou d'autres logiciels de statistiques directement dans R, mais nous vous conseillons d'éviter cette méthode dans la mesure du possible, car elle ne fait qu'ajouter une couche d'incertitude entre vous et vos données.
-À notre avis, il est presque toujours préférable d'exporter vos feuilles de calcul sous forme de fichiers délimités par des tabulations ou des virgules, puis de les importer dans R à l'aide de l'un des logiciels suivants `read.table()` fonction dérivée.
-Si vous tenez absolument à importer directement des données à partir d'un autre logiciel, vous devrez installer le programme `foreign` qui contient des fonctions permettant d'importer des fichiers Minitab, SPSS, Stata et SAS. Pour les feuilles de calcul MS Excel et LO Calc, quelques logiciels peuvent être utilisés.
+Vous pouvez même importer des feuilles de calcul de MS Excel ou d'autres logiciels de statistiques directement dans R, mais nous vous conseillons d'éviter cette méthode dans la mesure du possible, car elle ne fait qu'ajouter une couche d'incertitude entre vous et vos données.
+À notre avis, il est presque toujours préférable d'exporter vos feuilles de calcul sous forme de fichiers délimités par des tabulations (.txt) ou des virgules (.csv), puis de les importer dans R à l'aide de l'un des fonctions dérivées de `read.table()` (c-à-d. `read.delim()`, `read.csv()`, etc.).
+Si vous tenez absolument à importer directement des données à partir d'un autre logiciel, vous devrez installer le paquet `foreign` :package: qui contient des fonctions permettant d'importer des fichiers Minitab, SPSS, Stata et SAS. Pour les feuilles de calcul MS Excel et LO Calc, quelques paquets peuvent être utilisés.
 
 ### Frustrations courantes liées à l'importation
 
@@ -475,77 +477,84 @@ La première est que vous avez fait une erreur dans l'orthographe du nom de fich
 Une autre erreur fréquente est d'avoir oublié d'inclure l'extension du fichier dans le nom du fichier (par ex.
 `.txt`).
 Enfin, le fichier ne se trouve pas à l'endroit indiqué ou vous avez utilisé un chemin d'accès incorrect.
-L'utilisation de projets RStudio (@sec-rsprojs) et d'une structure de répertoire logique (@sec-dir-struc) permet d'éviter ce type d'erreurs.
+L'utilisation de projets RStudio (@sec-rsprojs) et d'une structure de répertoire logique (@sec-dir-struc) permet d'éviter (limiter) ce type d'erreurs.
 
 Une autre erreur très fréquente est d'oublier d'inclure l'élément `header = TRUE` lorsque la première ligne des données contient des noms de variables.
-Par exemple, si nous omettons cet argument lorsque nous importons notre fichier `unicorns.txt` tout semble correct au début (pas de message d'erreur au moins)
+Par exemple, si nous omettons cet argument lorsque nous importons notre fichier `unicorns.txt` tout semble correct au début (pas de message d'erreur au moins).
 
 ```{r}
 #| label: df6
 #| echo: true
-unicorns_bad <- read.table(file = "data/unicorns.txt", sep = "\t")
+licornes_erreur <- read.table(file = "data/unicorns.txt", sep = "\t")
 ```
 
-mais lorsque nous jetons un coup d'œil à notre cadre de données en utilisant `str()`
+mais lorsque nous jetons un coup d'œil à notre jeu de données en utilisant `str()`
 
 ```{r}
 #| label: df7
 #| echo: true
-str(unicorns_bad)
+str(licornes_erreur)
 ```
 
-Nous constatons un problème évident, toutes nos variables ont été importées en tant que facteurs et nos variables sont nommées `V1`, `V2`, `V3` ...
+Nous constatons un problème évident, toutes nos variables ont été importées en tant que facteurs et sont nommées `V1`, `V2`, `V3` ...
 `V8`.
-Le problème vient du fait que nous n'avons pas dit au `read.table()` que la première ligne contient les noms des variables et qu'elle les traite donc comme des données.
-Dès que nous avons une seule chaîne de caractères dans l'un de nos vecteurs de données, R traite les vecteurs comme des données de type caractère (rappelez-vous que tous les éléments d'un vecteur doivent contenir le même type de données (@sec-scal-vecs)).
+Le problème vient du fait que nous n'avons pas dit au `read.table()` que la première ligne contient les noms des variables et donc elle les traite comme des données.
+Dès que nous avons une chaîne de caractères dans l'une de nos variable, R les traite comme des données de type caractère (rappelez-vous que tous les éléments d'un vecteur doivent contenir le même type de données (@sec-scal-vecs)).
 
-Ce n'est qu'un argument de plus à utiliser `read.csv()` ou `read.delim()` avec des valeurs par défaut appropriées pour les arguments.
+Ce n'est qu'un argument de plus pour utiliser `read.csv()` ou `read.delim()` avec des valeurs par défaut appropriées pour les arguments.
 
 ### Autres options d'importation {#sec-import-other}
 
 Il existe de nombreuses autres fonctions permettant d'importer des données à partir d'une variété de sources et de formats.
 La plupart de ces fonctions sont contenues dans des paquets que vous devez installer avant de les utiliser.
-Vous trouverez ci-dessous une liste des packages et des fonctions les plus utiles.
+Vous trouverez ci-dessous une liste des paquets et des fonctions les plus utiles.
 
-Les paquets `fread()` du paquet `read.table` est idéale pour importer rapidement et efficacement de grands fichiers de données (beaucoup plus rapidement que la fonction `read.table()` ).
-L'un des aspects les plus intéressants du package `fread()` est qu'elle détecte automatiquement la plupart des arguments que vous devriez normalement spécifier (comme `sep =` etc.)
-L'une des choses que vous devez prendre en compte est que la fonction `fread()` renverra un `data.table` et non un `data.frame` comme ce serait le cas avec la fonction `read.table()` fonction.
-Ce n'est généralement pas un problème, car vous pouvez passer une valeur de `data.table` à n'importe quelle fonction qui n'accepte que des objets `data.frame` objets.
-Pour en savoir plus sur les différences entre `data.table` et `data.frame` voir [ici][tableau de données] .
+Les paquets `fread()` du paquet `data.table` :package: <!-- JULIEN - Tu t'es trompé (ou alors ça à changé de nom récemment) le package c'est data.table pas read.table, il faut aussi corriger la version anglaise --> est idéale pour importer rapidement et efficacement de grands fichiers de données (beaucoup plus rapidement que la fonction `read.table()`). 
+L'un des aspects les plus intéressants de la fonction `fread()` est qu'elle détecte automatiquement la plupart des arguments que vous devriez normalement spécifier (comme `sep =` etc.)
+Une choses à prendre en compte cependant est que la fonction `fread()` renverra un objet de type `data.table` et non `data.frame` comme ce serait le cas avec la fonction `read.table()`.
+Ce n'est généralement pas un problème, car vous pouvez passer un objet `data.table` à n'importe quelle fonction n'acceptant normalement que des objets `data.frame`.
+Pour en savoir plus sur les différences entre `data.table` et `data.frame` voir [ici][data-table] .
 
 ```{r}
 #| label: df8
 #| echo: true
 #| eval: false
-library(read.table)
-all_data <- fread(file = "data/unicorns.txt")
+library(data.table)
+toutes_donnees <- fread(file = "data/unicorns.txt")
 ```
 
-Diverses fonctions du `readr` sont également très efficaces pour lire des fichiers de données volumineux.
-Les fonctions `readr` fait partie du paquet ' [tidyverse][tidyverse] ' et fournit de nombreuses fonctions équivalentes à celles de la base R pour l'importation de données.
-Le programme `readr` sont utilisées de la même manière que les fonctions `read.table()` ou `read.csv()` et la plupart des arguments sont les mêmes (voir `?readr::read_table` pour plus de détails).
+Diverses fonctions du paquet `readr` :package: sont également très efficaces pour lire des fichiers de données volumineux.
+Le paquet `readr` :package: fait partie de la collection de paquet '[tidyverse][tidyverse]' et fournit de nombreuses fonctions équivalentes à celles de la version de base de R pour l'importation de données.
+Les fonctions de `readr` sont utilisées de la même manière que les fonctions `read.table()` ou `read.csv()` et la plupart des arguments sont les mêmes (voir `?readr::read_table` pour plus de détails).
 Il existe cependant quelques différences.
-Par exemple, lors de l'utilisation de l'option `read_table()` la fonction `header = TRUE` est remplacé par `col_names = TRUE` et la fonction renvoie un `tibble` qui est l'équivalent dans le tidyverse d'un objet de classe `data.frame` (voir [ici][tibbles] pour les différences).
+Par exemple, lors de l'utilisation de l'option `read_table()` l'argument `header = TRUE` est remplacé par `col_names = TRUE` et la fonction renvoie un objet de classe `tibble` qui est l'équivalent dans le tidyverse d'un objet de classe `data.frame` (voir [ici][tibbles] pour les différences).
+
+::: callout-warning
+Attention ! certain.e.s de vos modèles ou fonctions, etc. peuvent ne pas fonctionner ou fonctionner différement à cause de ça (vérifier/reconvertir votre jeu de données au format `data.frame` peut vous économiser du temps de débeugage). <!-- JULIEN - EXTRA, j'ai eu un problème de ce type vis-à-vis des pédigrés pour le papier sur le poids des marmottes -->
+:::
+
 
 ```{r}
 #| label: df9
 #| echo: true
 #| eval: false
 library(readr)
-# import white space delimited files
-all_data <- read_table(file = "data/unicorns.txt", col_names = TRUE)
+# importation de fichiers délimités par des espaces blancs
+toutes_donnees <- read_table(file = "data/unicorns.txt", col_names = TRUE)
 
-# import comma delimited files
-all_data <- read_csv(file = "data/unicorns.txt")
+# importation de fichiers délimités par des virgules
+toutes_donnees <- read_csv(file = "data/unicorns.csv")
 
-# import tab delimited files
-all_data <- read_delim(file = "data/unicorns.txt", delim = "\t")
+# importation de fichiers délimités par des tabulations
+toutes_donnees <- read_delim(file = "data/unicorns.txt", delim = "\t")
 
-# or use
-all_data <- read_tsv(file = "data/unicorns.txt")
+# ou utilisez
+toutes_donnees <- read_tsv(file = "data/unicorns.txt")
 ```
 
-Si votre fichier de données est énorme, la fonction `ff` et `bigmemory` peuvent être utiles car ils contiennent tous deux des fonctions d'importation capables de stocker des données volumineuses de manière efficace en termes de mémoire.
+<!-- JULIEN - Attention tu avais mis le fichier `.txt` pour le `read_csv` il faut le corriger aussi dans la version anglaise -->
+
+Si votre fichier de données est énorme, les paquets `ff` :package: et `bigmemory` :package: peuvent être utiles car ils contiennent tous deux des fonctions d'importation capables de stocker des données volumineuses de manière efficace en termes de mémoire.
  Pour en savoir plus sur ces fonctions [ici][ff] et [ici][bigmem] .
 
 ## Trames de données
