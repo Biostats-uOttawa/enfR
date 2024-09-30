@@ -557,41 +557,41 @@ toutes_donnees <- read_tsv(file = "data/unicorns.txt")
 Si votre fichier de données est énorme, les paquets `ff` :package: et `bigmemory` :package: peuvent être utiles car ils contiennent tous deux des fonctions d'importation capables de stocker des données volumineuses de manière efficace en termes de mémoire.
  Pour en savoir plus sur ces fonctions [ici][ff] et [ici][bigmem] .
 
-## Trames de données
+## Manipuler des jeux de données
 
-Maintenant que vous avez réussi à importer vos données d'un fichier externe dans R, notre prochaine tâche est de faire quelque chose d'utile avec nos données.
-Travailler avec des données est une compétence fondamentale que vous devrez développer et avec laquelle vous devrez vous sentir à l'aise, car vous en ferez probablement beaucoup au cours de n'importe quel projet.
+Maintenant que vous avez réussi à importer vos données dans R depuis un fichier externe, la prochaine étape est de faire quelque chose d'utile avec nos données.
+La manipulation de données est une compétence fondamentale que vous devrez développer et avec laquelle vous devrez vous sentir à l'aise, car vous en ferez probablement beaucoup au cours de n'importe quel projet.
 La bonne nouvelle, c'est que R est particulièrement efficace pour manipuler, résumer et visualiser les données.
-La manipulation des données (souvent connue sous le nom de "data wrangling" ou "munging") en R peut sembler un peu intimidante au début pour le nouvel utilisateur, mais si vous suivez quelques règles logiques simples, vous prendrez rapidement le coup de main, surtout avec un peu de pratique.
+La manipulation de données (souvent connue sous le nom de "data wrangling" ou "munging") en R peut sembler un peu intimidante au début pour un nouvel utilisateur, mais si vous suivez quelques règles logiques simples, vous prendrez rapidement le coup de main, surtout avec un peu de pratique.
 
-Rappelons la structure de la `unicorns` que nous avons importée dans la section précédente.
+Rappelons la structure du jeu de données `licornes` que nous avons importée dans la section précédente :
 
 ```{r}
 #| label: dw1
 #| echo: true
-unicorns <- read.table(file = "data/unicorns.txt", header = TRUE, sep = "\t")
-str(unicorns)
+licornes <- read.table(file = "data/unicorns.txt", header = TRUE, sep = "\t")
+str(licornes)
 ```
 
-Pour accéder aux données de n'importe quelle variable (colonne) de notre cadre de données, nous pouvons utiliser la fonction `$` pour accéder aux données de n'importe quelle variable (colonne) de notre cadre de données.
-Par exemple, pour accéder à la `height` dans notre `unicorns` nous pouvons utiliser `unicorns$height`.
-Cela indique à R que le `height` est contenue dans le cadre de données `unicorns`.
+Pour accéder aux données de n'importe quelle variable (colonne) de notre jeu de données, nous pouvons utiliser la notation `$`.
+Par exemple, pour accéder à la variable `height` dans le jeu de données `licornes` on écrit `licornes$height`.
+Cela indique à R que la variable `height` est contenue dans le jeu de données `licornes`.
 
 ```{r}
 #| label: dw2
 #| echo: true
-unicorns$height
+licornes$height
 ```
 
-Cette opération renvoie un vecteur de la variable `height` données.
-Si nous le souhaitons, nous pouvons assigner ce vecteur à un autre objet et faire des choses avec, comme calculer une moyenne ou obtenir un résumé de la variable à l'aide de la fonction `summary()` fonction.
+Cette opération renvoie un vecteur des données de la variable `height`.
+Si nous le souhaitons, nous pouvons assigner ce vecteur à un autre objet et faire d'autres choses avec, comme calculer une moyenne ou obtenir un résumé de la variable à l'aide de la fonction `summary()` :
 
 ```{r}
 #| label: dw3
 #| echo: true
-f_height <- unicorns$height
-mean(f_height)
-summary(f_height)
+f_taille <- licornes$height
+mean(f_taille)
+summary(f_taille)
 ```
 
 Ou si nous ne voulons pas créer un objet supplémentaire, nous pouvons utiliser des fonctions "à la volée" pour afficher uniquement la valeur dans la console.
@@ -599,57 +599,57 @@ Ou si nous ne voulons pas créer un objet supplémentaire, nous pouvons utiliser
 ```{r}
 #| label: dw3.1
 #| echo: true
-mean(unicorns$height)
-summary(unicorns$height)
+mean(licornes$height)
+summary(licornes$height)
 ```
 
-Tout comme nous l'avons fait avec les vecteurs (@sec-vectors), nous pouvons également accéder aux données dans des cadres de données en utilisant le crochet `[ ]` à l'aide de la notation entre crochets.
+Tout comme nous l'avons fait avec les vecteurs (@sec-vectors), nous pouvons également accéder aux données contenues dans le jeu de données en utilisant les crochets `[ ]`.
 Cependant, au lieu d'utiliser un seul index, nous devons maintenant utiliser deux index, l'un pour spécifier les lignes et l'autre pour les colonnes.
-Pour ce faire, nous pouvons utiliser la notation `my_data[rows, columns]` où `rows` et `columns` sont des indices et `my_data` est le nom du cadre de données.
+Pour ce faire, nous pouvons utiliser la notation `mes_donnees[ligne, colonne]` où `ligne` et `colonne` sont des indices et `mes_donnees` est le nom du jeu de données.
 Une fois encore, comme pour nos vecteurs, nos index peuvent être positionnels ou résulter d'un test logique.
 
 ### Index positionnels
 
-Pour utiliser les index positionnels, il suffit d'écrire la position des lignes et des colonnes que l'on veut extraire à l'intérieur de la balise `[ ]`.
-Par exemple, si, pour une raison quelconque, nous voulons extraire la première valeur (1^e^ ligne) de l'élément `height` variable (4^e^ colonne)
+Pour utiliser les index positionnels, il suffit d'écrire la position des lignes et des colonnes que l'on veut extraire à l'intérieur des crochets `[ ]`.
+Par exemple, si, pour une raison quelconque, nous voulons extraire la première valeur (1^ère^ ligne) de la variable `height` (4^e^ colonne) :
 
 ```{r}
 #| label: dw4
 #| echo: true
-unicorns[1, 4]
+licornes[1, 4]
 
-# this would give you the same
-unicorns$height[1]
+# on peut obtenir le même résultat avec cette notation :
+licornes$height[1]
 ```
 
-Nous pouvons également extraire des valeurs de plusieurs lignes ou colonnes en spécifiant ces index sous forme de vecteurs à l'intérieur de la fonction `[ ]`.
-Pour extraire les 10 premières lignes et les 4 premières colonnes, il suffit de fournir un vecteur contenant une séquence de 1 à 10 pour l'index des lignes (`1:10`) et un vecteur de 1 à 4 pour l'index des colonnes (`1:4`).
+Nous pouvons également extraire les valeurs de plusieurs lignes ou colonnes en spécifiant ces index sous forme de vecteurs à l'intérieur des crochets `[ ]`.
+Pour extraire les 10 premières lignes et les 4 premières colonnes, il suffit de fournir un vecteur contenant une séquence de 1 à 10 pour l'index des lignes (`1:10`) et un vecteur de 1 à 4 pour l'index des colonnes (`1:4`) :
 
 ```{r}
 #| label: dw5
 #| echo: true
-unicorns[1:10, 1:4]
+licornes[1:10, 1:4]
 ```
 
-Si les lignes et les colonnes ne sont pas séquentielles, nous pouvons fournir des vecteurs de positions à l'aide de la fonction `c()` fonction.
-Pour extraire les 1^e^, 5^e^, 12^e^, 30^e^ lignes des 1^e^, 3^e^, 6^e^ et 8^e^ colonnes
+Si les lignes et les colonnes ne sont pas séquentielles, nous pouvons fournir des vecteurs de positions à l'aide de la fonction `c()`.
+Pour extraire les 1^ère^, 5^e^, 12^e^ et 30^e^ lignes des 1^ère^, 3^e^, 6^e^ et 8^e^ colonnes :
 
 ```{r}
 #| label: dw6
 #| echo: true
-unicorns[c(1, 5, 12, 30), c(1, 3, 6, 8)]
+licornes[c(1, 5, 12, 30), c(1, 3, 6, 8)]
 ```
 
 Tout ce que nous faisons dans les deux exemples ci-dessus est de créer des vecteurs de positions pour les lignes et les colonnes que nous voulons extraire.
-Pour ce faire, nous avons utilisé les compétences que nous avons développées dans @sec-funcs lorsque nous avons généré des vecteurs à l'aide de la fonction `c()` ou en utilisant la fonction `:` ou en utilisant la notation
+Pour ce faire, nous avons utilisé les compétences que nous avons développées dans la @sec-funcs lorsque nous avons généré des vecteurs à l'aide de la fonction `c()` ou en utilisant la notation `:`.
 
 Mais qu'en est-il si nous voulons extraire toutes les lignes ou toutes les colonnes ? Il serait extrêmement fastidieux de devoir générer des vecteurs pour toutes les lignes ou pour toutes les colonnes.
 Heureusement, R dispose d'un raccourci.
-Si vous ne spécifiez pas d'index de ligne ou de colonne dans la fonction `[ ]` R interprète cela comme signifiant que vous voulez toutes les lignes ou toutes les colonnes.
-Par exemple, pour extraire les 4 premières lignes et toutes les colonnes du fichier `unicorns` cadre de données
+Si vous ne spécifiez pas d'index de ligne ou de colonne dans les crochets `[ ]` R interprète cela comme signifiant que vous voulez toutes les lignes ou toutes les colonnes.
+Par exemple, pour extraire les 4 premières lignes et toutes les colonnes du jeu de données `licornes` :
 
 ```{r}
-unicorns[1:4, ]
+licornes[1:4, ]
 ```
 
 ou toutes les lignes et les 3 premières colonnes [^1] .
@@ -663,83 +663,83 @@ unicorns[, 1:3]
 ```{r}
 #| label: dw8
 #| echo: false
-rbind(head(unicorns[, 1:3], n = 5), tail(unicorns[, 1:3], n = 5))
+rbind(head(licornes[, 1:3], n = 5), tail(licornes[, 1:3], n = 5))
 ```
 
 Nous pouvons même utiliser des index de position négatifs pour exclure certaines lignes et colonnes.
-Par exemple, extrayons toutes les lignes à l'exception des 85 premières lignes et toutes les colonnes à l'exception des 4^e^, 7^e^ et 8^e^ colonnes.
+Par exemple, extrayons toutes les lignes à l'exception des 85 premières et toutes les colonnes à l'exception de la 4^e^, 7^e^ et 8^e^.
 Remarquez que nous devons utiliser `-()` lorsque nous générons nos vecteurs de position de ligne.
 Si nous avions simplement utilisé `-1:85` cela générerait en fait une séquence régulière de -1 à 85, ce qui n'est pas ce que nous voulons (nous pouvons bien sûr utiliser `-1:-85`).
 
 ```{r}
 #| label: dw9
 #| echo: true
-unicorns[-(1:85), -c(4, 7, 8)]
+licornes[-(1:85), -c(4, 7, 8)]
 ```
 
-Outre l'utilisation d'un index de position pour extraire des colonnes particulières (variables), nous pouvons également nommer les variables directement en utilisant le crochet `[ ]` (crochets).
-Par exemple, extrayons les 5 premières lignes et les variables `care`, `food` et `mane_size`.
-Au lieu d'utiliser `unicorns[1:5, c(1, 2, 6)]` nous pouvons utiliser
+Outre l'utilisation d'un index de position pour extraire des colonnes (variables) particulières, nous pouvons également nommer les variables directement en utilisant les crochet `[ ]`.
+Par exemple, extrayons les 5 premières lignes des variables `care`, `food` et `mane_size`.
+Au lieu d'utiliser `licornes[1:5, c(1, 2, 6)]` nous pouvons utiliser :
 
 ```{r}
 #| label: dw10
 #| echo: true
-unicorns[1:5, c("p_care", "food", "mane_size")]
+licornes[1:5, c("p_care", "food", "mane_size")]
 ```
 
-Nous utilisons souvent cette méthode de préférence à l'index positionnel pour sélectionner les colonnes, car elle nous donnera toujours ce que nous voulons même si nous avons changé l'ordre des colonnes dans notre cadre de données pour une raison quelconque.
+En général, on préférera utiliser cette méthode plutôt que l'index positionnel pour sélectionner les colonnes, car elle nous donnera toujours ce que nous voulons même si nous avons changé l'ordre des colonnes dans notre jeu de données pour une raison quelconque.
 
 ### Index logiques
 
-Tout comme nous l'avons fait avec les vecteurs, nous pouvons également extraire des données de notre cadre de données sur la base d'un test logique.
-Nous pouvons utiliser tous les opérateurs logiques que nous avons utilisés pour nos exemples de vecteurs. Si ceux-ci vous ont échappé, jetez un coup d'œil à @sec-logical-index pour vous rafraîchir la mémoire.
-Extrayons toutes les lignes où `height` est supérieur à 12 et extrayons toutes les colonnes par défaut (rappelez-vous, si vous n'incluez pas d'index de colonne après la virgule, cela signifie toutes les colonnes).
+Tout comme nous l'avons fait avec les vecteurs, nous pouvons également extraire des données de notre jeu de données sur la base d'un test logique.
+Nous pouvons utiliser tous les opérateurs logiques que nous avons utilisés dans les exemples des vecteurs. Si ceux-ci vous ont échappé, jetez un coup d'œil à la @sec-logical-index pour vous rafraîchir la mémoire.
+Extrayons toutes les lignes pour lesquelles la variable `height` a une valeur supérieure à 12 et extrayons toutes les colonnes par défaut (rappelez-vous, si vous n'incluez pas d'index de colonne après la virgule, cela signifie toutes les colonnes).
 
 ```{r}
 #| label: dw11
 #| echo: true
-big_unicorns <- unicorns[unicorns$height > 12, ]
-big_unicorns
+grandes_cornes <- licornes[licornes$height > 12, ]
+grandes_cornes
 ```
 
-Remarquez dans le code ci-dessus que nous devons utiliser l'élément `unicorns$height` pour le test logique.
-Si nous nommions simplement le test `height` sans le nom du cadre de données, nous recevrions une erreur nous indiquant que R ne pouvait pas trouver la variable `height`.
-La raison en est que la variable `height` n'existe qu'à l'intérieur de la variable `unicorns` vous devez donc indiquer à R où elle se trouve exactement.
+Remarquez dans le code ci-dessus qu'il faut utiliser l'élément `licornes$height` pour le test logique.
+Si nous nommions simplement la variable `height` sans le nom du jeu de données, nous recevrions une erreur nous indiquant que R ne peut pas trouver la variable `height`.
+La raison en est que la variable `height` n'existe qu'à l'intérieur du jeu de données `licornes` vous devez donc indiquer à R où elle se trouve exactement.
 
 ```r
-big_unicorns <- unicorns[height > 12, ]
-Error in `[.data.frame`(unicorns, height > 12, ) : 
+grandes_cornes <- licornes[height > 12, ]
+Error in `[.data.frame`(licornes, height > 12, ) : 
   object 'height' not found
 ```
 
-Comment cela fonctionne-t-il ? Le test logique est le suivant `unicorns$height > 12` et R n'extraira que les lignes qui satisfont à cette condition logique.
+Comment cela fonctionne-t-il ? Le test logique est le suivant `licornes$height > 12` et R n'extraira que les lignes qui satisfont à cette condition logique.
 Si nous regardons la sortie de la seule condition logique, vous pouvez voir qu'elle renvoie un vecteur contenant `TRUE` si `height` est supérieur à 12 et `FALSE` si `height` n'est pas supérieur à 12.
 
 ```{r}
 #| label: dw13
 #| echo: true
-unicorns$height > 12
+licornes$height > 12
 ```
 
 Notre indice de ligne est donc un vecteur contenant soit `TRUE` ou `FALSE` et seulement les lignes qui sont `TRUE` sont sélectionnées.
 
-D'autres opérateurs couramment utilisés sont présentés ci-dessous
+D'autres opérateurs couramment utilisés sont présentés ci-dessous :
 
 ```{r}
 #| label: dw14
 #| echo: true
 #| eval: false
-unicorns[unicorns$height >= 6, ] # values greater or equal to 6
+licornes[licornes$height >= 6, ] # valeurs supérieures ou égales à 6
 
-unicorns[unicorns$height <= 6, ] # values less than or equal to 6
+licornes[licornes$height <= 6, ] # valeurs inférieures ou égales à 6
 
-unicorns[unicorns$height == 8, ] # values  equal to 8
+licornes[licornes$height == 8, ] # valeurs égales à 8
 
-unicorns[unicorns$height != 8, ] # values  not equal to 8
+licornes[licornes$height != 8, ] # valeurs différentes de 8
 ```
 
 Nous pouvons également extraire des lignes en fonction de la valeur d'une chaîne de caractères ou d'un niveau de facteur.
-Extrayons toutes les lignes où la valeur `food` est égal à `high` (là encore, nous extrairons toutes les colonnes).
+Extrayons toutes les lignes pour lesquelles la valeur de la variable `food` est égal à `high` (là encore, nous extrairons toutes les colonnes).
 Remarquez que la double égalité `==` doit être utilisé pour un test logique et que la chaîne de caractères doit être placée entre guillemets simples ou doubles (c.-à-d.
 `"high"`).
 
@@ -747,64 +747,65 @@ Remarquez que la double égalité `==` doit être utilisé pour un test logique 
 #| label: dw15
 #| echo: true
 #| eval: true
-food_high <- unicorns[unicorns$food == "high", ]
-rbind(head(food_high, n = 10), tail(food_high, n = 10))
+nourriture_bcp <- licornes[licornes$food == "high", ]
+rbind(head(nourriture_bcp, n = 10), tail(nourriture_bcp, n = 10))
 ```
 
-Ou nous pouvons extraire toutes les lignes où `food` n'est pas égal à `medium` (en utilisant `!=`) et ne renvoie que les colonnes 1 à 4.
+Ou nous pouvons extraire toutes les lignes où `food` est différent de `medium` (en utilisant `!=`) et ne sélectionner que les colonnes 1 à 4.
 
 ```{r}
 #| label: dw16
 #| echo: true
 #| eval: true
-food_not_medium <- unicorns[unicorns$food != "medium", 1:4]
-rbind(head(food_not_medium, n = 10), tail(food_not_medium, n = 10))
+nourriture_pas_moyenne <- licornes[licornes$food != "medium", 1:4]
+rbind(head(nourriture_pas_moyenne, n = 10), tail(nourriture_pas_moyenne, n = 10))
 ```
 
-Nous pouvons accroître la complexité de nos tests logiques en les combinant avec des [des expressions booléennes][booléenne] comme nous l'avons fait pour les objets vectoriels.
-Par exemple, pour extraire toutes les lignes où `height` est supérieur ou égal à `6` ET `food` est égal à `medium` ET `care` est égal à `no_care` nous combinons une série d'expressions logiques avec la fonction `&` symbole.
+Nous pouvons accroître la complexité de nos tests logiques en les combinant avec des [des expressions booléennes][boolean] comme nous l'avons fait pour les objets vectoriels.
+Par exemple, pour extraire toutes les lignes où la taille (`height`) est supérieure ou égale à `6` ET `food` est égal à `medium` ET `care` est égal à `no_care` nous combinons une série d'expressions logiques avec le symbole `&` :
 
 ```{r}
 #| label: dw17
 #| echo: true
-low_no_care_heigh6 <- unicorns[unicorns$height >= 6 & unicorns$food == "medium" &
-  unicorns$p_care == "no_care", ]
-low_no_care_heigh6
+faible_soins_non_taille6 <- licornes[licornes$height >= 6 &
+                                       licornes$food == "medium" &
+                                       licornes$p_care == "no_care", ]
+faible_soins_non_taille6
 ```
 
-Pour extraire des lignes sur la base d'une expression booléenne "OR", nous pouvons utiliser le symbole `|` pour extraire des lignes sur la base d'une expression booléenne "OU".
-Extrayons toutes les lignes où `height` est supérieur à 12,3 OU inférieur à 2,2.
+Pour extraire des lignes sur la base d'une expression booléenne "OR" ("OU"), nous pouvons utiliser le symbole `|`.
+Extrayons toutes les lignes où la taille (`height`) est supérieure à 12,3 OU inférieure à 2,2.
 
 ```{r}
 #| label: dw17.1
 #| echo: true
-height2.2_12.3 <- unicorns[unicorns$height > 12.3 | unicorns$height < 2.2, ]
-height2.2_12.3
+taille2.2_12.3 <- licornes[licornes$height > 12.3 | licornes$height < 2.2, ]
+taille2.2_12.3
 ```
 
-Une autre méthode pour sélectionner des parties d'un bloc de données sur la base d'une expression logique consiste à utiliser la fonction `subset()` au lieu de la fonction `[ ]`.
-L'avantage d'utiliser `subset()` est qu'il n'est plus nécessaire d'utiliser la fonction `$` pour spécifier les variables à l'intérieur du cadre de données, car le premier argument de la fonction est le nom du cadre de données à subdiviser.
-L'inconvénient est que `subset()` est moins souple que la notation `[ ]` est moins flexible que la notation
+Une autre méthode pour sélectionner des parties d'un jeu de données sur la base d'une expression logique consiste à utiliser la fonction `subset()` au lieu des crochets `[ ]`.
+L'avantage d'utiliser `subset()` est qu'il n'est plus nécessaire d'utiliser le symbole `$` pour spécifier des variables à l'intérieur du jeu de données, car le premier argument de la fonction est le nom du jeu de données à subdiviser.
+L'inconvénient est que `subset()` est moins flexible que la notation `[ ]`.
 
 ```{r}
 #| label: dw18
 #| echo: true
-care_med_2 <- subset(unicorns, p_care == "care" & food == "medium" & block == 2)
-care_med_2
+soins_moy_2 <- subset(licornes, p_care == "care" & food == "medium" & block == 2)
+soins_moy_2
 ```
 
-Et si vous ne voulez que certaines colonnes, vous pouvez utiliser l'option `select =` argument.
+Et si vous ne voulez que certaines colonnes, vous pouvez utiliser l'arguement `select =` :
 
 ```{r}
 #| label: dw19
 #| echo: true
-uni_p_care <- subset(unicorns, p_care == "care" & food == "medium" & block == 2,
+uni_p_care <- subset(licornes, p_care == "care" & food == "medium" & block == 2,
   select = c("p_care", "food", "mane_size")
 )
 uni_p_care
 ```
 
-### Commande de cadres de données
+### Ordonner un jeu de données
 
 Rappelez-vous lorsque nous avons utilisé la fonction `order()` pour ordonner un vecteur en fonction de l'ordre d'un autre vecteur (dans @sec-vec-ord).
 Cette fonction est très utile si vous souhaitez réorganiser les lignes de votre base de données.
