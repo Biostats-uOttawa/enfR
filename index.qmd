@@ -100,6 +100,28 @@ Notes
 :::
 
 ## Qui sommes-nous ? {#sec-qui}
+```{r}
+#| label: crop-julien
+#| echo: false
+#| eval: false
+
+crop_fn <- function(author, overwrite = FALSE){
+  if (!file.exists(paste0("images/author/", author, "_circ.jpg"))|overwrite == TRUE) {
+    if(file.exists(paste0("images/author/", author, ".jpg"))){
+      cropcircles::crop_circle(
+        paste0("images/author/", author, ".jpg"),
+        to = paste0("images/author/", author, "_circ.jpg")
+      )
+    } else {
+      file.copy("images/author/default_circ.jpg", paste0("images/author/", author, "_circ.jpg"))
+    }
+      cat("generated cropped circle image for", author, "as file:", paste0("/images/author/", author, "_circ.jpg"))
+  } else {
+ cat("nothing happened", paste0("/images/author/", author, "_circ.jpg"), "already exist")
+  }
+}
+
+```
 
 :::::: {#sec-julien layout="[29, -1, 70]"}
 ![](images/author/julien_circ.jpg){fig-align="center" width="100%"}
@@ -133,7 +155,7 @@ Notes
 
 
 :::::: {#sec-augustin layout="[29, -1, 70]"}
-![](images/author/default_circ.jpg){fig-align="center" width="100%"}
+![](images/author/augustin_circ.jpg){fig-align="center" width="100%"}
 
 <div>
 
