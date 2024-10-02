@@ -341,7 +341,7 @@ Si vous souhaitez suivre en même temps que le livre, vous pouvez télécharger 
 knitr::include_graphics(path = "images/data/libre_off.png")
 ```
 
-Pour ceux d'entre vous qui ne connaissent pas le format de fichier délimité par des **tabulations** <!-- JULIEN - C'est pas plutôt délimité par des virgules ?-->, cela signifie simplement que les données des différentes colonnes sont séparées par le caractère "," et sont généralement enregistrées dans un fichier portant l'extension ".csv" (*Comma-Separated Values*).
+Pour ceux d'entre vous qui ne connaissent pas le format de fichier délimité par des **virgules**, cela signifie simplement que les données des différentes colonnes sont séparées par le caractère "," et sont généralement enregistrées dans un fichier portant l'extension ".csv" (*Comma-Separated Values*).
 
 
 Pour enregistrer une feuille de calcul en tant que fichier délimité par des virgules (CSV) dans LibreOffice Calc, sélectionnez `Fichier` -> `Enregistrer sous...` dans le menu principal.
@@ -438,7 +438,7 @@ Comme nous l'avons mentionné précédemment dans ce chapitre, il peut être tr�
 Notez également que vos variables de type chaîne de caractères (`care` et `food`) ont été importées en tant que facteurs parce que nous avons utilisé l'argument `stringsAsFactors = TRUE`.
 Si ce n'est pas ce que vous voulez, vous pouvez utiliser l'argument `stringsAsFactors = FALSE` ou à partir de la version 4.0.0 de R, vous pouvez simplement ne pas utiliser cet argument car `stringsAsFactors = FALSE` est la valeur par défaut.
 
-Nous pouvons donc aussi extraire le jeu de données depuis un fichier texte (.txt) grâce à la fonction `read.delim` : <!-- JULIEN - Extra -->
+Nous pouvons donc aussi extraire le jeu de données depuis un fichier texte (.txt) grâce à la fonction `read.delim()` :
 
 ```{r}
 #| label: df4
@@ -509,7 +509,7 @@ Il existe de nombreuses autres fonctions permettant d'importer des données à p
 La plupart de ces fonctions sont contenues dans des paquets que vous devez installer avant de les utiliser.
 Vous trouverez ci-dessous une liste des paquets et des fonctions les plus utiles.
 
-Les paquets `fread()` du paquet `data.table` :package: <!-- JULIEN - Tu t'es trompé (ou alors ça à changé de nom récemment) le package c'est data.table pas read.table, il faut aussi corriger la version anglaise --> est idéale pour importer rapidement et efficacement de grands fichiers de données (beaucoup plus rapidement que la fonction `read.table()`). 
+Les paquets `fread()` du paquet `data.table` :package: est idéale pour importer rapidement et efficacement de grands fichiers de données (beaucoup plus rapidement que la fonction `read.table()`). 
 L'un des aspects les plus intéressants de la fonction `fread()` est qu'elle détecte automatiquement la plupart des arguments que vous devriez normalement spécifier (comme `sep =` etc.)
 Une choses à prendre en compte cependant est que la fonction `fread()` renverra un objet de type `data.table` et non `data.frame` comme ce serait le cas avec la fonction `read.table()`.
 Ce n'est généralement pas un problème, car vous pouvez passer un objet `data.table` à n'importe quelle fonction n'acceptant normalement que des objets `data.frame`.
@@ -530,7 +530,7 @@ Il existe cependant quelques différences.
 Par exemple, lors de l'utilisation de l'option `read_table()` l'argument `header = TRUE` est remplacé par `col_names = TRUE` et la fonction renvoie un objet de classe `tibble` qui est l'équivalent dans le tidyverse d'un objet de classe `data.frame` (voir [ici][tibbles] pour les différences).
 
 ::: callout-warning
-Attention ! certain.e.s de vos modèles ou fonctions, etc. peuvent ne pas fonctionner ou fonctionner différement à cause de ça (vérifier/reconvertir votre jeu de données au format `data.frame` peut vous économiser du temps de débeugage). <!-- JULIEN - EXTRA, j'ai eu un problème de ce type vis-à-vis des pédigrés pour le papier sur le poids des marmottes -->
+Attention ! certain.e.s de vos modèles ou fonctions, etc. peuvent ne pas fonctionner ou fonctionner différement à cause de ça (vérifier/reconvertir votre jeu de données au format `data.frame` peut vous économiser du temps de débeugage).
 :::
 
 
@@ -551,8 +551,6 @@ toutes_donnees <- read_delim(file = "data/unicorns.txt", delim = "\t")
 # ou utilisez
 toutes_donnees <- read_tsv(file = "data/unicorns.txt")
 ```
-
-<!-- JULIEN - Attention tu avais mis le fichier `.txt` pour le `read_csv` il faut le corriger aussi dans la version anglaise -->
 
 Si votre fichier de données est énorme, les paquets `ff` :package: et `bigmemory` :package: peuvent être utiles car ils contiennent tous deux des fonctions d'importation capables de stocker des données volumineuses de manière efficace en termes de mémoire.
  Pour en savoir plus sur ces fonctions [ici][ff] et [ici][bigmem] .
