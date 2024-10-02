@@ -2,9 +2,12 @@
 .Rhistory
 .RData
 .Ruserdata
+<<<<<<< HEAD
+=======
 
 .DS_Store
 
+>>>>>>> c1854bac8bae3c958e3d4739d031db452372dfc1
 #_extension/
 .vscode/
 *_cache/
@@ -12,12 +15,10 @@
 *_freeze/
 *.docx
 book_plan.html
-
 !en/*_files/
 !fr/*_files/
-
 /.quarto/
 /_book/
-
 /.luarc.json
 node_modules/
+.DS_Store
