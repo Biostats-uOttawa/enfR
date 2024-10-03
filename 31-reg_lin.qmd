@@ -112,7 +112,7 @@ Sachant que l’analyse de corrélation présuppose une relation linéaire entre
 ## Transformations de données et coefficient de corrélation
 
 Une autre condition préalable à l'analyse de corrélation est que les deux variables concernées suivent une distribution normale bivariée.
-On peut aisément vérifier la normalité de chacune des 2 variables séparément tel que décrit dans le laboratoire précédent <!-- JULIEN - Quand est-ce qu'on décrit ça ? -->.
+On peut aisément vérifier la normalité de chacune des 2 variables séparément tel que décrit dans plus bas dans la section @sec-cond-verif.
 Si les deux variables sont normalement distribuées, on présume généralement que la distribution commune des deux variables est également normale (notez que ce n'est pas toujours le cas cependant).
 
 -   Examinez la distribution des quatre variables (les deux variables originales et les variables transformées). Que concluez-vous de l'inspection visuelle de ces graphiques ?
@@ -333,7 +333,7 @@ $$ Fklngth = 28.50359 + 0.70724 * age$$
 
 Étant donné la valeur significative du test de F (ainsi que pour le test de t pour la pente de la droite), on rejette l’hypothèse nulle qu’il n’y a pas de relation entre la taille et l’âge.
 
-### Vérifier les conditions d'application de la régression
+### Vérifier les conditions d'application de la régression {#sec-cond-verif}
 
 La régression simple de type I a quatre conditions préalables :
 
@@ -372,7 +372,7 @@ plot(RegModele.1)
 
 1.  **Le graphique en haut à gauche**, permet d’évaluer la **linéarité**, la **normalité**, et l’**homoscédasticité** des résidus. Il illustre les déviations autour de la régression en fonction des valeurs prédites. Rappelez-vous que le graphique de `fklngth` vs `age` suggère que la relation entre la longueur et l’âge n’est pas linéaire. Les très jeunes et très vieux esturgeons sont sous la droite en général, alors que les esturgeons d’âge moyen sont retrouvés généralement au-dessus de la droite de régression. C’est exactement ce que le graphique des résidus en fonction des valeurs prédites illustre. La ligne en rouge est une trace "lowess" au travers de ce nuage de points. Si la relation était linéaire, la trace "lowess" serait presque plate et près de 0. La dispersion des résidus permet d’évaluer visuellement leur normalité et hétéroscédasticité; mais ce graphique n’est pas optimal pour évaluer ces propriétés. Les deux graphiques suivants sont mieux pour cela.
 2.  Le graphique en haut à droite permet d’évaluer la **normalité** des résidus. C’est un graphique QQ des résidus (QQ plot). Des résidus distribués normalement tomberaient exactement sur la diagonale. Ici, on voit que c’est presque le cas, sauf dans les queues de la distribution.
-3.  **Le graphique en bas à gauche**, intitulé Scale-Location, permet d’évaluer l’**homoscedasticité**. On y retrouve sur l’ordonnée (l’axe des y) la racine carrée de la valeur absolue des résidus standardisés (résidus divisés par l’écart-type des résidus) en fonction des valeurs prédites. Le graphique aide à déterminer si la variation des résidus est constante ou non. Si les résidus sont homoscédastiques, la valeur moyenne sur l’axe des y ne va pas changer en fonction de la valeur prédite. Ici, il y a une certaine tendance, mais pas une tendance monotone puisqu’il y a d’abord une baisse puis une hausse..; bref, rien qui soit une forte évidence contre la supposition d’homoscédasticité.
+3.  **Le graphique en bas à gauche**, intitulé Scale-Location, permet d’évaluer l’**homoscédasticité**. On y retrouve sur l’ordonnée (l’axe des y) la racine carrée de la valeur absolue des résidus standardisés (résidus divisés par l’écart-type des résidus) en fonction des valeurs prédites. Le graphique aide à déterminer si la variation des résidus est constante ou non. Si les résidus sont homoscédastiques, la valeur moyenne sur l’axe des y ne va pas changer en fonction de la valeur prédite. Ici, il y a une certaine tendance, mais pas une tendance monotone puisqu’il y a d’abord une baisse puis une hausse..; bref, rien qui soit une forte évidence contre la supposition d’homoscédasticité.
 4.  **Le graphique en bas à droite**, montre les résidus en fonction du "leverage" et permet de détecter certaines **valeurs extrêmes** qui ont une grande influence sur la régression. Le leverage d’un point mesure sa distance des autres points, mais seulement en ce qui concerne les variables indépendantes. Dans le cas d’une régression simple, cela revient à la distance entre le point sur l’axe des x et la moyenne de tous les points sur cet axe. Vous devriez porter une attention particulière aux observations qui ont un leverage plus grand que $2(k+1)/n$, où k est le nombre de variables indépendantes (ici, 1) et n est le nombre d’observations. Dans cet exemple, il y a 75 observations et une variable indépendante et donc les points ayant un leverage plus grand que $4 / 75 =  0.053$ devrait être considérés avec attention. Le graphique indique également comment la régression changerait si on enlevait un point. Ce changement est mesuré par la distance de Cook, illustrée par les bandes en rouge sur le graphique. Un point ayant une distance de Cook supérieure à 1 a une grande influence.
 
 ::: callout-warning
@@ -381,7 +381,7 @@ Le fait qu’un point soit identifié ne signifie pas nécessairement que c’es
 Dans tous les ensembles de données il y aura toujours un résidu plus grand que les autres...
 :::
 
-Il est possible d'obtenir des graphiques d'évalutions des conditions d'applications, qui sont plus simple à interpréter et plus joli (avec des couleurs).
+Il est possible d'obtenir des graphiques d'évaluations des conditions d'applications, qui sont plus simple à interpréter et plus joli (avec des couleurs).
 On peut utiliser la fonction `check_model()` du paquet `performance` :package:.
 
 ```{r}
@@ -544,8 +544,11 @@ Enlever les valeurs extrêmes a peu d’effet dans ce cas.
 
 Les graphiques diagnostiques des résidus et les tests formels des conditions d’application sur ce sous-ensemble de données donnent :
 
+
 ```{r}
 #| label: fig-sturtr-6
+#| fig-cap: Graphiques diagnostiques du modèle RegModele.3 excluant les données aberrantes.
+
 par(mfrow = c(2, 2))
 plot(RegModele.3)
 bptest(RegModele.3)
@@ -566,7 +569,7 @@ La pente et un graphique sont plus informatifs à ce sujet que la valeur p.
 La pente (dans l’espace log-log) est de 0.34.
 Cela veut dire que pour chaque unité d’accroissement de X (log10(age)), il y a une augmentation de 0.34 unités de log10(fklngth).
 En d’autres mots, quand l’âge est multiplié par 10, la longueur est multipliée environ par 2 (10^0.34^ = 2.19).
-Donc la longueur des esturgeons augmente plus lentement que leur âge *(contrairement à mon tour de taille, semble-t-il....)* <!-- JULIEN - Tu l'as gardes cette blague ? J'ai remarqué que tu l'as pas traduite pour les anglophones -->.
+Donc la longueur des esturgeons augmente plus lentement que leur âge.
 La valeur de la pente (0.34) est un estimé de la taille de l’effet de l’âge sur la longueur.
 
 Il est aussi important d'estimer l'intervalle de confiance sur la pente pour pouvoir estimer si l'intervalle n'inclus ou non que des valeurs biologiquement importantes.
