@@ -132,7 +132,7 @@ gtag('config', 'G-SLXFYRXJR4', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-bi-flag">
 <li>
-    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway">
+    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway/03-data.html">
  <span class="dropdown-text">English</span></a>
   </li>  
     </ul>
@@ -931,9 +931,9 @@ Table&nbsp;3.1: Données importées sur les licornes
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">dataf</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   5 obs. of  3 variables:
- $ height: num  180 155 160 167 181
- $ weight: num  65 50 52 58 70
- $ names : chr  "Joanna" "Charlotte" "Helen" "Karen" ...</code></pre>
+ $ taille: num  180 155 160 167 181
+ $ poids : num  65 50 52 58 70
+ $ noms  : chr  "Joanna" "Charlotte" "Helen" "Karen" ...</code></pre>
 </div>
 </div>
 <p>La fonction <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> nous donne les dimensions du jeu de données et nous rappelle que <code>dataf</code> est un <code>data.frame</code>. Il énumère également toutes les variables (colonnes) contenues dans le jeu de données, nous indique le type de données qu’elles contiennent et leurs 5 premières valeurs. Nous copions souvent ce résumé pour le mettre dans le scripts R avec des commentaires au début de chaque ligne afin de pouvoir nous y référer facilement lors de l’écriture du code. <em>Nous vous avons montré comment commenter les blocs dans RStudio dans la <a href="01-debut.html#sec-proj-doc" class="quarto-xref"><span>Section 1.7</span></a>.</em></p>
@@ -1657,11 +1657,11 @@ Avertissement
 <div class="sourceCode" id="cb140"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_ccomb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">df3</span>, <span class="va">df4</span><span class="op">)</span></span>
 <span><span class="va">df_ccomb</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id height weight location
-1  1    120     44       UK
-2  2    150     56       CZ
-3  3    132     49       CZ
-4  4    122     45       UK</code></pre>
+<pre><code>  id taille poids localisation
+1  1    120    44           UK
+2  2    150    56           CZ
+3  3    132    49           CZ
+4  4    122    45           UK</code></pre>
 </div>
 </div>
 <p>Une autre situation dans laquelle l’ajout d’une nouvelle colonne à un jeu de données est utile est lorsque vous souhaitez effectuer une sorte de transformation sur une variable existante. Par exemple, supposons que nous voulions appliquer une transformation logarithmique, log<sub>10</sub> à une variable existante, la variable <code>taille</code> dans le jeu de données <code>df_rcomb</code> que nous avons créée ci-dessus. Nous pourrions simplement créer une variable distincte contenant ces valeurs, mais il est préférable de créer cette variable directement en tant que nouvelle colonne dans notre jeu de données existant afin de conserver toutes nos données ensemble. Appelons cette nouvelle variable <code>taille_log10</code>.</p>
@@ -1747,10 +1747,10 @@ Avertissement
 <div class="sourceCode" id="cb152"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">taxa_zone</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">taxa</span>, y <span class="op">=</span> <span class="va">zone</span><span class="op">)</span></span>
 <span><span class="va">taxa_zone</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     species        GENUS           family        genus    zone
-1 balanoides  Semibalanus Archaeobalanidae  Semibalanus    high
-2   littoria    Littorina     Littorinidae    Littorina low_mid
-3    panacea Halichondria  Halichondriidae Halichondria     low</code></pre>
+<pre><code>      espece        GENUS          famille        genus    zone
+1 balanoides  Semibalanus Archaeobalanidae  Semibalanus    haut
+2   littoria    Littorina     Littorinidae    Littorina bas_moy
+3    panacea Halichondria  Halichondriidae Halichondria     bas</code></pre>
 </div>
 </div>
 <p>Remarquez que le jeu de données fusionné ne contient que les lignes ayant des <code>espèces</code> <strong>dans les 2</strong> jeux de données. Il existe également deux colonnes appelées <code>GENUS</code> et <code>genus</code> car la fonction <code><a href="https://rdrr.io/r/base/merge.html">merge()</a></code> les traite comme deux variables différentes provenant des deux jeux de données.</p>
@@ -1759,13 +1759,13 @@ Avertissement
 <div class="sourceCode" id="cb154"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">taxa_zone</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">taxa</span>, y <span class="op">=</span> <span class="va">zone</span>, all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">taxa_zone</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     species        GENUS           family        genus    zone
-1 balanoides  Semibalanus Archaeobalanidae  Semibalanus    high
-2   digitata         &lt;NA&gt;             &lt;NA&gt;    Laminaria   v_low
-3   littoria    Littorina     Littorinidae    Littorina low_mid
-4    panacea Halichondria  Halichondriidae Halichondria     low
-5  parietina         &lt;NA&gt;             &lt;NA&gt;    Xanthoria  v_high
-6   serratus         &lt;NA&gt;             &lt;NA&gt;        Fucus low_mid
+<pre><code>      espece        GENUS          famille        genus    zone
+1 balanoides  Semibalanus Archaeobalanidae  Semibalanus    haut
+2   digitata         &lt;NA&gt;             &lt;NA&gt;    Laminaria   v_bas
+3   littoria    Littorina     Littorinidae    Littorina bas_moy
+4    panacea Halichondria  Halichondriidae Halichondria     bas
+5  parietina         &lt;NA&gt;             &lt;NA&gt;    Xanthoria  v_haut
+6   serratus         &lt;NA&gt;             &lt;NA&gt;        Fucus bas_moy
 7    vulgata      Patella       patellidae         &lt;NA&gt;    &lt;NA&gt;</code></pre>
 </div>
 </div>
@@ -1774,14 +1774,14 @@ Avertissement
 <div class="sourceCode" id="cb156"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">taxa_zone</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">taxa</span>, y <span class="op">=</span> <span class="va">zone</span>, by.x <span class="op">=</span> <span class="st">"GENUS"</span>, by.y <span class="op">=</span> <span class="st">"genus"</span>, all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">taxa_zone</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>         GENUS  species.x           family  species.y    zone
-1        Fucus       &lt;NA&gt;             &lt;NA&gt;   serratus low_mid
-2 Halichondria    panacea  Halichondriidae    panacea     low
-3    Laminaria       &lt;NA&gt;             &lt;NA&gt;   digitata   v_low
-4    Littorina   littoria     Littorinidae   littoria low_mid
+<pre><code>         GENUS   espece.x          famille   espece.y    zone
+1        Fucus       &lt;NA&gt;             &lt;NA&gt;   serratus bas_moy
+2 Halichondria    panacea  Halichondriidae    panacea     bas
+3    Laminaria       &lt;NA&gt;             &lt;NA&gt;   digitata   v_bas
+4    Littorina   littoria     Littorinidae   littoria bas_moy
 5      Patella    vulgata       patellidae       &lt;NA&gt;    &lt;NA&gt;
-6  Semibalanus balanoides Archaeobalanidae balanoides    high
-7    Xanthoria       &lt;NA&gt;             &lt;NA&gt;  parietina  v_high</code></pre>
+6  Semibalanus balanoides Archaeobalanidae balanoides    haut
+7    Xanthoria       &lt;NA&gt;             &lt;NA&gt;  parietina  v_haut</code></pre>
 </div>
 </div>
 <p>Ou utiliser plusieurs noms de variables :</p>
@@ -2231,6 +2231,7 @@ high   9.6000 5.70625</code></pre>
 <!--Data links-->
 <!--Resource Links-->
 <!--Misc Links-->
+<!--Add by Augustin-->
 
 
 </section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>

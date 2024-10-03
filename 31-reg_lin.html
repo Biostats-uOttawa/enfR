@@ -157,7 +157,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-bi-flag">
 <li>
-    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway">
+    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway/31-reg_lin.html">
  <span class="dropdown-text">English</span></a>
   </li>  
     </ul>
@@ -406,20 +406,20 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table des matières</h2>
    
   <ul>
-<li><a href="#set-lm" id="toc-set-lm" class="nav-link active" data-scroll-target="#set-lm"><span class="header-section-number">9.1</span> Extensions R et données requises pour le labo</a></li>
+<li><a href="#set-lm" id="toc-set-lm" class="nav-link active" data-scroll-target="#set-lm"><span class="header-section-number">9.1</span> Paquets R et données requises</a></li>
   <li><a href="#diagrammes-de-dispersion" id="toc-diagrammes-de-dispersion" class="nav-link" data-scroll-target="#diagrammes-de-dispersion"><span class="header-section-number">9.2</span> Diagrammes de dispersion</a></li>
-  <li><a href="#transformations-et-le-coefficient-de-corr%C3%A9lation" id="toc-transformations-et-le-coefficient-de-corrélation" class="nav-link" data-scroll-target="#transformations-et-le-coefficient-de-corr%C3%A9lation"><span class="header-section-number">9.3</span> Transformations et le coefficient de corrélation</a></li>
+  <li><a href="#transformations-de-donn%C3%A9es-et-coefficient-de-corr%C3%A9lation" id="toc-transformations-de-données-et-coefficient-de-corrélation" class="nav-link" data-scroll-target="#transformations-de-donn%C3%A9es-et-coefficient-de-corr%C3%A9lation"><span class="header-section-number">9.3</span> Transformations de données et coefficient de corrélation</a></li>
   <li><a href="#matrices-de-corr%C3%A9lations-et-correction-de-bonferroni" id="toc-matrices-de-corrélations-et-correction-de-bonferroni" class="nav-link" data-scroll-target="#matrices-de-corr%C3%A9lations-et-correction-de-bonferroni"><span class="header-section-number">9.4</span> Matrices de corrélations et correction de Bonferroni</a></li>
   <li><a href="#corr%C3%A9lations-non-param%C3%A9triques-r-de-spearman-et-tau-de-kendall" id="toc-corrélations-non-paramétriques-r-de-spearman-et-tau-de-kendall" class="nav-link" data-scroll-target="#corr%C3%A9lations-non-param%C3%A9triques-r-de-spearman-et-tau-de-kendall"><span class="header-section-number">9.5</span> Corrélations non paramétriques: <em>r</em> de Spearman et <span class="math inline">\(\tau\)</span> de Kendall</a></li>
   <li>
 <a href="#sec-simple-lm" id="toc-sec-simple-lm" class="nav-link" data-scroll-target="#sec-simple-lm"><span class="header-section-number">9.6</span> Régression linéaire simple</a>
   <ul class="collapse">
-<li><a href="#v%C3%A9rifier-les-conditions-dapplication-de-la-r%C3%A9gression" id="toc-vérifier-les-conditions-dapplication-de-la-régression" class="nav-link" data-scroll-target="#v%C3%A9rifier-les-conditions-dapplication-de-la-r%C3%A9gression"><span class="header-section-number">9.6.1</span> Vérifier les conditions d’application de la régression</a></li>
+<li><a href="#sec-cond-verif" id="toc-sec-cond-verif" class="nav-link" data-scroll-target="#sec-cond-verif"><span class="header-section-number">9.6.1</span> Vérifier les conditions d’application de la régression</a></li>
   <li><a href="#tests-formels-des-conditions-dapplication-pour-la-r%C3%A9gression" id="toc-tests-formels-des-conditions-dapplication-pour-la-régression" class="nav-link" data-scroll-target="#tests-formels-des-conditions-dapplication-pour-la-r%C3%A9gression"><span class="header-section-number">9.6.2</span> Tests formels des conditions d’application pour la régression</a></li>
   </ul>
 </li>
   <li><a href="#transformation-des-donn%C3%A9es-en-r%C3%A9gression" id="toc-transformation-des-données-en-régression" class="nav-link" data-scroll-target="#transformation-des-donn%C3%A9es-en-r%C3%A9gression"><span class="header-section-number">9.7</span> Transformation des données en régression</a></li>
-  <li><a href="#traitement-des-valeurs-extr%C3%A8mes" id="toc-traitement-des-valeurs-extrèmes" class="nav-link" data-scroll-target="#traitement-des-valeurs-extr%C3%A8mes"><span class="header-section-number">9.8</span> Traitement des valeurs extrèmes</a></li>
+  <li><a href="#traitement-des-valeurs-extr%C3%AAmes" id="toc-traitement-des-valeurs-extrêmes" class="nav-link" data-scroll-target="#traitement-des-valeurs-extr%C3%AAmes"><span class="header-section-number">9.8</span> Traitement des valeurs extrêmes</a></li>
   <li>
 <a href="#quantifier-la-taille-deffet-et-analyse-de-puissance-en-r%C3%A9gression" id="toc-quantifier-la-taille-deffet-et-analyse-de-puissance-en-régression" class="nav-link" data-scroll-target="#quantifier-la-taille-deffet-et-analyse-de-puissance-en-r%C3%A9gression"><span class="header-section-number">9.9</span> Quantifier la taille d’effet et analyse de puissance en régression</a>
   <ul class="collapse">
@@ -448,37 +448,47 @@ window.Quarto = {
   
 
 
-</header><!-- # (PART) Modèle univarié {-} --><p>Après avoir complété cet exercice de laboratoire, vous devriez être en mesure de :</p>
+</header><!--course website Links--><!--cran Links--><!--RStudio--><!--style guides--><!--Package Links--><!--Editors--><!--Bioconductor Links--><!--GitHub Links--><!--R markdown Links--><!--ggplot Links--><!--Basics links--><!--Data links--><!--Resource Links--><!--Misc Links--><!--Add by Augustin--><!-- # (PART) Modèle univarié {-} --><p>Objectifs de ce chapitre :</p>
 <ul>
-<li>Utiliser R pour produire un diagramme de dispersion pour illus- trer la relation entre deux variables avec trace lowess</li>
-<li>Utiliser R pour faire des transformations simples</li>
-<li>Utiliser R pour calculer le coefficient de corrélation de Pearson entre deux variables et en évaluer sa signification statistique</li>
-<li>Utiliser R pour calculer la corrélation de rang entre des paires de variables avec le r de Spearman et le tau de Kendall</li>
-<li>Utiliser R pour évaluer la signification de corrélations dans une matrice de corrélation en utilisant les probabilités ajustées par la méthode de Bonferroni.</li>
+<li>Utiliser R pour produire un diagramme de dispersion de la relation entre deux variables.</li>
+<li>Utiliser R pour faire des transformations simples de données.</li>
+<li>Utiliser R pour calculer le coefficient de corrélation de <em>Pearson</em> entre deux variables et évaluer sa significativité statistique.</li>
+<li>Utiliser R pour calculer la corrélation entre des paires de variables avec le <em>r de Spearman</em> et le <em>tau (</em><span class="math inline">\(\tau\)</span>) de Kendall</li>
+<li>Utiliser R pour évaluer la significativité d’une comparaison par paires à partir d’une matrice de corrélation généralisé en utilisant les probabilités ajustées par la <em>méthode de Bonferroni</em>.</li>
 <li>Utiliser R pour faire une régression linéaire simple.</li>
 <li>Utiliser R pour évaluer si un ensemble de données remplit les conditions d’application d’une analyse de régression simple.</li>
-<li>Quantifier la taille de l’effet d’une régression simple et effectuer une analyse de puissance avec G*Power.</li>
+<li>Quantifier la taille d’effet d’une régression simple et effectuer une analyse de puissance avec G*Power.</li>
 </ul>
 <section id="set-lm" class="level2" data-number="9.1"><h2 data-number="9.1" class="anchored" data-anchor-id="set-lm">
-<span class="header-section-number">9.1</span> Extensions R et données requises pour le labo</h2>
-<p>Ce laboratoire nécessite:</p>
+<span class="header-section-number">9.1</span> Paquets R et données requises</h2>
+<p>Pour ce laboratoire vous aurez besoin de :</p>
 <ul>
-<li>les paquets R:
+<li>paquets R :
 <ul>
-<li>car</li>
-<li>lmtest</li>
-<li>boot</li>
-<li>pwr</li>
-<li>ggplot</li>
+<li>
+<code>car</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
+<li>
+<code>lmtest</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
+<li>
+<code>boot</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
+<li>
+<code>pwr</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
+<li>
+<code>ggplot</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
 </ul>
 </li>
-<li>les fichiers de données
+<li>Jeu de données :
 <ul>
-<li>sturgeon.csv</li>
+<li>“sturgeon.csv”</li>
 </ul>
 </li>
 </ul>
-<p>Il ne faut pas oublier de charge les extensions avec <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> et de les installer au besoin avec <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> Pour les données, il faut les lire et les assigner à un objet R.</p>
+<p>Il ne faut pas oublier de charge les paquets avec <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> (et de les installer au besoin avec <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>). Pour les données, il faut les charger et les assigner à un objet R avec la fonction <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/car/">car</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lmtest</span><span class="op">)</span></span>
@@ -487,7 +497,7 @@ window.Quarto = {
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://easystats.github.io/performance/">performance</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">sturgeon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/sturgeon.csv"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">esturgeon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/sturgeon.csv"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -499,18 +509,18 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Notez que la ligne de code pour lire les données considère que le fichier de données se trouve dans un dossier <code>data</code> au sein de votre répertoire de travail. Si ce n’est pas le cas veuillez ajuster la ligne de commande.</p>
+<p>Notez que la ligne de code pour charger les données considère que le fichier de données se trouve dans un dossier <code>data</code> au sein de votre répertoire de travail. Si ce n’est pas le cas veuillez ajuster la ligne de commande selon votre répertoire de travail.</p>
 </div>
 </div>
 </section><section id="diagrammes-de-dispersion" class="level2" data-number="9.2"><h2 data-number="9.2" class="anchored" data-anchor-id="diagrammes-de-dispersion">
 <span class="header-section-number">9.2</span> Diagrammes de dispersion</h2>
-<p>Les analyses de corrélation et de régression devraient toujours commencer par un examen des données.C’est une étape critique qui sert à évaluer si ce type d’analyse est approprié pour un ensemble de données. Supposons que nous sommes intéressés à évaluer si la longueur d’esturgeons mâles dans la région de <em>The Pas</em> covarie avec leur poids. Pour répondre à cette question, regardons d’abord la corrélation entre la longueur et le poids. Souvenez-vous qu’une des conditions d’application de l’analyse de corrélation est que la relation entre les deux variables est linéaire. Pour évaluer cela, commençons par faire un diagramme de dispersion.</p>
+<p>Les analyses de corrélation et de régression devraient toujours commencer par un examen des données; c’est une étape critique qui sert à évaluer si ce type d’analyse est approprié pour un ensemble de données. Supposons que nous voulons évaluer si la longueur d’esturgeons mâles dans la région de <em>The Pas</em> covarie avec leur poids. Pour répondre à cette question, regardons d’abord la corrélation entre la longueur et le poids. Souvenez-vous qu’une des conditions d’application de l’analyse de corrélation est que la relation entre les deux variables est linéaire. Pour évaluer cela, commençons par faire un diagramme de dispersion.</p>
 <ul>
-<li>Les données sur les esturgeons son disponibles dans le fichier <code>sturgeon.csv</code>. Après avoir chargé les données dnas un objet <code>sturgeon</code>, faites un diagramme de dispersion avec une droite de régression et une courbe LOWESS de la longueur en fonction du poids.</li>
+<li>Les données sur les esturgeons son disponibles dans le fichier <code>sturgeon.csv</code>. Après avoir chargé les données en les assignant à un objet <code>esturgeon</code>, faites un diagramme de dispersion avec une droite de régression linéaire et une courbe de <a href="https://en.wikipedia.org/wiki/Local_regression">Lowess</a> de la longueur en fonction du poids.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sturgeon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/sturgeon.csv"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">esturgeon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/sturgeon.csv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   186 obs. of  9 variables:
  $ fklngth : num  37 50.2 28.9 50.2 45.6 ...
@@ -525,121 +535,121 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mygraph</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">sturgeon</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">$</span><span class="va">rdwght</span><span class="op">)</span>, <span class="op">]</span>, <span class="co"># source of data</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mongraph</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">esturgeon</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">$</span><span class="va">rdwght</span><span class="op">)</span>, <span class="op">]</span>, <span class="co"># origine des données</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">fklngth</span>, y <span class="op">=</span> <span class="va">rdwght</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co"># plot data points, regression, loess trace</span></span>
-<span><span class="va">mygraph</span> <span class="op">&lt;-</span> <span class="va">mygraph</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">stat_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, se <span class="op">=</span> <span class="cn">FALSE</span>, color <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># add linear regression, but no SE shading</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">stat_smooth</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span> <span class="co"># add loess</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># add data points</span></span>
+<span><span class="co"># Représentez les données sous forme de Points, Régression linéaire, "Lowess"</span></span>
+<span><span class="va">mongraph</span> <span class="op">&lt;-</span> <span class="va">mongraph</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">stat_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, se <span class="op">=</span> <span class="cn">FALSE</span>, color <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Ajoutez une régression linéaire, mais sans l'erreur-type (en vert)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">stat_smooth</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Ajoutez la "lowess" (en rouge)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Ajoutez les données sous forme de points</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Longueur"</span>, y <span class="op">=</span> <span class="st">"Poids"</span><span class="op">)</span> <span class="co"># Modifiez les noms des axes pour rendre le graphique plus lisible</span></span>
 <span></span>
-<span><span class="va">mygraph</span> <span class="co"># display graph</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">mongraph</span> <span class="co"># Affichez le graphique</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-stur-2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-stur-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="31-reg_lin_files/figure-html/fig-stur-2-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stur-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.1: Graphique du poids en fonction de la longueur des esturgeons
+Figure&nbsp;9.1: Graphique du poids en fonction de la longueur des esturgeons.
 </figcaption></figure>
 </div>
 </div>
 </div>
 <!-- (notez ici la gymnastique requise pour éliminer les données
 manquantes qui posent problème pour obtenir la trace loess). -->
+<!-- JULIEN - Extra - J'ai modifié les noms des axes pour que ce soit plus lisible. -->
 <ul>
 <li>Est-ce que la dispersion des points suggère une bonne corrélation entre les deux variables? Est-ce que la relation semble linéaire?</li>
 </ul>
 <p>Ce graphique suggère une tendance plus curvilinéaire que linéaire. Malgré tout, il semble y avoir une forte corrélation entre les deux variables.</p>
 <ul>
-<li>Refaites le diagramme de dispersion avec des axes logarithmiques.</li>
+<li>Refaites le diagramme de dispersion avec des transformations logarithmiques sur les deux axes.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># apply log transformation on defined graph</span></span>
-<span><span class="va">mygraph</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Appliquez une transformation log sur le graphique déjà défini</span></span>
+<span><span class="va">mongraph</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-stur-log" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-stur-log-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="31-reg_lin_files/figure-html/fig-stur-log-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stur-log-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.2: Graphique poids-longueur avec une échelle log
+Figure&nbsp;9.2: Graphique poids-longueur avec une échelle log.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Comparez les diagrammes de dispersion avant et après transformation (Figures <a href="#fig-stur-2" class="quarto-xref">Figure&nbsp;<span>9.1</span></a> et <a href="#fig-stur-log" class="quarto-xref">Figure&nbsp;<span>9.2</span></a>). Comme l’analyse de corrélation présuppose une relation linéaire entre les variables, on devrait donc privilégier l’analyse sur les données log-transformées.</p>
-</section><section id="transformations-et-le-coefficient-de-corrélation" class="level2" data-number="9.3"><h2 data-number="9.3" class="anchored" data-anchor-id="transformations-et-le-coefficient-de-corrélation">
-<span class="header-section-number">9.3</span> Transformations et le coefficient de corrélation</h2>
-<p>Une autre condition préalable à l’analyse de corrélation est que les deux variables concernées suivent une distribution normale bidimensionnelle. On peut aisément vérifier la normalité de chacune des 2 variables séparément tel que décrit dans le laboratoire précédent. Si les deux variables sont normalement distribuées, on présume généralement qu’elles suivent une distribution normale bidimensionnelle lorsqu’analysées simultanément (notez que ce n’est pas toujours le cas cependant).</p>
+<p>Comparez les diagrammes de dispersion avant et après transformation (<a href="#fig-stur-2" class="quarto-xref">Figure&nbsp;<span>9.1</span></a> et <a href="#fig-stur-log" class="quarto-xref">Figure&nbsp;<span>9.2</span></a>). Sachant que l’analyse de corrélation présuppose une relation linéaire entre les variables, on devrait donc privilégier l’analyse sur les données log-transformées.</p>
+</section><section id="transformations-de-données-et-coefficient-de-corrélation" class="level2" data-number="9.3"><h2 data-number="9.3" class="anchored" data-anchor-id="transformations-de-données-et-coefficient-de-corrélation">
+<span class="header-section-number">9.3</span> Transformations de données et coefficient de corrélation</h2>
+<p>Une autre condition préalable à l’analyse de corrélation est que les deux variables concernées suivent une distribution normale bivariée. On peut aisément vérifier la normalité de chacune des 2 variables séparément tel que décrit dans plus bas dans la section <a href="#sec-cond-verif" class="quarto-xref"><span>Section 9.6.1</span></a>. Si les deux variables sont normalement distribuées, on présume généralement que la distribution commune des deux variables est également normale (notez que ce n’est pas toujours le cas cependant).</p>
 <ul>
 <li>Examinez la distribution des quatre variables (les deux variables originales et les variables transformées). Que concluez-vous de l’inspection visuelle de ces graphiques ?</li>
 </ul>
-<p>Les figures ci-dessous sont les diagrammes de probabilité (<code><a href="https://rdrr.io/r/stats/qqnorm.html">qqplot()</a></code>). Le code pour produire des graphiques multiples sur une page, comme on voit ci-dessous, est:</p>
+<p>Les figures ci-dessous sont les 4 diagrammes Q(uantile)-Q(uantile) (<code><a href="https://rdrr.io/r/stats/qqnorm.html">qqplot()</a></code>). Le code pour produire des graphiques multiples sur une seule page avec 2 lignes et 2 colonnes, comme on voit ci-dessous, est :</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># divise le graphique en 4 sections</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">$</span><span class="va">fklngth</span>, ylab <span class="op">=</span> <span class="st">"fklngth"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">$</span><span class="va">fklngth</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">$</span><span class="va">fklngth</span><span class="op">)</span>, ylab <span class="op">=</span> <span class="st">"log10(fklngth)"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">$</span><span class="va">fklngth</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">$</span><span class="va">rdwght</span>, ylab <span class="op">=</span> <span class="st">"rdwght"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">$</span><span class="va">rdwght</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">$</span><span class="va">rdwght</span><span class="op">)</span>, ylab <span class="op">=</span> <span class="st">"log10(rdwgth)"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">$</span><span class="va">rdwght</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">$</span><span class="va">fklngth</span>, ylab <span class="op">=</span> <span class="st">"fklngth"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">$</span><span class="va">fklngth</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">$</span><span class="va">fklngth</span><span class="op">)</span>, ylab <span class="op">=</span> <span class="st">"log10(fklngth)"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">$</span><span class="va">fklngth</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">$</span><span class="va">rdwght</span>, ylab <span class="op">=</span> <span class="st">"rdwght"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">$</span><span class="va">rdwght</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">$</span><span class="va">rdwght</span><span class="op">)</span>, ylab <span class="op">=</span> <span class="st">"log10(rdwgth)"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">$</span><span class="va">rdwght</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="co"># redéfinie la zone de graphique par défaut</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-stur-4hist" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<div id="fig-stur-4hist" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-stur-4hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="31-reg_lin_files/figure-html/fig-stur-4hist-1.png" id="fig-stur-4hist" class="img-fluid figure-img" width="672">
+<img src="31-reg_lin_files/figure-html/fig-stur-4hist-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-stur-4hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.3
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stur-4hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.3: Diagrammes Q-Q des quatres variables étudiées (Poids, Longueur, Originale et Log-transformées).
 </figcaption></figure>
 </div>
 </div>
 </div>
+<!-- JULIEN - Extra - J'ai ajouté un titre à la figure -->
 <p>Il n’y a pas grand-chose à redire: aucune des distributions n’est parfaitement normale, mais les déviations semblent mineures.</p>
 <ul>
-<li>Générez une matrice de graphiques de dispersion améliorés en utilisant la commande <code>scatterplotMatrix</code> de la librairie <code>car</code>.</li>
+<li>Générez une matrice de graphiques de dispersion de toutes les paires de variables (avec régression linéaires et “lowess”) en utilisant la fonction <code>scatterplotMatrix</code> du paquet <code>car</code> <span class="emoji" data-emoji="package">📦</span>.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/scatterplotMatrix.html">scatterplotMatrix</a></span><span class="op">(</span></span>
 <span>  <span class="op">~</span> <span class="va">fklngth</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">fklngth</span><span class="op">)</span> <span class="op">+</span> <span class="va">rdwght</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">rdwght</span><span class="op">)</span>,</span>
-<span>  data <span class="op">=</span> <span class="va">sturgeon</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">esturgeon</span>,</span>
 <span>  smooth <span class="op">=</span> <span class="cn">TRUE</span>, diagonal <span class="op">=</span> <span class="st">"density"</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in applyDefaults(diagonal, defaults = list(method = "adaptiveDensity"),
-: unnamed diag arguments, will be ignored</code></pre>
-</div>
 <div class="cell-output-display">
-<div id="fig-stur-scatmat" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<div id="fig-stur-scatmat" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-stur-scatmat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="31-reg_lin_files/figure-html/fig-stur-scatmat-1.png" id="fig-stur-scatmat" class="img-fluid figure-img" width="672">
+<img src="31-reg_lin_files/figure-html/fig-stur-scatmat-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-stur-scatmat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.4
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stur-scatmat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.4: Corrélations entre chaque paires de variables
 </figcaption></figure>
 </div>
 </div>
 </div>
+<!-- JULIEN - Extra - J'ai ajouté un titre à la figure -->
 <ul>
-<li>Ensuite, calculez le coefficient de corrélation de Pearson entre chaque paire (variables originales et logtransformées) en utilisant la commande <code><a href="https://rdrr.io/r/stats/cor.html">cor()</a></code>. Avant de commencer, on va cependant ajouter les variables transformées au tableau de données sturgeon:</li>
+<li>Ensuite, calculez le coefficient de corrélation de Pearson entre chaque paire (variables originales et log-transformées) en utilisant la fonction <code><a href="https://rdrr.io/r/stats/cor.html">cor()</a></code>. Avant de commencer, on va cependant ajouter les variables transformées au jeu de données esturgeon :</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sturgeon</span><span class="op">$</span><span class="va">lfklngth</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">sturgeon</span>, <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">fklngth</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">sturgeon</span><span class="op">$</span><span class="va">lrdwght</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">$</span><span class="va">rdwght</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">esturgeon</span><span class="op">$</span><span class="va">lfklngth</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">esturgeon</span>, <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">fklngth</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">esturgeon</span><span class="op">$</span><span class="va">lrdwght</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">$</span><span class="va">rdwght</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Vous pouvez ensuite obtenir la matrice de corrélation par:</p>
+<p>Vous pouvez ensuite obtenir la matrice de corrélation par :</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fklngth"</span>, <span class="st">"lfklngth"</span>, <span class="st">"lrdwght"</span>, <span class="st">"rdwght"</span><span class="op">)</span><span class="op">]</span>, use <span class="op">=</span> <span class="st">"complete.obs"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fklngth"</span>, <span class="st">"lfklngth"</span>, <span class="st">"lrdwght"</span>, <span class="st">"rdwght"</span><span class="op">)</span><span class="op">]</span>, use <span class="op">=</span> <span class="st">"complete.obs"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Fréquemment, il y a des données manquantes dans un échantillon. En choisissant <code>use="complete.obs"</code>, toutes les lignes du fichier pour lesquelles les variables ne sont pas toutes mesurées sont éliminées. Dans ce cas, toutes les corrélations seront calculées avec le même nombre de cas. Par contre, en utilisant <code>use="pairwise.complete.obs"</code>, R élimine une observation que lorsqu’un des deux membres de la paire a une valeur manquante. Dans ce cas, si les données manquantes pour différentes variables se retrouvent dans un groupe différent d’observation, les corrélations ne seront pas nécessairement calculées sur le même nombre de cas ni sur le même sous-ensemble de cas. En général, vous devriez utiliser l’option <code>use="complete.obs"</code> à moins que vous ayez un très grand nombre de données manquantes et que cette façon de procéder élimine la plus grande partie de vos observations.</p>
-<p>Pourquoi la corrélation entre les variables originales est-elle la plus faible des trois ?</p>
+<p>Fréquemment, il y a des données manquantes dans un échantillon. En précisant <code>use="complete.obs"</code>, toutes les lignes du fichier pour lesquelles les variables ne sont pas toutes mesurées sont éliminées. Dans ce cas, toutes les corrélations seront calculées avec le même nombre de cas. Par contre, en utilisant <code>use="pairwise.complete.obs"</code>, R élimine une observation seulement lorsque l’un des deux membres de la paire a une valeur manquante. Dans ce cas, si les données manquantes pour différentes variables se retrouvent dans un groupe différent d’observation, les corrélations ne seront pas nécessairement calculées sur le même nombre de cas ni sur le même sous-ensemble de cas. En général, vous devriez utiliser l’option <code>use="complete.obs"</code> à moins que vous ayez un très grand nombre de données manquantes et que cette façon de procéder élimine la plus grande partie de vos observations.</p>
+<p>Pourquoi la corrélation entre les variables originales est-elle plus faible qu’entre les variables transformées ?</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">sturgeon</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fklngth"</span>, <span class="st">"lfklngth"</span>, <span class="st">"lrdwght"</span>, <span class="st">"rdwght"</span><span class="op">)</span><span class="op">]</span>, use <span class="op">=</span> <span class="st">"complete.obs"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">esturgeon</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fklngth"</span>, <span class="st">"lfklngth"</span>, <span class="st">"lrdwght"</span>, <span class="st">"rdwght"</span><span class="op">)</span><span class="op">]</span>, use <span class="op">=</span> <span class="st">"complete.obs"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           fklngth  lfklngth   lrdwght    rdwght
 fklngth  1.0000000 0.9921435 0.9645108 0.9175435
@@ -650,19 +660,19 @@ rdwght   0.9175435 0.8756203 0.9265513 1.0000000</code></pre>
 </div>
 <p>Il y a plusieurs choses à noter ici.</p>
 <ul>
-<li>Premièrement, la corrélation entre la longueur à la fourche et le poids rond est élevée, peu importe la transformation: les poissons lourds ont tendance à être longs.</li>
+<li>Premièrement, la corrélation entre la longueur (“fklngth”) et le poids (“rdwght”) est élevée, peu importe la transformation: les poissons lourds ont tendance à être longs.</li>
 <li>Deuxièmement, la corrélation est plus forte pour les données transformées que pour les données brutes.</li>
 </ul>
 <p><strong>Pourquoi?</strong> Parce que le coefficient de corrélation est inversement proportionnel au bruit autour de la relation linéaire. Si la relation est curvilinéaire (comme dans le cas des données non transformées), le bruit est plus grand que si la relation est parfaitement linéaire. Par conséquent, la corrélation est plus faible.</p>
 </section><section id="matrices-de-corrélations-et-correction-de-bonferroni" class="level2" data-number="9.4"><h2 data-number="9.4" class="anchored" data-anchor-id="matrices-de-corrélations-et-correction-de-bonferroni">
 <span class="header-section-number">9.4</span> Matrices de corrélations et correction de Bonferroni</h2>
-<p>Une pratique courante est d’examiner une matrice de corrélation à la recherche des associations significatives. Comme exemple, essayons de tester si la corrélation entre lfklngth et rdwght est significative (c’est le plus faible coefficient de corrélation de cette matrice).</p>
+<p>Une pratique courante est d’examiner la matrice de corrélation à la recherche d’associations significatives. Comme exemple, essayons de tester si la corrélation entre <code>lfklngth</code> et <code>rdwght</code> est significative (le plus faible coefficient de corrélation de cette matrice).</p>
 <ul>
-<li>Estimer la correlation entre la longueur (fklngth) et le poids (rdwght) des esturgeons:</li>
+<li>Estimez la corrélation entre la longueur (<code>fklngth</code> et le poids (<code>rdwght</code>) des esturgeons:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span></span>
-<span>  <span class="va">sturgeon</span><span class="op">$</span><span class="va">lfklngth</span>, <span class="va">sturgeon</span><span class="op">$</span><span class="va">rdwght</span>,</span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span></span>
+<span>  <span class="va">esturgeon</span><span class="op">$</span><span class="va">lfklngth</span>, <span class="va">esturgeon</span><span class="op">$</span><span class="va">rdwght</span>,</span>
 <span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"pearson"</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -670,7 +680,7 @@ rdwght   0.9175435 0.8756203 0.9265513 1.0000000</code></pre>
 <pre><code>
     Pearson's product-moment correlation
 
-data:  sturgeon$lfklngth and sturgeon$rdwght
+data:  esturgeon$lfklngth and esturgeon$rdwght
 t = 24.322, df = 180, p-value &lt; 2.2e-16
 alternative hypothesis: true correlation is not equal to 0
 95 percent confidence interval:
@@ -680,29 +690,30 @@ sample estimates:
 0.8756203 </code></pre>
 </div>
 </div>
-<p>On voit ici que la corrélation est hautement significative (<span class="math inline">\(p &lt; 2.2e-16\)</span>),ce qui n’est pas surprenant étant donné la valeur du coefficient de corrélation (0.8756). Il est important de réaliser que si une matrice contient un grand nombre de corrélations, il n’est pas surprenant d’en trouver au moins une qui soit “significative”. En effet, on s’attend à en trouver 5% en moyenne lorsqu’il n’y a en fait aucune corrélation entre les paires de moyennes. Une façon de corriger pour cette tendance est d’ajuster le niveau <span class="math inline">\(\alpha\)</span> critique auquel on attribue une signification statistique en divisant <span class="math inline">\(\alpha\)</span> par le nombre <span class="math inline">\(k\)</span> de corrélations qui sont examinées : <span class="math inline">\(\alpha' =
-\alpha / k\)</span> (ajustement de Bonferroni). Si initialement <span class="math inline">\(\alpha = 0.05\)</span> et qu’il y a 10 corrélations qui sont examinées, alors <span class="math inline">\(\alpha'= 0.005\)</span>. Donc, afin de rejeter l’hypothèse nulle, la valeur de p devra être plus petite que <span class="math inline">\(\alpha'\)</span>, en l’occurrence 0.005. Dans l’exemple qui précède, on devrait donc ajuster <span class="math inline">\(\alpha\)</span> critique en divisant par le nombre total de corrélations dans la matrice (6 dans ce cas, donc <span class="math inline">\(\alpha'=0.00833\)</span>). Cette correction modifie-t-elle votre conclusion quant à la corrélation entre <code>lkfl</code> et <code>rdwght</code>?</p>
+<p>On voit ici que la corrélation est hautement significative (<span class="math inline">\(p &lt; 2.2e-16\)</span>), ce qui n’est pas surprenant étant donné la valeur du coefficient de corrélation (0.8756 = 87.6%). Il est important de réaliser que si une matrice contient un grand nombre de corrélations, il n’est pas surprenant d’en trouver au moins une qui soit “significative”. En effet, on s’attend à en trouver 5% en moyenne lorsqu’il n’y a en fait aucune corrélation entre les paires de moyennes (correspondant au risque d’erreur de type I <span class="math inline">\(\alpha\)</span>) <!-- JULIEN - Extra -->. Une façon de corriger pour cette tendance est d’ajuster le niveau <span class="math inline">\(\alpha\)</span> critique auquel on attribue une signification statistique en divisant <span class="math inline">\(\alpha\)</span> par le nombre <span class="math inline">\(k\)</span> de corrélations qui sont examinées :</p>
+<p><span class="math inline">\(\alpha' = \alpha / k\)</span> (ajustement de Bonferroni).</p>
+<p>Si initialement <span class="math inline">\(\alpha = 0.05\)</span> et qu’il y a 10 corrélations qui sont examinées, alors <span class="math inline">\(\alpha'= 0.005\)</span>. Donc, afin de rejeter l’hypothèse nulle, la valeur de p devra être plus petite que <span class="math inline">\(\alpha'\)</span>, en l’occurrence 0.005. Dans l’exemple qui précède, on devrait donc ajuster <span class="math inline">\(\alpha\)</span> critique en divisant par le nombre total de corrélations dans la matrice (6 dans ce cas, donc <span class="math inline">\(\alpha'=0.00833\)</span>). Cette correction modifie-t-elle votre conclusion quant à la corrélation entre <code>lkflngth</code> et <code>rdwght</code>?</p>
 </section><section id="corrélations-non-paramétriques-r-de-spearman-et-tau-de-kendall" class="level2" data-number="9.5"><h2 data-number="9.5" class="anchored" data-anchor-id="corrélations-non-paramétriques-r-de-spearman-et-tau-de-kendall">
 <span class="header-section-number">9.5</span> Corrélations non paramétriques: <em>r</em> de Spearman et <span class="math inline">\(\tau\)</span> de Kendall</h2>
-<p>L’analyse faite à la section précédente avec les esturgeons suggère que l’une des conditions préalables à l’analyse de corrélation, soit la distribution normale bidimensionnelle de données, pourrait ne pas être remplie pour <code>fklngth</code> et <code>rdwght</code>, ni pour les paires de variables transformées. La recherche d’une transformation appropriée peut parfois être difficile. Pire encore, pour certaines distributions il n’existe pas de transformation qui va normaliser les données. Dans ces cas-là, la meilleure option est de faire une analyse non paramétrique qui ne présume ni de la normalité ni de la linéarité. Ces analyses sont basées sur les rangs. Les deux plus communes sont le coefficient de rang de Spearman et le <span class="math inline">\(\tau\)</span> (tau) de Kendall.</p>
+<p>L’analyse faite dans la section précédente avec les esturgeons suggère que l’une des conditions préalables à l’analyse de corrélation, soit la distribution normale bivariée de données, pourrait ne pas être remplie pour <code>fklngth</code> et <code>rdwght</code>, ni pour les paires de variables transformées. La recherche d’une transformation appropriée peut parfois être difficile. Pire encore, pour certaines distributions il n’existe pas de transformation qui va normaliser les données. Dans ces cas-là, la meilleure option est de faire une analyse non paramétrique qui ne présume ni de la normalité ni de la linéarité. Ces analyses sont basées sur les rangs. Les deux plus communes sont le coefficient de rang de Spearman et le <span class="math inline">\(\tau\)</span> (tau) de Kendall.</p>
 <ul>
 <li>Dans R, testez la corrélation entre <code>fklngth</code> et <code>rdwght</code> en utilisant Spearman et Kendall’s .</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span></span>
-<span>  <span class="va">sturgeon</span><span class="op">$</span><span class="va">lfklngth</span>, <span class="va">sturgeon</span><span class="op">$</span><span class="va">rdwght</span>,</span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span></span>
+<span>  <span class="va">esturgeon</span><span class="op">$</span><span class="va">lfklngth</span>, <span class="va">esturgeon</span><span class="op">$</span><span class="va">rdwght</span>,</span>
 <span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"spearman"</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in cor.test.default(sturgeon$lfklngth, sturgeon$rdwght, alternative =
+<pre><code>Warning in cor.test.default(esturgeon$lfklngth, esturgeon$rdwght, alternative =
 "two.sided", : Cannot compute exact p-value with ties</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Spearman's rank correlation rho
 
-data:  sturgeon$lfklngth and sturgeon$rdwght
+data:  esturgeon$lfklngth and esturgeon$rdwght
 S = 47971, p-value &lt; 2.2e-16
 alternative hypothesis: true rho is not equal to 0
 sample estimates:
@@ -711,8 +722,8 @@ sample estimates:
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span></span>
-<span>  <span class="va">sturgeon</span><span class="op">$</span><span class="va">lfklngth</span>, <span class="va">sturgeon</span><span class="op">$</span><span class="va">rdwght</span>,</span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span></span>
+<span>  <span class="va">esturgeon</span><span class="op">$</span><span class="va">lfklngth</span>, <span class="va">esturgeon</span><span class="op">$</span><span class="va">rdwght</span>,</span>
 <span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"kendall"</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -720,7 +731,7 @@ sample estimates:
 <pre><code>
     Kendall's rank correlation tau
 
-data:  sturgeon$lfklngth and sturgeon$rdwght
+data:  esturgeon$lfklngth and esturgeon$rdwght
 z = 16.358, p-value &lt; 2.2e-16
 alternative hypothesis: true tau is not equal to 0
 sample estimates:
@@ -730,52 +741,53 @@ sample estimates:
 </div>
 <p>Comparer les résultats de cette analyse à l’analyse paramétrique. Pourquoi y-a-t’il une différence ?</p>
 <p>Calculez les corrélations non paramétriques sur les paires de variables transformées. Vous devriez voir tout de suite que les corrélations des données transformées et non transformées sont identiques puisque dans les deux cas la corrélation est calculée à partir des rangs qui ne sont pas affectés par la transformation.</p>
-<p>Notez que les corrélations obtenues avec le tau de Kendall (0.820) sont plus faibles que celles du coefficient de Spearman (0.952). Le tau de Kendall pondère un peu plus les grandes différences entre les rangs alors que le coefficient de Spearman donne le même poids à chaque paire d’observations. En général, on préfère le tau de Kendall lorsqu’il y a plus d’incertitude quant aux rangs qui sont près les uns des autres.</p>
+<p>Notez que les corrélations obtenues avec le <span class="math inline">\(\tau\)</span> de Kendall (0.820) sont plus faibles que celles du coefficient de Spearman (0.952). Le <span class="math inline">\(\tau\)</span> de Kendall pondère un peu plus les grandes différences entre les rangs alors que le coefficient de Spearman donne le même poids à chaque paire d’observations. En général, on préfère le <span class="math inline">\(\tau\)</span> de Kendall lorsqu’il y a plus d’incertitude quant aux rangs qui sont près les uns des autres.</p>
 <p>Les esturgeons de cet échantillon ont été capturés à l’aide de filets et d’hameçons d’une taille fixe. Quel impact cette méthode de capture peut-elle avoir eu sur la forme de la distribution de <code>fklngth</code> et <code>rdwght</code>? Compte tenu de ces circonstances, l’analyse de corrélation est-elle appropriée ?</p>
 <p>Rappelez-vous que l’analyse de corrélation présume aussi que chaque variable est échantillonnée aléatoirement. Dans le cas de nos esturgeons, ce n’est pas le cas: les hameçons appâtés et les filets ne capturent pas de petits esturgeons (et c’est pourquoi il n’y en a pas dans l’échantillon). Il faut donc réaliser que les coefficients de corrélation obtenus dans cette analyse ne reflètent pas nécessairement ceux de la population totale des esturgeons.</p>
 </section><section id="sec-simple-lm" class="level2" data-number="9.6"><h2 data-number="9.6" class="anchored" data-anchor-id="sec-simple-lm">
 <span class="header-section-number">9.6</span> Régression linéaire simple</h2>
 <p>L’analyse de corrélation vise à décrire comment deux variables covarient. L’analyse de régression vise plutôt à produire un modèle permettant de prédire une variable (la variable dépendante) par l’autre (la variable indépendante).</p>
-<p>Comme pour l’analyse de corrélation, on devrait commencer en examinant des graphiques. Puisque l’on est intéressé à quantifier la relation entre deux variables, un graphique de la variable dépendante (Y) en fonction de la variable indépendante (X) est tout à fait approprié.</p>
+<p>Comme pour l’analyse de corrélation, on devrait commencer en examinant des graphiques. Puisque l’on veut quantifier la relation entre deux variables, un graphique de la variable dépendante (Y) en fonction de la variable indépendante (X) est tout à fait approprié.</p>
 <ul>
-<li>Le fichier <code>sturgeon.csv</code> contient des données d’un inventaire des esturgeons récoltés en 1978-1980 à Cumberland House en Saskatchewan et à The Pas au Manitoba. Faites un diagramme de dispersion de <code>fklngth</code> (la variable dépendante) en fonction de <code>age</code> (la variable indépendante) pour les esturgeons mâles unqiuement et ajoutez-y une régression linéaire et une trace lowess. Que concluez-vous de ce diagramme de dispersion ?</li>
+<li>Le fichier <code>sturgeon.csv</code> contient les données d’un inventaire d’esturgeons récoltés entre 1978 et 1980 à Cumberland House en Saskatchewan et à The Pas au Manitoba. Faites un diagramme de dispersion de <code>fklngth</code> (la variable dépendante, <strong>Y</strong>) en fonction de l’<code>age</code> (la variable indépendante, <strong>X</strong>) pour les esturgeons mâles uniquement et ajoutez-y une régression linéaire et une “lowess”. Que concluez-vous de ce diagramme de dispersion ?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sturgeon.male</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">sturgeon</span>, subset <span class="op">=</span> <span class="va">sex</span> <span class="op">==</span> <span class="st">"MALE"</span><span class="op">)</span></span>
-<span><span class="va">mygraph</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">sturgeon.male</span>, <span class="co"># source of data</span></span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">esturgeon.male</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">esturgeon</span>, subset <span class="op">=</span> <span class="va">sex</span> <span class="op">==</span> <span class="st">"MALE"</span><span class="op">)</span></span>
+<span><span class="va">mongraph</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">esturgeon.male</span>, <span class="co"># origine des données</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">fklngth</span><span class="op">)</span></span>
 <span><span class="op">)</span> <span class="co"># aesthetics: y=fklngth, x=rdwght</span></span>
-<span><span class="co"># plot data points, regression, loess trace</span></span>
-<span><span class="va">mygraph</span> <span class="op">&lt;-</span> <span class="va">mygraph</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">stat_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, se <span class="op">=</span> <span class="cn">FALSE</span>, color <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># add linear regression, but no SE shading</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">stat_smooth</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># add loess</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># add data points</span></span>
-<span><span class="va">mygraph</span> <span class="co"># display graph</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co"># Représentez les données sous forme de Points, Régression linéaire, "Lowess"</span></span>
+<span><span class="va">mongraph</span> <span class="op">&lt;-</span> <span class="va">mongraph</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">stat_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, se <span class="op">=</span> <span class="cn">FALSE</span>, color <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Ajoutez une régression linéaire, mais sans l'erreur-type (en vert)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">stat_smooth</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Ajoutez la "lowess" (en rouge)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span><span class="co"># Ajoutez les données sous forme de points</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"Longueur"</span><span class="op">)</span> <span class="co"># Modifiez les noms des axes pour rendre le graphique plus lisible</span></span>
+<span><span class="va">mongraph</span> <span class="co"># Affichez le graphique</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-sturlm-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<div id="fig-sturlm-1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-sturlm-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="31-reg_lin_files/figure-html/fig-sturlm-1-1.png" id="fig-sturlm-1" class="img-fluid figure-img" width="672">
+<img src="31-reg_lin_files/figure-html/fig-sturlm-1-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-sturlm-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.5
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sturlm-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.5: Graphique de la longueur en fonction de l’âge des esturgeons males.
 </figcaption></figure>
 </div>
 </div>
 </div>
 <p>Ce graphique suggère que la relation n’est pas linéaire.</p>
-<p>Supposons que nous désirions estimer le taux de croissance des esturgeons mâles. Un estimé (peut-être pas terrible…) du taux de croissance peut être obtenu en calculant la pente de la régression de la longueur à la fourche sur l’âge.</p>
-<p>Ajustons d’abord une régression avec la commande lm() et sauvons ces résultats dans un objet appelé <code>RegModel.1</code>.</p>
+<p>Supposons que nous désirions estimer le taux de croissance des esturgeons mâles. Un estimé (peut-être pas terrible…) du taux de croissance peut être obtenu en calculant la pente de la régression de la longueur en fonction de l’âge.</p>
+<p>Ajustons d’abord une régression avec la commande <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> et sauvons ces résultats dans un objet appelé <code>RegModel.1</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">RegModel.1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">fklngth</span> <span class="op">~</span> <span class="va">age</span>, data <span class="op">=</span> <span class="va">sturgeon.male</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">RegModele.1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">fklngth</span> <span class="op">~</span> <span class="va">age</span>, data <span class="op">=</span> <span class="va">esturgeon.male</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Rien n’apparait à l’écran, c’est normal ne vous inquiétez pas, tout a été sauvegardé en mémoire. Pour voir les résultats, tapez:</p>
+<p>Rien n’apparait à l’écran, c’est normal ne vous inquiétez pas, tout a été sauvegardé en mémoire (nouvel objet visible dans l’onglet environnement) <!-- JULIEN - Extra - La parenthèse sur l'environnement -->. Pour voir les résultats, tapez:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">RegModel.1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">RegModele.1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = fklngth ~ age, data = sturgeon.male)
+lm(formula = fklngth ~ age, data = esturgeon.male)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -797,7 +809,7 @@ F-statistic: 144.3 on 1 and 73 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>la sortie R donne:</p>
 <ol type="1">
 <li>
-<code>Call:</code> Le modèle qui a été ajusté et les données utilisées.</li>
+<code>Call:</code> Un petit rappel du modèle qui a été ajusté et des données utilisées.</li>
 <li>
 <code>Residuals:</code> Un sommaire statistique des résidus autour du modèle estimé.</li>
 <li>
@@ -813,40 +825,45 @@ F-statistic: 144.3 on 1 and 73 DF,  p-value: &lt; 2.2e-16</code></pre>
 </ol>
 <p>La régression estimée est donc:</p>
 <p><span class="math display">\[ Fklngth = 28.50359 + 0.70724 * age\]</span></p>
-<p>Étant donné la valeur significative du test de F ainsi que pour le test de t pour la pente de la droite, on rejette l’hypothèse nulle qu’il n’y a pas de relation entre la taille et l’âge.</p>
-<section id="vérifier-les-conditions-dapplication-de-la-régression" class="level3" data-number="9.6.1"><h3 data-number="9.6.1" class="anchored" data-anchor-id="vérifier-les-conditions-dapplication-de-la-régression">
+<p>Étant donné la valeur significative du test de F (ainsi que pour le test de t pour la pente de la droite), on rejette l’hypothèse nulle qu’il n’y a pas de relation entre la taille et l’âge.</p>
+<section id="sec-cond-verif" class="level3" data-number="9.6.1"><h3 data-number="9.6.1" class="anchored" data-anchor-id="sec-cond-verif">
 <span class="header-section-number">9.6.1</span> Vérifier les conditions d’application de la régression</h3>
 <p>La régression simple de type I a quatre conditions préalables :</p>
 <ol type="1">
-<li>il n’y a pas d’erreur de mesure sur la variable indépendante (X)</li>
-<li>la relation entre Y et X est linéaire</li>
-<li>les résidus sont normalement distribués</li>
-<li>la variance des résidus est constante pour toutes les valeurs de la variable indépendante</li>
+<li>il n’y a <strong>pas d’erreur de mesure</strong> sur la variable indépendante (X)</li>
+<li>la relation entre Y et X est <strong>linéaire</strong>
+</li>
+<li>les résidus sont <strong>normalement distribués</strong>
+</li>
+<li>la variance des résidus est constante pour toutes les valeurs de la variable indépendante (<strong>homoscedasticité</strong>)</li>
 </ol>
-<p>Procédons maintenant à l’examen post-mortem. La première condition est rarement remplie avec des données biologiques ; il y presque toujours de l’erreur sur X et sur Y. Cela veut dire qu’en général les pentes estimées sont biaisées, mais que les valeurs prédites ne le sont pas. Toutefois, si l’erreur de mesure sur X est petite par rapport à l’étendue des valeurs de X, le résultat de l’analyse n’est pas dramatiquement influencé. Par contre, si l’erreur de mesure est relativement grande (toujours par rapport à l’étendue des valeurs de X), la droite de régression obtenue par la régression de modèle I est un piètre estimé de la relation fonctionnelle entre X et Y. Dans ce cas, il est préférable de passer à la régression de modèle II, malheureusement au-delà du contenu de ce cours. Les autres conditions préalables à l’analyse de régression de modèle I peuvent cependant être vérifiées, ou du moins évaluées visuellement. La commande plot() permet de visualiser des graphiques diagnostiques pour des modèles linéaires.</p>
+<p>Procédons maintenant à l’examen post-mortem. La première condition est rarement remplie avec des données biologiques ; il y presque toujours de l’erreur sur X et sur Y. Cela veut dire qu’en général les pentes estimées sont biaisées, mais que les valeurs prédites ne le sont pas. Toutefois, si l’erreur de mesure sur X est petite par rapport à l’étendue des valeurs de X, le résultat de l’analyse n’est pas dramatiquement influencé. Par contre, si l’erreur de mesure est relativement grande (toujours par rapport à l’étendue des valeurs de X), la droite de régression obtenue par la régression de modèle I est un piètre estimé de la relation fonctionnelle entre X et Y. Dans ce cas, il est préférable de passer à la régression de modèle II, malheureusement au-delà du contenu de ce cours. Les autres conditions préalables à l’analyse de régression de modèle I peuvent cependant être vérifiées, ou du moins évaluées visuellement. La fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> (appliqué directement sur un objet de type <code>model</code>) permet de visualiser des graphiques diagnostiques pour des modèles linéaires.</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">RegModel.1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">RegModele.1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>La commande par() est utilisée pour dire à R de tracer 2 rangées et 2 colonnes de graphiques par page (il y a quatre graphiques diagnostiques qui sont générés automatiquement pour les modèles linéaires), et la commande las indique à R d’effectuer une rotation des légendes de l’axe des Y pour qu’elles soient perpendiculaires à l’axe (oui. Je sais. Rien de tout ça n’est évident.)</p>
+<p>La fonction <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> est utilisée pour dire à R de tracer 2 rangées et 2 colonnes de graphiques par page (il y a quatre graphiques diagnostiques qui sont générés automatiquement pour les modèles linéaires), et l’argument <code>las =</code> indique à R d’effectuer une rotation des légendes des axes Y pour qu’elles soient perpendiculaires à l’axe (oui. Je sais. Rien de tout ça n’est évident.)</p>
 <p>Vous obtiendrez:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-sturlmv-1eval" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<div id="fig-sturlmv-1eval" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-sturlmv-1eval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="31-reg_lin_files/figure-html/fig-sturlmv-1eval-1.png" id="fig-sturlmv-1eval" class="img-fluid figure-img" width="672">
+<img src="31-reg_lin_files/figure-html/fig-sturlmv-1eval-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-sturlmv-1eval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.6
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sturlmv-1eval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.6: Graphiques diagnostiques du modèle.
 </figcaption></figure>
 </div>
 </div>
 </div>
 <ol type="1">
-<li>En haut à gauche, permet d’évaluer la linéarité, la normalité, et l’homoscédasticité des résidus. Il illustre les déviations autour de la régression en fonction des valeurs prédites. Rappllez-vous que le graphique de fklngth vs age suggère que la relation entre la longueur à la fourche et l’âge n’est pas linéaire. Les très jeunes et très vieux esturgeons sont sous la droite en général, alors que les esturgeons d’âge moyen sont retrouvés généralement au-dessus de la droite de régression. C’est exactement ce que le graphique des résidus en fonction des valeurs prédites illustre. La ligne en rouge est une trace lowess au travers de ce nuage de points. Si la relation était linéaire, la trace lowess serait presque plate et près de 0. La dispersion des résidus permet d’évaluer visuellement leur normalité et hétéroscédasticité; mais ce graphique n’est pas optimal pour évaluer ces propriétés. Les deux graphiques suivants sont supérieurs au premier pour cela.</li>
-<li>En haut à droite permet d’évaluer la normalité des résidus. C’est un graphique QQ des résidus (QQ plot). Des résidus distribués normalement tomberaient exactement sur la diagonale. Ici, on voit que c’est presque le cas, sauf dans les queues de la distribution.</li>
-<li>En bas à gauche, intitulé Scale-Location, permet d’évaluer l’homoscedasticité. On y retrouve sur l’ordonnée (l’axe des y) la racine carrée de la valeur absolue des résidus standardisés (résidus divisés par l’écart-type des résidus) en fonction des valeurs prédites. Le graphique aide à déterminer si la variation des résidus est constante ou non. Si les résidus sont homoscédastiques, la valeur moyenne sur l’axe des y ne va pas changer en fonction de la valeur prédite. Ici, il y a une certaine tendance, mais pas une tendance monotone puisqu’ il y a d’abord une baisse puis une hausse..; bref, rien qui soit une forte évidence contre la supposition d’homoscédasticité.</li>
-<li>En bas à droite, montre les résidus en fonction du “leverage” et permet de détecter certaines valeurs extrêmes qui ont une grande influence sur la régression. Le leverage d’un point mesure sa distance des autres points, mais seulement en ce qui concerne les variables indépendantes. Dans le cas d’une régression simple, cela revient à la distance entre le point sur l’axe des x et la moyenne de tous les points sur cet axe. Vous devriez porter une attention particulière aux observations qui ont un leverage plus grand que <span class="math inline">\(2(k+1)/n\)</span>, où k est le nombre de variables indépendantes (ici, 1) et n est le nombre d’observations. Dans cet exemple, il y a 75 observations et une variable indépendante et donc les points ayant un leverage plus grand que <span class="math inline">\(4 / 75 =  0.053\)</span> devrait être considérés avec attention. Le graphique indique également comment la régression changerait si on enlevait un point. Ce changement est mesuré par la distance de Cook, illustrée par les bandes en rouge sur le graphique. Un point ayant une distance de Cook supérieure à 1 a une grande influence.</li>
+<li>
+<strong>Le graphique en haut à gauche</strong>, permet d’évaluer la <strong>linéarité</strong>, la <strong>normalité</strong>, et l’<strong>homoscédasticité</strong> des résidus. Il illustre les déviations autour de la régression en fonction des valeurs prédites. Rappelez-vous que le graphique de <code>fklngth</code> vs <code>age</code> suggère que la relation entre la longueur et l’âge n’est pas linéaire. Les très jeunes et très vieux esturgeons sont sous la droite en général, alors que les esturgeons d’âge moyen sont retrouvés généralement au-dessus de la droite de régression. C’est exactement ce que le graphique des résidus en fonction des valeurs prédites illustre. La ligne en rouge est une trace “lowess” au travers de ce nuage de points. Si la relation était linéaire, la trace “lowess” serait presque plate et près de 0. La dispersion des résidus permet d’évaluer visuellement leur normalité et hétéroscédasticité; mais ce graphique n’est pas optimal pour évaluer ces propriétés. Les deux graphiques suivants sont mieux pour cela.</li>
+<li>Le graphique en haut à droite permet d’évaluer la <strong>normalité</strong> des résidus. C’est un graphique QQ des résidus (QQ plot). Des résidus distribués normalement tomberaient exactement sur la diagonale. Ici, on voit que c’est presque le cas, sauf dans les queues de la distribution.</li>
+<li>
+<strong>Le graphique en bas à gauche</strong>, intitulé Scale-Location, permet d’évaluer l’<strong>homoscédasticité</strong>. On y retrouve sur l’ordonnée (l’axe des y) la racine carrée de la valeur absolue des résidus standardisés (résidus divisés par l’écart-type des résidus) en fonction des valeurs prédites. Le graphique aide à déterminer si la variation des résidus est constante ou non. Si les résidus sont homoscédastiques, la valeur moyenne sur l’axe des y ne va pas changer en fonction de la valeur prédite. Ici, il y a une certaine tendance, mais pas une tendance monotone puisqu’il y a d’abord une baisse puis une hausse..; bref, rien qui soit une forte évidence contre la supposition d’homoscédasticité.</li>
+<li>
+<strong>Le graphique en bas à droite</strong>, montre les résidus en fonction du “leverage” et permet de détecter certaines <strong>valeurs extrêmes</strong> qui ont une grande influence sur la régression. Le leverage d’un point mesure sa distance des autres points, mais seulement en ce qui concerne les variables indépendantes. Dans le cas d’une régression simple, cela revient à la distance entre le point sur l’axe des x et la moyenne de tous les points sur cet axe. Vous devriez porter une attention particulière aux observations qui ont un leverage plus grand que <span class="math inline">\(2(k+1)/n\)</span>, où k est le nombre de variables indépendantes (ici, 1) et n est le nombre d’observations. Dans cet exemple, il y a 75 observations et une variable indépendante et donc les points ayant un leverage plus grand que <span class="math inline">\(4 / 75 =  0.053\)</span> devrait être considérés avec attention. Le graphique indique également comment la régression changerait si on enlevait un point. Ce changement est mesuré par la distance de Cook, illustrée par les bandes en rouge sur le graphique. Un point ayant une distance de Cook supérieure à 1 a une grande influence.</li>
 </ol>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -858,46 +875,31 @@ Avertissement
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Notez que R identifie automatiquement les cas les plus extrèmes sur chacun de ces 4 graphiques. Le fait qu’un point soit identifié ne signifie pas nécessairement que c’est une valeur réellement extrème, ou que vous devez vous en préoccuper. Dans tous les ensembles de données il y aura toujours un résidu plus grand que les autres…</p>
+<p>Notez que R identifie automatiquement les cas les plus extrêmes sur chacun de ces 4 graphiques. Le fait qu’un point soit identifié ne signifie pas nécessairement que c’est une valeur réellement extrême, ou que vous devez vous en préoccuper. Dans tous les ensembles de données il y aura toujours un résidu plus grand que les autres…</p>
 </div>
 </div>
-<p>Il est possible d’obtenir des graphiques d’évalutions des conditions d’applications, qui sont plus simple à interpréter et plus joli (avec des couleurs). Il faut utiliser la fonction <code>model_check()</code> dans le 📦 <code>performance</code>.</p>
+<p>Il est possible d’obtenir des graphiques d’évaluations des conditions d’applications, qui sont plus simple à interpréter et plus joli (avec des couleurs). On peut utiliser la fonction <code><a href="https://easystats.github.io/performance/reference/check_model.html">check_model()</a></code> du paquet <code>performance</code> <span class="emoji" data-emoji="package">📦</span>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://easystats.github.io/performance/reference/check_model.html">check_model</a></span><span class="op">(</span><span class="va">RegModel.1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://easystats.github.io/performance/reference/check_model.html">check_model</a></span><span class="op">(</span><span class="va">RegModele.1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-check" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<div id="fig-check" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-check-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="31-reg_lin_files/figure-html/fig-check-1.png" id="fig-check" class="img-fluid figure-img" width="672">
+<img src="31-reg_lin_files/figure-html/fig-check-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-check-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.7
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-check-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.7: Graphiques diagnostiques du modèle avec la fonction <code><a href="https://easystats.github.io/performance/reference/check_model.html">check_model()</a></code>.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Finalement, quel est le verdict concernant la régression linéaire entre fklngth et age ? Elle viole la condition de linéarité, possiblement celle de normalité, remplit la condition d’homoscédasticité, et ne semble pas influencée outre mesure par des valeurs bizarres ou extrêmes.</p>
+<p>Finalement, quel est le verdict concernant la régression linéaire entre <code>fklngth</code> et <code>age</code> ? Elle viole la condition de linéarité, possiblement celle de normalité, remplit la condition d’homoscédasticité, et ne semble pas être influencée outre mesure par des valeurs bizarres ou extrêmes.</p>
 </section><section id="tests-formels-des-conditions-dapplication-pour-la-régression" class="level3" data-number="9.6.2"><h3 data-number="9.6.2" class="anchored" data-anchor-id="tests-formels-des-conditions-dapplication-pour-la-régression">
 <span class="header-section-number">9.6.2</span> Tests formels des conditions d’application pour la régression</h3>
 <p>Personnellement, je n’utilise jamais les tests formels des conditions d’application de la régression et me contente des graphiques des résidus pour guider mes décisions. C’est ce que la plupart des praticiens font. Cependant, lors de mes premières analyses, je n’étais pas toujours certain de bien interpréter les graphiques et j’aurais aimé un indice plus formel ou un test permettant de détecter les violations des conditions d’application de la régression.</p>
-<p>Le package <code>lmtest</code>, qui ne fait pas partie de l’installation de base, mais qui est disponible sur CRAN, permet de faire plusieurs tests de linéarité et d’homoscédasticité. Et on peut tester la normalité avec le test Shapiro-Wilk test vu précédemment.</p>
+<p>Le package <code>lmtest</code> <span class="emoji" data-emoji="package">📦</span> (disponible sur CRAN), permet de faire plusieurs tests de linéarité et d’homoscédasticité. Et on peut tester la normalité avec le test Shapiro-Wilk vu précédemment.</p>
 <p>Charger le package lmtest de CRAN (et installer le si besoin).</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lmtest</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lmtest</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -913,46 +915,46 @@ Exercice
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/bptest.html">bptest</a></span><span class="op">(</span><span class="va">RegModel.1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/bptest.html">bptest</a></span><span class="op">(</span><span class="va">RegModele.1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     studentized Breusch-Pagan test
 
-data:  RegModel.1
+data:  RegModele.1
 BP = 1.1765, df = 1, p-value = 0.2781</code></pre>
 </div>
 </div>
-<p>Le test Breusch-Pagan test examine si la variabilité des résidus est constantes lorsque les valeurs prédites changent. Une faible valeur de p suggère de l’hétéroscédasticité. Ici, la valeur p est élevée et suggère que la condition d’application d’homoscédasticité est remplie avec ces données.</p>
+<p>Le test Breusch-Pagan examine si la variabilité des résidus est constantes lorsque les valeurs prédites changent. Une faible valeur de p suggère de l’hétéroscédasticité. Ici, la valeur p est élevée et suggère que la condition d’application d’homoscédasticité est remplie avec ces données.</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/dwtest.html">dwtest</a></span><span class="op">(</span><span class="va">RegModel.1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/dwtest.html">dwtest</a></span><span class="op">(</span><span class="va">RegModele.1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Durbin-Watson test
 
-data:  RegModel.1
+data:  RegModele.1
 DW = 2.242, p-value = 0.8489
 alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 </div>
 </div>
 <p>Le test Durbin-Watson permet de détecter l’autocorrélation sérielle des résidus. En l’absence d’autocorrélation (i.e.&nbsp;d’indépendance des résidus) la valeur attendue de la statistique D est 2. Ce test permet d’éprouver l’hypothèse d’indépendance des résidus, mais ne permet de détecter qu’un type particulier de dépendance. Ici, le test ne permet pas de rejeter l’hypothèse d’indépendance.</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/resettest.html">resettest</a></span><span class="op">(</span><span class="va">RegModel.1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/resettest.html">resettest</a></span><span class="op">(</span><span class="va">RegModele.1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     RESET test
 
-data:  RegModel.1
+data:  RegModele.1
 RESET = 14.544, df1 = 2, df2 = 71, p-value = 5.082e-06</code></pre>
 </div>
 </div>
 <p>Le test RESET permet d’éprouver la linéarité. Si la relation est linéaire, alors la statistique RESET sera d’environ 1. Ici, la statistique est beaucoup plus élevée (14.54) et hautement significative. Le test confirme la tendance que nous avons détectée visuellement plus haut: la relation n’est pas linéaire.</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">RegModel.1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">RegModele.1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
 
-data:  residuals(RegModel.1)
+data:  residuals(RegModele.1)
 W = 0.98037, p-value = 0.2961</code></pre>
 </div>
 </div>
@@ -964,33 +966,33 @@ W = 0.98037, p-value = 0.2961</code></pre>
 <li>Voyons ce qu’une transformation log donne:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">sturgeon.male</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">esturgeon.male</span>,</span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">fklngth</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span>, color <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-sturtr-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<div id="fig-sturtr-1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-sturtr-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="31-reg_lin_files/figure-html/fig-sturtr-1-1.png" id="fig-sturtr-1" class="img-fluid figure-img" width="672">
+<img src="31-reg_lin_files/figure-html/fig-sturtr-1-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-sturtr-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.8
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sturtr-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.8: Graphique du log de la longueur en fonction du log de l’âge des esturgeons males
 </figcaption></figure>
 </div>
 </div>
 </div>
 <p>Ajustons maintenant une régression simple sur ces données transformées.</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">RegModel.2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">fklngth</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">sturgeon.male</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">RegModel.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">RegModele.2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">fklngth</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">esturgeon.male</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">RegModele.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = log10(fklngth) ~ log10(age), data = sturgeon.male)
+lm(formula = log10(fklngth) ~ log10(age), data = esturgeon.male)
 
 Residuals:
       Min        1Q    Median        3Q       Max 
@@ -1011,71 +1013,71 @@ F-statistic: 247.1 on 1 and 73 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>Examinons maintenant les graphiques diagnostiques:</p>
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">RegModel.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">RegModele.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-sturtr-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<div id="fig-sturtr-3" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-sturtr-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="31-reg_lin_files/figure-html/fig-sturtr-3-1.png" id="fig-sturtr-3" class="img-fluid figure-img" width="672">
+<img src="31-reg_lin_files/figure-html/fig-sturtr-3-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-sturtr-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.9
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sturtr-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.9: Graphiques diagnostiques du modèle avec les données log-transformées.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Il y a une certaine amélioration, mais ce n’est pas encore parfait (la perfection n’est pas de ce monde….). Le graphique des résidus en fonction des valeurs prédites suggère encore une certaine non linéarité. Sur le graphique Q-Q les points se retrouvent plus près de la droite diagonale qu’avant, indiquant que les résidus sont encore plus près de la normalité après la transformation log-log. Il n’y a pas d’indice d’hétéroscédasticité. Finalement, même si il reste quelques points avec plus d’influence (leverage) que les autres, aucun n’a une distance de Cook au-delà de 0.5. En résumé, la transformation log a amélioré les choses: relation est plus linéaire, les résidus sont plus normaux, et il y a moins de points avec une influence relativement élevée.Est-ce que les tests formels supportent cette évaluation?</p>
+<p>Il y a une certaine amélioration, mais ce n’est pas encore parfait (la perfection n’est pas de ce monde….). Le graphique des résidus en fonction des valeurs prédites suggère encore une certaine non linéarité. Sur le graphique Q-Q les points se retrouvent plus près de la droite diagonale qu’avant, indiquant que les résidus sont encore plus près de la normalité après la transformation log-log. Il n’y a pas d’indice d’hétéroscédasticité. Finalement, même si il reste quelques points avec plus d’influence (leverage) que les autres, aucun n’a une distance de Cook au-delà de 0.5. En résumé, la transformation log a amélioré les choses: la relation est plus linéaire, les résidus sont plus normaux, et il y a moins de points avec une influence relativement élevée. Est-ce que les tests formels supportent cette évaluation ?</p>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/bptest.html">bptest</a></span><span class="op">(</span><span class="va">RegModel.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/bptest.html">bptest</a></span><span class="op">(</span><span class="va">RegModele.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     studentized Breusch-Pagan test
 
-data:  RegModel.2
+data:  RegModele.2
 BP = 0.14282, df = 1, p-value = 0.7055</code></pre>
 </div>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/dwtest.html">dwtest</a></span><span class="op">(</span><span class="va">RegModel.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/dwtest.html">dwtest</a></span><span class="op">(</span><span class="va">RegModele.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Durbin-Watson test
 
-data:  RegModel.2
+data:  RegModele.2
 DW = 2.1777, p-value = 0.6134
 alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 </div>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/resettest.html">resettest</a></span><span class="op">(</span><span class="va">RegModel.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/resettest.html">resettest</a></span><span class="op">(</span><span class="va">RegModele.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     RESET test
 
-data:  RegModel.2
+data:  RegModele.2
 RESET = 4.4413, df1 = 2, df2 = 71, p-value = 0.01523</code></pre>
 </div>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">RegModel.2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">RegModele.2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
 
-data:  residuals(RegModel.2)
+data:  residuals(RegModele.2)
 W = 0.98998, p-value = 0.8246</code></pre>
 </div>
 </div>
 <p>Oui, les conclusions sont les mêmes: les résidus sont encore homoscédastiques (test Breusch-Pagan), ne sont pas autocorrélés (test Durbin-Watson), sont normaux (test Shapiro-Wilk), et sont plus linéaires (la valeur de P du test RESET est maintenant 0.015, au lieu de 0.000005). Donc la linéarité a augmenté, mais cette condition d’application semble encore légèrement violée.</p>
-</section><section id="traitement-des-valeurs-extrèmes" class="level2" data-number="9.8"><h2 data-number="9.8" class="anchored" data-anchor-id="traitement-des-valeurs-extrèmes">
-<span class="header-section-number">9.8</span> Traitement des valeurs extrèmes</h2>
-<p>Dans cet exemple, il n’y a pas de valeur vraiment extrème. Oui, je sais, R a quand même identifié les observations 8, 24, et 112 dans le dernier graphique diagnostique. Mais ces valeurs sont encore dans la fourchette de valeurs que je juge “acceptables”. Mais comment déterminer objectivement ce qui est acceptable? À quel moment juge t’on qu’une valeur extrême est vraiment trop invraisemblable pour ne pas l’exclure? Il n’y a malheureusement pas de règle absolue là-dessus. Les opinions varient, mais je penche vers le conservatisme sur cette question.</p>
+</section><section id="traitement-des-valeurs-extrêmes" class="level2" data-number="9.8"><h2 data-number="9.8" class="anchored" data-anchor-id="traitement-des-valeurs-extrêmes">
+<span class="header-section-number">9.8</span> Traitement des valeurs extrêmes</h2>
+<p>Dans cet exemple, il n’y a pas de valeur vraiment extrême. Oui, je sais, R a quand même identifié les observations 8, 24, et 112 dans le dernier graphique diagnostique. Mais ces valeurs sont encore dans la fourchette de valeurs que je juge “acceptables”. Mais comment déterminer objectivement ce qui est acceptable ? À quel moment juge t’on qu’une valeur extrême est vraiment trop invraisemblable pour ne pas l’exclure ? Il n’y a malheureusement pas de règle absolue là-dessus. Les opinions varient, mais je penche vers le conservatisme sur cette question.</p>
 <p>Ma position est que, à moins que la valeur soit biologiquement impossible ou clairement une erreur d’entrée de données, je n’élimine pas les valeurs extrêmes et j’utilise toutes mes données dans leur analyse. Pourquoi?</p>
 <p>Parce que je veux que mes données reflètent bien la variabilité naturelle ou réelle. C’est d’ailleurs parfois cette variabilité qui est intéressante.</p>
 <p>L’approche conservatrice qui consiste à conserver toutes les valeurs extrêmes possibles est possiblement la plus honnête, mais elle peut causer certains problèmes. Ces valeurs extrêmes sont souvent la cause des violations des conditions d’application des tests statistiques. La solution suggérée à ce dilemme est de faire l’analyse avec et sans les valeurs extrêmes et de comparer les conclusions. Dans bien des cas, les conclusions seront qualitativement les mêmes et les tailles d’effet ne seront pas très différentes. Toutefois, dans certains cas, la présence des valeurs extrêmes change complètement les conclusions. Dans ces cas, il faut simplement accepter que les conclusions dépendent entièrement de la présence des valeurs extrêmes et sont donc peu concluantes.</p>
 <p>Suivant cette approche comparative, refaisons donc l’analyse après avoir enlevé les observations 8, 24, et 112.</p>
 <div class="cell">
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">RegModel.3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">fklngth</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">sturgeon.male</span>, subset <span class="op">=</span> <span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">sturgeon.male</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"8"</span>, <span class="st">"24"</span>, <span class="st">"112"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">RegModel.3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">RegModele.3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">fklngth</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">esturgeon.male</span>, subset <span class="op">=</span> <span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">esturgeon.male</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"8"</span>, <span class="st">"24"</span>, <span class="st">"112"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># On enlève les observations 8, 24 et 112 du jeu de données</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">RegModele.3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = log10(fklngth) ~ log10(age), data = sturgeon.male, 
-    subset = !(rownames(sturgeon.male) %in% c("8", "24", "112")))
+lm(formula = log10(fklngth) ~ log10(age), data = esturgeon.male, 
+    subset = !(rownames(esturgeon.male) %in% c("8", "24", "112")))
 
 Residuals:
       Min        1Q    Median        3Q       Max 
@@ -1094,53 +1096,51 @@ Multiple R-squared:  0.7885,    Adjusted R-squared:  0.7855
 F-statistic:   261 on 1 and 70 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>L’ordonnée à l’origine (Intercept), la pente, et le R carré sont presque les mêmes, et la valeur de p est encore astronomiquement petite. Enlever les valeurs extrêmes a peu d’effet dans ce cas.</p>
-<p>Les graphiques diagnostiques des résidus et les tests formels des conditions d’application sur ce sous-ensemble de données donnent:</p>
+<p>L’ordonnée à l’origine (<code>Intercept</code>), la pente, et le R carré sont presque les mêmes, et la valeur de p est encore astronomiquement petite. Enlever les valeurs extrêmes a peu d’effet dans ce cas.</p>
+<p>Les graphiques diagnostiques des résidus et les tests formels des conditions d’application sur ce sous-ensemble de données donnent :</p>
 <div class="cell">
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">RegModel.3</span><span class="op">)</span></span>
-<span><span class="va">sturgeon.male.subset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span></span>
-<span>  <span class="va">sturgeon</span>, subset <span class="op">=</span> <span class="op">!</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">sturgeon.male</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"8"</span>, <span class="st">"24"</span>, <span class="st">"112"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/bptest.html">bptest</a></span><span class="op">(</span><span class="va">RegModel.3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">RegModele.3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/bptest.html">bptest</a></span><span class="op">(</span><span class="va">RegModele.3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     studentized Breusch-Pagan test
 
-data:  RegModel.3
+data:  RegModele.3
 BP = 0.3001, df = 1, p-value = 0.5838</code></pre>
 </div>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/dwtest.html">dwtest</a></span><span class="op">(</span><span class="va">RegModel.3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/dwtest.html">dwtest</a></span><span class="op">(</span><span class="va">RegModele.3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Durbin-Watson test
 
-data:  RegModel.3
+data:  RegModele.3
 DW = 2.0171, p-value = 0.5074
 alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 </div>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/resettest.html">resettest</a></span><span class="op">(</span><span class="va">RegModel.3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/resettest.html">resettest</a></span><span class="op">(</span><span class="va">RegModele.3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     RESET test
 
-data:  RegModel.3
+data:  RegModele.3
 RESET = 3.407, df1 = 2, df2 = 68, p-value = 0.0389</code></pre>
 </div>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">RegModel.3</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">RegModele.3</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
 
-data:  residuals(RegModel.3)
+data:  residuals(RegModele.3)
 W = 0.98318, p-value = 0.4502</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-sturtr-6" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<div id="fig-sturtr-6" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-sturtr-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="31-reg_lin_files/figure-html/fig-sturtr-6-1.png" id="fig-sturtr-6" class="img-fluid figure-img" width="672">
+<img src="31-reg_lin_files/figure-html/fig-sturtr-6-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-sturtr-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.10
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sturtr-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.10: Graphiques diagnostiques du modèle RegModele.3 excluant les données aberrantes.
 </figcaption></figure>
 </div>
 </div>
@@ -1148,28 +1148,28 @@ Figure&nbsp;9.10
 <p>Il n’y a pas vraiment de différence ici non plus avec l’analyse des données en entier. Bref, tout pointe vers la conclusion que les valeurs les plus extrêmes de cet ensemble de donnée n’influencent pas indûment les résultats statistiques.</p>
 </section><section id="quantifier-la-taille-deffet-et-analyse-de-puissance-en-régression" class="level2" data-number="9.9"><h2 data-number="9.9" class="anchored" data-anchor-id="quantifier-la-taille-deffet-et-analyse-de-puissance-en-régression">
 <span class="header-section-number">9.9</span> Quantifier la taille d’effet et analyse de puissance en régression</h2>
-<p>L’interprétation biologique des résultats n’est pas la même chose que l’interprétation statistique. Dans l’analyse qui précède, on conclue statistiquement que la taille augmente avec l’âge (puisque la pente est positive et et p&lt;0.05). Mais cette augmentation “statistique” de la taille avec l’âge ne donne pas d’information sur la différence de taille entre les jeunes et vieux individus. La pente et un graphique sont plus informatifs à ce sujet que la valeur p.&nbsp;La pente (dans l’espace log-log) est 0.34. Cela veut dire que pour chaque unité d’accroissement de X (log10(age)), il y a une augmentation de 0.34 unités de log10(fklngth). En d’autres mots, quand l’âge est multiplié par 10, la longueur à la fourche est multipliée environ par 2 (10<sup>0.34</sup>). Donc la longueur des esturgeons augmente plus lentement que leur âge (contrairement à mon tour de taille, semble-t-il….). La valeur de la pente (0.34) est un estimé de la taille de l’effet de l’âge sur la longueur.</p>
-<p>Il est aussi importnat d’estimer l’intervalle de confiance sur la pente pour pouvoir estimer si l’intervalle inclus ou non que des valeurs biologiquement importantes. Cela peut être fait simplement avec la fonction <code><a href="https://rdrr.io/r/stats/confint.html">confint()</a></code>.</p>
+<p>L’interprétation biologique des résultats n’est pas la même chose que l’interprétation statistique. Dans l’analyse qui précède, on conclue statistiquement que la taille augmente avec l’âge (puisque la pente est positive et et <span class="math inline">\(p&lt;0.05\)</span>). Mais cette augmentation “statistique” de la taille avec l’âge ne donne pas d’informations sur la différence de taille entre les jeunes et vieux individus. La pente et un graphique sont plus informatifs à ce sujet que la valeur p. La pente (dans l’espace log-log) est de 0.34. Cela veut dire que pour chaque unité d’accroissement de X (log10(age)), il y a une augmentation de 0.34 unités de log10(fklngth). En d’autres mots, quand l’âge est multiplié par 10, la longueur est multipliée environ par 2 (10<sup>0.34</sup> = 2.19). Donc la longueur des esturgeons augmente plus lentement que leur âge. La valeur de la pente (0.34) est un estimé de la taille de l’effet de l’âge sur la longueur.</p>
+<p>Il est aussi important d’estimer l’intervalle de confiance sur la pente pour pouvoir estimer si l’intervalle n’inclus ou non que des valeurs biologiquement importantes. Cela peut être fait simplement avec la fonction <code><a href="https://rdrr.io/r/stats/confint.html">confint()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">RegModel.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">RegModele.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                2.5 %   97.5 %
 (Intercept) 1.1377151 1.246270
 log10(age)  0.2976433 0.384068</code></pre>
 </div>
 </div>
-<p>L’intervalle de confiance à 95% de la pente est 0.29-0.38. L,intervalle de confiance est assez faible et éloigné de zéro.</p>
+<p>L’intervalle de confiance à 95% de la pente est 0.29-0.38. L,intervalle de confiance est assez étroit et éloigné de zéro.</p>
 <section id="puissance-de-détecter-une-pente-donnée" class="level3" data-number="9.9.1"><h3 data-number="9.9.1" class="anchored" data-anchor-id="puissance-de-détecter-une-pente-donnée">
 <span class="header-section-number">9.9.1</span> Puissance de détecter une pente donnée</h3>
-<p>Pour les calculs de puissance avec G*Power vous devrez cependant utiliser une autre métrique de la taille de l’effet, calculée à partir de la pente, de son erreur-type, et de la taille de l’échantillon (ce qui facilite les calculs pour G*Power, mais malheureusement pas pour vous ;-) La métrique (d) est calculée comme: <span class="math display">\[ d = \frac{b}{s_b\sqrt{n-k-1}} \]</span> où <span class="math inline">\(b\)</span> est l’estimé de la pente, <span class="math inline">\(s_b\)</span> est l’erreur type de la pente, <span class="math inline">\(n\)</span> est le nombre d’observations, et <span class="math inline">\(k\)</span> est le nombre de variables indépendantes (1 pour la régression linéaire simple).</p>
-<p>Vous pouvez calculer approximativement la puissance avec G*Power pour une valeur de pente que vous jugez assez grande pour mériter d’être détectée. Allez à <strong>Tests: Means: One group: difference from constant</strong>, là, vous devrez remplacer la valeur de <span class="math inline">\(b\)</span> dans l’équation pour la taille d’effet (d) par la pente que vous voudriez détecter, mais utiliser l’erreur type calculée à partir de vos données.</p>
+<p>Pour les calculs de puissance avec G*Power vous devrez cependant utiliser une autre métrique de la taille de l’effet, calculée à partir de la pente, de son erreur-type, et de la taille de l’échantillon (ce qui facilite les calculs pour G*Power, mais malheureusement pas pour vous) La métrique (d) est calculée comme: <span class="math display">\[ d = \frac{b}{s_b\sqrt{n-k-1}} \]</span> où <span class="math inline">\(b\)</span> est l’estimé de la pente, <span class="math inline">\(s_b\)</span> est l’erreur type de la pente, <span class="math inline">\(n\)</span> est le nombre d’observations, et <span class="math inline">\(k\)</span> est le nombre de variables indépendantes (1 pour la régression linéaire simple).</p>
+<p>Vous pouvez calculer approximativement la puissance avec G*Power pour une valeur de pente que vous jugez assez grande pour mériter d’être détectée. Choisissez <strong>Tests: Means: One group: difference from constant</strong>, là, vous devrez remplacer la valeur de <span class="math inline">\(b\)</span> dans l’équation pour la taille d’effet (d) par la pente que vous voudriez détecter, mais utiliser l’erreur type calculée à partir de vos données.</p>
 <p>Par exemple, supposons que les ichthyologues considèrent qu’une pente de 0.1 pour la relation entre log10(fklngth) et log10(age) est signifiante biologiquement, et qu’ils désirent estimer la puissance de détecter une telle pente à partir d’un échantillon de 20 esturgeons. Les résultats de la régression log-log nous fournissent ce dont on a besoin:</p>
 <div class="cell">
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">RegModel.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">RegModele.2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = log10(fklngth) ~ log10(age), data = sturgeon.male)
+lm(formula = log10(fklngth) ~ log10(age), data = esturgeon.male)
 
 Residuals:
       Min        1Q    Median        3Q       Max 
@@ -1189,7 +1189,7 @@ F-statistic: 247.1 on 1 and 73 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p>L’erreur-type de la pente est 0.02168. Il y avait 75 poissons (n=75) dans l’échantillon de départ. On peut donc calculer la métrique de taille d’effet pour G*Power <span class="math display">\[ d = \frac{b}{s_b\sqrt{n-k-1}} = \frac{0.1}{0.02168\sqrt{74-1-1}}=0.54\]</span></p>
-<p>Armés de cette taille d’effet (une pente présumée de 0.1 et une variabilité autour de la régression similaire à la régression de fklngth vs age), aller à <strong>Tests: Means: One group: difference from constant</strong>, et entrez la valeur calculée de d, alpha, et l’effectif de l’échantillon pour calculer la puissance.</p>
+<p>Armés de cette taille d’effet (une pente présumée de 0.1 et une variabilité autour de la régression similaire à la régression de fklngth vs age), choisissez <strong>Tests: Means: One group: difference from constant</strong>, et entrez la valeur calculée de d, alpha, et l’effectif de l’échantillon pour calculer la puissance.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-lm-pow-fig-1" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1204,7 +1204,7 @@ Figure&nbsp;9.11: Analyse de puissance pour N = 20 et pente = 0.1
 </div>
 <p>Dans R, il est possible de faire cette analyse avec le code suivant:</p>
 <div class="cell">
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># analyse de puissance</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">20</span>, d <span class="op">=</span> <span class="fl">0.54</span>, sig.level <span class="op">=</span> <span class="fl">0.05</span>, type <span class="op">=</span> <span class="st">"one.sample"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1237,7 +1237,7 @@ Figure&nbsp;9.12: Analyse à priori pour déterminer la taille d’échantillon 
 </div>
 <p>Dans R, il est possible de faire cette analyse avec le code suivant:</p>
 <div class="cell">
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># analyse de puissance</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">65</span>, d <span class="op">=</span> <span class="fl">0.54</span>, sig.level <span class="op">=</span> <span class="fl">0.05</span>, type <span class="op">=</span> <span class="st">"one.sample"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1257,21 +1257,21 @@ Figure&nbsp;9.12: Analyse à priori pour déterminer la taille d’échantillon 
 <span class="header-section-number">9.10</span> Bootstrap en régression simple avec R</h2>
 <p>Un test non paramétrique pour l’ordonnée à l’origine et la pente d’une régression simple peut être effectué par bootstrap.</p>
 <div class="cell">
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># charger le paquet boot</span></span>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># charger le paquet boot</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span>
 <span><span class="co"># obtenir les poids de régression</span></span>
 <span><span class="va">bs</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">indices</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">d</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">[</span><span class="va">indices</span>, <span class="op">]</span> <span class="co"># allows boot to select sample</span></span>
+<span>  <span class="va">d</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">[</span><span class="va">indices</span>, <span class="op">]</span> <span class="co"># Permets à boot de sélectionner les échantillons</span></span>
 <span>  <span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">formula</span>, data <span class="op">=</span> <span class="va">d</span><span class="op">)</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="co"># bootstrapping with 1000 replications</span></span>
+<span><span class="co"># bootstrap avec 1000 réplications</span></span>
 <span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.html">boot</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">sturgeon.male</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">esturgeon.male</span>,</span>
 <span>  statistic <span class="op">=</span> <span class="va">bs</span>,</span>
 <span>  R <span class="op">=</span> <span class="fl">1000</span>, formula <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">fklngth</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co"># view results</span></span>
+<span><span class="co"># Résultats</span></span>
 <span><span class="va">results</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1279,14 +1279,14 @@ ORDINARY NONPARAMETRIC BOOTSTRAP
 
 
 Call:
-boot(data = sturgeon.male, statistic = bs, R = 1000, formula = log10(fklngth) ~ 
+boot(data = esturgeon.male, statistic = bs, R = 1000, formula = log10(fklngth) ~ 
     log10(age))
 
 
 Bootstrap Statistics :
-     original        bias    std. error
-t1* 1.1919926  0.0010297189  0.03344522
-t2* 0.3408557 -0.0006201354  0.02643693</code></pre>
+     original       bias    std. error
+t1* 1.1919926  0.002738410  0.03496594
+t2* 0.3408557 -0.002021183  0.02769506</code></pre>
 </div>
 </div>
 <p>Pour chaque paramètre du modèle (ici l’ordonnée à l’origine est appelée t1* et la pente de la régression t2*), R imprime :</p>
@@ -1299,33 +1299,33 @@ t2* 0.3408557 -0.0006201354  0.02643693</code></pre>
 <code>std. error</code> l’erreur-type de l’estimé bootstrap</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">results</span>, index <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co"># intercept</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">results</span>, index <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># log10(age)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-lm-boot-2-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<div id="fig-lm-boot-2-1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-lm-boot-2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="31-reg_lin_files/figure-html/fig-lm-boot-2-1.png" id="fig-lm-boot-2-1" class="img-fluid figure-img" width="672">
+<img src="31-reg_lin_files/figure-html/fig-lm-boot-2-1.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-lm-boot-2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.13
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lm-boot-2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.13: Résultats du test de bootstrap non paramétrique
 </figcaption></figure>
 </div>
 </div>
 <div class="cell-output-display">
-<div id="fig-lm-boot-2-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<div id="fig-lm-boot-2-2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-lm-boot-2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="31-reg_lin_files/figure-html/fig-lm-boot-2-2.png" id="fig-lm-boot-2-2" class="img-fluid figure-img" width="672">
+<img src="31-reg_lin_files/figure-html/fig-lm-boot-2-2.png" class="img-fluid figure-img" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-lm-boot-2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9.14
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lm-boot-2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.14: Résultats du test de bootstrap non paramétrique
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>La distribution des estimés obtenus par bootstrap est assez normale dans cet exemple, avec de petites déviations dans les queuee de la distribution (là où ça compte pour les intervalles de confiance…). On pourrait utiliser l’erreur-type des estimés bootstrap pour calculer un intervalle de confiance symétrique (moyenne +- t ET). Cependant, comme R peut facilement calculer des intervalles de confiance qui corrigent pour le biais (BCa) ou encore des intervalle empiriques à partir des distributions simulées (méthode Percentile) il peut être aussi simple de les calculer selon les 3 méthodes:</p>
+<p>La distribution des estimés obtenus par bootstrap est assez normale dans cet exemple, avec de petites déviations dans les queue de la distribution (là où ça compte pour les intervalles de confiance…). On pourrait utiliser l’erreur-type des estimés bootstrap pour calculer un intervalle de confiance symétrique (moyenne +- t E.T.). Cependant, comme R peut facilement calculer des intervalles de confiance qui corrigent pour le biais (BCa: “Bias-Corrected Adjusted”) ou encore des intervalle empiriques à partir des distributions simulées (méthode Percentile) il peut être aussi simple de les calculer selon les 3 méthodes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># interval de confiance pour l'ordonnée à l'origine</span></span>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># interval de confiance pour l'ordonnée à l'origine</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.ci.html">boot.ci</a></span><span class="op">(</span><span class="va">results</span>, type <span class="op">=</span> <span class="st">"all"</span>, index <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in boot.ci(results, type = "all", index = 1): bootstrap variances
@@ -1340,15 +1340,16 @@ boot.ci(boot.out = results, type = "all", index = 1)
 
 Intervals : 
 Level      Normal              Basic         
-95%   ( 1.125,  1.257 )   ( 1.126,  1.254 )  
+95%   ( 1.121,  1.258 )   ( 1.122,  1.256 )  
 
 Level     Percentile            BCa          
-95%   ( 1.130,  1.258 )   ( 1.123,  1.253 )  
-Calculations and Intervals on Original Scale</code></pre>
+95%   ( 1.128,  1.262 )   ( 1.116,  1.250 )  
+Calculations and Intervals on Original Scale
+Some BCa intervals may be unstable</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># intervalle de confiance pour la pente</span></span>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># intervalle de confiance pour la pente</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.ci.html">boot.ci</a></span><span class="op">(</span><span class="va">results</span>, type <span class="op">=</span> <span class="st">"all"</span>, index <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in boot.ci(results, type = "all", index = 2): bootstrap variances
@@ -1363,11 +1364,12 @@ boot.ci(boot.out = results, type = "all", index = 2)
 
 Intervals : 
 Level      Normal              Basic         
-95%   ( 0.2897,  0.3933 )   ( 0.2896,  0.3923 )  
+95%   ( 0.2886,  0.3972 )   ( 0.2889,  0.3968 )  
 
 Level     Percentile            BCa          
-95%   ( 0.2894,  0.3921 )   ( 0.2941,  0.3955 )  
-Calculations and Intervals on Original Scale</code></pre>
+95%   ( 0.2849,  0.3928 )   ( 0.2950,  0.4019 )  
+Calculations and Intervals on Original Scale
+Some BCa intervals may be unstable</code></pre>
 </div>
 </div>
 <p>Ici, les 4 types d’intervalles de confiance que R a calculé sont essentiellement semblables. Si les données avaient violé plus sévèrement les conditions d’application de la régression (normalité, homoscedasticité), alors les différentes méthodes (Normal, Basic, Percentile, et BCa) auraient divergé un peu plus. Lequel choisir alors? BCa est celui qui est préféré de la majorité des praticiens, présentement.</p>

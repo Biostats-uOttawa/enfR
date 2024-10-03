@@ -157,7 +157,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-bi-flag">
 <li>
-    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway">
+    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway/35-reg_mult.html">
  <span class="dropdown-text">English</span></a>
   </li>  
     </ul>
@@ -1626,14 +1626,14 @@ Figure&nbsp;13.8: Distribution des estimé par bootstrap pour <code>logarea</cod
 <span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">tmyresults</span>, <span class="fl">2</span>, <span class="va">quantile</span>, <span class="va">p</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      (Intercept)   logarea       thtden      swamp    I(swamp^2)
-0.5%  -0.72015691 0.1408549 -0.049532934 0.01782288 -0.0003426127
-1%    -0.68763485 0.1458417 -0.045999063 0.01857755 -0.0003383352
-2.5%  -0.65598177 0.1547219 -0.042789810 0.02047106 -0.0003257695
-5%    -0.60369685 0.1662327 -0.040001926 0.02173747 -0.0003131280
-95%   -0.09267750 0.2790818 -0.012366646 0.03772895 -0.0001875184
-97.5% -0.01799830 0.2902973 -0.009936534 0.03888219 -0.0001738278
-99%    0.02846165 0.2979800 -0.006783287 0.04065709 -0.0001599040
-99.5%  0.05167335 0.3027551 -0.005732742 0.04121435 -0.0001542944</code></pre>
+0.5%  -0.73750894 0.1314419 -0.048227406 0.01607443 -0.0003417123
+1%    -0.72768878 0.1358083 -0.045537421 0.01784597 -0.0003369552
+2.5%  -0.63392936 0.1505905 -0.041838068 0.01954844 -0.0003271149
+5%    -0.59764987 0.1640999 -0.039662610 0.02112768 -0.0003161799
+95%   -0.07130886 0.2774067 -0.011308130 0.03781148 -0.0001841164
+97.5% -0.02248353 0.2889245 -0.009393218 0.03918334 -0.0001668460
+99%    0.03191879 0.2973290 -0.007231345 0.04064061 -0.0001527819
+99.5%  0.08486088 0.3139466 -0.004438889 0.04152301 -0.0001422229</code></pre>
 </div>
 </div>
 <p>Ces intervalles de confiances ne sont pas fiables si la distribution des estimés bootstrap n’est pas Gaussienne. Dans ce cas, il vaut mieux calculer des coefficients non-biaisés (bias-corrected accelerated confidence limits, BCa):</p>
@@ -1683,8 +1683,9 @@ boot.ci(boot.out = results, type = "bca", index = 2)
 
 Intervals : 
 Level       BCa          
-95%   ( 0.1159,  0.3260 )  
-Calculations and Intervals on Original Scale</code></pre>
+95%   ( 0.1248,  0.3255 )  
+Calculations and Intervals on Original Scale
+Some BCa intervals may be unstable</code></pre>
 </div>
 <div class="cell-output-display">
 <div id="fig-regm-10" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">

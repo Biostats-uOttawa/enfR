@@ -157,7 +157,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-bi-flag">
 <li>
-    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway">
+    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway/05-programming.html">
  <span class="dropdown-text">English</span></a>
   </li>  
     </ul>
@@ -518,7 +518,7 @@ window.Quarto = {
         z$qr &lt;- NULL
     z
 }
-&lt;bytecode: 0x5ce5e486c128&gt;
+&lt;bytecode: 0x5e5574c98270&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 </div>
@@ -615,8 +615,8 @@ Astuce
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagna_stovies_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dishes</span><span class="op">$</span><span class="va">lasagna</span>, y <span class="op">=</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span><span class="op">)</span></span>
 <span><span class="va">lasagna_stovies_func</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  0.39870077 -0.75520781  0.05353023  0.23102663  0.45329894 -2.78623418
- [7] -0.35813571  0.10336648 -0.10248847  0.14124923</code></pre>
+<pre><code> [1] -0.981094427 -0.005038961 -0.533527892 -1.393131269  0.264554853
+ [6] -0.711881032 -0.748428698  0.049974284  0.044609857  0.467105997</code></pre>
 </div>
 </div>
 <p>Si nous ne nous intéressons qu’à la multiplication <code>dishes$lasagna</code> et <code>dishes$stovies</code> il serait exagéré de créer une fonction pour faire quelque chose une seule fois. Cependant, l’avantage de créer une fonction est que nous avons maintenant cette fonction ajoutée à notre environnement que nous pouvons utiliser aussi souvent que nous le souhaitons. Nous disposons également du code pour créer la fonction, ce qui signifie que nous pouvons l’utiliser dans des projets entièrement nouveaux, réduisant ainsi la quantité de code qui doit être écrite (et testée à nouveau) à partir de zéro à chaque fois.</p>
@@ -633,8 +633,8 @@ Astuce
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stovies_poutine_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span>, y <span class="op">=</span> <span class="va">dishes</span><span class="op">$</span><span class="va">poutine</span><span class="op">)</span></span>
 <span><span class="va">stovies_poutine_func</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]            NA            NA            NA  0.0879287405  0.4392946420
- [6]  0.0605509100  0.9761694387  1.2215362724 -0.2825366740 -0.0005892957</code></pre>
+<pre><code> [1]         NA         NA         NA -0.2907323  0.7430704 -0.4783783
+ [7] -1.0015872 -0.3015105 -0.1057006  0.2219900</code></pre>
 </div>
 </div>
 <p>Jusqu’à présent, tout va bien. Tout ce que nous avons fait, c’est envelopper le code <code>x * y</code> dans une fonction, où nous demandons à l’utilisateur de spécifier ce que son <code>x</code> et <code>y</code> sont.</p>
@@ -1145,6 +1145,7 @@ The function has produced NAs</code></pre>
 <!--Data links-->
 <!--Resource Links-->
 <!--Misc Links-->
+<!--Add by Augustin-->
 
 
 </section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
