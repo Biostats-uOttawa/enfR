@@ -1,7 +1,5 @@
 {{< include images/_links.md >}}
 
-<!-- # (PART) Modèle univarié {-} -->
-
 # Corrélation et régression linéaire simple
 
 Objectifs de ce chapitre :
