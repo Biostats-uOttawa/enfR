@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr-fr" xml:lang="fr-fr"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.9">
+<meta name="generator" content="quarto-1.6.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Julien Martin">
 <meta name="description" content="En cours de traduction">
@@ -70,11 +70,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-37bb72f48501692975d9c066fdeb097b.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-018089954d508eae8a473f0b7f0491f0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5223d57514b7f3c9e8f675d86406bf62.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-758c5ce73771950a3d9b163c2677d9fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-4ee51bf3f97b95f0ac1d3b797e87ffb6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -157,7 +157,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-bi-flag">
 <li>
-    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway/36-ancova_glm.html">
+    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway">
  <span class="dropdown-text">English</span></a>
   </li>  
     </ul>
@@ -503,9 +503,13 @@ Exercice
 <span><span class="op">)</span></span>
 <span><span class="va">myplot</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="36-ancova_glm_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Longueur des esturgeons en fonction de l’age</figcaption></figure>
+<div id="fig-anc1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-anc1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="36-ancova_glm_files/figure-html/fig-anc1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anc1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.1: Longueur des esturgeons en fonction de l’age
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -543,12 +547,16 @@ Solution
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">model.full1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="36-ancova_glm_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Conditions d’applications du modèle <code>model.full1</code></figcaption></figure>
+<div id="fig-anc2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-anc2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="36-ancova_glm_files/figure-html/fig-anc2-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anc2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.2: Conditions d’applications du modèle <code>model.full1</code>
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -614,23 +622,17 @@ Exercice
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">anc3dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/anc3dat.csv"</span><span class="op">)</span></span>
-<span><span class="va">myplot</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">anc3dat</span>, <span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">lage</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">fklngth</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">.</span><span class="op">~</span><span class="va">locate</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="va">myplot</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">anc3dat</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">lage</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">fklngth</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">.</span> <span class="op">~</span> <span class="va">locate</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">stat_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, se<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu">stat_smooth</span><span class="op">(</span>se<span class="op">=</span><span class="cn">FALSE</span>, color<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">stat_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="va">lm</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">stat_smooth</span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">log</span><span class="op">[</span><span class="fl">10</span><span class="op">]</span><span class="op">~</span><span class="op">(</span><span class="va">Fork</span><span class="op">~</span><span class="va">length</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>    x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">log</span><span class="op">[</span><span class="fl">10</span><span class="op">]</span><span class="op">~</span><span class="op">(</span><span class="va">Age</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">myplot</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="36-ancova_glm_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Longueur des esturgeons en fonction de l’age d’après <code>anc3dat</code></figcaption></figure>
-</div>
-</div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.full2</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span> <span class="op">+</span> <span class="va">locate</span> <span class="op">+</span> <span class="va">lage</span><span class="op">:</span><span class="va">locate</span>, data <span class="op">=</span> <span class="va">anc3dat</span><span class="op">)</span></span>
+<span>    y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">log</span><span class="op">[</span><span class="fl">10</span><span class="op">]</span> <span class="op">~</span> <span class="op">(</span><span class="va">Fork</span> <span class="op">~</span> <span class="va">length</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">log</span><span class="op">[</span><span class="fl">10</span><span class="op">]</span> <span class="op">~</span> <span class="op">(</span><span class="va">Age</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="va">myplot</span></span>
+<span><span class="va">model.full2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span> <span class="op">+</span> <span class="va">locate</span> <span class="op">+</span> <span class="va">lage</span><span class="op">:</span><span class="va">locate</span>, data <span class="op">=</span> <span class="va">anc3dat</span><span class="op">)</span></span>
 <span><span class="fu">Anova</span><span class="op">(</span><span class="va">model.full2</span>, type <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Anova Table (Type III tests)
@@ -644,6 +646,16 @@ lage:locate 0.00909  1   15.575 0.0001592 ***
 Residuals   0.05136 88                       
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-anc3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-anc3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="36-ancova_glm_files/figure-html/fig-anc3-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anc3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.3: Longueur des esturgeons en fonction de l’age d’après <code>anc3dat</code>
+</figcaption></figure>
+</div>
 </div>
 </div>
 <p>Ici, on rejette les hypothèses nulles (1) que les pentes sont les mêmes dans les deux sites et (2) que les ordonnées à l’origine sont égales. En d’autres mots, si on veut prédire la longueur à la fourche d’un esturgeon à un âge donné précisément, il faut savoir de quel site il provient. Puisque les pentes diffèrent, il faut estimer des régressions séparées.</p>
@@ -661,12 +673,16 @@ Solution
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">model.full2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="36-ancova_glm_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Conditions d’applications du modèle <code>model.full2</code></figcaption></figure>
+<div id="fig-anc4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-anc4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="36-ancova_glm_files/figure-html/fig-anc4-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anc4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.4: Conditions d’applications du modèle <code>model.full2</code>
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -676,7 +692,7 @@ Solution
 <p>Si on examine les résidus selon les méthodes habituelles, on voit qu’il n’y a pas de problème de linéarité, ni d’homoscédasticité (BP = 2.8721, p = 0.4118). Cependant, le test de Wilk-Shapiro est significatif (W=0.97, p = 0.03). Étant donné la taille assez grande de l’échantillon (N=92), ce test a beaucoup de puissance, même si la déviation de normalité ne semble pas très grande. Compte-tenu de la robustesse relative des LM, de la taille de l’échantillon, on ne devrait pas ^tre trop inquiet de cette déviation de normalité.</p>
 <p>Donc, comme les conditions des LM sont suffisamment remplies, on peut accepter les résultats donnés par R. Tous les termes sont significatifs (location, lage, interaction). Ce modèle complet est équivalent à ajuster des régressions séparées pour chaque site. Pour obtenir les coefficients, on peut ajuster des régressions simples sur chaque sous-ensemble, ou extraire les coefficients ajustés du modèle complet:</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.full2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.full2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -700,7 +716,7 @@ lfkl &amp;= 1.2284 + 0.3253 \times lage + 0.2207 \times 1 - 0.1656 \times 1 \tim
 \end{aligned}\]</span></p>
 <p>Vous pouvez vérifier en ajustant séparément les régressions pour chaque site:</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/by.html">by</a></span><span class="op">(</span><span class="va">anc3dat</span>, <span class="va">anc3dat</span><span class="op">$</span><span class="va">locate</span>,<span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span><span class="op">~</span><span class="va">lage</span>, data<span class="op">=</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/by.html">by</a></span><span class="op">(</span><span class="va">anc3dat</span>, <span class="va">anc3dat</span><span class="op">$</span><span class="va">locate</span>,<span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span><span class="op">~</span><span class="va">lage</span>, data<span class="op">=</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>anc3dat$locate: LOFW        
 
@@ -730,7 +746,7 @@ Coefficients:
 <p>Ici, je vais comparer l’approche traditionnelle et l’approche simplifiée. Rappelez-vous que vous voulez évaluer l’égalité des ordonnées à l’origine <strong>après avoir déterminé que les pentes étaient égales</strong>. Éprouver l’égalité des ordonnées à l’origine quand les pentes diffèrent (ou, si vous préférez, quand il y a une interaction) est rarement sensé, peut facilement être mal interprété, et ne devrait être effectué que rarement.</p>
 <p>De retour aux données de anc1dat.csv, en comparant la relation entre lfkl et lage entre les sexes, nous avions obtenu les résultats suivants pour le modèle complet avec interactions:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">Anova</span><span class="op">(</span><span class="va">model.full1</span>, type <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">Anova</span><span class="op">(</span><span class="va">model.full1</span>, type <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Anova Table (Type III tests)
 
@@ -748,7 +764,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>On avait déjà conclu que la pente ne varie pas entre les sexes (i.e.&nbsp;l’interaction n’est pas significative). Notez que la p-valeur associée au sexe (0.4795) n’est pas significative non plus.</p>
 <p>De l’autre côté, selon l’approche traditionnelle, l’inférence quand à l’effet du sexe se fait à partir du modèle réduit (le modèle ANCOVA sensus stricto):</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.ancova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">lage</span>, data <span class="op">=</span> <span class="va">anc1dat</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.ancova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">lage</span>, data <span class="op">=</span> <span class="va">anc1dat</span><span class="op">)</span></span>
 <span><span class="fu">Anova</span><span class="op">(</span><span class="va">model.ancova</span>, type <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Anova Table (Type III tests)
@@ -762,7 +778,7 @@ Residuals   0.07162 89
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model.ancova</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model.ancova</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -800,7 +816,7 @@ Exercice
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.ancova.nooutliers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">lage</span>, data <span class="op">=</span> <span class="va">anc1dat</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">49</span>, <span class="op">-</span><span class="fl">50</span>, <span class="op">-</span><span class="fl">19</span><span class="op">)</span>,<span class="op">]</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.ancova.nooutliers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">lage</span>, data <span class="op">=</span> <span class="va">anc1dat</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">49</span>, <span class="op">-</span><span class="fl">50</span>, <span class="op">-</span><span class="fl">19</span><span class="op">)</span>,<span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu">Anova</span><span class="op">(</span><span class="va">model.ancova.nooutliers</span>, type <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Anova Table (Type III tests)
@@ -814,7 +830,7 @@ Residuals   0.04950 86
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model.ancova.nooutliers</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model.ancova.nooutliers</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -854,7 +870,7 @@ Exercice
 </div>
 <p>Le modèle en excluant les valeurs extrêmes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.linear.nooutliers</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span>,data <span class="op">=</span> <span class="va">anc1dat</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">49</span>, <span class="op">-</span><span class="fl">50</span>, <span class="op">-</span><span class="fl">19</span><span class="op">)</span>,<span class="op">]</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.linear.nooutliers</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span>,data <span class="op">=</span> <span class="va">anc1dat</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">49</span>, <span class="op">-</span><span class="fl">50</span>, <span class="op">-</span><span class="fl">19</span><span class="op">)</span>,<span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model.linear.nooutliers</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -880,7 +896,7 @@ F-statistic: 275.2 on 1 and 87 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Pour la régression simple (sans les valeurs extrêmes) on obtient un R 2 de 0.76 et une erreur-type des résidus de 0.02441, En comparant à l’erreur-type des résidus du modèle d’ANCOVA (0.02399) on réalise que la qualité des prédictions est essentiellement la même, même en ajustant des ordonnées à l’origine différentes pour chaque groupe. Par conséquent, les bénéfices de l’inclusion d’un terme pour les différentes ordonnées à l’origine sont faibles alors que le coût, en terme de complexité du modèle, est élevé (33% d’augmentation du nombre de termes pour un très faible amélioration de la qualité d’ajustement). Si vous examinez les résidus de ce modèle, vous trouverez qu’ils sont à peu près O.K.)</p>
 <p>Si on ajuste une régression simple sur toutes les données, on obtient:</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.linear</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span>, data <span class="op">=</span> <span class="va">anc1dat</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.linear</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span>, data <span class="op">=</span> <span class="va">anc1dat</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model.linear</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -923,7 +939,7 @@ Exercice
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">model.ancova</span>,<span class="va">model.linear</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">model.ancova</span>,<span class="va">model.linear</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -961,7 +977,7 @@ Solution
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.full.anc3dat</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span> <span class="op">+</span> <span class="va">locate</span> <span class="op">+</span> <span class="va">lage</span><span class="op">:</span><span class="va">locate</span>, data <span class="op">=</span> <span class="va">anc3dat</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.full.anc3dat</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span> <span class="op">+</span> <span class="va">locate</span> <span class="op">+</span> <span class="va">lage</span><span class="op">:</span><span class="va">locate</span>, data <span class="op">=</span> <span class="va">anc3dat</span><span class="op">)</span></span>
 <span><span class="va">model.ancova.anc3dat</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span> <span class="op">+</span> <span class="va">locate</span>, data <span class="op">=</span> <span class="va">anc3dat</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">model.full.anc3dat</span>,<span class="va">model.ancova.anc3dat</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -983,7 +999,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </section><section id="bootstrap" class="level2" data-number="14.7"><h2 data-number="14.7" class="anchored" data-anchor-id="bootstrap">
 <span class="header-section-number">14.7</span> Bootstrap</h2>
 <div class="cell">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">############################################################</span></span>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">############################################################</span></span>
 <span><span class="co">######</span></span>
 <span><span class="co"># Bootstrap analysis</span></span>
 <span><span class="co"># Bootstrap analysis BCa confidence intervals</span></span>
@@ -1029,7 +1045,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </section><section id="permutation-test" class="level2" data-number="14.8"><h2 data-number="14.8" class="anchored" data-anchor-id="permutation-test">
 <span class="header-section-number">14.8</span> Permutation test</h2>
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">############################################################</span></span>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">############################################################</span></span>
 <span><span class="co">##########</span></span>
 <span><span class="co"># Permutation test</span></span>
 <span><span class="co">#</span></span>

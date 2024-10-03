@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr-fr" xml:lang="fr-fr"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.9">
+<meta name="generator" content="quarto-1.6.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Julien Martin">
 <meta name="description" content="En cours de traduction">
@@ -70,11 +70,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-37bb72f48501692975d9c066fdeb097b.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-018089954d508eae8a473f0b7f0491f0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5223d57514b7f3c9e8f675d86406bf62.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-758c5ce73771950a3d9b163c2677d9fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-4ee51bf3f97b95f0ac1d3b797e87ffb6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -157,7 +157,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-bi-flag">
 <li>
-    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway/42-model_freq.html">
+    <a class="dropdown-item" href="https://biostats-uottawa.github.io/Rway">
  <span class="dropdown-text">English</span></a>
   </li>  
     </ul>
@@ -589,9 +589,13 @@ ageclass female  male
 <span><span class="co"># Mosaic plot of the contingency table</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/vcd/man/mosaic.html">mosaic</a></span><span class="op">(</span><span class="va">USTable</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="42-model_freq_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Représentation mosaique de la proportion des sexes par classe d’age</figcaption></figure>
+<div id="fig-fr1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-fr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="42-model_freq_files/figure-html/fig-fr1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fr1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.1: Représentation mosaique de la proportion des sexes par classe d’age
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -611,11 +615,15 @@ X-squared = 1162.6, df = 8, p-value &lt; 2.2e-16</code></pre>
 <p>La valeur p étant très faible, on rejette donc l’hypothèse nulle que âge et sexe sont indépendants. Ces graphiques mosaïques peuvent êtres colorés pour souligner les catégories qui contribuent le plus à cette dépendance:</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Mosaic plot of the contingency table with shading</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/vcd/man/mosaic.html">mosaic</a></span><span class="op">(</span><span class="va">USTable</span>, shade<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/vcd/man/mosaic.html">mosaic</a></span><span class="op">(</span><span class="va">USTable</span>, shade <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="42-model_freq_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Représentation mosaique de la proportion des sexes par classe d’age avec échelle de couleur</figcaption></figure>
+<div id="fig-fr2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-fr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="42-model_freq_files/figure-html/fig-fr2-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fr2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.2: Représentation mosaique de la proportion des sexes par classe d’age avec échelle de couleur
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -791,9 +799,13 @@ X-squared = 0.088758, df = 1, p-value = 0.7658</code></pre>
 <span><span class="co"># Create mosaic plot to look at data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/vcd/man/mosaic.html">mosaic</a></span><span class="op">(</span><span class="va">loglinTable</span>, shade <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="42-model_freq_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Proportion de plantes infectées en fonction de la température er la lumière</figcaption></figure>
+<div id="fig-fr3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-fr3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="42-model_freq_files/figure-html/fig-fr3-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fr3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.3: Proportion de plantes infectées en fonction de la température er la lumière
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -884,9 +896,13 @@ sex            1978 1979 1980
 <span><span class="co"># mosaic using the table created above</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/vcd/man/mosaic.html">mosaic</a></span><span class="op">(</span><span class="va">sturgdat.table</span>, shade <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="42-model_freq_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Fréquence de femelles et males en fonction de l’année et du lieu</figcaption></figure>
+<div id="fig-fr4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-fr4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="42-model_freq_files/figure-html/fig-fr4-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fr4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.4: Fréquence de femelles et males en fonction de l’année et du lieu
+</figcaption></figure>
 </div>
 </div>
 </div>
