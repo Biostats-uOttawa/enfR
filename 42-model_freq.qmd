@@ -78,6 +78,7 @@ Le package `vcd` inclut la fonction `mosaic()` qui permet de représenter graphi
 
 
 ```{r}
+#| label: fig-fr1
 #| fig-cap: Représentation mosaique de la proportion des sexes par classe d'age
 library(vcd)
 USTable <- xtabs(frequency ~ ageclass + sex, data = USPopSurvey) # save the table form as USTable dataframe
@@ -99,10 +100,11 @@ La valeur p étant très faible, on rejette donc l’hypothèse nulle que âge e
 
 
 ```{r}
+#| label: fig-fr2
 #| fig-cap: Représentation mosaique de la proportion des sexes par classe d'age avec
 #|   échelle de couleur
 # Mosaic plot of the contingency table with shading
-mosaic(USTable, shade=TRUE)
+mosaic(USTable, shade = TRUE)
 ```
 
 La couleur de chaque rectangle est proportionnelle à la déviation des fréquences observées de ce qui serait attendu si l’âge et le sexe étaient indépendants. Les classes d’âge 40-49 et 50-59 ont un rapport des sexe approximativement égal à celui de toutes les classes d’âge réunies. Il y a plus de jeunes mâles et de femelles âgées que si le rapport des sexe ne variait pas avec l’âge.et ces rectangles sont colorés en bleu. De l’autre côté, il y a moins de jeunes femelles et de mâles âgés que si le rapport des sexe était indépendant de l’âge, et ces rectangles sont en rouge. La valeur p à la droite de la figure est pour le test de Chi carré qui éprouve l’hypothèse nulle d’indépendance pour l’ensemble des observations, toutes classes d'âge confondues.
@@ -201,6 +203,7 @@ L’ajustement de modèles log-linéaires à des données de fréquence implique
 Le fichier `loglin.csv` contient les fréquences (frequency) des plantes infectées ou non infectées (`infected`) à basse et haute température (`temperature`) à basse et haute lumière (`light`). Pour visualiser ces données et déterminer si le taux d’infection dépends de la lumière et de la température, on peut faire une figure mosaïque et ajuster un modèle log-linéaire:
 
 ```{r}
+#| label: fig-fr3
 #| fig-cap: Proportion de plantes infectées en fonction de la température er la lumière
 loglin <- read.csv("data/loglin.csv")
 # Convert from frequency form to table form for mosaic plot
@@ -237,6 +240,7 @@ Ouvrez sturgdat.csv, puis utilisez la fonction table() pour obtenir les fréquen
 
 
 ```{r}
+#| label: fig-fr4
 #| fig-cap: Fréquence de femelles et males en fonction de l'année et du lieu
 sturgdat <- read.csv("data/sturgdat.csv")
 # Reorganize data from case form to table form

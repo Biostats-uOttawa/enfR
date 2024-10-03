@@ -1,9 +1,6 @@
 # Préface {.unnumbered}
 
-```{r}
-#| label: links
-#| child: images/_links.md
-```
+{{< include images/_links.md >}}
 
 ::: callout-warning
 Première version en cours de traduction. 

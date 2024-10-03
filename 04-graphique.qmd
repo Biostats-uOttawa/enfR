@@ -1,5 +1,7 @@
 # Figures {#sec-graphics-r}
 
+{{< include images/_links.md >}}
+
 <!-- besoin d'ajouter
 ajouter des informations sur ggplot
 refaire le diagramme avec mermaid

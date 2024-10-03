@@ -1003,10 +1003,7 @@ Il existe de nombreux guides en ligne pour en savoir plus sur git et GitHub et, 
 
 Ce ne sont que quelques exemples, il vous suffit de faire une recherche sur "contrôle de version avec git et GitHub" pour voir à quel point la communauté autour de ces projets open source est importante et combien de ressources gratuites sont disponibles pour que vous deveniez un expert en contrôle de version.
 
-```{r}
-#| label: links
-#| child: images/_links.md
-```
+{{< include images/_links.md >}}
 
 ## Pratique {#git_practical}
 
