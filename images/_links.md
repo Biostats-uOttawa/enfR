@@ -184,3 +184,7 @@
 
 [bio4158]: https://biostats-uottawa.github.io/bio4158_course
 [bio8940]: https://biostats-uottawa.github.io/bio8940_course
+
+
+<!--Add by Augustin-->
+[lowess]: https://en.wikipedia.org/wiki/Local_regression
