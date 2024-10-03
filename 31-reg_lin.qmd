@@ -1,8 +1,4 @@
----
-editor: 
-  markdown: 
-    wrap: sentence
----
+{{< include images/_links.md >}}
 
 <!-- # (PART) Modèle univarié {-} -->
 
@@ -62,7 +58,7 @@ Pour répondre à cette question, regardons d'abord la corrélation entre la lon
 Souvenez-vous qu'une des conditions d'application de l'analyse de corrélation est que la relation entre les deux variables est linéaire.
 Pour évaluer cela, commençons par faire un diagramme de dispersion.
 
--   Les données sur les esturgeons son disponibles dans le fichier `sturgeon.csv`. Après avoir chargé les données en les assignant à un objet `esturgeon`, faites un diagramme de dispersion avec une droite de régression linéaire et une [Lowess][lowess] <!-- JULIEN - Je ne comprend pas pourquoi mais je les liens que j'ajoute dans ce chapitre ne fonctionnent pas (J'ai essayé avec des liens fonctionnels dans d'autres chapitres, ça ne fonctionne pas non plus) --> de la longueur en fonction du poids.
+-   Les données sur les esturgeons son disponibles dans le fichier `sturgeon.csv`. Après avoir chargé les données en les assignant à un objet `esturgeon`, faites un diagramme de dispersion avec une droite de régression linéaire et une courbe de [Lowess][lowess] de la longueur en fonction du poids.
 
 ```{r}
 #| label: stur-1
