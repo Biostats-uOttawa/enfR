@@ -176,10 +176,16 @@ crop_fn <- function(author, overwrite = FALSE){
 
 ::::::
 
+### Contribution au livre
+
+JM: développement et écriture de la première version des chapitres en anglais, mise en page, traduction, maintenance
+
+AB: traduction en français et clarification de tous les chapitres.
+
 
 ## Remerciements {.unnumbered}
 
-La première partie du livre sur l'utilisation de R a commencé comme un fork sur github à partir de l'excellent livre
+La première partie du livre sur l'utilisation de R a commencé comme un fork sur github à partir de l'excellent livre en anglais
 [An introduction to R](https://intro2r.com/) de Douglas, Roos, Mancini,
 Couto et Lusseau [@douglas2023]. Il a été forké le 23 avril 2023 à partir de
 [Alexd106 github repository](https://github.com/alexd106/Rbook) puis
