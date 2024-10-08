@@ -1,3 +1,5 @@
+{{< include images/_links.md >}}
+
 # Figures {#sec-graphics-r}
 
 <!-- besoin d'ajouter
@@ -17,64 +19,75 @@ theme_set(theme_classic())
 ```
 
 La synthèse de vos données, sous forme numérique ou graphique, est un élément important (bien que souvent négligé) de toute analyse de données.
-Heureusement, R dispose d'excellentes capacités graphiques et peut être utilisé pour produire des graphiques pour l'exploration initiale des données, la validation des modèles ou des figures très complexes destinées à la publication.
-Il existe trois systèmes principaux pour produire des graphiques dans R : base R graphics, lattice graphics et ggplot2.
+Par chance, R dispose d'excellentes capacités graphiques et peut être utilisé pour produire des graphiques pour l'exploration initiale des données, la validation de modèles ou des figures très complexes destinées à la publication.
+
+Il existe trois systèmes principaux pour produire des graphiques dans R :
+
+* Les graphiques de base de R
+
+* `Lattice` :package:
+
+* `ggplot2` :package:
 
 Le système graphique R de base est le système de traçage original qui existe (et qui a évolué) depuis les premiers jours de R.
-Lors de la création de graphiques avec base R, nous avons tendance à utiliser des fonctions de haut niveau (comme la fonction `plot()` ) pour créer notre tracé, puis utiliser une ou plusieurs fonctions de bas niveau (comme la fonction `lines()` et `text()` etc.) pour ajouter des informations supplémentaires à ces tracés.
-Cela peut sembler un peu bizarre (et prendre du temps) lorsque vous commencez à créer des tracés fantaisistes dans R, mais cela vous permet de personnaliser presque tous les aspects de votre tracé et de le complexifier par couches.
+Lors de la création de graphiques avec base R, nous avons tendance à utiliser des fonctions de haut niveau (comme la fonction `plot()`) pour créer notre graphique, puis utiliser une ou plusieurs fonctions de bas niveau (comme les fonctions `lines()`, `text()`, etc.) pour ajouter des informations supplémentaires à ces graphiques.
+
+Cela peut sembler un peu bizarre (et prendre du temps) lorsque vous commencez à créer des graphiques fantaisistes dans R, mais cela vous permet de personnaliser presque tous les aspects de votre graphique et de le complexifier avec des couches successives.
 Le revers de cette flexibilité est que vous devrez souvent prendre de nombreuses décisions sur la manière dont vous souhaitez que votre graphique se présente plutôt que de compter sur le logiciel pour prendre ces décisions à votre place.
 Cela dit, il est généralement très rapide et facile de générer des graphiques exploratoires simples à l'aide de graphiques R de base.
 
-Le système de treillis est implémenté dans le module `lattice()` qui est préinstallé avec l'installation standard de R.
-Cependant, il n'est pas chargé par défaut, vous devez donc d'abord utiliser la commande `library(lattice)` pour accéder à toutes les fonctions de traçage.
-Contrairement aux graphiques de base de R, les tracés de treillis sont généralement générés en une seule fois à l'aide d'une seule fonction. Il n'est donc pas nécessaire d'utiliser des fonctions de traçage de haut et de bas niveau pour personnaliser l'aspect d'un tracé.
-Il n'est donc pas nécessaire d'utiliser les fonctions de traçage de haut et de bas niveau pour personnaliser l'apparence d'un tracé.
-Les tracés en treillis prennent également plus de décisions pour vous en ce qui concerne l'aspect des tracés, mais cela a un coût, car la personnalisation des tracés en treillis pour qu'ils aient exactement l'aspect que vous souhaitez peut s'avérer assez complexe.
-Les diagrammes en treillis se prêtent particulièrement bien au traçage de données multidimensionnelles complexes à l'aide de diagrammes en panel (également appelés diagrammes en treillis).
-Nous verrons quelques exemples de ces types de tracés plus loin dans ce chapitre.
+Le système lattice est implémenté dans le paquet `lattice()` :package: qui est pré installé avec l'installation standard de R.
+Cependant, il n'est pas chargé par défaut, vous devez donc d'abord utiliser l'appeler `library(lattice)` pour accéder à toutes les fonctions de graphiques.
+Contrairement aux graphiques de base de R, les graphiques lattices sont généralement générés en une seule fois à l'aide d'une seule fonction. Il n'est donc pas nécessaire d'utiliser des fonctions de traçage de haut et bas niveau pour personnaliser l'aspect d'un graphique.
 
-`ggplot2` était basé sur un livre intitulé *Grammaire graphique* de @wilkinson2005.
- Pour un résumé intéressant du livre de Wilkinson [ici][leland-summary] .
-Le *Grammaire graphique* décompose les figures en leurs différents éléments (par ex.
+Les graphiques lattices prennent également plus de décisions pour vous en ce qui concerne l'aspect des graphiques, mais cela a un coût, car la personnalisation des graphiques lattices pour qu'ils aient exactement l'aspect que vous souhaitez peut s'avérer plus complexe.
+Les graphiques lattices se prêtent particulièrement bien au traçage de données multidimensionnelles complexes à l'aide de graphiques en panel (également appelés graphiques en treillis).
+Nous verrons quelques exemples de ces types de graphiques plus loin dans ce chapitre.
+
+`ggplot2` :package: est basé sur le livre *Grammar of Graphics* (la grammaire de graphiques) de @wilkinson2005.
+ (Vous trouverez un résumé intéressant du livre [ici][leland-summary]). <!-- JULIEN - Pas de pbm dans la version française mais j'ai vu que le lien était cassé sur la version anglaise -->
+
+La *Grammaire des graphique* décompose les figures en leurs différents éléments (par ex.
 les statistiques sous-jacentes, l'arrangement géométrique, le thème, voir @fig-ggplot-str).
+
 Les utilisateurs sont ainsi en mesure de manipuler chacun de ces composants (i.e.
 couches) et de produire une figure sur mesure répondant à leurs besoins spécifiques.
 
-![La grammaire graphique. Visuel de Thomas de Beus](images/plot/graph-grammar.png){fig-align="center" #fig-ggplot-str}
+![La grammaire des graphique. Visuel de Thomas de Beus](images/plot/graph-grammar.png){fig-align="center" #fig-ggplot-str}
 
 Chacun de ces systèmes a ses forces et ses faiblesses et nous les utilisons souvent de manière interchangeable.
-Dans ce chapitre, nous vous présenterons la fonction de traçage de base de R et la fonction de traçage de base de`ggplot2` .
-Il est important de noter que `ggplot2` n'est pas **nécessaire** de faire des figures "fantaisistes" et informatives dans R.
-Si vous préférez utiliser les graphiques de base de R, n'hésitez pas à continuer, car presque tous les graphiques de base de R sont en anglais. `ggplot2` peuvent être créées à l'aide de la base R (nous utilisons souvent l'une ou l'autre approche en fonction de ce que nous faisons).
-La différence entre`ggplot2` et la base R est la façon dont vous *obtenir* plutôt que des différences substantielles dans le produit final lui-même.
-Il s'agit néanmoins d'une croyance répandue, probablement due au fait qu'il est (à notre avis du moins) plus facile d'obtenir une silhouette modérément attrayante avec `ggplot2` car de nombreuses décisions esthétiques sont prises pour l'utilisateur, sans qu'il sache nécessairement qu'une décision a été prise !
+Dans ce chapitre, nous vous présenterons les graphiques de base de R et les fonction de base de`ggplot2` :package:.
+Il est important de noter que `ggplot2` :package: n'est pas **obligatoire** pour faire des figures "fantaisistes" et informatives dans R.
+Si vous préférez utiliser les graphiques de base de R, n'hésitez pas à continuer, car presque tous les graphiques de `ggplot2` :package: peuvent être créées avec les graphiques de base de R (nous utilisons souvent l'une ou l'autre approche en fonction de ce que nous faisons).
+La différence entre `ggplot2` :package: et la base R est la façon dont vous *obtenez* le produit final plutôt que des différences substantielles dans le produit final lui-même.
+Il s'agit néanmoins d'une croyance répandue, probablement due au fait qu'il est (à notre avis du moins) plus facile d'obtenir une silhouette modérément attrayante avec `ggplot2` :package: car de nombreuses décisions esthétiques sont prises pour l'utilisateur, sans qu'il sache nécessairement qu'une décision a été prise !
 
 Dans cet esprit, commençons à créer quelques figures.
 
 ## Tracés de base simples en R {#sec-baseplot}
 
 Il existe de nombreuses fonctions dans R pour produire des graphiques, des plus simples aux plus complexes.
-Il est impossible de couvrir tous les aspects de la production de graphiques en R dans ce livre. Nous vous présenterons donc la plupart des méthodes courantes de représentation graphique des données et nous décrirons comment personnaliser vos graphiques plus tard dans @sec-custom-plot.
+Il est impossible de couvrir tous les aspects de la production de graphiques en R dans ce livre. Nous vous présenterons donc la plupart des méthodes courantes de représentation graphique des données et nous décrirons comment personnaliser vos graphiques plus tard dans la @sec-custom-plot.
 
 La fonction de haut niveau la plus couramment utilisée pour produire des graphiques en R est (sans surprise) la fonction `plot()` fonction.
-Par exemple, traçons le graphique `weight` de licornes de notre `unicorns` que nous avons importé dans @sec-import-fnc.
+Par exemple, représentons le poids (`weight`) des licornes de notre jeu de données `licornes` ("`unicorns.csv`") que nous avons importé dans la @sec-import-fnc.
 
 ```{r}
 #| label: plot1
+#| fig-cap: Dispersion des données de poids des licornes.
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-unicorns <- read.csv(file = "data/unicorns.csv")
+licornes <- read.csv(file = "data/unicorns.csv")
 
-plot(unicorns$weight)
+plot(licornes$weight)
 ```
 
 R a tracé les valeurs de `weight` (sur l'axe des y) en fonction d'un indice puisque nous ne traçons qu'une seule variable.
 L'indice est simplement l'ordre des `weight` dans le cadre de données (1 en premier dans le cadre de données et 97 en dernier).
 L'indice `weight` a été automatiquement inclus comme étiquette de l'axe des y et les échelles des axes ont été automatiquement définies.
 
-Si nous n'avions inclus que la variable `weight` plutôt que `unicorns$weight`, l'indicateur `plot()` affichera une erreur car la variable `weight` n'existe que dans le `unicorns` l'objet "data frame".
+Si nous n'avions inclus que la variable `weight` plutôt que `licornes$weight`, l'indicateur `plot()` affichera une erreur car la variable `weight` n'existe que dans le `licornes` l'objet "data frame".
 
 ```{r}
 #| label: plot2
@@ -90,7 +103,7 @@ Comme de nombreuses fonctions de traçage de base de R n'ont pas d'objet `data =
 #| label: plot3
 #| echo: true
 #| eval: false
-with(unicorns, plot(weight))
+with(licornes, plot(weight))
 ```
 
 Pour tracer un nuage de points d'une variable numérique par rapport à une autre variable numérique, il suffit d'inclure les deux variables en tant qu'arguments lors de l'utilisation de la fonction `plot()` comme arguments.
@@ -101,7 +114,7 @@ Par exemple, pour tracer `fluffyness` sur l'axe des y et `weight` de l'axe des x
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-plot(x = unicorns$weight, y = unicorns$fluffyness)
+plot(x = licornes$weight, y = licornes$fluffyness)
 ```
 
 Il existe une approche équivalente pour ces types de parcelles, ce qui est souvent source de confusion au début.
@@ -113,7 +126,7 @@ Cependant, contrairement à la méthode précédente, la méthode de la formule 
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-plot(fluffyness ~ weight, data = unicorns)
+plot(fluffyness ~ weight, data = licornes)
 ```
 
 Ces deux approches étant équivalentes, nous vous suggérons de choisir celle que vous préférez et de l'appliquer.
@@ -179,7 +192,7 @@ Pour refaire la @fig-plot5, qui ne contient qu'un nuage de points, nous pouvons 
 #| out-width: 75%
 #| fig-align: center
 ggplot(
-  data = unicorns,
+  data = licornes,
   mapping = aes(x = weight, y = fluffyness)
 ) +
   geom_point()
@@ -214,7 +227,7 @@ Un grand avantage de `ggplot` pour les nuages de points simples est la facilité
 #| out-width: 75%
 #| fig-align: center
 ggplot(
-  data = unicorns,
+  data = licornes,
   mapping = aes(x = weight, y = fluffyness)
 ) +
   geom_point() +
@@ -235,7 +248,7 @@ Avec la base R
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-hist(unicorns$height)
+hist(licornes$height)
 ```
 
 avec ggplot2
@@ -245,7 +258,7 @@ avec ggplot2
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-ggplot(unicorns, aes(x = height)) +
+ggplot(licornes, aes(x = height)) +
   geom_histogram()
 ```
 
@@ -261,7 +274,7 @@ Pendant que nous y sommes, remplaçons également le titre moche par quelque cho
 #| out-width: 75%
 #| fig-align: center
 brk <- seq(from = 0, to = 18, by = 1)
-hist(unicorns$height, breaks = brk, main = "Unicorn height")
+hist(licornes$height, breaks = brk, main = "Unicorn height")
 ```
 
 ```{r}
@@ -270,7 +283,7 @@ hist(unicorns$height, breaks = brk, main = "Unicorn height")
 #| out-width: 75%
 #| fig-align: center
 brk <- seq(from = 0, to = 18, by = 1)
-ggplot(unicorns, aes(x = height)) +
+ggplot(licornes, aes(x = height)) +
   geom_histogram(breaks = brk) +
   ggtitle("Unicorn height")
 ```
@@ -284,11 +297,11 @@ Vous pouvez également afficher l'histogramme sous forme de proportion plutôt q
 #| out-width: 75%
 #| fig-align: center
 brk <- seq(from = 0, to = 18, by = 1)
-hist(unicorns$height,
+hist(licornes$height,
   breaks = brk, main = "Unicorn height",
   freq = FALSE
 )
-ggplot(unicorns, aes(x = height)) +
+ggplot(licornes, aes(x = height)) +
   geom_histogram(aes(y = after_stat(density)), breaks = brk) +
   ggtitle("Unicorn height")
 ```
@@ -301,8 +314,8 @@ Dans la version de base de R, vous devez d'abord calculer les estimations de la 
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-dens <- density(unicorns$height)
-hist(unicorns$height,
+dens <- density(licornes$height)
+hist(licornes$height,
   breaks = brk, main = "Unicorn height",
   freq = FALSE
 )
@@ -316,7 +329,7 @@ Avec ggplot, vous pouvez simplement ajouter la fonction `geom_density()` au trac
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-ggplot(unicorns, aes(x = height)) +
+ggplot(licornes, aes(x = height)) +
   geom_histogram(aes(y = after_stat(density)), breaks = brk) +
   geom_density() +
   ggtitle("Unicorn height")
@@ -333,7 +346,7 @@ Le problème des diagrammes en bâtons (ou diagrammes en dynamite) est qu'ils ca
  Bien sûr, c'est à vous de décider ce que vous faites, mais si vous êtes tenté d'utiliser des diagrammes à barres, cherchez "dynamite plots are evil" (les diagrammes de dynamite sont diaboliques) ou voyez [ici][dynamite-plot1] ou [ici][dynamite-plot2] pour une discussion plus complète.
 
 Pour créer un diagramme en boîte dans R, nous utilisons la fonction `boxplot()` fonction.
-Par exemple, créons un diagramme en boîte de la variable `weight` à partir de notre `unicorns` cadre de données.
+Par exemple, créons un diagramme en boîte de la variable `weight` à partir de notre `licornes` cadre de données.
 Nous pouvons également inclure une étiquette pour l'axe des y en utilisant la fonction `ylab =` à l'aide de l'argument
 
 ```{r}
@@ -341,7 +354,7 @@ Nous pouvons également inclure une étiquette pour l'axe des y en utilisant la 
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-boxplot(unicorns$weight, ylab = "weight (g)")
+boxplot(licornes$weight, ylab = "weight (g)")
 ```
 
 ```{r}
@@ -349,7 +362,7 @@ boxplot(unicorns$weight, ylab = "weight (g)")
 #| message: false
 #| out-width: 75%
 #| fig-align: center
-ggplot(unicorns, aes(y = weight)) +
+ggplot(licornes, aes(y = weight)) +
   geom_boxplot() +
   labs(y = "weight (g)")
 ```
@@ -375,7 +388,7 @@ Nous introduirons également une étiquette pour l'axe des x à l'aide de la fon
 #| out-width: 75%
 #| fig-align: center
 boxplot(weight ~ food,
-  data = unicorns,
+  data = licornes,
   ylab = "Weight (g)", xlab = "food level"
 )
 ```
@@ -385,7 +398,7 @@ boxplot(weight ~ food,
 #| message: false
 #| out-width: 75%
 #| fig-align: center
-ggplot(unicorns, aes(y = weight, x = food)) +
+ggplot(licornes, aes(y = weight, x = food)) +
   geom_boxplot() +
   labs(y = "Weight (g)", x = "food Concentration")
 ```
@@ -399,10 +412,10 @@ Traçons notre diagramme en boîte avec nos niveaux de facteurs allant de `low` 
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-unicorns$food <- factor(unicorns$food,
+licornes$food <- factor(licornes$food,
   levels = c("low", "medium", "high")
 )
-ggplot(unicorns, aes(y = weight, x = food)) +
+ggplot(licornes, aes(y = weight, x = food)) +
   geom_boxplot() +
   labs(y = "Weight (g)", x = "food Concentration")
 ```
@@ -416,7 +429,7 @@ Traçons notre `weight` mais, cette fois, traçons une boîte séparée pour cha
 #| out-width: 75%
 #| fig-align: center
 boxplot(weight ~ food * p_care,
-  data = unicorns,
+  data = licornes,
   ylab = "weight (g)", xlab = "food level"
 )
 ```
@@ -426,7 +439,7 @@ boxplot(weight ~ food * p_care,
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-ggplot(unicorns, aes(y = weight, x = food)) +
+ggplot(licornes, aes(y = weight, x = food)) +
   geom_boxplot() +
   labs(y = "Weight (g)", x = "food Concentration") +
   facet_grid(.
@@ -452,7 +465,7 @@ Nous utiliserons également l'argument `col = "lightblue"` pour changer la coule
 #| fig-align: center
 library(vioplot)
 vioplot(weight ~ food,
-  data = unicorns,
+  data = licornes,
   ylab = "weight (g)", xlab = "food Concentration",
   col = "lightblue"
 )
@@ -468,7 +481,7 @@ Autour de chaque diagramme en boîte figure le diagramme de densité de noyau qu
 #| message: false
 #| out-width: 75%
 #| fig-align: center
-ggplot(unicorns, aes(y = weight, x = food)) +
+ggplot(licornes, aes(y = weight, x = food)) +
   geom_violin() +
   geom_boxplot(width = 0.1) +
   labs(y = "Weight (g)", x = "food Concentration")
@@ -485,10 +498,10 @@ Vous pouvez produire un graphique en pointillés en R très simplement en utilis
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-dotchart(unicorns$height)
+dotchart(licornes$height)
 ```
 
-Dans le diagramme en pointillés ci-dessus, les données de la base de données `height` sont représentées le long de l'axe des x et les données sont représentées dans l'ordre dans lequel elles apparaissent dans la fonction `unicorns` sur l'axe des y (les valeurs situées en haut de l'axe des y apparaissent plus tard dans la base de données et celles situées plus bas apparaissent au début de la base de données).
+Dans le diagramme en pointillés ci-dessus, les données de la base de données `height` sont représentées le long de l'axe des x et les données sont représentées dans l'ordre dans lequel elles apparaissent dans la fonction `licornes` sur l'axe des y (les valeurs situées en haut de l'axe des y apparaissent plus tard dans la base de données et celles situées plus bas apparaissent au début de la base de données).
 Sur ce graphique, une seule valeur s'étend vers la droite à environ 17 cm, mais elle ne semble pas particulièrement importante par rapport aux autres.
 Un exemple de diagramme à points avec une observation inhabituelle est donné ci-dessous.
 
@@ -497,7 +510,7 @@ Un exemple de diagramme à points avec une observation inhabituelle est donné c
 #| echo: false
 #| out-width: 75%
 #| fig-align: center
-out_height <- unicorns$height
+out_height <- licornes$height
 out_height[30] <- 53
 dotchart(out_height)
 ```
@@ -510,7 +523,7 @@ Ceci est utile pour identifier des observations inhabituelles au sein d'un nivea
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-dotchart(unicorns$height, groups = unicorns$food)
+dotchart(licornes$height, groups = licornes$food)
 ```
 
 <!-- A FAIRE -->
@@ -520,7 +533,7 @@ dotchart(unicorns$height, groups = unicorns$food)
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-ggdotchart(data = unicorns, x = "height", y = "food")
+ggdotchart(data = licornes, x = "height", y = "food")
 ```
 
 ### Diagrammes de paires
@@ -529,7 +542,7 @@ Dans ce chapitre, nous avons déjà utilisé la fonction `plot()` pour créer un
 Dans le cas d'ensembles de données contenant de nombreuses variables numériques, il est souvent utile de créer plusieurs diagrammes de dispersion pour visualiser les relations entre toutes ces variables.
 Nous pouvons utiliser la fonction `plot()` pour créer chacun de ces diagrammes individuellement, mais il est beaucoup plus facile d'utiliser la fonction `pairs()` fonction.
 La fonction `pairs()` crée un nuage de points à plusieurs panneaux (parfois appelé matrice de nuage de points) qui représente toutes les combinaisons de variables.
-Créons un nuage de points multi-panneaux de toutes les variables numériques de notre `unicorns` cadre de données.
+Créons un nuage de points multi-panneaux de toutes les variables numériques de notre `licornes` cadre de données.
 Notez que vous devrez peut-être cliquer sur le bouton "Zoom" dans RStudio pour afficher clairement le graphique.
 
 ```{r}
@@ -537,26 +550,26 @@ Notez que vous devrez peut-être cliquer sur le bouton "Zoom" dans RStudio pour 
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-pairs(unicorns[, c(
+pairs(licornes[, c(
   "height", "weight", "mane_size",
   "fluffyness", "horn_rings"
 )])
 # or we could use the equivalent
-# pairs(unicorns[, 4:8])
+# pairs(licornes[, 4:8])
 ```
 
 Il faut un peu de temps pour s'habituer à l'interprétation du diagramme des paires.
 Les panneaux sur la diagonale indiquent les noms des variables.
-La première rangée de diagrammes affiche les `height` sur l'axe des y et les variables `weight`, `mane_size`, `fluffyness` et `unicorns` sur l'axe des x pour chacun des quatre graphiques respectivement.
-La rangée suivante de placettes comporte `weight` sur l'axe des y et `height`, `mane_size`, `fluffyness` et `unicorns` sur l'axe des x.
-Nous interprétons les autres lignes de la même manière, la dernière ligne affichant la valeur `unicorns` sur l'axe des y et les autres variables sur l'axe des x.
+La première rangée de diagrammes affiche les `height` sur l'axe des y et les variables `weight`, `mane_size`, `fluffyness` et `licornes` sur l'axe des x pour chacun des quatre graphiques respectivement.
+La rangée suivante de placettes comporte `weight` sur l'axe des y et `height`, `mane_size`, `fluffyness` et `licornes` sur l'axe des x.
+Nous interprétons les autres lignes de la même manière, la dernière ligne affichant la valeur `licornes` sur l'axe des y et les autres variables sur l'axe des x.
 Nous espérons que vous remarquerez que les graphiques situés sous la diagonale sont les mêmes que ceux situés au-dessus de la diagonale, mais avec l'axe inversé.
 
 Pour réaliser des tracés par paires avec ggplot, vous avez besoin de l'option `ggpairs()`de `GGally`paquet.
 La sortie est assez similaire mais vous n'avez que la partie inférieure de la matrice des tracés, vous obtenez un tracé de densité sur la diagonale et les corrélations sur la partie supérieure du tracé.
 
 ```{r}
-ggpairs(unicorns[, c(
+ggpairs(licornes[, c(
   "height", "weight", "mane_size",
   "fluffyness", "horn_rings"
 )])
@@ -589,7 +602,7 @@ panel.hist <- function(x, ...) {
 }
 
 pairs(
-  unicorns[, c(
+  licornes[, c(
     "height", "weight", "mane_size",
     "fluffyness", "horn_rings"
   )],
@@ -605,7 +618,7 @@ Lorsque l'on examine la relation entre deux variables numériques, il est souven
 Un graphique très pratique à utiliser dans ces situations est un graphique de conditionnement (également connu sous le nom de graphique de dispersion conditionnel) que nous pouvons créer dans R à l'aide de la fonction `coplot()` fonction.
 La fonction `coplot()` trace deux variables, mais chaque tracé est conditionné (`|`) par une troisième variable.
 Cette troisième variable peut être soit numérique, soit un facteur.
-À titre d'exemple, voyons comment la relation entre le nombre de licornes (`unicorns` ) et le `weight` de licornes change en fonction de `mane_size`.
+À titre d'exemple, voyons comment la relation entre le nombre de licornes (`licornes` ) et le `weight` de licornes change en fonction de `mane_size`.
 Notez que les `coplot()` a une fonction `data =` il n'est donc pas nécessaire d'utiliser l'argument `$` la notation.
 
 ```{r}
@@ -613,11 +626,11 @@ Notez que les `coplot()` a une fonction `data =` il n'est donc pas nécessaire d
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-coplot(horn_rings ~ weight | mane_size, data = unicorns)
+coplot(horn_rings ~ weight | mane_size, data = licornes)
 ```
 
 ```{r}
-gg_coplot(unicorns,
+gg_coplot(licornes,
   x = weight, y = horn_rings,
   faceting = mane_size
 )
@@ -636,8 +649,8 @@ Si vous ne souhaitez pas produire des graphiques avec des données qui se chevau
 
 Vous pouvez également utiliser l'option `coplot()` avec des variables de conditionnement factorielles.
 Avec `gg_coplot()` vous devez d'abord définir le facteur comme numérique avant de tracer le graphique et spécifier `overlap=0`.
-Par exemple, nous pouvons examiner la relation entre `unicorns` et `weight` conditionnées par le facteur `food`.
-Le graphique en bas à gauche représente la relation entre `unicorns` et `weight` pour les licornes de la `low` traitement alimentaire.
+Par exemple, nous pouvons examiner la relation entre `licornes` et `weight` conditionnées par le facteur `food`.
+Le graphique en bas à gauche représente la relation entre `licornes` et `weight` pour les licornes de la `low` traitement alimentaire.
 Le graphique en haut à gauche montre la même relation mais pour les licornes dans le traitement alimentaire. `high` traitement alimentaire.
 
 ```{r}
@@ -645,12 +658,12 @@ Le graphique en haut à gauche montre la même relation mais pour les licornes d
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-coplot(horn_rings ~ weight | food, data = unicorns)
+coplot(horn_rings ~ weight | food, data = licornes)
 ```
 
 ```{r}
-unicorns <- mutate(unicorns, food_num = as.numeric(food))
-gg_coplot(unicorns,
+licornes <- mutate(licornes, food_num = as.numeric(food))
+gg_coplot(licornes,
   x = weight, y = horn_rings,
   faceting = food_num, overlap = 0
 )
@@ -685,11 +698,11 @@ Par exemple, pour tracer deux graphiques côte à côte, nous utiliserions `par(
 #| out-width: 75%
 #| fig-align: center
 par(mfrow = c(1, 2))
-plot(unicorns$weight, unicorns$fluffyness,
+plot(licornes$weight, licornes$fluffyness,
   xlab = "weight",
   ylab = "Fluffyness"
 )
-boxplot(fluffyness ~ food, data = unicorns, cex.axis = 0.6)
+boxplot(fluffyness ~ food, data = licornes, cex.axis = 0.6)
 ```
 
 Une fois que vous avez terminé vos tracés, n'oubliez pas de réinitialiser votre dispositif de traçage à la normale avec `par(mfrow = c(1,1))`.
@@ -735,14 +748,14 @@ Elles n'apparaîtront que lorsque vous appellerez l'objet.
 #| fig-align: center
 first_figure <- ggplot(
   aes(x = height, y = fluffyness, color = food),
-  data = unicorns
+  data = licornes
 ) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   facet_grid(block ~ p_care)
 second_figure <- ggplot(
   aes(x = weight, y = fluffyness, color = food),
-  data = unicorns
+  data = licornes
 ) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
@@ -803,7 +816,7 @@ Une fois le code exécuté, nous devons fermer le dispositif de traçage pdf à 
 #| eval: false
 pdf(file = "output/my_plot.pdf")
 par(mar = c(4.1, 4.4, 4.1, 1.9), xaxs = "i", yaxs = "i")
-plot(unicorns$weight, unicorns$fluffyness,
+plot(licornes$weight, licornes$fluffyness,
   xlab = "weight (g)",
   ylab = expression(paste("shoot area (cm"^"2", ")")),
   xlim = c(0, 30), ylim = c(0, 200), bty = "l",
@@ -822,7 +835,7 @@ Si nous voulons sauvegarder ce tracé au format png, il nous suffit d'utiliser l
 #| eval: false
 png("output/my_plot.png")
 par(mar = c(4.1, 4.4, 4.1, 1.9), xaxs = "i", yaxs = "i")
-plot(unicorns$weight, unicorns$fluffyness,
+plot(licornes$weight, licornes$fluffyness,
   xlab = "weight (g)",
   ylab = expression(paste("shoot area (cm"^"2", ")")),
   xlim = c(0, 30), ylim = c(0, 200), bty = "l",
