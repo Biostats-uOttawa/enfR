@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr-fr" xml:lang="fr-fr"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.18">
+<meta name="generator" content="quarto-1.6.9">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Julien Martin">
 <meta name="description" content="En cours de traduction">
@@ -70,11 +70,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-018089954d508eae8a473f0b7f0491f0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5223d57514b7f3c9e8f675d86406bf62.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-37bb72f48501692975d9c066fdeb097b.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4ee51bf3f97b95f0ac1d3b797e87ffb6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-758c5ce73771950a3d9b163c2677d9fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -518,7 +518,7 @@ window.Quarto = {
         z$qr &lt;- NULL
     z
 }
-&lt;bytecode: 0x5e5574c98270&gt;
+&lt;bytecode: 0x5ce5e486c128&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 </div>
@@ -615,8 +615,8 @@ Astuce
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagna_stovies_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dishes</span><span class="op">$</span><span class="va">lasagna</span>, y <span class="op">=</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span><span class="op">)</span></span>
 <span><span class="va">lasagna_stovies_func</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] -0.981094427 -0.005038961 -0.533527892 -1.393131269  0.264554853
- [6] -0.711881032 -0.748428698  0.049974284  0.044609857  0.467105997</code></pre>
+<pre><code> [1]  0.39870077 -0.75520781  0.05353023  0.23102663  0.45329894 -2.78623418
+ [7] -0.35813571  0.10336648 -0.10248847  0.14124923</code></pre>
 </div>
 </div>
 <p>Si nous ne nous intéressons qu’à la multiplication <code>dishes$lasagna</code> et <code>dishes$stovies</code> il serait exagéré de créer une fonction pour faire quelque chose une seule fois. Cependant, l’avantage de créer une fonction est que nous avons maintenant cette fonction ajoutée à notre environnement que nous pouvons utiliser aussi souvent que nous le souhaitons. Nous disposons également du code pour créer la fonction, ce qui signifie que nous pouvons l’utiliser dans des projets entièrement nouveaux, réduisant ainsi la quantité de code qui doit être écrite (et testée à nouveau) à partir de zéro à chaque fois.</p>
@@ -633,8 +633,8 @@ Astuce
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stovies_poutine_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span>, y <span class="op">=</span> <span class="va">dishes</span><span class="op">$</span><span class="va">poutine</span><span class="op">)</span></span>
 <span><span class="va">stovies_poutine_func</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]         NA         NA         NA -0.2907323  0.7430704 -0.4783783
- [7] -1.0015872 -0.3015105 -0.1057006  0.2219900</code></pre>
+<pre><code> [1]            NA            NA            NA  0.0879287405  0.4392946420
+ [6]  0.0605509100  0.9761694387  1.2215362724 -0.2825366740 -0.0005892957</code></pre>
 </div>
 </div>
 <p>Jusqu’à présent, tout va bien. Tout ce que nous avons fait, c’est envelopper le code <code>x * y</code> dans une fonction, où nous demandons à l’utilisateur de spécifier ce que son <code>x</code> et <code>y</code> sont.</p>

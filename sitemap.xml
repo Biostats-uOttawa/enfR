@@ -2,35 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/index.html</loc>
-    <lastmod>2024-10-03T16:49:57.168Z</lastmod>
+    <lastmod>2024-10-04T17:42:18.445Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/01-debut.html</loc>
-    <lastmod>2024-10-03T16:49:57.166Z</lastmod>
+    <lastmod>2024-10-04T13:02:38.700Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/02-base.html</loc>
-    <lastmod>2024-10-03T16:58:48.456Z</lastmod>
+    <lastmod>2024-10-04T01:33:13.088Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/03-donnees.html</loc>
-    <lastmod>2024-10-03T16:49:57.166Z</lastmod>
+    <lastmod>2024-10-04T01:33:13.090Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/04-graphique.html</loc>
-    <lastmod>2024-10-03T16:50:22.155Z</lastmod>
+    <lastmod>2024-10-04T01:33:13.091Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/05-programmation.html</loc>
-    <lastmod>2024-10-03T16:49:57.168Z</lastmod>
+    <lastmod>2024-10-04T01:33:13.092Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/06-quarto.html</loc>
-    <lastmod>2024-10-03T16:49:57.168Z</lastmod>
+    <lastmod>2024-10-04T01:33:13.093Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/07-github.html</loc>
-    <lastmod>2024-10-03T16:49:57.166Z</lastmod>
+    <lastmod>2024-10-04T01:33:13.094Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/25-puissance.html</loc>
@@ -38,11 +38,11 @@
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/31-reg_lin.html</loc>
-    <lastmod>2024-10-03T17:54:49.532Z</lastmod>
+    <lastmod>2024-10-04T01:33:13.095Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/32-t_test.html</loc>
-    <lastmod>2024-09-24T18:27:16.179Z</lastmod>
+    <lastmod>2024-10-08T14:26:38.863Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/33-anova.html</loc>
@@ -58,11 +58,11 @@
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/36-ancova_glm.html</loc>
-    <lastmod>2024-10-03T17:24:09.857Z</lastmod>
+    <lastmod>2024-10-04T01:33:13.096Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/42-model_freq.html</loc>
-    <lastmod>2024-10-03T17:12:36.759Z</lastmod>
+    <lastmod>2024-10-04T01:33:13.097Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/901-bibliographie.html</loc>
@@ -74,10 +74,10 @@
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/Sur-le-chemin-de-l-enf-R.pdf</loc>
-    <lastmod>2024-10-03T18:29:05.464Z</lastmod>
+    <lastmod>2024-10-08T14:35:12.824Z</lastmod>
   </url>
   <url>
     <loc>https://biostats-uottawa.github.io/enfR/Sur-le-chemin-de-l-enf-R.epub</loc>
-    <lastmod>2024-10-03T18:29:31.879Z</lastmod>
+    <lastmod>2024-10-08T14:35:38.421Z</lastmod>
   </url>
 </urlset>
