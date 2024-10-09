@@ -84,20 +84,20 @@ plot(licornes$weight)
 ```
 
 R a tracé les valeurs de `weight` (sur l'axe des y) en fonction d'un indice puisque nous ne traçons qu'une seule variable.
-L'indice est simplement l'ordre des `weight` dans le cadre de données (1 en premier dans le cadre de données et 97 en dernier).
-L'indice `weight` a été automatiquement inclus comme étiquette de l'axe des y et les échelles des axes ont été automatiquement définies.
+L'indice est simplement l'ordre des valeurs de `weight` dans le jeu de données (allant de la valeur 1 à 97).
+Le nom de variable `weight` a été automatiquement inclus comme nom de l'axe des y et les échelles des axes ont été automatiquement définies.
 
-Si nous n'avions inclus que la variable `weight` plutôt que `licornes$weight`, l'indicateur `plot()` affichera une erreur car la variable `weight` n'existe que dans le `licornes` l'objet "data frame".
+Si nous n'avions inclus que la variable `weight` plutôt que `licornes$weight`, la fonction `plot()` affichera une erreur car la variable `weight` n'existe que dans le jeu de données `licornes`.
 
 ```{r}
 #| label: plot2
 #| echo: true
 #| eval: false
 plot(weight)
-## Error in plot(weight) : object 'weight' not found
+## Error in plot(weight) : object 'weight' not found (Erreur dans plot(weight) : objet 'weight' non trouvé)
 ```
 
-Comme de nombreuses fonctions de traçage de base de R n'ont pas d'objet `data =` pour spécifier directement le nom de la base de données, nous pouvons utiliser la fonction `with()` en combinaison avec la fonction `plot()` comme raccourci.
+Comme de nombreuses fonctions de graphique de base de R n'ont pas d'argument `data =` pour spécifier directement le nom du jeu de données, nous pouvons utiliser la fonction `with()` en combinaison avec la fonction `plot()` comme raccourci.
 
 ```{r}
 #| label: plot3
@@ -106,23 +106,25 @@ Comme de nombreuses fonctions de traçage de base de R n'ont pas d'objet `data =
 with(licornes, plot(weight))
 ```
 
-Pour tracer un nuage de points d'une variable numérique par rapport à une autre variable numérique, il suffit d'inclure les deux variables en tant qu'arguments lors de l'utilisation de la fonction `plot()` comme arguments.
-Par exemple, pour tracer `fluffyness` sur l'axe des y et `weight` de l'axe des x.
+Pour tracer un nuage de points d'une variable numérique par rapport à une autre variable numérique, il suffit d'inclure les deux variables en tant qu'arguments lors de l'utilisation de la fonction `plot()`.
+Par exemple, pour tracer `fluffyness` sur l'axe des y et `weight` sur l'axe des x.
 
 ```{r}
 #| label: plot4
+#| fig-cap: Dispersion des données de fluffyness en fonction du poids des licornes.
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 plot(x = licornes$weight, y = licornes$fluffyness)
 ```
 
-Il existe une approche équivalente pour ces types de parcelles, ce qui est souvent source de confusion au début.
-Vous pouvez également utiliser la notation de formule lors de l'utilisation de la fonction `plot()` lorsque vous utilisez la fonction
+Il existe une approche équivalente pour ces types de graphiques, ce qui est souvent source de confusion au début.
+Vous pouvez également utiliser la notation de formule lors de l'utilisation de la fonction `plot()`.
 Cependant, contrairement à la méthode précédente, la méthode de la formule exige que vous spécifiiez d'abord la variable de l'axe des y, puis un `~` puis la variable de l'axe des x.
 
 ```{r}
 #| label: fig-plot5
+#| fig-cap: Dispersion des données de fluffyness en fonction du poids des licornes (avec la notation de formule).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
@@ -132,35 +134,36 @@ plot(fluffyness ~ weight, data = licornes)
 Ces deux approches étant équivalentes, nous vous suggérons de choisir celle que vous préférez et de l'appliquer.
 
 Vous pouvez également spécifier le type de graphique que vous souhaitez tracer en utilisant l'argument `type =`.
-Vous pouvez tracer uniquement les points (`type = "p"` c'est l'option par défaut), seulement les lignes (`type = "l"`), les points et les lignes connectés (`type = "b"`), les points et les lignes avec les lignes passant par les points (`type = "o"`) et les points vides reliés par des lignes (`type = "c"`).
-Par exemple, utilisons nos connaissances acquises lors de @sec-funcs pour générer deux vecteurs de nombres (`my_x` et `my_y`), puis tracer l'un par rapport à l'autre en utilisant différents `type =` pour voir quels types de tracés sont produits.
-Ne vous préoccupez pas des `par(mfrow = c(2, 2))` ligne de code pour l'instant.
-Nous l'utilisons simplement pour diviser le dispositif de traçage afin de pouvoir placer les quatre tracés sur le même dispositif pour gagner de la place.
+Vous pouvez tracer seulement les points (`type = "p"` c'est l'option par défaut), seulement les lignes (`type = "l"`), les points et les lignes connectés (`type = "b"`), les points et les lignes avec les lignes passant par les points (`type = "o"`) et les points vides reliés par des lignes (`type = "c"`).
+Par exemple, utilisons nos connaissances acquises grâce à la @sec-funcs pour générer deux vecteurs de nombres (`mon_x` et `mon_y`), puis traçons l'un par rapport à l'autre en utilisant différents `type =` pour voir quels types de graphiques on obtient.
+Ne vous préoccupez pas de la ligne de code `par(mfrow = c(2, 2))` pour l'instant.
+Nous l'utilisons simplement pour diviser fenêtre des graphiques afin de pouvoir placer les quatre graphiques sur la même fenêtre pour gagner de la place.
 Voir @sec-mult-graphs dans le chapitre pour plus de détails à ce sujet.
-Le graphique en haut à gauche est `type = "l"`, le graphe en haut à droite `type = "b"` en bas à gauche `type = "o"` et en bas à droite est `type = "c"`.
+Le graphique en haut à gauche est de `type = "l"`, le graphe en haut à droite de `type = "b"` en bas à gauche de `type = "o"` et en bas à droite est de `type = "c"`.
 
 ```{r}
 #| label: plot6
+#| fig-cap: Présentation des 4 types principaux de representation avec la fonction `plot()`.
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-my_x <- 1:10
-my_y <- seq(from = 1, to = 20, by = 2)
+mon_x <- 1:10
+mon_y <- seq(from = 1, to = 20, by = 2)
 
 par(mfrow = c(2, 2))
-plot(my_x, my_y, type = "l")
-plot(my_x, my_y, type = "b")
-plot(my_x, my_y, type = "o")
-plot(my_x, my_y, type = "c")
+plot(mon_x, mon_y, type = "l")
+plot(mon_x, mon_y, type = "b")
+plot(mon_x, mon_y, type = "o")
+plot(mon_x, mon_y, type = "c")
 ```
 
-Il est vrai que les parcelles que nous avons produites jusqu'à présent n'ont rien d'extraordinaire.
-Cependant, les `plot()` est incroyablement polyvalente et peut générer un large éventail de tracés que vous pouvez personnaliser à votre guise.
-Nous verrons comment personnaliser les ggplots dans @sec-custom-plot.
+Il est vrai que les graphiques que nous avons produites jusqu'à présent n'ont rien d'extraordinaire.
+Cependant, la fonction `plot()` est incroyablement polyvalente et peut générer un large éventail de graphiques que vous pouvez personnaliser à votre guise.
+Nous verrons comment personnaliser les ggplots dans la @sec-custom-plot.
 Pour l'anecdote, la fonction `plot()` est également ce que l'on appelle une fonction générique, ce qui signifie qu'elle peut modifier son comportement par défaut en fonction du type d'objet utilisé comme argument.
-Vous en verrez un exemple dans @sec-simple-lm où nous utilisons la fonction `plot()` pour générer des graphiques de diagnostic des résidus d'un objet de modèle linéaire (je parie que vous ne pouvez pas attendre !).
+Vous en verrez un exemple dans la @sec-simple-lm où nous utilisons la fonction `plot()` pour générer des graphiques de diagnostic des résidus d'un objet de type modèle linéaire (je parie que vous êtes impatient !).
 
-## ggplot2
+## `ggplot2` :package:
 
 ```{r}
 #| label: fig-ggplot-str2
@@ -168,26 +171,27 @@ Vous en verrez un exemple dans @sec-simple-lm où nous utilisons la fonction `pl
 #| eval: false
 #| out-width: 50%
 #| fig-align: center
-#| fig-cap: Structure of graphics with ggplot2
+#| fig-cap: Structure d'un graphique avec ggplot2
 
 knitr::include_graphics(path = "images/plot/full_connected.png")
 ```
 
-Comme nous l'avons déjà mentionné `ggplot` la grammaire nécessite plusieurs éléments pour produire un graphique (@fig-ggplot-str) et un minimum de 3 éléments est nécessaire :
+Comme nous l'avons déjà mentionné, la grammaire de `ggplot2` :package: nécessite plusieurs éléments pour produire un graphique (@fig-ggplot-str) et au moins 3 éléments sont nécessaire :
 
-- un cadre de données
-- un système de cartographie définissant x et y
-- une couche géométrique
+- un jeu de données ("`data =`")
+- un système de cartographie définissant x et y ("`aes()`")
+- une couche géométrique ("`geom_...()`")
 
-Les données et la cartographie sont fournies dans le cadre de l'appel à l'application `ggplot()` à l'aide de la fonction `data` et `mapping` arguments.
+Les données et la cartographie sont fournies dans le cadre de l'appel de la fonction `ggplot()` à l'aide des arguments `data` et `mapping`.
 La couche géométrique est ajoutée à l'aide de fonctions spécifiques.
 
 En fait, toutes les couches sont nécessaires, mais les valeurs simples par défaut des autres couches sont automatiquement fournies.
 
-Pour refaire la @fig-plot5, qui ne contient qu'un nuage de points, nous pouvons utiliser la commande `geom_point()` fonction.
+Pour refaire la @fig-plot5, qui ne contient qu'un nuage de points, nous pouvons utiliser la fonction `geom_point()`.
 
 ```{r}
 #| label: fig-plot5-gg
+#| fig-cap: Dispersion des données de fluffyness en fonction du poids des licornes (avec `ggplot2` :package:).
 #| message: false
 #| out-width: 75%
 #| fig-align: center
@@ -198,31 +202,32 @@ ggplot(
   geom_point()
 ```
 
-Maintenant que nous avons une compréhension de base de `ggplot`nous pouvons explorer quelques graphiques en utilisant à la fois le code de base de R et le code ggplot
+Maintenant que nous avons une compréhension de base de `ggplot()` nous pouvons explorer quelques graphiques en utilisant à la fois le code de base de R et le code `ggplot2` :package:
 
-## Tracés simples
+## Graphiques simples
 
-### Diagrammes de dispersion
+### Diagrammes de dispersion (nuages de points, Scatter plots)
 
-Type de diagramme simple très utile pour étudier la relation entre deux variables, par exemple.
-Voici le code pour le faire en utilisant la base R (@fig-plot5)
+Type de graphique simple très utile pour étudier la relation entre deux variables, par exemple.
+Voici le code pour le faire en utilisant les fonctions R de base (@fig-plot5)
 
 ```{r}
 #| label: fig-plot5
 #| eval: false
 ```
 
-ou ggplot (@fig-plot5-gg)
+ou `ggplot2` :package: (@fig-plot5-gg)
 
 ```{r}
 #| label: fig-plot5-gg
 #| eval: false
 ```
 
-Un grand avantage de `ggplot` pour les nuages de points simples est la facilité avec laquelle nous pouvons ajouter une régression, une ligne plus lisse (loes ou gam) au tracé en utilisant `stat_smooth()`pour ajouter une couche statistique au graphique.
-
+Un grand avantage de `ggplot()` pour les nuages de points simples est la facilité avec laquelle nous pouvons ajouter une régression, une ligne plus lisse (loess ou gam) au graphique en utilisant `geom_smooth()`pour ajouter une couche statistique au graphique.
+<!-- JULIEN - comme discuté pendant le labo de la semaine dernière, j'ai remplacé `stat_smooth()` par `geom_smooth()` -->
 ```{r}
 #| label: plot5-gg-line
+#| fig-cap: Nuage de point avec une régression LOESS.
 #| message: false
 #| out-width: 75%
 #| fig-align: center
@@ -231,30 +236,32 @@ ggplot(
   mapping = aes(x = weight, y = fluffyness)
 ) +
   geom_point() +
-  stat_smooth()
+  geom_smooth()
 ```
 
 ### Histogrammes
 
 Les histogrammes de fréquence sont utiles pour se faire une idée de la distribution des valeurs d'une variable numérique.
-En utilisant la base R, la fonction `hist()` prend un tableau numérique comme argument principal.
-Dans ggplot, nous devons utiliser `geom_histogram()`.
-Générons un histogramme de la `height` valeurs.
+En utilisant la base de R, la fonction `hist()` prend un tableau numérique comme argument principal.
+Dans `ggplot2` :package:, il faut utiliser `geom_histogram()`.
+Générons un histogramme des valeurs de taille (`height` dans le jeu de données).
 
-Avec la base R
+Avec la base de R ;
 
 ```{r}
 #| label: plot7
+#| fig-cap: Histogramme des valeurs de taille avec la base de R.
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 hist(licornes$height)
 ```
 
-avec ggplot2
+avec ggplot2 :
 
 ```{r}
 #| label: plot7-gg
+#| fig-cap: Histogramme des valeurs de taille avec `ggplot2` :package:.
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
@@ -262,33 +269,35 @@ ggplot(licornes, aes(x = height)) +
   geom_histogram()
 ```
 
-Les `hist()` et `geom_histogram()` crée automatiquement les points de rupture (ou bins) dans l'histogramme, à moins que vous n'indiquiez le contraire à l'aide de la fonction `breaks =` pour spécifier le contraire.
-Par exemple, disons que nous voulons tracer notre histogramme avec des points de rupture tous les 1 cm de hauteur des licornes.
-Nous générons d'abord une séquence allant de zéro à la valeur maximale de `height` (18 arrondi vers le haut) par pas de 1 à l'aide de la fonction `seq()` à l'aide de la fonction
-Nous pouvons ensuite utiliser cette séquence avec la fonction `breaks =` argument.
-Pendant que nous y sommes, remplaçons également le titre moche par quelque chose d'un peu mieux en utilisant l'option `main =` argument
+Les fonctions `hist()` et `geom_histogram()` créent automatiquement les points de rupture (ou "bins") dans l'histogramme, à moins que vous n'indiquiez le contraire à l'aide de l'argument `breaks =` pour spécifier le contraire.
+Par exemple, disons que nous voulons tracer notre histogramme avec des points de rupture tous les 1 cm de taille des licornes.
+Nous générons d'abord une séquence allant de zéro à la valeur maximale de `height` (18 arrondi vers le haut) par pas de 1 à l'aide de la fonction `seq()`.
+Nous pouvons ensuite utiliser cette séquence avec l'argument `breaks =`.
+Tant qu'on y est, remplaçons également le titre moche par quelque chose d'un peu mieux en utilisant l'argument `main =`.
 
 ```{r}
 #| label: plot8
+#| fig-cap: Histogramme des valeurs de taille avec des points de ruptures à chaque cm (R de base).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 brk <- seq(from = 0, to = 18, by = 1)
-hist(licornes$height, breaks = brk, main = "Unicorn height")
+hist(licornes$height, breaks = brk, main = "Taille des licornes")
 ```
 
 ```{r}
 #| label: plot8-gg
+#| fig-cap: Histogramme des valeurs de taille avec des points de ruptures à chaque cm (`ggplot2` :package:).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 brk <- seq(from = 0, to = 18, by = 1)
 ggplot(licornes, aes(x = height)) +
   geom_histogram(breaks = brk) +
-  ggtitle("Unicorn height")
+  ggtitle("Taille des licornes")
 ```
 
-Vous pouvez également afficher l'histogramme sous forme de proportion plutôt que de fréquence en utilisant l'argument `freq = FALSE` à l'argument `hist()` ou en indiquant `aes(y = after_stat(density))` dans `geom_histogram()`.
+Vous pouvez aussi afficher l'histogramme sous forme de proportion plutôt que de fréquence en utilisant l'argument `freq = FALSE` dans la fonction `hist()` ou en indiquant `aes(y = after_stat(density))` dans `geom_histogram()`.
 
 ```{r}
 #| label: plot9
@@ -298,117 +307,123 @@ Vous pouvez également afficher l'histogramme sous forme de proportion plutôt q
 #| fig-align: center
 brk <- seq(from = 0, to = 18, by = 1)
 hist(licornes$height,
-  breaks = brk, main = "Unicorn height",
+  breaks = brk, main = "Taille des licornes",
   freq = FALSE
 )
 ggplot(licornes, aes(x = height)) +
   geom_histogram(aes(y = after_stat(density)), breaks = brk) +
-  ggtitle("Unicorn height")
+  ggtitle("Taille des licornes")
 ```
 
-Une alternative au tracé d'un simple histogramme est d'ajouter une [densité du noyau][kernel-dens] au tracé.
-Dans la version de base de R, vous devez d'abord calculer les estimations de la densité du noyau à l'aide de la fonction `density()` puis ajouter les estimations à un tracé sous forme de ligne à l'aide de la fonction `lines()` pour tracer une ligne.
+Une alternative au tracé d'un simple histogramme est d'ajouter une [densité du noyau ("Kernel density")][kernel-dens] au graphique.
+Dans la version de base de R, vous devez d'abord calculer les estimations de la densité du noyau à l'aide de la fonction `density()` puis ajouter les estimations à un graphique sous forme de ligne à l'aide de la fonction `lines()`.
 
 ```{r}
 #| label: plot10
+#| fig-cap: Histogramme des valeurs de taille avec la courbe de densité (avec R de base).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 dens <- density(licornes$height)
 hist(licornes$height,
-  breaks = brk, main = "Unicorn height",
+  breaks = brk, main = "Taille des licornes",
   freq = FALSE
 )
 lines(dens)
 ```
 
-Avec ggplot, vous pouvez simplement ajouter la fonction `geom_density()` au tracé
+Avec `ggplot2` :package:, vous pouvez simplement ajouter la fonction `geom_density()` au graphique :
 
 ```{r}
 #| label: plot10-gg
+#| fig-cap: Histogramme des valeurs de taille avec la courbe de densité (avec `ggplot2` :package:).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 ggplot(licornes, aes(x = height)) +
   geom_histogram(aes(y = after_stat(density)), breaks = brk) +
   geom_density() +
-  ggtitle("Unicorn height")
+  ggtitle("Taille des licornes")
 ```
 
-### Diagrammes en boîte
+### Boîtes à moustache (Box plots)
 
-D'accord, nous allons le dire franchement, nous adorons les diagrammes en boîte et leur relation étroite avec le diagramme en violon.
-Les boxplots (ou box-and-whisker plots pour leur nom complet) sont très utiles pour résumer graphiquement la distribution d'une variable, identifier d'éventuelles valeurs inhabituelles et comparer les distributions entre différents groupes.
-La raison pour laquelle nous les aimons est leur facilité d'interprétation, leur transparence et leur rapport données/encre relativement élevé (c'est-à-dire qu'ils sont plus faciles à interpréter qu'à utiliser).
-ils transmettent efficacement une grande quantité d'informations).
-Nous vous suggérons d'utiliser les diagrammes en boîte autant que possible lorsque vous explorez vos données et d'éviter la tentation d'utiliser le diagramme en barres plus omniprésent (même avec des barres d'erreur standard ou d'intervalles de confiance à 95 %).
+D'accord, nous allons le dire franchement, nous adorons les boîtes à moustache et leur relation étroite avec le diagramme en violon.
+Les "boxplots" (ou "box-and-whisker" plots pour leur nom complet) sont très utiles pour résumer graphiquement la distribution d'une variable, identifier d'éventuelles valeurs inhabituelles et comparer les distributions entre différents groupes.
+La raison pour laquelle nous les aimons est leur facilité d'interprétation, leur transparence et leur rapport données-encre relativement élevé (c'est-à-dire qu'ils transmettent efficacement une grande quantité d'informations).
+Nous vous suggérons d'utiliser les "boxplots" autant que possible lorsque vous explorez vos données et de résister à la tentation d'utiliser les diagrammes en bâtons ("barplots") plus omniprésent (même avec des barres d'erreur standard ou d'intervalles de confiance à 95 %).
 Le problème des diagrammes en bâtons (ou diagrammes en dynamite) est qu'ils cachent au lecteur des informations importantes telles que la distribution des données et qu'ils supposent que les barres d'erreur (ou les intervalles de confiance) sont symétriques par rapport à la moyenne.
- Bien sûr, c'est à vous de décider ce que vous faites, mais si vous êtes tenté d'utiliser des diagrammes à barres, cherchez "dynamite plots are evil" (les diagrammes de dynamite sont diaboliques) ou voyez [ici][dynamite-plot1] ou [ici][dynamite-plot2] pour une discussion plus complète.
+Bien sûr, c'est à vous de décider ce que vous faites, mais si vous êtes tenté d'utiliser des diagrammes en bâtons, cherchez "dynamite plots are evil" (les diagrammes de dynamite sont diaboliques) ou voyez [ici][dynamite-plot1] ou [ici][dynamite-plot2] pour une discussion plus complète.
 
-Pour créer un diagramme en boîte dans R, nous utilisons la fonction `boxplot()` fonction.
-Par exemple, créons un diagramme en boîte de la variable `weight` à partir de notre `licornes` cadre de données.
-Nous pouvons également inclure une étiquette pour l'axe des y en utilisant la fonction `ylab =` à l'aide de l'argument
+Pour créer un "boxplot" dans R, nous utilisons la fonction `boxplot()`.
+Par exemple, créons un "boxplot" de la variable `weight` du jeu de données `licornes`.
+Nous pouvons également inclure un nom pour l'axe des y en utilisant l'argument `ylab =`.
 
 ```{r}
 #| label: plot11
+#| fig-cap: Boîte à moustache du poids des licornes (avec R de base).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
-boxplot(licornes$weight, ylab = "weight (g)")
+boxplot(licornes$weight, ylab = "Poids (g)")
 ```
 
 ```{r}
 #| label: plot11-gg
+#| fig-cap: Boîte à moustache du poids des licornes (avec "ggplot2" :package:).
 #| message: false
 #| out-width: 75%
 #| fig-align: center
 ggplot(licornes, aes(y = weight)) +
   geom_boxplot() +
-  labs(y = "weight (g)")
+  labs(y = "Poids (g)")
 ```
 
-La ligne horizontale épaisse au milieu de la boîte est la valeur médiane de `weight` (environ 11 g).
+La ligne horizontale épaisse au milieu de la boîte est la médiane de la variable `weight` (environ 11 g).
 La ligne supérieure de la boîte est le quartile supérieur (75^e^ percentile) et la ligne inférieure est le quartile inférieur (25^e^ percentile).
 La distance entre les quartiles supérieur et inférieur est appelée l'intervalle interquartile et représente les valeurs de `weight` pour 50 % des données.
 Les lignes verticales en pointillés sont appelées moustaches et leur longueur est égale à 1,5 x l'intervalle interquartile.
-Les points de données qui sont tracés en dehors des moustaches représentent des observations inhabituelles potentielles.
+Les points tracés en dehors des moustaches représentent des observations inhabituelles potentielles.
 Cela ne signifie pas qu'ils sont inhabituels, mais simplement qu'ils méritent un examen plus approfondi.
-Nous recommandons d'utiliser les boxplots en combinaison avec les dotplots de Cleveland pour identifier les observations potentiellement inhabituelles (voir les @sec-dotcharts pour plus de détails).
-Ce qui est intéressant avec les boxplots, c'est qu'ils ne fournissent pas seulement une mesure de la tendance centrale (la valeur médiane), mais qu'ils vous donnent également une idée de la distribution des données.
+Nous recommandons d'utiliser les "boxplots" en combinaison avec les "dotplots" de Cleveland pour identifier les observations potentiellement inhabituelles (voir la @sec-dotcharts pour plus de détails).
+Ce qui est intéressant avec les "boxplots", c'est qu'ils ne fournissent pas seulement une mesure de la tendance centrale (médiane), mais qu'ils vous donnent également une idée de la distribution des données.
 Si la ligne médiane se trouve plus ou moins au milieu de la boîte (entre les quartiles supérieur et inférieur) et que les moustaches sont plus ou moins de la même longueur, vous pouvez être raisonnablement sûr que la distribution de vos données est symétrique.
 
-Si nous voulons examiner comment la distribution d'une variable change entre différents niveaux d'un facteur, nous devons utiliser la notation de la formule avec l'attribut `boxplot()` avec la fonction
-Par exemple, traçons notre `weight` mais cette fois-ci, voyons comment elle évolue avec chaque niveau de `food`.
-Lorsque nous utilisons la notation de la formule avec `boxplot()` nous pouvons utiliser la notation `data =` afin d'économiser de la frappe.
-Nous introduirons également une étiquette pour l'axe des x à l'aide de la fonction `xlab =` à l'aide de l'argument
+Si nous voulons examiner comment la distribution d'une variable change entre différents niveaux d'un facteur, il faut utiliser la notation de formule avec la fonction `boxplot()`.
+Par exemple, traçons notre variable `weight` mais cette fois-ci, voyons comment elle évolue entre chaque niveau de la variable `food`.
+Lorsque nous utilisons la notation de formule avec `boxplot()` nous pouvons utiliser l'argument `data =` afin d'économiser de la frappe.
+Nous introduirons également un nom pour l'axe des x à l'aide de l'argument `xlab =`.
 
 ```{r}
 #| label: plot12
+#| fig-cap: Comparaison du poids des licornes en fonction du niveau de nutrition (avec R de base).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 boxplot(weight ~ food,
   data = licornes,
-  ylab = "Weight (g)", xlab = "food level"
+  ylab = "Poids (g)", xlab = "Niveau de nutrition"
 )
 ```
 
 ```{r}
 #| label: plot12-gg
+#| fig-cap: Comparaison du poids des licornes en fonction du niveau de nutrition (avec `ggplot2` :package:).
 #| message: false
 #| out-width: 75%
 #| fig-align: center
 ggplot(licornes, aes(y = weight, x = food)) +
   geom_boxplot() +
-  labs(y = "Weight (g)", x = "food Concentration")
+  labs(y = "Poids (g)", x = "Niveau de nutrition")
 ```
 
 Les niveaux des facteurs sont représentés dans l'ordre défini par notre variable factorielle `food` (souvent par ordre alphabétique).
-Pour modifier l'ordre, nous devons changer l'ordre de nos niveaux du facteur `food` dans notre cadre de données à l'aide de la fonction `factor()` puis redessiner le graphique.
-Traçons notre diagramme en boîte avec nos niveaux de facteurs allant de `low` à `high`.
+Pour modifier l'ordre, il faut changer l'ordre des niveaux du facteur `food` dans le jeu de données à l'aide de la fonction `factor()` puis redessiner le graphique.
+Traçons notre boîte à moustache avec nos niveaux de facteurs allant de `low` à `high`.
 
 ```{r}
 #| label: plot13
+#| fig-cap: Comparaison du poids des licornes en fonction du niveau (trié) de nutrition (avec `ggplot2` :package:).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
@@ -417,38 +432,40 @@ licornes$food <- factor(licornes$food,
 )
 ggplot(licornes, aes(y = weight, x = food)) +
   geom_boxplot() +
-  labs(y = "Weight (g)", x = "food Concentration")
+  labs(y = "Poids (g)", x = "Niveau de nutrition")
 ```
 
-Nous pouvons également regrouper nos variables par deux facteurs dans le même graphique.
-Traçons notre `weight` mais, cette fois, traçons une boîte séparée pour chaque `food` et le traitement des soins parentaux (`p_care`).
+Nous pouvons également regrouper nos variables selon deux facteurs dans le même graphique.
+Traçons notre `weight` mais, cette fois, traçons une boîte séparée pour chaque niveau `food` et le traitement des soins parentaux (`p_care`).
 
 ```{r}
 #| label: plot14
+#| fig-cap: Comparaison du poids des licornes en fonction du niveau de nutrition et de soins parentaux (avec R de base).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 boxplot(weight ~ food * p_care,
   data = licornes,
-  ylab = "weight (g)", xlab = "food level"
+  ylab = "Poids (g)", xlab = "Niveau de nutrition"
 )
 ```
 
 ```{r}
 #| label: plot14-gg
+#| fig-cap: Comparaison du poids des licornes en fonction du niveau de nutrition et de soins parentaux (avec `ggplot2` :package:).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 ggplot(licornes, aes(y = weight, x = food)) +
   geom_boxplot() +
-  labs(y = "Weight (g)", x = "food Concentration") +
+  labs(y = "Poids (g)", x = "Niveau de nutrition") +
   facet_grid(.
   ~ p_care)
 ```
 
-Ce graphique est beaucoup plus intéressant dans ggplot, l'utilisation de facet_grid permettant de réaliser des graphiques similaires en fonction d'une troisième (ou même d'une quatrième) variable.
+Ce graphique est beaucoup plus intéressant dans `ggplot2` :package:, l'utilisation de `facet_grid()` permettant de réaliser des graphiques similaires en fonction d'une troisième (ou même d'une quatrième) variable.
 
-### Tracés de violon
+### Diagrammes en violon (Violin plots)
 
 Les diagrammes en forme de violon sont une combinaison d'un diagramme en boîte et d'un diagramme de densité de noyau (vous avez vu un exemple de diagramme de densité de noyau dans la section histogramme ci-dessus), le tout en une seule figure.
 Nous pouvons créer un diagramme en violon dans R à l'aide de la fonction `vioplot()` à partir de la fonction `vioplot` du paquet.
