@@ -64,7 +64,7 @@ Il s'agit néanmoins d'une croyance répandue, probablement due au fait qu'il es
 
 Dans cet esprit, commençons à créer quelques figures.
 
-## Tracés de base simples en R {#sec-baseplot}
+## Graphiques de base simples en R {#sec-baseplot}
 
 Il existe de nombreuses fonctions dans R pour produire des graphiques, des plus simples aux plus complexes.
 Il est impossible de couvrir tous les aspects de la production de graphiques en R dans ce livre. Nous vous présenterons donc la plupart des méthodes courantes de représentation graphique des données et nous décrirons comment personnaliser vos graphiques plus tard dans la @sec-custom-plot.
@@ -428,8 +428,8 @@ Traçons notre boîte à moustache avec nos niveaux de facteurs allant de `low` 
 #| out-width: 75%
 #| fig-align: center
 licornes$food <- factor(licornes$food,
-  levels = c("low", "medium", "high")
-)
+  levels = c("low", "medium", "high"))
+
 ggplot(licornes, aes(y = weight, x = food)) +
   geom_boxplot() +
   labs(y = "Poids (g)", x = "Niveau de nutrition")
@@ -467,14 +467,15 @@ Ce graphique est beaucoup plus intéressant dans `ggplot2` :package:, l'utilisat
 
 ### Diagrammes en violon (Violin plots)
 
-Les diagrammes en forme de violon sont une combinaison d'un diagramme en boîte et d'un diagramme de densité de noyau (vous avez vu un exemple de diagramme de densité de noyau dans la section histogramme ci-dessus), le tout en une seule figure.
-Nous pouvons créer un diagramme en violon dans R à l'aide de la fonction `vioplot()` à partir de la fonction `vioplot` du paquet.
-Vous devrez d'abord installer ce paquet en utilisant `install.packages('vioplot')` comme d'habitude.
-L'avantage de l'option `vioplot()` est qu'elle s'utilise à peu près de la même manière que la fonction `boxplot()` fonction.
+Les diagrammes en violon, ou "violin plots", sont une combinaison d'un "boxplot" et d'un diagramme de densité de noyau (vous avez vu un exemple de diagramme de densité de noyau dans la section histogramme ci-dessus), le tout en une seule figure.
+Nous pouvons créer un diagramme en violon dans R à l'aide de la fonction `vioplot()` paquet `vioplot` :package:.
+Vous devrez d'abord installer ce paquet en utilisant la commade `install.packages('vioplot')` (comme d'habitude).
+L'avantage de l'option `vioplot()` est qu'elle s'utilise à peu près de la même manière que la fonction `boxplot()`.
 Nous utiliserons également l'argument `col = "lightblue"` pour changer la couleur de remplissage en bleu clair.
 
 ```{r}
 #| label: plot16
+#| fig-cap: Diagramme en violon comparant le niveau poids des licornes en fonction de leurs niveau de nutrition (avec R de base).
 #| echo: true
 #| warning: false
 #| message: false
@@ -483,16 +484,17 @@ Nous utiliserons également l'argument `col = "lightblue"` pour changer la coule
 library(vioplot)
 vioplot(weight ~ food,
   data = licornes,
-  ylab = "weight (g)", xlab = "food Concentration",
+  ylab = "Poids (g)", xlab = "Niveau de nutrition",
   col = "lightblue"
 )
 ```
 
-Dans le diagramme de violon ci-dessus, nous avons notre diagramme en boîte familier pour chaque `food` mais cette fois, la valeur médiane est représentée par un cercle blanc.
-Autour de chaque diagramme en boîte figure le diagramme de densité de noyau qui représente la distribution des données pour chaque niveau d'alimentation.
+Dans le diagramme en violon ci-dessus, nous avons des boîtes familières, comme dans un "boxplot", pour chaque niveaux de `food` mais cette fois, la valeur médiane est représentée par un cercle blanc.
+Autour de chaque boîte figure le diagramme de densité de noyau qui représente la distribution des données pour chaque niveau d'alimentation.
 
 ```{r}
 #| label: plot16-gg
+#| fig-cap: Diagramme en violon comparant le niveau poids des licornes en fonction de leurs niveau de nutrition (avec `ggplot2` :package:).
 #| echo: true
 #| warning: false
 #| message: false
@@ -501,29 +503,31 @@ Autour de chaque diagramme en boîte figure le diagramme de densité de noyau qu
 ggplot(licornes, aes(y = weight, x = food)) +
   geom_violin() +
   geom_boxplot(width = 0.1) +
-  labs(y = "Weight (g)", x = "food Concentration")
+  labs(y = "Poids (g)", x = "Niveau de nutrition")
 ```
 
-### Graphiques en pointillés {#sec-dotcharts}
+### Diagramme en pointillés (Dot charts) {#sec-dotcharts}
 
-Il est extrêmement important d'identifier les observations inhabituelles (appelées "valeurs aberrantes") dans les variables numériques, car elles peuvent influencer les estimations des paramètres de votre modèle statistique ou indiquer une erreur dans vos données.
-Un graphique très utile (bien que sous-estimé) pour aider à identifier les valeurs aberrantes est le graphique en pointillés de Cleveland.
-Vous pouvez produire un graphique en pointillés en R très simplement en utilisant la commande `dotchart()` pour produire un graphique en pointillés.
+Il est extrêmement important d'identifier les observations inhabituelles (appelées "valeurs aberrantes") dans une variable numérique, car elles peuvent influencer les estimations des paramètres de votre modèle statistique ou indiquer une erreur dans vos données.
+Un graphique très utile (bien que sous-estimé) pour aider à identifier les valeurs aberrantes est le diagramme en pointillés de Cleveland ("Cleveland's dotplot").
+Vous pouvez produire un diagramme en pointillés en R très simplement en utilisant la fonction `dotchart()`.
 
 ```{r}
 #| label: plot17
+#| fig-cap: Diagramme en pointillés de la taille des licornes (avec R de base).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 dotchart(licornes$height)
 ```
 
-Dans le diagramme en pointillés ci-dessus, les données de la base de données `height` sont représentées le long de l'axe des x et les données sont représentées dans l'ordre dans lequel elles apparaissent dans la fonction `licornes` sur l'axe des y (les valeurs situées en haut de l'axe des y apparaissent plus tard dans la base de données et celles situées plus bas apparaissent au début de la base de données).
+Dans le diagramme en pointillés ci-dessus, les données de taille (`height`) sont représentées le long de l'axe des x et les données sont représentées dans l'ordre dans lequel elles apparaissent dans le jeu de données `licornes` sur l'axe des y (les valeurs situées en haut de l'axe des y apparaissent plus tard dans le jeu de données et celles situées plus bas apparaissent au début du jeu de données).
 Sur ce graphique, une seule valeur s'étend vers la droite à environ 17 cm, mais elle ne semble pas particulièrement importante par rapport aux autres.
-Un exemple de diagramme à points avec une observation inhabituelle est donné ci-dessous.
+Un exemple de diagramme à points avec une observation inhabituelle est donné ci-dessous :
 
 ```{r}
 #| label: plot18
+#| fig-cap: Diagramme en pointillés de la taille des licornes avec une valeur aberrante (avec R de base).
 #| echo: false
 #| out-width: 75%
 #| fig-align: center
@@ -532,38 +536,41 @@ out_height[30] <- 53
 dotchart(out_height)
 ```
 
-Nous pouvons également regrouper les valeurs dans notre `height` par une variable factorielle telle que `food` en utilisant le `groups =` argument.
+Nous pouvons également regrouper les valeurs dans notre variable `height` selon une variable factorielle telle que `food` en utilisant l'argument `groups =`.
 Ceci est utile pour identifier des observations inhabituelles au sein d'un niveau de facteur qui pourraient être masquées lorsque l'on examine toutes les données ensemble.
 
 ```{r}
 #| label: plot19
+#| fig-cap: Diagramme en pointillés de la taille des licornes en fonction des niveaux de nutrition (avec R de base).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 dotchart(licornes$height, groups = licornes$food)
 ```
 
-<!-- A FAIRE -->
+<!-- JULIEN - A FAIRE - Du coup tu veux fair quoi ici ? -->
 
 ```{r}
 #| label: plot19-gg
+#| fig-cap: Diagramme en pointillés de la taille des licornes en fonction des niveaux de nutrition (avec `ggpubr` :package:).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 ggdotchart(data = licornes, x = "height", y = "food")
 ```
 
-### Diagrammes de paires
+### Diagrammes en paires
 
 Dans ce chapitre, nous avons déjà utilisé la fonction `plot()` pour créer un nuage de points afin d'explorer la relation entre deux variables numériques.
-Dans le cas d'ensembles de données contenant de nombreuses variables numériques, il est souvent utile de créer plusieurs diagrammes de dispersion pour visualiser les relations entre toutes ces variables.
-Nous pouvons utiliser la fonction `plot()` pour créer chacun de ces diagrammes individuellement, mais il est beaucoup plus facile d'utiliser la fonction `pairs()` fonction.
-La fonction `pairs()` crée un nuage de points à plusieurs panneaux (parfois appelé matrice de nuage de points) qui représente toutes les combinaisons de variables.
-Créons un nuage de points multi-panneaux de toutes les variables numériques de notre `licornes` cadre de données.
+Dans le cas de jeux de données contenant de nombreuses variables numériques, il est souvent utile de créer plusieurs diagrammes de dispersion pour visualiser les relations entre toutes ces variables.
+Nous pouvons utiliser la fonction `plot()` pour créer chacun de ces graphiques individuellement, mais il est beaucoup plus facile d'utiliser la fonction `pairs()`.
+La fonction `pairs()` crée un nuage de points multi-panneaux (parfois appelé matrice de nuage de points) qui représente toutes les combinaisons de variables.
+Créons un nuage de points multi-panneaux de toutes les variables numériques de notre jeu de données `licornes`.
 Notez que vous devrez peut-être cliquer sur le bouton "Zoom" dans RStudio pour afficher clairement le graphique.
 
 ```{r}
 #| label: plot20
+#| fig-cap: Nuage de points multi-panneaux représentants les relations entre toutes les combinaisons de variables du jeu de données `licornes`(avec R de base).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
@@ -571,32 +578,37 @@ pairs(licornes[, c(
   "height", "weight", "mane_size",
   "fluffyness", "horn_rings"
 )])
-# or we could use the equivalent
+# Ou, de manière équivalente, vous pouvez utiliser :
 # pairs(licornes[, 4:8])
 ```
 
-Il faut un peu de temps pour s'habituer à l'interprétation du diagramme des paires.
+Il faut un peu de temps pour s'habituer à l'interprétation d'un diagramme en paires.
 Les panneaux sur la diagonale indiquent les noms des variables.
-La première rangée de diagrammes affiche les `height` sur l'axe des y et les variables `weight`, `mane_size`, `fluffyness` et `licornes` sur l'axe des x pour chacun des quatre graphiques respectivement.
-La rangée suivante de placettes comporte `weight` sur l'axe des y et `height`, `mane_size`, `fluffyness` et `licornes` sur l'axe des x.
-Nous interprétons les autres lignes de la même manière, la dernière ligne affichant la valeur `licornes` sur l'axe des y et les autres variables sur l'axe des x.
-Nous espérons que vous remarquerez que les graphiques situés sous la diagonale sont les mêmes que ceux situés au-dessus de la diagonale, mais avec l'axe inversé.
+La première rangée de graphiques affiche les `height` sur l'axe des y et les variables `weight`, `mane_size`, `fluffyness` et `horn_rings` sur l'axe des x pour chacun des quatre graphiques respectivement.
+La rangée suivante de graphiques comporte `weight` sur l'axe des y et `height`, `mane_size`, `fluffyness` et `horn_rings` sur l'axe des x.
+Nous interprétons les autres lignes de la même manière, la dernière ligne affichant la variable `horn_size` sur l'axe des y et les autres variables sur l'axe des x.
+Nous espérons que vous remarquerez que les graphiques situés sous la diagonale sont les mêmes que ceux situés au-dessus de la diagonale, mais avec les axes inversés.
 
-Pour réaliser des tracés par paires avec ggplot, vous avez besoin de l'option `ggpairs()`de `GGally`paquet.
-La sortie est assez similaire mais vous n'avez que la partie inférieure de la matrice des tracés, vous obtenez un tracé de densité sur la diagonale et les corrélations sur la partie supérieure du tracé.
+Pour réaliser des diagrammes en paires avec ggplot, vous avez besoin de la fonction `ggpairs()`du paquet `GGally` :package:.
+La sortie est assez similaire mais vous n'avez que la partie inférieure de la matrice des graphiques, vous obtenez un graphique de densité sur la diagonale et les corrélations sur la partie supérieure du graphique.
 
 ```{r}
+#| label: plot21
+#| fig-cap: Nuage de points multi-panneaux représentants les relations entre toutes les combinaisons de variables du jeu de données `licornes`(avec `GGally` :package:).
+#| echo: true
+#| fig-align: center
 ggpairs(licornes[, c(
   "height", "weight", "mane_size",
   "fluffyness", "horn_rings"
 )])
 ```
 
-Les `pairs()` peut être modifiée pour faire des choses similaires et plus, mais elle est plus complexe.
-Jetez un coup d'œil à l'excellent fichier d'aide de la fonction `pairs()` (`?pairs`), qui fournit tous les détails permettant de faire quelque chose comme le tracé ci-dessous.
+La fonction `pairs()` peut être modifiée pour faire des choses similaires et plus, mais elle est plus complexe.
+Jetez un coup d'œil à l'excellent fichier d'aide de la fonction `pairs()` (`?pairs`), qui fournit tous les détails permettant de faire quelque chose comme la figure ci-dessous.
 
 ```{r}
 #| label: plot22
+#| fig-cap: Nuage de points multi-panneaux représentants les relations entre toutes les combinaisons de variables du jeu de données `licornes`(avec R de base mais en plus classe).
 #| echo: false
 panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...) {
   usr <- par("usr")
@@ -629,7 +641,7 @@ pairs(
 )
 ```
 
-### Tracés
+### Coplots
 
 Lorsque l'on examine la relation entre deux variables numériques, il est souvent utile de pouvoir déterminer si une troisième variable obscurcit ou modifie la relation.
 Un graphique très pratique à utiliser dans ces situations est un graphique de conditionnement (également connu sous le nom de graphique de dispersion conditionnel) que nous pouvons créer dans R à l'aide de la fonction `coplot()` fonction.
