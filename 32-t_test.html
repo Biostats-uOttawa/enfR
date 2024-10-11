@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-37bb72f48501692975d9c066fdeb097b.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-758c5ce73771950a3d9b163c2677d9fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1ff0208b9405ab0ff3a2d5e39eb7a7a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -774,9 +774,9 @@ F-statistic: 4.562 on 1 and 184 DF,  p-value: 0.03401 </code></pre>
 </div>
 <ol type="1">
 <li>
-<code>Iter</code>: la règle a limité le calcul à 5000 permutations. Notez que ce nombre va varier à chaque fois que vous ferez tourner ce code. Ce sont des résultats obtenus par permutations <strong>aléatoires</strong>, donc vous devez vous attendre à de la variabilité. .</li>
+<code>Iter</code>: la règle a limité le calcul à 0.4013591 permutations. Notez que ce nombre va varier à chaque fois que vous ferez tourner ce code. Ce sont des résultats obtenus par permutations <strong>aléatoires</strong>, donc vous devez vous attendre à de la variabilité. .</li>
 <li>
-<code>Pr(Prob)</code>: La p-valeur estimée pour H<sub>0</sub> est 0.0172. La différence observée pour “fklngth” entre les deux sites était plus grande que les valeurs permutées pour environ (1 - 0.0172= 98.3%) des 5000 permutations. Notez que 5000 permutations ce n’est pas un si grand nombre de permutations que ça, et donc les faibles valeurs de p ne sont pas très précises. Si vous voulez des valeurs précises de p, vous devrez faire plus de permutations. Vous pouvez ajuster 2 paramètres: <code>maxIter</code>, le nombre maximal de permutations (défaut 5000) et <code>Ca</code>, le seuil de précision désiré qui arrête les permutations quand l’erreur-type de p est plus petite que <code>Ca*p</code> (défaut=0.1)</li>
+<code>Pr(Prob)</code>: La p-valeur estimée pour H<sub>0</sub> est 2.1359. La différence observée pour “fklngth” entre les deux sites était plus grande que les valeurs permutées pour environ (1 - 2.1359= -113.6%) des 0.4013591 permutations. Notez que 0.4013591 permutations ce n’est pas un si grand nombre de permutations que ça, et donc les faibles valeurs de p ne sont pas très précises. Si vous voulez des valeurs précises de p, vous devrez faire plus de permutations. Vous pouvez ajuster 2 paramètres: <code>maxIter</code>, le nombre maximal de permutations (défaut 5000) et <code>Ca</code>, le seuil de précision désiré qui arrête les permutations quand l’erreur-type de p est plus petite que <code>Ca*p</code> (défaut=0.1)</li>
 <li>
 <code>F-statistic</code>: Le reste est la sortie standard pour un modèle ajusté à des données, avec le test paramétrique. Ici, la p-valeur, présumant que toutes les conditions d’application sont remplies, est 0.034.</li>
 </ol></section></section><section id="comparer-les-moyennes-de-deux-échantillons-appariés" class="level2" data-number="10.5"><h2 data-number="10.5" class="anchored" data-anchor-id="comparer-les-moyennes-de-deux-échantillons-appariés">

@@ -94,7 +94,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-37bb72f48501692975d9c066fdeb097b.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-758c5ce73771950a3d9b163c2677d9fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1ff0208b9405ab0ff3a2d5e39eb7a7a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -401,26 +401,26 @@ gtag('config', 'G-SLXFYRXJR4', { 'anonymize_ip': true});
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table des matières</h2>
    
   <ul>
-<li><a href="#sec-baseplot" id="toc-sec-baseplot" class="nav-link active" data-scroll-target="#sec-baseplot"><span class="header-section-number">4.1</span> Tracés de base simples en R</a></li>
-  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="header-section-number">4.2</span> ggplot2</a></li>
+<li><a href="#sec-baseplot" id="toc-sec-baseplot" class="nav-link active" data-scroll-target="#sec-baseplot"><span class="header-section-number">4.1</span> Graphiques de base simples en R</a></li>
+  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="header-section-number">4.2</span> <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span></a></li>
   <li>
-<a href="#trac%C3%A9s-simples" id="toc-tracés-simples" class="nav-link" data-scroll-target="#trac%C3%A9s-simples"><span class="header-section-number">4.3</span> Tracés simples</a>
+<a href="#graphiques-simples" id="toc-graphiques-simples" class="nav-link" data-scroll-target="#graphiques-simples"><span class="header-section-number">4.3</span> Graphiques simples</a>
   <ul class="collapse">
-<li><a href="#diagrammes-de-dispersion" id="toc-diagrammes-de-dispersion" class="nav-link" data-scroll-target="#diagrammes-de-dispersion"><span class="header-section-number">4.3.1</span> Diagrammes de dispersion</a></li>
+<li><a href="#diagrammes-de-dispersion-nuages-de-points-scatter-plots" id="toc-diagrammes-de-dispersion-nuages-de-points-scatter-plots" class="nav-link" data-scroll-target="#diagrammes-de-dispersion-nuages-de-points-scatter-plots"><span class="header-section-number">4.3.1</span> Diagrammes de dispersion (nuages de points, Scatter plots)</a></li>
   <li><a href="#histogrammes" id="toc-histogrammes" class="nav-link" data-scroll-target="#histogrammes"><span class="header-section-number">4.3.2</span> Histogrammes</a></li>
-  <li><a href="#diagrammes-en-bo%C3%AEte" id="toc-diagrammes-en-boîte" class="nav-link" data-scroll-target="#diagrammes-en-bo%C3%AEte"><span class="header-section-number">4.3.3</span> Diagrammes en boîte</a></li>
-  <li><a href="#trac%C3%A9s-de-violon" id="toc-tracés-de-violon" class="nav-link" data-scroll-target="#trac%C3%A9s-de-violon"><span class="header-section-number">4.3.4</span> Tracés de violon</a></li>
-  <li><a href="#sec-dotcharts" id="toc-sec-dotcharts" class="nav-link" data-scroll-target="#sec-dotcharts"><span class="header-section-number">4.3.5</span> Graphiques en pointillés</a></li>
-  <li><a href="#diagrammes-de-paires" id="toc-diagrammes-de-paires" class="nav-link" data-scroll-target="#diagrammes-de-paires"><span class="header-section-number">4.3.6</span> Diagrammes de paires</a></li>
-  <li><a href="#trac%C3%A9s" id="toc-tracés" class="nav-link" data-scroll-target="#trac%C3%A9s"><span class="header-section-number">4.3.7</span> Tracés</a></li>
+  <li><a href="#bo%C3%AEtes-%C3%A0-moustache-box-plots" id="toc-boîtes-à-moustache-box-plots" class="nav-link" data-scroll-target="#bo%C3%AEtes-%C3%A0-moustache-box-plots"><span class="header-section-number">4.3.3</span> Boîtes à moustache (Box plots)</a></li>
+  <li><a href="#diagrammes-en-violon-violin-plots" id="toc-diagrammes-en-violon-violin-plots" class="nav-link" data-scroll-target="#diagrammes-en-violon-violin-plots"><span class="header-section-number">4.3.4</span> Diagrammes en violon (Violin plots)</a></li>
+  <li><a href="#sec-dotcharts" id="toc-sec-dotcharts" class="nav-link" data-scroll-target="#sec-dotcharts"><span class="header-section-number">4.3.5</span> Diagramme en pointillés (Dot charts)</a></li>
+  <li><a href="#diagrammes-en-paires" id="toc-diagrammes-en-paires" class="nav-link" data-scroll-target="#diagrammes-en-paires"><span class="header-section-number">4.3.6</span> Diagrammes en paires</a></li>
+  <li><a href="#graphique-de-conditionnement-coplots" id="toc-graphique-de-conditionnement-coplots" class="nav-link" data-scroll-target="#graphique-de-conditionnement-coplots"><span class="header-section-number">4.3.7</span> Graphique de conditionnement (Coplots)</a></li>
   <li><a href="#r%C3%A9sum%C3%A9-de-la-fonction-du-graphique" id="toc-résumé-de-la-fonction-du-graphique" class="nav-link" data-scroll-target="#r%C3%A9sum%C3%A9-de-la-fonction-du-graphique"><span class="header-section-number">4.3.8</span> Résumé de la fonction du graphique</a></li>
   </ul>
 </li>
   <li>
 <a href="#sec-mult-graphs" id="toc-sec-mult-graphs" class="nav-link" data-scroll-target="#sec-mult-graphs"><span class="header-section-number">4.4</span> Graphiques multiples</a>
   <ul class="collapse">
-<li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r"><span class="header-section-number">4.4.1</span> Base R</a></li>
-  <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot"><span class="header-section-number">4.4.2</span> ggplot</a></li>
+<li><a href="#r-de-base" id="toc-r-de-base" class="nav-link" data-scroll-target="#r-de-base"><span class="header-section-number">4.4.1</span> R de base</a></li>
+  <li><a href="#ggplot2-1" id="toc-ggplot2-1" class="nav-link" data-scroll-target="#ggplot2-1"><span class="header-section-number">4.4.2</span> <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span></a></li>
   </ul>
 </li>
   <li><a href="#sec-custom-plot" id="toc-sec-custom-plot" class="nav-link" data-scroll-target="#sec-custom-plot"><span class="header-section-number">4.5</span> Personnalisation de ggplots</a></li>
@@ -447,453 +447,465 @@ gtag('config', 'G-SLXFYRXJR4', { 'anonymize_ip': true});
 ajouter des informations sur ggplot
 refaire le diagramme avec mermaid
 faire une description extensive de ggplot
---><p>La synthèse de vos données, sous forme numérique ou graphique, est un élément important (bien que souvent négligé) de toute analyse de données. Heureusement, R dispose d’excellentes capacités graphiques et peut être utilisé pour produire des graphiques pour l’exploration initiale des données, la validation des modèles ou des figures très complexes destinées à la publication. Il existe trois systèmes principaux pour produire des graphiques dans R : base R graphics, lattice graphics et ggplot2.</p>
-<p>Le système graphique R de base est le système de traçage original qui existe (et qui a évolué) depuis les premiers jours de R. Lors de la création de graphiques avec base R, nous avons tendance à utiliser des fonctions de haut niveau (comme la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> ) pour créer notre tracé, puis utiliser une ou plusieurs fonctions de bas niveau (comme la fonction <code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code> et <code><a href="https://rdrr.io/r/graphics/text.html">text()</a></code> etc.) pour ajouter des informations supplémentaires à ces tracés. Cela peut sembler un peu bizarre (et prendre du temps) lorsque vous commencez à créer des tracés fantaisistes dans R, mais cela vous permet de personnaliser presque tous les aspects de votre tracé et de le complexifier par couches. Le revers de cette flexibilité est que vous devrez souvent prendre de nombreuses décisions sur la manière dont vous souhaitez que votre graphique se présente plutôt que de compter sur le logiciel pour prendre ces décisions à votre place. Cela dit, il est généralement très rapide et facile de générer des graphiques exploratoires simples à l’aide de graphiques R de base.</p>
-<p>Le système de treillis est implémenté dans le module <code>lattice()</code> qui est préinstallé avec l’installation standard de R. Cependant, il n’est pas chargé par défaut, vous devez donc d’abord utiliser la commande <code><a href="https://lattice.r-forge.r-project.org/">library(lattice)</a></code> pour accéder à toutes les fonctions de traçage. Contrairement aux graphiques de base de R, les tracés de treillis sont généralement générés en une seule fois à l’aide d’une seule fonction. Il n’est donc pas nécessaire d’utiliser des fonctions de traçage de haut et de bas niveau pour personnaliser l’aspect d’un tracé. Il n’est donc pas nécessaire d’utiliser les fonctions de traçage de haut et de bas niveau pour personnaliser l’apparence d’un tracé. Les tracés en treillis prennent également plus de décisions pour vous en ce qui concerne l’aspect des tracés, mais cela a un coût, car la personnalisation des tracés en treillis pour qu’ils aient exactement l’aspect que vous souhaitez peut s’avérer assez complexe. Les diagrammes en treillis se prêtent particulièrement bien au traçage de données multidimensionnelles complexes à l’aide de diagrammes en panel (également appelés diagrammes en treillis). Nous verrons quelques exemples de ces types de tracés plus loin dans ce chapitre.</p>
-<p><code>ggplot2</code> était basé sur un livre intitulé <em>Grammaire graphique</em> de <span class="citation" data-cites="wilkinson2005">Wilkinson (<a href="06-quarto.html#ref-wilkinson2005" role="doc-biblioref">2005</a>)</span>. Pour un résumé intéressant du livre de Wilkinson <a href="https://www.jstatsoft.org/article/view/v017b03/v17b03.pdf">ici</a> . Le <em>Grammaire graphique</em> décompose les figures en leurs différents éléments (par ex. les statistiques sous-jacentes, l’arrangement géométrique, le thème, voir <a href="#fig-ggplot-str" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>). Les utilisateurs sont ainsi en mesure de manipuler chacun de ces composants (i.e. couches) et de produire une figure sur mesure répondant à leurs besoins spécifiques.</p>
+--><p>La synthèse de vos données, sous forme numérique ou graphique, est un élément important (bien que souvent négligé) de toute analyse de données. Par chance, R dispose d’excellentes capacités graphiques et peut être utilisé pour produire des graphiques pour l’exploration initiale des données, la validation de modèles ou des figures très complexes destinées à la publication.</p>
+<p>Il existe trois systèmes principaux pour produire des graphiques dans R :</p>
+<ul>
+<li><p>Les graphiques de base de R</p></li>
+<li><p><code>lattice</code> <span class="emoji" data-emoji="package">📦</span></p></li>
+<li><p><code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span></p></li>
+</ul>
+<p>Le système graphique R de base est le système de traçage original qui existe (et qui a évolué) depuis les premiers jours de R. Lors de la création de graphiques avec base R, nous avons tendance à utiliser des fonctions de haut niveau (comme la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code>) pour créer notre graphique, puis utiliser une ou plusieurs fonctions de bas niveau (comme les fonctions <code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code>, <code><a href="https://rdrr.io/r/graphics/text.html">text()</a></code>, etc.) pour ajouter des informations supplémentaires à ces graphiques.</p>
+<p>Cela peut sembler un peu bizarre (et prendre du temps) lorsque vous commencez à créer des graphiques fantaisistes dans R, mais cela vous permet de personnaliser presque tous les aspects de votre graphique et de le complexifier avec des couches successives. Le revers de cette flexibilité est que vous devrez souvent prendre de nombreuses décisions sur la manière dont vous souhaitez que votre graphique se présente plutôt que de compter sur le logiciel pour prendre ces décisions à votre place. Cela dit, il est généralement très rapide et facile de générer des graphiques exploratoires simples à l’aide de graphiques R de base.</p>
+<p>Le système lattice est implémenté dans le paquet <code>lattice</code> <span class="emoji" data-emoji="package">📦</span> qui est pré installé avec l’installation standard de R. Cependant, il n’est pas chargé par défaut, vous devez donc d’abord utiliser l’appeler <code><a href="https://lattice.r-forge.r-project.org/">library(lattice)</a></code> pour accéder à toutes les fonctions de graphiques. Contrairement aux graphiques de base de R, les graphiques lattices sont généralement générés en une seule fois à l’aide d’une seule fonction. Il n’est donc pas nécessaire d’utiliser des fonctions de traçage de haut et bas niveau pour personnaliser l’aspect d’un graphique.</p>
+<p>Les graphiques lattices prennent également plus de décisions pour vous en ce qui concerne l’aspect des graphiques, mais cela a un coût, car la personnalisation des graphiques lattices pour qu’ils aient exactement l’aspect que vous souhaitez peut s’avérer plus complexe. Les graphiques lattices se prêtent particulièrement bien au traçage de données multidimensionnelles complexes à l’aide de graphiques en panel (également appelés graphiques en treillis). Nous verrons quelques exemples de ces types de graphiques plus loin dans ce chapitre.</p>
+<p><code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span> est basé sur le livre <em>Grammar of Graphics</em> (la grammaire de graphiques) de <span class="citation" data-cites="wilkinson2005">Wilkinson (<a href="06-quarto.html#ref-wilkinson2005" role="doc-biblioref">2005</a>)</span>. (Vous trouverez un résumé intéressant du livre <a href="https://www.jstatsoft.org/article/view/v017b03/v17b03.pdf">ici</a>).</p>
+<p>La <em>Grammaire des graphique</em> décompose les figures en leurs différents éléments (par ex. les statistiques sous-jacentes, l’arrangement géométrique, le thème, voir <a href="#fig-ggplot-str" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>).</p>
+<p>Les utilisateurs sont ainsi en mesure de manipuler chacun de ces composants (i.e. couches) et de produire une figure sur mesure répondant à leurs besoins spécifiques.</p>
 <div id="fig-ggplot-str" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ggplot-str-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/plot/graph-grammar.png" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ggplot-str-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: La grammaire graphique. Visuel de Thomas de Beus
+Figure&nbsp;4.1: La grammaire des graphique. Visuel de Thomas de Beus
 </figcaption></figure>
 </div>
-<p>Chacun de ces systèmes a ses forces et ses faiblesses et nous les utilisons souvent de manière interchangeable. Dans ce chapitre, nous vous présenterons la fonction de traçage de base de R et la fonction de traçage de base de<code>ggplot2</code> . Il est important de noter que <code>ggplot2</code> n’est pas <strong>nécessaire</strong> de faire des figures “fantaisistes” et informatives dans R. Si vous préférez utiliser les graphiques de base de R, n’hésitez pas à continuer, car presque tous les graphiques de base de R sont en anglais. <code>ggplot2</code> peuvent être créées à l’aide de la base R (nous utilisons souvent l’une ou l’autre approche en fonction de ce que nous faisons). La différence entre<code>ggplot2</code> et la base R est la façon dont vous <em>obtenir</em> plutôt que des différences substantielles dans le produit final lui-même. Il s’agit néanmoins d’une croyance répandue, probablement due au fait qu’il est (à notre avis du moins) plus facile d’obtenir une silhouette modérément attrayante avec <code>ggplot2</code> car de nombreuses décisions esthétiques sont prises pour l’utilisateur, sans qu’il sache nécessairement qu’une décision a été prise !</p>
+<p>Chacun de ces systèmes a ses forces et ses faiblesses et nous les utilisons souvent de manière interchangeable. Dans ce chapitre, nous vous présenterons les graphiques de base de R et les fonction de base de<code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>. Il est important de noter que <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span> n’est pas <strong>obligatoire</strong> pour faire des figures “fantaisistes” et informatives dans R. Si vous préférez utiliser les graphiques de base de R, n’hésitez pas à continuer, car presque tous les graphiques de <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span> peuvent être créées avec les graphiques de base de R (nous utilisons souvent l’une ou l’autre approche en fonction de ce que nous faisons). La différence entre <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span> et la base R est la façon dont vous <em>obtenez</em> le produit final plutôt que des différences substantielles dans le produit final lui-même. Il s’agit néanmoins d’une croyance répandue, probablement due au fait qu’il est (à notre avis du moins) plus facile d’obtenir une silhouette modérément attrayante avec <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span> car de nombreuses décisions esthétiques sont prises pour l’utilisateur, sans qu’il sache nécessairement qu’une décision a été prise !</p>
 <p>Dans cet esprit, commençons à créer quelques figures.</p>
 <section id="sec-baseplot" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="sec-baseplot">
-<span class="header-section-number">4.1</span> Tracés de base simples en R</h2>
-<p>Il existe de nombreuses fonctions dans R pour produire des graphiques, des plus simples aux plus complexes. Il est impossible de couvrir tous les aspects de la production de graphiques en R dans ce livre. Nous vous présenterons donc la plupart des méthodes courantes de représentation graphique des données et nous décrirons comment personnaliser vos graphiques plus tard dans <a href="#sec-custom-plot" class="quarto-xref"><span>Section 4.5</span></a>.</p>
-<p>La fonction de haut niveau la plus couramment utilisée pour produire des graphiques en R est (sans surprise) la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> fonction. Par exemple, traçons le graphique <code>weight</code> de licornes de notre <code>unicorns</code> que nous avons importé dans <a href="03-donnees.html#sec-import-fnc" class="quarto-xref"><span>Section 3.3.2</span></a>.</p>
+<span class="header-section-number">4.1</span> Graphiques de base simples en R</h2>
+<p>Il existe de nombreuses fonctions dans R pour produire des graphiques, des plus simples aux plus complexes. Il est impossible de couvrir tous les aspects de la production de graphiques en R dans ce livre. Nous vous présenterons donc la plupart des méthodes courantes de représentation graphique des données et nous décrirons comment personnaliser vos graphiques plus tard dans la <a href="#sec-custom-plot" class="quarto-xref"><span>Section 4.5</span></a>.</p>
+<p>La fonction de haut niveau la plus couramment utilisée pour produire des graphiques en R est (sans surprise) la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> fonction. Par exemple, représentons le poids (<code>weight</code>) des licornes de notre jeu de données <code>licornes</code> (“<code>unicorns.csv</code>”) que nous avons importé dans la <a href="03-donnees.html#sec-import-fnc" class="quarto-xref"><span>Section 3.3.2</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">unicorns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"data/unicorns.csv"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">licornes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"data/unicorns.csv"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">weight</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">weight</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot1-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Dispersion des données de poids des licornes.</figcaption></figure>
 </div>
 </div>
 </div>
-<p>R a tracé les valeurs de <code>weight</code> (sur l’axe des y) en fonction d’un indice puisque nous ne traçons qu’une seule variable. L’indice est simplement l’ordre des <code>weight</code> dans le cadre de données (1 en premier dans le cadre de données et 97 en dernier). L’indice <code>weight</code> a été automatiquement inclus comme étiquette de l’axe des y et les échelles des axes ont été automatiquement définies.</p>
-<p>Si nous n’avions inclus que la variable <code>weight</code> plutôt que <code>unicorns$weight</code>, l’indicateur <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> affichera une erreur car la variable <code>weight</code> n’existe que dans le <code>unicorns</code> l’objet “data frame”.</p>
+<p>R a tracé les valeurs de <code>weight</code> (sur l’axe des y) en fonction d’un indice puisque nous ne traçons qu’une seule variable. L’indice est simplement l’ordre des valeurs de <code>weight</code> dans le jeu de données (allant de la valeur 1 à 97). Le nom de variable <code>weight</code> a été automatiquement inclus comme nom de l’axe des y et les échelles des axes ont été automatiquement définies.</p>
+<p>Si nous n’avions inclus que la variable <code>weight</code> plutôt que <code>licornes$weight</code>, la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> affichera une erreur car la variable <code>weight</code> n’existe que dans le jeu de données <code>licornes</code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">weight</span><span class="op">)</span></span>
-<span><span class="co">## Error in plot(weight) : object 'weight' not found</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## Error in plot(weight) : object 'weight' not found (Erreur dans plot(weight) : objet 'weight' non trouvé)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Comme de nombreuses fonctions de traçage de base de R n’ont pas d’objet <code>data =</code> pour spécifier directement le nom de la base de données, nous pouvons utiliser la fonction <code><a href="https://rdrr.io/r/base/with.html">with()</a></code> en combinaison avec la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> comme raccourci.</p>
+<p>Comme de nombreuses fonctions de graphique de base de R n’ont pas d’argument <code>data =</code> pour spécifier directement le nom du jeu de données, nous pouvons utiliser la fonction <code><a href="https://rdrr.io/r/base/with.html">with()</a></code> en combinaison avec la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> comme raccourci.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">unicorns</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">weight</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">licornes</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">weight</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Pour tracer un nuage de points d’une variable numérique par rapport à une autre variable numérique, il suffit d’inclure les deux variables en tant qu’arguments lors de l’utilisation de la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> comme arguments. Par exemple, pour tracer <code>fluffyness</code> sur l’axe des y et <code>weight</code> de l’axe des x.</p>
+<p>Pour tracer un nuage de points d’une variable numérique par rapport à une autre variable numérique, il suffit d’inclure les deux variables en tant qu’arguments lors de l’utilisation de la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code>. Par exemple, pour tracer <code>fluffyness</code> sur l’axe des y et <code>weight</code> sur l’axe des x.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">unicorns</span><span class="op">$</span><span class="va">weight</span>, y <span class="op">=</span> <span class="va">unicorns</span><span class="op">$</span><span class="va">fluffyness</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">licornes</span><span class="op">$</span><span class="va">weight</span>, y <span class="op">=</span> <span class="va">licornes</span><span class="op">$</span><span class="va">fluffyness</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot4-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Dispersion des données de fluffyness en fonction du poids des licornes.</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Il existe une approche équivalente pour ces types de parcelles, ce qui est souvent source de confusion au début. Vous pouvez également utiliser la notation de formule lors de l’utilisation de la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> lorsque vous utilisez la fonction Cependant, contrairement à la méthode précédente, la méthode de la formule exige que vous spécifiiez d’abord la variable de l’axe des y, puis un <code>~</code> puis la variable de l’axe des x.</p>
+<p>Il existe une approche équivalente pour ces types de graphiques, ce qui est souvent source de confusion au début. Vous pouvez également utiliser la notation de formule lors de l’utilisation de la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code>. Cependant, contrairement à la méthode précédente, la méthode de la formule exige que vous spécifiiez d’abord la variable de l’axe des y, puis un <code>~</code> puis la variable de l’axe des x.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fluffyness</span> <span class="op">~</span> <span class="va">weight</span>, data <span class="op">=</span> <span class="va">unicorns</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fluffyness</span> <span class="op">~</span> <span class="va">weight</span>, data <span class="op">=</span> <span class="va">licornes</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-plot5" class="quarto-float quarto-figure quarto-figure-center anchored" width="75%" data-fig-align="center">
+<div id="fig-plot5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-plot5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04-graphique_files/figure-html/fig-plot5-1.png" id="fig-plot5" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:75.0%">
+<img src="04-graphique_files/figure-html/fig-plot5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-plot5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.2
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.2: Dispersion des données de fluffyness en fonction du poids des licornes (avec la notation de formule).
 </figcaption></figure>
 </div>
 </div>
 </div>
 <p>Ces deux approches étant équivalentes, nous vous suggérons de choisir celle que vous préférez et de l’appliquer.</p>
-<p>Vous pouvez également spécifier le type de graphique que vous souhaitez tracer en utilisant l’argument <code>type =</code>. Vous pouvez tracer uniquement les points (<code>type = "p"</code> c’est l’option par défaut), seulement les lignes (<code>type = "l"</code>), les points et les lignes connectés (<code>type = "b"</code>), les points et les lignes avec les lignes passant par les points (<code>type = "o"</code>) et les points vides reliés par des lignes (<code>type = "c"</code>). Par exemple, utilisons nos connaissances acquises lors de <a href="02-base.html#sec-funcs" class="quarto-xref"><span>Section 2.4</span></a> pour générer deux vecteurs de nombres (<code>my_x</code> et <code>my_y</code>), puis tracer l’un par rapport à l’autre en utilisant différents <code>type =</code> pour voir quels types de tracés sont produits. Ne vous préoccupez pas des <code>par(mfrow = c(2, 2))</code> ligne de code pour l’instant. Nous l’utilisons simplement pour diviser le dispositif de traçage afin de pouvoir placer les quatre tracés sur le même dispositif pour gagner de la place. Voir <a href="#sec-mult-graphs" class="quarto-xref"><span>Section 4.4</span></a> dans le chapitre pour plus de détails à ce sujet. Le graphique en haut à gauche est <code>type = "l"</code>, le graphe en haut à droite <code>type = "b"</code> en bas à gauche <code>type = "o"</code> et en bas à droite est <code>type = "c"</code>.</p>
+<p>Vous pouvez également spécifier le type de graphique que vous souhaitez tracer en utilisant l’argument <code>type =</code>. Vous pouvez tracer seulement les points (<code>type = "p"</code> c’est l’option par défaut), seulement les lignes (<code>type = "l"</code>), les points et les lignes connectés (<code>type = "b"</code>), les points et les lignes avec les lignes passant par les points (<code>type = "o"</code>) et les points vides reliés par des lignes (<code>type = "c"</code>). Par exemple, utilisons nos connaissances acquises grâce à la <a href="02-base.html#sec-funcs" class="quarto-xref"><span>Section 2.4</span></a> pour générer deux vecteurs de nombres (<code>mon_x</code> et <code>mon_y</code>), puis traçons l’un par rapport à l’autre en utilisant différents <code>type =</code> pour voir quels types de graphiques on obtient. Ne vous préoccupez pas de la ligne de code <code>par(mfrow = c(2, 2))</code> pour l’instant. Nous l’utilisons simplement pour diviser fenêtre des graphiques afin de pouvoir placer les quatre graphiques sur la même fenêtre pour gagner de la place. Voir <a href="#sec-mult-graphs" class="quarto-xref"><span>Section 4.4</span></a> dans le chapitre pour plus de détails à ce sujet. Le graphique en haut à gauche est de <code>type = "l"</code>, le graphe en haut à droite de <code>type = "b"</code> en bas à gauche de <code>type = "o"</code> et en bas à droite est de <code>type = "c"</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
-<span><span class="va">my_y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">1</span>, to <span class="op">=</span> <span class="fl">20</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mon_x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span><span class="va">mon_y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">1</span>, to <span class="op">=</span> <span class="fl">20</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">my_x</span>, <span class="va">my_y</span>, type <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">my_x</span>, <span class="va">my_y</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">my_x</span>, <span class="va">my_y</span>, type <span class="op">=</span> <span class="st">"o"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">my_x</span>, <span class="va">my_y</span>, type <span class="op">=</span> <span class="st">"c"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">mon_x</span>, <span class="va">mon_y</span>, type <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">mon_x</span>, <span class="va">mon_y</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">mon_x</span>, <span class="va">mon_y</span>, type <span class="op">=</span> <span class="st">"o"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">mon_x</span>, <span class="va">mon_y</span>, type <span class="op">=</span> <span class="st">"c"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot6-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Présentation des 4 types principaux de representation avec la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code>.</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Il est vrai que les parcelles que nous avons produites jusqu’à présent n’ont rien d’extraordinaire. Cependant, les <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> est incroyablement polyvalente et peut générer un large éventail de tracés que vous pouvez personnaliser à votre guise. Nous verrons comment personnaliser les ggplots dans <a href="#sec-custom-plot" class="quarto-xref"><span>Section 4.5</span></a>. Pour l’anecdote, la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> est également ce que l’on appelle une fonction générique, ce qui signifie qu’elle peut modifier son comportement par défaut en fonction du type d’objet utilisé comme argument. Vous en verrez un exemple dans <a href="31-reg_lin.html#sec-simple-lm" class="quarto-xref"><span>Section 9.6</span></a> où nous utilisons la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> pour générer des graphiques de diagnostic des résidus d’un objet de modèle linéaire (je parie que vous ne pouvez pas attendre !).</p>
+<p>Il est vrai que les graphiques que nous avons produites jusqu’à présent n’ont rien d’extraordinaire. Cependant, la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> est incroyablement polyvalente et peut générer un large éventail de graphiques que vous pouvez personnaliser à votre guise. Nous verrons comment personnaliser les ggplots dans la <a href="#sec-custom-plot" class="quarto-xref"><span>Section 4.5</span></a>. Pour l’anecdote, la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> est également ce que l’on appelle une fonction générique, ce qui signifie qu’elle peut modifier son comportement par défaut en fonction du type d’objet utilisé comme argument. Vous en verrez un exemple dans la <a href="31-reg_lin.html#sec-simple-lm" class="quarto-xref"><span>Section 9.6</span></a> où nous utilisons la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> pour générer des graphiques de diagnostic des résidus d’un objet de type modèle linéaire (je parie que vous êtes impatient !).</p>
 </section><section id="ggplot2" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="ggplot2">
-<span class="header-section-number">4.2</span> ggplot2</h2>
-<p>Comme nous l’avons déjà mentionné <code>ggplot</code> la grammaire nécessite plusieurs éléments pour produire un graphique (<a href="#fig-ggplot-str" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>) et un minimum de 3 éléments est nécessaire :</p>
+<span class="header-section-number">4.2</span> <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>
+</h2>
+<p>Comme nous l’avons déjà mentionné, la grammaire de <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span> nécessite plusieurs éléments pour produire un graphique (<a href="#fig-ggplot-str" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>) et au moins 3 éléments sont nécessaire :</p>
 <ul>
-<li>un cadre de données</li>
-<li>un système de cartographie définissant x et y</li>
-<li>une couche géométrique</li>
+<li>un jeu de données (“<code>data =</code>”)</li>
+<li>un système de cartographie définissant x et y (“<code>aes()</code>”)</li>
+<li>une couche géométrique (“<code>geom_...()</code>”)</li>
 </ul>
-<p>Les données et la cartographie sont fournies dans le cadre de l’appel à l’application <code>ggplot()</code> à l’aide de la fonction <code>data</code> et <code>mapping</code> arguments. La couche géométrique est ajoutée à l’aide de fonctions spécifiques.</p>
+<p>Les données et la cartographie sont fournies dans le cadre de l’appel de la fonction <code>ggplot()</code> à l’aide des arguments <code>data</code> et <code>mapping</code>. La couche géométrique est ajoutée à l’aide de fonctions spécifiques.</p>
 <p>En fait, toutes les couches sont nécessaires, mais les valeurs simples par défaut des autres couches sont automatiquement fournies.</p>
-<p>Pour refaire la <a href="#fig-plot5" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>, qui ne contient qu’un nuage de points, nous pouvons utiliser la commande <code>geom_point()</code> fonction.</p>
+<p>Pour refaire la <a href="#fig-plot5" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>, qui ne contient qu’un nuage de points, nous pouvons utiliser la fonction <code>geom_point()</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">unicorns</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">licornes</span>,</span>
 <span>  mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">fluffyness</span><span class="op">)</span></span>
 <span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-plot5-gg" class="quarto-float quarto-figure quarto-figure-center anchored" width="75%" data-fig-align="center">
+<div id="fig-plot5-gg" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-plot5-gg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="04-graphique_files/figure-html/fig-plot5-gg-1.png" id="fig-plot5-gg" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:75.0%">
+<img src="04-graphique_files/figure-html/fig-plot5-gg-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-plot5-gg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.3
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plot5-gg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.3: Dispersion des données de fluffyness en fonction du poids des licornes (avec <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>).
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Maintenant que nous avons une compréhension de base de <code>ggplot</code>nous pouvons explorer quelques graphiques en utilisant à la fois le code de base de R et le code ggplot</p>
-</section><section id="tracés-simples" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="tracés-simples">
-<span class="header-section-number">4.3</span> Tracés simples</h2>
-<section id="diagrammes-de-dispersion" class="level3" data-number="4.3.1"><h3 data-number="4.3.1" class="anchored" data-anchor-id="diagrammes-de-dispersion">
-<span class="header-section-number">4.3.1</span> Diagrammes de dispersion</h3>
-<p>Type de diagramme simple très utile pour étudier la relation entre deux variables, par exemple. Voici le code pour le faire en utilisant la base R (<a href="#fig-plot5" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>)</p>
+<p>Maintenant que nous avons une compréhension de base de <code>ggplot()</code> nous pouvons explorer quelques graphiques en utilisant à la fois le code de base de R et le code <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span></p>
+</section><section id="graphiques-simples" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="graphiques-simples">
+<span class="header-section-number">4.3</span> Graphiques simples</h2>
+<section id="diagrammes-de-dispersion-nuages-de-points-scatter-plots" class="level3" data-number="4.3.1"><h3 data-number="4.3.1" class="anchored" data-anchor-id="diagrammes-de-dispersion-nuages-de-points-scatter-plots">
+<span class="header-section-number">4.3.1</span> Diagrammes de dispersion (nuages de points, Scatter plots)</h3>
+<p>Type de graphique simple très utile pour étudier la relation entre deux variables, par exemple. Voici le code pour le faire en utilisant les fonctions R de base (<a href="#fig-plot5" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>)</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fluffyness</span> <span class="op">~</span> <span class="va">weight</span>, data <span class="op">=</span> <span class="va">unicorns</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fluffyness</span> <span class="op">~</span> <span class="va">weight</span>, data <span class="op">=</span> <span class="va">licornes</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>ou ggplot (<a href="#fig-plot5-gg" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>)</p>
+<p>ou <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span> (<a href="#fig-plot5-gg" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>)</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">unicorns</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">licornes</span>,</span>
 <span>  mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">fluffyness</span><span class="op">)</span></span>
 <span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Un grand avantage de <code>ggplot</code> pour les nuages de points simples est la facilité avec laquelle nous pouvons ajouter une régression, une ligne plus lisse (loes ou gam) au tracé en utilisant <code>stat_smooth()</code>pour ajouter une couche statistique au graphique.</p>
+<p>Un grand avantage de <code>ggplot()</code> pour les nuages de points simples est la facilité avec laquelle nous pouvons ajouter une régression, une ligne plus lisse (loess ou gam) au graphique en utilisant <code>geom_smooth()</code>pour ajouter une couche statistique au graphique.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="va">unicorns</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">licornes</span>,</span>
 <span>  mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">fluffyness</span><span class="op">)</span></span>
 <span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">stat_smooth</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">geom_smooth</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot5-gg-line-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot5-gg-line-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Nuage de point avec une régression LOESS.</figcaption></figure>
 </div>
 </div>
 </div>
 </section><section id="histogrammes" class="level3" data-number="4.3.2"><h3 data-number="4.3.2" class="anchored" data-anchor-id="histogrammes">
 <span class="header-section-number">4.3.2</span> Histogrammes</h3>
-<p>Les histogrammes de fréquence sont utiles pour se faire une idée de la distribution des valeurs d’une variable numérique. En utilisant la base R, la fonction <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> prend un tableau numérique comme argument principal. Dans ggplot, nous devons utiliser <code>geom_histogram()</code>. Générons un histogramme de la <code>height</code> valeurs.</p>
-<p>Avec la base R</p>
+<p>Les histogrammes de fréquence sont utiles pour se faire une idée de la distribution des valeurs d’une variable numérique. En utilisant la base de R, la fonction <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> prend un tableau numérique comme argument principal. Dans <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>, il faut utiliser <code>geom_histogram()</code>. Générons un histogramme des valeurs de taille (<code>height</code> dans le jeu de données).</p>
+<p>Avec la base de R ;</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">height</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">height</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot7-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Histogramme des valeurs de taille avec la base de R.</figcaption></figure>
 </div>
 </div>
 </div>
-<p>avec ggplot2</p>
+<p>avec ggplot2 :</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">unicorns</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">licornes</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot7-gg-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot7-gg-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Histogramme des valeurs de taille avec <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>.</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Les <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> et <code>geom_histogram()</code> crée automatiquement les points de rupture (ou bins) dans l’histogramme, à moins que vous n’indiquiez le contraire à l’aide de la fonction <code>breaks =</code> pour spécifier le contraire. Par exemple, disons que nous voulons tracer notre histogramme avec des points de rupture tous les 1 cm de hauteur des licornes. Nous générons d’abord une séquence allant de zéro à la valeur maximale de <code>height</code> (18 arrondi vers le haut) par pas de 1 à l’aide de la fonction <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> à l’aide de la fonction Nous pouvons ensuite utiliser cette séquence avec la fonction <code>breaks =</code> argument. Pendant que nous y sommes, remplaçons également le titre moche par quelque chose d’un peu mieux en utilisant l’option <code>main =</code> argument</p>
+<p>Les fonctions <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> et <code>geom_histogram()</code> créent automatiquement les points de rupture (ou “bins”) dans l’histogramme, à moins que vous n’indiquiez le contraire à l’aide de l’argument <code>breaks =</code> pour spécifier le contraire. Par exemple, disons que nous voulons tracer notre histogramme avec des points de rupture tous les 1 cm de taille des licornes. Nous générons d’abord une séquence allant de zéro à la valeur maximale de <code>height</code> (18 arrondi vers le haut) par pas de 1 à l’aide de la fonction <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code>. Nous pouvons ensuite utiliser cette séquence avec l’argument <code>breaks =</code>. Tant qu’on y est, remplaçons également le titre moche par quelque chose d’un peu mieux en utilisant l’argument <code>main =</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">brk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">18</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">height</span>, breaks <span class="op">=</span> <span class="va">brk</span>, main <span class="op">=</span> <span class="st">"Unicorn height"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">height</span>, breaks <span class="op">=</span> <span class="va">brk</span>, main <span class="op">=</span> <span class="st">"Taille des licornes"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot8-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Histogramme des valeurs de taille avec des points de ruptures à chaque cm (R de base).</figcaption></figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">brk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">18</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">unicorns</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">licornes</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_histogram</span><span class="op">(</span>breaks <span class="op">=</span> <span class="va">brk</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Unicorn height"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Taille des licornes"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot8-gg-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot8-gg-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Histogramme des valeurs de taille avec des points de ruptures à chaque cm (<code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>).</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Vous pouvez également afficher l’histogramme sous forme de proportion plutôt que de fréquence en utilisant l’argument <code>freq = FALSE</code> à l’argument <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> ou en indiquant <code>aes(y = after_stat(density))</code> dans <code>geom_histogram()</code>.</p>
+<p>Vous pouvez aussi afficher l’histogramme sous forme de proportion plutôt que de fréquence en utilisant l’argument <code>freq = FALSE</code> dans la fonction <code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code> ou en indiquant <code>aes(y = after_stat(density))</code> dans <code>geom_histogram()</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">brk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">18</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">height</span>,</span>
-<span>  breaks <span class="op">=</span> <span class="va">brk</span>, main <span class="op">=</span> <span class="st">"Unicorn height"</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">height</span>,</span>
+<span>  breaks <span class="op">=</span> <span class="va">brk</span>, main <span class="op">=</span> <span class="st">"Taille des licornes"</span>,</span>
 <span>  freq <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">unicorns</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">licornes</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="va">brk</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Unicorn height"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Taille des licornes"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Une alternative au tracé d’un simple histogramme est d’ajouter une <a href="https://en.wikipedia.org/wiki/Kernel_density_estimation">densité du noyau</a> au tracé. Dans la version de base de R, vous devez d’abord calculer les estimations de la densité du noyau à l’aide de la fonction <code><a href="https://rdrr.io/r/stats/density.html">density()</a></code> puis ajouter les estimations à un tracé sous forme de ligne à l’aide de la fonction <code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code> pour tracer une ligne.</p>
+<p>Une alternative au tracé d’un simple histogramme est d’ajouter une <a href="https://en.wikipedia.org/wiki/Kernel_density_estimation">densité du noyau (“Kernel density”)</a> au graphique. Dans la version de base de R, vous devez d’abord calculer les estimations de la densité du noyau à l’aide de la fonction <code><a href="https://rdrr.io/r/stats/density.html">density()</a></code> puis ajouter les estimations à un graphique sous forme de ligne à l’aide de la fonction <code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/density.html">density</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">height</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">height</span>,</span>
-<span>  breaks <span class="op">=</span> <span class="va">brk</span>, main <span class="op">=</span> <span class="st">"Unicorn height"</span>,</span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/density.html">density</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">height</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">height</span>,</span>
+<span>  breaks <span class="op">=</span> <span class="va">brk</span>, main <span class="op">=</span> <span class="st">"Taille des licornes"</span>,</span>
 <span>  freq <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">dens</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot10-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Histogramme des valeurs de taille avec la courbe de densité (avec R de base).</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Avec ggplot, vous pouvez simplement ajouter la fonction <code>geom_density()</code> au tracé</p>
+<p>Avec <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>, vous pouvez simplement ajouter la fonction <code>geom_density()</code> au graphique :</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">unicorns</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">licornes</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="va">brk</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_density</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Unicorn height"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">ggtitle</span><span class="op">(</span><span class="st">"Taille des licornes"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot10-gg-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot10-gg-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Histogramme des valeurs de taille avec la courbe de densité (avec <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>).</figcaption></figure>
 </div>
 </div>
 </div>
-</section><section id="diagrammes-en-boîte" class="level3" data-number="4.3.3"><h3 data-number="4.3.3" class="anchored" data-anchor-id="diagrammes-en-boîte">
-<span class="header-section-number">4.3.3</span> Diagrammes en boîte</h3>
-<p>D’accord, nous allons le dire franchement, nous adorons les diagrammes en boîte et leur relation étroite avec le diagramme en violon. Les boxplots (ou box-and-whisker plots pour leur nom complet) sont très utiles pour résumer graphiquement la distribution d’une variable, identifier d’éventuelles valeurs inhabituelles et comparer les distributions entre différents groupes. La raison pour laquelle nous les aimons est leur facilité d’interprétation, leur transparence et leur rapport données/encre relativement élevé (c’est-à-dire qu’ils sont plus faciles à interpréter qu’à utiliser). ils transmettent efficacement une grande quantité d’informations). Nous vous suggérons d’utiliser les diagrammes en boîte autant que possible lorsque vous explorez vos données et d’éviter la tentation d’utiliser le diagramme en barres plus omniprésent (même avec des barres d’erreur standard ou d’intervalles de confiance à 95 %). Le problème des diagrammes en bâtons (ou diagrammes en dynamite) est qu’ils cachent au lecteur des informations importantes telles que la distribution des données et qu’ils supposent que les barres d’erreur (ou les intervalles de confiance) sont symétriques par rapport à la moyenne. Bien sûr, c’est à vous de décider ce que vous faites, mais si vous êtes tenté d’utiliser des diagrammes à barres, cherchez “dynamite plots are evil” (les diagrammes de dynamite sont diaboliques) ou voyez <a href="http://users.stat.umn.edu/~rend0020/Teaching/STAT8801-2015Spring/handouts/24-dynamite.pdf">ici</a> ou <a href="https://thenode.biologists.com/leaving-bar-five-steps/research/">ici</a> pour une discussion plus complète.</p>
-<p>Pour créer un diagramme en boîte dans R, nous utilisons la fonction <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> fonction. Par exemple, créons un diagramme en boîte de la variable <code>weight</code> à partir de notre <code>unicorns</code> cadre de données. Nous pouvons également inclure une étiquette pour l’axe des y en utilisant la fonction <code>ylab =</code> à l’aide de l’argument</p>
+</section><section id="boîtes-à-moustache-box-plots" class="level3" data-number="4.3.3"><h3 data-number="4.3.3" class="anchored" data-anchor-id="boîtes-à-moustache-box-plots">
+<span class="header-section-number">4.3.3</span> Boîtes à moustache (Box plots)</h3>
+<p>D’accord, nous allons le dire franchement, nous adorons les boîtes à moustache et leur relation étroite avec le diagramme en violon. Les “boxplots” (ou “box-and-whisker” plots pour leur nom complet) sont très utiles pour résumer graphiquement la distribution d’une variable, identifier d’éventuelles valeurs inhabituelles et comparer les distributions entre différents groupes. La raison pour laquelle nous les aimons est leur facilité d’interprétation, leur transparence et leur rapport données-encre relativement élevé (c’est-à-dire qu’ils transmettent efficacement une grande quantité d’informations). Nous vous suggérons d’utiliser les “boxplots” autant que possible lorsque vous explorez vos données et de résister à la tentation d’utiliser les diagrammes en bâtons (“barplots”) plus omniprésent (même avec des barres d’erreur standard ou d’intervalles de confiance à 95 %). Le problème des diagrammes en bâtons (ou diagrammes en dynamite) est qu’ils cachent au lecteur des informations importantes telles que la distribution des données et qu’ils supposent que les barres d’erreur (ou les intervalles de confiance) sont symétriques par rapport à la moyenne. Bien sûr, c’est à vous de décider ce que vous faites, mais si vous êtes tenté d’utiliser des diagrammes en bâtons, cherchez “dynamite plots are evil” (les diagrammes de dynamite sont diaboliques) ou voyez <a href="http://users.stat.umn.edu/~rend0020/Teaching/STAT8801-2015Spring/handouts/24-dynamite.pdf">ici</a> ou <a href="https://thenode.biologists.com/leaving-bar-five-steps/research/">ici</a> pour une discussion plus complète.</p>
+<p>Pour créer un “boxplot” dans R, nous utilisons la fonction <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>. Par exemple, créons un “boxplot” de la variable <code>weight</code> du jeu de données <code>licornes</code>. Nous pouvons également inclure un nom pour l’axe des y en utilisant l’argument <code>ylab =</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">weight</span>, ylab <span class="op">=</span> <span class="st">"weight (g)"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">weight</span>, ylab <span class="op">=</span> <span class="st">"Poids (g)"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot11-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Boîte à moustache du poids des licornes (avec R de base).</figcaption></figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">unicorns</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">weight</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">licornes</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">weight</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"weight (g)"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Poids (g)"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot11-gg-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot11-gg-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Boîte à moustache du poids des licornes (avec “ggplot2” <span class="emoji" data-emoji="package">📦</span>).</figcaption></figure>
 </div>
 </div>
 </div>
-<p>La ligne horizontale épaisse au milieu de la boîte est la valeur médiane de <code>weight</code> (environ 11 g). La ligne supérieure de la boîte est le quartile supérieur (75<sup>e</sup> percentile) et la ligne inférieure est le quartile inférieur (25<sup>e</sup> percentile). La distance entre les quartiles supérieur et inférieur est appelée l’intervalle interquartile et représente les valeurs de <code>weight</code> pour 50 % des données. Les lignes verticales en pointillés sont appelées moustaches et leur longueur est égale à 1,5 x l’intervalle interquartile. Les points de données qui sont tracés en dehors des moustaches représentent des observations inhabituelles potentielles. Cela ne signifie pas qu’ils sont inhabituels, mais simplement qu’ils méritent un examen plus approfondi. Nous recommandons d’utiliser les boxplots en combinaison avec les dotplots de Cleveland pour identifier les observations potentiellement inhabituelles (voir les <a href="#sec-dotcharts" class="quarto-xref"><span>Section 4.3.5</span></a> pour plus de détails). Ce qui est intéressant avec les boxplots, c’est qu’ils ne fournissent pas seulement une mesure de la tendance centrale (la valeur médiane), mais qu’ils vous donnent également une idée de la distribution des données. Si la ligne médiane se trouve plus ou moins au milieu de la boîte (entre les quartiles supérieur et inférieur) et que les moustaches sont plus ou moins de la même longueur, vous pouvez être raisonnablement sûr que la distribution de vos données est symétrique.</p>
-<p>Si nous voulons examiner comment la distribution d’une variable change entre différents niveaux d’un facteur, nous devons utiliser la notation de la formule avec l’attribut <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> avec la fonction Par exemple, traçons notre <code>weight</code> mais cette fois-ci, voyons comment elle évolue avec chaque niveau de <code>food</code>. Lorsque nous utilisons la notation de la formule avec <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> nous pouvons utiliser la notation <code>data =</code> afin d’économiser de la frappe. Nous introduirons également une étiquette pour l’axe des x à l’aide de la fonction <code>xlab =</code> à l’aide de l’argument</p>
+<p>La ligne horizontale épaisse au milieu de la boîte est la médiane de la variable <code>weight</code> (environ 11 g). La ligne supérieure de la boîte est le quartile supérieur (75<sup>e</sup> percentile) et la ligne inférieure est le quartile inférieur (25<sup>e</sup> percentile). La distance entre les quartiles supérieur et inférieur est appelée l’intervalle interquartile et représente les valeurs de <code>weight</code> pour 50 % des données. Les lignes verticales en pointillés sont appelées moustaches et leur longueur est égale à 1,5 x l’intervalle interquartile. Les points tracés en dehors des moustaches représentent des observations inhabituelles potentielles. Cela ne signifie pas qu’ils sont inhabituels, mais simplement qu’ils méritent un examen plus approfondi. Nous recommandons d’utiliser les “boxplots” en combinaison avec les “dotplots” de Cleveland pour identifier les observations potentiellement inhabituelles (voir la <a href="#sec-dotcharts" class="quarto-xref"><span>Section 4.3.5</span></a> pour plus de détails). Ce qui est intéressant avec les “boxplots”, c’est qu’ils ne fournissent pas seulement une mesure de la tendance centrale (médiane), mais qu’ils vous donnent également une idée de la distribution des données. Si la ligne médiane se trouve plus ou moins au milieu de la boîte (entre les quartiles supérieur et inférieur) et que les moustaches sont plus ou moins de la même longueur, vous pouvez être raisonnablement sûr que la distribution de vos données est symétrique.</p>
+<p>Si nous voulons examiner comment la distribution d’une variable change entre différents niveaux d’un facteur, il faut utiliser la notation de formule avec la fonction <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>. Par exemple, traçons notre variable <code>weight</code> mais cette fois-ci, voyons comment elle évolue entre chaque niveau de la variable <code>food</code>. Lorsque nous utilisons la notation de formule avec <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> nous pouvons utiliser l’argument <code>data =</code> afin d’économiser de la frappe. Nous introduirons également un nom pour l’axe des x à l’aide de l’argument <code>xlab =</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">weight</span> <span class="op">~</span> <span class="va">food</span>,</span>
-<span>  data <span class="op">=</span> <span class="va">unicorns</span>,</span>
-<span>  ylab <span class="op">=</span> <span class="st">"Weight (g)"</span>, xlab <span class="op">=</span> <span class="st">"food level"</span></span>
+<span>  data <span class="op">=</span> <span class="va">licornes</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="st">"Poids (g)"</span>, xlab <span class="op">=</span> <span class="st">"Niveau de nutrition"</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot12-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Comparaison du poids des licornes en fonction du niveau de nutrition (avec R de base).</figcaption></figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">unicorns</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">weight</span>, x <span class="op">=</span> <span class="va">food</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">licornes</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">weight</span>, x <span class="op">=</span> <span class="va">food</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Weight (g)"</span>, x <span class="op">=</span> <span class="st">"food Concentration"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Poids (g)"</span>, x <span class="op">=</span> <span class="st">"Niveau de nutrition"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot12-gg-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot12-gg-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Comparaison du poids des licornes en fonction du niveau de nutrition (avec <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>).</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Les niveaux des facteurs sont représentés dans l’ordre défini par notre variable factorielle <code>food</code> (souvent par ordre alphabétique). Pour modifier l’ordre, nous devons changer l’ordre de nos niveaux du facteur <code>food</code> dans notre cadre de données à l’aide de la fonction <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> puis redessiner le graphique. Traçons notre diagramme en boîte avec nos niveaux de facteurs allant de <code>low</code> à <code>high</code>.</p>
+<p>Les niveaux des facteurs sont représentés dans l’ordre défini par notre variable factorielle <code>food</code> (souvent par ordre alphabétique). Pour modifier l’ordre, il faut changer l’ordre des niveaux du facteur <code>food</code> dans le jeu de données à l’aide de la fonction <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> puis redessiner le graphique. Traçons notre boîte à moustache avec nos niveaux de facteurs allant de <code>low</code> à <code>high</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">unicorns</span><span class="op">$</span><span class="va">food</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">food</span>,</span>
-<span>  levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">unicorns</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">weight</span>, x <span class="op">=</span> <span class="va">food</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">licornes</span><span class="op">$</span><span class="va">food</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">food</span>,</span>
+<span>  levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">licornes</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">weight</span>, x <span class="op">=</span> <span class="va">food</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Weight (g)"</span>, x <span class="op">=</span> <span class="st">"food Concentration"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Poids (g)"</span>, x <span class="op">=</span> <span class="st">"Niveau de nutrition"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot13-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Comparaison du poids des licornes en fonction du niveau (trié) de nutrition (avec <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>).</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Nous pouvons également regrouper nos variables par deux facteurs dans le même graphique. Traçons notre <code>weight</code> mais, cette fois, traçons une boîte séparée pour chaque <code>food</code> et le traitement des soins parentaux (<code>p_care</code>).</p>
+<p>Nous pouvons également regrouper nos variables selon deux facteurs dans le même graphique. Traçons notre <code>weight</code> mais, cette fois, traçons une boîte séparée pour chaque niveau <code>food</code> et le traitement des soins parentaux (<code>p_care</code>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">weight</span> <span class="op">~</span> <span class="va">food</span> <span class="op">*</span> <span class="va">p_care</span>,</span>
-<span>  data <span class="op">=</span> <span class="va">unicorns</span>,</span>
-<span>  ylab <span class="op">=</span> <span class="st">"weight (g)"</span>, xlab <span class="op">=</span> <span class="st">"food level"</span></span>
+<span>  data <span class="op">=</span> <span class="va">licornes</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="st">"Poids (g)"</span>, xlab <span class="op">=</span> <span class="st">"Niveau de nutrition"</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot14-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Comparaison du poids des licornes en fonction du niveau de nutrition et de soins parentaux (avec R de base).</figcaption></figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">unicorns</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">weight</span>, x <span class="op">=</span> <span class="va">food</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">licornes</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">weight</span>, x <span class="op">=</span> <span class="va">food</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Weight (g)"</span>, x <span class="op">=</span> <span class="st">"food Concentration"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Poids (g)"</span>, x <span class="op">=</span> <span class="st">"Niveau de nutrition"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">.</span></span>
 <span>  <span class="op">~</span> <span class="va">p_care</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot14-gg-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot14-gg-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Comparaison du poids des licornes en fonction du niveau de nutrition et de soins parentaux (avec <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>).</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Ce graphique est beaucoup plus intéressant dans ggplot, l’utilisation de facet_grid permettant de réaliser des graphiques similaires en fonction d’une troisième (ou même d’une quatrième) variable.</p>
-</section><section id="tracés-de-violon" class="level3" data-number="4.3.4"><h3 data-number="4.3.4" class="anchored" data-anchor-id="tracés-de-violon">
-<span class="header-section-number">4.3.4</span> Tracés de violon</h3>
-<p>Les diagrammes en forme de violon sont une combinaison d’un diagramme en boîte et d’un diagramme de densité de noyau (vous avez vu un exemple de diagramme de densité de noyau dans la section histogramme ci-dessus), le tout en une seule figure. Nous pouvons créer un diagramme en violon dans R à l’aide de la fonction <code><a href="https://rdrr.io/pkg/vioplot/man/vioplot.html">vioplot()</a></code> à partir de la fonction <code>vioplot</code> du paquet. Vous devrez d’abord installer ce paquet en utilisant <code>install.packages('vioplot')</code> comme d’habitude. L’avantage de l’option <code><a href="https://rdrr.io/pkg/vioplot/man/vioplot.html">vioplot()</a></code> est qu’elle s’utilise à peu près de la même manière que la fonction <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code> fonction. Nous utiliserons également l’argument <code>col = "lightblue"</code> pour changer la couleur de remplissage en bleu clair.</p>
+<p>Ce graphique est beaucoup plus intéressant dans <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>, l’utilisation de <code>facet_grid()</code> permettant de réaliser des graphiques similaires en fonction d’une troisième (ou même d’une quatrième) variable.</p>
+</section><section id="diagrammes-en-violon-violin-plots" class="level3" data-number="4.3.4"><h3 data-number="4.3.4" class="anchored" data-anchor-id="diagrammes-en-violon-violin-plots">
+<span class="header-section-number">4.3.4</span> Diagrammes en violon (Violin plots)</h3>
+<p>Les diagrammes en violon, ou “violin plots”, sont une combinaison d’un “boxplot” et d’un diagramme de densité de noyau (vous avez vu un exemple de diagramme de densité de noyau dans la section histogramme ci-dessus), le tout en une seule figure. Nous pouvons créer un diagramme en violon dans R à l’aide de la fonction <code><a href="https://rdrr.io/pkg/vioplot/man/vioplot.html">vioplot()</a></code> paquet <code>vioplot</code> <span class="emoji" data-emoji="package">📦</span>. Vous devrez d’abord installer ce paquet en utilisant la commade <code>install.packages('vioplot')</code> (comme d’habitude). L’avantage de l’option <code><a href="https://rdrr.io/pkg/vioplot/man/vioplot.html">vioplot()</a></code> est qu’elle s’utilise à peu près de la même manière que la fonction <code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code>. Nous utiliserons également l’argument <code>col = "lightblue"</code> pour changer la couleur de remplissage en bleu clair.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/TomKellyGenetics/vioplot">vioplot</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/vioplot/man/vioplot.html">vioplot</a></span><span class="op">(</span><span class="va">weight</span> <span class="op">~</span> <span class="va">food</span>,</span>
-<span>  data <span class="op">=</span> <span class="va">unicorns</span>,</span>
-<span>  ylab <span class="op">=</span> <span class="st">"weight (g)"</span>, xlab <span class="op">=</span> <span class="st">"food Concentration"</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">licornes</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="st">"Poids (g)"</span>, xlab <span class="op">=</span> <span class="st">"Niveau de nutrition"</span>,</span>
 <span>  col <span class="op">=</span> <span class="st">"lightblue"</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot16-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Diagramme en violon comparant le niveau poids des licornes en fonction de leurs niveau de nutrition (avec R de base).</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Dans le diagramme de violon ci-dessus, nous avons notre diagramme en boîte familier pour chaque <code>food</code> mais cette fois, la valeur médiane est représentée par un cercle blanc. Autour de chaque diagramme en boîte figure le diagramme de densité de noyau qui représente la distribution des données pour chaque niveau d’alimentation.</p>
+<p>Dans le diagramme en violon ci-dessus, nous avons des boîtes familières, comme dans un “boxplot”, pour chaque niveaux de <code>food</code> mais cette fois, la valeur médiane est représentée par un cercle blanc. Autour de chaque boîte figure le diagramme de densité de noyau qui représente la distribution des données pour chaque niveau d’alimentation.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">unicorns</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">weight</span>, x <span class="op">=</span> <span class="va">food</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">licornes</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">weight</span>, x <span class="op">=</span> <span class="va">food</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_violin</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Weight (g)"</span>, x <span class="op">=</span> <span class="st">"food Concentration"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">labs</span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Poids (g)"</span>, x <span class="op">=</span> <span class="st">"Niveau de nutrition"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot16-gg-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot16-gg-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Diagramme en violon comparant le niveau poids des licornes en fonction de leurs niveau de nutrition (avec <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>).</figcaption></figure>
 </div>
 </div>
 </div>
 </section><section id="sec-dotcharts" class="level3" data-number="4.3.5"><h3 data-number="4.3.5" class="anchored" data-anchor-id="sec-dotcharts">
-<span class="header-section-number">4.3.5</span> Graphiques en pointillés</h3>
-<p>Il est extrêmement important d’identifier les observations inhabituelles (appelées “valeurs aberrantes”) dans les variables numériques, car elles peuvent influencer les estimations des paramètres de votre modèle statistique ou indiquer une erreur dans vos données. Un graphique très utile (bien que sous-estimé) pour aider à identifier les valeurs aberrantes est le graphique en pointillés de Cleveland. Vous pouvez produire un graphique en pointillés en R très simplement en utilisant la commande <code><a href="https://rdrr.io/r/graphics/dotchart.html">dotchart()</a></code> pour produire un graphique en pointillés.</p>
+<span class="header-section-number">4.3.5</span> Diagramme en pointillés (Dot charts)</h3>
+<p>Il est extrêmement important d’identifier les observations inhabituelles (appelées “valeurs aberrantes”) dans une variable numérique, car elles peuvent influencer les estimations des paramètres de votre modèle statistique ou indiquer une erreur dans vos données. Un graphique très utile (bien que sous-estimé) pour aider à identifier les valeurs aberrantes est le diagramme en pointillés de Cleveland (“Cleveland’s dotplot”). Vous pouvez produire un diagramme en pointillés en R très simplement en utilisant la fonction <code><a href="https://rdrr.io/r/graphics/dotchart.html">dotchart()</a></code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/dotchart.html">dotchart</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">height</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/dotchart.html">dotchart</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">height</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot17-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot17-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Diagramme en pointillés de la taille des licornes (avec R de base).</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Dans le diagramme en pointillés ci-dessus, les données de la base de données <code>height</code> sont représentées le long de l’axe des x et les données sont représentées dans l’ordre dans lequel elles apparaissent dans la fonction <code>unicorns</code> sur l’axe des y (les valeurs situées en haut de l’axe des y apparaissent plus tard dans la base de données et celles situées plus bas apparaissent au début de la base de données). Sur ce graphique, une seule valeur s’étend vers la droite à environ 17 cm, mais elle ne semble pas particulièrement importante par rapport aux autres. Un exemple de diagramme à points avec une observation inhabituelle est donné ci-dessous.</p>
+<p>Dans le diagramme en pointillés ci-dessus, les données de taille (<code>height</code>) sont représentées le long de l’axe des x et les données sont représentées dans l’ordre dans lequel elles apparaissent dans le jeu de données <code>licornes</code> sur l’axe des y (les valeurs situées en haut de l’axe des y apparaissent plus tard dans le jeu de données et celles situées plus bas apparaissent au début du jeu de données). Sur ce graphique, une seule valeur s’étend vers la droite à environ 17 cm, mais elle ne semble pas particulièrement importante par rapport aux autres. Un exemple de diagramme à points avec une observation inhabituelle est donné ci-dessous :</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot18-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Diagramme en pointillés de la taille des licornes avec une valeur aberrante (avec R de base).</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Nous pouvons également regrouper les valeurs dans notre <code>height</code> par une variable factorielle telle que <code>food</code> en utilisant le <code>groups =</code> argument. Ceci est utile pour identifier des observations inhabituelles au sein d’un niveau de facteur qui pourraient être masquées lorsque l’on examine toutes les données ensemble.</p>
+<p>Nous pouvons également regrouper les valeurs dans notre variable <code>height</code> selon une variable factorielle telle que <code>food</code> en utilisant l’argument <code>groups =</code>. Ceci est utile pour identifier des observations inhabituelles au sein d’un niveau de facteur qui pourraient être masquées lorsque l’on examine toutes les données ensemble.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/dotchart.html">dotchart</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">height</span>, groups <span class="op">=</span> <span class="va">unicorns</span><span class="op">$</span><span class="va">food</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/dotchart.html">dotchart</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">height</span>, groups <span class="op">=</span> <span class="va">licornes</span><span class="op">$</span><span class="va">food</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot19-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Diagramme en pointillés de la taille des licornes en fonction des niveaux de nutrition (avec R de base).</figcaption></figure>
 </div>
 </div>
 </div>
-<!-- A FAIRE -->
+<!-- JULIEN - A FAIRE - Du coup tu veux fair quoi ici ? -->
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggdotchart</span><span class="op">(</span>data <span class="op">=</span> <span class="va">unicorns</span>, x <span class="op">=</span> <span class="st">"height"</span>, y <span class="op">=</span> <span class="st">"food"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggdotchart</span><span class="op">(</span>data <span class="op">=</span> <span class="va">licornes</span>, x <span class="op">=</span> <span class="st">"height"</span>, y <span class="op">=</span> <span class="st">"food"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot19-gg-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot19-gg-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Diagramme en pointillés de la taille des licornes en fonction des niveaux de nutrition (avec <code>ggpubr</code> <span class="emoji" data-emoji="package">📦</span>).</figcaption></figure>
 </div>
 </div>
 </div>
-</section><section id="diagrammes-de-paires" class="level3" data-number="4.3.6"><h3 data-number="4.3.6" class="anchored" data-anchor-id="diagrammes-de-paires">
-<span class="header-section-number">4.3.6</span> Diagrammes de paires</h3>
-<p>Dans ce chapitre, nous avons déjà utilisé la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> pour créer un nuage de points afin d’explorer la relation entre deux variables numériques. Dans le cas d’ensembles de données contenant de nombreuses variables numériques, il est souvent utile de créer plusieurs diagrammes de dispersion pour visualiser les relations entre toutes ces variables. Nous pouvons utiliser la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> pour créer chacun de ces diagrammes individuellement, mais il est beaucoup plus facile d’utiliser la fonction <code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code> fonction. La fonction <code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code> crée un nuage de points à plusieurs panneaux (parfois appelé matrice de nuage de points) qui représente toutes les combinaisons de variables. Créons un nuage de points multi-panneaux de toutes les variables numériques de notre <code>unicorns</code> cadre de données. Notez que vous devrez peut-être cliquer sur le bouton “Zoom” dans RStudio pour afficher clairement le graphique.</p>
+</section><section id="diagrammes-en-paires" class="level3" data-number="4.3.6"><h3 data-number="4.3.6" class="anchored" data-anchor-id="diagrammes-en-paires">
+<span class="header-section-number">4.3.6</span> Diagrammes en paires</h3>
+<p>Dans ce chapitre, nous avons déjà utilisé la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> pour créer un nuage de points afin d’explorer la relation entre deux variables numériques. Dans le cas de jeux de données contenant de nombreuses variables numériques, il est souvent utile de créer plusieurs diagrammes de dispersion pour visualiser les relations entre toutes ces variables. Nous pouvons utiliser la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> pour créer chacun de ces graphiques individuellement, mais il est beaucoup plus facile d’utiliser la fonction <code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code>. La fonction <code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code> crée un nuage de points multi-panneaux (parfois appelé matrice de nuage de points) qui représente toutes les combinaisons de variables. Créons un nuage de points multi-panneaux de toutes les variables numériques de notre jeu de données <code>licornes</code>. Notez que vous devrez peut-être cliquer sur le bouton “Zoom” dans RStudio pour afficher clairement le graphique.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"height"</span>, <span class="st">"weight"</span>, <span class="st">"mane_size"</span>,</span>
 <span>  <span class="st">"fluffyness"</span>, <span class="st">"horn_rings"</span></span>
 <span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot20-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot20-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Nuage de points multi-panneaux représentants les relations entre toutes les combinaisons de variables du jeu de données <code>licornes</code>(avec R de base).</figcaption></figure>
 </div>
 </div>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># or we could use the equivalent</span></span>
-<span><span class="co"># pairs(unicorns[, 4:8])</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Ou, de manière équivalente, vous pouvez utiliser :</span></span>
+<span><span class="co"># pairs(licornes[, 4:8])</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Il faut un peu de temps pour s’habituer à l’interprétation du diagramme des paires. Les panneaux sur la diagonale indiquent les noms des variables. La première rangée de diagrammes affiche les <code>height</code> sur l’axe des y et les variables <code>weight</code>, <code>mane_size</code>, <code>fluffyness</code> et <code>unicorns</code> sur l’axe des x pour chacun des quatre graphiques respectivement. La rangée suivante de placettes comporte <code>weight</code> sur l’axe des y et <code>height</code>, <code>mane_size</code>, <code>fluffyness</code> et <code>unicorns</code> sur l’axe des x. Nous interprétons les autres lignes de la même manière, la dernière ligne affichant la valeur <code>unicorns</code> sur l’axe des y et les autres variables sur l’axe des x. Nous espérons que vous remarquerez que les graphiques situés sous la diagonale sont les mêmes que ceux situés au-dessus de la diagonale, mais avec l’axe inversé.</p>
-<p>Pour réaliser des tracés par paires avec ggplot, vous avez besoin de l’option <code>ggpairs()</code>de <code>GGally</code>paquet. La sortie est assez similaire mais vous n’avez que la partie inférieure de la matrice des tracés, vous obtenez un tracé de densité sur la diagonale et les corrélations sur la partie supérieure du tracé.</p>
-<div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggpairs</span><span class="op">(</span><span class="va">unicorns</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<p>Il faut un peu de temps pour s’habituer à l’interprétation d’un diagramme en paires. Les panneaux sur la diagonale indiquent les noms des variables. La première rangée de graphiques affiche les <code>height</code> sur l’axe des y et les variables <code>weight</code>, <code>mane_size</code>, <code>fluffyness</code> et <code>horn_rings</code> sur l’axe des x pour chacun des quatre graphiques respectivement. La rangée suivante de graphiques comporte <code>weight</code> sur l’axe des y et <code>height</code>, <code>mane_size</code>, <code>fluffyness</code> et <code>horn_rings</code> sur l’axe des x. Nous interprétons les autres lignes de la même manière, la dernière ligne affichant la variable <code>horn_size</code> sur l’axe des y et les autres variables sur l’axe des x. Nous espérons que vous remarquerez que les graphiques situés sous la diagonale sont les mêmes que ceux situés au-dessus de la diagonale, mais avec les axes inversés.</p>
+<p>Pour réaliser des diagrammes en paires avec <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>, vous avez besoin de la fonction <code>ggpairs()</code>du paquet <code>GGally</code> <span class="emoji" data-emoji="package">📦</span>. La sortie est assez similaire mais vous n’avez que la partie inférieure de la matrice des graphiques, vous obtenez un graphique de densité sur la diagonale et les corrélations sur la partie supérieure du graphique.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggpairs</span><span class="op">(</span><span class="va">licornes</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"height"</span>, <span class="st">"weight"</span>, <span class="st">"mane_size"</span>,</span>
 <span>  <span class="st">"fluffyness"</span>, <span class="st">"horn_rings"</span></span>
 <span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="04-graphique_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot21-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Nuage de points multi-panneaux représentants les relations entre toutes les combinaisons de variables du jeu de données <code>licornes</code>(avec <code>GGally</code> <span class="emoji" data-emoji="package">📦</span>).</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Les <code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code> peut être modifiée pour faire des choses similaires et plus, mais elle est plus complexe. Jetez un coup d’œil à l’excellent fichier d’aide de la fonction <code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code> (<code><a href="https://rdrr.io/r/graphics/pairs.html">?pairs</a></code>), qui fournit tous les détails permettant de faire quelque chose comme le tracé ci-dessous.</p>
+<p>La fonction <code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code> peut être modifiée pour faire des choses similaires et plus, mais elle est plus complexe. Jetez un coup d’œil à l’excellent fichier d’aide de la fonction <code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code> (<code><a href="https://rdrr.io/r/graphics/pairs.html">?pairs</a></code>), qui fournit tous les détails permettant de faire quelque chose comme la figure ci-dessous.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="04-graphique_files/figure-html/plot22-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<figcaption>Nuage de points multi-panneaux représentants les relations entre toutes les combinaisons de variables du jeu de données <code>licornes</code>(avec R de base mais en plus classe).</figcaption></figure>
 </div>
 </div>
 </div>
-</section><section id="tracés" class="level3" data-number="4.3.7"><h3 data-number="4.3.7" class="anchored" data-anchor-id="tracés">
-<span class="header-section-number">4.3.7</span> Tracés</h3>
-<p>Lorsque l’on examine la relation entre deux variables numériques, il est souvent utile de pouvoir déterminer si une troisième variable obscurcit ou modifie la relation. Un graphique très pratique à utiliser dans ces situations est un graphique de conditionnement (également connu sous le nom de graphique de dispersion conditionnel) que nous pouvons créer dans R à l’aide de la fonction <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> fonction. La fonction <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> trace deux variables, mais chaque tracé est conditionné (<code>|</code>) par une troisième variable. Cette troisième variable peut être soit numérique, soit un facteur. À titre d’exemple, voyons comment la relation entre le nombre de licornes (<code>unicorns</code> ) et le <code>weight</code> de licornes change en fonction de <code>mane_size</code>. Notez que les <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> a une fonction <code>data =</code> il n’est donc pas nécessaire d’utiliser l’argument <code>$</code> la notation.</p>
+</section><section id="graphique-de-conditionnement-coplots" class="level3" data-number="4.3.7"><h3 data-number="4.3.7" class="anchored" data-anchor-id="graphique-de-conditionnement-coplots">
+<span class="header-section-number">4.3.7</span> Graphique de conditionnement (Coplots)</h3>
+<p>Lorsque l’on examine la relation entre deux variables numériques, il est souvent utile de pouvoir déterminer si une troisième variable obscurcit ou modifie la relation. Un graphique très pratique à utiliser dans ce genre de situations est le graphique de conditionnement (également connu sous le nom de graphique de dispersion conditionnel, ou encore “coplots”) que nous pouvons créer dans R à l’aide de la fonction <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code>. La fonction <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> trace les graphiques de deux variables, mais chaque graphique est conditionné (<code>|</code>) par une troisième variable. Cette troisième variable peut être soit numérique, soit factorielle. À titre d’exemple, voyons comment la relation entre le nombre d’anneaux sur la corne (<code>horn_ring</code> ) et le poids (<code>weight</code>) des licornes change en fonction de la taille de la crinière (<code>mane_size</code>). Notez que la fonction <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> a un argument <code>data =</code> il n’est donc pas nécessaire d’utiliser la notation <code>$</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">coplot</a></span><span class="op">(</span><span class="va">horn_rings</span> <span class="op">~</span> <span class="va">weight</span> <span class="op">|</span> <span class="va">mane_size</span>, data <span class="op">=</span> <span class="va">unicorns</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">coplot</a></span><span class="op">(</span><span class="va">horn_rings</span> <span class="op">~</span> <span class="va">weight</span> <span class="op">|</span> <span class="va">mane_size</span>, data <span class="op">=</span> <span class="va">licornes</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot26-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot26-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Évolution de la relation entre le nombre d’anneaux sur la corne et le poids en fonction de la taille de la crinière chez les licornes (avec R de base).</figcaption></figure>
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">gg_coplot</span><span class="op">(</span><span class="va">unicorns</span>,</span>
+<p>Pour avoir le même type de graphiques avec <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>, on peut utiliser la fonction <code>gg_coplot()</code> du paquet <code>ggcleveland</code> <span class="emoji" data-emoji="package">📦</span> :</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">gg_coplot</span><span class="op">(</span><span class="va">licornes</span>,</span>
 <span>  x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">horn_rings</span>,</span>
 <span>  faceting <span class="op">=</span> <span class="va">mane_size</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -901,26 +913,29 @@ Figure&nbsp;4.3
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="04-graphique_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot27-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Évolution de la relation entre le nombre d’anneaux sur la corne et le poids en fonction de la taille de la crinière chez les licornes (avec <code>ggcleveland</code> <span class="emoji" data-emoji="package">📦</span>).</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Il faut un peu de pratique pour interpréter les coplots. Le nombre de licornes est représenté sur l’axe des y et le poids des licornes sur l’axe des x. Les six diagrammes montrent la relation entre ces deux variables pour différents intervalles de surface foliaire. Le diagramme à barres en haut indique la plage de valeurs de la surface foliaire pour chacun des diagrammes. Les panneaux sont lus de bas en gauche à haut en droite le long de chaque ligne. Par exemple, le panneau inférieur gauche montre la relation entre le nombre de licornes et le poids des licornes dont la surface foliaire est la plus faible (environ 5 - 11 cm<sup>2</sup>). Le graphique en haut à droite montre la relation entre le nombre de licornes et le poids des licornes dont la surface foliaire est comprise entre 16 et 50 cm<sup>2</sup>. Remarquez que la plage de valeurs de la surface foliaire diffère d’un panneau à l’autre et que les plages se chevauchent d’un panneau à l’autre. Les <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> fait de son mieux pour diviser les données afin de s’assurer qu’il y a un nombre adéquat de points de données dans chaque panneau. Si vous ne souhaitez pas produire des graphiques avec des données qui se chevauchent dans le panneau, vous pouvez définir l’option <code>overlap =</code> à <code>overlap = 0</code></p>
-<p>Vous pouvez également utiliser l’option <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> avec des variables de conditionnement factorielles. Avec <code>gg_coplot()</code> vous devez d’abord définir le facteur comme numérique avant de tracer le graphique et spécifier <code>overlap=0</code>. Par exemple, nous pouvons examiner la relation entre <code>unicorns</code> et <code>weight</code> conditionnées par le facteur <code>food</code>. Le graphique en bas à gauche représente la relation entre <code>unicorns</code> et <code>weight</code> pour les licornes de la <code>low</code> traitement alimentaire. Le graphique en haut à gauche montre la même relation mais pour les licornes dans le traitement alimentaire. <code>high</code> traitement alimentaire.</p>
+<p>Il faut un peu de pratique pour interpréter les “coplots”. Le nombre d’anneaux sur la corne est représenté sur l’axe des y et le poids des licornes sur l’axe des x. Les six graphiques montrent la relation entre ces deux variables pour différents intervalles de taille de crinière Le diagramme en barres en haut indique la plage de valeurs de tailles de crinières pour chacun des graphiques. Les graphiques sont lus de en haut à gauche (en premier) jusqu’à en bas à droite le long de chaque ligne. Par exemple, le graphique en haut à gauche montre la relation entre le nombre d’anneaux sur la corne et le poids des licornes dont la crinière est la plus courte (environ 5 - 11 cm). Le graphique en bas à droite montre la relation entre le nombre d’annaux sur la corne et le poids des licornes dont la crinière est comprise entre 16 et 50 cm de long.</p>
+<p>Remarquez que la plage de valeurs de la taille de la crinière diffère d’un graphique à l’autre et que les plages se chevauchent d’un graphique à l’autre. La fonction <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> fait de son mieux pour diviser les données afin de s’assurer qu’il y a un nombre adéquat de points de données dans chaque graphique. Si vous ne souhaitez pas produire des graphiques avec des données qui se chevauchent dans le graphique, vous pouvez définir l’option <code>overlap =</code> (“chevauchement”) à <code>overlap = 0</code></p>
+<p>Vous pouvez également utiliser la fonction <code><a href="https://rdrr.io/r/graphics/coplot.html">coplot()</a></code> avec des variables de conditionnement factorielles.</p>
+<p>Avec <code>gg_coplot()</code> (<code>ggcleveland</code> <span class="emoji" data-emoji="package">📦</span>) vous devez d’abord définir le facteur comme numérique avant de tracer le graphique et spécifier <code>overlap=0</code>.</p>
+<p>Par exemple, nous pouvons examiner la relation entre <code>horn_rings</code> et <code>weight</code> conditionnées par le facteur <code>food</code>. Le graphique en haut à gauche représente la relation entre <code>horn_rings</code> et <code>weight</code> pour les licornes avec un faible (<code>low</code>) niveau de nutrition. Le graphique en bas à droite montre la même relation mais pour les licornes avec un haut (<code>high</code>) niveau de nutrition.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">coplot</a></span><span class="op">(</span><span class="va">horn_rings</span> <span class="op">~</span> <span class="va">weight</span> <span class="op">|</span> <span class="va">food</span>, data <span class="op">=</span> <span class="va">unicorns</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/coplot.html">coplot</a></span><span class="op">(</span><span class="va">horn_rings</span> <span class="op">~</span> <span class="va">weight</span> <span class="op">|</span> <span class="va">food</span>, data <span class="op">=</span> <span class="va">licornes</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot28-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot28-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Évolution de la relation entre le nombre d’anneaux sur la corne et le poids en fonction du niveau de nutrition chez les licornes (avec R de base).</figcaption></figure>
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">unicorns</span> <span class="op">&lt;-</span> <span class="fu">mutate</span><span class="op">(</span><span class="va">unicorns</span>, food_num <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">food</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu">gg_coplot</span><span class="op">(</span><span class="va">unicorns</span>,</span>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">licornes</span> <span class="op">&lt;-</span> <span class="fu">mutate</span><span class="op">(</span><span class="va">licornes</span>, food_num <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">food</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">gg_coplot</span><span class="op">(</span><span class="va">licornes</span>,</span>
 <span>  x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">horn_rings</span>,</span>
 <span>  faceting <span class="op">=</span> <span class="va">food_num</span>, overlap <span class="op">=</span> <span class="fl">0</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -928,9 +943,9 @@ Figure&nbsp;4.3
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="04-graphique_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot29-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Évolution de la relation entre le nombre d’anneaux sur la corne et le poids en fonction du niveau de nutrition chez les licornes (avec <code>ggcleveland</code> <span class="emoji" data-emoji="package">📦</span>).</figcaption></figure>
 </div>
 </div>
 </div>
@@ -959,17 +974,17 @@ Figure&nbsp;4.3
 <td style="text-align: left;"><code><a href="https://rdrr.io/r/graphics/hist.html">hist()</a></code></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">diagramme en boîte</td>
+<td style="text-align: left;">boîte à moustache</td>
 <td style="text-align: left;"><code>geom_boxplot()</code></td>
 <td style="text-align: left;"><code><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot()</a></code></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Cleveland dotplot</td>
+<td style="text-align: left;">dotplots de Cleveland</td>
 <td style="text-align: left;"><code>ggdotchart()</code></td>
 <td style="text-align: left;"><code><a href="https://rdrr.io/r/graphics/dotchart.html">dotchart()</a></code></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">matrice de nuage de points</td>
+<td style="text-align: left;">diagrammes en paires</td>
 <td style="text-align: left;"><code>ggpairs()</code></td>
 <td style="text-align: left;"><code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code></td>
 </tr>
@@ -980,89 +995,95 @@ Figure&nbsp;4.3
 </tr>
 </tbody>
 </table>
-<p>Nous espérons que vous avez compris qu’il est possible de créer facilement des graphiques exploratoires très instructifs à l’aide des graphiques de base de R ou de ggplot. Le choix de l’un ou l’autre est entièrement libre (c’est ce qui fait l’intérêt de R, vous pouvez choisir) et nous mélangeons volontiers les deux pour répondre à nos besoins. Dans la section suivante, nous verrons comment personnaliser vos graphiques R de base pour leur donner l’aspect que vous souhaitez.</p>
+<p>Nous espérons que vous avez compris qu’il est possible de créer facilement des graphiques exploratoires très instructifs à l’aide des graphiques de base de R ou de <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>. Le choix de l’un ou l’autre est entièrement libre (c’est ce qui fait l’intérêt de R, vous pouvez choisir) et nous mélangeons volontiers les deux pour répondre à nos besoins. Dans la section suivante, nous verrons comment personnaliser des graphiques de base de R pour leur donner l’aspect que vous souhaitez.</p>
 </section></section><section id="sec-mult-graphs" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="sec-mult-graphs">
 <span class="header-section-number">4.4</span> Graphiques multiples</h2>
-<section id="base-r" class="level3" data-number="4.4.1"><h3 data-number="4.4.1" class="anchored" data-anchor-id="base-r">
-<span class="header-section-number">4.4.1</span> Base R</h3>
-<p>Dans la base R, l’une des méthodes les plus courantes pour tracer plusieurs graphiques consiste à utiliser la fonction graphique principale <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> pour diviser le dispositif de traçage en un certain nombre de sections définies à l’aide de la fonction <code>mfrow =</code> pour diviser le dispositif de traçage en plusieurs sections définies. Avec cette méthode, vous devez d’abord spécifier le nombre de lignes et de colonnes de tracés que vous souhaitez, puis exécuter le code pour chaque tracé. Par exemple, pour tracer deux graphiques côte à côte, nous utiliserions <code>par(mfrow = c(1, 2))</code> pour diviser le dispositif en une ligne et deux colonnes.</p>
+<section id="r-de-base" class="level3" data-number="4.4.1"><h3 data-number="4.4.1" class="anchored" data-anchor-id="r-de-base">
+<span class="header-section-number">4.4.1</span> R de base</h3>
+<p>Dans la base de R, l’une des méthodes les plus courantes pour tracer plusieurs graphiques consiste à utiliser la fonction graphique principale <code><a href="https://rdrr.io/r/graphics/par.html">par()</a></code> pour diviser la fenêtre de graphiques en un certain nombre de sections définies avec l’argument <code>mfrow =</code>. Avec cette méthode, il faut d’abord spécifier le nombre de lignes, puis de colonnes de graphiques que vous souhaitez, puis exécuter le code pour chaque graphique. Par exemple, pour tracer deux graphiques côte à côte, nous utiliserions <code>par(mfrow = c(1, 2))</code> pour diviser la fenêtre en une ligne et deux colonnes.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">weight</span>, <span class="va">unicorns</span><span class="op">$</span><span class="va">fluffyness</span>,</span>
-<span>  xlab <span class="op">=</span> <span class="st">"weight"</span>,</span>
-<span>  ylab <span class="op">=</span> <span class="st">"Fluffyness"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">fluffyness</span> <span class="op">~</span> <span class="va">food</span>, data <span class="op">=</span> <span class="va">unicorns</span>, cex.axis <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">weight</span>, <span class="va">licornes</span><span class="op">$</span><span class="va">fluffyness</span>,</span>
+<span>      xlab <span class="op">=</span> <span class="st">"Poids"</span>,</span>
+<span>      ylab <span class="op">=</span> <span class="st">"Niveau de douceur"</span>,</span>
+<span>      main <span class="op">=</span> <span class="st">"a)"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">fluffyness</span> <span class="op">~</span> <span class="va">food</span>, data <span class="op">=</span> <span class="va">licornes</span>, cex.axis <span class="op">=</span> <span class="fl">0.6</span>,</span>
+<span>      xlab <span class="op">=</span> <span class="st">"Niveau de nutrition"</span>,</span>
+<span>      ylab <span class="op">=</span> <span class="st">"Niveau de douceur"</span>,</span>
+<span>      main <span class="op">=</span> <span class="st">"b)"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/plot55-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/plot55-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Niveau de douceur des licornes en fonction de leurs a) poids et de leurs b) niveau de nutrition (avec R de base).</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Une fois que vous avez terminé vos tracés, n’oubliez pas de réinitialiser votre dispositif de traçage à la normale avec <code>par(mfrow = c(1,1))</code>.</p>
-</section><section id="ggplot" class="level3" data-number="4.4.2"><h3 data-number="4.4.2" class="anchored" data-anchor-id="ggplot">
-<span class="header-section-number">4.4.2</span> ggplot</h3>
-<p>En plus des fonctions facet_grid() et facet_wrap qui permettent de répéter et d’organiser facilement plusieurs tracés en fonction de variables spécifiques, ggplot permet d’organiser plusieurs ggplots ensemble. L’approche que nous recommandons est d’utiliser le paquet <code>patchwork</code>.</p>
-<p>Vous devrez d’abord l’installer (si vous ne l’avez pas encore) et créer le fichier <code>patchwork</code> <span class="emoji" data-emoji="package">📦</span> disponible.</p>
+<p>Une fois que vous avez terminé vos graphiques, n’oubliez pas de réinitialiser votre fenêtre graphique à la normale avec <code>par(mfrow = c(1,1))</code>.</p>
+</section><section id="ggplot2-1" class="level3" data-number="4.4.2"><h3 data-number="4.4.2" class="anchored" data-anchor-id="ggplot2-1">
+<span class="header-section-number">4.4.2</span> <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>
+</h3>
+<p>En plus des fonctions <code>facet_grid()</code> et <code>facet_wrap()</code> qui permettent de répéter et d’organiser facilement plusieurs graphiques en fonction de variables spécifiques, il y a beaucoup de manière d’organiser plusieurs graphiques <code>ggplots2</code> <span class="emoji" data-emoji="package">📦</span> ensemble. L’approche que nous recommandons est d’utiliser le paquet <code>patchwork</code> <span class="emoji" data-emoji="package">📦</span>.</p>
+<p>Vous devrez d’abord l’installer (si vous ne l’avez pas encore) et l’appeler (<code><a href="https://patchwork.data-imaginist.com">library(patchwork)</a></code>).</p>
 <div class="cell">
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"patchwork"</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Une note importante : pour ceux qui ont utilisé la base R pour produire leurs chiffres et qui sont familiers avec l’utilisation de <code>par(mfrow = c(2,2))</code> (qui permet de tracer quatre figures sur deux lignes et deux colonnes), sachez que cela ne fonctionne pas avec <code>ggplot2</code> les objets. Vous devrez utiliser soit la fonction <code>patchwork</code> ou d’autres paquets tels que <code>gridArrange</code> ou <code>cowplot</code> ou dissimuler le <code>ggplot2</code> objets en grobs.</p>
-<p>Pour tracer les deux tracés ensemble, nous devons assigner chaque figure à un objet distinct, puis utiliser ces objets lorsque nous utilisons la fonction <code>patchwork</code>.</p>
-<p>Nous pouvons donc générer 2 figures et les assigner à des objets. Comme vous pouvez le constater, les figures n’apparaissent pas dans la fenêtre de tracé. Elles n’apparaîtront que lorsque vous appellerez l’objet.</p>
+<p>Une note importante : pour ceux qui ont utilisé la base R pour produire leurs figures et qui sont familiers avec l’utilisation de <code>par(mfrow = c(2,2))</code> (qui permet de tracer quatre figures sur deux lignes et deux colonnes), sachez que cela ne fonctionne pas avec les objets de <code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>. Vous devrez utiliser soit le paquet <code>patchwork</code> <span class="emoji" data-emoji="package">📦</span> ou d’autres paquets tels que <code>gridArrange</code> <span class="emoji" data-emoji="package">📦</span> ou <code>cowplot</code> <span class="emoji" data-emoji="package">📦</span> ou convertir le <code>ggplot</code> en objets grobs.</p>
+<p>Pour tracer les deux graphiques ensemble, il faut assigner chaque figure à un objet distinct, puis utiliser ces objets lorsque l’on utilise <code>patchwork</code> <span class="emoji" data-emoji="package">📦</span>.</p>
+<p>Nous pouvons donc générer 2 figures et les assigner à des objets. Comme vous pouvez le constater, les figures n’apparaissent pas dans la fenêtre graphique. Elles n’apparaîtront que lorsque vous appellerez l’objet.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">first_figure</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">premiere_figure</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span></span>
 <span>  <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">height</span>, y <span class="op">=</span> <span class="va">fluffyness</span>, color <span class="op">=</span> <span class="va">food</span><span class="op">)</span>,</span>
-<span>  data <span class="op">=</span> <span class="va">unicorns</span></span>
-<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  data <span class="op">=</span> <span class="va">licornes</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">block</span> <span class="op">~</span> <span class="va">p_care</span><span class="op">)</span></span>
-<span><span class="va">second_figure</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span></span>
+<span></span>
+<span></span>
+<span><span class="va">deuxieme_figure</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span></span>
 <span>  <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">fluffyness</span>, color <span class="op">=</span> <span class="va">food</span><span class="op">)</span>,</span>
-<span>  data <span class="op">=</span> <span class="va">unicorns</span></span>
-<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  data <span class="op">=</span> <span class="va">licornes</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">block</span> <span class="op">~</span> <span class="va">p_care</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Deux options simples et immédiates s’offrent à nous avec le patchwork : disposer les figures les unes sur les autres (spécifiées avec un <code>/</code>) ou arranger les figures côte à côte (spécifié avec soit un <code>+</code> ou a <code>|</code>). Essayons de tracer les deux figures, l’une au-dessus de l’autre.</p>
+<p>Deux options simples et immédiates s’offrent à nous avec <code>patchwork</code> <span class="emoji" data-emoji="package">📦</span> : disposer les figures les unes sur les autres (spécifiées avec un <code>/</code>) ou arranger les figures côte à côte (spécifié soit avec un <code>+</code> ou un <code>|</code>). Essayons de tracer les deux figures, l’une au-dessus de l’autre.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">first_figure</span> <span class="op">/</span> <span class="va">second_figure</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">premiere_figure</span> <span class="op">/</span> <span class="va">deuxieme_figure</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/side-by-side-patchwork-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/side-by-side-patchwork-1.png" class="img-fluid figure-img" style="width:85.0%"></p>
+<figcaption>Exemple de disposition de figures l’une sur l’autre avec <code>patchwork</code> <span class="emoji" data-emoji="package">📦</span>.</figcaption></figure>
 </div>
 </div>
 </div>
-<p><em>S’amuser</em> Essayez de créer une version juxtaposée de la figure ci-dessus (indice : essayez les autres opérateurs).</p>
-<p>Nous pouvons aller plus loin et assigner des opérateurs imbriqués <code>patchwork</code> à un objet et l’utiliser à son tour pour créer des étiquettes pour les figures individuelles.</p>
+<p><em>Jouons un peu</em>: Essayez de créer une version juxtaposée de la figure ci-dessus (indice : essayez les autres opérateurs).</p>
+<p>Nous pouvons aller plus loin et assigner des figures imbriquées <code>patchwork</code> <span class="emoji" data-emoji="package">📦</span> à un objet et l’utiliser à son tour pour créer des étiquettes pour les figures individuelles.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nested_compare</span> <span class="op">&lt;-</span> <span class="va">first_figure</span> <span class="op">/</span> <span class="va">second_figure</span></span>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">figure_imbriquees</span> <span class="op">&lt;-</span> <span class="va">premiere_figure</span> <span class="op">/</span> <span class="va">deuxieme_figure</span></span>
 <span></span>
-<span><span class="va">nested_compare</span> <span class="op">+</span></span>
+<span><span class="va">figure_imbriquees</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/plot_annotation.html">plot_annotation</a></span><span class="op">(</span>tag_levels <span class="op">=</span> <span class="st">"A"</span>, tag_suffix <span class="op">=</span> <span class="st">")"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="04-graphique_files/figure-html/labelled-nested-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<figure class="figure"><p><img src="04-graphique_files/figure-html/labelled-nested-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Exemple d’utilisation de figures imbriquées <code>patchowrk</code> <span class="emoji" data-emoji="package">📦</span>.</figcaption></figure>
 </div>
 </div>
 </div>
 </section></section><section id="sec-custom-plot" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="sec-custom-plot">
 <span class="header-section-number">4.5</span> Personnalisation de ggplots</h2>
-<p><strong>Promenade pour être édité</strong> :licorne :</p>
+<p><strong>Partir se balader pour être édité</strong> <span class="emoji" data-emoji="unicorn">🦄</span></p>
 </section><section id="sec-export-plots" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="sec-export-plots">
 <span class="header-section-number">4.6</span> Exportation des parcelles</h2>
-<p>Créer des graphiques dans R, c’est bien, mais que faire si vous souhaitez utiliser ces graphiques dans votre thèse, votre rapport ou votre publication ? Une option consiste à cliquer sur le bouton “Exporter” dans l’onglet “Tracés” de RStudio. Vous pouvez également exporter vos tracés de R vers un fichier externe en écrivant du code dans votre script R. L’avantage de cette approche est que vous avez un peu plus de contrôle sur le format de sortie et qu’elle vous permet également de générer (ou de mettre à jour) des graphiques automatiquement chaque fois que vous exécutez votre script. Vous pouvez exporter vos tracés dans de nombreux formats différents, mais les plus courants sont pdf, png, jpeg et tiff.</p>
-<p>Par défaut, R (et donc RStudio) dirige tous les tracés que vous créez vers la fenêtre de tracé. Pour enregistrer votre tracé dans un fichier externe, vous devez d’abord rediriger votre tracé vers un périphérique graphique différent. Pour ce faire, vous pouvez utiliser l’une des nombreuses fonctions de périphérique graphique pour démarrer un nouveau périphérique graphique. Par exemple, pour enregistrer un tracé au format pdf, nous utiliserons la fonction <code><a href="https://rdrr.io/r/grDevices/pdf.html">pdf()</a></code> pour sauvegarder un tracé au format pdf. Le premier argument de la fonction <code><a href="https://rdrr.io/r/grDevices/pdf.html">pdf()</a></code> est le chemin d’accès et le nom du fichier que nous voulons enregistrer (n’oubliez pas d’inclure l’extension .pdf). Une fois que nous avons utilisé la fonction <code><a href="https://rdrr.io/r/grDevices/pdf.html">pdf()</a></code> nous pouvons alors écrire tout le code que nous avons utilisé pour créer notre graphique, y compris les paramètres graphiques tels que le réglage des marges et la division du dispositif de traçage. Une fois le code exécuté, nous devons fermer le dispositif de traçage pdf à l’aide de la fonction <code><a href="https://rdrr.io/r/grDevices/dev.html">dev.off()</a></code> à l’aide de la fonction</p>
+<p>Créer des graphiques dans R, c’est bien, mais que faire si vous souhaitez utiliser ces graphiques dans votre thèse, votre rapport ou votre publication ? Une option consiste à cliquer sur le bouton “Exporter” dans l’onglet “Graphiques” de RStudio. Vous pouvez également exporter vos graphiques de R vers un fichier externe en écrivant du code dans votre script R (<em>option privilégiée</em>). L’avantage de cette approche est que vous avez un peu plus de contrôle sur le format de sortie et qu’elle vous permet également de générer (ou de mettre à jour) des graphiques automatiquement chaque fois que vous exécutez votre script. Vous pouvez exporter vos figures dans de nombreux formats différents, mais les plus courants sont pdf, png, jpeg et tiff.</p>
+<p>Par défaut, R (et donc RStudio) dirige tous les graphiques que vous créez vers la fenêtre de graphiques. Pour enregistrer votre graphique dans un fichier externe, vous devez d’abord rediriger votre graphique vers un périphérique graphique différent. Pour ce faire, vous pouvez utiliser l’une des nombreuses fonctions de périphérique graphique pour démarrer une nouvelle fenêtre graphique. Par exemple, pour enregistrer un graphique au format pdf, nous utiliserons la fonction <code><a href="https://rdrr.io/r/grDevices/pdf.html">pdf()</a></code>. Le premier argument de la fonction <code><a href="https://rdrr.io/r/grDevices/pdf.html">pdf()</a></code> est le chemin d’accès et le nom du fichier que nous voulons créer (n’oubliez pas d’inclure l’extension .pdf). Une fois que nous avons utilisé la fonction <code><a href="https://rdrr.io/r/grDevices/pdf.html">pdf()</a></code> nous pouvons alors écrire tout le code que nous avons utilisé pour créer notre graphique, y compris les paramètres graphiques tels que le réglage des marges et la division de la fenêtre graphique. Une fois le code exécuté, il faut fermer le dispositif de graphique pdf à l’aide de la fonction <code><a href="https://rdrr.io/r/grDevices/dev.html">dev.off()</a></code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html">pdf</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"output/my_plot.pdf"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4.1</span>, <span class="fl">4.4</span>, <span class="fl">4.1</span>, <span class="fl">1.9</span><span class="op">)</span>, xaxs <span class="op">=</span> <span class="st">"i"</span>, yaxs <span class="op">=</span> <span class="st">"i"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">weight</span>, <span class="va">unicorns</span><span class="op">$</span><span class="va">fluffyness</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">weight</span>, <span class="va">licornes</span><span class="op">$</span><span class="va">fluffyness</span>,</span>
 <span>  xlab <span class="op">=</span> <span class="st">"weight (g)"</span>,</span>
 <span>  ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"shoot area (cm"</span><span class="op">^</span><span class="st">"2"</span>, <span class="st">")"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">200</span><span class="op">)</span>, bty <span class="op">=</span> <span class="st">"l"</span>,</span>
@@ -1072,11 +1093,11 @@ Figure&nbsp;4.3
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">28</span>, y <span class="op">=</span> <span class="fl">190</span>, label <span class="op">=</span> <span class="st">"A"</span>, cex <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Si nous voulons sauvegarder ce tracé au format png, il nous suffit d’utiliser la fonction <code><a href="https://rdrr.io/r/grDevices/png.html">png()</a></code> plus ou moins de la même manière que nous avons utilisé la fonction <code><a href="https://rdrr.io/r/grDevices/pdf.html">pdf()</a></code> de la même manière que nous avons utilisé la fonction</p>
+<p>Si nous voulons sauvegarder ce graphique au format png, il nous suffit d’utiliser la fonction <code><a href="https://rdrr.io/r/grDevices/png.html">png()</a></code>, plus ou moins de la même manière.</p>
 <div class="cell">
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/grDevices/png.html">png</a></span><span class="op">(</span><span class="st">"output/my_plot.png"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4.1</span>, <span class="fl">4.4</span>, <span class="fl">4.1</span>, <span class="fl">1.9</span><span class="op">)</span>, xaxs <span class="op">=</span> <span class="st">"i"</span>, yaxs <span class="op">=</span> <span class="st">"i"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">unicorns</span><span class="op">$</span><span class="va">weight</span>, <span class="va">unicorns</span><span class="op">$</span><span class="va">fluffyness</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">licornes</span><span class="op">$</span><span class="va">weight</span>, <span class="va">licornes</span><span class="op">$</span><span class="va">fluffyness</span>,</span>
 <span>  xlab <span class="op">=</span> <span class="st">"weight (g)"</span>,</span>
 <span>  ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"shoot area (cm"</span><span class="op">^</span><span class="st">"2"</span>, <span class="st">")"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">200</span><span class="op">)</span>, bty <span class="op">=</span> <span class="st">"l"</span>,</span>
@@ -1086,9 +1107,9 @@ Figure&nbsp;4.3
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">28</span>, y <span class="op">=</span> <span class="fl">190</span>, label <span class="op">=</span> <span class="st">"A"</span>, cex <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>D’autres fonctions utiles sont ; <code><a href="https://rdrr.io/r/grDevices/png.html">jpeg()</a></code>, <code><a href="https://rdrr.io/r/grDevices/png.html">tiff()</a></code> et <code><a href="https://rdrr.io/r/grDevices/png.html">bmp()</a></code>. Des arguments supplémentaires à ces fonctions vous permettent de modifier la taille, la résolution et la couleur d’arrière-plan de vos images enregistrées. Voir aussi <code><a href="https://rdrr.io/r/grDevices/png.html">?png</a></code> pour plus de détails.</p>
-<p><code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span> fournir une fonction très utile <code>ggsave()</code> qui simplifie grandement la sauvegarde des tracés, mais ne fonctionne que pour les ggplots.</p>
-<p>Après avoir produit un tracé et l’avoir vu dans votre IDE, vous pouvez simplement exécuter ggsave() avec l’argument adéquat pour sauvegarder le dernier ggplot produit. Vous pouvez aussi, bien sûr, spécifier quel tracé doit être sauvegardé.</p>
+<p>D’autres fonctions utiles sont : <code><a href="https://rdrr.io/r/grDevices/png.html">jpeg()</a></code>, <code><a href="https://rdrr.io/r/grDevices/png.html">tiff()</a></code> et <code><a href="https://rdrr.io/r/grDevices/png.html">bmp()</a></code>. Des arguments supplémentaires dans ces fonctions vous permettent de modifier la taille, la résolution et la couleur d’arrière-plan de vos images enregistrées. Voir aussi <code><a href="https://rdrr.io/r/grDevices/png.html">?png</a></code> pour plus de détails.</p>
+<p><code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span> fournir une fonction très utile : <code>ggsave()</code>, qui simplifie grandement la sauvegarde des graphiques, mais ne fonctionne que pour les ggplots.</p>
+<p>Après avoir produit un graphique et l’avoir vu dans votre IDE, vous pouvez simplement exécuter ggsave() avec l’argument adéquat pour sauvegarder le dernier ggplot produit. Vous pouvez aussi, bien sûr, spécifier quel tracé doit être sauvegardé.</p>
 <div class="cell">
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggsave</span><span class="op">(</span><span class="st">"file.png"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
