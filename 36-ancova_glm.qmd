@@ -61,8 +61,8 @@ anc1dat <- read.csv("data/anc1dat.csv")
 anc1dat$sex <- as.factor(anc1dat$sex)
 myplot <- ggplot(data = anc1dat, aes(x=lage,    y=log10(fklngth)))+facet_grid(.~sex)+geom_point()
 myplot <- myplot+
-  stat_smooth(method = lm, se=FALSE)+
-  stat_smooth(se=FALSE, color="red") +
+  geom_smooth(method = lm, se=FALSE)+
+  geom_smooth(se=FALSE, color="red") +
   labs(
     y = expression(log[10]~(Fork~length)),
     x = expression(log[10]~(Age))
@@ -133,8 +133,8 @@ anc3dat <- read.csv("data/anc3dat.csv")
 myplot <- ggplot(data = anc3dat, aes(x = lage, y = log10(fklngth))) +
   facet_grid(. ~ locate) +
   geom_point() +
-  stat_smooth(method = lm, se = FALSE) +
-  stat_smooth(se = FALSE, color = "red") +
+  geom_smooth(method = lm, se = FALSE) +
+  geom_smooth(se = FALSE, color = "red") +
   labs(
     y = expression(log[10] ~ (Fork ~ length)),
     x = expression(log[10] ~ (Age))
