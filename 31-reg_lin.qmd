@@ -75,8 +75,8 @@ mongraph <- ggplot(
 )
 # Représentez les données sous forme de Points, Régression linéaire, "Lowess"
 mongraph <- mongraph +
-  stat_smooth(method = lm, se = FALSE, color = "green") + # Ajoutez une régression linéaire, mais sans l'erreur-type (en vert)
-  stat_smooth(color = "red", se = FALSE) + # Ajoutez la "lowess" (en rouge)
+  geom_smooth(method = lm, se = FALSE, color = "green") + # Ajoutez une régression linéaire, mais sans l'erreur-type (en vert)
+  geom_smooth(color = "red", se = FALSE) + # Ajoutez la "lowess" (en rouge)
   geom_point() + # Ajoutez les données sous forme de points
   labs(x = "Longueur", y = "Poids") # Modifiez les noms des axes pour rendre le graphique plus lisible
 
@@ -288,8 +288,8 @@ mongraph <- ggplot(
 ) # aesthetics: y=fklngth, x=rdwght
 # Représentez les données sous forme de Points, Régression linéaire, "Lowess"
 mongraph <- mongraph +
-  stat_smooth(method = lm, se = FALSE, color = "green") + # Ajoutez une régression linéaire, mais sans l'erreur-type (en vert)
-  stat_smooth(color = "red") + # Ajoutez la "lowess" (en rouge)
+  geom_smooth(method = lm, se = FALSE, color = "green") + # Ajoutez une régression linéaire, mais sans l'erreur-type (en vert)
+  geom_smooth(color = "red") + # Ajoutez la "lowess" (en rouge)
   geom_point() +# Ajoutez les données sous forme de points
   labs(x = "Age", y = "Longueur") # Modifiez les noms des axes pour rendre le graphique plus lisible
 mongraph # Affichez le graphique
