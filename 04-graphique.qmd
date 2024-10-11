@@ -589,7 +589,7 @@ La rangée suivante de graphiques comporte `weight` sur l'axe des y et `height`,
 Nous interprétons les autres lignes de la même manière, la dernière ligne affichant la variable `horn_size` sur l'axe des y et les autres variables sur l'axe des x.
 Nous espérons que vous remarquerez que les graphiques situés sous la diagonale sont les mêmes que ceux situés au-dessus de la diagonale, mais avec les axes inversés.
 
-Pour réaliser des diagrammes en paires avec ggplot, vous avez besoin de la fonction `ggpairs()`du paquet `GGally` :package:.
+Pour réaliser des diagrammes en paires avec `ggplot2` :package:, vous avez besoin de la fonction `ggpairs()`du paquet `GGally` :package:.
 La sortie est assez similaire mais vous n'avez que la partie inférieure de la matrice des graphiques, vous obtenez un graphique de densité sur la diagonale et les corrélations sur la partie supérieure du graphique.
 
 ```{r}
@@ -641,56 +641,70 @@ pairs(
 )
 ```
 
-### Coplots
+### Graphique de conditionnement (Coplots)
 
 Lorsque l'on examine la relation entre deux variables numériques, il est souvent utile de pouvoir déterminer si une troisième variable obscurcit ou modifie la relation.
-Un graphique très pratique à utiliser dans ces situations est un graphique de conditionnement (également connu sous le nom de graphique de dispersion conditionnel) que nous pouvons créer dans R à l'aide de la fonction `coplot()` fonction.
-La fonction `coplot()` trace deux variables, mais chaque tracé est conditionné (`|`) par une troisième variable.
-Cette troisième variable peut être soit numérique, soit un facteur.
-À titre d'exemple, voyons comment la relation entre le nombre de licornes (`licornes` ) et le `weight` de licornes change en fonction de `mane_size`.
-Notez que les `coplot()` a une fonction `data =` il n'est donc pas nécessaire d'utiliser l'argument `$` la notation.
+Un graphique très pratique à utiliser dans ce genre de situations est le graphique de conditionnement (également connu sous le nom de graphique de dispersion conditionnel, ou encore "coplots") que nous pouvons créer dans R à l'aide de la fonction `coplot()`.
+La fonction `coplot()` trace les graphiques de deux variables, mais chaque graphique est conditionné (`|`) par une troisième variable.
+Cette troisième variable peut être soit numérique, soit factorielle.
+À titre d'exemple, voyons comment la relation entre le nombre d'anneaux sur la corne (`horn_ring` ) et le poids (`weight`) des licornes change en fonction de la taille de la crinière (`mane_size`).
+Notez que la fonction `coplot()` a un argument `data =` il n'est donc pas nécessaire d'utiliser la notation `$`.
 
 ```{r}
 #| label: plot26
+#| fig-cap: Évolution de la relation entre le nombre d'anneaux sur la corne et le poids en fonction de la taille de la crinière chez les licornes (avec R de base).
 #| echo: true
-#| out-width: 75%
 #| fig-align: center
 coplot(horn_rings ~ weight | mane_size, data = licornes)
 ```
 
+Pour avoir le même type de graphiques avec `ggplot2` :package:, on peut utiliser la fonction `gg_coplot()` du paquet `ggcleveland` :package: :
+
 ```{r}
+#| label: plot27
+#| fig-cap: Évolution de la relation entre le nombre d'anneaux sur la corne et le poids en fonction de la taille de la crinière chez les licornes (avec `ggcleveland` :package:).
+#| echo: true
+#| fig-align: center
 gg_coplot(licornes,
   x = weight, y = horn_rings,
   faceting = mane_size
 )
 ```
 
-Il faut un peu de pratique pour interpréter les coplots.
-Le nombre de licornes est représenté sur l'axe des y et le poids des licornes sur l'axe des x.
-Les six diagrammes montrent la relation entre ces deux variables pour différents intervalles de surface foliaire.
-Le diagramme à barres en haut indique la plage de valeurs de la surface foliaire pour chacun des diagrammes.
-Les panneaux sont lus de bas en gauche à haut en droite le long de chaque ligne.
-Par exemple, le panneau inférieur gauche montre la relation entre le nombre de licornes et le poids des licornes dont la surface foliaire est la plus faible (environ 5 - 11 cm^2^).
-Le graphique en haut à droite montre la relation entre le nombre de licornes et le poids des licornes dont la surface foliaire est comprise entre 16 et 50 cm^2^.
-Remarquez que la plage de valeurs de la surface foliaire diffère d'un panneau à l'autre et que les plages se chevauchent d'un panneau à l'autre.
-Les `coplot()` fait de son mieux pour diviser les données afin de s'assurer qu'il y a un nombre adéquat de points de données dans chaque panneau.
-Si vous ne souhaitez pas produire des graphiques avec des données qui se chevauchent dans le panneau, vous pouvez définir l'option `overlap =` à `overlap = 0`
+Il faut un peu de pratique pour interpréter les "coplots".
+Le nombre d'anneaux sur la corne est représenté sur l'axe des y et le poids des licornes sur l'axe des x.
+Les six graphiques montrent la relation entre ces deux variables pour différents intervalles de taille de crinière <!-- JULIEN - je sais que c'est pas le plus important mais l'interprétation des variables changent souvent (nombre de licornes au lieu de nombre d'anneaux (horn ring), là tu parlais de surface foliaire pour mane_size) ça peut rendre les interpétations d'exemple difficile à suivre. J'essaye de faire qqch de cohérent pour le français mais il faut peut-être revoir la version anglaise -->.
 
-Vous pouvez également utiliser l'option `coplot()` avec des variables de conditionnement factorielles.
-Avec `gg_coplot()` vous devez d'abord définir le facteur comme numérique avant de tracer le graphique et spécifier `overlap=0`.
-Par exemple, nous pouvons examiner la relation entre `licornes` et `weight` conditionnées par le facteur `food`.
-Le graphique en bas à gauche représente la relation entre `licornes` et `weight` pour les licornes de la `low` traitement alimentaire.
-Le graphique en haut à gauche montre la même relation mais pour les licornes dans le traitement alimentaire. `high` traitement alimentaire.
+Le diagramme en barres en haut indique la plage de valeurs de tailles de crinières pour chacun des graphiques.
+Les graphiques sont lus de en haut à gauche (en premier) jusqu'à en bas à droite le long de chaque ligne.
+Par exemple, le graphique en haut à gauche montre la relation entre le nombre d'anneaux sur la corne et le poids des licornes dont la crinère est la plus courte (environ 5 - 11 cm).
+Le graphique en bas à droite montre la relation entre le nombre d'annaux sur la corne et le poids des licornes dont la crinière est comprise entre 16 et 50 cm de long.
+
+Remarquez que la plage de valeurs de la taille de la crinière diffère d'un graphique à l'autre et que les plages se chevauchent d'un graphique à l'autre.
+La fonction `coplot()` fait de son mieux pour diviser les données afin de s'assurer qu'il y a un nombre adéquat de points de données dans chaque graphique.
+Si vous ne souhaitez pas produire des graphiques avec des données qui se chevauchent dans le graphique, vous pouvez définir l'option `overlap =` ("chevauchement") à `overlap = 0`
+
+Vous pouvez également utiliser la fonction `coplot()` avec des variables de conditionnement factorielles.
+
+Avec `gg_coplot()` (`ggcleveland` :package:) vous devez d'abord définir le facteur comme numérique avant de tracer le graphique et spécifier `overlap=0`.
+
+Par exemple, nous pouvons examiner la relation entre `horn_rings` et `weight` conditionnées par le facteur `food`.
+Le graphique en haut à gauche représente la relation entre `horn_rings` et `weight` pour les licornes avec un faible (`low`) niveau de nutrition.
+Le graphique en bas à droite montre la même relation mais pour les licornes avec un haut (`high`) niveau de nutrition.
 
 ```{r}
 #| label: plot28
+#| fig-cap: Évolution de la relation entre le nombre d'anneaux sur la corne et le poids en fonction du niveau de nutrition chez les licornes (avec R de base).
 #| echo: true
-#| out-width: 75%
 #| fig-align: center
 coplot(horn_rings ~ weight | food, data = licornes)
 ```
 
 ```{r}
+#| label: plot29
+#| fig-cap: Évolution de la relation entre le nombre d'anneaux sur la corne et le poids en fonction du niveau de nutrition chez les licornes (avec `ggcleveland` :package:).
+#| echo: true
+#| fig-align: center
 licornes <- mutate(licornes, food_num = as.numeric(food))
 gg_coplot(licornes,
   x = weight, y = horn_rings,
@@ -704,44 +718,50 @@ gg_coplot(licornes,
 | :--------------------------- | :------ | :-------------------- |
 | nuage de points              | `geom_point()`        | `plot()`                      | 
 | histogramme de fréquence     | `geom_histogram()`        | `hist()`                      | 
-| diagramme en boîte           | `geom_boxplot()`        | `boxplot()`                      | 
-| Cleveland dotplot            | `ggdotchart()`        | `dotchart()`                      | 
-| matrice de nuage de points   | `ggpairs()`        | `pairs()`                      | 
+| boîte à moustache            | `geom_boxplot()`        | `boxplot()`                      | 
+| dotplots de Cleveland        | `ggdotchart()`        | `dotchart()`                      | 
+| diagrammes en paires         | `ggpairs()`        | `pairs()`                      | 
 | graphique de conditionnement | `gg_coplot()`        | `coplot()`                      | 
 
-Nous espérons que vous avez compris qu'il est possible de créer facilement des graphiques exploratoires très instructifs à l'aide des graphiques de base de R ou de ggplot.
+Nous espérons que vous avez compris qu'il est possible de créer facilement des graphiques exploratoires très instructifs à l'aide des graphiques de base de R ou de `ggplot2` :package:.
 Le choix de l'un ou l'autre est entièrement libre (c'est ce qui fait l'intérêt de R, vous pouvez choisir) et nous mélangeons volontiers les deux pour répondre à nos besoins.
-Dans la section suivante, nous verrons comment personnaliser vos graphiques R de base pour leur donner l'aspect que vous souhaitez.
+Dans la section suivante, nous verrons comment personnaliser des graphiques de base de R pour leur donner l'aspect que vous souhaitez.
 
 ## Graphiques multiples {#sec-mult-graphs}
 
-### Base R
+### R de base
 
-Dans la base R, l'une des méthodes les plus courantes pour tracer plusieurs graphiques consiste à utiliser la fonction graphique principale `par()` pour diviser le dispositif de traçage en un certain nombre de sections définies à l'aide de la fonction `mfrow =` pour diviser le dispositif de traçage en plusieurs sections définies.
-Avec cette méthode, vous devez d'abord spécifier le nombre de lignes et de colonnes de tracés que vous souhaitez, puis exécuter le code pour chaque tracé.
-Par exemple, pour tracer deux graphiques côte à côte, nous utiliserions `par(mfrow = c(1, 2))` pour diviser le dispositif en une ligne et deux colonnes.
+Dans la base de R, l'une des méthodes les plus courantes pour tracer plusieurs graphiques consiste à utiliser la fonction graphique principale `par()` pour diviser la fenêtre de graphiques en un certain nombre de sections définies avec l'argument `mfrow =`.
+Avec cette méthode, il faut d'abord spécifier le nombre de lignes, puis de colonnes de graphiques que vous souhaitez, puis exécuter le code pour chaque graphique.
+Par exemple, pour tracer deux graphiques côte à côte, nous utiliserions `par(mfrow = c(1, 2))` pour diviser la fenêtre en une ligne et deux colonnes.
 
 ```{r}
 #| label: plot55
+#| fig-cap: Niveau de douceur des licornes en fonction de leurs a) poids et de leurs b) niveau de nutrition (avec R de base).
 #| echo: true
 #| out-width: 75%
 #| fig-align: center
 par(mfrow = c(1, 2))
 plot(licornes$weight, licornes$fluffyness,
-  xlab = "weight",
-  ylab = "Fluffyness"
-)
-boxplot(fluffyness ~ food, data = licornes, cex.axis = 0.6)
+      xlab = "Poids",
+      ylab = "Niveau de douceur",
+      main = "a)")
+
+
+boxplot(fluffyness ~ food, data = licornes, cex.axis = 0.6,
+      xlab = "Niveau de nutrition",
+      ylab = "Niveau de douceur",
+      main = "b)")
 ```
 
-Une fois que vous avez terminé vos tracés, n'oubliez pas de réinitialiser votre dispositif de traçage à la normale avec `par(mfrow = c(1,1))`.
+Une fois que vous avez terminé vos graphiques, n'oubliez pas de réinitialiser votre fenêtre graphique à la normale avec `par(mfrow = c(1,1))`.
 
-### ggplot
+### `ggplot2` :package:
 
-En plus des fonctions facet_grid() et facet_wrap qui permettent de répéter et d'organiser facilement plusieurs tracés en fonction de variables spécifiques, ggplot permet d'organiser plusieurs ggplots ensemble.
-L'approche que nous recommandons est d'utiliser le paquet `patchwork`.
+En plus des fonctions `facet_grid()` et `facet_wrap()` qui permettent de répéter et d'organiser facilement plusieurs graphiques en fonction de variables spécifiques, il y a beaucoup de manière d'organiser plusieurs graphiques `ggplots2` :package: ensemble.
+L'approche que nous recommandons est d'utiliser le paquet `patchwork` :package:.
 
-Vous devrez d'abord l'installer (si vous ne l'avez pas encore) et créer le fichier `patchwork` :package: disponible.
+Vous devrez d'abord l'installer (si vous ne l'avez pas encore) et l'appeler (`library(patchwork)`).
 
 ```{r}
 #| label: loading-patchwork
@@ -760,13 +780,13 @@ library(patchwork)
 library(patchwork)
 ```
 
-Une note importante : pour ceux qui ont utilisé la base R pour produire leurs chiffres et qui sont familiers avec l'utilisation de `par(mfrow = c(2,2))` (qui permet de tracer quatre figures sur deux lignes et deux colonnes), sachez que cela ne fonctionne pas avec `ggplot2` les objets.
-Vous devrez utiliser soit la fonction `patchwork` ou d'autres paquets tels que `gridArrange` ou `cowplot` ou dissimuler le `ggplot2` objets en grobs.
+Une note importante : pour ceux qui ont utilisé la base R pour produire leurs figures et qui sont familiers avec l'utilisation de `par(mfrow = c(2,2))` (qui permet de tracer quatre figures sur deux lignes et deux colonnes), sachez que cela ne fonctionne pas avec les objets de `ggplot2` :package:.
+Vous devrez utiliser soit le paquet `patchwork` :package: ou d'autres paquets tels que `gridArrange` :package: ou `cowplot` :package: ou convertir le `ggplot` en objets grobs.
 
-Pour tracer les deux tracés ensemble, nous devons assigner chaque figure à un objet distinct, puis utiliser ces objets lorsque nous utilisons la fonction `patchwork`.
+Pour tracer les deux graphiques ensemble, il faut assigner chaque figure à un objet distinct, puis utiliser ces objets lorsque l'on utilise `patchwork` :package:.
 
 Nous pouvons donc générer 2 figures et les assigner à des objets.
-Comme vous pouvez le constater, les figures n'apparaissent pas dans la fenêtre de tracé.
+Comme vous pouvez le constater, les figures n'apparaissent pas dans la fenêtre graphique.
 Elles n'apparaîtront que lorsque vous appellerez l'objet.
 
 ```{r}
@@ -775,69 +795,71 @@ Elles n'apparaîtront que lorsque vous appellerez l'objet.
 #| message: false
 #| out-width: 75%
 #| fig-align: center
-first_figure <- ggplot(
+premiere_figure <- ggplot(
   aes(x = height, y = fluffyness, color = food),
-  data = licornes
-) +
+  data = licornes) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   facet_grid(block ~ p_care)
-second_figure <- ggplot(
+
+
+deuxieme_figure <- ggplot(
   aes(x = weight, y = fluffyness, color = food),
-  data = licornes
-) +
+  data = licornes) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   facet_grid(block ~ p_care)
 ```
 
-Deux options simples et immédiates s'offrent à nous avec le patchwork : disposer les figures les unes sur les autres (spécifiées avec un `/`) ou arranger les figures côte à côte (spécifié avec soit un `+` ou a `|`).
+Deux options simples et immédiates s'offrent à nous avec `patchwork` :package: : disposer les figures les unes sur les autres (spécifiées avec un `/`) ou arranger les figures côte à côte (spécifié soit avec un `+` ou un `|`).
 Essayons de tracer les deux figures, l'une au-dessus de l'autre.
 
 ```{r}
 #| label: side-by-side-patchwork
+#| fig-cap: Exemple de disposition de figures l'une sur l'autre avec `patchwork` :package:.
 #| echo: true
 #| message: false
 #| warning: false
 #| out-width: 85%
 #| fig-align: center
-first_figure / second_figure
+premiere_figure / deuxieme_figure
 ```
 
-*S'amuser* Essayez de créer une version juxtaposée de la figure ci-dessus (indice : essayez les autres opérateurs).
+*Jouons un peu*: Essayez de créer une version juxtaposée de la figure ci-dessus (indice : essayez les autres opérateurs).
 
-Nous pouvons aller plus loin et assigner des opérateurs imbriqués `patchwork` à un objet et l'utiliser à son tour pour créer des étiquettes pour les figures individuelles.
+Nous pouvons aller plus loin et assigner des figures imbriquées `patchwork` :package: à un objet et l'utiliser à son tour pour créer des étiquettes pour les figures individuelles.
 
 ```{r}
 #| label: labelled-nested
+#| fig-cap: Exemple d'utilisation de figures imbriquées `patchowrk` :package:.
 #| message: false
 #| warning: false
 #| out-width: 75%
 #| fig-align: center
-nested_compare <- first_figure / second_figure
+figure_imbriquees <- premiere_figure / deuxieme_figure
 
-nested_compare +
+figure_imbriquees +
   plot_annotation(tag_levels = "A", tag_suffix = ")")
 ```
 
 ## Personnalisation de ggplots {#sec-custom-plot}
 
-**Promenade pour être édité** :licorne :
+**Partir se balader pour être édité** :unicorn:
 
 ## Exportation des parcelles {#sec-export-plots}
 
-Créer des graphiques dans R, c'est bien, mais que faire si vous souhaitez utiliser ces graphiques dans votre thèse, votre rapport ou votre publication ? Une option consiste à cliquer sur le bouton "Exporter" dans l'onglet "Tracés" de RStudio.
-Vous pouvez également exporter vos tracés de R vers un fichier externe en écrivant du code dans votre script R.
+Créer des graphiques dans R, c'est bien, mais que faire si vous souhaitez utiliser ces graphiques dans votre thèse, votre rapport ou votre publication ? Une option consiste à cliquer sur le bouton "Exporter" dans l'onglet "Graphiques" de RStudio.
+Vous pouvez également exporter vos graphiques de R vers un fichier externe en écrivant du code dans votre script R (*option privilégiée*).
 L'avantage de cette approche est que vous avez un peu plus de contrôle sur le format de sortie et qu'elle vous permet également de générer (ou de mettre à jour) des graphiques automatiquement chaque fois que vous exécutez votre script.
-Vous pouvez exporter vos tracés dans de nombreux formats différents, mais les plus courants sont pdf, png, jpeg et tiff.
+Vous pouvez exporter vos figures dans de nombreux formats différents, mais les plus courants sont pdf, png, jpeg et tiff.
 
-Par défaut, R (et donc RStudio) dirige tous les tracés que vous créez vers la fenêtre de tracé.
-Pour enregistrer votre tracé dans un fichier externe, vous devez d'abord rediriger votre tracé vers un périphérique graphique différent.
-Pour ce faire, vous pouvez utiliser l'une des nombreuses fonctions de périphérique graphique pour démarrer un nouveau périphérique graphique.
-Par exemple, pour enregistrer un tracé au format pdf, nous utiliserons la fonction `pdf()` pour sauvegarder un tracé au format pdf.
-Le premier argument de la fonction `pdf()` est le chemin d'accès et le nom du fichier que nous voulons enregistrer (n'oubliez pas d'inclure l'extension .pdf).
-Une fois que nous avons utilisé la fonction `pdf()` nous pouvons alors écrire tout le code que nous avons utilisé pour créer notre graphique, y compris les paramètres graphiques tels que le réglage des marges et la division du dispositif de traçage.
-Une fois le code exécuté, nous devons fermer le dispositif de traçage pdf à l'aide de la fonction `dev.off()` à l'aide de la fonction
+Par défaut, R (et donc RStudio) dirige tous les graphiques que vous créez vers la fenêtre de graphiques.
+Pour enregistrer votre graphique dans un fichier externe, vous devez d'abord rediriger votre graphique vers un périphérique graphique différent.
+Pour ce faire, vous pouvez utiliser l'une des nombreuses fonctions de périphérique graphique pour démarrer une nouvelle fenêtre graphique.
+Par exemple, pour enregistrer un graphique au format pdf, nous utiliserons la fonction `pdf()`.
+Le premier argument de la fonction `pdf()` est le chemin d'accès et le nom du fichier que nous voulons créer (n'oubliez pas d'inclure l'extension .pdf).
+Une fois que nous avons utilisé la fonction `pdf()` nous pouvons alors écrire tout le code que nous avons utilisé pour créer notre graphique, y compris les paramètres graphiques tels que le réglage des marges et la division de la fenêtre graphique.
+Une fois le code exécuté, il faut fermer le dispositif de graphique pdf à l'aide de la fonction `dev.off()`.
 
 ```{r}
 #| label: plot60
@@ -856,7 +878,7 @@ text(x = 28, y = 190, label = "A", cex = 2)
 dev.off()
 ```
 
-Si nous voulons sauvegarder ce tracé au format png, il nous suffit d'utiliser la fonction `png()` plus ou moins de la même manière que nous avons utilisé la fonction `pdf()` de la même manière que nous avons utilisé la fonction
+Si nous voulons sauvegarder ce graphique au format png, il nous suffit d'utiliser la fonction `png()`, plus ou moins de la même manière.
 
 ```{r}
 #| label: plot61
@@ -875,13 +897,13 @@ text(x = 28, y = 190, label = "A", cex = 2)
 dev.off()
 ```
 
-D'autres fonctions utiles sont ; `jpeg()`, `tiff()` et `bmp()`.
-Des arguments supplémentaires à ces fonctions vous permettent de modifier la taille, la résolution et la couleur d'arrière-plan de vos images enregistrées.
+D'autres fonctions utiles sont : `jpeg()`, `tiff()` et `bmp()`.
+Des arguments supplémentaires dans ces fonctions vous permettent de modifier la taille, la résolution et la couleur d'arrière-plan de vos images enregistrées.
 Voir aussi `?png` pour plus de détails.
 
-`ggplot2` :package: fournir une fonction très utile `ggsave()` qui simplifie grandement la sauvegarde des tracés, mais ne fonctionne que pour les ggplots.
+`ggplot2` :package: fournir une fonction très utile : `ggsave()`, qui simplifie grandement la sauvegarde des graphiques, mais ne fonctionne que pour les ggplots.
 
-Après avoir produit un tracé et l'avoir vu dans votre IDE, vous pouvez simplement exécuter ggsave() avec l'argument adéquat pour sauvegarder le dernier ggplot produit.
+Après avoir produit un graphique et l'avoir vu dans votre IDE, vous pouvez simplement exécuter ggsave() avec l'argument adéquat pour sauvegarder le dernier ggplot produit.
 Vous pouvez aussi, bien sûr, spécifier quel tracé doit être sauvegardé.
 
 ```{r}
@@ -889,5 +911,3 @@ Vous pouvez aussi, bien sûr, spécifier quel tracé doit être sauvegardé.
 #| eval: false
 ggsave("file.png")
 ```
-
-
