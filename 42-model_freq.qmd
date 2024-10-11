@@ -25,6 +25,7 @@ Ce laboratoire nécessite:
 library(ggplot2)
 library(car)
 library(lmtest)
+library(vcd)
 library(vcdExtra)
 ```
 
