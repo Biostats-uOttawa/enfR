@@ -11,12 +11,12 @@ Objectifs de ce chapitre:
 ## Paquets R et données requises {#set-t}
 Pour ce laboratoire, vous aurez besoin de :
 
-* Paquets R:
+* Paquets R :
   * `car` :package:
   * `lmtest` :package:
   * `boot` :package:
   * `lmPerm` :package:
-* Jeux de données
+* Jeux de données :
   * "sturgeon.csv"
   * "skulldat_2020.csv"
 
