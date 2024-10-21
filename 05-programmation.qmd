@@ -1,22 +1,25 @@
 # Programmation {#sec-prog-r}
 
-Après avoir appris les bases, la programmation en R est la prochaine étape importante.
-Il existe déjà un grand nombre de paquets R disponibles, ce qui est certainement plus que suffisant pour couvrir tout ce que vous pourriez vouloir faire ? Pourquoi alors créer ses propres fonctions R ? Pourquoi ne pas s'en tenir aux fonctions d'un paquet ? Dans certains cas, vous voudrez personnaliser ces fonctions existantes pour répondre à vos besoins spécifiques.
-Il se peut aussi que vous souhaitiez mettre en œuvre une nouvelle approche, ce qui signifie qu'il n'y aura pas de packages préexistants qui fonctionneront pour vous.
-Ces deux cas de figure ne sont pas particulièrement courants.
-Les fonctions sont principalement utilisées pour faire une chose de manière simple sans avoir à taper le code nécessaire à l'exécution de cette fonction à chaque fois.
-On peut considérer les fonctions comme un raccourci vers le copier-coller.
-Si vous devez effectuer une tâche similaire quatre fois ou plus, créez une fonction pour cela, et appelez simplement cette fonction quatre fois ou appelez-la dans une boucle.
+Maintenant que nous avons appris les bases, la prochaine étape importante dans votre aventure sur R est... ***la programmation*** !
+
+Il existe déjà un grand nombre de paquets R disponibles, ce qui est surement plus que suffisant pour couvrir tout ce que vous pourriez vouloir faire ! Alors, *pourquoi alors créer ses propres fonctions R* ? Pourquoi ne pas s'en tenir aux fonctions d'un paquet ?
+
+Eh bien, dans certains cas, vous voudrez personnaliser ces fonctions pré-existantes pour répondre à vos besoins spécifiques. Il se peut aussi que vous souhaitiez mettre en œuvre une nouvelle approche, ce qui signifie qu'il n'y aura pas de paquets déjà développés qui fonctionneront pour vous (Bon, ces deux cas de figure ne sont pas particulièrement courants).
+
+Les fonctions sont principalement utilisées pour faire une chose de manière simple sans avoir à taper le code nécessaire à chaque fois (ce qui n'est pas très intéressant et peut rapidement surcharger votre script).
+On peut considérer les fonctions comme un raccourci pour copier-coller.
+
+*Si vous devez effectuer une tâche similaire quatre fois ou plus, créez une fonction qui exécute cette tâche, et appelez-la simplement quatre fois, ou encore mieux : appelez-la dans une boucle !*
 
 ## Regarder derrière le rideau
 
-Une bonne façon de commencer à apprendre à programmer en R est de voir ce que d'autres ont fait.
-Nous pouvons commencer par jeter un bref coup d'œil derrière le rideau.
-Avec de nombreuses fonctions en R, si vous voulez jeter un coup d'œil rapide à la machinerie en coulisses, nous pouvons simplement écrire le nom de la fonction, mais sans l'attribut `()`.
+Une bonne façon de commencer à apprendre à programmer en R est de regarder ce que d'autres ont fait avant : Alors, commençons par jeter un bref coup d'œil derrière le rideau !
 
-Notez que l'affichage du code source des paquets R de base (ceux qui sont livrés avec R) nécessite quelques étapes supplémentaires que nous ne couvrirons pas ici (voir ce [lien][show-code] si cela vous intéresse), mais pour la plupart des autres paquets que vous installez vous-même, il suffit généralement d'entrer le nom de la fonction sans la mention`()` affichera le code source de la fonction.
+Pour beaucoup de fonctions en R, si vous voulez jeter un coup d'œil rapide à la machinerie en coulisses, nous pouvons simplement écrire le nom de la fonction, mais sans l'attribut `()`.
 
-Vous pouvez jeter un coup d'oeil à la fonction d'ajustement d'un modèle linéaire `lm()`
+Notez que l'affichage du code source des paquets R de base (ceux qui sont pré-installés avec R) nécessite quelques étapes supplémentaires que nous ne couvrirons pas ici (voir ce [lien][show-code] si cela vous intéresse), mais pour la plupart des autres paquets que vous installez vous-même, il suffit généralement d'entrer le nom de la fonction sans la mention`()` affichera le code source de la fonction.
+
+Vous pouvez regarder comment la fonction d'ajustement d'un modèle linéaire `lm()` est construite :
 
 ```{r}
 #| label: lm-fnc
@@ -24,252 +27,267 @@ lm
 ```
 
 Ce que nous voyons ci-dessus est le code sous-jacent de cette fonction particulière.
-Nous pourrions le copier et le coller dans notre propre script et y apporter toutes les modifications que nous jugerions nécessaires, mais en faisant preuve de prudence et en testant les changements que vous avez apportés.
+Nous pourrions le copier et le coller dans notre propre script et y apporter toutes les modifications que nous jugerions nécessaires, mais en faisant preuve de prudence et en testant les changements apportés.
 
-Ne vous inquiétez pas outre mesure si la majeure partie du code contenu dans les fonctions n'a pas de sens immédiat.
-C'est particulièrement vrai si vous êtes novice en matière de R, auquel cas cela semble incroyablement intimidant. Honnêtement, cela peut être intimidant même après des années d'expérience avec R.
-Pour y remédier, nous commencerons par créer nos propres fonctions en R dans la section suivante.
+Ne vous inquiétez pas outre mesure si la majeure partie du code contenu dans les fonctions n'a pas de sens dans l'immédiat.
+C'est parfaitement normale, surtout si vous êtes novice en matière de R, auquel cas cela semble incroyablement intimidant. Honnêtement, cela peut être intimidant même après des années d'expérience avec R.
+
+Pour remédier à cela, nous commencerons par créer nos propres fonctions en R dans la section suivante.
 
 ## Fonctions en R
 
-Les fonctions sont le pain et le beurre de R, les éléments essentiels qui vous permettent de travailler avec R.
-Elles sont créées (la plupart du temps) avec le plus grand soin et la plus grande attention, mais peuvent finir par ressembler à un monstre de Frankenstein - avec des membres bizarrement attachés.
-Mais aussi alambiqués qu'ils puissent être, ils feront toujours fidèlement la même chose.
+Les fonctions sont le pain et le beurre de R, ce sont les éléments essentiels qui vous permettent de travailler avec R.
+
+Elles sont créées (la plupart du temps) avec le plus grand soin et la plus grande attention, mais peuvent finir par ressembler à un monstre de Frankenstein - avec des membres bizarrement attachés. Mais aussi alambiqués qu'elles puissent être, ils feront toujours fidèlement la même chose.
 
 Cela signifie que les fonctions peuvent également être très stupides.
 
-Si nous vous demandons d'aller au supermarché pour nous procurer des ingrédients pour faire des *du poulet Balmoral* même si vous ne savez pas ce que c'est, vous serez capable de deviner et d'apporter au moins *quelque chose* quelque chose.
-Vous pouvez aussi décider de faire autre chose.
-Ou vous pouvez demander de l'aide à un chef cuisinier.
-Ou vous pouvez sortir votre téléphone et chercher en ligne ce que vous voulez faire. *[Poulet Balmoral][balmoral-ck]* est.
-Le fait est que, même si nous ne vous avons pas donné suffisamment d'informations pour accomplir la tâche, vous êtes suffisamment intelligent pour, au moins, essayer de trouver une solution de contournement.
+Si nous vous demandons d'aller au supermarché pour acheter les ingrédients nécessaires pour faire *un poulet Balmoral* même que vous ne savez pas ce que c'est, vous serez capable de deviner et prendre au moins *quelque articles* (du poulet par exemple). Ou, vous pouvez aussi décider de faire autre chose. Ou vous pouvez demander de l'aide à un chef cuisinier.
+Ou vous pouvez sortir votre téléphone et chercher sur internet, qu'est ce qu'un *[Poulet Balmoral][balmoral-ck]* ?
+Le fait est que, même si nous ne vous avons pas donné suffisamment d'informations pour accomplir la tâche, vous êtes suffisamment intelligent pour, au moins, essayer de trouver une solution.
 
-Si, au contraire, nous demandions à une fonction de faire la même chose, elle écouterait attentivement notre demande, puis renverrait simplement une erreur.
+Si, à la place, nous demandions à une fonction de faire la même chose, elle écouterait attentivement notre demande, puis renverrait simplement une erreur.
 Elle répéterait cela à chaque fois que nous lui demanderions de faire le travail lorsque la tâche n'est pas claire.
-Ce qu'il faut retenir ici, c'est que le code et les fonctions ne peuvent pas trouver de solutions de contournement à des informations mal fournies, ce qui est une excellente chose.
-Il dépend entièrement de vous pour lui dire très explicitement ce qu'il doit faire, étape par étape.
+Ce qu'il faut retenir ici, c'est que le code et les fonctions ne peuvent pas trouver de solutions de contournement pour pallier des informations mal fournies, ce qui est une excellente chose.
+C'est à vous de lui dire très explicitement ce qu'elle doit faire, étape par étape.
 
 N'oubliez pas deux choses : l'intelligence du code vient du codeur, pas de l'ordinateur, et les fonctions ont besoin d'instructions exactes pour fonctionner.
 
-Pour éviter que les fonctions ne soient *trop* stupides, vous devez fournir les informations dont la fonction a besoin pour fonctionner.
-Comme pour la fonction *poulet du Balmoral* si nous avions fourni une liste de recettes à la fonction, tout se serait bien passé.
-C'est ce que nous appelons "remplir un argument".
-La grande majorité des fonctions exigent de l'utilisateur qu'il remplisse au moins un argument.
+Pour éviter que les fonctions ne soient *trop* stupides, vous devez fournir les informations dont la fonction a besoin pour fonctionner. Comme pour l'exemple du *poulet Balmoral* si nous avions fourni une liste d'ingrédients à la fonction, tout se serait bien passé. C'est ce que nous appelons "remplir un argument". La grande majorité des fonctions exigent de l'utilisateur qu'il remplisse au moins un argument.
 
-Ceci peut être illustré dans le pseudocode ci-dessous.
-Lorsque nous créons une fonction, nous pouvons :
+Ceci est illustré dans le pseudocode ci-dessous.
+Lorsque l'on crée une fonction, on peut :
 
-- spécifier les arguments que l'utilisateur doit remplir (*par exemple* `arg1` et `arg2`)
-- fournissent des valeurs par défaut aux arguments (*par exemple* `arg2 = TRUE`)
-- définir ce qu'il faut faire avec les arguments (`expression`) :
+- Spécifier les **arguments** que l'utilisateur doit remplir (*p.e.* `arg1` et `arg2`)
+- Fournir des **valeurs par défaut** aux arguments (*p.e.* `arg2 = TRUE`)
+- Définir **ce qu'il faut faire** avec ces arguments (`expression`) :
 
 ```{r}
 #| label: generic_function
 #| eval: false
-my_function <- function(arg1, arg2, ...) {
+ma_fonction <- function(arg1, arg2, ...) {
   expression
 }
 ```
 
-La première chose à noter est que nous avons utilisé la fonction `function()` pour créer une nouvelle fonction appelée `my_function`.
-Pour parcourir le code ci-dessus, nous créons une fonction appelée `my_function`.
-Entre les crochets ronds, nous spécifions les informations (*c'est-à-dire*
-arguments) dont la fonction a besoin pour fonctionner (autant ou aussi peu que nécessaire).
-Ces arguments sont ensuite transmis à la partie expression de la fonction.
-L'expression peut être n'importe quelle commande R valide ou n'importe quel ensemble de commandes R et est généralement
-entre une paire d'accolades `{ }`.
+La première chose à noter est que nous avons utilisé la fonction `function()` pour créer une nouvelle fonction appelée `ma_fonction`.
+
+Entre les parenthèses `()`, on spécifie les informations (*i.e.,* `arguments`) dont la fonction a besoin pour fonctionner (autant ou aussi peu que nécessaire).
+
+Ces arguments sont ensuite transmis à la partie `expression` de la fonction.
+L'`expression` peut être n'importe quelle commande R valide ou n'importe quel ensemble de commandes R et est généralement
+entre une paire d'accolades `{}`.
+
 Une fois que vous avez exécuté le code ci-dessus, vous pouvez utiliser votre nouvelle fonction en tapant :
 
 ```{r}
 #| label: run_function
 #| eval: false
 #| out-width: 75%
-my_function(arg1, arg2)
+ma_fonction(arg1, arg2)
 ```
 
-Prenons un exemple pour clarifier les choses.
+*Prenons un exemple pour clarifier les choses.*
 
-Tout d'abord, nous allons créer un cadre de données appelé `dishes` où les colonnes `lasagna`, `stovies`, `poutine` et `tartiflette` sont remplis avec 10 valeurs aléatoires tirées d'un sac (à l'aide de la fonction `rnorm()` pour tirer des valeurs aléatoires d'une distribution normale avec une moyenne de 0 et un écart type de 1).
-Nous incluons également un "problème", que nous devrons résoudre plus tard, en incluant 3 `NA` dans la fonction `poutine` (en utilisant `rep(NA, 3)`).
+Tout d'abord, on crée un jeu de données appelé `repas` où les colonnes `lasagnes`, `stovies`, `poutine` et `tartiflette` sont remplis avec 10 valeurs aléatoires tirées d'un sac (à l'aide de la fonction `rnorm()` pour tirer des valeurs aléatoires d'une distribution normale avec une moyenne de 0 et un écart type de 1).
+
+*Nous incluons également un "problème", que nous devrons résoudre plus tard, en incluant 3 `NA` dans la variable `poutine` (en utilisant `rep(NA, 3)`).*
 
 ```{r}
 #| label: dishes-data
 #| out-width: 75%
-dishes <- data.frame(
-  lasagna = rnorm(10),
+repas <- data.frame(
+  lasagnes = rnorm(10),
   stovies = rnorm(10),
   poutine = c(rep(NA, 3), rnorm(7)),
   tartiflette = rnorm(10)
 )
 ```
 
-Supposons que vous souhaitiez multiplier les valeurs des variables `stovies` et `lasagna` et créer un nouvel objet appelé `stovies_lasagna`.
-Nous pouvons le faire "à la main" en utilisant :
+Supposons que vous souhaitiez multiplier les valeurs des variables `stovies` et `lasagnes` pour créer un nouvel objet appelé `stovies_lasagnes`.
+
+Nous pouvons le faire "à la main" :
 
 ```{r}
 #| label: manual
-stovies_lasagna <- dishes$stovies * dishes$lasagna
+stovies_lasagnes <- repas$stovies * repas$lasagnes
 ```
 
-Si c'était tout ce que nous avions à faire, nous pourrions nous arrêter ici.
-R fonctionne avec des vecteurs, de sorte qu'effectuer ce type d'opérations dans R est en fait beaucoup plus simple que dans d'autres langages de programmation, où ce type de code peut nécessiter des boucles (nous disons que R est un langage vectorisé).
-Une chose à garder à l'esprit pour plus tard est que faire ce genre d'opérations avec des boucles peut être beaucoup plus lent que la vectorisation.
+Si c'était tout ce que nous avions à faire, on pourrait s'arrêter là.
 
-Mais que se passe-t-il si nous voulons répéter cette multiplication plusieurs fois ? Supposons que nous voulions multiplier les colonnes `lasagna` et `stovies`, `stovies` et `tartiflette` et `poutine` et `tartiflette`.
-Dans ce cas, nous pouvons copier et coller le code en remplaçant les informations pertinentes.
+> R fonctionne avec des vecteurs, de sorte qu'effectuer ce type d'opérations dans R est en fait beaucoup plus simple que dans d'autres langages de programmation, où ce type de code peut nécessiter des boucles (nous disons que R est un langage *vectorisé*). Une chose à garder à l'esprit pour plus tard est que faire ce genre d'opérations avec des boucles peut être beaucoup plus lent que la vectorisation.
+
+Mais que se passe-t-il si nous voulons répéter cette multiplication plusieurs fois ?
+
+Supposons que nous voulions multiplier les colonnes `lasagnes` et `stovies`, `stovies` et `tartiflette` et `poutine` et `tartiflette`. Dans ce cas, nous pouvons copier et coller le code en remplaçant les informations pertinentes.
 
 ```{r}
 #| label: simple
 #| out-width: 75%
-lasagna_stovies <- dishes$lasagna * dishes$stovies
-stovies_tartiflette <- dishes$stovies * dishes$stovies
-poutine_tartiflette <- dishes$poutine * dishes$tartiflette
+lasagnes_stovies <- repas$lasagnes * repas$stovies
+stovies_tartiflette <- repas$stovies * repas$stovies
+poutine_tartiflette <- repas$poutine * repas$tartiflette
 ```
 
-Bien que cette approche fonctionne, il est facile de faire des erreurs.
-En fait, ici, nous avons "oublié" de modifier `stovies` en `tartiflette` dans la deuxième ligne de code lors du copier-coller.
-C'est là que l'écriture d'une fonction s'avère utile.
-Si nous écrivions cela sous forme de fonction, il n'y aurait qu'une seule source d'erreur potentielle (dans la fonction elle-même) au lieu de nombreuses lignes de code copiées-collées (que nous réduisons également en utilisant une fonction).
+Bien que cette approche fonctionne, il est facile de faire des **erreurs**.
+
+Et en effet, ici, nous avons "oublié" de modifier `stovies` en `tartiflette` dans la deuxième ligne de code lors du copier-coller. C'est là que l'écriture d'une fonction s'avère utile !
+
+Si nous écrivions cela sous forme de fonction, il n'y aurait qu'une seule source d'erreur potentielle (dans la fonction elle-même) au lieu de nombreuses lignes de code copiées-collées.
 
 ::: callout-tip
-En règle générale, si nous devons faire la même chose (par copier/coller et modifier) 3 fois ou plus,
-nous créons une fonction pour cela.
+En règle générale, si nous devons faire la même chose (par copier-coller et modifier) 3 fois ou plus,
+nous créons une fonction pour le faire.
 :::
 
-Dans ce cas, nous utilisons un code assez trivial où il est peut-être difficile de faire une véritable erreur.
-Mais que se passerait-il si nous augmentions la complexité ?
+Dans cet exemple, nous avons utilisé un code assez trivial où il est peut-être difficile de faire une véritable erreur. Mais que se passerait-il si nous augmentions la complexité ?
 
 ```{r}
 #| label: complex
 #| eval: false
-dishes$lasagna * dishes$stovies / dishes$lasagna + (dishes$lasagna * 10^(dishes$stovies))
--dishes$stovies - (dishes$lasagna * sqrt(dishes$stovies + 10))
+repas$lasagnes * repas$stovies / repas$lasagnes + (repas$lasagnes * 10^(repas$stovies))
+- repas$stovies - (repas$lasagnes * sqrt(repas$stovies + 10))
 ```
 
-Imaginez maintenant que vous deviez copier et coller ce code trois fois, et que vous deviez à chaque fois modifier l'élément `lasagna` et `stovies` (surtout si nous devions le faire plus de trois fois).
+Imaginez maintenant que vous deviez copier-coller ce code trois fois, et que vous deviez à chaque fois modifier l'élément `lasagnes` et `stovies` (surtout si nous devions le faire plus de trois fois).
 
-Ce que nous pourrions faire à la place, c'est généraliser notre code pour `x` et `y` au lieu de nommer des plats spécifiques.
-En procédant de la sorte, nous pourrions recycler la `x * y` code.
-Chaque fois que nous voulions regrouper plusieurs colonnes, nous assignions une parabole à l'un ou l'autre des éléments suivants `x` ou `y`.
-Nous attribuerons la multiplication aux objets `lasagna_stovies` et `stovies_poutine` afin de pouvoir y revenir plus tard.
+Ce que nous pourrions faire à la place, c'est généraliser notre code pour `x` et `y` au lieu de nommer des plats spécifiques. En procédant de la sorte, nous pourrions recycler le code `x * y`. Chaque fois que nous voulions regrouper plusieurs colonnes, nous assignions un plat à `x` ou `y`.
+
+Nous attribuerons la multiplication aux objets `lasagnes_stovies` et `stovies_poutine` afin de pouvoir y revenir plus tard.
 
 ```{r}
 #| label: manual_function
 #| eval: false
-# Assign x and y values
-x <- dishes$lasagna
-y <- dishes$stovies
+# Définir les valeurs x et y
+x <- repas$lasagnes
+y <- repas$stovies
 
-# Use multiplication code
-lasagna_stovies <- x * y
+# Utiliser le code de multiplication
+lasagnes_stovies <- x * y
 
-# Assign new x and y values
-x <- dishes$stovies
-y <- dishes$poutine
+# Définir les nouvelles valeurs x et y
+x <- repas$stovies
+y <- repas$poutine
 
-# Reuse multiplication code
+# Ré-utiliser le code de multiplication
 stovies_poutine <- x * y
 ```
 
 C'est essentiellement ce que fait une fonction.
-Appelons notre nouvelle fonction `multiply_cols()` et définissons-la avec deux arguments, `x` et `y`.
-Une fonction dans R renvoie simplement sa dernière valeur. Toutefois, il est possible de forcer la fonction à renvoyer une valeur antérieure si cela s'avère nécessaire.
-Pour ce faire, il suffit d'utiliser la fonction `return()` n'est pas strictement nécessaire dans cet exemple car R retournera automatiquement la valeur de la dernière ligne de code de notre fonction.
-Nous l'incluons ici pour l'expliciter.
+
+Appelons notre nouvelle fonction `col_multiplicateur()` et définissons-la avec deux arguments, `x` et `y`.
+
+Une fonction dans R renvoie simplement sa dernière valeur. Toutefois, il est possible de forcer la fonction à renvoyer une valeur antérieure si cela s'avère nécessaire. Pour ce faire, il suffit d'utiliser la fonction `return()`
+
+> Ce n'est pas strictement nécessaire dans cet exemple car R retournera automatiquement la valeur de la dernière ligne de code de notre fonction. Nous l'incluons ici pour l'expliciter.
 
 ```{r}
 #| label: first_function
-multiply_cols <- function(x, y) {
+col_multiplicateur <- function(x, y) {
   return(x * y)
 }
 ```
 
-Maintenant que nous avons défini notre fonction, nous pouvons l'utiliser.
-Utilisons la fonction pour multiplier les colonnes `lasagna` et `stovies` et assigner le résultat à un nouvel objet appelé `lasagna_stovies_func`
+Maintenant que nous avons défini notre fonction, nous pouvons l'utiliser, ou "l'appeler".
+
+Utilisons la fonction pour multiplier les colonnes `lasagnes` et `stovies` en assignant le résultat à un nouvel objet appelé `lasagna_stovies_func`
 
 ```{r}
 #| label: first_function2
-lasagna_stovies_func <- multiply_cols(x = dishes$lasagna, y = dishes$stovies)
-lasagna_stovies_func
+lasagnes_stovies_fonc <- col_multiplicateur(x = repas$lasagnes, y = repas$stovies)
+lasagnes_stovies_fonc
 ```
 
-Si nous ne nous intéressons qu'à la multiplication `dishes$lasagna` et `dishes$stovies` il serait exagéré de créer une fonction pour faire quelque chose une seule fois.
-Cependant, l'avantage de créer une fonction est que nous avons maintenant cette fonction ajoutée à notre environnement que nous pouvons utiliser aussi souvent que nous le souhaitons.
-Nous disposons également du code pour créer la fonction, ce qui signifie que nous pouvons l'utiliser dans des projets entièrement nouveaux, réduisant ainsi la quantité de code qui doit être écrite (et testée à nouveau) à partir de zéro à chaque fois.
+Si on ne s'intéresse qu'à la multiplication de `repas$lasagnes` par `repas$stovies` ce serait exagéré de créer une fonction pour faire quelque chose une seule fois.
 
-Pour s'assurer que la fonction a fonctionné correctement, nous pouvons comparer le code `lasagna_stovies` avec notre nouvelle variable `lasagna_stovies_func` à l'aide de la fonction `identical()` fonction.
-La fonction `identical()` teste si deux objets sont *exactement* identiques et renvoie soit un `TRUE` ou `FALSE` valeur.
-Utiliser `?identical` pour en savoir plus sur cette fonction.
+Cependant, l'avantage de créer une fonction est que nous avons maintenant cette fonction ajoutée à notre environnement et que nous pouvons l'utiliser aussi souvent que souhaité.
+
+Nous disposons également du code pour créer la fonction, ce qui signifie que nous pouvons l'utiliser dans des projets entièrement nouveaux, réduisant ainsi la quantité de code à écrire (et à tester) à chaque fois.
+
+Pour s'assurer que la fonction a fonctionné correctement, nous pouvons comparer la variable `lasagnes_stovies` avec notre nouvelle variable `lasagnes_stovies_fonc` à l'aide de la fonction `identical()`.
+
+La fonction `identical()` teste si deux objets sont *exactement* identiques et renvoie un `TRUE` ou `FALSE`.
+
+Tapez `?identical` dans la console pour en savoir plus sur cette fonction.
 
 ```{r}
 #| label: identical_check
-identical(lasagna_stovies, lasagna_stovies_func)
+identical(lasagnes_stovies, lasagnes_stovies_fonc)
 ```
 
-Et nous confirmons que la fonction a produit le même résultat que lorsque nous effectuons le calcul manuellement.
+Et nous confirmons que la fonction a produit le même résultat que le calcul manuel.
 Nous vous recommandons de prendre l'habitude de vérifier que la fonction que vous avez créée fonctionne comme vous le pensez.
 
-Utilisons maintenant notre `multiply_cols()` pour multiplier les colonnes `stovies` et `poutine`.
-Remarquez maintenant que l'argument `x` reçoit la valeur `dishes$stovies`et `y` la valeur `dishes$poutine`.
+Utilisons maintenant notre `col_multiplicateur()` pour multiplier les colonnes `stovies` et `poutine`.
+Remarquez maintenant que l'argument `x` reçoit la valeur `repas$stovies`et `y` la valeur `repas$poutine`.
 
 ```{r}
 #| label: calc_w_na
 #| eval: true
-stovies_poutine_func <- multiply_cols(x = dishes$stovies, y = dishes$poutine)
-stovies_poutine_func
+stovies_poutine_fonc <- col_multiplicateur(x = repas$stovies, y = repas$poutine)
+stovies_poutine_fonc
 ```
 
 Jusqu'à présent, tout va bien.
-Tout ce que nous avons fait, c'est envelopper le code `x * y` dans une fonction, où nous demandons à l'utilisateur de spécifier ce que son `x` et `y` sont.
 
-L'utilisation de la fonction est un peu longue car nous devons retaper le nom de la base de données pour chaque variable.
-Pour nous amuser un peu, nous pouvons modifier la fonction afin de spécifier le cadre de données en tant qu'argument et les noms des colonnes sans les mettre entre guillemets (comme dans le style tidyverse).
+Tout ce que nous avons fait, c'est envelopper le code `x * y` dans une fonction, où nous demandons à l'utilisateur de spécifier à quoi correspondent `x` et `y`.
+
+L'utilisation de la fonction est un peu longue car nous devons retaper le nom du jeu de données pour chaque variable. Pour nous amuser un peu, nous pouvons modifier la fonction afin de spécifier le jeu de données en tant qu'argument et les noms des colonnes sans les mettre entre guillemets (comme dans le style `tidyverse` :package:).
 
 ```{r}
 #| label: tidy-mult
 #| code-line-numbers: true
 
-multiply_cols <- function(data, x, y) {
-  temp_var <- data %>%
+col_multiplicateur <- function(données, x, y) {
+  temp_var <- données %>%
     select({{ x }}, {{ y }}) %>%
     mutate(xy = prod(.)) %>%
     pull(xy)
 }
 ```
 
-Pour cette nouvelle version de la fonction, nous avons ajouté un paramètre `data` à la ligne 1. A la ligne 3, nous sélectionnons les variables x et y fournies comme arguments. A la ligne 4, nous créons le produit des 2 colonnes sélectionnées et à la ligne 5, nous extrayons la colonne que nous venons de créer.
-Nous supprimons également la `return()` puisqu'elle n'était pas nécessaire
+Pour cette nouvelle version de la fonction, nous avons ajouté un paramètre `données` à la ligne 1.
 
-Notre fonction est maintenant compatible avec le pipe (soit en natif `|>` ou magrittr `%>%`).
-Toutefois, étant donné que la fonction utilise désormais le tuyau de `magrittr` :package: et `dplyr` :package:, nous devons charger le paquet :package: de tidyverse pour qu'elle fonctionne.
+À la ligne 3, nous sélectionnons les variables x et y fournies comme arguments.
+
+À la ligne 4, nous créons le produit des 2 colonnes sélectionnées et
+
+À la ligne 5, nous extrayons la colonne que nous venons de créer.
+
+Nous supprimons également la fonction `return()` puisqu'elle n'était pas nécessaire
+
+Notre fonction est maintenant compatible avec la fonction tuyau, ou "pipe" (soit en natif `|>` ou `magrittr` :package: `%>%`).
+Toutefois, étant donné que la fonction utilise désormais le pipe de `magrittr` :package: et `dplyr` :package:, il faut charger le paquet `tidyverse` :package: pour qu'elle fonctionne.
 
 ```{r}
 #| label: mult-pipe
 library(tidyverse)
-lasagna_stovies_func <- multiply_cols(dishes, lasagna, stovies)
-lasagna_stovies_func <- dishes |> multiply_cols(lasagna, stovies)
+lasagnes_stovies_fonc <- col_multiplicateur(repas, lasagnes, stovies)
+lasagnes_stovies_fonc <- repas |> col_multiplicateur(lasagnes, stovies)
 ```
 
 Ajoutons maintenant un peu plus de complexité.
-Si vous regardez la sortie de `poutine_tartiflette` certains des calculs ont produit `NA` valeurs.
-Cela s'explique par le fait que les `NA` que nous avons incluses dans `poutine` lorsque nous avons créé l'élément `dishes` cadre de données.
-Malgré ces `NA` valeurs, la fonction semble avoir fonctionné, mais elle ne nous a donné aucune indication quant à l'existence d'un problème.
+
+Si vous regardez la sortie de `poutine_tartiflette` certains des calculs ont produit des valeurs `NA`.
+Cela s'explique par le fait qu'il y a des `NA` dans `poutine` (incluses lorsque nous avons créé le jeu de données `repas`).
+Malgré ces `NA`, la fonction semble avoir fonctionné, mais elle ne nous a donné aucune indication quant à l'existence d'un problème.
 Dans ce cas, nous préférerions qu'elle nous avertisse que quelque chose ne va pas.
-Comment pouvons-nous faire en sorte que la fonction nous informe lorsque `NA` sont produites ? Voici une solution.
+
+Comment pouvons-nous faire en sorte que la fonction nous informe lorsque des `NA` sont produites ? Voici une solution.
 
 ```{r}
 #| label: mult-example
 #| code-line-numbers: true
 
-multiply_cols <- function(data, x, y) {
-  temp_var <- data %>%
+col_multiplicateur <- function(données, x, y) {
+  temp_var <- données %>%
     select({{ x }}, {{ y }}) %>%
     mutate(xy = {
       .[1] * .[2]
     }) %>%
     pull(xy)
   if (any(is.na(temp_var))) {
-    warning("The function has produced NAs")
+    warning("La fonction a produit des NA")
     return(temp_var)
   } else {
     return(temp_var)
@@ -278,24 +296,29 @@ multiply_cols <- function(data, x, y) {
 ```
 
 ```{r}
-stovies_poutine_func <- multiply_cols(dishes, stovies, poutine)
-lasagna_stovies_func <- multiply_cols(dishes, lasagna, stovies)
+stovies_poutine_fonc <- col_multiplicateur(repas, stovies, poutine)
+lasagnes_stovies_fonc <- col_multiplicateur(repas, lasagnes, stovies)
 ```
 
 Le cœur de notre fonction reste le même, mais nous avons maintenant six lignes de code supplémentaires (lignes 6 à 11).
-Nous avons inclus des instructions conditionnelles, `if` (lignes 6-8) et `else` (lignes 9-11), afin de tester si un `NA`ont été produites et, si c'est le cas, nous affichons un message d'avertissement à l'intention de l'utilisateur.
-La section suivante de ce chapitre explique le fonctionnement et l'utilisation de ces fonctions.
 
-## Déclarations conditionnelles
+Nous avons inclus des ***structures conditionnelles***, `if` (lignes 6-8) et `else` (lignes 9-11), afin de tester si des `NA`ont été produits et, si c'est le cas, nous affichons un message d'avertissement à l'intention de l'utilisateur.
+
+La section suivante de ce chapitre explique le fonctionnement et l'utilisation de ces structures conditionnelles.
+
+## Structures conditionnelles
 
 `x * y` n'applique aucune logique.
 Il prend simplement la valeur de `x` et la multiplie par la valeur de `y`.
-Les instructions conditionnelles permettent d'injecter de la logique dans votre code.
-L'instruction conditionnelle la plus couramment utilisée est `if`.
-Chaque fois que vous voyez un `if` lisez-le comme * Si X est VRAI, faites une chose".*.
-Incluant un `else` permet simplement d'étendre la logique à * Si X est VRAI, faites une chose, ou bien faites quelque chose de différent.*.
+Les structures conditionnelles permettent d'injecter de la logique dans votre code.
 
-Les deux `if` et `else` vous permettent d'exécuter des sections de code, en fonction d'une condition qui est soit `TRUE` ou `FALSE`.
+La structure conditionnelle la plus couramment utilisée est `if`.
+Chaque fois que vous voyez un `if` lisez-le comme *"Si X est VRAI, fait quelque chose"*.
+
+Inclure un `else` permet simplement d'étendre la logique à *"Si X est VRAI, fait quelque chose, sinon fait autre chose"*.
+
+`if` et `else` vous permettent d'exécuter des sections de code, en fonction d'une condition qui est soit `TRUE` ou `FALSE`.
+
 Le pseudo-code ci-dessous vous montre la forme générale.
 
 ```r
@@ -308,66 +331,69 @@ Le pseudo-code ci-dessous vous montre la forme générale.
 
 Pour approfondir la question, nous pouvons utiliser une vieille blague de programmeur pour poser un problème.
 
-> Le partenaire d'un programmeur dit : * Allez au magasin acheter une brique de lait et, s'il y a des œufs, prenez-en six.*
+> Le partenaire d'un.e. programmeu.r.se dit : "S'il-te-plaît, va au magasin et achète une brique de lait, s'ils ont des œufs, prends-en 6".
 > 
-> Le programmeur est revenu avec 6 briques de lait.
+> Le.la programmeu.r.se revient avec 6 briques de lait.
 > 
-> Lorsque le partenaire s'en aperçoit, il s'exclame * Pourquoi diable as-tu acheté six briques de lait ?*
+> Lorsque le partenaire s'en aperçoit, il s'exclame : "Pourquoi diable as-tu acheté 6 briques de lait ?"
 > 
-> Le programmeur a répondu *"Ils avaient des œufs*
+> Le.la programmeu.r.se répond *"Ils avaient des œufs"*
 
 Au risque d'expliquer une blague, l'énoncé conditionnel ici est de savoir si le magasin avait ou non des œufs.
-Si le codage est conforme à la demande initiale, le programmeur doit apporter 6 briques de lait si le magasin a des œufs (condition = VRAI), ou apporter 1 brique de lait s'il n'y a pas d'œufs (condition = FAUX).
+Si le codage est conforme à la demande initiale, le.la programmeu.r.se doit apporter 6 briques de lait si le magasin a des œufs (condition = VRAI), ou apporter 1 brique de lait s'il n'y a pas d'œufs (condition = FAUX).
+
 Dans R, cela est codé comme suit :
 
 ```{r}
 #| label: joke_logic
-eggs <- TRUE # Whether there were eggs in the store
+oeufs <- TRUE # Est-ce qu'il y a des œufs au magasin
 
-if (eggs == TRUE) { # If there are eggs
-  n.milk <- 6 # Get 6 cartons of milk
-} else { # If there are not eggs
-  n.milk <- 1 # Get 1 carton of milk
+if (oeufs == TRUE) { # S'il y a des œufs
+  n.lait <- 6 # Prend 6 briques de lait
+} else { # S'il n'y a pas d'œufs
+  n.lait <- 1 # Prend 1 brique de lait
 }
 ```
 
-Nous pouvons alors vérifier `n.milk` le nombre de briques de lait qu'ils ont ramenées.
+Nous pouvons alors vérifier `n.lait` le nombre de briques de lait que le.la programmeu.r.se a ramenées.
 
 ```{r}
 #| label: n_milk
-n.milk
+n.lait
 ```
 
-Et comme dans la blague, notre code R n'a pas compris que la condition était de déterminer s'il fallait ou non acheter des œufs, et non plus du lait (il s'agit en fait d'un exemple libre du [schéma de Winograd][winograd] conçu pour tester la condition*l'intelligence* d'une intelligence artificielle en fonction de sa capacité à raisonner sur le sens d'une phrase).
+Et comme dans la blague, notre code R n'a pas compris que la condition était de déterminer s'il fallait ou non acheter des œufs, et non plus du lait (il s'agit en fait d'un exemple libre du [schéma de Winograd][winograd] conçu pour tester la condition *d'intelligence* d'une intelligence artificielle en fonction de sa capacité à raisonner sur le sens d'une phrase).
 
-Nous pourrions coder exactement la même instruction conditionnelle de blague œuf-lait à l'aide d'un `ifelse()` fonction.
+Nous pourrions coder exactement la même structure conditionnelle de blague œuf-lait à l'aide de la fonction `ifelse()`.
 
 ```{r}
 #| label: ifelse
-eggs <- TRUE
-n.milk <- ifelse(eggs == TRUE, yes = 6, no = 1)
+oeufs <- TRUE
+n.lait <- ifelse(oeufs == TRUE, yes = 6, no = 1)
 ```
 
-Cette `ifelse()` fait exactement la même chose que la version plus étoffée de tout à l'heure, mais elle est maintenant condensée en une seule ligne de code.
-Elle présente l'avantage supplémentaire de travailler sur des vecteurs plutôt que sur des valeurs individuelles (nous y reviendrons plus tard lorsque nous introduirons les boucles).
-La logique est lue de la même manière : "S'il y a des oeufs, assignez une valeur de 6 à `n.milk` s'il n'y a pas d'oeufs, assigner la valeur 1 à `n.milk`".
+`ifelse()` fait exactement la même chose que la version plus étoffée de tout à l'heure, mais elle est maintenant condensée en une seule ligne de code.
+
+Elle présente l'avantage supplémentaire de travailler sur des vecteurs plutôt que sur des valeurs individuelles (nous y reviendrons plus tard lorsque nous introduirons les **boucles**).
+La logique est lue de la même manière : "S'il y a des oeufs, assignez une valeur de 6 à `n.lait` s'il n'y a pas d'oeufs, assigner la valeur 1 à `n.lait`".
 
 Nous pouvons vérifier à nouveau que la logique renvoie toujours 6 briques de lait :
 
 ```{r}
 #| label: ifelse_check
-n.milk
+n.lait
 ```
 
-Actuellement, nous devrions copier et coller du code si nous voulions changer la présence ou l'absence d'œufs dans le magasin.
+Actuellement, il faudrait copier-coller du code pour changer la présence ou l'absence d'œufs dans le magasin.
 Nous avons appris plus haut comment éviter de nombreux copier-coller en créant une fonction.
-Comme avec la simple fonction `x * y` de notre précédente expression `multiply_cols()` les déclarations logiques ci-dessus sont simples à coder et se prêtent bien à la transformation en fonction.
+Comme avec la simple fonction `x * y` de notre précédente fonction `col_multiplicateur()` les déclarations logiques ci-dessus sont simples à coder et se prêtent bien à la transformation en fonction.
+
 Et si nous faisions justement cela et enveloppions cette déclaration logique dans une fonction ?
 
 ```{r}
 #| label: joke_function
-milk <- function(eggs) {
-  if (eggs == TRUE) {
+lait <- function(oeufs) {
+  if (oeufs == TRUE) {
     6
   } else {
     1
@@ -375,48 +401,55 @@ milk <- function(eggs) {
 }
 ```
 
-Nous avons créé une fonction appelée `milk()` dont le seul argument est `eggs`.
-L'utilisateur de la fonction spécifie si les œufs sont soit `TRUE` ou `FALSE` et la fonction utilisera alors une instruction conditionnelle pour déterminer le nombre de cartons de lait renvoyés.
+Nous avons créé une fonction appelée `lait()` dont le seul argument est `oeufs`.
+L'utilisateur de la fonction spécifie si les œufs sont soit `TRUE` ou `FALSE` et la fonction utilisera alors une structure conditionnelle pour déterminer le nombre de cartons de lait renvoyés.
 
 Essayons rapidement :
 
 ```{r}
 #| label: joke_func_check
-milk(eggs = TRUE)
+lait(oeufs = TRUE)
 ```
 
 Et la plaisanterie est maintenue.
-Remarquez que, dans ce cas, nous avons spécifié que nous remplissons la fonction `eggs` (`eggs = TRUE`).
+
+Remarquez que, dans ce cas, nous avons spécifié que nous remplissons l'argument `oeufs` (`oeufs = TRUE`).
 Dans certaines fonctions, comme la nôtre ici, lorsqu'une fonction n'a qu'un seul argument, nous pouvons être paresseux et ne pas nommer l'argument que nous remplissons.
 En réalité, on considère généralement qu'il est préférable d'indiquer explicitement les arguments que l'on remplit afin d'éviter les erreurs potentielles.
 
-OK, revenons à la fonction `multiply_cols()` que nous avons créée ci-dessus et expliquons comment nous avons utilisé des instructions conditionnelles pour avertir l'utilisateur si `NA` sont produites lorsque nous multiplions deux colonnes.
+OK, revenons à la fonction `col_multiplicateur()` que nous avons créée ci-dessus et expliquons comment nous avons utilisé des structures conditionnelles pour avertir l'utilisateur si des `NA` sont produites lorsque nous multiplions deux colonnes.
 
 ```{r}
 #| label: mult-example
 ```
 
-Dans cette nouvelle version de la fonction, nous utilisons toujours `x * y` comme auparavant, mais cette fois nous avons assigné les valeurs de ce calcul à un vecteur temporaire appelé `temp_var` afin de pouvoir l'utiliser dans nos instructions conditionnelles.
-Notez que ce `temp_var` est *locale* à notre fonction et n'existera pas en dehors de la fonction en raison de ce que l'on appelle les règles de cadrage de R . [règles de cadrage de R][cadrage] .
-Nous utilisons ensuite un `if` pour déterminer si notre `temp_var` contient des `NA` valeurs.
-Pour ce faire, nous utilisons d'abord la fonction `is.na()` pour vérifier si chaque valeur de notre `temp_var` est un `NA`.
-Les `is.na()` renvoie `TRUE` si la valeur est un `NA` et `FALSE` si la valeur n'est pas un `NA`.
-Nous imbriquons ensuite le `is.na(temp_var)` à l'intérieur de la fonction `any()` pour vérifier si **une** des valeurs retournées par `is.na(temp_var)` sont `TRUE`.
-Si au moins une valeur est `TRUE` l'une `any()` renverra une valeur `TRUE`.
-Ainsi, s'il existe des `NA` valeurs dans notre `temp_var` la condition pour le `if()` sera `TRUE` alors que s'il n'y a pas de `NA` valeurs présentes, la condition sera `FALSE`.
-Si la condition est `TRUE` la `warning()` génère un message d'avertissement à l'intention de l'utilisateur et renvoie la valeur de la fonction `temp_var` variable.
-Si la condition est `FALSE` le code sous le `else` est exécuté, ce qui renvoie simplement la valeur `temp_var` .
+Dans cette nouvelle version de la fonction, on utilise toujours `x * y`, mais cette fois nous avons assigné les valeurs de ce calcul à un vecteur temporaire appelé `temp_var` afin de pouvoir l'utiliser dans nos structures conditionnelles.
 
-Ainsi, si nous exécutons notre `multiple_columns()` sur les colonnes `dishes$stovies` et `dishes$poutine` (qui contient `NA`s), nous recevrons un message d'avertissement.
+> Notez que ce `temp_var` est *locale* à notre fonction et n'existera pas en dehors de la fonction en raison de ce que l'on appelle les [règles de cadrage de R][scoping].
+
+Nous utilisons ensuite un `if` pour déterminer si notre `temp_var` contient des `NA` valeurs.
+Pour ce faire, nous utilisons la fonction `is.na()` pour vérifier si chaque valeur de notre `temp_var` est un `NA`.
+
+> `is.na()` renvoie `TRUE` si la valeur est un `NA` et `FALSE` si la valeur n'est pas un `NA`.
+
+Nous imbriquons ensuite le `is.na(temp_var)` à l'intérieur de la fonction `any()` pour vérifier si **au moins une** des valeurs retournées par `is.na(temp_var)` est `TRUE`. Si c'est le cas, `any()` renverra une valeur `TRUE`.
+
+Ainsi, s'il existe des `NA` dans notre `temp_var` la condition pour le `if()` sera `TRUE` alors que s'il n'y a pas de `NA`, la condition sera `FALSE`.
+
+Si la condition est `TRUE` la fonction `warning()` génère un message d'avertissement à l'intention de l'utilisateur et renvoie la valeur de la variable `temp_var`.
+
+Si la condition est `FALSE` le code sous la condition `else` est exécuté, ce qui renvoie simplement la valeur `temp_var` .
+
+Ainsi, si nous exécutons notre `col_multiplicateur()` sur les colonnes `repas$stovies` et `repas$poutine` (qui contient `NA`s), nous recevrons un message d'avertissement.
 
 ```{r}
-stovies_poutine_func <- multiply_cols(dishes, stovies, poutine)
+stovies_poutine_fonc <- col_multiplicateur(repas, stovies, poutine)
 ```
 
 En revanche, si nous multiplions deux colonnes qui ne contiennent pas de `NA` nous ne recevons pas de message d'avertissement
 
 ```{r}
-lasagna_stovies_func <- multiply_cols(dishes, lasagna, stovies)
+lasagnes_stovies_fonc <- col_multiplicateur(repas, lasagnes, stovies)
 ```
 
 ## Combinaison d'opérateurs logiques
