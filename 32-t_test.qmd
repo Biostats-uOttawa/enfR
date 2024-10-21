@@ -268,7 +268,7 @@ Dans le jeu de données `crane`, il y a 3 colonnes:
 head(crane)
 ```
 
-Quand les données sont appariées, il faut indiquer comment elle doivent être associées. Dans notre exemple, elles sont appariées par individu. Le format de données de type *long* indique cet appariement via la colonne `id`. Cependant, la fonction `t.test` ne permet pas de le prendre en compte. Il faut donc transformer les données en format de type *large* ou *horizontale* ou il y a une colonne différente pour chaque catégorie.
+Quand les données sont appariées, il faut indiquer comment elles doivent être associées. Dans notre exemple, elles sont appariées par individu. Le format de données de type *long* indique cet appariement via la colonne `id`. Cependant, la fonction `t.test` ne permet pas de le prendre en compte. Il faut donc transformer les données en format de type *large* ou *horizontale* ou il y a une colonne différente pour chaque catégorie.
 Dans notre exemple, on veut un jeu de données avec une colonne de mesure par age et où chaque ligne correspond à une personne différente. On peut modifier le format des données avec le code suivant.
 
 ```{r}
