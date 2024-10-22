@@ -238,15 +238,15 @@ L'utilisation de la fonction est un peu longue car nous devons retaper le nom du
 #| label: tidy-mult
 #| code-line-numbers: true
 
-col_multiplicateur <- function(données, x, y) {
-  temp_var <- données %>%
+col_multiplicateur <- function(donnees, x, y) {
+  temp_var <- donnees %>%
     select({{ x }}, {{ y }}) %>%
     mutate(xy = prod(.)) %>%
     pull(xy)
 }
 ```
 
-Pour cette nouvelle version de la fonction, nous avons ajouté un paramètre `données` à la ligne 1.
+Pour cette nouvelle version de la fonction, nous avons ajouté un paramètre `donnees` à la ligne 1.
 
 À la ligne 3, nous sélectionnons les variables x et y fournies comme arguments.
 
@@ -279,8 +279,8 @@ Comment pouvons-nous faire en sorte que la fonction nous informe lorsque des `NA
 #| label: mult-example
 #| code-line-numbers: true
 
-col_multiplicateur <- function(données, x, y) {
-  temp_var <- données %>%
+col_multiplicateur <- function(donnees, x, y) {
+  temp_var <- donnees %>%
     select({{ x }}, {{ y }}) %>%
     mutate(xy = {
       .[1] * .[2]
@@ -454,56 +454,54 @@ lasagnes_stovies_fonc <- col_multiplicateur(repas, lasagnes, stovies)
 
 ## Combinaison d'opérateurs logiques
 
-Les fonctions que nous avons créées jusqu'à présent étaient parfaitement adaptées à nos besoins, même si elles étaient assez simplistes.
+Les fonctions que nous avons créées jusqu'à présent sont parfaitement adaptées à nos besoins, bien qu'elles soient assez simplistes.
 Essayons de créer une fonction un peu plus complexe.
-Nous allons créer une fonction permettant de déterminer si la journée d'aujourd'hui sera bonne ou non en fonction de deux critères.
-Le premier critère dépendra du jour de la semaine (vendredi ou non) et le second sera de savoir si votre code fonctionne ou non (VRAI ou FAUX).
-Pour ce faire, nous utiliserons `if` et `else` et des déclarations.
-La complexité viendra de `if` des déclarations qui suivent immédiatement les `else` pertinente.
-Nous utiliserons ces instructions conditionnelles quatre fois pour obtenir toutes les combinaisons possibles, qu'il s'agisse d'un vendredi ou non, et pour savoir si votre code fonctionne ou non.
 
-Nous avons également utilisé l'instruction `cat()` pour produire un texte formaté correctement.
+Nous allons créer une fonction permettant de déterminer si la journée d'aujourd'hui sera bonne ou non en fonction de deux critères : le *jour de la semaine* (vendredi ou non) et *est-ce que votre code fonctionne ou non* (VRAI ou FAUX).
+
+Pour ce faire, nous utiliserons les structures conditonnelles `if` et `else`. *La complexité vient ici des `if` qui suivent immédiatement les `else`*. Nous utiliserons ces instructions conditionnelles quatre fois pour obtenir toutes les combinaisons possibles, qu'il s'agisse d'un vendredi ou non, et que votre code fonctionne ou non.
+
+Nous utilisons également la fonction `cat()` pour produire un texte formaté correctement.
 
 ```{r}
-good.day <- function(code.working, day) {
-  if (code.working == TRUE && day == "Friday") {
+bonne.journee <- function(code.fonctionne, jours) {
+  if (code.fonctionne == TRUE && jours == "Vendredi") {
     cat(
-  "BEST.
-  DAY.
-    EVER.
-      Stop while you are ahead and go to the pub!"
+  "MEILLEURE.
+  JOURNÉE.
+    DE TOUS LES TEMPS.
+      Arrête-toi là tant que ça dure et va au bar !"
     )
-  } else if (code.working == FALSE && day == "Friday") {
-    cat("Oh well, but at least it's Friday! Pub time!")
-  } else if (code.working == TRUE && day != "Friday") {
+  } else if (code.fonctionne == FALSE && jours == "Vendredi") {
+    cat("Bon... Au moins c'est vendredi ! Apéro !")
+  } else if (code.fonctionne == TRUE && jours != "Vendredi") {
     cat("
-  So close to a good day...
-  shame it's not a Friday"
-    )
-  } else if (code.working == FALSE && day != "Friday") {
-    cat("Hello darkness.")
+  On était si proche d'une bonne journée...
+  Mais c'est pas vendredi"
+   )
+  } else if (code.fonctionne == FALSE && jours != "Vendredi") {
+    cat("Le monde est contre moi.")
   }
 }
 ```
 
 ```{r}
-good.day(code.working = TRUE, day = "Friday")
+bonne.journee(code.fonctionne = TRUE, jours = "Vendredi")
 
-good.day(FALSE, "Tuesday")
+bonne.journee(FALSE, "Tuesday")
 ```
 
-Vous avez remarqué que nous n'avons jamais spécifié ce qu'il fallait faire si le jour n'était pas un vendredi ? C'est parce que, pour cette fonction, la seule chose qui compte est de savoir si c'est un vendredi ou non.
+Vous avez remarqué que nous n'avons jamais spécifié ce qu'il fallait faire si le jour n'était pas un `"Vendredi"` ? C'est parce que, pour cette fonction, la seule chose qui compte est de savoir si c'est un vendredi (`==`) ou non (`!=`).
 
-Nous avons également utilisé des opérateurs logiques chaque fois que nous avons utilisé la fonction `if` à chaque fois que nous avons utilisé des instructions.
-Les opérateurs logiques sont la dernière pièce du puzzle des conditions logiques.
-Le tableau ci-dessous résume les opérateurs.
+Nous avons également utilisé des opérateurs logiques chaque fois que nous avons utilisé la structure `if`.
+Les opérateurs logiques sont la dernière pièce du puzzle des conditions logiques. Ils sont résumés dans le tableau ci-dessous.
 Les deux premiers sont des opérateurs logiques et les six derniers sont des opérateurs relationnels.
 Vous pouvez utiliser n'importe lequel de ces opérateurs lorsque vous créez vos propres fonctions (ou boucles).
 
 | Opérateur | Description technique | Ce que cela signifie                      | Exemple d'application | 
 | --------: | :-------------------: | :---------------------------------------- | :-------------------- |
-| `&&`          | ET logique            | Les deux conditions doivent être remplies | `if(cond1 == test && cond2 == test)`                      | 
-| \`         |                       | \`                                         | OU logique            | 
+| `&&`          | ET logique            | Les deux conditions doivent être remplies | `if(cond1 == test && cond2 == test`                      | 
+| `||`         | OU logique             | L'une ou l'autre des conditions doit être remplies | `if(cond1 == test || cond2 == test`            | 
 | `<`          | Inférieur à           | X est inférieur à Y                       | `if(X < Y)`                      | 
 | `>`          | Supérieur à           | X est supérieur à Y                       | `if(X > Y)`                      | 
 | `<=`          | Inférieur ou égal à   | X est inférieur/égal à Y                  | `if(X <= Y)`                      | 
@@ -513,16 +511,16 @@ Vous pouvez utiliser n'importe lequel de ces opérateurs lorsque vous créez vos
 
 ## Boucles
 
-R est très performant dans l'exécution de tâches répétitives.
-Si nous voulons qu'un ensemble d'opérations soit répété plusieurs fois, nous utilisons ce que l'on appelle une boucle.
+R est très performant dans l'exécution de tâches répétitives. Si nous voulons qu'un ensemble d'opérations soit répété plusieurs fois, nous utilisons ce que l'on appelle une **boucle**.
 Lorsque vous créez une boucle, R exécute les instructions qu'elle contient un certain nombre de fois ou jusqu'à ce qu'une condition donnée soit remplie.
-Il existe trois principaux types de boucles dans R : la boucle *for* la boucle *while* et la boucle *répéter* boucle.
+Il existe trois principaux types de boucles dans R : la boucle ***for*** ("pour") la boucle ***while*** ("tant que") et la boucle ***repeat*** ("répéter").
 
-Les boucles sont l'un des éléments de base de tous les langages de programmation, et pas seulement de R, et peuvent être un outil puissant (bien qu'à notre avis, elles soient utilisées beaucoup trop souvent lors de l'écriture de code R).
+Les boucles sont l'un des éléments de base de tous les langages de programmation (pas seulement R), et peuvent être un outil puissant (bien qu'à notre avis, elles soient utilisées beaucoup trop souvent lors de l'écriture de code R).
 
-### Boucle For
+### Boucle "For" (pour)
 
-La structure de boucle la plus couramment utilisée lorsque vous souhaitez répéter une tâche un nombre défini de fois est la boucle `for` boucle.
+La structure de boucle la plus couramment utilisée lorsque vous souhaitez répéter une tâche un nombre défini de fois est la boucle `for`.
+
 L'exemple le plus simple de boucle `for` est le suivant :
 
 ```{r}
@@ -533,11 +531,14 @@ for (i in 1:5) {
 ```
 
 Mais que fait réellement le code ? Il s'agit d'un morceau de code dynamique où un index `i` est remplacé itérativement par chaque valeur du vecteur `1:5`.
-Décomposons.
-Parce que la première valeur de notre séquence (`1:5`) est `1` la boucle commence par remplacer `i` par `1` et exécute tout ce qui se trouve entre le `{ }`.
-Les boucles utilisent conventionnellement `i` comme compteur, abréviation d'itération, mais vous êtes libre d'utiliser ce que vous voulez, même le nom de votre animal de compagnie, cela n'a pas vraiment d'importance (sauf lorsque vous utilisez des boucles imbriquées, auquel cas les compteurs doivent être appelés différemment, comme `SenorWhiskers` et `HerrFlufferkins`).
 
-Ainsi, si nous devions effectuer manuellement la première itération de la boucle
+Décomposons.
+
+Parce que la première valeur de notre séquence (`1:5`) est `1` la boucle commence par remplacer `i` par `1` et exécute tout ce qui se trouve entre les accolades `{}`.
+
+Les boucles utilisent conventionnellement `i` comme compteur ("i" pour "itération"), mais vous êtes libre d'utiliser ce que vous voulez, même le nom de votre animal de compagnie, cela n'a pas vraiment d'importance (sauf lorsque vous utilisez des boucles imbriquées, auquel cas les compteurs doivent être appelés différemment, comme `SenorWhiskers` et `HerrFlufferkins`).
+
+Ainsi, si nous devions effectuer manuellement la première itération de la boucle :
 
 ```{r}
 #| label: manual_loop
@@ -545,7 +546,7 @@ i <- 1
 print(i)
 ```
 
-Une fois cette première itération terminée, la boucle for *boucle* revient au début et remplace `i` par la valeur suivante dans notre `1:5` séquence (`2` dans ce cas) :
+Une fois cette première itération terminée, la *boucle* `for` revient au début et remplace `i` par la valeur suivante dans notre séquence `1:5` (`2` dans ce cas) :
 
 ```{r}
 #| label: manual_loop_2
@@ -555,8 +556,9 @@ print(i)
 
 Ce processus est ensuite répété jusqu'à ce que la boucle atteigne la dernière valeur de la séquence (`5` dans cet exemple), après quoi elle s'arrête.
 
-Pour renforcer la façon dont les `for` et vous présenter une caractéristique importante des boucles, nous allons modifier notre compteur à l'intérieur de la boucle.
-Cela peut être utilisé, par exemple, si nous utilisons une boucle pour parcourir un vecteur mais que nous voulons sélectionner la ligne suivante (ou toute autre valeur).
+Pour mieux comprendre le fonctionnement de ces boucles `for` et vous présenter une caractéristique importante des boucles en général, nous allons modifier notre compteur à l'intérieur de la boucle.
+Cela peut être utilisé, par exemple, pour parcourir un vecteur, mais en sélectionnant la ligne suivante (ou toute autre valeur).
+
 Pour ce faire, nous ajouterons simplement 1 à la valeur de notre index à chaque fois que nous itérons notre boucle.
 
 ```{r}
@@ -567,7 +569,7 @@ for (i in 1:5) {
 ```
 
 Comme dans la boucle précédente, la première valeur de notre séquence est 1.
-La boucle commence par remplacer `i` par `1` mais cette fois, nous avons spécifié qu'une valeur de `1` doit être ajoutée à `i` dans l'expression résultant en une valeur de `1 + 1`.
+La boucle commence par remplacer `i` par `1` mais cette fois, nous `+ 1` à chaque valeur de `i` dans l'expression. Le résultat est donc `1 + 1`.
 
 ```{r}
 #| label: altering_i_1
@@ -583,15 +585,14 @@ i <- 2
 i + 1
 ```
 
-Et ainsi de suite.
-Nous pensons que vous comprenez l'idée ! En fait, il s'agit d'une `for` et rien d'autre.
+Et ainsi de suite. Nous pensons que vous avez l'idée ! Dans les faits, c'est tout ce que fait une boucle `for`, rien d'autre !
 
 Bien que nous ayons utilisé une simple addition dans le corps de la boucle, vous pouvez également combiner des boucles avec des fonctions.
 
-Revenons à notre cadre de données `dishes`.
-Précédemment dans le chapitre, nous avons créé une fonction pour multiplier deux colonnes et l'avons utilisée pour créer notre `lasagna_stovies`, `stovies_poutine`, et `poutine_tartiflette` objets.
-Nous aurions pu utiliser une boucle pour cela.
-Rappelons-nous à quoi ressemblent nos données et le code de la fonction `multiple_columns()` fonction.
+Revenons à notre jeu de données `repas`.
+Précédemment dans le chapitre, nous avons créé une fonction pour multiplier deux colonnes et l'avons utilisée pour créer les variables `lasagnes_stovies`, `stovies_poutine`, et `poutine_tartiflette`. Nous aurions pu utiliser une boucle pour cela !
+
+Rappelons-nous à quoi ressemblent nos données et le code de la fonction `col_multiplicateur()`.
 
 ```{r}
 #| label: dishes-data
@@ -601,58 +602,59 @@ Rappelons-nous à quoi ressemblent nos données et le code de la fonction `multi
 #| label: mult-example
 ```
 
-Pour utiliser une liste afin d'itérer sur ces colonnes, nous devons d'abord créer une liste vide (vous vous souvenez de @sec-lists ?) que nous appelons `temp` (abréviation de temporary) qui sera utilisée pour stocker les résultats de la fonction `for` boucle.
+Nous allons d'abord créer une liste vide (vous vous souvenez de @sec-lists ?) que nous appelons `temp` (pour temporaire) qui sera utilisée pour stocker les résultats des itérations de la fonction via la boucle `for`.
 
 ```{r}
 #| label: loop_function
 
 temp <- list()
-for (i in 1:(ncol(dishes) - 1)) {
-  temp[[i]] <- multiply_cols(dishes, x = colnames(dishes)[i], y = colnames(dishes)[i + 1])
+for (i in 1:(ncol(repas) - 1)) {
+  temp[[i]] <- col_multiplicateur(repas, x = colnames(repas)[i], y = colnames(repas)[i + 1])
 }
 ```
 
-Lorsque nous spécifions notre `for` remarquez que nous avons soustrait 1 de `ncol(dishes)`.
-La boucle `ncol()` renvoie le nombre de colonnes dans notre `dishes` cadre de données qui est `4` et donc notre boucle s'exécute de `i = 1` à `i = 4 - 1` qui est `i = 3`.
+Lorsque nous spécifions notre boucle `for` remarquez que nous avons soustrait 1 à `ncol(repas)`.
+La boucle `ncol()` renvoie le nombre de colonnes dans notre jeu de données `repas`, donc `4`. Ainsi, notre boucle s'exécute de `i = 1` à `i = 4 - 1` c'est-à-dire, `i = 3`.
 
-Ainsi, lors de la première itération de la boucle `i` prend la valeur `1`.
-Les `multiply_cols()` multiplie le `dishes[, 1]` (`lasagna`) et `dishes[, 1 + 1]` (`stovies`) et le stocke dans la colonne `temp[[1]]` qui est le premier élément de la colonne `temp` liste.
+Ainsi, lors de la première itération de la boucle, `i` prend la valeur `1`.
+`col_multiplicateur()` multiplie `repas[, 1]` (`lasagnes`) par `repas[, 1 + 1]` (`stovies`) et le stocke en tant que `temp[[1]]`, donc le premier élément de la liste `temp`.
 
-La deuxième itération de la boucle `i` prend la valeur `2`.
-Les `multiply_cols()` multiplie le `dishes[, 2]` (`stovies`) et `dishes[, 2 + 1]` (`poutine`) et le stocke dans la colonne `temp[[2]]` qui est le deuxième élément de la colonne `temp` liste.
+À la deuxième itération de la boucle, `i` prend la valeur `2`.
+`col_multiplicateur()` multiplie `repas[, 2]` (`stovies`) pas `repas[, 2 + 1]` (`poutine`) et le stocke en tant que `temp[[2]]`, donc le deuxième élément de la liste `temp`.
 
-La troisième et dernière itération de la boucle `i` prend la valeur `3`.
-Les `multiply_cols()` multiplie le `dishes[, 3]` (`poutine`) et `dishes[, 3 + 1]` (`tartiflette`) et le stocke dans la colonne `temp[[3]]` qui est le troisième élément de la colonne `temp` liste.
+À la troisième et dernière itération de la boucle, `i` prend la valeur `3`.
+`col_multiplicateur()` multiplie `repas[, 3]` (`poutine`) par `repas[, 3 + 1]` (`tartiflette`) et le stocke en tant que `temp[[3]]`, donc le troisième élément de la liste `temp`.
 
-Encore une fois, il est bon de vérifier que nous obtenons quelque chose de sensé de notre boucle (rappelez-vous, vérifiez, vérifiez et vérifiez encore !).
-Pour ce faire, nous pouvons utiliser la fonction `identical()` pour comparer les variables que nous avons créées `by hand` à chaque itération de la boucle manuellement.
+Encore une fois, il est bon de vérifier que nous obtenons quelque chose de sensé de notre boucle (rappelez-vous, vérifiez, vérifiez et **vérifiez encore** !).
+
+Pour ce faire, nous pouvons utiliser la fonction `identical()` pour comparer les variables que nous avons créées "`by hand`" avec chaque itération de la boucle manuellement.
 
 ```{r}
 #| label: compare_3_methods
-lasagna_stovies_func <- multiply_cols(dishes, lasagna, stovies)
+lasagnes_stovies_fonc <- col_multiplicateur(repas, lasagnes, stovies)
 i <- 1
 identical(
-  multiply_cols(dishes, colnames(dishes)[i], colnames(dishes)[i + 1]),
-  lasagna_stovies_func
+  col_multiplicateur(repas, colnames(repas)[i], colnames(repas)[i + 1]),
+  lasagnes_stovies_fonc
 )
 
-stovies_poutine_func <- multiply_cols(dishes, stovies, poutine)
+stovies_poutine_fonc <- col_multiplicateur(repas, stovies, poutine)
 i <- 2
 identical(
-  multiply_cols(dishes, colnames(dishes)[i], colnames(dishes)[i + 1]),
-  stovies_poutine_func
+  col_multiplicateur(repas, colnames(repas)[i], colnames(repas)[i + 1]),
+  stovies_poutine_fonc
 )
 ```
 
-Si vous pouvez suivre les exemples ci-dessus, vous serez en bonne position pour commencer à écrire vos propres boucles for.
-Cela dit, il existe d'autres types de boucles.
+Si vous arrivez à suivre les exemples ci-dessus, vous êtes prêts pour commencer à écrire vos propres boucles `for`.
 
-### Boucle While
+Mais, il existe d'autres types de boucles.
 
-Un autre type de boucle que vous pouvez utiliser (bien que moins fréquemment) est la boucle `while` boucle.
-La boucle `while` est utilisée lorsque vous voulez continuer à tourner en boucle jusqu'à ce qu'une condition logique spécifique soit remplie (à comparer avec la boucle `for` qui parcourt toujours une séquence entière).
+### Boucle "While" (tant que)
 
-La structure de base de la boucle while est la suivante
+La boucle `while` est utilisée lorsque vous voulez faire tourner en boucle jusqu'à ce qu'une certaine condition logique spécifique soit remplie (contrairement à la boucle `for` qui parcourt toujours une séquence entière).
+
+La structure de base d'une boucle `while` est la suivante :
 
 ```{r}
 #| eval: false
@@ -661,7 +663,7 @@ while (logical_condition) {
 }
 ```
 
-Un exemple simple de boucle while est le suivant :
+Un exemple simple de boucle while est :
 
 ```{r}
 i <- 0
@@ -671,47 +673,60 @@ while (i <= 4) {
 }
 ```
 
-Ici, la boucle continuera uniquement à transmettre des valeurs au corps principal de la boucle (l'élément `expression` corps) que lorsque `i` est inférieur ou égal à 4 (spécifié à l'aide de l'attribut `<=` dans cet exemple).
+Ici, la boucle continuera seulement à transmettre des valeurs au corps principal de la boucle (l'`expression`) que lorsque `i` est inférieur ou égal à 4 (spécifié à l'aide de l'attribut `<=` dans cet exemple).
 Une fois que `i` est supérieur à 4, la boucle s'arrête.
 
-Il existe un autre type de boucle, très rarement utilisé : la boucle `repeat` boucle.
-La boucle `repeat` n'a pas de contrôle conditionnel et peut donc continuer à itérer indéfiniment (ce qui signifie qu'une pause, ou "stop here", doit être codée dans la boucle).
-Cela vaut la peine d'être conscient de son existence, mais pour l'instant nous ne pensons pas qu'il faille s'en préoccuper ; la fonction `for` et `while` vous permettront de répondre à la plupart de vos besoins en matière de boucles.
+Il existe un autre type de boucle, très rarement utilisé : la boucle `repeat`.
+La boucle `repeat` n'a pas de contrôle conditionnel et peut donc continuer à itérer indéfiniment. Ce qui signifie qu'une pause ("break"), ou "stop here", doit être codée dans la boucle.
+C'est intéressant de savoir que ça éxiste, mais pour l'instant ce n'est pas très utile de s'en préoccuper ; les boucles `for` et `while` devraient vous permettre de répondre à la plupart de vos besoins.
 
 ### Quand utiliser une boucle ?
 
 Les boucles sont assez couramment utilisées, bien que parfois un peu trop à notre avis.
-Des tâches équivalentes peuvent être effectuées avec des fonctions, qui sont souvent plus efficaces que les boucles.
-La question se pose donc de savoir quand il faut utiliser une boucle.
+Des tâches équivalentes peuvent être effectuées avec des fonctions, qui sont souvent plus efficaces.
+
+*La question se pose donc de savoir quand faut-il utiliser une boucle ?*
 
 En général, les boucles sont implémentées de manière inefficace dans R et doivent être évitées lorsque de meilleures alternatives existent, en particulier lorsque vous travaillez avec de grands ensembles de données.
 Cependant, les boucles sont parfois le seul moyen d'obtenir le résultat souhaité.
 
 **Voici quelques exemples de cas où l'utilisation de boucles peut s'avérer appropriée :**
 
-- Certaines simulations (par exemple
-  le modèle de Ricker peut, en partie, être construit à l'aide de boucles)
+- Certaines simulations[^1]
 
-- Relations récursives (une relation qui dépend de la valeur de la relation précédente) ["pour comprendre la récursivité, il faut comprendre la récursivité".] )
+[^1]: Par exemple le modèle de Ricker peut, en partie, être construit à l'aide de boucles.
 
-- Problèmes plus complexes (par exemple, depuis combien de temps le dernier blaireau a-t-il été vu sur le site ? $j$ étant donné qu'une martre des pins a été vue à l'heure $t$ au même endroit $j$ que le blaireau, lorsque la martre a été détectée au cours d'une période spécifique de 6 heures, mais excluant les blaireaux vus 30 minutes avant l'arrivée de la martre, répétée pour toutes les détections de martres)
+- Relations récursives [^2] 
 
-- Boucles While (continuez à sauter jusqu'à ce que vous ayez atteint la lune)
+[^2]: Une relation qui dépend de la valeur de la relation précédente - "pour comprendre la récursivité, il faut comprendre la récursivité".
 
-### Si ce ne sont pas des boucles, alors quoi ?
+- Problèmes plus complexes [^3]
 
-En bref, utilisez la famille de fonctions apply ; `apply()`, `lapply()`, `tapply()`, `sapply()`, `vapply()` et `mapply()`.
+[^3]: Par exemple, depuis combien de temps le dernier blaireau a-t-il été vu sur le site $j$, sachant qu'une martre des pins a été vue à l'heure $t$ au même endroit $j$ que le blaireau, lorsque la martre a été détectée au cours d'une période spécifique de 6 heures, mais excluant les blaireaux vus 30 minutes avant l'arrivée de la martre, répétée pour toutes les détections de martres.
+
+- Boucles While [^4]
+
+[^4]: Continuez à sauter jusqu'à ce que vous ayez atteint la lune.
+
+### Si on n'utilise pas une boucle, alors quoi ?
+
+En bref, utilisez la famille de fonctions **apply** ; `apply()`, `lapply()`, `tapply()`, `sapply()`, `vapply()` et `mapply()`.
+
 Les fonctions apply peuvent souvent accomplir les tâches de la plupart des boucles "maison", parfois plus rapidement (bien que cela ne soit pas vraiment un problème pour la plupart des gens), mais surtout avec un risque d'erreur beaucoup plus faible.
-Une stratégie à garder à l'esprit et qui peut s'avérer utile est la suivante : pour chaque boucle que vous faites, essayez de la refaire en utilisant une fonction apply (souvent `lapply` ou `sapply` fonctionneront).
-Si vous le pouvez, utilisez la version applicable.
-Il n'y a rien de pire que de se rendre compte qu'il y avait une petite, minuscule, erreur apparemment insignifiante dans une boucle qui, des semaines, des mois ou des années plus tard, s'est propagée dans un énorme gâchis.
+
+Une stratégie à garder à l'esprit et qui peut s'avérer utile est la suivante : pour chaque boucle que vous faites, essayez de la refaire en utilisant une fonction apply (souvent `lapply` ou `sapply` fonctionneront). Si vous le pouvez, utilisez la version applicable.
+
+Il n'y a rien de pire que de se rendre compte qu'il y avait une petite, minuscule, erreur apparemment insignifiante dans une boucle qui, des semaines, des mois ou des années plus tard, s'est transformée en un énorme bazar.
+
 Nous recommandons vivement d'essayer d'utiliser les fonctions apply chaque fois que cela est possible.
 
 #### lapply {-}
 
-Votre fonction d'application sera souvent `lapply()` du moins au début.
-La façon dont les `lapply()` et la raison pour laquelle il constitue souvent une bonne alternative aux boucles for, est qu'il passe en revue chaque élément d'une liste et effectue une tâche (*c'est-à-dire* exécuter une fonction).
-Il présente l'avantage supplémentaire de produire les résultats sous forme de liste, ce que vous devriez autrement coder vous-même dans une boucle.
+La fonction de base sera souvent `lapply()`, du moins au début.
+
+La façon dont les `lapply()` fonctionnent, et la raison pour laquelle elles constituent souvent une bonne alternative aux boucles `for`, est qu'elles passent en revue chaque élément d'une liste et effectuent une tâche (*c'est-à-dire* exécutent une fonction).
+
+Elles présentent l'avantage supplémentaire de produire les résultats sous forme de **liste**, ce que vous devriez autrement coder vous-même dans une boucle.
 
 Une fonction `lapply()` a la structure suivante :
 
@@ -719,12 +734,10 @@ Une fonction `lapply()` a la structure suivante :
 lapply(X, FUN)
 ```
 
-Ici `X` est le vecteur que nous voulons faire *quelque chose* quelque chose.
-`FUN` Les stands de l'association sont très amusants (je plaisante !).
-C'est aussi l'abréviation de "fonction".
+Ici `X` est le vecteur auquel nous voulons faire *quelque chose*. On écrit `FUN` pour décrire ce qualifié ce qu'on est en train de faire là (je plaisante !). C'est aussi l'abréviation de "function" (fonction).
 
-Commençons par une démonstration simple.
-Utilisons la fonction `lapply()` pour créer une séquence de 1 à 5 et ajouter 1 à chaque observation (comme nous l'avons fait lorsque nous avons utilisé une boucle for) :
+Commençons par une démonstration simple :
+Utilisons la fonction `lapply()` pour créer une séquence de 1 à 5 et ajouter 1 à chaque observation (comme nous l'avons fait avec une boucle `for`) :
 
 ```{r}
 lapply(0:4, function(a) {
@@ -732,19 +745,18 @@ lapply(0:4, function(a) {
 })
 ```
 
-Remarquez que nous devons spécifier notre séquence en tant que `0:4` pour obtenir la sortie `1 ,2 ,3 ,4 , 5` puisque nous ajoutons `1` à chaque élément de la séquence.
-Voyez ce qui se passe si vous utilisez `1:5` à la place.
+Remarquez que nous devons spécifier notre séquence en tant que `0:4` pour obtenir la sortie `1 ,2 ,3 ,4 , 5` puisque nous ajoutons `1` à chaque élément de la séquence. *Voyez ce qui se passe si vous utilisez `1:5` à la place*.
 
 De manière équivalente, nous aurions pu définir la fonction d'abord, puis l'utiliser dans `lapply()`
 
 ```{r}
-add_fun <- function(a) {
+fun_ajouter <- function(a) {
   a + 1
 }
-lapply(0:4, add_fun)
+lapply(0:4, fun_ajouter)
 ```
 
-Les `sapply()` fait la même chose que `lapply()` mais au lieu de stocker les résultats sous forme de liste, elle les stocke sous forme de vecteur.
+Les `sapply()` fait la même chose que `lapply()` mais au lieu de stocker les résultats sous forme de liste, elle les stocke sous forme de **vecteur**.
 
 ```{r}
 sapply(0:4, function(a) {
@@ -752,7 +764,7 @@ sapply(0:4, function(a) {
 })
 ```
 
-Comme vous pouvez le voir, dans les deux cas, nous obtenons exactement les mêmes résultats que lorsque nous avons utilisé la boucle for.
+Comme vous pouvez le voir, dans les deux cas, nous obtenons exactement les mêmes résultats que lorsque nous avons utilisé la boucle `for`.
 
 ```{r}
 #| label: links
