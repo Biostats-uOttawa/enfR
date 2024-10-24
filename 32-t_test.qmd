@@ -16,6 +16,7 @@ Pour ce laboratoire, vous aurez besoin de :
   * `lmtest` :package:
   * `boot` :package:
   * `lmPerm` :package:
+  * `pwr` :package:
 * Jeux de données
   * "sturgeon.csv"
   * "skulldat_2020.csv"
@@ -27,6 +28,7 @@ library(lmtest)
 library(boot)
 library(lmPerm)
 library(ggplot2)
+library(pwr)
 esturgeon <- read.csv("data/sturgeon.csv")
 crane <- read.csv("data/skulldat_2020.csv")
 ```
@@ -333,14 +335,13 @@ wilcox.test(crane_h$width5, crane_h$width6,
 )
 ```
 
-Pour estimer la puissance d'un test de t  avec R, il faut utiliser la fonction `power.t.test()`. Il faut spécifier l'argument `type = "paired"`, utiliser la moyenne et l'écart-type de la différence au sein des paires dans les arguments `delta` et `sd`.
+Pour estimer la puissance d'un test de t  avec R, il faut utiliser la fonction `pwr.t.test()`. Il faut spécifier l'argument `type = "paired"`, utiliser la moyenne et l'écart-type de la différence pour calculer le d de cohen avec la formule `mean(diff) / sd(diff)` pour un test de t pairé.
 
 ```{r}
 #| label: tpaired-pow
 crane_h$diff <- crane_h$width6 - crane_h$width5
-power.t.test(n = 15,
-             delta = mean(crane_h$diff),
-             sd = sd(crane_h$diff),
+pwr.t.test(n = 15,
+             d = mean(crane_h$diff) / sd(crane_h$diff),
              type = "paired")
 ```
 
