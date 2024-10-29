@@ -4,7 +4,7 @@ Objectifs de ce chapitre :
 
 * Utiliser R pour effectuer une analyse de variance (ANOVA) paramétrique à un critère de classification, suivie de comparaisons multiples.
 * Utiliser R pour vérifier si les conditions d'application de l'ANOVA paramétrique sont remplies.
-* Utiliser R pour faire une ANOVA à un critère de classification non-paramétrique. <!-- JULIEN - C'est pas redondant avec le 1er point là ? -->
+* Utiliser R pour faire une ANOVA à un critère de classification non-paramétrique.
 * Utiliser R pour transformer des données de manière à mieux remplir les conditions d'application de l'ANOVA paramétrique.
 
 ## Paquets et données requises pour le labo {#set-ano}
@@ -30,7 +30,7 @@ L'ANOVA à un critère de classification est l'analogue du test de t pour des co
 
 En 1961-1962, le barrage Grand Rapids était construit sur la rivière Saskatchewan en amont de Cumberland House. Certains rapports indiqueraient que durant la construction, plusieurs gros esturgeons restèrent prisonniers dans des sections peu profondes et moururent. Des inventaires de la population d'esturgeons furent faits en 1954, 1958, 1965 et 1966. Au cours de ces inventaires, la longueur à la fourche (frklngth) a été mesurée (pas nécessairement sur chaque poisson cependant). Ces données sont contenues dans le fichier `Dam10dat.csv`.
 
-### Visualiser les données <!-- JULIEN - T'as laissé le titre en français dans Rway -->
+### Visualiser les données
 - À partir des données (`Dam10dat`), il faut d’abord changer le type de donnée de la variable `year`, pour que R la traite comme un facteur (`as.factor()`) plutôt que comme une variable continue.
 
 ```{r}
@@ -102,7 +102,7 @@ plot(anova.model1)
 ```
 
 ::: callout-warning
-Vérifiez que la variable indépendant est bien un **facteur**. Si la variable indépendante <!-- JULIEN - Tu as écris dépendante au lieu de indépendante ici dans Rway --> est reconnu comme du texte (**character**) alors vous n'obtiendrez que 3 graphiques et un message d'erreur du type:
+Vérifiez que la variable indépendant est bien un **facteur**. Si la variable indépendante est reconnu comme du texte (**character**) alors vous n'obtiendrez que 3 graphiques et un message d'erreur du type:
 
 `hat values (leverages) are all = 0.1
 
