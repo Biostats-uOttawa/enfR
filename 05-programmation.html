@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr-fr" xml:lang="fr-fr"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.9">
+<meta name="generator" content="quarto-1.6.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Julien Martin">
 <meta name="description" content="En cours de traduction">
@@ -70,11 +70,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-37bb72f48501692975d9c066fdeb097b.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6561bbde787c299e21493071c8edc6ff.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1ff0208b9405ab0ff3a2d5e39eb7a7a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c0dc7ac2c5723ded4848ec98b3ba37c0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -290,7 +290,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./25-puissance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyse de puissance avec R et G\*Power</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyse de puissance avec R et G*Power</span></span></a>
   </div>
 </li>
       </ul>
@@ -408,15 +408,15 @@ window.Quarto = {
   <ul>
 <li><a href="#regarder-derri%C3%A8re-le-rideau" id="toc-regarder-derrière-le-rideau" class="nav-link active" data-scroll-target="#regarder-derri%C3%A8re-le-rideau"><span class="header-section-number">5.1</span> Regarder derrière le rideau</a></li>
   <li><a href="#fonctions-en-r" id="toc-fonctions-en-r" class="nav-link" data-scroll-target="#fonctions-en-r"><span class="header-section-number">5.2</span> Fonctions en R</a></li>
-  <li><a href="#d%C3%A9clarations-conditionnelles" id="toc-déclarations-conditionnelles" class="nav-link" data-scroll-target="#d%C3%A9clarations-conditionnelles"><span class="header-section-number">5.3</span> Déclarations conditionnelles</a></li>
+  <li><a href="#structures-conditionnelles" id="toc-structures-conditionnelles" class="nav-link" data-scroll-target="#structures-conditionnelles"><span class="header-section-number">5.3</span> Structures conditionnelles</a></li>
   <li><a href="#combinaison-dop%C3%A9rateurs-logiques" id="toc-combinaison-dopérateurs-logiques" class="nav-link" data-scroll-target="#combinaison-dop%C3%A9rateurs-logiques"><span class="header-section-number">5.4</span> Combinaison d’opérateurs logiques</a></li>
   <li>
 <a href="#boucles" id="toc-boucles" class="nav-link" data-scroll-target="#boucles"><span class="header-section-number">5.5</span> Boucles</a>
   <ul class="collapse">
-<li><a href="#boucle-for" id="toc-boucle-for" class="nav-link" data-scroll-target="#boucle-for"><span class="header-section-number">5.5.1</span> Boucle For</a></li>
-  <li><a href="#boucle-while" id="toc-boucle-while" class="nav-link" data-scroll-target="#boucle-while"><span class="header-section-number">5.5.2</span> Boucle While</a></li>
+<li><a href="#boucle-for-pour" id="toc-boucle-for-pour" class="nav-link" data-scroll-target="#boucle-for-pour"><span class="header-section-number">5.5.1</span> Boucle “For” (pour)</a></li>
+  <li><a href="#boucle-while-tant-que" id="toc-boucle-while-tant-que" class="nav-link" data-scroll-target="#boucle-while-tant-que"><span class="header-section-number">5.5.2</span> Boucle “While” (tant que)</a></li>
   <li><a href="#quand-utiliser-une-boucle" id="toc-quand-utiliser-une-boucle" class="nav-link" data-scroll-target="#quand-utiliser-une-boucle"><span class="header-section-number">5.5.3</span> Quand utiliser une boucle ?</a></li>
-  <li><a href="#si-ce-ne-sont-pas-des-boucles-alors-quoi" id="toc-si-ce-ne-sont-pas-des-boucles-alors-quoi" class="nav-link" data-scroll-target="#si-ce-ne-sont-pas-des-boucles-alors-quoi"><span class="header-section-number">5.5.4</span> Si ce ne sont pas des boucles, alors quoi ?</a></li>
+  <li><a href="#si-on-nutilise-pas-une-boucle-alors-quoi" id="toc-si-on-nutilise-pas-une-boucle-alors-quoi" class="nav-link" data-scroll-target="#si-on-nutilise-pas-une-boucle-alors-quoi"><span class="header-section-number">5.5.4</span> Si on n’utilise pas une boucle, alors quoi ?</a></li>
   </ul>
 </li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/biostats-uottawa/enfR/edit/main/05-programmation.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/biostats-uottawa/enfR/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></nav>
@@ -437,12 +437,17 @@ window.Quarto = {
   
 
 
-</header><p>Après avoir appris les bases, la programmation en R est la prochaine étape importante. Il existe déjà un grand nombre de paquets R disponibles, ce qui est certainement plus que suffisant pour couvrir tout ce que vous pourriez vouloir faire ? Pourquoi alors créer ses propres fonctions R ? Pourquoi ne pas s’en tenir aux fonctions d’un paquet ? Dans certains cas, vous voudrez personnaliser ces fonctions existantes pour répondre à vos besoins spécifiques. Il se peut aussi que vous souhaitiez mettre en œuvre une nouvelle approche, ce qui signifie qu’il n’y aura pas de packages préexistants qui fonctionneront pour vous. Ces deux cas de figure ne sont pas particulièrement courants. Les fonctions sont principalement utilisées pour faire une chose de manière simple sans avoir à taper le code nécessaire à l’exécution de cette fonction à chaque fois. On peut considérer les fonctions comme un raccourci vers le copier-coller. Si vous devez effectuer une tâche similaire quatre fois ou plus, créez une fonction pour cela, et appelez simplement cette fonction quatre fois ou appelez-la dans une boucle.</p>
+</header><p>Maintenant que nous avons appris les bases, la prochaine étape importante dans votre aventure sur R est… <strong><em>la programmation</em></strong> !</p>
+<p>Il existe déjà un grand nombre de paquets R disponibles, ce qui est surement plus que suffisant pour couvrir tout ce que vous pourriez vouloir faire ! Alors, <em>pourquoi alors créer ses propres fonctions R</em> ? Pourquoi ne pas s’en tenir aux fonctions d’un paquet ?</p>
+<p>Eh bien, dans certains cas, vous voudrez personnaliser ces fonctions pré-existantes pour répondre à vos besoins spécifiques. Il se peut aussi que vous souhaitiez mettre en œuvre une nouvelle approche, ce qui signifie qu’il n’y aura pas de paquets déjà développés qui fonctionneront pour vous (Bon, ces deux cas de figure ne sont pas particulièrement courants).</p>
+<p>Les fonctions sont principalement utilisées pour faire une chose de manière simple sans avoir à taper le code nécessaire à chaque fois (ce qui n’est pas très intéressant et peut rapidement surcharger votre script). On peut considérer les fonctions comme un raccourci pour copier-coller.</p>
+<p><em>Si vous devez effectuer une tâche similaire quatre fois ou plus, créez une fonction qui exécute cette tâche, et appelez-la simplement quatre fois, ou encore mieux : appelez-la dans une boucle !</em></p>
 <section id="regarder-derrière-le-rideau" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="regarder-derrière-le-rideau">
 <span class="header-section-number">5.1</span> Regarder derrière le rideau</h2>
-<p>Une bonne façon de commencer à apprendre à programmer en R est de voir ce que d’autres ont fait. Nous pouvons commencer par jeter un bref coup d’œil derrière le rideau. Avec de nombreuses fonctions en R, si vous voulez jeter un coup d’œil rapide à la machinerie en coulisses, nous pouvons simplement écrire le nom de la fonction, mais sans l’attribut <code>()</code>.</p>
-<p>Notez que l’affichage du code source des paquets R de base (ceux qui sont livrés avec R) nécessite quelques étapes supplémentaires que nous ne couvrirons pas ici (voir ce <a href="https://stackoverflow.com/questions/19226816/how-can-i-view-the-source-code-for-a-function">lien</a> si cela vous intéresse), mais pour la plupart des autres paquets que vous installez vous-même, il suffit généralement d’entrer le nom de la fonction sans la mention<code>()</code> affichera le code source de la fonction.</p>
-<p>Vous pouvez jeter un coup d’oeil à la fonction d’ajustement d’un modèle linéaire <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code></p>
+<p>Une bonne façon de commencer à apprendre à programmer en R est de regarder ce que d’autres ont fait avant : Alors, commençons par jeter un bref coup d’œil derrière le rideau !</p>
+<p>Pour beaucoup de fonctions en R, si vous voulez jeter un coup d’œil rapide à la machinerie en coulisses, nous pouvons simplement écrire le nom de la fonction, mais sans l’attribut <code>()</code>.</p>
+<p>Notez que l’affichage du code source des paquets R de base (ceux qui sont pré-installés avec R) nécessite quelques étapes supplémentaires que nous ne couvrirons pas ici (voir ce <a href="https://stackoverflow.com/questions/19226816/how-can-i-view-the-source-code-for-a-function">lien</a> si cela vous intéresse), mais pour la plupart des autres paquets que vous installez vous-même, il suffit généralement d’entrer le nom de la fonction sans la mention<code>()</code> affichera le code source de la fonction.</p>
+<p>Vous pouvez regarder comment la fonction d’ajustement d’un modèle linéaire <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> est construite :</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lm</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -522,53 +527,66 @@ window.Quarto = {
 &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 </div>
-<p>Ce que nous voyons ci-dessus est le code sous-jacent de cette fonction particulière. Nous pourrions le copier et le coller dans notre propre script et y apporter toutes les modifications que nous jugerions nécessaires, mais en faisant preuve de prudence et en testant les changements que vous avez apportés.</p>
-<p>Ne vous inquiétez pas outre mesure si la majeure partie du code contenu dans les fonctions n’a pas de sens immédiat. C’est particulièrement vrai si vous êtes novice en matière de R, auquel cas cela semble incroyablement intimidant. Honnêtement, cela peut être intimidant même après des années d’expérience avec R. Pour y remédier, nous commencerons par créer nos propres fonctions en R dans la section suivante.</p>
+<p>Ce que nous voyons ci-dessus est le code sous-jacent de cette fonction particulière. Nous pourrions le copier et le coller dans notre propre script et y apporter toutes les modifications que nous jugerions nécessaires, mais en faisant preuve de prudence et en testant les changements apportés.</p>
+<p>Ne vous inquiétez pas outre mesure si la majeure partie du code contenu dans les fonctions n’a pas de sens dans l’immédiat. C’est parfaitement normale, surtout si vous êtes novice en matière de R, auquel cas cela semble incroyablement intimidant. Honnêtement, cela peut être intimidant même après des années d’expérience avec R.</p>
+<p>Pour remédier à cela, nous commencerons par créer nos propres fonctions en R dans la section suivante.</p>
 </section><section id="fonctions-en-r" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="fonctions-en-r">
 <span class="header-section-number">5.2</span> Fonctions en R</h2>
-<p>Les fonctions sont le pain et le beurre de R, les éléments essentiels qui vous permettent de travailler avec R. Elles sont créées (la plupart du temps) avec le plus grand soin et la plus grande attention, mais peuvent finir par ressembler à un monstre de Frankenstein - avec des membres bizarrement attachés. Mais aussi alambiqués qu’ils puissent être, ils feront toujours fidèlement la même chose.</p>
+<p>Les fonctions sont le pain et le beurre de R, ce sont les éléments essentiels qui vous permettent de travailler avec R.</p>
+<p>Elles sont créées (la plupart du temps) avec le plus grand soin et la plus grande attention, mais peuvent finir par ressembler à un monstre de Frankenstein - avec des membres bizarrement attachés. Mais aussi alambiqués qu’elles puissent être, ils feront toujours fidèlement la même chose.</p>
 <p>Cela signifie que les fonctions peuvent également être très stupides.</p>
-<p>Si nous vous demandons d’aller au supermarché pour nous procurer des ingrédients pour faire des <em>du poulet Balmoral</em> même si vous ne savez pas ce que c’est, vous serez capable de deviner et d’apporter au moins <em>quelque chose</em> quelque chose. Vous pouvez aussi décider de faire autre chose. Ou vous pouvez demander de l’aide à un chef cuisinier. Ou vous pouvez sortir votre téléphone et chercher en ligne ce que vous voulez faire. <em><a href="https://thescottishbutcher.com/recipes/chicken-balmoral-and-peppercorn-sauce/">Poulet Balmoral</a></em> est. Le fait est que, même si nous ne vous avons pas donné suffisamment d’informations pour accomplir la tâche, vous êtes suffisamment intelligent pour, au moins, essayer de trouver une solution de contournement.</p>
-<p>Si, au contraire, nous demandions à une fonction de faire la même chose, elle écouterait attentivement notre demande, puis renverrait simplement une erreur. Elle répéterait cela à chaque fois que nous lui demanderions de faire le travail lorsque la tâche n’est pas claire. Ce qu’il faut retenir ici, c’est que le code et les fonctions ne peuvent pas trouver de solutions de contournement à des informations mal fournies, ce qui est une excellente chose. Il dépend entièrement de vous pour lui dire très explicitement ce qu’il doit faire, étape par étape.</p>
+<p>Si nous vous demandons d’aller au supermarché pour acheter les ingrédients nécessaires pour faire <em>un poulet Balmoral</em> même que vous ne savez pas ce que c’est, vous serez capable de deviner et prendre au moins <em>quelque articles</em> (du poulet par exemple). Ou, vous pouvez aussi décider de faire autre chose. Ou vous pouvez demander de l’aide à un chef cuisinier. Ou vous pouvez sortir votre téléphone et chercher sur internet, qu’est ce qu’un <em><a href="https://thescottishbutcher.com/recipes/chicken-balmoral-and-peppercorn-sauce/">Poulet Balmoral</a></em> ? Le fait est que, même si nous ne vous avons pas donné suffisamment d’informations pour accomplir la tâche, vous êtes suffisamment intelligent pour, au moins, essayer de trouver une solution.</p>
+<p>Si, à la place, nous demandions à une fonction de faire la même chose, elle écouterait attentivement notre demande, puis renverrait simplement une erreur. Elle répéterait cela à chaque fois que nous lui demanderions de faire le travail lorsque la tâche n’est pas claire. Ce qu’il faut retenir ici, c’est que le code et les fonctions ne peuvent pas trouver de solutions de contournement pour pallier des informations mal fournies, ce qui est une excellente chose. C’est à vous de lui dire très explicitement ce qu’elle doit faire, étape par étape.</p>
 <p>N’oubliez pas deux choses : l’intelligence du code vient du codeur, pas de l’ordinateur, et les fonctions ont besoin d’instructions exactes pour fonctionner.</p>
-<p>Pour éviter que les fonctions ne soient <em>trop</em> stupides, vous devez fournir les informations dont la fonction a besoin pour fonctionner. Comme pour la fonction <em>poulet du Balmoral</em> si nous avions fourni une liste de recettes à la fonction, tout se serait bien passé. C’est ce que nous appelons “remplir un argument”. La grande majorité des fonctions exigent de l’utilisateur qu’il remplisse au moins un argument.</p>
-<p>Ceci peut être illustré dans le pseudocode ci-dessous. Lorsque nous créons une fonction, nous pouvons :</p>
+<p>Pour éviter que les fonctions ne soient <em>trop</em> stupides, vous devez fournir les informations dont la fonction a besoin pour fonctionner. Comme pour l’exemple du <em>poulet Balmoral</em> si nous avions fourni une liste d’ingrédients à la fonction, tout se serait bien passé. C’est ce que nous appelons “remplir un argument”. La grande majorité des fonctions exigent de l’utilisateur qu’il remplisse au moins un argument.</p>
+<p>Ceci est illustré dans le pseudocode ci-dessous. Lorsque l’on crée une fonction, on peut :</p>
 <ul>
-<li>spécifier les arguments que l’utilisateur doit remplir (<em>par exemple</em> <code>arg1</code> et <code>arg2</code>)</li>
-<li>fournissent des valeurs par défaut aux arguments (<em>par exemple</em> <code>arg2 = TRUE</code>)</li>
-<li>définir ce qu’il faut faire avec les arguments (<code>expression</code>) :</li>
+<li>Spécifier les <strong>arguments</strong> que l’utilisateur doit remplir (<em>p.e.</em> <code>arg1</code> et <code>arg2</code>)</li>
+<li>Fournir des <strong>valeurs par défaut</strong> aux arguments (<em>p.e.</em> <code>arg2 = TRUE</code>)</li>
+<li>Définir <strong>ce qu’il faut faire</strong> avec ces arguments (<code>expression</code>) :</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">arg1</span>, <span class="va">arg2</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ma_fonction</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">arg1</span>, <span class="va">arg2</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">expression</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>La première chose à noter est que nous avons utilisé la fonction <code>function()</code> pour créer une nouvelle fonction appelée <code>my_function</code>. Pour parcourir le code ci-dessus, nous créons une fonction appelée <code>my_function</code>. Entre les crochets ronds, nous spécifions les informations (<em>c’est-à-dire</em> arguments) dont la fonction a besoin pour fonctionner (autant ou aussi peu que nécessaire). Ces arguments sont ensuite transmis à la partie expression de la fonction. L’expression peut être n’importe quelle commande R valide ou n’importe quel ensemble de commandes R et est généralement entre une paire d’accolades <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code>. Une fois que vous avez exécuté le code ci-dessus, vous pouvez utiliser votre nouvelle fonction en tapant :</p>
+<p>La première chose à noter est que nous avons utilisé la fonction <code>function()</code> pour créer une nouvelle fonction appelée <code>ma_fonction</code>.</p>
+<p>Entre les parenthèses <code>()</code>, on spécifie les informations (<em>i.e.,</em> <code>arguments</code>) dont la fonction a besoin pour fonctionner (autant ou aussi peu que nécessaire).</p>
+<p>Ces arguments sont ensuite transmis à la partie <code>expression</code> de la fonction. L’<code>expression</code> peut être n’importe quelle commande R valide ou n’importe quel ensemble de commandes R et est généralement entre une paire d’accolades <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>.</p>
+<p>Une fois que vous avez exécuté le code ci-dessus, vous pouvez utiliser votre nouvelle fonction en tapant :</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">my_function</span><span class="op">(</span><span class="va">arg1</span>, <span class="va">arg2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ma_fonction</span><span class="op">(</span><span class="va">arg1</span>, <span class="va">arg2</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Prenons un exemple pour clarifier les choses.</p>
-<p>Tout d’abord, nous allons créer un cadre de données appelé <code>dishes</code> où les colonnes <code>lasagna</code>, <code>stovies</code>, <code>poutine</code> et <code>tartiflette</code> sont remplis avec 10 valeurs aléatoires tirées d’un sac (à l’aide de la fonction <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> pour tirer des valeurs aléatoires d’une distribution normale avec une moyenne de 0 et un écart type de 1). Nous incluons également un “problème”, que nous devrons résoudre plus tard, en incluant 3 <code>NA</code> dans la fonction <code>poutine</code> (en utilisant <code>rep(NA, 3)</code>).</p>
+<p><em>Prenons un exemple pour clarifier les choses.</em></p>
+<p>Tout d’abord, on crée un jeu de données appelé <code>repas</code> où les colonnes <code>lasagnes</code>, <code>stovies</code>, <code>poutine</code> et <code>tartiflette</code> sont remplis avec 10 valeurs aléatoires tirées d’un sac (à l’aide de la fonction <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> pour tirer des valeurs aléatoires d’une distribution normale avec une moyenne de 0 et un écart type de 1).</p>
+<p><em>Nous incluons également un “problème”, que nous devrons résoudre plus tard, en incluant 3 <code>NA</code> dans la variable <code>poutine</code> (en utilisant <code>rep(NA, 3)</code>).</em></p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dishes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  lasagna <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>,</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  lasagnes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>,</span>
 <span>  stovies <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>,</span>
 <span>  poutine <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  tartiflette <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Supposons que vous souhaitiez multiplier les valeurs des variables <code>stovies</code> et <code>lasagna</code> et créer un nouvel objet appelé <code>stovies_lasagna</code>. Nous pouvons le faire “à la main” en utilisant :</p>
+<p>Supposons que vous souhaitiez multiplier les valeurs des variables <code>stovies</code> et <code>lasagnes</code> pour créer un nouvel objet appelé <code>stovies_lasagnes</code>.</p>
+<p>Nous pouvons le faire “à la main” :</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stovies_lasagna</span> <span class="op">&lt;-</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span> <span class="op">*</span> <span class="va">dishes</span><span class="op">$</span><span class="va">lasagna</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stovies_lasagnes</span> <span class="op">&lt;-</span> <span class="va">repas</span><span class="op">$</span><span class="va">stovies</span> <span class="op">*</span> <span class="va">repas</span><span class="op">$</span><span class="va">lasagnes</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Si c’était tout ce que nous avions à faire, nous pourrions nous arrêter ici. R fonctionne avec des vecteurs, de sorte qu’effectuer ce type d’opérations dans R est en fait beaucoup plus simple que dans d’autres langages de programmation, où ce type de code peut nécessiter des boucles (nous disons que R est un langage vectorisé). Une chose à garder à l’esprit pour plus tard est que faire ce genre d’opérations avec des boucles peut être beaucoup plus lent que la vectorisation.</p>
-<p>Mais que se passe-t-il si nous voulons répéter cette multiplication plusieurs fois ? Supposons que nous voulions multiplier les colonnes <code>lasagna</code> et <code>stovies</code>, <code>stovies</code> et <code>tartiflette</code> et <code>poutine</code> et <code>tartiflette</code>. Dans ce cas, nous pouvons copier et coller le code en remplaçant les informations pertinentes.</p>
+<p>Si c’était tout ce que nous avions à faire, on pourrait s’arrêter là.</p>
+<blockquote class="blockquote">
+<p>R fonctionne avec des vecteurs, de sorte qu’effectuer ce type d’opérations dans R est en fait beaucoup plus simple que dans d’autres langages de programmation, où ce type de code peut nécessiter des boucles (nous disons que R est un langage <em>vectorisé</em>). Une chose à garder à l’esprit pour plus tard est que faire ce genre d’opérations avec des boucles peut être beaucoup plus lent que la vectorisation.</p>
+</blockquote>
+<p>Mais que se passe-t-il si nous voulons répéter cette multiplication plusieurs fois ?</p>
+<p>Supposons que nous voulions multiplier les colonnes <code>lasagnes</code> et <code>stovies</code>, <code>stovies</code> et <code>tartiflette</code> et <code>poutine</code> et <code>tartiflette</code>. Dans ce cas, nous pouvons copier et coller le code en remplaçant les informations pertinentes.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagna_stovies</span> <span class="op">&lt;-</span> <span class="va">dishes</span><span class="op">$</span><span class="va">lasagna</span> <span class="op">*</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span></span>
-<span><span class="va">stovies_tartiflette</span> <span class="op">&lt;-</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span> <span class="op">*</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span></span>
-<span><span class="va">poutine_tartiflette</span> <span class="op">&lt;-</span> <span class="va">dishes</span><span class="op">$</span><span class="va">poutine</span> <span class="op">*</span> <span class="va">dishes</span><span class="op">$</span><span class="va">tartiflette</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagnes_stovies</span> <span class="op">&lt;-</span> <span class="va">repas</span><span class="op">$</span><span class="va">lasagnes</span> <span class="op">*</span> <span class="va">repas</span><span class="op">$</span><span class="va">stovies</span></span>
+<span><span class="va">stovies_tartiflette</span> <span class="op">&lt;-</span> <span class="va">repas</span><span class="op">$</span><span class="va">stovies</span> <span class="op">*</span> <span class="va">repas</span><span class="op">$</span><span class="va">stovies</span></span>
+<span><span class="va">poutine_tartiflette</span> <span class="op">&lt;-</span> <span class="va">repas</span><span class="op">$</span><span class="va">poutine</span> <span class="op">*</span> <span class="va">repas</span><span class="op">$</span><span class="va">tartiflette</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Bien que cette approche fonctionne, il est facile de faire des erreurs. En fait, ici, nous avons “oublié” de modifier <code>stovies</code> en <code>tartiflette</code> dans la deuxième ligne de code lors du copier-coller. C’est là que l’écriture d’une fonction s’avère utile. Si nous écrivions cela sous forme de fonction, il n’y aurait qu’une seule source d’erreur potentielle (dans la fonction elle-même) au lieu de nombreuses lignes de code copiées-collées (que nous réduisons également en utilisant une fonction).</p>
+<p>Bien que cette approche fonctionne, il est facile de faire des <strong>erreurs</strong>.</p>
+<p>Et en effet, ici, nous avons “oublié” de modifier <code>stovies</code> en <code>tartiflette</code> dans la deuxième ligne de code lors du copier-coller. C’est là que l’écriture d’une fonction s’avère utile !</p>
+<p>Si nous écrivions cela sous forme de fonction, il n’y aurait qu’une seule source d’erreur potentielle (dans la fonction elle-même) au lieu de nombreuses lignes de code copiées-collées.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -579,255 +597,283 @@ Astuce
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En règle générale, si nous devons faire la même chose (par copier/coller et modifier) 3 fois ou plus, nous créons une fonction pour cela.</p>
+<p>En règle générale, si nous devons faire la même chose (par copier-coller et modifier) 3 fois ou plus, nous créons une fonction pour le faire.</p>
 </div>
 </div>
-<p>Dans ce cas, nous utilisons un code assez trivial où il est peut-être difficile de faire une véritable erreur. Mais que se passerait-il si nous augmentions la complexité ?</p>
+<p>Dans cet exemple, nous avons utilisé un code assez trivial où il est peut-être difficile de faire une véritable erreur. Mais que se passerait-il si nous augmentions la complexité ?</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dishes</span><span class="op">$</span><span class="va">lasagna</span> <span class="op">*</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span> <span class="op">/</span> <span class="va">dishes</span><span class="op">$</span><span class="va">lasagna</span> <span class="op">+</span> <span class="op">(</span><span class="va">dishes</span><span class="op">$</span><span class="va">lasagna</span> <span class="op">*</span> <span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">-</span><span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span> <span class="op">-</span> <span class="op">(</span><span class="va">dishes</span><span class="op">$</span><span class="va">lasagna</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span> <span class="op">+</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repas</span><span class="op">$</span><span class="va">lasagnes</span> <span class="op">*</span> <span class="va">repas</span><span class="op">$</span><span class="va">stovies</span> <span class="op">/</span> <span class="va">repas</span><span class="op">$</span><span class="va">lasagnes</span> <span class="op">+</span> <span class="op">(</span><span class="va">repas</span><span class="op">$</span><span class="va">lasagnes</span> <span class="op">*</span> <span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="va">repas</span><span class="op">$</span><span class="va">stovies</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">-</span> <span class="va">repas</span><span class="op">$</span><span class="va">stovies</span> <span class="op">-</span> <span class="op">(</span><span class="va">repas</span><span class="op">$</span><span class="va">lasagnes</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">repas</span><span class="op">$</span><span class="va">stovies</span> <span class="op">+</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Imaginez maintenant que vous deviez copier et coller ce code trois fois, et que vous deviez à chaque fois modifier l’élément <code>lasagna</code> et <code>stovies</code> (surtout si nous devions le faire plus de trois fois).</p>
-<p>Ce que nous pourrions faire à la place, c’est généraliser notre code pour <code>x</code> et <code>y</code> au lieu de nommer des plats spécifiques. En procédant de la sorte, nous pourrions recycler la <code>x * y</code> code. Chaque fois que nous voulions regrouper plusieurs colonnes, nous assignions une parabole à l’un ou l’autre des éléments suivants <code>x</code> ou <code>y</code>. Nous attribuerons la multiplication aux objets <code>lasagna_stovies</code> et <code>stovies_poutine</code> afin de pouvoir y revenir plus tard.</p>
+<p>Imaginez maintenant que vous deviez copier-coller ce code trois fois, et que vous deviez à chaque fois modifier l’élément <code>lasagnes</code> et <code>stovies</code> (surtout si nous devions le faire plus de trois fois).</p>
+<p>Ce que nous pourrions faire à la place, c’est généraliser notre code pour <code>x</code> et <code>y</code> au lieu de nommer des plats spécifiques. En procédant de la sorte, nous pourrions recycler le code <code>x * y</code>. Chaque fois que nous voulions regrouper plusieurs colonnes, nous assignions un plat à <code>x</code> ou <code>y</code>.</p>
+<p>Nous attribuerons la multiplication aux objets <code>lasagnes_stovies</code> et <code>stovies_poutine</code> afin de pouvoir y revenir plus tard.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Assign x and y values</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">dishes</span><span class="op">$</span><span class="va">lasagna</span></span>
-<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Définir les valeurs x et y</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">repas</span><span class="op">$</span><span class="va">lasagnes</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">repas</span><span class="op">$</span><span class="va">stovies</span></span>
 <span></span>
-<span><span class="co"># Use multiplication code</span></span>
-<span><span class="va">lasagna_stovies</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">*</span> <span class="va">y</span></span>
+<span><span class="co"># Utiliser le code de multiplication</span></span>
+<span><span class="va">lasagnes_stovies</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">*</span> <span class="va">y</span></span>
 <span></span>
-<span><span class="co"># Assign new x and y values</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span></span>
-<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">dishes</span><span class="op">$</span><span class="va">poutine</span></span>
+<span><span class="co"># Définir les nouvelles valeurs x et y</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">repas</span><span class="op">$</span><span class="va">stovies</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">repas</span><span class="op">$</span><span class="va">poutine</span></span>
 <span></span>
-<span><span class="co"># Reuse multiplication code</span></span>
+<span><span class="co"># Ré-utiliser le code de multiplication</span></span>
 <span><span class="va">stovies_poutine</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">*</span> <span class="va">y</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>C’est essentiellement ce que fait une fonction. Appelons notre nouvelle fonction <code>multiply_cols()</code> et définissons-la avec deux arguments, <code>x</code> et <code>y</code>. Une fonction dans R renvoie simplement sa dernière valeur. Toutefois, il est possible de forcer la fonction à renvoyer une valeur antérieure si cela s’avère nécessaire. Pour ce faire, il suffit d’utiliser la fonction <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> n’est pas strictement nécessaire dans cet exemple car R retournera automatiquement la valeur de la dernière ligne de code de notre fonction. Nous l’incluons ici pour l’expliciter.</p>
+<p>C’est essentiellement ce que fait une fonction.</p>
+<p>Appelons notre nouvelle fonction <code>col_multiplicateur()</code> et définissons-la avec deux arguments, <code>x</code> et <code>y</code>.</p>
+<p>Une fonction dans R renvoie simplement sa dernière valeur. Toutefois, il est possible de forcer la fonction à renvoyer une valeur antérieure si cela s’avère nécessaire. Pour ce faire, il suffit d’utiliser la fonction <code><a href="https://rdrr.io/r/base/function.html">return()</a></code></p>
+<blockquote class="blockquote">
+<p>Ce n’est pas strictement nécessaire dans cet exemple car R retournera automatiquement la valeur de la dernière ligne de code de notre fonction. Nous l’incluons ici pour l’expliciter.</p>
+</blockquote>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">multiply_cols</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">col_multiplicateur</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">x</span> <span class="op">*</span> <span class="va">y</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Maintenant que nous avons défini notre fonction, nous pouvons l’utiliser. Utilisons la fonction pour multiplier les colonnes <code>lasagna</code> et <code>stovies</code> et assigner le résultat à un nouvel objet appelé <code>lasagna_stovies_func</code></p>
+<p>Maintenant que nous avons défini notre fonction, nous pouvons l’utiliser, ou “l’appeler”.</p>
+<p>Utilisons la fonction pour multiplier les colonnes <code>lasagnes</code> et <code>stovies</code> en assignant le résultat à un nouvel objet appelé <code>lasagna_stovies_func</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagna_stovies_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dishes</span><span class="op">$</span><span class="va">lasagna</span>, y <span class="op">=</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span><span class="op">)</span></span>
-<span><span class="va">lasagna_stovies_func</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagnes_stovies_fonc</span> <span class="op">&lt;-</span> <span class="fu">col_multiplicateur</span><span class="op">(</span>x <span class="op">=</span> <span class="va">repas</span><span class="op">$</span><span class="va">lasagnes</span>, y <span class="op">=</span> <span class="va">repas</span><span class="op">$</span><span class="va">stovies</span><span class="op">)</span></span>
+<span><span class="va">lasagnes_stovies_fonc</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  0.39870077 -0.75520781  0.05353023  0.23102663  0.45329894 -2.78623418
- [7] -0.35813571  0.10336648 -0.10248847  0.14124923</code></pre>
+<pre><code> [1] -0.25786044  0.02649975  0.26655427  0.32281812  0.47270826 -0.03753780
+ [7]  1.48922093 -0.06543413 -1.30306589 -0.07169954</code></pre>
 </div>
 </div>
-<p>Si nous ne nous intéressons qu’à la multiplication <code>dishes$lasagna</code> et <code>dishes$stovies</code> il serait exagéré de créer une fonction pour faire quelque chose une seule fois. Cependant, l’avantage de créer une fonction est que nous avons maintenant cette fonction ajoutée à notre environnement que nous pouvons utiliser aussi souvent que nous le souhaitons. Nous disposons également du code pour créer la fonction, ce qui signifie que nous pouvons l’utiliser dans des projets entièrement nouveaux, réduisant ainsi la quantité de code qui doit être écrite (et testée à nouveau) à partir de zéro à chaque fois.</p>
-<p>Pour s’assurer que la fonction a fonctionné correctement, nous pouvons comparer le code <code>lasagna_stovies</code> avec notre nouvelle variable <code>lasagna_stovies_func</code> à l’aide de la fonction <code><a href="https://rdrr.io/r/base/identical.html">identical()</a></code> fonction. La fonction <code><a href="https://rdrr.io/r/base/identical.html">identical()</a></code> teste si deux objets sont <em>exactement</em> identiques et renvoie soit un <code>TRUE</code> ou <code>FALSE</code> valeur. Utiliser <code><a href="https://rdrr.io/r/base/identical.html">?identical</a></code> pour en savoir plus sur cette fonction.</p>
+<p>Si on ne s’intéresse qu’à la multiplication de <code>repas$lasagnes</code> par <code>repas$stovies</code> ce serait exagéré de créer une fonction pour faire quelque chose une seule fois.</p>
+<p>Cependant, l’avantage de créer une fonction est que nous avons maintenant cette fonction ajoutée à notre environnement et que nous pouvons l’utiliser aussi souvent que souhaité.</p>
+<p>Nous disposons également du code pour créer la fonction, ce qui signifie que nous pouvons l’utiliser dans des projets entièrement nouveaux, réduisant ainsi la quantité de code à écrire (et à tester) à chaque fois.</p>
+<p>Pour s’assurer que la fonction a fonctionné correctement, nous pouvons comparer la variable <code>lasagnes_stovies</code> avec notre nouvelle variable <code>lasagnes_stovies_fonc</code> à l’aide de la fonction <code><a href="https://rdrr.io/r/base/identical.html">identical()</a></code>.</p>
+<p>La fonction <code><a href="https://rdrr.io/r/base/identical.html">identical()</a></code> teste si deux objets sont <em>exactement</em> identiques et renvoie un <code>TRUE</code> ou <code>FALSE</code>.</p>
+<p>Tapez <code><a href="https://rdrr.io/r/base/identical.html">?identical</a></code> dans la console pour en savoir plus sur cette fonction.</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">lasagna_stovies</span>, <span class="va">lasagna_stovies_func</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">lasagnes_stovies</span>, <span class="va">lasagnes_stovies_fonc</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p>Et nous confirmons que la fonction a produit le même résultat que lorsque nous effectuons le calcul manuellement. Nous vous recommandons de prendre l’habitude de vérifier que la fonction que vous avez créée fonctionne comme vous le pensez.</p>
-<p>Utilisons maintenant notre <code>multiply_cols()</code> pour multiplier les colonnes <code>stovies</code> et <code>poutine</code>. Remarquez maintenant que l’argument <code>x</code> reçoit la valeur <code>dishes$stovies</code>et <code>y</code> la valeur <code>dishes$poutine</code>.</p>
+<p>Et nous confirmons que la fonction a produit le même résultat que le calcul manuel. Nous vous recommandons de prendre l’habitude de vérifier que la fonction que vous avez créée fonctionne comme vous le pensez.</p>
+<p>Utilisons maintenant notre <code>col_multiplicateur()</code> pour multiplier les colonnes <code>stovies</code> et <code>poutine</code>. Remarquez maintenant que l’argument <code>x</code> reçoit la valeur <code>repas$stovies</code>et <code>y</code> la valeur <code>repas$poutine</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stovies_poutine_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span>x <span class="op">=</span> <span class="va">dishes</span><span class="op">$</span><span class="va">stovies</span>, y <span class="op">=</span> <span class="va">dishes</span><span class="op">$</span><span class="va">poutine</span><span class="op">)</span></span>
-<span><span class="va">stovies_poutine_func</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stovies_poutine_fonc</span> <span class="op">&lt;-</span> <span class="fu">col_multiplicateur</span><span class="op">(</span>x <span class="op">=</span> <span class="va">repas</span><span class="op">$</span><span class="va">stovies</span>, y <span class="op">=</span> <span class="va">repas</span><span class="op">$</span><span class="va">poutine</span><span class="op">)</span></span>
+<span><span class="va">stovies_poutine_fonc</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]            NA            NA            NA  0.0879287405  0.4392946420
- [6]  0.0605509100  0.9761694387  1.2215362724 -0.2825366740 -0.0005892957</code></pre>
+<pre><code> [1]          NA          NA          NA  0.66973877  0.17138815  0.02865373
+ [7] -0.06123004  0.24031431 -1.38710591 -0.19824080</code></pre>
 </div>
 </div>
-<p>Jusqu’à présent, tout va bien. Tout ce que nous avons fait, c’est envelopper le code <code>x * y</code> dans une fonction, où nous demandons à l’utilisateur de spécifier ce que son <code>x</code> et <code>y</code> sont.</p>
-<p>L’utilisation de la fonction est un peu longue car nous devons retaper le nom de la base de données pour chaque variable. Pour nous amuser un peu, nous pouvons modifier la fonction afin de spécifier le cadre de données en tant qu’argument et les noms des colonnes sans les mettre entre guillemets (comme dans le style tidyverse).</p>
+<p>Jusqu’à présent, tout va bien.</p>
+<p>Tout ce que nous avons fait, c’est envelopper le code <code>x * y</code> dans une fonction, où nous demandons à l’utilisateur de spécifier à quoi correspondent <code>x</code> et <code>y</code>.</p>
+<p>L’utilisation de la fonction est un peu longue car nous devons retaper le nom du jeu de données pour chaque variable. Pour nous amuser un peu, nous pouvons modifier la fonction afin de spécifier le jeu de données en tant qu’argument et les noms des colonnes sans les mettre entre guillemets (comme dans le style <code>tidyverse</code> <span class="emoji" data-emoji="package">📦</span>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>multiply_cols <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, y) {</span>
-<span id="cb17-2"><a href="#cb17-2"></a>  temp_var <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>col_multiplicateur <span class="ot">&lt;-</span> <span class="cf">function</span>(donnees, x, y) {</span>
+<span id="cb17-2"><a href="#cb17-2"></a>  temp_var <span class="ot">&lt;-</span> donnees <span class="sc">%&gt;%</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a>    <span class="fu">select</span>({{ x }}, {{ y }}) <span class="sc">%&gt;%</span></span>
 <span id="cb17-4"><a href="#cb17-4"></a>    <span class="fu">mutate</span>(<span class="at">xy =</span> <span class="fu">prod</span>(.)) <span class="sc">%&gt;%</span></span>
 <span id="cb17-5"><a href="#cb17-5"></a>    <span class="fu">pull</span>(xy)</span>
 <span id="cb17-6"><a href="#cb17-6"></a>}</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Pour cette nouvelle version de la fonction, nous avons ajouté un paramètre <code>data</code> à la ligne 1. A la ligne 3, nous sélectionnons les variables x et y fournies comme arguments. A la ligne 4, nous créons le produit des 2 colonnes sélectionnées et à la ligne 5, nous extrayons la colonne que nous venons de créer. Nous supprimons également la <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> puisqu’elle n’était pas nécessaire</p>
-<p>Notre fonction est maintenant compatible avec le pipe (soit en natif <code>|&gt;</code> ou magrittr <code>%&gt;%</code>). Toutefois, étant donné que la fonction utilise désormais le tuyau de <code>magrittr</code> <span class="emoji" data-emoji="package">📦</span> et <code>dplyr</code> <span class="emoji" data-emoji="package">📦</span>, nous devons charger le paquet <span class="emoji" data-emoji="package">📦</span> de tidyverse pour qu’elle fonctionne.</p>
+<p>Pour cette nouvelle version de la fonction, nous avons ajouté un paramètre <code>donnees</code> à la ligne 1.</p>
+<p>À la ligne 3, nous sélectionnons les variables x et y fournies comme arguments.</p>
+<p>À la ligne 4, nous créons le produit des 2 colonnes sélectionnées et</p>
+<p>À la ligne 5, nous extrayons la colonne que nous venons de créer.</p>
+<p>Nous supprimons également la fonction <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> puisqu’elle n’était pas nécessaire</p>
+<p>Notre fonction est maintenant compatible avec la fonction tuyau, ou “pipe” (soit en natif <code>|&gt;</code> ou <code>magrittr</code> <span class="emoji" data-emoji="package">📦</span> <code>%&gt;%</code>). Toutefois, étant donné que la fonction utilise désormais le pipe de <code>magrittr</code> <span class="emoji" data-emoji="package">📦</span> et <code>dplyr</code> <span class="emoji" data-emoji="package">📦</span>, il faut charger le paquet <code>tidyverse</code> <span class="emoji" data-emoji="package">📦</span> pour qu’elle fonctionne.</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="va">lasagnes_stovies_fonc</span> <span class="op">&lt;-</span> <span class="fu">col_multiplicateur</span><span class="op">(</span><span class="va">repas</span>, <span class="va">lasagnes</span>, <span class="va">stovies</span><span class="op">)</span></span>
+<span><span class="va">lasagnes_stovies_fonc</span> <span class="op">&lt;-</span> <span class="va">repas</span> <span class="op">|&gt;</span> <span class="fu">col_multiplicateur</span><span class="op">(</span><span class="va">lasagnes</span>, <span class="va">stovies</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ajoutons maintenant un peu plus de complexité.</p>
+<p>Si vous regardez la sortie de <code>poutine_tartiflette</code> certains des calculs ont produit des valeurs <code>NA</code>. Cela s’explique par le fait qu’il y a des <code>NA</code> dans <code>poutine</code> (incluses lorsque nous avons créé le jeu de données <code>repas</code>). Malgré ces <code>NA</code>, la fonction semble avoir fonctionné, mais elle ne nous a donné aucune indication quant à l’existence d’un problème. Dans ce cas, nous préférerions qu’elle nous avertisse que quelque chose ne va pas.</p>
+<p>Comment pouvons-nous faire en sorte que la fonction nous informe lorsque des <code>NA</code> sont produites ? Voici une solution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>col_multiplicateur <span class="ot">&lt;-</span> <span class="cf">function</span>(donnees, x, y) {</span>
+<span id="cb19-2"><a href="#cb19-2"></a>  temp_var <span class="ot">&lt;-</span> donnees <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>    <span class="fu">select</span>({{ x }}, {{ y }}) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>    <span class="fu">mutate</span>(<span class="at">xy =</span> {</span>
+<span id="cb19-5"><a href="#cb19-5"></a>      .[<span class="dv">1</span>] <span class="sc">*</span> .[<span class="dv">2</span>]</span>
+<span id="cb19-6"><a href="#cb19-6"></a>    }) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a>    <span class="fu">pull</span>(xy)</span>
+<span id="cb19-8"><a href="#cb19-8"></a>  <span class="cf">if</span> (<span class="fu">any</span>(<span class="fu">is.na</span>(temp_var))) {</span>
+<span id="cb19-9"><a href="#cb19-9"></a>    <span class="fu">warning</span>(<span class="st">"La fonction a produit des NA"</span>)</span>
+<span id="cb19-10"><a href="#cb19-10"></a>    <span class="fu">return</span>(temp_var)</span>
+<span id="cb19-11"><a href="#cb19-11"></a>  } <span class="cf">else</span> {</span>
+<span id="cb19-12"><a href="#cb19-12"></a>    <span class="fu">return</span>(temp_var)</span>
+<span id="cb19-13"><a href="#cb19-13"></a>  }</span>
+<span id="cb19-14"><a href="#cb19-14"></a>}</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stovies_poutine_fonc</span> <span class="op">&lt;-</span> <span class="fu">col_multiplicateur</span><span class="op">(</span><span class="va">repas</span>, <span class="va">stovies</span>, <span class="va">poutine</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre><code>Warning in col_multiplicateur(repas, stovies, poutine): La fonction a produit
+des NA</code></pre>
 </div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagna_stovies_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span><span class="va">dishes</span>, <span class="va">lasagna</span>, <span class="va">stovies</span><span class="op">)</span></span>
-<span><span class="va">lasagna_stovies_func</span> <span class="op">&lt;-</span> <span class="va">dishes</span> <span class="op">|&gt;</span> <span class="fu">multiply_cols</span><span class="op">(</span><span class="va">lasagna</span>, <span class="va">stovies</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagnes_stovies_fonc</span> <span class="op">&lt;-</span> <span class="fu">col_multiplicateur</span><span class="op">(</span><span class="va">repas</span>, <span class="va">lasagnes</span>, <span class="va">stovies</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Ajoutons maintenant un peu plus de complexité. Si vous regardez la sortie de <code>poutine_tartiflette</code> certains des calculs ont produit <code>NA</code> valeurs. Cela s’explique par le fait que les <code>NA</code> que nous avons incluses dans <code>poutine</code> lorsque nous avons créé l’élément <code>dishes</code> cadre de données. Malgré ces <code>NA</code> valeurs, la fonction semble avoir fonctionné, mais elle ne nous a donné aucune indication quant à l’existence d’un problème. Dans ce cas, nous préférerions qu’elle nous avertisse que quelque chose ne va pas. Comment pouvons-nous faire en sorte que la fonction nous informe lorsque <code>NA</code> sont produites ? Voici une solution.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>multiply_cols <span class="ot">&lt;-</span> <span class="cf">function</span>(data, x, y) {</span>
-<span id="cb21-2"><a href="#cb21-2"></a>  temp_var <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a>    <span class="fu">select</span>({{ x }}, {{ y }}) <span class="sc">%&gt;%</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a>    <span class="fu">mutate</span>(<span class="at">xy =</span> {</span>
-<span id="cb21-5"><a href="#cb21-5"></a>      .[<span class="dv">1</span>] <span class="sc">*</span> .[<span class="dv">2</span>]</span>
-<span id="cb21-6"><a href="#cb21-6"></a>    }) <span class="sc">%&gt;%</span></span>
-<span id="cb21-7"><a href="#cb21-7"></a>    <span class="fu">pull</span>(xy)</span>
-<span id="cb21-8"><a href="#cb21-8"></a>  <span class="cf">if</span> (<span class="fu">any</span>(<span class="fu">is.na</span>(temp_var))) {</span>
-<span id="cb21-9"><a href="#cb21-9"></a>    <span class="fu">warning</span>(<span class="st">"The function has produced NAs"</span>)</span>
-<span id="cb21-10"><a href="#cb21-10"></a>    <span class="fu">return</span>(temp_var)</span>
-<span id="cb21-11"><a href="#cb21-11"></a>  } <span class="cf">else</span> {</span>
-<span id="cb21-12"><a href="#cb21-12"></a>    <span class="fu">return</span>(temp_var)</span>
-<span id="cb21-13"><a href="#cb21-13"></a>  }</span>
-<span id="cb21-14"><a href="#cb21-14"></a>}</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stovies_poutine_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span><span class="va">dishes</span>, <span class="va">stovies</span>, <span class="va">poutine</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in multiply_cols(dishes, stovies, poutine): The function has produced
-NAs</code></pre>
-</div>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagna_stovies_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span><span class="va">dishes</span>, <span class="va">lasagna</span>, <span class="va">stovies</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Le cœur de notre fonction reste le même, mais nous avons maintenant six lignes de code supplémentaires (lignes 6 à 11). Nous avons inclus des instructions conditionnelles, <code>if</code> (lignes 6-8) et <code>else</code> (lignes 9-11), afin de tester si un <code>NA</code>ont été produites et, si c’est le cas, nous affichons un message d’avertissement à l’intention de l’utilisateur. La section suivante de ce chapitre explique le fonctionnement et l’utilisation de ces fonctions.</p>
-</section><section id="déclarations-conditionnelles" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="déclarations-conditionnelles">
-<span class="header-section-number">5.3</span> Déclarations conditionnelles</h2>
-<p><code>x * y</code> n’applique aucune logique. Il prend simplement la valeur de <code>x</code> et la multiplie par la valeur de <code>y</code>. Les instructions conditionnelles permettent d’injecter de la logique dans votre code. L’instruction conditionnelle la plus couramment utilisée est <code>if</code>. Chaque fois que vous voyez un <code>if</code> lisez-le comme * Si X est VRAI, faites une chose”.<em>. Incluant un <code>else</code> permet simplement d’étendre la logique à </em> Si X est VRAI, faites une chose, ou bien faites quelque chose de différent.*.</p>
-<p>Les deux <code>if</code> et <code>else</code> vous permettent d’exécuter des sections de code, en fonction d’une condition qui est soit <code>TRUE</code> ou <code>FALSE</code>. Le pseudo-code ci-dessous vous montre la forme générale.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (condition) {</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  Code executed when condition is <span class="cn">TRUE</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  Code executed when condition is <span class="cn">FALSE</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  }</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Le cœur de notre fonction reste le même, mais nous avons maintenant six lignes de code supplémentaires (lignes 6 à 11).</p>
+<p>Nous avons inclus des <strong><em>structures conditionnelles</em></strong>, <code>if</code> (lignes 6-8) et <code>else</code> (lignes 9-11), afin de tester si des <code>NA</code>ont été produits et, si c’est le cas, nous affichons un message d’avertissement à l’intention de l’utilisateur.</p>
+<p>La section suivante de ce chapitre explique le fonctionnement et l’utilisation de ces structures conditionnelles.</p>
+</section><section id="structures-conditionnelles" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="structures-conditionnelles">
+<span class="header-section-number">5.3</span> Structures conditionnelles</h2>
+<p><code>x * y</code> n’applique aucune logique. Il prend simplement la valeur de <code>x</code> et la multiplie par la valeur de <code>y</code>. Les structures conditionnelles permettent d’injecter de la logique dans votre code.</p>
+<p>La structure conditionnelle la plus couramment utilisée est <code>if</code>. Chaque fois que vous voyez un <code>if</code> lisez-le comme <em>“Si X est VRAI, fait quelque chose”</em>.</p>
+<p>Inclure un <code>else</code> permet simplement d’étendre la logique à <em>“Si X est VRAI, fait quelque chose, sinon fait autre chose”</em>.</p>
+<p><code>if</code> et <code>else</code> vous permettent d’exécuter des sections de code, en fonction d’une condition qui est soit <code>TRUE</code> ou <code>FALSE</code>.</p>
+<p>Le pseudo-code ci-dessous vous montre la forme générale.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (condition) {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  Code executed when condition is <span class="cn">TRUE</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  Code executed when condition is <span class="cn">FALSE</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  }</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Pour approfondir la question, nous pouvons utiliser une vieille blague de programmeur pour poser un problème.</p>
 <blockquote class="blockquote">
-<p>Le partenaire d’un programmeur dit : * Allez au magasin acheter une brique de lait et, s’il y a des œufs, prenez-en six.*</p>
-<p>Le programmeur est revenu avec 6 briques de lait.</p>
-<p>Lorsque le partenaire s’en aperçoit, il s’exclame * Pourquoi diable as-tu acheté six briques de lait ?*</p>
-<p>Le programmeur a répondu <em>“Ils avaient des œufs</em></p>
+<p>Le partenaire d’un.e. programmeu.r.se dit : “S’il-te-plaît, va au magasin et achète une brique de lait, s’ils ont des œufs, prends-en 6”.</p>
+<p>Le.la programmeu.r.se revient avec 6 briques de lait.</p>
+<p>Lorsque le partenaire s’en aperçoit, il s’exclame : “Pourquoi diable as-tu acheté 6 briques de lait ?”</p>
+<p>Le.la programmeu.r.se répond <em>“Ils avaient des œufs”</em></p>
 </blockquote>
-<p>Au risque d’expliquer une blague, l’énoncé conditionnel ici est de savoir si le magasin avait ou non des œufs. Si le codage est conforme à la demande initiale, le programmeur doit apporter 6 briques de lait si le magasin a des œufs (condition = VRAI), ou apporter 1 brique de lait s’il n’y a pas d’œufs (condition = FAUX). Dans R, cela est codé comme suit :</p>
+<p>Au risque d’expliquer une blague, l’énoncé conditionnel ici est de savoir si le magasin avait ou non des œufs. Si le codage est conforme à la demande initiale, le.la programmeu.r.se doit apporter 6 briques de lait si le magasin a des œufs (condition = VRAI), ou apporter 1 brique de lait s’il n’y a pas d’œufs (condition = FAUX).</p>
+<p>Dans R, cela est codé comme suit :</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">eggs</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span> <span class="co"># Whether there were eggs in the store</span></span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">oeufs</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span> <span class="co"># Est-ce qu'il y a des œufs au magasin</span></span>
 <span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="va">eggs</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># If there are eggs</span></span>
-<span>  <span class="va">n.milk</span> <span class="op">&lt;-</span> <span class="fl">6</span> <span class="co"># Get 6 cartons of milk</span></span>
-<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span> <span class="co"># If there are not eggs</span></span>
-<span>  <span class="va">n.milk</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="co"># Get 1 carton of milk</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">oeufs</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># S'il y a des œufs</span></span>
+<span>  <span class="va">n.lait</span> <span class="op">&lt;-</span> <span class="fl">6</span> <span class="co"># Prend 6 briques de lait</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span> <span class="co"># S'il n'y a pas d'œufs</span></span>
+<span>  <span class="va">n.lait</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="co"># Prend 1 brique de lait</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Nous pouvons alors vérifier <code>n.milk</code> le nombre de briques de lait qu’ils ont ramenées.</p>
+<p>Nous pouvons alors vérifier <code>n.lait</code> le nombre de briques de lait que le.la programmeu.r.se a ramenées.</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n.milk</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n.lait</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
 </div>
-<p>Et comme dans la blague, notre code R n’a pas compris que la condition était de déterminer s’il fallait ou non acheter des œufs, et non plus du lait (il s’agit en fait d’un exemple libre du <a href="https://en.wikipedia.org/wiki/Winograd_Schema_Challenge">schéma de Winograd</a> conçu pour tester la condition<em>l’intelligence</em> d’une intelligence artificielle en fonction de sa capacité à raisonner sur le sens d’une phrase).</p>
-<p>Nous pourrions coder exactement la même instruction conditionnelle de blague œuf-lait à l’aide d’un <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> fonction.</p>
+<p>Et comme dans la blague, notre code R n’a pas compris que la condition était de déterminer s’il fallait ou non acheter des œufs, et non plus du lait (il s’agit en fait d’un exemple libre du <a href="https://en.wikipedia.org/wiki/Winograd_Schema_Challenge">schéma de Winograd</a> conçu pour tester la condition <em>d’intelligence</em> d’une intelligence artificielle en fonction de sa capacité à raisonner sur le sens d’une phrase).</p>
+<p>Nous pourrions coder exactement la même structure conditionnelle de blague œuf-lait à l’aide de la fonction <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">eggs</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span></span>
-<span><span class="va">n.milk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">eggs</span> <span class="op">==</span> <span class="cn">TRUE</span>, yes <span class="op">=</span> <span class="fl">6</span>, no <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">oeufs</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span></span>
+<span><span class="va">n.lait</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">oeufs</span> <span class="op">==</span> <span class="cn">TRUE</span>, yes <span class="op">=</span> <span class="fl">6</span>, no <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Cette <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> fait exactement la même chose que la version plus étoffée de tout à l’heure, mais elle est maintenant condensée en une seule ligne de code. Elle présente l’avantage supplémentaire de travailler sur des vecteurs plutôt que sur des valeurs individuelles (nous y reviendrons plus tard lorsque nous introduirons les boucles). La logique est lue de la même manière : “S’il y a des oeufs, assignez une valeur de 6 à <code>n.milk</code> s’il n’y a pas d’oeufs, assigner la valeur 1 à <code>n.milk</code>”.</p>
+<p><code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> fait exactement la même chose que la version plus étoffée de tout à l’heure, mais elle est maintenant condensée en une seule ligne de code.</p>
+<p>Elle présente l’avantage supplémentaire de travailler sur des vecteurs plutôt que sur des valeurs individuelles (nous y reviendrons plus tard lorsque nous introduirons les <strong>boucles</strong>). La logique est lue de la même manière : “S’il y a des oeufs, assignez une valeur de 6 à <code>n.lait</code> s’il n’y a pas d’oeufs, assigner la valeur 1 à <code>n.lait</code>”.</p>
 <p>Nous pouvons vérifier à nouveau que la logique renvoie toujours 6 briques de lait :</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n.milk</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n.lait</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
 </div>
-<p>Actuellement, nous devrions copier et coller du code si nous voulions changer la présence ou l’absence d’œufs dans le magasin. Nous avons appris plus haut comment éviter de nombreux copier-coller en créant une fonction. Comme avec la simple fonction <code>x * y</code> de notre précédente expression <code>multiply_cols()</code> les déclarations logiques ci-dessus sont simples à coder et se prêtent bien à la transformation en fonction. Et si nous faisions justement cela et enveloppions cette déclaration logique dans une fonction ?</p>
+<p>Actuellement, il faudrait copier-coller du code pour changer la présence ou l’absence d’œufs dans le magasin. Nous avons appris plus haut comment éviter de nombreux copier-coller en créant une fonction. Comme avec la simple fonction <code>x * y</code> de notre précédente fonction <code>col_multiplicateur()</code> les déclarations logiques ci-dessus sont simples à coder et se prêtent bien à la transformation en fonction.</p>
+<p>Et si nous faisions justement cela et enveloppions cette déclaration logique dans une fonction ?</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">milk</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">eggs</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">eggs</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lait</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">oeufs</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">oeufs</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fl">6</span></span>
 <span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>    <span class="fl">1</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Nous avons créé une fonction appelée <code>milk()</code> dont le seul argument est <code>eggs</code>. L’utilisateur de la fonction spécifie si les œufs sont soit <code>TRUE</code> ou <code>FALSE</code> et la fonction utilisera alors une instruction conditionnelle pour déterminer le nombre de cartons de lait renvoyés.</p>
+<p>Nous avons créé une fonction appelée <code>lait()</code> dont le seul argument est <code>oeufs</code>. L’utilisateur de la fonction spécifie si les œufs sont soit <code>TRUE</code> ou <code>FALSE</code> et la fonction utilisera alors une structure conditionnelle pour déterminer le nombre de cartons de lait renvoyés.</p>
 <p>Essayons rapidement :</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">milk</span><span class="op">(</span>eggs <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">lait</span><span class="op">(</span>oeufs <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
 </div>
-<p>Et la plaisanterie est maintenue. Remarquez que, dans ce cas, nous avons spécifié que nous remplissons la fonction <code>eggs</code> (<code>eggs = TRUE</code>). Dans certaines fonctions, comme la nôtre ici, lorsqu’une fonction n’a qu’un seul argument, nous pouvons être paresseux et ne pas nommer l’argument que nous remplissons. En réalité, on considère généralement qu’il est préférable d’indiquer explicitement les arguments que l’on remplit afin d’éviter les erreurs potentielles.</p>
-<p>OK, revenons à la fonction <code>multiply_cols()</code> que nous avons créée ci-dessus et expliquons comment nous avons utilisé des instructions conditionnelles pour avertir l’utilisateur si <code>NA</code> sont produites lorsque nous multiplions deux colonnes.</p>
+<p>Et la plaisanterie est maintenue.</p>
+<p>Remarquez que, dans ce cas, nous avons spécifié que nous remplissons l’argument <code>oeufs</code> (<code>oeufs = TRUE</code>). Dans certaines fonctions, comme la nôtre ici, lorsqu’une fonction n’a qu’un seul argument, nous pouvons être paresseux et ne pas nommer l’argument que nous remplissons. En réalité, on considère généralement qu’il est préférable d’indiquer explicitement les arguments que l’on remplit afin d’éviter les erreurs potentielles.</p>
+<p>OK, revenons à la fonction <code>col_multiplicateur()</code> que nous avons créée ci-dessus et expliquons comment nous avons utilisé des structures conditionnelles pour avertir l’utilisateur si des <code>NA</code> sont produites lorsque nous multiplions deux colonnes.</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">multiply_cols</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">temp_var</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">col_multiplicateur</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">donnees</span>, <span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">temp_var</span> <span class="op">&lt;-</span> <span class="va">donnees</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">{</span><span class="op">{</span> <span class="va">x</span> <span class="op">}</span><span class="op">}</span>, <span class="op">{</span><span class="op">{</span> <span class="va">y</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>xy <span class="op">=</span> <span class="op">{</span></span>
 <span>      <span class="va">.</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">*</span> <span class="va">.</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
 <span>    <span class="op">}</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">xy</span><span class="op">)</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">temp_var</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">"The function has produced NAs"</span><span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">"La fonction a produit des NA"</span><span class="op">)</span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">temp_var</span><span class="op">)</span></span>
 <span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">temp_var</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Dans cette nouvelle version de la fonction, nous utilisons toujours <code>x * y</code> comme auparavant, mais cette fois nous avons assigné les valeurs de ce calcul à un vecteur temporaire appelé <code>temp_var</code> afin de pouvoir l’utiliser dans nos instructions conditionnelles. Notez que ce <code>temp_var</code> est <em>locale</em> à notre fonction et n’existera pas en dehors de la fonction en raison de ce que l’on appelle les règles de cadrage de R . [règles de cadrage de R][cadrage] . Nous utilisons ensuite un <code>if</code> pour déterminer si notre <code>temp_var</code> contient des <code>NA</code> valeurs. Pour ce faire, nous utilisons d’abord la fonction <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> pour vérifier si chaque valeur de notre <code>temp_var</code> est un <code>NA</code>. Les <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> renvoie <code>TRUE</code> si la valeur est un <code>NA</code> et <code>FALSE</code> si la valeur n’est pas un <code>NA</code>. Nous imbriquons ensuite le <code>is.na(temp_var)</code> à l’intérieur de la fonction <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> pour vérifier si <strong>une</strong> des valeurs retournées par <code>is.na(temp_var)</code> sont <code>TRUE</code>. Si au moins une valeur est <code>TRUE</code> l’une <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> renverra une valeur <code>TRUE</code>. Ainsi, s’il existe des <code>NA</code> valeurs dans notre <code>temp_var</code> la condition pour le <code>if()</code> sera <code>TRUE</code> alors que s’il n’y a pas de <code>NA</code> valeurs présentes, la condition sera <code>FALSE</code>. Si la condition est <code>TRUE</code> la <code><a href="https://rdrr.io/r/base/warning.html">warning()</a></code> génère un message d’avertissement à l’intention de l’utilisateur et renvoie la valeur de la fonction <code>temp_var</code> variable. Si la condition est <code>FALSE</code> le code sous le <code>else</code> est exécuté, ce qui renvoie simplement la valeur <code>temp_var</code> .</p>
-<p>Ainsi, si nous exécutons notre <code>multiple_columns()</code> sur les colonnes <code>dishes$stovies</code> et <code>dishes$poutine</code> (qui contient <code>NA</code>s), nous recevrons un message d’avertissement.</p>
+<p>Dans cette nouvelle version de la fonction, on utilise toujours <code>x * y</code>, mais cette fois nous avons assigné les valeurs de ce calcul à un vecteur temporaire appelé <code>temp_var</code> afin de pouvoir l’utiliser dans nos structures conditionnelles.</p>
+<blockquote class="blockquote">
+<p>Notez que ce <code>temp_var</code> est <em>locale</em> à notre fonction et n’existera pas en dehors de la fonction en raison de ce que l’on appelle les <a href="https://www.r-bloggers.com/dont-run-afoul-of-scoping-rules-in-r/">règles de cadrage de R</a>.</p>
+</blockquote>
+<p>Nous utilisons ensuite un <code>if</code> pour déterminer si notre <code>temp_var</code> contient des <code>NA</code> valeurs. Pour ce faire, nous utilisons la fonction <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> pour vérifier si chaque valeur de notre <code>temp_var</code> est un <code>NA</code>.</p>
+<blockquote class="blockquote">
+<p><code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> renvoie <code>TRUE</code> si la valeur est un <code>NA</code> et <code>FALSE</code> si la valeur n’est pas un <code>NA</code>.</p>
+</blockquote>
+<p>Nous imbriquons ensuite le <code>is.na(temp_var)</code> à l’intérieur de la fonction <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> pour vérifier si <strong>au moins une</strong> des valeurs retournées par <code>is.na(temp_var)</code> est <code>TRUE</code>. Si c’est le cas, <code><a href="https://rdrr.io/r/base/any.html">any()</a></code> renverra une valeur <code>TRUE</code>.</p>
+<p>Ainsi, s’il existe des <code>NA</code> dans notre <code>temp_var</code> la condition pour le <code>if()</code> sera <code>TRUE</code> alors que s’il n’y a pas de <code>NA</code>, la condition sera <code>FALSE</code>.</p>
+<p>Si la condition est <code>TRUE</code> la fonction <code><a href="https://rdrr.io/r/base/warning.html">warning()</a></code> génère un message d’avertissement à l’intention de l’utilisateur et renvoie la valeur de la variable <code>temp_var</code>.</p>
+<p>Si la condition est <code>FALSE</code> le code sous la condition <code>else</code> est exécuté, ce qui renvoie simplement la valeur <code>temp_var</code> .</p>
+<p>Ainsi, si nous exécutons notre <code>col_multiplicateur()</code> sur les colonnes <code>repas$stovies</code> et <code>repas$poutine</code> (qui contient <code>NA</code>s), nous recevrons un message d’avertissement.</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stovies_poutine_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span><span class="va">dishes</span>, <span class="va">stovies</span>, <span class="va">poutine</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stovies_poutine_fonc</span> <span class="op">&lt;-</span> <span class="fu">col_multiplicateur</span><span class="op">(</span><span class="va">repas</span>, <span class="va">stovies</span>, <span class="va">poutine</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in multiply_cols(dishes, stovies, poutine): The function has produced
-NAs</code></pre>
+<pre><code>Warning in col_multiplicateur(repas, stovies, poutine): La fonction a produit
+des NA</code></pre>
 </div>
 </div>
 <p>En revanche, si nous multiplions deux colonnes qui ne contiennent pas de <code>NA</code> nous ne recevons pas de message d’avertissement</p>
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagna_stovies_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span><span class="va">dishes</span>, <span class="va">lasagna</span>, <span class="va">stovies</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagnes_stovies_fonc</span> <span class="op">&lt;-</span> <span class="fu">col_multiplicateur</span><span class="op">(</span><span class="va">repas</span>, <span class="va">lasagnes</span>, <span class="va">stovies</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="combinaison-dopérateurs-logiques" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="combinaison-dopérateurs-logiques">
 <span class="header-section-number">5.4</span> Combinaison d’opérateurs logiques</h2>
-<p>Les fonctions que nous avons créées jusqu’à présent étaient parfaitement adaptées à nos besoins, même si elles étaient assez simplistes. Essayons de créer une fonction un peu plus complexe. Nous allons créer une fonction permettant de déterminer si la journée d’aujourd’hui sera bonne ou non en fonction de deux critères. Le premier critère dépendra du jour de la semaine (vendredi ou non) et le second sera de savoir si votre code fonctionne ou non (VRAI ou FAUX). Pour ce faire, nous utiliserons <code>if</code> et <code>else</code> et des déclarations. La complexité viendra de <code>if</code> des déclarations qui suivent immédiatement les <code>else</code> pertinente. Nous utiliserons ces instructions conditionnelles quatre fois pour obtenir toutes les combinaisons possibles, qu’il s’agisse d’un vendredi ou non, et pour savoir si votre code fonctionne ou non.</p>
-<p>Nous avons également utilisé l’instruction <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> pour produire un texte formaté correctement.</p>
+<p>Les fonctions que nous avons créées jusqu’à présent sont parfaitement adaptées à nos besoins, bien qu’elles soient assez simplistes. Essayons de créer une fonction un peu plus complexe.</p>
+<p>Nous allons créer une fonction permettant de déterminer si la journée d’aujourd’hui sera bonne ou non en fonction de deux critères : le <em>jour de la semaine</em> (vendredi ou non) et <em>est-ce que votre code fonctionne ou non</em> (VRAI ou FAUX).</p>
+<p>Pour ce faire, nous utiliserons les structures conditonnelles <code>if</code> et <code>else</code>. <em>La complexité vient ici des <code>if</code> qui suivent immédiatement les <code>else</code></em>. Nous utiliserons ces instructions conditionnelles quatre fois pour obtenir toutes les combinaisons possibles, qu’il s’agisse d’un vendredi ou non, et que votre code fonctionne ou non.</p>
+<p>Nous utilisons également la fonction <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> pour produire un texte formaté correctement.</p>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">good.day</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">code.working</span>, <span class="va">day</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">code.working</span> <span class="op">==</span> <span class="cn">TRUE</span> <span class="op">&amp;&amp;</span> <span class="va">day</span> <span class="op">==</span> <span class="st">"Friday"</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bonne.journee</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">code.fonctionne</span>, <span class="va">jours</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">code.fonctionne</span> <span class="op">==</span> <span class="cn">TRUE</span> <span class="op">&amp;&amp;</span> <span class="va">jours</span> <span class="op">==</span> <span class="st">"Vendredi"</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span></span>
-<span>  <span class="st">"BEST.</span></span>
-<span><span class="st">  DAY.</span></span>
-<span><span class="st">    EVER.</span></span>
-<span><span class="st">      Stop while you are ahead and go to the pub!"</span></span>
+<span>  <span class="st">"MEILLEURE.</span></span>
+<span><span class="st">  JOURNÉE.</span></span>
+<span><span class="st">    DE TOUS LES TEMPS.</span></span>
+<span><span class="st">      Arrête-toi là tant que ça dure et va au bar !"</span></span>
 <span>    <span class="op">)</span></span>
-<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">code.working</span> <span class="op">==</span> <span class="cn">FALSE</span> <span class="op">&amp;&amp;</span> <span class="va">day</span> <span class="op">==</span> <span class="st">"Friday"</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Oh well, but at least it's Friday! Pub time!"</span><span class="op">)</span></span>
-<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">code.working</span> <span class="op">==</span> <span class="cn">TRUE</span> <span class="op">&amp;&amp;</span> <span class="va">day</span> <span class="op">!=</span> <span class="st">"Friday"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">code.fonctionne</span> <span class="op">==</span> <span class="cn">FALSE</span> <span class="op">&amp;&amp;</span> <span class="va">jours</span> <span class="op">==</span> <span class="st">"Vendredi"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Bon... Au moins c'est vendredi ! Apéro !"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">code.fonctionne</span> <span class="op">==</span> <span class="cn">TRUE</span> <span class="op">&amp;&amp;</span> <span class="va">jours</span> <span class="op">!=</span> <span class="st">"Vendredi"</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"</span></span>
-<span><span class="st">  So close to a good day...</span></span>
-<span><span class="st">  shame it's not a Friday"</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">code.working</span> <span class="op">==</span> <span class="cn">FALSE</span> <span class="op">&amp;&amp;</span> <span class="va">day</span> <span class="op">!=</span> <span class="st">"Friday"</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Hello darkness."</span><span class="op">)</span></span>
+<span><span class="st">  On était si proche d'une bonne journée...</span></span>
+<span><span class="st">  Mais c'est pas vendredi"</span></span>
+<span>   <span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">code.fonctionne</span> <span class="op">==</span> <span class="cn">FALSE</span> <span class="op">&amp;&amp;</span> <span class="va">jours</span> <span class="op">!=</span> <span class="st">"Vendredi"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Le monde est contre moi."</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">good.day</span><span class="op">(</span>code.working <span class="op">=</span> <span class="cn">TRUE</span>, day <span class="op">=</span> <span class="st">"Friday"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">bonne.journee</span><span class="op">(</span>code.fonctionne <span class="op">=</span> <span class="cn">TRUE</span>, jours <span class="op">=</span> <span class="st">"Vendredi"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>BEST.
-  DAY.
-    EVER.
-      Stop while you are ahead and go to the pub!</code></pre>
+<pre><code>MEILLEURE.
+  JOURNÉE.
+    DE TOUS LES TEMPS.
+      Arrête-toi là tant que ça dure et va au bar !</code></pre>
 </div>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">good.day</span><span class="op">(</span><span class="cn">FALSE</span>, <span class="st">"Tuesday"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">bonne.journee</span><span class="op">(</span><span class="cn">FALSE</span>, <span class="st">"Tuesday"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Hello darkness.</code></pre>
+<pre><code>Le monde est contre moi.</code></pre>
 </div>
 </div>
-<p>Vous avez remarqué que nous n’avons jamais spécifié ce qu’il fallait faire si le jour n’était pas un vendredi ? C’est parce que, pour cette fonction, la seule chose qui compte est de savoir si c’est un vendredi ou non.</p>
-<p>Nous avons également utilisé des opérateurs logiques chaque fois que nous avons utilisé la fonction <code>if</code> à chaque fois que nous avons utilisé des instructions. Les opérateurs logiques sont la dernière pièce du puzzle des conditions logiques. Le tableau ci-dessous résume les opérateurs. Les deux premiers sont des opérateurs logiques et les six derniers sont des opérateurs relationnels. Vous pouvez utiliser n’importe lequel de ces opérateurs lorsque vous créez vos propres fonctions (ou boucles).</p>
+<p>Vous avez remarqué que nous n’avons jamais spécifié ce qu’il fallait faire si le jour n’était pas un <code>"Vendredi"</code> ? C’est parce que, pour cette fonction, la seule chose qui compte est de savoir si c’est un vendredi (<code>==</code>) ou non (<code>!=</code>).</p>
+<p>Nous avons également utilisé des opérateurs logiques chaque fois que nous avons utilisé la structure <code>if</code>. Les opérateurs logiques sont la dernière pièce du puzzle des conditions logiques. Ils sont résumés dans le tableau ci-dessous. Les deux premiers sont des opérateurs logiques et les six derniers sont des opérateurs relationnels. Vous pouvez utiliser n’importe lequel de ces opérateurs lorsque vous créez vos propres fonctions (ou boucles).</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 9%">
@@ -846,13 +892,13 @@ NAs</code></pre>
 <td style="text-align: right;"><code>&amp;&amp;</code></td>
 <td style="text-align: center;">ET logique</td>
 <td style="text-align: left;">Les deux conditions doivent être remplies</td>
-<td style="text-align: left;"><code>if(cond1 == test &amp;&amp; cond2 == test)</code></td>
+<td style="text-align: left;"><code>if(cond1 == test &amp;&amp; cond2 == test</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">`</td>
-<td style="text-align: center;"></td>
-<td style="text-align: left;">`</td>
-<td style="text-align: left;">OU logique</td>
+<td style="text-align: right;"><code>||</code></td>
+<td style="text-align: center;">OU logique</td>
+<td style="text-align: left;">L’une ou l’autre des conditions doit être remplies</td>
+<td style="text-align: left;"><code>if(cond1 == test || cond2 == test</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;"><code>&lt;</code></td>
@@ -893,13 +939,14 @@ NAs</code></pre>
 </tbody>
 </table></section><section id="boucles" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="boucles">
 <span class="header-section-number">5.5</span> Boucles</h2>
-<p>R est très performant dans l’exécution de tâches répétitives. Si nous voulons qu’un ensemble d’opérations soit répété plusieurs fois, nous utilisons ce que l’on appelle une boucle. Lorsque vous créez une boucle, R exécute les instructions qu’elle contient un certain nombre de fois ou jusqu’à ce qu’une condition donnée soit remplie. Il existe trois principaux types de boucles dans R : la boucle <em>for</em> la boucle <em>while</em> et la boucle <em>répéter</em> boucle.</p>
-<p>Les boucles sont l’un des éléments de base de tous les langages de programmation, et pas seulement de R, et peuvent être un outil puissant (bien qu’à notre avis, elles soient utilisées beaucoup trop souvent lors de l’écriture de code R).</p>
-<section id="boucle-for" class="level3" data-number="5.5.1"><h3 data-number="5.5.1" class="anchored" data-anchor-id="boucle-for">
-<span class="header-section-number">5.5.1</span> Boucle For</h3>
-<p>La structure de boucle la plus couramment utilisée lorsque vous souhaitez répéter une tâche un nombre défini de fois est la boucle <code>for</code> boucle. L’exemple le plus simple de boucle <code>for</code> est le suivant :</p>
+<p>R est très performant dans l’exécution de tâches répétitives. Si nous voulons qu’un ensemble d’opérations soit répété plusieurs fois, nous utilisons ce que l’on appelle une <strong>boucle</strong>. Lorsque vous créez une boucle, R exécute les instructions qu’elle contient un certain nombre de fois ou jusqu’à ce qu’une condition donnée soit remplie. Il existe trois principaux types de boucles dans R : la boucle <strong><em>for</em></strong> (“pour”) la boucle <strong><em>while</em></strong> (“tant que”) et la boucle <strong><em>repeat</em></strong> (“répéter”).</p>
+<p>Les boucles sont l’un des éléments de base de tous les langages de programmation (pas seulement R), et peuvent être un outil puissant (bien qu’à notre avis, elles soient utilisées beaucoup trop souvent lors de l’écriture de code R).</p>
+<section id="boucle-for-pour" class="level3" data-number="5.5.1"><h3 data-number="5.5.1" class="anchored" data-anchor-id="boucle-for-pour">
+<span class="header-section-number">5.5.1</span> Boucle “For” (pour)</h3>
+<p>La structure de boucle la plus couramment utilisée lorsque vous souhaitez répéter une tâche un nombre défini de fois est la boucle <code>for</code>.</p>
+<p>L’exemple le plus simple de boucle <code>for</code> est le suivant :</p>
 <div class="cell">
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -910,27 +957,31 @@ NAs</code></pre>
 [1] 5</code></pre>
 </div>
 </div>
-<p>Mais que fait réellement le code ? Il s’agit d’un morceau de code dynamique où un index <code>i</code> est remplacé itérativement par chaque valeur du vecteur <code>1:5</code>. Décomposons. Parce que la première valeur de notre séquence (<code>1:5</code>) est <code>1</code> la boucle commence par remplacer <code>i</code> par <code>1</code> et exécute tout ce qui se trouve entre le <code><a href="https://rdrr.io/r/base/Paren.html">{ }</a></code>. Les boucles utilisent conventionnellement <code>i</code> comme compteur, abréviation d’itération, mais vous êtes libre d’utiliser ce que vous voulez, même le nom de votre animal de compagnie, cela n’a pas vraiment d’importance (sauf lorsque vous utilisez des boucles imbriquées, auquel cas les compteurs doivent être appelés différemment, comme <code>SenorWhiskers</code> et <code>HerrFlufferkins</code>).</p>
-<p>Ainsi, si nous devions effectuer manuellement la première itération de la boucle</p>
+<p>Mais que fait réellement le code ? Il s’agit d’un morceau de code dynamique où un index <code>i</code> est remplacé itérativement par chaque valeur du vecteur <code>1:5</code>.</p>
+<p>Décomposons.</p>
+<p>Parce que la première valeur de notre séquence (<code>1:5</code>) est <code>1</code> la boucle commence par remplacer <code>i</code> par <code>1</code> et exécute tout ce qui se trouve entre les accolades <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>.</p>
+<p>Les boucles utilisent conventionnellement <code>i</code> comme compteur (“i” pour “itération”), mais vous êtes libre d’utiliser ce que vous voulez, même le nom de votre animal de compagnie, cela n’a pas vraiment d’importance (sauf lorsque vous utilisez des boucles imbriquées, auquel cas les compteurs doivent être appelés différemment, comme <code>SenorWhiskers</code> et <code>HerrFlufferkins</code>).</p>
+<p>Ainsi, si nous devions effectuer manuellement la première itération de la boucle :</p>
 <div class="cell">
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
-<p>Une fois cette première itération terminée, la boucle for <em>boucle</em> revient au début et remplace <code>i</code> par la valeur suivante dans notre <code>1:5</code> séquence (<code>2</code> dans ce cas) :</p>
+<p>Une fois cette première itération terminée, la <em>boucle</em> <code>for</code> revient au début et remplace <code>i</code> par la valeur suivante dans notre séquence <code>1:5</code> (<code>2</code> dans ce cas) :</p>
 <div class="cell">
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
 <p>Ce processus est ensuite répété jusqu’à ce que la boucle atteigne la dernière valeur de la séquence (<code>5</code> dans cet exemple), après quoi elle s’arrête.</p>
-<p>Pour renforcer la façon dont les <code>for</code> et vous présenter une caractéristique importante des boucles, nous allons modifier notre compteur à l’intérieur de la boucle. Cela peut être utilisé, par exemple, si nous utilisons une boucle pour parcourir un vecteur mais que nous voulons sélectionner la ligne suivante (ou toute autre valeur). Pour ce faire, nous ajouterons simplement 1 à la valeur de notre index à chaque fois que nous itérons notre boucle.</p>
+<p>Pour mieux comprendre le fonctionnement de ces boucles <code>for</code> et vous présenter une caractéristique importante des boucles en général, nous allons modifier notre compteur à l’intérieur de la boucle. Cela peut être utilisé, par exemple, pour parcourir un vecteur, mais en sélectionnant la ligne suivante (ou toute autre valeur).</p>
+<p>Pour ce faire, nous ajouterons simplement 1 à la valeur de notre index à chaque fois que nous itérons notre boucle.</p>
 <div class="cell">
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -941,9 +992,9 @@ NAs</code></pre>
 [1] 6</code></pre>
 </div>
 </div>
-<p>Comme dans la boucle précédente, la première valeur de notre séquence est 1. La boucle commence par remplacer <code>i</code> par <code>1</code> mais cette fois, nous avons spécifié qu’une valeur de <code>1</code> doit être ajoutée à <code>i</code> dans l’expression résultant en une valeur de <code>1 + 1</code>.</p>
+<p>Comme dans la boucle précédente, la première valeur de notre séquence est 1. La boucle commence par remplacer <code>i</code> par <code>1</code> mais cette fois, nous <code>+ 1</code> à chaque valeur de <code>i</code> dans l’expression. Le résultat est donc <code>1 + 1</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
 <span><span class="va">i</span> <span class="op">+</span> <span class="fl">1</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
@@ -951,98 +1002,101 @@ NAs</code></pre>
 </div>
 <p>Comme précédemment, une fois l’itération terminée, la boucle passe à la valeur suivante de la séquence et remplace <code>i</code> par la valeur suivante (<code>2</code> dans ce cas), de sorte que <code>i + 1</code> devient <code>2 + 1</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
 <span><span class="va">i</span> <span class="op">+</span> <span class="fl">1</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
-<p>Et ainsi de suite. Nous pensons que vous comprenez l’idée ! En fait, il s’agit d’une <code>for</code> et rien d’autre.</p>
+<p>Et ainsi de suite. Nous pensons que vous avez l’idée ! Dans les faits, c’est tout ce que fait une boucle <code>for</code>, rien d’autre !</p>
 <p>Bien que nous ayons utilisé une simple addition dans le corps de la boucle, vous pouvez également combiner des boucles avec des fonctions.</p>
-<p>Revenons à notre cadre de données <code>dishes</code>. Précédemment dans le chapitre, nous avons créé une fonction pour multiplier deux colonnes et l’avons utilisée pour créer notre <code>lasagna_stovies</code>, <code>stovies_poutine</code>, et <code>poutine_tartiflette</code> objets. Nous aurions pu utiliser une boucle pour cela. Rappelons-nous à quoi ressemblent nos données et le code de la fonction <code>multiple_columns()</code> fonction.</p>
+<p>Revenons à notre jeu de données <code>repas</code>. Précédemment dans le chapitre, nous avons créé une fonction pour multiplier deux colonnes et l’avons utilisée pour créer les variables <code>lasagnes_stovies</code>, <code>stovies_poutine</code>, et <code>poutine_tartiflette</code>. Nous aurions pu utiliser une boucle pour cela !</p>
+<p>Rappelons-nous à quoi ressemblent nos données et le code de la fonction <code>col_multiplicateur()</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dishes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  lasagna <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>,</span>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">repas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  lasagnes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>,</span>
 <span>  stovies <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>,</span>
 <span>  poutine <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  tartiflette <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">multiply_cols</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">temp_var</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">col_multiplicateur</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">donnees</span>, <span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">temp_var</span> <span class="op">&lt;-</span> <span class="va">donnees</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">{</span><span class="op">{</span> <span class="va">x</span> <span class="op">}</span><span class="op">}</span>, <span class="op">{</span><span class="op">{</span> <span class="va">y</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>xy <span class="op">=</span> <span class="op">{</span></span>
 <span>      <span class="va">.</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">*</span> <span class="va">.</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
 <span>    <span class="op">}</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">xy</span><span class="op">)</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">temp_var</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">"The function has produced NAs"</span><span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/warning.html">warning</a></span><span class="op">(</span><span class="st">"La fonction a produit des NA"</span><span class="op">)</span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">temp_var</span><span class="op">)</span></span>
 <span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">temp_var</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Pour utiliser une liste afin d’itérer sur ces colonnes, nous devons d’abord créer une liste vide (vous vous souvenez de <a href="03-donnees.html#sec-lists" class="quarto-xref"><span>Section 3.2.3</span></a> ?) que nous appelons <code>temp</code> (abréviation de temporary) qui sera utilisée pour stocker les résultats de la fonction <code>for</code> boucle.</p>
+<p>Nous allons d’abord créer une liste vide (vous vous souvenez de <a href="03-donnees.html#sec-lists" class="quarto-xref"><span>Section 3.2.3</span></a> ?) que nous appelons <code>temp</code> (pour temporaire) qui sera utilisée pour stocker les résultats des itérations de la fonction via la boucle <code>for</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">dishes</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">temp</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span><span class="va">dishes</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">dishes</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">dishes</span><span class="op">)</span><span class="op">[</span><span class="va">i</span> <span class="op">+</span> <span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">repas</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">temp</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">col_multiplicateur</span><span class="op">(</span><span class="va">repas</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">repas</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">repas</span><span class="op">)</span><span class="op">[</span><span class="va">i</span> <span class="op">+</span> <span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in multiply_cols(dishes, x = colnames(dishes)[i], y =
-colnames(dishes)[i + : The function has produced NAs
-Warning in multiply_cols(dishes, x = colnames(dishes)[i], y =
-colnames(dishes)[i + : The function has produced NAs</code></pre>
+<pre><code>Warning in col_multiplicateur(repas, x = colnames(repas)[i], y =
+colnames(repas)[i + : La fonction a produit des NA
+Warning in col_multiplicateur(repas, x = colnames(repas)[i], y =
+colnames(repas)[i + : La fonction a produit des NA</code></pre>
 </div>
 </div>
-<p>Lorsque nous spécifions notre <code>for</code> remarquez que nous avons soustrait 1 de <code>ncol(dishes)</code>. La boucle <code><a href="https://rdrr.io/r/base/nrow.html">ncol()</a></code> renvoie le nombre de colonnes dans notre <code>dishes</code> cadre de données qui est <code>4</code> et donc notre boucle s’exécute de <code>i = 1</code> à <code>i = 4 - 1</code> qui est <code>i = 3</code>.</p>
-<p>Ainsi, lors de la première itération de la boucle <code>i</code> prend la valeur <code>1</code>. Les <code>multiply_cols()</code> multiplie le <code>dishes[, 1]</code> (<code>lasagna</code>) et <code>dishes[, 1 + 1]</code> (<code>stovies</code>) et le stocke dans la colonne <code>temp[[1]]</code> qui est le premier élément de la colonne <code>temp</code> liste.</p>
-<p>La deuxième itération de la boucle <code>i</code> prend la valeur <code>2</code>. Les <code>multiply_cols()</code> multiplie le <code>dishes[, 2]</code> (<code>stovies</code>) et <code>dishes[, 2 + 1]</code> (<code>poutine</code>) et le stocke dans la colonne <code>temp[[2]]</code> qui est le deuxième élément de la colonne <code>temp</code> liste.</p>
-<p>La troisième et dernière itération de la boucle <code>i</code> prend la valeur <code>3</code>. Les <code>multiply_cols()</code> multiplie le <code>dishes[, 3]</code> (<code>poutine</code>) et <code>dishes[, 3 + 1]</code> (<code>tartiflette</code>) et le stocke dans la colonne <code>temp[[3]]</code> qui est le troisième élément de la colonne <code>temp</code> liste.</p>
-<p>Encore une fois, il est bon de vérifier que nous obtenons quelque chose de sensé de notre boucle (rappelez-vous, vérifiez, vérifiez et vérifiez encore !). Pour ce faire, nous pouvons utiliser la fonction <code><a href="https://rdrr.io/r/base/identical.html">identical()</a></code> pour comparer les variables que nous avons créées <code>by hand</code> à chaque itération de la boucle manuellement.</p>
+<p>Lorsque nous spécifions notre boucle <code>for</code> remarquez que nous avons soustrait 1 à <code>ncol(repas)</code>. La boucle <code><a href="https://rdrr.io/r/base/nrow.html">ncol()</a></code> renvoie le nombre de colonnes dans notre jeu de données <code>repas</code>, donc <code>4</code>. Ainsi, notre boucle s’exécute de <code>i = 1</code> à <code>i = 4 - 1</code> c’est-à-dire, <code>i = 3</code>.</p>
+<p>Ainsi, lors de la première itération de la boucle, <code>i</code> prend la valeur <code>1</code>. <code>col_multiplicateur()</code> multiplie <code>repas[, 1]</code> (<code>lasagnes</code>) par <code>repas[, 1 + 1]</code> (<code>stovies</code>) et le stocke en tant que <code>temp[[1]]</code>, donc le premier élément de la liste <code>temp</code>.</p>
+<p>À la deuxième itération de la boucle, <code>i</code> prend la valeur <code>2</code>. <code>col_multiplicateur()</code> multiplie <code>repas[, 2]</code> (<code>stovies</code>) pas <code>repas[, 2 + 1]</code> (<code>poutine</code>) et le stocke en tant que <code>temp[[2]]</code>, donc le deuxième élément de la liste <code>temp</code>.</p>
+<p>À la troisième et dernière itération de la boucle, <code>i</code> prend la valeur <code>3</code>. <code>col_multiplicateur()</code> multiplie <code>repas[, 3]</code> (<code>poutine</code>) par <code>repas[, 3 + 1]</code> (<code>tartiflette</code>) et le stocke en tant que <code>temp[[3]]</code>, donc le troisième élément de la liste <code>temp</code>.</p>
+<p>Encore une fois, il est bon de vérifier que nous obtenons quelque chose de sensé de notre boucle (rappelez-vous, vérifiez, vérifiez et <strong>vérifiez encore</strong> !).</p>
+<p>Pour ce faire, nous pouvons utiliser la fonction <code><a href="https://rdrr.io/r/base/identical.html">identical()</a></code> pour comparer les variables que nous avons créées “<code>by hand</code>” avec chaque itération de la boucle manuellement.</p>
 <div class="cell">
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagna_stovies_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span><span class="va">dishes</span>, <span class="va">lasagna</span>, <span class="va">stovies</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lasagnes_stovies_fonc</span> <span class="op">&lt;-</span> <span class="fu">col_multiplicateur</span><span class="op">(</span><span class="va">repas</span>, <span class="va">lasagnes</span>, <span class="va">stovies</span><span class="op">)</span></span>
 <span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span></span>
-<span>  <span class="fu">multiply_cols</span><span class="op">(</span><span class="va">dishes</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">dishes</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">dishes</span><span class="op">)</span><span class="op">[</span><span class="va">i</span> <span class="op">+</span> <span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>  <span class="va">lasagna_stovies_func</span></span>
+<span>  <span class="fu">col_multiplicateur</span><span class="op">(</span><span class="va">repas</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">repas</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">repas</span><span class="op">)</span><span class="op">[</span><span class="va">i</span> <span class="op">+</span> <span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>  <span class="va">lasagnes_stovies_fonc</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stovies_poutine_func</span> <span class="op">&lt;-</span> <span class="fu">multiply_cols</span><span class="op">(</span><span class="va">dishes</span>, <span class="va">stovies</span>, <span class="va">poutine</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stovies_poutine_fonc</span> <span class="op">&lt;-</span> <span class="fu">col_multiplicateur</span><span class="op">(</span><span class="va">repas</span>, <span class="va">stovies</span>, <span class="va">poutine</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in multiply_cols(dishes, stovies, poutine): The function has produced
-NAs</code></pre>
+<pre><code>Warning in col_multiplicateur(repas, stovies, poutine): La fonction a produit
+des NA</code></pre>
 </div>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span></span>
-<span>  <span class="fu">multiply_cols</span><span class="op">(</span><span class="va">dishes</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">dishes</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">dishes</span><span class="op">)</span><span class="op">[</span><span class="va">i</span> <span class="op">+</span> <span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>  <span class="va">stovies_poutine_func</span></span>
+<span>  <span class="fu">col_multiplicateur</span><span class="op">(</span><span class="va">repas</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">repas</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">repas</span><span class="op">)</span><span class="op">[</span><span class="va">i</span> <span class="op">+</span> <span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>  <span class="va">stovies_poutine_fonc</span></span>
 <span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in multiply_cols(dishes, colnames(dishes)[i], colnames(dishes)[i + :
-The function has produced NAs</code></pre>
+<pre><code>Warning in col_multiplicateur(repas, colnames(repas)[i], colnames(repas)[i + :
+La fonction a produit des NA</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p>Si vous pouvez suivre les exemples ci-dessus, vous serez en bonne position pour commencer à écrire vos propres boucles for. Cela dit, il existe d’autres types de boucles.</p>
-</section><section id="boucle-while" class="level3" data-number="5.5.2"><h3 data-number="5.5.2" class="anchored" data-anchor-id="boucle-while">
-<span class="header-section-number">5.5.2</span> Boucle While</h3>
-<p>Un autre type de boucle que vous pouvez utiliser (bien que moins fréquemment) est la boucle <code>while</code> boucle. La boucle <code>while</code> est utilisée lorsque vous voulez continuer à tourner en boucle jusqu’à ce qu’une condition logique spécifique soit remplie (à comparer avec la boucle <code>for</code> qui parcourt toujours une séquence entière).</p>
-<p>La structure de base de la boucle while est la suivante</p>
+<p>Si vous arrivez à suivre les exemples ci-dessus, vous êtes prêts pour commencer à écrire vos propres boucles <code>for</code>.</p>
+<p>Mais, il existe d’autres types de boucles.</p>
+</section><section id="boucle-while-tant-que" class="level3" data-number="5.5.2"><h3 data-number="5.5.2" class="anchored" data-anchor-id="boucle-while-tant-que">
+<span class="header-section-number">5.5.2</span> Boucle “While” (tant que)</h3>
+<p>La boucle <code>while</code> est utilisée lorsque vous voulez faire tourner en boucle jusqu’à ce qu’une certaine condition logique spécifique soit remplie (contrairement à la boucle <code>for</code> qui parcourt toujours une séquence entière).</p>
+<p>La structure de base d’une boucle <code>while</code> est la suivante :</p>
 <div class="cell">
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">while</span> <span class="op">(</span><span class="va">logical_condition</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">while</span> <span class="op">(</span><span class="va">logical_condition</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">expression</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Un exemple simple de boucle while est le suivant :</p>
+<p>Un exemple simple de boucle while est :</p>
 <div class="cell">
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span><span class="kw">while</span> <span class="op">(</span><span class="va">i</span> <span class="op">&lt;=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">i</span> <span class="op">&lt;-</span> <span class="va">i</span> <span class="op">+</span> <span class="fl">1</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span></span>
@@ -1055,29 +1109,46 @@ The function has produced NAs</code></pre>
 [1] 5</code></pre>
 </div>
 </div>
-<p>Ici, la boucle continuera uniquement à transmettre des valeurs au corps principal de la boucle (l’élément <code>expression</code> corps) que lorsque <code>i</code> est inférieur ou égal à 4 (spécifié à l’aide de l’attribut <code>&lt;=</code> dans cet exemple). Une fois que <code>i</code> est supérieur à 4, la boucle s’arrête.</p>
-<p>Il existe un autre type de boucle, très rarement utilisé : la boucle <code>repeat</code> boucle. La boucle <code>repeat</code> n’a pas de contrôle conditionnel et peut donc continuer à itérer indéfiniment (ce qui signifie qu’une pause, ou “stop here”, doit être codée dans la boucle). Cela vaut la peine d’être conscient de son existence, mais pour l’instant nous ne pensons pas qu’il faille s’en préoccuper ; la fonction <code>for</code> et <code>while</code> vous permettront de répondre à la plupart de vos besoins en matière de boucles.</p>
+<p>Ici, la boucle continuera seulement à transmettre des valeurs au corps principal de la boucle (l’<code>expression</code>) que lorsque <code>i</code> est inférieur ou égal à 4 (spécifié à l’aide de l’attribut <code>&lt;=</code> dans cet exemple). Une fois que <code>i</code> est supérieur à 4, la boucle s’arrête.</p>
+<p>Il existe un autre type de boucle, très rarement utilisé : la boucle <code>repeat</code>. La boucle <code>repeat</code> n’a pas de contrôle conditionnel et peut donc continuer à itérer indéfiniment. Ce qui signifie qu’une pause (“break”), ou “stop here”, doit être codée dans la boucle. C’est intéressant de savoir que ça éxiste, mais pour l’instant ce n’est pas très utile de s’en préoccuper ; les boucles <code>for</code> et <code>while</code> devraient vous permettre de répondre à la plupart de vos besoins.</p>
 </section><section id="quand-utiliser-une-boucle" class="level3" data-number="5.5.3"><h3 data-number="5.5.3" class="anchored" data-anchor-id="quand-utiliser-une-boucle">
 <span class="header-section-number">5.5.3</span> Quand utiliser une boucle ?</h3>
-<p>Les boucles sont assez couramment utilisées, bien que parfois un peu trop à notre avis. Des tâches équivalentes peuvent être effectuées avec des fonctions, qui sont souvent plus efficaces que les boucles. La question se pose donc de savoir quand il faut utiliser une boucle.</p>
+<p>Les boucles sont assez couramment utilisées, bien que parfois un peu trop à notre avis. Des tâches équivalentes peuvent être effectuées avec des fonctions, qui sont souvent plus efficaces.</p>
+<p><em>La question se pose donc de savoir quand faut-il utiliser une boucle ?</em></p>
 <p>En général, les boucles sont implémentées de manière inefficace dans R et doivent être évitées lorsque de meilleures alternatives existent, en particulier lorsque vous travaillez avec de grands ensembles de données. Cependant, les boucles sont parfois le seul moyen d’obtenir le résultat souhaité.</p>
 <p><strong>Voici quelques exemples de cas où l’utilisation de boucles peut s’avérer appropriée :</strong></p>
 <ul>
-<li><p>Certaines simulations (par exemple le modèle de Ricker peut, en partie, être construit à l’aide de boucles)</p></li>
-<li><p>Relations récursives (une relation qui dépend de la valeur de la relation précédente) [“pour comprendre la récursivité, il faut comprendre la récursivité”.] )</p></li>
-<li><p>Problèmes plus complexes (par exemple, depuis combien de temps le dernier blaireau a-t-il été vu sur le site ? <span class="math inline">\(j\)</span> étant donné qu’une martre des pins a été vue à l’heure <span class="math inline">\(t\)</span> au même endroit <span class="math inline">\(j\)</span> que le blaireau, lorsque la martre a été détectée au cours d’une période spécifique de 6 heures, mais excluant les blaireaux vus 30 minutes avant l’arrivée de la martre, répétée pour toutes les détections de martres)</p></li>
-<li><p>Boucles While (continuez à sauter jusqu’à ce que vous ayez atteint la lune)</p></li>
-</ul></section><section id="si-ce-ne-sont-pas-des-boucles-alors-quoi" class="level3" data-number="5.5.4"><h3 data-number="5.5.4" class="anchored" data-anchor-id="si-ce-ne-sont-pas-des-boucles-alors-quoi">
-<span class="header-section-number">5.5.4</span> Si ce ne sont pas des boucles, alors quoi ?</h3>
-<p>En bref, utilisez la famille de fonctions apply ; <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>, <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code>, <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code>, <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code> et <code><a href="https://rdrr.io/r/base/mapply.html">mapply()</a></code>. Les fonctions apply peuvent souvent accomplir les tâches de la plupart des boucles “maison”, parfois plus rapidement (bien que cela ne soit pas vraiment un problème pour la plupart des gens), mais surtout avec un risque d’erreur beaucoup plus faible. Une stratégie à garder à l’esprit et qui peut s’avérer utile est la suivante : pour chaque boucle que vous faites, essayez de la refaire en utilisant une fonction apply (souvent <code>lapply</code> ou <code>sapply</code> fonctionneront). Si vous le pouvez, utilisez la version applicable. Il n’y a rien de pire que de se rendre compte qu’il y avait une petite, minuscule, erreur apparemment insignifiante dans une boucle qui, des semaines, des mois ou des années plus tard, s’est propagée dans un énorme gâchis. Nous recommandons vivement d’essayer d’utiliser les fonctions apply chaque fois que cela est possible.</p>
+<li>Certaines simulations<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+</li>
+</ul>
+<ul>
+<li>Relations récursives <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>
+</li>
+</ul>
+<ul>
+<li>Problèmes plus complexes <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>
+</li>
+</ul>
+<ul>
+<li>Boucles While <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>
+</li>
+</ul></section><section id="si-on-nutilise-pas-une-boucle-alors-quoi" class="level3" data-number="5.5.4"><h3 data-number="5.5.4" class="anchored" data-anchor-id="si-on-nutilise-pas-une-boucle-alors-quoi">
+<span class="header-section-number">5.5.4</span> Si on n’utilise pas une boucle, alors quoi ?</h3>
+<p>En bref, utilisez la famille de fonctions <strong>apply</strong> ; <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>, <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code>, <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code>, <code><a href="https://rdrr.io/r/base/lapply.html">vapply()</a></code> et <code><a href="https://rdrr.io/r/base/mapply.html">mapply()</a></code>.</p>
+<p>Les fonctions apply peuvent souvent accomplir les tâches de la plupart des boucles “maison”, parfois plus rapidement (bien que cela ne soit pas vraiment un problème pour la plupart des gens), mais surtout avec un risque d’erreur beaucoup plus faible.</p>
+<p>Une stratégie à garder à l’esprit et qui peut s’avérer utile est la suivante : pour chaque boucle que vous faites, essayez de la refaire en utilisant une fonction apply (souvent <code>lapply</code> ou <code>sapply</code> fonctionneront). Si vous le pouvez, utilisez la version applicable.</p>
+<p>Il n’y a rien de pire que de se rendre compte qu’il y avait une petite, minuscule, erreur apparemment insignifiante dans une boucle qui, des semaines, des mois ou des années plus tard, s’est transformée en un énorme bazar.</p>
+<p>Nous recommandons vivement d’essayer d’utiliser les fonctions apply chaque fois que cela est possible.</p>
 <section id="lapply" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="lapply">lapply</h4>
-<p>Votre fonction d’application sera souvent <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> du moins au début. La façon dont les <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> et la raison pour laquelle il constitue souvent une bonne alternative aux boucles for, est qu’il passe en revue chaque élément d’une liste et effectue une tâche (<em>c’est-à-dire</em> exécuter une fonction). Il présente l’avantage supplémentaire de produire les résultats sous forme de liste, ce que vous devriez autrement coder vous-même dans une boucle.</p>
+<p>La fonction de base sera souvent <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, du moins au début.</p>
+<p>La façon dont les <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> fonctionnent, et la raison pour laquelle elles constituent souvent une bonne alternative aux boucles <code>for</code>, est qu’elles passent en revue chaque élément d’une liste et effectuent une tâche (<em>c’est-à-dire</em> exécutent une fonction).</p>
+<p>Elles présentent l’avantage supplémentaire de produire les résultats sous forme de <strong>liste</strong>, ce que vous devriez autrement coder vous-même dans une boucle.</p>
 <p>Une fonction <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> a la structure suivante :</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">FUN</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Ici <code>X</code> est le vecteur que nous voulons faire <em>quelque chose</em> quelque chose. <code>FUN</code> Les stands de l’association sont très amusants (je plaisante !). C’est aussi l’abréviation de “fonction”.</p>
-<p>Commençons par une démonstration simple. Utilisons la fonction <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> pour créer une séquence de 1 à 5 et ajouter 1 à chaque observation (comme nous l’avons fait lorsque nous avons utilisé une boucle for) :</p>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">FUN</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ici <code>X</code> est le vecteur auquel nous voulons faire <em>quelque chose</em>. On écrit <code>FUN</code> pour décrire ce qualifié ce qu’on est en train de faire là (je plaisante !). C’est aussi l’abréviation de “function” (fonction).</p>
+<p>Commençons par une démonstration simple : Utilisons la fonction <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> pour créer une séquence de 1 à 5 et ajouter 1 à chaque observation (comme nous l’avons fait avec une boucle <code>for</code>) :</p>
 <div class="cell">
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">4</span>, <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">4</span>, <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">a</span> <span class="op">+</span> <span class="fl">1</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1097,13 +1168,13 @@ The function has produced NAs</code></pre>
 [1] 5</code></pre>
 </div>
 </div>
-<p>Remarquez que nous devons spécifier notre séquence en tant que <code>0:4</code> pour obtenir la sortie <code>1 ,2 ,3 ,4 , 5</code> puisque nous ajoutons <code>1</code> à chaque élément de la séquence. Voyez ce qui se passe si vous utilisez <code>1:5</code> à la place.</p>
+<p>Remarquez que nous devons spécifier notre séquence en tant que <code>0:4</code> pour obtenir la sortie <code>1 ,2 ,3 ,4 , 5</code> puisque nous ajoutons <code>1</code> à chaque élément de la séquence. <em>Voyez ce qui se passe si vous utilisez <code>1:5</code> à la place</em>.</p>
 <p>De manière équivalente, nous aurions pu définir la fonction d’abord, puis l’utiliser dans <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code></p>
 <div class="cell">
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">add_fun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fun_ajouter</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">a</span> <span class="op">+</span> <span class="fl">1</span></span>
 <span><span class="op">}</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">4</span>, <span class="va">add_fun</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">4</span>, <span class="va">fun_ajouter</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] 1
@@ -1121,16 +1192,16 @@ The function has produced NAs</code></pre>
 [1] 5</code></pre>
 </div>
 </div>
-<p>Les <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> fait la même chose que <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> mais au lieu de stocker les résultats sous forme de liste, elle les stocke sous forme de vecteur.</p>
+<p>Les <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> fait la même chose que <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> mais au lieu de stocker les résultats sous forme de liste, elle les stocke sous forme de <strong>vecteur</strong>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">4</span>, <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">4</span>, <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">a</span> <span class="op">+</span> <span class="fl">1</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4 5</code></pre>
 </div>
 </div>
-<p>Comme vous pouvez le voir, dans les deux cas, nous obtenons exactement les mêmes résultats que lorsque nous avons utilisé la boucle for.</p>
+<p>Comme vous pouvez le voir, dans les deux cas, nous obtenons exactement les mêmes résultats que lorsque nous avons utilisé la boucle <code>for</code>.</p>
 <!--course website Links-->
 <!--cran Links-->
 <!--RStudio-->
@@ -1148,7 +1219,13 @@ The function has produced NAs</code></pre>
 <!--Add by Augustin-->
 
 
-</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p>Par exemple le modèle de Ricker peut, en partie, être construit à l’aide de boucles.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Une relation qui dépend de la valeur de la relation précédente - “pour comprendre la récursivité, il faut comprendre la récursivité”.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Par exemple, depuis combien de temps le dernier blaireau a-t-il été vu sur le site <span class="math inline">\(j\)</span>, sachant qu’une martre des pins a été vue à l’heure <span class="math inline">\(t\)</span> au même endroit <span class="math inline">\(j\)</span> que le blaireau, lorsque la martre a été détectée au cours d’une période spécifique de 6 heures, mais excluant les blaireaux vus 30 minutes avant l’arrivée de la martre, répétée pour toutes les détections de martres.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Continuez à sauter jusqu’à ce que vous ayez atteint la lune.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

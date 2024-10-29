@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr-fr" xml:lang="fr-fr"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.9">
+<meta name="generator" content="quarto-1.6.32">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Julien Martin">
 <meta name="description" content="En cours de traduction">
@@ -70,11 +70,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-37bb72f48501692975d9c066fdeb097b.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6561bbde787c299e21493071c8edc6ff.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1ff0208b9405ab0ff3a2d5e39eb7a7a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c0dc7ac2c5723ded4848ec98b3ba37c0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -290,7 +290,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./25-puissance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyse de puissance avec R et G\*Power</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Analyse de puissance avec R et G*Power</span></span></a>
   </div>
 </li>
       </ul>
@@ -449,7 +449,7 @@ window.Quarto = {
 <span class="header-section-number">10.1</span> Paquets R et données requises</h2>
 <p>Pour ce laboratoire, vous aurez besoin de :</p>
 <ul>
-<li>Paquets R:
+<li>Paquets R :
 <ul>
 <li>
 <code>car</code> <span class="emoji" data-emoji="package">📦</span>
@@ -465,8 +465,11 @@ window.Quarto = {
 </li>
 </ul>
 </li>
-<li>Jeux de données
+<li>Jeux de données :
 <ul>
+<li>
+<code>pwr</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
 <li>“sturgeon.csv”</li>
 <li>“skulldat_2020.csv”</li>
 </ul>
@@ -478,6 +481,7 @@ window.Quarto = {
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mtorchiano/lmPerm">lmPerm</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
 <span><span class="va">esturgeon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/sturgeon.csv"</span><span class="op">)</span></span>
 <span><span class="va">crane</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/skulldat_2020.csv"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -839,7 +843,7 @@ mean in group 5 mean in group 6
 6  7.46   6  3</code></pre>
 </div>
 </div>
-<p>Quand les données sont appariées, il faut indiquer comment elle doivent être associées. Dans notre exemple, elles sont appariées par individu. Le format de données de type <em>long</em> indique cet appariement via la colonne <code>id</code>. Cependant, la fonction <code>t.test</code> ne permet pas de le prendre en compte. Il faut donc transformer les données en format de type <em>large</em> ou <em>horizontale</em> ou il y a une colonne différente pour chaque catégorie. Dans notre exemple, on veut un jeu de données avec une colonne de mesure par age et où chaque ligne correspond à une personne différente. On peut modifier le format des données avec le code suivant.</p>
+<p>Quand les données sont appariées, il faut indiquer comment elles doivent être associées. Dans notre exemple, elles sont appariées par individu. Le format de données de type <em>long</em> indique cet appariement via la colonne <code>id</code>. Cependant, la fonction <code>t.test</code> ne permet pas de le prendre en compte. Il faut donc transformer les données en format de type <em>large</em> ou <em>horizontale</em> ou il y a une colonne différente pour chaque catégorie. Dans notre exemple, on veut un jeu de données avec une colonne de mesure par age et où chaque ligne correspond à une personne différente. On peut modifier le format des données avec le code suivant.</p>
 <div class="cell">
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">crane_h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">crane</span><span class="op">$</span><span class="va">id</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">crane_h</span><span class="op">$</span><span class="va">width5</span> <span class="op">&lt;-</span> <span class="va">crane</span><span class="op">$</span><span class="va">width</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span><span class="op">(</span><span class="va">crane_h</span><span class="op">$</span><span class="va">id</span>, <span class="va">crane</span><span class="op">$</span><span class="va">id</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">crane</span><span class="op">$</span><span class="va">age</span> <span class="op">==</span> <span class="fl">5</span><span class="op">]</span></span>
@@ -955,25 +959,23 @@ V = 0, p-value = 0.0003597
 alternative hypothesis: true location shift is less than 0</code></pre>
 </div>
 </div>
-<p>Pour estimer la puissance d’un test de t avec R, il faut utiliser la fonction <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code>. Il faut spécifier l’argument <code>type = "paired"</code>, utiliser la moyenne et l’écart-type de la différence au sein des paires dans les arguments <code>delta</code> et <code>sd</code>.</p>
+<p>Pour estimer la puissance d’un test de t avec R, il faut utiliser la fonction <code><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test()</a></code>. Il faut spécifier l’argument <code>type = "paired"</code>, utiliser la moyenne et l’écart-type de la différence pour calculer le d de cohen avec la formule <code>mean(diff) / sd(diff)</code> pour un test de t pairé.</p>
 <div class="cell">
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">crane_h</span><span class="op">$</span><span class="va">diff</span> <span class="op">&lt;-</span> <span class="va">crane_h</span><span class="op">$</span><span class="va">width6</span> <span class="op">-</span> <span class="va">crane_h</span><span class="op">$</span><span class="va">width5</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">15</span>,</span>
-<span>             delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">crane_h</span><span class="op">$</span><span class="va">diff</span><span class="op">)</span>,</span>
-<span>             sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">crane_h</span><span class="op">$</span><span class="va">diff</span><span class="op">)</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">15</span>,</span>
+<span>             d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">crane_h</span><span class="op">$</span><span class="va">diff</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">crane_h</span><span class="op">$</span><span class="va">diff</span><span class="op">)</span>,</span>
 <span>             type <span class="op">=</span> <span class="st">"paired"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Paired t test power calculation 
 
               n = 15
-          delta = 0.2
-             sd = 0.03927922
+              d = 5.091751
       sig.level = 0.05
           power = 1
     alternative = two.sided
 
-NOTE: n is number of *pairs*, sd is std.dev. of *differences* within pairs</code></pre>
+NOTE: n is number of *pairs*</code></pre>
 </div>
 </div>
 </section><section id="références" class="level2" data-number="10.6"><h2 data-number="10.6" class="anchored" data-anchor-id="références">
