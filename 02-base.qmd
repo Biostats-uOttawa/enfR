@@ -558,7 +558,7 @@ vec_trie3
 
 Bien qu'il soit amusant de trier un seul vecteur, il serait peut-être plus utile de trier un vecteur en fonction des valeurs d'un autre vecteur.
 Pour ce faire, nous devons utiliser la fonction `order()` en combinaison avec `[ ]`.
-Pour le démontrer, créons un vecteur appelé `taille` contenant la taille de 5 personnes différentes et un autre vecteur appelé `p.noms` contenant les noms de ces personnes (Joanna mesure 180 cm, Charlotte mesure 155 cm, etc.)
+Pour le démontrer, créons un vecteur appelé `taille` contenant la taille de 5 personnes différentes et un autre vecteur appelé `p_noms` contenant les noms de ces personnes (Joanna mesure 180 cm, Charlotte mesure 155 cm, etc.)
 
 ```{r}
 #| echo: true
@@ -570,7 +570,7 @@ p_noms <- c("Joanna", "Charlotte", "Helen", "Karen", "Amy")
 p_noms
 ```
 
-Notre objectif est de classer les personnes dans `p.noms` dans l'ordre croissant de leur `taille`.
+Notre objectif est de classer les personnes dans `p_noms` dans l'ordre croissant de leur `taille`.
 La première chose que nous allons faire est d'utiliser la fonction `order()` avec le vecteur `taille` pour créer un vecteur appelé `taille_ord`
 
 ```{r}
@@ -585,12 +585,12 @@ La première valeur, `2`(n'oubliez pas d'ignorer `[1]`) doit être lue comme "la
 Si nous le vérifions en regardant le vecteur `taille` ci-dessus, nous pouvons voir que le 2^e^ élément a une valeur de 155, ce qui est la plus petite valeur.
 La deuxième valeur la plus petite du vecteur `taille` est la 3^e^ ce qui, après vérification, donne 160 et ainsi de suite.
 La plus grande valeur de `taille` est la `5`^e^ qui vaut 181.
-Maintenant que nous avons le vecteur des indices de position des tailles par ordre croissant (`taille_ord`), nous pouvons extraire ces valeurs de notre vecteur `p.noms` dans cet ordre
+Maintenant que nous avons le vecteur des indices de position des tailles par ordre croissant (`taille_ord`), nous pouvons extraire ces valeurs de notre vecteur `p_noms` dans cet ordre
 
 ```{r}
 #| echo: true
 #| eval: true
-noms_ord <- p.noms[taille_ord]
+noms_ord <- p_noms[taille_ord]
 noms_ord
 ```
 
@@ -993,7 +993,4 @@ remotes::install_github("tidyverse/dplyr")
 
 Le moyen le plus sûr (à notre connaissance) de mettre à jour un paquet installé depuis GitHub est de le réinstaller en utilisant la commande ci-dessus.
 
-```{r}
-#| label: links
-#| child: images/_links.md
-```
+{{< include images/_links.md >}}

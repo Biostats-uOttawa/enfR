@@ -1076,10 +1076,7 @@ Un autre guide de référence Quarto utile et concis peut être trouvé [ici][rm
 
 Une feuille de calcul rapide et facile pour R Markdown [de R Markdown][rmd-cheat]
 
-```{r}
-#| label: links
-#| child: images/_links.md
-```
+{{< include images/_links.md >}}
 
 ## Pratique
 

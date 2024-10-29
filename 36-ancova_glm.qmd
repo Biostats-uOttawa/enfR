@@ -53,15 +53,16 @@ En utilisant les données du fichier `anc1dat.csv`, éprouvez l'hypothèse que l
 Commençons par examiner les données. Pour faciliter la comparaison, il serait utile de tracer la droite de régression et la trace lowess pour ainsi plus facilement évaluer la linéarité. On peut aussi ajouter un peu de trucs R pour obtenir des légendes plus complètes (remarquez l’utilisation de la commande expression() pour obtenir des indices):
 
 ```{r}
-#| warning: false
+#| label: fig-anc1
+#| warning: false 
 #| message: false
 #| fig-cap: Longueur des esturgeons en fonction de l'age
 anc1dat <- read.csv("data/anc1dat.csv")
 anc1dat$sex <- as.factor(anc1dat$sex)
 myplot <- ggplot(data = anc1dat, aes(x=lage,    y=log10(fklngth)))+facet_grid(.~sex)+geom_point()
 myplot <- myplot+
-  stat_smooth(method = lm, se=FALSE)+
-  stat_smooth(se=FALSE, color="red") +
+  geom_smooth(method = lm, se=FALSE)+
+  geom_smooth(se=FALSE, color="red") +
   labs(
     y = expression(log[10]~(Fork~length)),
     x = expression(log[10]~(Age))
@@ -84,10 +85,12 @@ Probabilité que le terme lage*sex n’affecte pas la longueur à la fourche (i.
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-anc2
 #| fig-cap: Conditions d'applications du modèle `model.full1`
-par(mfrow = c(2,2))
+par(mfrow = c(2, 2))
 plot(model.full1)
 ```
+
 :::
 
 En ce qui concerne la normalité, ça a l’air d’aller quoiqu’il y a quelques points, en haut à droite, qui dévient de la droite. Si on effectue le test de Wilk-Shapiro (W = .9764, p = 0.09329), on confirme que les résidus ne dévient pas significativement de la normalité. Les résidus semblent homoscédastiques, mais si vous voulez vous en assurer, vous pouvez l’éprouver par un des tests formels. Ici j’utilise le test Breusch-Pagan, qui est approprié quand certaines des variables indépendantes sont continues (Le test de Levene n’est approprié que lorsqu’il n’y a que des variables discontinues).
@@ -122,21 +125,22 @@ Le fichier `anc3dat.csv` contient des données sur des esturgeons mâles de deux
 :::
 
 ```{r}
+#| label: fig-anc3
 #| warning: false
 #| message: false
 #| fig-cap: Longueur des esturgeons en fonction de l'age d'après `anc3dat`
 anc3dat <- read.csv("data/anc3dat.csv")
-myplot <- ggplot(data = anc3dat, aes(x=lage, y = log10(fklngth))) +
-  facet_grid(.~locate) +
+myplot <- ggplot(data = anc3dat, aes(x = lage, y = log10(fklngth))) +
+  facet_grid(. ~ locate) +
   geom_point() +
-  stat_smooth(method = lm, se=FALSE)+
-  stat_smooth(se=FALSE, color="red")+
+  geom_smooth(method = lm, se = FALSE) +
+  geom_smooth(se = FALSE, color = "red") +
   labs(
-    y = expression(log[10]~(Fork~length)),
-    x = expression(log[10]~(Age))
-)
+    y = expression(log[10] ~ (Fork ~ length)),
+    x = expression(log[10] ~ (Age))
+  )
 myplot
-model.full2<-lm(lfkl ~ lage + locate + lage:locate, data = anc3dat)
+model.full2 <- lm(lfkl ~ lage + locate + lage:locate, data = anc3dat)
 Anova(model.full2, type = 3)
 ```
 
@@ -147,6 +151,7 @@ Mais avant d’accepter ces conclusions, on doit se convaincre que les condition
 ::: {.callout-tip collapse="true"}
 # Solution
 ```{r}
+#| label: fig-anc4
 #| fig-cap: Conditions d'applications du modèle `model.full2`
 par(mfrow = c(2,2))
 plot(model.full2)

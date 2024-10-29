@@ -1,6 +1,6 @@
-{{< include images/_links.md >}}
-
 # Figures {#sec-graphics-r}
+
+{{< include images/_links.md >}}
 
 <!-- besoin d'ajouter
 ajouter des informations sur ggplot
@@ -25,7 +25,7 @@ Il existe trois systèmes principaux pour produire des graphiques dans R :
 
 * Les graphiques de base de R
 
-* `Lattice` :package:
+* `lattice` :package:
 
 * `ggplot2` :package:
 
@@ -36,7 +36,7 @@ Cela peut sembler un peu bizarre (et prendre du temps) lorsque vous commencez à
 Le revers de cette flexibilité est que vous devrez souvent prendre de nombreuses décisions sur la manière dont vous souhaitez que votre graphique se présente plutôt que de compter sur le logiciel pour prendre ces décisions à votre place.
 Cela dit, il est généralement très rapide et facile de générer des graphiques exploratoires simples à l'aide de graphiques R de base.
 
-Le système lattice est implémenté dans le paquet `lattice()` :package: qui est pré installé avec l'installation standard de R.
+Le système lattice est implémenté dans le paquet `lattice` :package: qui est pré installé avec l'installation standard de R.
 Cependant, il n'est pas chargé par défaut, vous devez donc d'abord utiliser l'appeler `library(lattice)` pour accéder à toutes les fonctions de graphiques.
 Contrairement aux graphiques de base de R, les graphiques lattices sont généralement générés en une seule fois à l'aide d'une seule fonction. Il n'est donc pas nécessaire d'utiliser des fonctions de traçage de haut et bas niveau pour personnaliser l'aspect d'un graphique.
 
@@ -45,7 +45,7 @@ Les graphiques lattices se prêtent particulièrement bien au traçage de donné
 Nous verrons quelques exemples de ces types de graphiques plus loin dans ce chapitre.
 
 `ggplot2` :package: est basé sur le livre *Grammar of Graphics* (la grammaire de graphiques) de @wilkinson2005.
- (Vous trouverez un résumé intéressant du livre [ici][leland-summary]). <!-- JULIEN - Pas de pbm dans la version française mais j'ai vu que le lien était cassé sur la version anglaise -->
+ (Vous trouverez un résumé intéressant du livre [ici][leland-summary]). 
 
 La *Grammaire des graphique* décompose les figures en leurs différents éléments (par ex.
 les statistiques sous-jacentes, l'arrangement géométrique, le thème, voir @fig-ggplot-str).
@@ -224,7 +224,7 @@ ou `ggplot2` :package: (@fig-plot5-gg)
 ```
 
 Un grand avantage de `ggplot()` pour les nuages de points simples est la facilité avec laquelle nous pouvons ajouter une régression, une ligne plus lisse (loess ou gam) au graphique en utilisant `geom_smooth()`pour ajouter une couche statistique au graphique.
-<!-- JULIEN - comme discuté pendant le labo de la semaine dernière, j'ai remplacé `stat_smooth()` par `geom_smooth()` -->
+
 ```{r}
 #| label: plot5-gg-line
 #| fig-cap: Nuage de point avec une régression LOESS.
@@ -673,11 +673,10 @@ gg_coplot(licornes,
 
 Il faut un peu de pratique pour interpréter les "coplots".
 Le nombre d'anneaux sur la corne est représenté sur l'axe des y et le poids des licornes sur l'axe des x.
-Les six graphiques montrent la relation entre ces deux variables pour différents intervalles de taille de crinière <!-- JULIEN - je sais que c'est pas le plus important mais l'interprétation des variables changent souvent (nombre de licornes au lieu de nombre d'anneaux (horn ring), là tu parlais de surface foliaire pour mane_size) ça peut rendre les interpétations d'exemple difficile à suivre. J'essaye de faire qqch de cohérent pour le français mais il faut peut-être revoir la version anglaise -->.
-
+Les six graphiques montrent la relation entre ces deux variables pour différents intervalles de taille de crinière 
 Le diagramme en barres en haut indique la plage de valeurs de tailles de crinières pour chacun des graphiques.
 Les graphiques sont lus de en haut à gauche (en premier) jusqu'à en bas à droite le long de chaque ligne.
-Par exemple, le graphique en haut à gauche montre la relation entre le nombre d'anneaux sur la corne et le poids des licornes dont la crinère est la plus courte (environ 5 - 11 cm).
+Par exemple, le graphique en haut à gauche montre la relation entre le nombre d'anneaux sur la corne et le poids des licornes dont la crinière est la plus courte (environ 5 - 11 cm).
 Le graphique en bas à droite montre la relation entre le nombre d'annaux sur la corne et le poids des licornes dont la crinière est comprise entre 16 et 50 cm de long.
 
 Remarquez que la plage de valeurs de la taille de la crinière diffère d'un graphique à l'autre et que les plages se chevauchent d'un graphique à l'autre.

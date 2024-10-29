@@ -779,7 +779,4 @@ Selon nous, l'outil le plus utile pour la citation est le paquet `grateful` :pac
 Cela devrait devenir la norme dans tout manuscrit honnêtement.
 Voir @tbl-r-lib pour un exemple de résultat produit avec grateful.
 
-```{r}
-#| label: links
-#| child: images/_links.md
-```
+{{< include images/_links.md >}}
