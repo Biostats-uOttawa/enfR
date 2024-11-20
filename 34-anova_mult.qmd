@@ -1,6 +1,6 @@
 # ANOVA à critères multiples : plans factoriels et hiérarchiques
 
-Objectifs de ce :
+Objectifs de ce chapitre :
 
 * Utiliser R pour faire une ANOVA paramétrique d'un plan factoriel avec deux facteurs de classification et réplication
 * Utiliser R pour faire une ANOVA paramétrique d'un plan factoriel avec deux facteurs de classification sans réplication
