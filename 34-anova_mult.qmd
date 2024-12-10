@@ -40,7 +40,7 @@ Supposons que vous êtes intéressés par l'effet de deux facteurs : le **site**
 
 
 ### ANOVA à effets fixes (Modèle I)
-* Examinez d’abord les données avec des "boxplots" de la taille (`rdwght`) selon le `sex` et la `location` des données du fichier `"Stu2wdat.csv"` .
+* Examinez d’abord les données avec des "boxplots" de la taille (`rdwght`) selon le `sex` et la `location` des données du fichier `Stu2wdat.csv` .
 
 ::: {.callout-tip collapse="true"}
 # Solution
@@ -71,7 +71,7 @@ Stu2wdat %>%
 
 Ces résultats supportent l’interprétation des "boxplots" : Les femelles sont plus grosses que les mâles, et la différence de taille entre les deux sites n'est pas énorme.
 
-* Faites une ANOVA factorielle à deux critères de classification avec les données de `"Stu2wdat.csv"` :
+* Faites une ANOVA factorielle à deux critères de classification avec les données de `Stu2wdat.csv` :
 
 ```{r}
 # Ajuster un modèle (ANOVA) et faites le graphiques des résidues
@@ -136,7 +136,7 @@ En bref, nous avons **plusieurs conditions d’application non respectées**. La
 
 ::: callout-caution
 # Exercice
-Répétez la même analyse avec les données du fichier `"stu2mdat.csv"` . Que concluez-vous? Supposons que vous vouliez comparer la taille des mâles et des femelles. Comment cette comparaison diffère entre les deux jeux de données ?
+Répétez la même analyse avec les données du fichier `stu2mdat.csv` . Que concluez-vous? Supposons que vous vouliez comparer la taille des mâles et des femelles. Comment cette comparaison diffère entre les deux jeux de données ?
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -335,7 +335,7 @@ Pour chaque génotype (facteur principal) elle prépare trois chambres de croiss
 
 Les données ont donc un structure hiérarchique. Il y a des observations répétées dans chaque chambre au sein de chaque génotype.
 
-- Le fichier `"nestdat.csv"` contient les résultats d'une expérience semblable. Il contient trois variables : `genotype`, `chamber` et `survival`.
+- Le fichier `nestdat.csv` contient les résultats d'une expérience semblable. Il contient trois variables : `genotype`, `chamber` et `survival`.
 
 Effectuez une ANOVA hiérarchique avec `survival` comme variable dépendante et `genotype` et `chamber/genotype` comme variables indépendantes.
 
@@ -413,7 +413,7 @@ Donc, toutes les conditions d’application semblent être remplies, et on peut 
 
 L'ANOVA non paramétrique à 2 critères de classification est une extension de celle à 1 critère de classification vue précédemment. Elle débute par une ANOVA faite sur les données transformées en rangs. Elle peut se faire sur des données avec ou sans réplicats.
 
-À partir du fichier `"stu2wdat.csv"`, effectuez une ANOVA non paramétrique à 2 facteurs de classification pour examiner l'effet de `sex` et `location` sur `rank(rdwght)`.
+À partir du fichier `stu2wdat.csv`, effectuez une ANOVA non paramétrique à 2 facteurs de classification pour examiner l'effet de `sex` et `location` sur `rank(rdwght)`.
 
 ```{r}
 aov.rank <- aov(
@@ -470,7 +470,7 @@ Il y a cependant un différence importante. Rappelez-vous que dans l'ANOVA param
 
 Les épreuves d'hypothèses subséquentes en ANOVA à plus d'un critère de classification dépendent des résultats initiaux de l'ANOVA. Si vous êtes intéressés à comparer des effets moyens d'un facteur pour tous les niveaux d'un autre facteur (par exemple l'effet du sexe sur la taille des esturgeons peu importe d'où ils viennent), alors vous pouvez procéder exactement tel que décrit dans la section sur les comparaisons multiples suivant l'ANOVA à un critère de classification. Pour comparer les moyennes des cellules entre elles, il faut spécifier l'interaction comme variable qui représente le groupe.
 
-Le fichier `"wmcdat2.csv"` contient des mesures de consommation d'oxygène, `o2cons`, de deux espèces, `species`, d'un mollusque (une patelle) à trois concentrations différentes d'eau de mer (donc de salinité), `conc`. Ces données sont présentées à la p. 332 de Sokal et Rohlf 1995.
+Le fichier `wmcdat2.csv` contient des mesures de consommation d'oxygène, `o2cons`, de deux espèces, `species`, d'un mollusque (une patelle) à trois concentrations différentes d'eau de mer (donc de salinité), `conc`. Ces données sont présentées à la p. 332 de Sokal et Rohlf 1995.
 
 - Effectuez une ANOVA factorielle à 2 critères de classification sur ces données en utilisant `o2cons` comme variable dépendante et `species` et `conc` comme les facteurs (il va probablement falloir changer le type de données de variable conc à facteur). Que concluez-vous ?
 
@@ -555,7 +555,7 @@ par(old.par)
 
 Il y a donc une différence de consommation d’oxygène significative lorsque la salinité est réduite de 50%, mais pas à 25% de réduction.
 
-- Répétez les deux analyses précédentes sur les données du fichier `"wmc2dat2.csv"`. Comment les résultats se comparent-ils à ceux obt$nus précédemment ?
+- Répétez les deux analyses précédentes sur les données du fichier `wmc2dat2.csv`. Comment les résultats se comparent-ils à ceux obt$nus précédemment ?
 
 ::: {.callout-tip collapse="true"}
 # Solution
@@ -580,7 +580,7 @@ Dans ce cas ci, il y a une interaction significative, et il n’est par conséqu
 with(wmc2dat2, interaction.plot(conc, species, o2cons))
 ```
 
-- Toujours en utilisant les données de `"wmc2dat2.csv"`, comparez les 6 moyennes avec l’ajustement Bonferonni. Pour ce faire, il sera utile de créer une nouvelle variable qui combine `species` et `conc`:
+- Toujours en utilisant les données de `wmc2dat2.csv`, comparez les 6 moyennes avec l’ajustement Bonferonni. Pour ce faire, il sera utile de créer une nouvelle variable qui combine `species` et `conc`:
 
 ```{r}
 wmc2dat2$species.conc <- as.factor(paste0(wmc2dat2$species, wmc2dat2$conc))

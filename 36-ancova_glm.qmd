@@ -56,10 +56,10 @@ Comme chaque régression linéaire est décrite par deux paramètres, la **pente
 
 ::: callout-caution
 # Exercice
-En utilisant les données du fichier `"anc1dat.csv"`, éprouvez l'hypothèse que le taux de croissance des esturgeons mâles et femelles de The Pas est le même (données de 1978-1980). Comme mesure du taux de croissance, nous allons utiliser la pente de la régression du log 10 de la longueur à la fourche, `lfkl`, sur le log 10 de `l’age`.
+En utilisant les données du fichier `anc1dat.csv`, éprouvez l'hypothèse que le taux de croissance des esturgeons mâles et femelles de The Pas est le même (données de 1978-1980). Comme mesure du taux de croissance, nous allons utiliser la pente de la régression du log 10 de la longueur à la fourche, `lfkl`, sur le log 10 de `l’age`.
 :::
 
-Commençons par examiner les données. Pour faciliter la comparaison, il serait utile de tracer la droite de régression et la trace "lowess" pour évaluerplus facilement la linéarité. On peut aussi ajouter un peu de code pour obtenir des légendes plus complètes (remarquez l’utilisation de la commande `expression()` pour obtenir des indices) :
+Commençons par examiner les données. Pour faciliter la comparaison, il serait utile de tracer la droite de régression et la trace "lowess" pour évaluer plus facilement la linéarité. On peut aussi ajouter un peu de code pour obtenir des légendes plus complètes (remarquez l’utilisation de la commande `expression()` pour obtenir des indices) :
 
 ```{r}
 #| label: fig-anc1
@@ -120,7 +120,7 @@ resettest(model.full1, power = 2:3, type = "regressor", data = anc1dat)
 
 La dernière condition d’application est qu’il n’y a **pas d’erreur de mesure** sur la variable indépendante continue. On ne peut pas vraiment éprouver cette condition, mais on sait que des estimés indépendants de l’âge des poissons obtenus par différents chercheurs donnent des âges qui concordent avec moins de 1-2 ans d’écart, ce qui est inférieur au 10% de la fourchette observée des âges et donc acceptable pour des analyses de modèles de type I (*attention ici on ne parle pas des SC de type I, je sais, c’est facile de confondre...*)
 
-Vous noterez qu'il y a une observation qui a un résidu normalisé (Standardize residual) qui est élevé, i.e. une valeur extrême (cas numéro 49). Éliminez-la de l'ensemble de données et refaites l'analyse. Vos conclusions changent-elles?
+Vous noterez qu'il y a une observation qui a un résidu normalisé (Standardized residual) qui est élevé, i.e. une valeur extrême (cas numéro 49). Éliminez-la de l'ensemble de données et refaites l'analyse. Vos conclusions changent-elles?
 
 
 ```{r}
@@ -134,14 +134,14 @@ La conclusion ne change pas après avoir enlevé la valeur extrême. Comme on n�
 
 ::: callout-caution
 # Exercice
-Le fichier `"anc3dat.csv"` contient des données sur des esturgeons mâles de deux sites (locate) : Lake of the Woods dans le Nord-Ouest de l'Ontario et Chruchill River dans le Nord du Manitoba. En utilisant la même procédure, éprouvez l'hypothèse que la pente de la régression de `lfkl` sur `lage` est la même aux deux sites (alors `Locate` est la variable catégorique au lieu de `sex`). Que concluez-vous?
+Le fichier `anc3dat.csv` contient des données sur des esturgeons mâles de deux sites (locate) : Lake of the Woods dans le Nord-Ouest de l'Ontario et Chruchill River dans le Nord du Manitoba. En utilisant la même procédure, éprouvez l'hypothèse que la pente de la régression de `lfkl` sur `lage` est la même aux deux sites (alors `Locate` est la variable catégorique au lieu de `sex`). Que concluez-vous?
 :::
 
 ```{r}
 #| label: fig-anc3
 #| warning: false
 #| message: false
-#| fig-cap: Longueur des esturgeons en fonction de l'age selon le site d'étude d'après `"anc3dat.csv"`
+#| fig-cap: Longueur des esturgeons en fonction de l'age selon le site d'étude d'après `anc3dat.csv`
 anc3dat <- read.csv("data/anc3dat.csv")
 myplot <- ggplot(data = anc3dat, aes(x = lage, y = log10(fklngth))) +
   facet_grid(. ~ locate) +
@@ -213,7 +213,7 @@ Puisque l’approche simplifiée est moins puissante, si vous rejetez quand mêm
 
 Ici, je vais comparer l’approche traditionnelle et l’approche simplifiée. Rappelez-vous que vous voulez évaluer l’égalité des ordonnées à l’origine **après avoir déterminé que les pentes étaient égales**. Éprouver l’égalité des ordonnées à l’origine quand les pentes diffèrent (ou, si vous préférez, quand il y a une interaction) est rarement sensé, peut facilement être mal interprété, et ne devrait être effectué que rarement.
 
-De retour aux données de `"anc1dat.csv"`, en comparant la relation entre `lfkl` et `lage` entre les `sexes`, nous avions obtenu les résultats suivants pour le modèle complet avec interactions :
+De retour aux données de `anc1dat.csv`, en comparant la relation entre `lfkl` et `lage` entre les `sexes`, nous avions obtenu les résultats suivants pour le modèle complet avec interactions :
 
 
 ```{r}
@@ -288,7 +288,7 @@ Comme vous venez de le voir, le processus d’ajustement de modèles est itérat
 
 ::: callout-caution
 # Exercice
-En utilisant les données de `"anc1dat"` comparez l’ajustement du modèle ANCOVA et de la régression commune:
+En utilisant les données de `anc1dat` comparez l’ajustement du modèle ANCOVA et de la régression commune:
 :::
 
 ```{r}
@@ -299,7 +299,7 @@ La fonction `anova()` utilise la différence entre la somme des carrés des deux
 
 ::: callout-caution
 # Exercice
-Refaites le même processus avec le données de `'anc3dat'`, ajustez le modèle complet avec interaction (LFKL~LAGE+LOCATE+LAGE:LOCATE) et sans interaction (LFKL~LAGE+LOCATE), Comparez l’ajustement des deux modèles, que concluez vous?
+Refaites le même processus avec le données de `anc3dat`, ajustez le modèle complet avec interaction (LFKL~LAGE+LOCATE+LAGE:LOCATE) et sans interaction (LFKL~LAGE+LOCATE), Comparez l’ajustement des deux modèles, que concluez vous?
 :::
 
 ::: {.callout-tip collapse="true"}

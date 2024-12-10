@@ -48,7 +48,7 @@ Il est important de réaliser que la maîtrise de la régression multiple ne s'a
 
 
 ## Premières régressions multiples
-Le fichier `"Mregdat.csv"` contient des données de richesse spécifique de quatre groupes d'organismes dans 30 marais de la région Ottawa-Cornwall-Kingston. Les variables sont:
+Le fichier `Mregdat.csv` contient des données de richesse spécifique de quatre groupes d'organismes dans 30 marais de la région Ottawa-Cornwall-Kingston. Les variables sont:
 
 * la richesse spécifique:
     *  des oiseaux (bird, et son logarithme base 10 logbird)
