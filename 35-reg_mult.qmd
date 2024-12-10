@@ -1,6 +1,6 @@
 # Régression multiple
 
-Après avoir complété cet exercice de laboratoire, vous devriez pouvoir :
+Objectifs de ce chapitre :
 
 * Utiliser R pour ajuster une régression multiple et comparer des modèles selon l’approche inférentielle et celle de la théorie de l’information
 * Utiliser R pour éprouver des hypothèses sur l'effet des variables indépendantes sur la variable dépendante.
@@ -8,22 +8,22 @@ Après avoir complété cet exercice de laboratoire, vous devriez pouvoir :
 * Utiliser R pour effectuer une régression curvilinéaire (polynomiale).
 
 ::: callout-warning
-Je ne supporte pas absolument pas l'approche stepwise (ni par AIC ni par P). Je déteste l'approche par la fonction `dredge()` qui selon moi va à l'encontre de la philosophie des AIC et de la parsimonie. L'approche stepwise ne devrait plus être utilisé. Ce chapitre est en grand besoin d'une réécriture.
+Je ne supporte pas absolument pas l'approche stepwise (ni par AIC ni par P). Je déteste l'approche par la fonction `dredge()` qui selon moi va à l'encontre de la philosophie des AIC et de la parcimonie. L'approche stepwise ne devrait plus être utilisé. Ce chapitre est en grand besoin d'une réécriture.
 Je soutiens de développer un modèle complet basé sur des hypothèses biologiques et de reporter ce modèle avec tous les effets significatifs ou non.
 :::
 
 ## Paquets et données requises pour le labo {#set-reg-mul}
-Ce laboratoire nécessite:
+Pour ce laboratoire, vous aurez besoin de :
 
-* les paquets R:
-  * ggplot2
-  * car
-  * lmtest
-  * simpleboot
-  * boot
-  * MuMIn
-* les fichiers de données
-  * Mregdat.csv
+* Paquets R:
+  * `ggplot2` :package:
+  * `car` :package:
+  * `lmtest` :package:
+  * `simpleboot` :package:
+  * `boot` :package:
+  * `MuMIn` :package:
+* Jeu de données
+  * "Mregdat.csv"
 
 ```{r}
 #| label: setup
@@ -42,7 +42,7 @@ Les variables qui intéressent les biologistes sont généralement influencées 
 
 Il est important de réaliser que la maîtrise de la régression multiple ne s'acquiert pas instantanément. Les débutants doivent garder à l'esprit plusieurs points importants :
 
-1. Un modèle de régression multiple peut être hautement significatif même si aucun des termes pris isolément ne l'est (ceci est causé par la multicolinéarité),
+1. Un modèle de régression multiple peut être hautement significatif même si aucun des termes pris isolément ne l'est (ceci est causé par la **multicolinéarité**),
 2. Un modèle peut ne pas être significatif alors que l'un ou plusieurs des termes le sont (ceci est un signe d’un modèle trop complexe ("overfitting")) et,
 3. À moins que les variables indépendantes soient parfaitement orthogonales (c'est-à-dire qu'il n'y ait aucune corrélation entre elles et donc pas de multicolinéarité) les diverses approches de sélection des variables indépendantes peuvent mener à des modèles différents.
 
