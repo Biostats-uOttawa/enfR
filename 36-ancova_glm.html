@@ -419,7 +419,7 @@ window.Quarto = {
   <li><a href="#le-mod%C3%A8le-dancova" id="toc-le-modèle-dancova" class="nav-link" data-scroll-target="#le-mod%C3%A8le-dancova"><span class="header-section-number">14.5</span> Le modèle d’ANCOVA</a></li>
   <li><a href="#comparer-lajustement-de-mod%C3%A8les" id="toc-comparer-lajustement-de-modèles" class="nav-link" data-scroll-target="#comparer-lajustement-de-mod%C3%A8les"><span class="header-section-number">14.6</span> Comparer l’ajustement de modèles</a></li>
   <li><a href="#bootstrap" id="toc-bootstrap" class="nav-link" data-scroll-target="#bootstrap"><span class="header-section-number">14.7</span> Bootstrap</a></li>
-  <li><a href="#permutation-test" id="toc-permutation-test" class="nav-link" data-scroll-target="#permutation-test"><span class="header-section-number">14.8</span> Permutation test</a></li>
+  <li><a href="#test-de-permutation" id="toc-test-de-permutation" class="nav-link" data-scroll-target="#test-de-permutation"><span class="header-section-number">14.8</span> Test de Permutation</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/biostats-uottawa/enfR/edit/main/36-ancova_glm.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/biostats-uottawa/enfR/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -440,40 +440,58 @@ window.Quarto = {
   
 
 
-</header><p>Après avoir complété cet exercice de laboratoire, vous devriez pouvoir:</p>
+</header><p>Objectifs de ce chapitre :</p>
 <ul>
-<li>Utiliser R pour faire une analyse de covariance (ANCOVA) et ajuster des modèles qui ont des variables indépendantes continues et discontinues (modèle linéaire général)</li>
+<li>Utiliser R pour faire une analyse de covariance (ANCOVA) et ajuster des modèles ayant des variables indépendantes continues et discontinues (modèle linéaire général)</li>
 <li>Utiliser R pour vérifier les conditions préalables à ces modèles</li>
 <li>Utiliser R pour comparer l’ajustement de modèles statistiques</li>
 <li>Utiliser R pour faire des tests de bootstrap et de permutation sur des modèles avec des variables indépendantes continues et discontinues.</li>
 </ul>
 <section id="set-anco" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="set-anco">
 <span class="header-section-number">14.1</span> Paquets et données requises pour le labo</h2>
-<p>Ce laboratoire nécessite:</p>
+<p>Pour ce laboratoire, vous aurez besoin de :</p>
 <ul>
-<li>les paquets R:
+<li>Paquets R :
 <ul>
-<li>ggplot2</li>
-<li>car</li>
-<li>lmtest</li>
+<li>
+<code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
+<li>
+<code>car</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
+<li>
+<code>lmtest</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
 </ul>
 </li>
-<li>les fichiers de données
+<li>Jeux de données :
 <ul>
-<li>anc1dat.csv</li>
-<li>anc3dat.csv</li>
+<li>“anc1dat.csv”</li>
+<li>“anc3dat.csv”</li>
 </ul>
 </li>
 </ul></section><section id="modèle-linéaire-général" class="level2" data-number="14.2"><h2 data-number="14.2" class="anchored" data-anchor-id="modèle-linéaire-général">
 <span class="header-section-number">14.2</span> Modèle linéaire général</h2>
-<p>Les modèles linéaires généraux ou General Linear Model en anglais sont différent des modèles linéaires généralisés (ou generalized linear model, GLM). Les modèles linéaires généraux sont des modèles statistiques de la forme <span class="math inline">\(Y = B \mathbf{X} + E\)</span>, ou Y est un vecteur contenant la variable dépendante continue, B est un vecteur des paramètres estimés, <span class="math inline">\(\mathbf{X}\)</span> et la matrice des différents variables indépendantes et E est un vecteur de résidus homoscédastiques et normalement distribués. Tous les tests que nous avons étudiés à date (test de t, régression linéaire simple, ANOVA à un facteur de classification, ANOVA à plusieurs facteurs de classification et régression multiple) sont formulés ainsi. Notez que tous les modèles que nous avons rencontrés à ce jour ne contiennent qu’un type de variable indépendante (soit continue ou discontinue). Dans cet exercice de laboratoire, vous allez ajuster des modèles qui ont les deux types de variables indépendantes.</p>
+<p>Les modèles linéaires généraux ou “General Linear Model” en anglais sont différent des modèles linéaires généralisés (ou “Generalized Linear Model”, GLM).</p>
+<p>Les modèles linéaires généraux sont des modèles statistiques de la forme <span class="math inline">\(Y = B \mathbf{X} + E\)</span>, ou</p>
+<ul>
+<li>
+<strong>Y</strong> est un vecteur contenant la variable dépendante <em>continue</em>,</li>
+<li>
+<strong>B</strong> est un vecteur des paramètres estimés,</li>
+<li>
+<span class="math inline">\(\mathbf{X}\)</span> et la matrice des différents variables indépendantes et</li>
+<li>
+<strong>E</strong> est un vecteur de résidus <em>homoscédastiques</em> et <em>normalement distribués</em>.</li>
+</ul>
+<p>Tous les tests que nous avons étudiés jusque là (test de t, régression linéaire simple, ANOVA à un facteur de classification, ANOVA à plusieurs facteurs de classification et régression multiple) sont formulés ainsi. Notez que tous les modèles que nous avons rencontrés à ce jour ne contiennent qu’<strong>un</strong> type de variable indépendante : soit continue (numérique) ou discontinue (catégorique). Dans cet exercice de laboratoire, vous allez ajuster des modèles qui ont les <strong>deux</strong> types de variables indépendantes.</p>
 </section><section id="ancova" class="level2" data-number="14.3"><h2 data-number="14.3" class="anchored" data-anchor-id="ancova">
 <span class="header-section-number">14.3</span> ANCOVA</h2>
-<p>ANCOVA est l’abréviation pour l’analyse de covariance. C’est un type de modèle linéaire général dans lequel il y a une (ou plusieurs) variable indépendante continue (parfois appelé la covariable) et une (ou plusieurs) variable indépendante discontinue. Dans la présentation traditionnelle de l’ANCOVA dans les manuels de biostatistique, le modèle ANCOVA ne contient pas de termes d’interaction entre les variables continues et discontinues. Par conséquent, on doit précéder l’ajustement de ce modèle (réduit parce que sans terme d’interaction), par un test de signification de l’interaction qui correspond à éprouver l’égalité des pentes (coefficients pour la ou les variables continues) entre les différents niveaux de la ou les variables discontinues (i.e un test d’homogénéité des pentes).</p>
+<p>ANCOVA est l’abréviation pour l’analyse de covariance. C’est un type de modèle linéaire général dans lequel il y a une (ou plusieurs) variable indépendante continue (parfois appelé la <em>covariable</em>) et une (ou plusieurs) variable indépendante discontinue (catégorique). Dans la présentation traditionnelle de l’ANCOVA dans les manuels de biostatistique, le modèle ANCOVA ne contient pas de termes d’interaction entre les variables continues et discontinues. Par conséquent, on doit précéder l’ajustement de ce modèle (réduit parce que sans terme d’interaction), par un test de signification de l’interaction qui correspond à éprouver l’égalité des pentes (coefficients pour la ou les variables continues) entre les différents niveaux de la ou des variables discontinues (i.e un <strong>test d’homogénéité des pentes</strong>).</p>
 </section><section id="homogénéité-des-pentes" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="homogénéité-des-pentes">
 <span class="header-section-number">14.4</span> Homogénéité des pentes</h2>
-<p>Pour répondre à de nombreuses questions biologiques, il est nécessaire de déterminer si deux (ou plus de deux) régressions diffèrent significativement. Par exemple, pour comparer l’efficacité de deux insecticides on doit comparer la relation entre leur dose et la mortalité. Ou encore, pour comparer le taux de croissance des mâles et des femelles on doit comparer la relation entre la taille et l’âge des mâles et des femelles.</p>
-<p>Comme chaque régression linéaire est décrite par deux paramètres, la pente et l’ordonnée à l’origine, on doit considérer les deux dans la comparaison. Le modèle d’ANCOVA, à strictement parler, n’éprouve que l’hypothèse d’égalité des ordonnées à l’origine. Cependant, avant d’ajuster ce modèle, il faut éprouver l’hypothèse d’égalité des pentes (homogénéité des pentes).</p>
+<p>Pour répondre à de nombreuses questions biologiques, il est nécessaire de déterminer si deux (ou plus) régressions diffèrent significativement. Par exemple, pour comparer l’efficacité de deux insecticides on doit comparer la relation entre leur dose et la mortalité. Ou encore, pour comparer le taux de croissance des mâles et des femelles on doit comparer la relation entre la taille et l’âge des mâles et des femelles.</p>
+<p>Comme chaque régression linéaire est décrite par deux paramètres, la <strong>pente</strong> et l’<strong>ordonnée à l’origine</strong>, on doit considérer les deux dans la comparaison. Le modèle d’ANCOVA, à strictement parler, n’éprouve que l’hypothèse d’égalité des ordonnées à l’origine. Cependant, avant d’ajuster ce modèle, il faut éprouver l’hypothèse d’égalité des pentes (homogénéité des pentes).</p>
 <section id="cas-1---la-taille-en-fonction-de-lâge-exemple-avec-pente-commune" class="level3" data-number="14.4.1"><h3 data-number="14.4.1" class="anchored" data-anchor-id="cas-1---la-taille-en-fonction-de-lâge-exemple-avec-pente-commune">
 <span class="header-section-number">14.4.1</span> Cas 1 - La taille en fonction de l’âge (exemple avec pente commune)</h3>
 <div class="callout callout-style-default callout-caution callout-titled">
@@ -486,10 +504,10 @@ Exercice
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En utilisant les données du fichier <code>anc1dat.csv</code>, éprouvez l’hypothèse que le taux de croissance des esturgeons mâles et femelles de The Pas est le même (données de 1978-1980). Comme mesure du taux de croissance, nous allons utiliser la pente de la régression du log 10 de la longueur à la fourche, lfkl, sur le log 10 de l’âge, l’age.</p>
+<p>En utilisant les données du fichier <code>anc1dat.csv</code>, éprouvez l’hypothèse que le taux de croissance des esturgeons mâles et femelles de The Pas est le même (données de 1978-1980). Comme mesure du taux de croissance, nous allons utiliser la pente de la régression du log 10 de la longueur à la fourche, <code>lfkl</code>, sur le log 10 de <code>l’age</code>.</p>
 </div>
 </div>
-<p>Commençons par examiner les données. Pour faciliter la comparaison, il serait utile de tracer la droite de régression et la trace lowess pour ainsi plus facilement évaluer la linéarité. On peut aussi ajouter un peu de trucs R pour obtenir des légendes plus complètes (remarquez l’utilisation de la commande expression() pour obtenir des indices):</p>
+<p>Commençons par examiner les données. Pour faciliter la comparaison, il serait utile de tracer la droite de régression et la trace “lowess” pour évaluer plus facilement la linéarité. On peut aussi ajouter un peu de code pour obtenir des légendes plus complètes (remarquez l’utilisation de la commande <code><a href="https://rdrr.io/r/base/expression.html">expression()</a></code> pour obtenir des indices) :</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">anc1dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/anc1dat.csv"</span><span class="op">)</span></span>
 <span><span class="va">anc1dat</span><span class="op">$</span><span class="va">sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">anc1dat</span><span class="op">$</span><span class="va">sex</span><span class="op">)</span></span>
@@ -508,7 +526,7 @@ Exercice
 <img src="36-ancova_glm_files/figure-html/fig-anc1-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anc1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.1: Longueur des esturgeons en fonction de l’age
+Figure&nbsp;14.1: Longueur des esturgeons en fonction de l’age entre mâles et femelles.
 </figcaption></figure>
 </div>
 </div>
@@ -531,8 +549,13 @@ Residuals   0.07135 88
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<p>Probabilité que le terme lage*sex n’affecte pas la longueur à la fourche (i.e.&nbsp;que la pente ne diffère pas entre les sexes, et que la différence de taille entre les mâles et femelles ne varie pas avec l’âge)</p>
-<p><strong>Attrape</strong>. Notez que j’ai utilisé la fonction Anova() du package car avec un “a” majuscule au lieu de la fonction native anova() (avec un “a” minuscule”) associée aux objets produits par lm() pour obtenir les sommes de carrés de type III. Ces sommes des carrés des écarts de type III (partiels) sont calculées comme si la variable était entrée la dernière dans le modèle et correspondent à la différence entre la variance expliquée par le modèle complet et par le modèle dans lequel seule cette variable est omise. La fonction native anova() donne les sommes des carrés séquentielles, calculées au fur et à mesure que chaque variable est ajoutée au modèle nul avec seulement une ordonnée à l’origine. Dans de rares cas, les sommes des carrés de type I et III sont égales (quand le design est parfaitement orthogonal ou balancé). Dans la vaste majorité des cas, les sommes des carrés de type I et III sont différentes et je vous conseille de toujours utiliser les sommes des carrés de type III dans vos analyses.</p>
+<!-- Probabilité que le terme lage*sex n’affecte pas la longueur à la fourche (i.e. que la pente ne diffère pas entre les sexes, et que la différence de taille entre les mâles et femelles ne varie pas avec l’âge) - JULIEN, il faudrait rephraser ici, ou alors enlever -->
+<blockquote class="blockquote">
+<p>Notez que l’on utilise la fonction <code>Anova()</code> du paquet <code>car</code> <span class="emoji" data-emoji="package">📦</span> avec un “A” majuscule au lieu de la fonction native <code><a href="https://rdrr.io/r/stats/anova.html">anova()</a></code> (avec un “a” minuscule”) pour obtenir les <strong>sommes de carrés de type III (partiels)</strong>. Ces sommes des carrés des écarts sont calculées comme si la variable était entrée la dernière dans le modèle et correspondent à la différence entre la variance expliquée par le modèle complet et par le modèle sans cette variable.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>La fonction native <code><a href="https://rdrr.io/r/stats/anova.html">anova()</a></code> donne les <strong>sommes des carrés séquentielles</strong>, calculées au fur et à mesure que chaque variable est ajoutée au modèle nul avec seulement une ordonnée à l’origine. Dans de rares cas, les sommes des carrés de type I et III sont égales (quand le design est parfaitement orthogonal ou balancé). Dans la vaste majorité des cas, les sommes des carrés de type I et III sont différentes et <strong>je vous conseille de toujours utiliser les sommes des carrés de type III dans vos analyses</strong>.</p>
+</blockquote>
 <p>À partir de cette analyse, on devrait accepter les hypothèses nulles (1) d’égalité des pentes pour les deux sexes, et (2) que les ordonnées à l’origine sont les mêmes pour les deux sexes. Mais, avant d’accepter ces conclusions, il faut vérifier si les données rencontrent les conditions d’application, comme d’habitude…</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -563,7 +586,8 @@ Figure&nbsp;14.2: Conditions d’applications du modèle <code>model.full1</code
 </div>
 </div>
 </div>
-<p>En ce qui concerne la normalité, ça a l’air d’aller quoiqu’il y a quelques points, en haut à droite, qui dévient de la droite. Si on effectue le test de Wilk-Shapiro (W = .9764, p = 0.09329), on confirme que les résidus ne dévient pas significativement de la normalité. Les résidus semblent homoscédastiques, mais si vous voulez vous en assurer, vous pouvez l’éprouver par un des tests formels. Ici j’utilise le test Breusch-Pagan, qui est approprié quand certaines des variables indépendantes sont continues (Le test de Levene n’est approprié que lorsqu’il n’y a que des variables discontinues).</p>
+<p>En ce qui concerne la <strong>normalité</strong>, ça a l’air d’aller quoiqu’il y a quelques points, en haut à droite, qui dévient. Si on effectue le test de Wilk-Shapiro (W = .9764, p = 0.09329), on confirme que les résidus ne dévient pas significativement de la normalité.</p>
+<p>Les résidus semblent <strong>homoscédastiques</strong>, mais si vous voulez vous en assurer, vous pouvez l’éprouver par un des tests formels. Ici j’utilise le test Breusch-Pagan, qui est approprié quand certaines des variables indépendantes sont continues (Le test de Levene n’est approprié que lorsqu’il n’y a que des variables discontinues).</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">bptest</span><span class="op">(</span><span class="va">model.full1</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -574,7 +598,7 @@ data:  model.full1
 BP = 0.99979, df = 3, p-value = 0.8013</code></pre>
 </div>
 </div>
-<p>Comme l’hypothèse nulle de ce test est que les résidus sont homoscédastiques, et que p est relativement élevé, le test confirme l’évaluation visuelle. De plus, il n’y a pas de tendance évidente dans les résidus, suggérant qu’il n’y a pas de problème de linéarité. Ce qui peut également être éprouvé formellement:</p>
+<p>Comme l’hypothèse nulle de ce test est que les résidus sont homoscédastiques, et que p est relativement élevé, le test confirme l’évaluation visuelle. De plus, il n’y a pas de tendance évidente dans les résidus, suggérant qu’il n’y a pas de problème de <strong>linéarité</strong>. Ce qui peut également être éprouvé formellement:</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">resettest</span><span class="op">(</span><span class="va">model.full1</span>, power <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">3</span>, type <span class="op">=</span> <span class="st">"regressor"</span>, data <span class="op">=</span> <span class="va">anc1dat</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -585,8 +609,8 @@ data:  model.full1
 RESET = 0.59861, df1 = 2, df2 = 86, p-value = 0.5519</code></pre>
 </div>
 </div>
-<p>La dernière condition d’application est qu’il n’y a pas d’erreur de mesure sur la variable indépendante continue. On ne peut vraiment éprouver cette condition,, mais on sait que des estimés indépendants de l’âge des poissons obtenus par différents chercheurs donnent des âges qui concordent avec moins de 1-2 ans d’écart., ce qui est inférieur au 10% de la fourchette observée des âges et donc acceptable pour des analyses de modèles de type I (attention ici on ne parle pas des SC de type I, je sais, c’est facile de confondre…)</p>
-<p>Vous noterez qu’il y a une observation qui a un résidu normalisé (studentized residual) qui est élevé, i.e.&nbsp;une valeur extrême (cas numéro 49). Éliminez-la de l’ensemble de données et refaites l’analyse. Vos conclusions changent-elles?</p>
+<p>La dernière condition d’application est qu’il n’y a <strong>pas d’erreur de mesure</strong> sur la variable indépendante continue. On ne peut pas vraiment éprouver cette condition, mais on sait que des estimés indépendants de l’âge des poissons obtenus par différents chercheurs donnent des âges qui concordent avec moins de 1-2 ans d’écart, ce qui est inférieur au 10% de la fourchette observée des âges et donc acceptable pour des analyses de modèles de type I (<em>attention ici on ne parle pas des SC de type I, je sais, c’est facile de confondre…</em>)</p>
+<p>Vous noterez qu’il y a une observation qui a un résidu normalisé (Standardized residual) qui est élevé, i.e.&nbsp;une valeur extrême (cas numéro 49). Éliminez-la de l’ensemble de données et refaites l’analyse. Vos conclusions changent-elles?</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.full.no49</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">lage</span> <span class="op">+</span> <span class="va">sex</span><span class="op">:</span><span class="va">lage</span>, data <span class="op">=</span> <span class="va">anc1dat</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">49</span><span class="op">)</span>,<span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu">Anova</span><span class="op">(</span><span class="va">model.full.no49</span>, type<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -617,7 +641,7 @@ Exercice
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Le fichier <code>anc3dat.csv</code> contient des données sur des esturgeons mâles de deux sites (locate) : Lake of the Woods dans le Nord-Ouest de l’Ontario et Chruchill River dans le Nord du Manitoba. En utilisant la même procédure, éprouvez l’hypothèse que la pente de la régression de lfkl sur lage est la même aux deux sites (alors Locate est la variable en catégories et non pas sex). Que concluez-vous?</p>
+<p>Le fichier <code>anc3dat.csv</code> contient des données sur des esturgeons mâles de deux sites (locate) : Lake of the Woods dans le Nord-Ouest de l’Ontario et Chruchill River dans le Nord du Manitoba. En utilisant la même procédure, éprouvez l’hypothèse que la pente de la régression de <code>lfkl</code> sur <code>lage</code> est la même aux deux sites (alors <code>Locate</code> est la variable catégorique au lieu de <code>sex</code>). Que concluez-vous?</p>
 </div>
 </div>
 <div class="cell">
@@ -653,13 +677,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <img src="36-ancova_glm_files/figure-html/fig-anc3-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anc3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.3: Longueur des esturgeons en fonction de l’age d’après <code>anc3dat</code>
+Figure&nbsp;14.3: Longueur des esturgeons en fonction de l’age selon le site d’étude d’après <code>anc3dat.csv</code>
 </figcaption></figure>
 </div>
 </div>
 </div>
 <p>Ici, on rejette les hypothèses nulles (1) que les pentes sont les mêmes dans les deux sites et (2) que les ordonnées à l’origine sont égales. En d’autres mots, si on veut prédire la longueur à la fourche d’un esturgeon à un âge donné précisément, il faut savoir de quel site il provient. Puisque les pentes diffèrent, il faut estimer des régressions séparées.</p>
-<p>Mais avant d’accepter ces conclusions, on doit se convaincre que les conditions d’application sont rencontrées:</p>
+<p>Mais avant d’accepter ces conclusions, on doit s’assurer que les conditions d’application sont rencontrées :</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -689,7 +713,7 @@ Figure&nbsp;14.4: Conditions d’applications du modèle <code>model.full2</code
 </div>
 </div>
 </div>
-<p>Si on examine les résidus selon les méthodes habituelles, on voit qu’il n’y a pas de problème de linéarité, ni d’homoscédasticité (BP = 2.8721, p = 0.4118). Cependant, le test de Wilk-Shapiro est significatif (W=0.97, p = 0.03). Étant donné la taille assez grande de l’échantillon (N=92), ce test a beaucoup de puissance, même si la déviation de normalité ne semble pas très grande. Compte-tenu de la robustesse relative des LM, de la taille de l’échantillon, on ne devrait pas ^tre trop inquiet de cette déviation de normalité.</p>
+<p>Si on examine les résidus selon les méthodes habituelles, on voit qu’il n’y a pas de problème de linéarité, ni d’homoscédasticité (BP = 2.8721, p = 0.4118). Cependant, le test de Wilk-Shapiro est significatif (W=0.97, p = 0.03). Étant donné la taille assez grande de l’échantillon (N=92), ce test a beaucoup de puissance, même si la déviation de normalité ne semble pas très grande. Compte-tenu de la robustesse relative des LM, de la taille de l’échantillon, on ne s’inquiète pas trop de cette déviation de normalité.</p>
 <p>Donc, comme les conditions des LM sont suffisamment remplies, on peut accepter les résultats donnés par R. Tous les termes sont significatifs (location, lage, interaction). Ce modèle complet est équivalent à ajuster des régressions séparées pour chaque site. Pour obtenir les coefficients, on peut ajuster des régressions simples sur chaque sous-ensemble, ou extraire les coefficients ajustés du modèle complet:</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.full2</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -740,11 +764,12 @@ Coefficients:
 </div>
 </section></section><section id="le-modèle-dancova" class="level2" data-number="14.5"><h2 data-number="14.5" class="anchored" data-anchor-id="le-modèle-dancova">
 <span class="header-section-number">14.5</span> Le modèle d’ANCOVA</h2>
-<p>Si le test d’homogénéité des pentes indique qu’elles diffèrent, alors on devrait estimer des régressions individuelles pour chaque niveau des variables discontinues. Cependant, si on accepte l’hypothèse d’égalité des pentes, l’étape suivante est de comparer les ordonnées à l’origine. Selon la “vieille école” i.e.&nbsp;l’approche traditionnelle, on ajuste un modèle avec la variable catégorique et la variable continue, mais sans interaction (le modèle ANCOVA sensus stricto) et on utilise la somme des carrés des écarts de type III, disons avec la fonction <code>Anova()</code>. C’est ce que la majorité des manuels de biostatistiques présentent.</p>
+<p>Si le test d’homogénéité des pentes indique qu’elles diffèrent, alors on devrait estimer des régressions individuelles pour chaque niveau des variables discontinues.</p>
+<p>Cependant, si on accepte l’hypothèse d’égalité des pentes, l’étape suivante est de <strong>comparer les ordonnées à l’origine</strong>. Selon la méthode traditionnelle i.e., on ajuste un modèle avec la variable catégorique et la variable continue, mais sans interaction (le modèle <strong>ANCOVA</strong> sensus stricto) et on utilise la somme des carrés des écarts de type III, avec la fonction <code>Anova()</code>.</p>
 <p>L’autre approche consiste à utiliser les résultats de l’analyse du modèle complet, et tester la signification de chaque terme à partir des sommes des carrés partiels. C’est plus rapide, mais moins puissant. Dans la plupart des cas, cette perte de puissance n’est pas trop préoccupante, sauf lorsque le modèle est très complexe et contient de nombreuses interactions non-significatives. Je vous suggère d’utiliser l’approche simplifiée, et de n’utiliser l’approche traditionnelle que lorsque vous acceptez l’hypothèse d’égalité des ordonnées à l’origine. Pourquoi?</p>
 <p>Puisque l’approche simplifiée est moins puissante, si vous rejetez quand même H0, alors votre conclusion ne changera pas, mais sera seulement renforcée, en utilisant l’approche traditionnelle.</p>
 <p>Ici, je vais comparer l’approche traditionnelle et l’approche simplifiée. Rappelez-vous que vous voulez évaluer l’égalité des ordonnées à l’origine <strong>après avoir déterminé que les pentes étaient égales</strong>. Éprouver l’égalité des ordonnées à l’origine quand les pentes diffèrent (ou, si vous préférez, quand il y a une interaction) est rarement sensé, peut facilement être mal interprété, et ne devrait être effectué que rarement.</p>
-<p>De retour aux données de anc1dat.csv, en comparant la relation entre lfkl et lage entre les sexes, nous avions obtenu les résultats suivants pour le modèle complet avec interactions:</p>
+<p>De retour aux données de <code>anc1dat.csv</code>, en comparant la relation entre <code>lfkl</code> et <code>lage</code> entre les <code>sexes</code>, nous avions obtenu les résultats suivants pour le modèle complet avec interactions :</p>
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">Anova</span><span class="op">(</span><span class="va">model.full1</span>, type <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -761,7 +786,7 @@ Residuals   0.07135 88
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<p>On avait déjà conclu que la pente ne varie pas entre les sexes (i.e.&nbsp;l’interaction n’est pas significative). Notez que la p-valeur associée au sexe (0.4795) n’est pas significative non plus.</p>
+<p>On avait déjà conclu que la pente ne varie pas entre les sexes (i.e.&nbsp;l’interaction n’est pas significative). Notez que la valeur de p associée au sexe (0.4795) n’est pas significative non plus.</p>
 <p>De l’autre côté, selon l’approche traditionnelle, l’inférence quand à l’effet du sexe se fait à partir du modèle réduit (le modèle ANCOVA sensus stricto):</p>
 <div class="cell">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.ancova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">lage</span>, data <span class="op">=</span> <span class="va">anc1dat</span><span class="op">)</span></span>
@@ -801,7 +826,7 @@ Multiple R-squared:  0.696, Adjusted R-squared:  0.6892
 F-statistic: 101.9 on 2 and 89 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Dans ce modèle, sex n’est pas significatif et on conclue donc que l’ordonnée à l’origine ne diffère pas entre les sexes. Notez que la pvaleur est plus petite (0.1771 vs 0.4795), ce qui reflète la puissance accrue de l’approche traditionnelle. Toutefois, les conclusions sont les mêmes: les ordonnées à l’origine ne diffèrent pas.</p>
+<p>Dans ce modèle, sex n’est pas significatif et on conclue donc que l’ordonnée à l’origine ne diffère pas entre les sexes. Notez que la valeur de p est plus petite (0.1771 vs 0.4795), ce qui reflète la puissance accrue de l’approche traditionnelle. Toutefois, les conclusions sont les mêmes : les ordonnées à l’origine ne diffèrent pas.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -854,7 +879,14 @@ Multiple R-squared:  0.7706,    Adjusted R-squared:  0.7653
 F-statistic: 144.4 on 2 and 86 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p><strong>Ouch!</strong> Les résultats changent. Il faudrait donc rejeter l’hypothèse nulle et conclure que les ordonnées à l’origine diffèrent! Une conclusion qualitativement différente de celle obtenue en considérant toutes les données. Pourquoi? Il y a deux raisons possibles : (1) les valeurs extrêmes influencent beaucoup les régressions ou (2) l’exclusion des valeurs extrêmes permet d’augmenter la puissance de détection d’une différence. La première explication est moins plausible parce que les valeurs extrêmes n’avaient pas une grande influence (leverage faible). Alors, la deuxième explication est plus plausible et vous pouvez le vérifier en faisant des régressions pour chaque sexe sans et avec les valeurs extrêmes. Si vous le faites, vous noterez que les ordonnées à l’origine pour chaque sexe ne changent presque pas alors que leurs erreurs-types changent beaucoup.</p>
+<p><strong>Ouch!</strong> Les résultats changent.</p>
+<p>Il faudrait donc rejeter l’hypothèse nulle et conclure que les ordonnées à l’origine diffèrent! Une conclusion qualitativement différente de celle obtenue en considérant toutes les données.</p>
+<p>Pourquoi? Il y a deux raisons possibles :</p>
+<ol type="1">
+<li><p>Les valeurs extrêmes influencent beaucoup les régressions ou,</p></li>
+<li><p>L’exclusion des valeurs extrêmes permet d’augmenter la puissance de détection d’une différence.</p></li>
+</ol>
+<p>La première explication est moins plausible parce que les valeurs extrêmes n’avaient pas une grande influence (leverage faible). Alors, la deuxième explication est plus plausible et vous pouvez le vérifier en faisant des régressions pour chaque sexe sans et avec les valeurs extrêmes. Si vous le faites, vous noterez que les ordonnées à l’origine pour chaque sexe ne changent presque pas alors que leurs erreurs-types changent beaucoup.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -865,7 +897,7 @@ Exercice
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ajustez une régression simple entre lfkl et lage pour l’ensemble complet de données et aussi pour le sous-ensemble sans les 3 valeurs déviantes. Comparez ces modèles avec les modèles d’ANCOVA ajustés précédemment. Que concluez-vous ? Quel modèle, d’après vous, a le meilleur ajustement aux données ? Pourquoi ?</p>
+<p>Ajustez une régression simple entre <code>lfkl</code> et <code>lage</code> pour l’ensemble complet de données et aussi pour le sous-ensemble sans les 3 valeurs déviantes. Comparez ces modèles avec les modèles d’ANCOVA ajustés précédemment. Que concluez-vous ? Quel modèle, d’après vous, a le meilleur ajustement aux données ? Pourquoi ?</p>
 </div>
 </div>
 <p>Le modèle en excluant les valeurs extrêmes:</p>
@@ -893,7 +925,7 @@ Multiple R-squared:  0.7598,    Adjusted R-squared:  0.7571
 F-statistic: 275.2 on 1 and 87 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Pour la régression simple (sans les valeurs extrêmes) on obtient un R 2 de 0.76 et une erreur-type des résidus de 0.02441, En comparant à l’erreur-type des résidus du modèle d’ANCOVA (0.02399) on réalise que la qualité des prédictions est essentiellement la même, même en ajustant des ordonnées à l’origine différentes pour chaque groupe. Par conséquent, les bénéfices de l’inclusion d’un terme pour les différentes ordonnées à l’origine sont faibles alors que le coût, en terme de complexité du modèle, est élevé (33% d’augmentation du nombre de termes pour un très faible amélioration de la qualité d’ajustement). Si vous examinez les résidus de ce modèle, vous trouverez qu’ils sont à peu près O.K.)</p>
+<p>Pour la régression simple (sans les valeurs extrêmes) on obtient un <span class="math inline">\(R^2\)</span> de 0.76 et une erreur-type des résidus de 0.02441, En comparant à l’erreur-type des résidus du modèle d’ANCOVA (0.02399) on réalise que la qualité des prédictions est essentiellement la même, même en ajustant des ordonnées à l’origine différentes pour chaque groupe. Par conséquent, les bénéfices de l’inclusion d’un terme pour les différentes ordonnées à l’origine sont faibles alors que le coût, en terme de complexité du modèle, est élevé (33% d’augmentation du nombre de termes pour un très faible amélioration de la qualité d’ajustement). Si vous examinez les résidus de ce modèle, vous trouverez qu’ils sont à peu près OK.</p>
 <p>Si on ajuste une régression simple sur toutes les données, on obtient:</p>
 <div class="cell">
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model.linear</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span>, data <span class="op">=</span> <span class="va">anc1dat</span><span class="op">)</span></span>
@@ -919,12 +951,12 @@ Multiple R-squared:  0.6897,    Adjusted R-squared:  0.6863
 F-statistic: 200.1 on 1 and 90 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Encore une fois, l’erreur-type des résidus (0.0285) pour cette régression unique est semblable à la variance du modèle d’ANCOVA (0.02837) et le modèle simplifié prédit presque aussi bien que le modèle plus complexe. (Ici encore, toutes les conditions d’application semblent remplies, si ce n’est de la valeur extrême).</p>
+<p>Encore une fois, l’erreur-type des résidus (0.0285) pour cette régression unique est semblable à la variance du modèle d’ANCOVA (0.02837) et le modèle simplifié prédit presque aussi bien que le modèle plus complexe. Ici encore, toutes les conditions d’application semblent remplies, si ce n’est de la valeur extrême.</p>
 <p>Donc, dans les deux cas (avec ou sans les valeurs extrêmes), l’addition d’un terme supplémentaire pour le sexe n’ajoute pas grand-chose. Il semble donc que le meilleur modèle soit celui de la régression simple. Un estimé raisonnablement précis de la taille des esturgeons peut être obtenu de la régression commune sur l’ensemble des résultats.</p>
 <p>Note: Il est fréquent que l’élimination de valeurs extrêmes en fasse apparaître d’autres. C’est parce que ces valeurs extrêmes dépendent de la variabilité résiduelle. Si on élimine les valeurs les plus déviantes, la variabilité résiduelle diminue, et certaines observations qui n’étaient pas si déviantes que cela deviennent proportionnellement plus déviantes. Notez aussi qu’en éliminant des valeurs extrêmes, l’effectif diminue et que la puissance décroît. Il faut donc être prudent.</p>
 </section><section id="comparer-lajustement-de-modèles" class="level2" data-number="14.6"><h2 data-number="14.6" class="anchored" data-anchor-id="comparer-lajustement-de-modèles">
 <span class="header-section-number">14.6</span> Comparer l’ajustement de modèles</h2>
-<p>Comme vous venez de le voir, le processus d’ajustement de modèles est itératif. La plupart du temps il y a plus d’un modèle qui peut être ajusté aux données et c’est à vous de choisir celui qui est le meilleur compromis entre la qualité d’ajustement (qu’on essaie de maximiser) et la complexité (qu’on essaie de minimiser). La stratégie de base en ajustant des modèles linéaires (ANOVA, régression, ANCOVA) est de privilégier le modèle le plus simple si la qualité d’ajustement n’est pas significativement plus mauvaise. R peut calculer une statistique F vous permettant de comparer l’ajustement de deux modèles. Dans ce cas, l’hypothèse nulle est que la qualité d’ajustement ne diffère pas entre les deux modèles.</p>
+<p>Comme vous venez de le voir, le processus d’ajustement de modèles est itératif. La plupart du temps il y a plus d’un modèle qui peut être ajusté aux données et c’est à vous de choisir celui qui est le meilleur compromis entre la <strong>qualité d’ajustement</strong> (qu’on essaie de maximiser) et la <strong>complexité</strong> (qu’on essaie de minimiser). La stratégie de base en ajustant des modèles linéaires (ANOVA, régression, ANCOVA) est de <strong><em>privilégier le modèle le plus simple si la qualité d’ajustement n’est pas significativement plus mauvaise</em></strong>. R peut calculer une statistique F vous permettant de comparer l’ajustement de deux modèles. Dans ce cas, l’hypothèse nulle est que la qualité d’ajustement ne diffère pas entre les deux modèles.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -950,7 +982,7 @@ Model 2: lfkl ~ lage
 2     90 0.073113 -1 -0.0014899 1.8513 0.1771</code></pre>
 </div>
 </div>
-<p>La fonction anova() utilise la différence entre la somme des carrés des deux modèles et la divise par la différence entre le nombre de degrés de liberté pour obtenir un carré moyen. Ce carré moyen est utilisé au numérateur et est divisé par la variance résiduelle du modèle le plus complexe pour obtenir la statistique F. Dans ce cas-ci, le test de F n’est pas significatif, et on conclut que les deux modèles ont une qualité d’ajustement équivalente, et qu’on devrait donc privilégier le modèle le plus simple, la régression linéaire simple.</p>
+<p>La fonction <code><a href="https://rdrr.io/r/stats/anova.html">anova()</a></code> utilise la différence entre la somme des carrés des deux modèles et la divise par la différence entre le nombre de degrés de liberté pour obtenir un carré moyen. Ce carré moyen est utilisé au numérateur et est divisé par la variance résiduelle du modèle le plus complexe pour obtenir la statistique F. Dans ce cas-ci, le test de F n’est pas significatif, et on conclut que les deux modèles ont une qualité d’ajustement équivalente, et qu’on devrait donc privilégier le modèle le plus simple, la régression linéaire simple.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -992,7 +1024,7 @@ Model 2: lfkl ~ lage + locate
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<p>Cette fois-ci, le modèle plus complexe s’ajuste significativement mieux aux données. (Pas surprenant puisque nous avions précédemment conclu que l’interaction est significative avec ces données.)</p>
+<p>Cette fois-ci, le modèle plus complexe s’ajuste significativement mieux aux données (Pas surprenant puisque nous avions précédemment conclu que l’interaction est significative avec ces données).</p>
 </div>
 </div>
 </div>
@@ -1001,73 +1033,72 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="cell">
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">############################################################</span></span>
 <span><span class="co">######</span></span>
-<span><span class="co"># Bootstrap analysis</span></span>
-<span><span class="co"># Bootstrap analysis BCa confidence intervals</span></span>
-<span><span class="co"># Preferable when parameter distribution is far from normal</span></span>
-<span><span class="co"># Bootstrap 95% BCa CI for regression coefficients</span></span>
+<span><span class="co"># Analyses Bootstrap</span></span>
+<span><span class="co"># Analyses Bootstrap intervalles de confiance BCa</span></span>
+<span><span class="co"># Préférable quand il y a un fort écart à la normalité</span></span>
+<span><span class="co"># Bootstrap 95% BCa IC pour les coefficients de la régression</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># To simplify future modifications of the code in this file,</span></span>
-<span><span class="co"># copy the data to a generic mydata dataframe</span></span>
-<span><span class="va">mydata</span> <span class="op">&lt;-</span> <span class="va">anc3dat</span></span>
+<span><span class="co"># Pour simplifier des futures modification du code dans ce fichier,</span></span>
+<span><span class="co"># assignez les données à un objet mesdonnees</span></span>
+<span><span class="va">mesdonnees</span> <span class="op">&lt;-</span> <span class="va">anc3dat</span></span>
 <span></span>
-<span><span class="co"># create a myformula variable containing the formula for the model to be fitted</span></span>
-<span><span class="va">myformula</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span> <span class="op">+</span> <span class="va">locate</span> <span class="op">+</span> <span class="va">lage</span><span class="op">:</span><span class="va">locate</span><span class="op">)</span></span>
+<span><span class="co"># créez une variable maformule contenant la formule du modèle à ajuster</span></span>
+<span><span class="va">maformule</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span> <span class="op">+</span> <span class="va">locate</span> <span class="op">+</span> <span class="va">lage</span><span class="op">:</span><span class="va">locate</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># function to obtain regression coefficients for each iteration</span></span>
+<span><span class="co"># fonction pour obtenir les coefficients de régression à chaque itération</span></span>
 <span><span class="va">bs</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">formula</span>, <span class="va">data</span>, <span class="va">indices</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">d</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">[</span><span class="va">indices</span>, <span class="op">]</span></span>
 <span>  <span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">formula</span>, data <span class="op">=</span> <span class="va">d</span><span class="op">)</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="co"># bootstrapping with 1000 replications</span></span>
-<span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.html">boot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">mydata</span>, statistic <span class="op">=</span> <span class="va">bs</span>, R <span class="op">=</span> <span class="fl">1000</span>, formula <span class="op">=</span> <span class="va">myformula</span><span class="op">)</span></span>
+<span><span class="co"># bootstrap avec 1000 réplications</span></span>
+<span><span class="va">resultats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.html">boot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">mesdonnees</span>, statistic <span class="op">=</span> <span class="va">bs</span>, R <span class="op">=</span> <span class="fl">1000</span>, formula <span class="op">=</span> <span class="va">maformule</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># view results</span></span>
-<span><span class="va">results</span></span>
-<span><span class="va">boot_res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">results</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">boot_res</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">t0</span><span class="op">)</span></span>
+<span><span class="co"># afficher les résultats</span></span>
+<span><span class="va">resultats</span></span>
+<span><span class="va">boot_res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">resultats</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">boot_res</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">resultats</span><span class="op">$</span><span class="va">t0</span><span class="op">)</span></span>
 <span><span class="va">boot_res</span></span>
 <span></span>
 <span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>ask <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">t0</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">results</span>, index <span class="op">=</span> <span class="va">i</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">t0</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">resultats</span><span class="op">$</span><span class="va">t0</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">resultats</span>, index <span class="op">=</span> <span class="va">i</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">resultats</span><span class="op">$</span><span class="va">t0</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">op</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># get 95% confidence intervals</span></span>
-<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">t0</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">t0</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,<span class="st">"\n"</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.ci.html">boot.ci</a></span><span class="op">(</span><span class="va">results</span>, type <span class="op">=</span> <span class="st">"bca"</span>, index <span class="op">=</span> <span class="va">i</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">resultats</span><span class="op">$</span><span class="va">t0</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">resultats</span><span class="op">$</span><span class="va">t0</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,<span class="st">"\n"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/boot/man/boot.ci.html">boot.ci</a></span><span class="op">(</span><span class="va">resultats</span>, type <span class="op">=</span> <span class="st">"bca"</span>, index <span class="op">=</span> <span class="va">i</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="permutation-test" class="level2" data-number="14.8"><h2 data-number="14.8" class="anchored" data-anchor-id="permutation-test">
-<span class="header-section-number">14.8</span> Permutation test</h2>
+</section><section id="test-de-permutation" class="level2" data-number="14.8"><h2 data-number="14.8" class="anchored" data-anchor-id="test-de-permutation">
+<span class="header-section-number">14.8</span> Test de Permutation</h2>
 <div class="cell">
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">############################################################</span></span>
 <span><span class="co">##########</span></span>
-<span><span class="co"># Permutation test</span></span>
+<span><span class="co"># Test de Permutation</span></span>
 <span><span class="co">#</span></span>
-<span><span class="co"># using lmperm library</span></span>
-<span><span class="co"># To simplify future modifications of the code in this file,</span></span>
-<span><span class="co"># copy the data to a generic mydata dataframe</span></span>
-<span><span class="va">mydata</span><span class="op">&lt;-</span><span class="va">anc3dat</span></span>
-<span><span class="co"># create a myformula variable containing the formula for the</span></span>
-<span><span class="co"># model to be fitted</span></span>
-<span><span class="va">myformula</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span> <span class="op">+</span> <span class="va">locate</span> <span class="op">+</span> <span class="va">lage</span><span class="op">:</span><span class="va">locate</span><span class="op">)</span></span>
+<span><span class="co"># en utilisant le paquet `lmperm`</span></span>
+<span><span class="co"># Pour simplifier des futures modification du code dans ce fichier,</span></span>
+<span><span class="co"># assignez les données à un objet mesdonnees</span></span>
+<span><span class="va">mesdonnees</span><span class="op">&lt;-</span><span class="va">anc3dat</span></span>
+<span><span class="co"># créez une variable maformule contenant la formule du modèle à ajuster</span></span>
+<span><span class="va">maformule</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="va">lfkl</span> <span class="op">~</span> <span class="va">lage</span> <span class="op">+</span> <span class="va">locate</span> <span class="op">+</span> <span class="va">lage</span><span class="op">:</span><span class="va">locate</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">lmPerm2</span><span class="op">)</span></span>
-<span><span class="co"># Fit desired model on the desired dataframe</span></span>
-<span><span class="va">mymodel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">myformula</span>, data <span class="op">=</span> <span class="va">mydata</span><span class="op">)</span></span>
-<span><span class="co"># Calculate p-values for each term by permutation</span></span>
-<span><span class="co"># Note that lmp centers numeric variable by default, so to</span></span>
-<span><span class="co"># get results that are</span></span>
-<span><span class="co"># consistent with standard models, it is necessary to set</span></span>
+<span><span class="co"># Ajustez le modèle voulu sur les données voulues</span></span>
+<span><span class="va">monmodele</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">maformule</span>, data <span class="op">=</span> <span class="va">mesdonnees</span><span class="op">)</span></span>
+<span><span class="co"># Calculez la valeur de p pour chaque termes à chaque permutation</span></span>
+<span><span class="co"># Notez que lmp centre les variables numériques par défaut,</span></span>
+<span><span class="co"># donc pour avoir des résultats consistants avec les modèles standards,</span></span>
+<span><span class="co"># il faut :</span></span>
 <span><span class="va">center</span><span class="op">=</span><span class="cn">FALSE</span></span>
-<span><span class="va">mymodelProb</span> <span class="op">&lt;-</span> <span class="fu">lmp</span><span class="op">(</span><span class="va">myformula</span>, data <span class="op">=</span> <span class="va">mydata</span>, center<span class="op">=</span><span class="cn">FALSE</span>,</span>
+<span><span class="va">monmodeleProb</span> <span class="op">&lt;-</span> <span class="fu">lmp</span><span class="op">(</span><span class="va">maformule</span>, data <span class="op">=</span> <span class="va">mesdonnees</span>, center<span class="op">=</span><span class="cn">FALSE</span>,</span>
 <span>perm <span class="op">=</span> <span class="st">"Prob"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mymodel</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mymodelProb</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">monmodele</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">monmodeleProb</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

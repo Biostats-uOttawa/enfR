@@ -438,7 +438,7 @@ window.Quarto = {
   
 
 
-</header><p>Après avoir complété cet exercice de laboratoire, vous devriez pouvoir :</p>
+</header><p>Objectifs de ce chapitre :</p>
 <ul>
 <li>Utiliser R pour ajuster une régression multiple et comparer des modèles selon l’approche inférentielle et celle de la théorie de l’information</li>
 <li>Utiliser R pour éprouver des hypothèses sur l’effet des variables indépendantes sur la variable dépendante.</li>
@@ -455,26 +455,38 @@ Avertissement
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Je ne supporte pas absolument pas l’approche stepwise (ni par AIC ni par P). Je déteste l’approche par la fonction <code><a href="https://rdrr.io/pkg/MuMIn/man/dredge.html">dredge()</a></code> qui selon moi va à l’encontre de la philosophie des AIC et de la parsimonie. L’approche stepwise ne devrait plus être utilisé. Ce chapitre est en grand besoin d’une réécriture. Je soutiens de développer un modèle complet basé sur des hypothèses biologiques et de reporter ce modèle avec tous les effets significatifs ou non.</p>
+<p>Je ne supporte pas absolument pas l’approche stepwise (ni par AIC ni par P). Je déteste l’approche par la fonction <code><a href="https://rdrr.io/pkg/MuMIn/man/dredge.html">dredge()</a></code> qui selon moi va à l’encontre de la philosophie des AIC et de la parcimonie. L’approche stepwise ne devrait plus être utilisé. Ce chapitre est en grand besoin d’une réécriture. Je soutiens de développer un modèle complet basé sur des hypothèses biologiques et de reporter ce modèle avec tous les effets significatifs ou non.</p>
 </div>
 </div>
 <section id="set-reg-mul" class="level2" data-number="13.1"><h2 data-number="13.1" class="anchored" data-anchor-id="set-reg-mul">
 <span class="header-section-number">13.1</span> Paquets et données requises pour le labo</h2>
-<p>Ce laboratoire nécessite:</p>
+<p>Pour ce laboratoire, vous aurez besoin de :</p>
 <ul>
-<li>les paquets R:
+<li>Paquets R:
 <ul>
-<li>ggplot2</li>
-<li>car</li>
-<li>lmtest</li>
-<li>simpleboot</li>
-<li>boot</li>
-<li>MuMIn</li>
+<li>
+<code>ggplot2</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
+<li>
+<code>car</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
+<li>
+<code>lmtest</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
+<li>
+<code>simpleboot</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
+<li>
+<code>boot</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
+<li>
+<code>MuMIn</code> <span class="emoji" data-emoji="package">📦</span>
+</li>
 </ul>
 </li>
-<li>les fichiers de données
+<li>Jeu de données
 <ul>
-<li>Mregdat.csv</li>
+<li>“Mregdat.csv”</li>
 </ul>
 </li>
 </ul></section><section id="conseils-généraux" class="level2" data-number="13.2"><h2 data-number="13.2" class="anchored" data-anchor-id="conseils-généraux">
@@ -482,7 +494,7 @@ Avertissement
 <p>Les variables qui intéressent les biologistes sont généralement influencées par plusieurs facteurs, et une description exacte ou une prédiction de la variable dépendante requiert que plus d’une variable soit incluse dans le modèle. La régression multiple permet de quantifier l’effet de plusieurs variables continues sur la variable dépendante.</p>
 <p>Il est important de réaliser que la maîtrise de la régression multiple ne s’acquiert pas instantanément. Les débutants doivent garder à l’esprit plusieurs points importants :</p>
 <ol type="1">
-<li>Un modèle de régression multiple peut être hautement significatif même si aucun des termes pris isolément ne l’est (ceci est causé par la multicolinéarité),</li>
+<li>Un modèle de régression multiple peut être hautement significatif même si aucun des termes pris isolément ne l’est (ceci est causé par la <strong>multicolinéarité</strong>),</li>
 <li>Un modèle peut ne pas être significatif alors que l’un ou plusieurs des termes le sont (ceci est un signe d’un modèle trop complexe (“overfitting”)) et,</li>
 <li>À moins que les variables indépendantes soient parfaitement orthogonales (c’est-à-dire qu’il n’y ait aucune corrélation entre elles et donc pas de multicolinéarité) les diverses approches de sélection des variables indépendantes peuvent mener à des modèles différents.</li>
 </ol></section><section id="premières-régressions-multiples" class="level2" data-number="13.3"><h2 data-number="13.3" class="anchored" data-anchor-id="premières-régressions-multiples">
