@@ -650,9 +650,9 @@ Par exemple, pour extraire les 4 premières lignes et toutes les colonnes du jeu
 licornes[1:4, ]
 ```
 
-ou toutes les lignes et les 3 premières colonnes [^1] .
+ou toutes les lignes et les 3 premières colonnes [^fn1] .
 
-[^1]: Pour des raisons de place et de simplicité, nous ne montrons que les cinq premières et cinq dernières lignes.
+[^fn1]: Pour des raisons de place et de simplicité, nous ne montrons que les cinq premières et cinq dernières lignes.
 
 ```r
 unicorns[, 1:3]

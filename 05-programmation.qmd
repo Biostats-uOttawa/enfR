@@ -692,9 +692,9 @@ Cependant, les boucles sont parfois le seul moyen d'obtenir le résultat souhait
 
 **Voici quelques exemples de cas où l'utilisation de boucles peut s'avérer appropriée :**
 
-- Certaines simulations[^1]
+- Certaines simulations[^fn51]
 
-[^1]: Par exemple le modèle de Ricker peut, en partie, être construit à l'aide de boucles.
+[^fn51]: Par exemple le modèle de Ricker peut, en partie, être construit à l'aide de boucles.
 
 - Relations récursives [^2] 
 
