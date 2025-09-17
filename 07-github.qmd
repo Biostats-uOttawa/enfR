@@ -625,7 +625,7 @@ Enfin, ajoutons un tableau récapitulatif du cadre de données à l'aide de la c
 knitr::include_graphics(path = "images/github/mod1.png")
 ```
 
-Sauvegardez ces modifications, puis cliquez sur le bouton `knit` pour effectuer le rendu au format pdf.
+Sauvegardez ces modifications, puis cliquez sur le bouton `Render` pour effectuer le rendu au format pdf.
 Un nouveau fichier pdf nommé `first_doc.pdf` sera créé et vous pourrez l'afficher en cliquant sur le nom du fichier dans la fenêtre `Files` dans RStudio.
 
 Notez que ces deux fichiers ont été ajoutés à la base de données `Git` dans RStudio.

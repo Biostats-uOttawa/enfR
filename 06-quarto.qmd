@@ -157,7 +157,7 @@ Une fois que vous avez créé votre document Quarto, c'est une bonne pratique de
 Vous pouvez le faire en sélectionnant `File` -> `Save` dans le menu de RStudio (ou utilisez le raccourci clavier ctrl + s sous Windows ou cmd + s sur Mac) et entrez un nom de fichier approprié (appelez-le par exemple `my_first_quarto`).
 Notez que l'extension de votre nouveau fichier Quarto est `.qmd`.
 
-Maintenant, pour convertir votre fichier `.qmd` en document HTML, cliquez sur le petit triangle noir à côté de l'icône `Knit` en haut de la fenêtre source et sélectionnez `render to HTML`
+Maintenant, pour convertir votre fichier `.qmd` en document HTML, cliquez sur le petit triangle noir à côté de l'icône `Render` en haut de la fenêtre source et sélectionnez `render to HTML`
 
 ```{r}
 #| label: fig-knit-qmd
@@ -185,7 +185,7 @@ include_graphics("images/markdown/html_rendered.png")
 ```
 
 Vous venez de rendre votre premier document Quarto.
-Si vous souhaitez tricoter votre `.qmd` en un document pdf, il vous suffit de choisir `render to PDF` au lieu de `render to HTML` lorsque vous cliquez sur le bouton `knit` l'icône
+Si vous souhaitez tricoter votre `.qmd` en un document pdf, il vous suffit de choisir `render to PDF` au lieu de `render to HTML` lorsque vous cliquez sur le bouton `Render` l'icône
 Cela créera un fichier appelé `my_first_quarto.pdf` que vous pouvez ouvrir en double-cliquant dessus.
 Essayez-le !
 
